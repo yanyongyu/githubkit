@@ -9,191 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0122 import (
-    ActionsPolicyRepoConditionsOneof0Type,
-    ActionsPolicyRepoConditionsOneof0TypeForResponse,
-)
 from .group_0123 import (
-    ActionsPolicyRepoConditionsOneof1Type,
-    ActionsPolicyRepoConditionsOneof1TypeForResponse,
-)
-from .group_0130 import (
-    ActionsPolicyOrgConditionsOneof0Type,
-    ActionsPolicyOrgConditionsOneof0TypeForResponse,
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
 )
 from .group_0131 import (
-    ActionsPolicyOrgConditionsOneof1Type,
-    ActionsPolicyOrgConditionsOneof1TypeForResponse,
-)
-from .group_0132 import (
-    ActionsPolicyOrgConditionsOneof2Type,
-    ActionsPolicyOrgConditionsOneof2TypeForResponse,
-)
-from .group_0139 import (
-    ActionsPolicyEnterpriseConditionsOneof0Type,
-    ActionsPolicyEnterpriseConditionsOneof0TypeForResponse,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
 )
 from .group_0140 import (
-    ActionsPolicyEnterpriseConditionsOneof1Type,
-    ActionsPolicyEnterpriseConditionsOneof1TypeForResponse,
-)
-from .group_0141 import (
-    ActionsPolicyEnterpriseConditionsOneof2Type,
-    ActionsPolicyEnterpriseConditionsOneof2TypeForResponse,
-)
-from .group_0142 import (
-    ActionsPolicyEnterpriseConditionsOneof3Type,
-    ActionsPolicyEnterpriseConditionsOneof3TypeForResponse,
-)
-from .group_0143 import (
-    ActionsPolicyEnterpriseConditionsOneof4Type,
-    ActionsPolicyEnterpriseConditionsOneof4TypeForResponse,
-)
-from .group_0144 import (
-    ActionsPolicyEnterpriseConditionsOneof5Type,
-    ActionsPolicyEnterpriseConditionsOneof5TypeForResponse,
-)
-from .group_0145 import (
-    ActionsRuleRestrictActionEventsType,
-    ActionsRuleRestrictActionEventsTypeForResponse,
-    ActionsRuleRestrictActionsActorsType,
-    ActionsRuleRestrictActionsActorsTypeForResponse,
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType,
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse,
 )
 
 
-class ActionsPolicyType(TypedDict):
-    """Actions Policy
+class ActionsPolicyEnterpriseConditionsOneof5Type(TypedDict):
+    """organization_property_and_repository_property
 
-    An Actions policy defines rules for workflow execution protection.
+    Conditions to target organizations by property and repositories by property
     """
 
-    id: int
-    name: str
-    target: Literal["actions"]
-    source_type: Literal["Repository", "Organization", "Enterprise"]
-    source: str
-    enforcement: Literal["disabled", "active", "evaluate"]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyRepoConditionsOneof0Type,
-            ActionsPolicyRepoConditionsOneof1Type,
-            ActionsPolicyOrgConditionsOneof0Type,
-            ActionsPolicyOrgConditionsOneof1Type,
-            ActionsPolicyOrgConditionsOneof2Type,
-            ActionsPolicyEnterpriseConditionsOneof0Type,
-            ActionsPolicyEnterpriseConditionsOneof1Type,
-            ActionsPolicyEnterpriseConditionsOneof2Type,
-            ActionsPolicyEnterpriseConditionsOneof3Type,
-            ActionsPolicyEnterpriseConditionsOneof4Type,
-            ActionsPolicyEnterpriseConditionsOneof5Type,
-            None,
-        ]
-    ]
-    rules: NotRequired[
-        list[
-            Union[
-                ActionsRuleRestrictActionsActorsType,
-                ActionsRuleRestrictActionEventsType,
-            ]
-        ]
-    ]
-    node_id: NotRequired[str]
-    links: NotRequired[ActionsPolicyPropLinksType]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyType
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    )
+    workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
 
 
-class ActionsPolicyTypeForResponse(TypedDict):
-    """Actions Policy
+class ActionsPolicyEnterpriseConditionsOneof5TypeForResponse(TypedDict):
+    """organization_property_and_repository_property
 
-    An Actions policy defines rules for workflow execution protection.
+    Conditions to target organizations by property and repositories by property
     """
 
-    id: int
-    name: str
-    target: Literal["actions"]
-    source_type: Literal["Repository", "Organization", "Enterprise"]
-    source: str
-    enforcement: Literal["disabled", "active", "evaluate"]
-    conditions: NotRequired[
-        Union[
-            ActionsPolicyRepoConditionsOneof0TypeForResponse,
-            ActionsPolicyRepoConditionsOneof1TypeForResponse,
-            ActionsPolicyOrgConditionsOneof0TypeForResponse,
-            ActionsPolicyOrgConditionsOneof1TypeForResponse,
-            ActionsPolicyOrgConditionsOneof2TypeForResponse,
-            ActionsPolicyEnterpriseConditionsOneof0TypeForResponse,
-            ActionsPolicyEnterpriseConditionsOneof1TypeForResponse,
-            ActionsPolicyEnterpriseConditionsOneof2TypeForResponse,
-            ActionsPolicyEnterpriseConditionsOneof3TypeForResponse,
-            ActionsPolicyEnterpriseConditionsOneof4TypeForResponse,
-            ActionsPolicyEnterpriseConditionsOneof5TypeForResponse,
-            None,
-        ]
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationPropertyTypeForResponse
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+    workflow_path: NotRequired[
+        ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
     ]
-    rules: NotRequired[
-        list[
-            Union[
-                ActionsRuleRestrictActionsActorsTypeForResponse,
-                ActionsRuleRestrictActionEventsTypeForResponse,
-            ]
-        ]
-    ]
-    node_id: NotRequired[str]
-    links: NotRequired[ActionsPolicyPropLinksTypeForResponse]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-
-
-class ActionsPolicyPropLinksType(TypedDict):
-    """ActionsPolicyPropLinks"""
-
-    self_: NotRequired[ActionsPolicyPropLinksPropSelfType]
-    html: NotRequired[ActionsPolicyPropLinksPropHtmlType]
-
-
-class ActionsPolicyPropLinksTypeForResponse(TypedDict):
-    """ActionsPolicyPropLinks"""
-
-    self_: NotRequired[ActionsPolicyPropLinksPropSelfTypeForResponse]
-    html: NotRequired[ActionsPolicyPropLinksPropHtmlTypeForResponse]
-
-
-class ActionsPolicyPropLinksPropSelfType(TypedDict):
-    """ActionsPolicyPropLinksPropSelf"""
-
-    href: NotRequired[str]
-
-
-class ActionsPolicyPropLinksPropSelfTypeForResponse(TypedDict):
-    """ActionsPolicyPropLinksPropSelf"""
-
-    href: NotRequired[str]
-
-
-class ActionsPolicyPropLinksPropHtmlType(TypedDict):
-    """ActionsPolicyPropLinksPropHtml"""
-
-    href: NotRequired[str]
-
-
-class ActionsPolicyPropLinksPropHtmlTypeForResponse(TypedDict):
-    """ActionsPolicyPropLinksPropHtml"""
-
-    href: NotRequired[str]
 
 
 __all__ = (
-    "ActionsPolicyPropLinksPropHtmlType",
-    "ActionsPolicyPropLinksPropHtmlTypeForResponse",
-    "ActionsPolicyPropLinksPropSelfType",
-    "ActionsPolicyPropLinksPropSelfTypeForResponse",
-    "ActionsPolicyPropLinksType",
-    "ActionsPolicyPropLinksTypeForResponse",
-    "ActionsPolicyType",
-    "ActionsPolicyTypeForResponse",
+    "ActionsPolicyEnterpriseConditionsOneof5Type",
+    "ActionsPolicyEnterpriseConditionsOneof5TypeForResponse",
 )

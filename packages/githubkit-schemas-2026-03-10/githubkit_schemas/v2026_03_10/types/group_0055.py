@@ -9,37 +9,127 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0056 import (
-    PullRequestMinimalPropBaseType,
-    PullRequestMinimalPropBaseTypeForResponse,
-    PullRequestMinimalPropHeadType,
-    PullRequestMinimalPropHeadTypeForResponse,
-)
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestMinimalType(TypedDict):
-    """Pull Request Minimal"""
+class IssuePropStatusType(TypedDict):
+    """IssuePropStatus
+
+    The status of the issue, or `null` if it has none. Issue statuses are in preview
+    and only available to accounts enrolled in the preview.
+    """
 
     id: int
-    number: int
-    url: str
-    head: PullRequestMinimalPropHeadType
-    base: PullRequestMinimalPropBaseType
+    name: str
+    category: str
 
 
-class PullRequestMinimalTypeForResponse(TypedDict):
-    """Pull Request Minimal"""
+class IssuePropStatusTypeForResponse(TypedDict):
+    """IssuePropStatus
+
+    The status of the issue, or `null` if it has none. Issue statuses are in preview
+    and only available to accounts enrolled in the preview.
+    """
 
     id: int
-    number: int
+    name: str
+    category: str
+
+
+class IssuePropLabelsItemsOneof1Type(TypedDict):
+    """IssuePropLabelsItemsOneof1"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+    default: NotRequired[bool]
+    archived_by: NotRequired[Union[IssuePropLabelsItemsOneof1PropArchivedByType, None]]
+
+
+class IssuePropLabelsItemsOneof1TypeForResponse(TypedDict):
+    """IssuePropLabelsItemsOneof1"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+    default: NotRequired[bool]
+    archived_by: NotRequired[
+        Union[IssuePropLabelsItemsOneof1PropArchivedByTypeForResponse, None]
+    ]
+
+
+class IssuePropLabelsItemsOneof1PropArchivedByType(TypedDict):
+    """IssuePropLabelsItemsOneof1PropArchivedBy
+
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
     url: str
-    head: PullRequestMinimalPropHeadTypeForResponse
-    base: PullRequestMinimalPropBaseTypeForResponse
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class IssuePropLabelsItemsOneof1PropArchivedByTypeForResponse(TypedDict):
+    """IssuePropLabelsItemsOneof1PropArchivedBy
+
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "PullRequestMinimalType",
-    "PullRequestMinimalTypeForResponse",
+    "IssuePropLabelsItemsOneof1PropArchivedByType",
+    "IssuePropLabelsItemsOneof1PropArchivedByTypeForResponse",
+    "IssuePropLabelsItemsOneof1Type",
+    "IssuePropLabelsItemsOneof1TypeForResponse",
+    "IssuePropStatusType",
+    "IssuePropStatusTypeForResponse",
 )

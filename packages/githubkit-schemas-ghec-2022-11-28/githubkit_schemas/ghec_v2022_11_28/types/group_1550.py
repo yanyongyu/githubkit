@@ -9,75 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgCopilotModelPoliciesGetResponse200Type(TypedDict):
-    """OrgsOrgCopilotModelPoliciesGetResponse200"""
+class OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
 
-    default_availability: (
-        OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType
-    )
-    models: list[OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItemsType]
-
-
-class OrgsOrgCopilotModelPoliciesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotModelPoliciesGetResponse200"""
-
-    default_availability: (
-        OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse
-    )
-    models: list[
-        OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse
-    ]
-
-
-class OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType(TypedDict):
-    """OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailability
-
-    The effective default availability for models reported as `delegate_to_default`.
+    The total number of seats created for members of the specified team(s).
     """
 
-    policy_state: Literal["enabled", "disabled"]
-    editable: bool
+    seats_created: int
 
 
-class OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailability
+class OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
 
-    The effective default availability for models reported as `delegate_to_default`.
+    The total number of seats created for members of the specified team(s).
     """
 
-    policy_state: Literal["enabled", "disabled"]
-    editable: bool
-
-
-class OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItemsType(TypedDict):
-    """OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItems"""
-
-    model_name: str
-    display_name: str
-    policy_state: Literal["enabled", "disabled", "delegate_to_default", "unconfigured"]
-
-
-class OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItems"""
-
-    model_name: str
-    display_name: str
-    policy_state: Literal["enabled", "disabled", "delegate_to_default", "unconfigured"]
+    seats_created: int
 
 
 __all__ = (
-    "OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType",
-    "OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse",
-    "OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItemsType",
-    "OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse",
-    "OrgsOrgCopilotModelPoliciesGetResponse200Type",
-    "OrgsOrgCopilotModelPoliciesGetResponse200TypeForResponse",
+    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type",
+    "OrgsOrgCopilotBillingSelectedTeamsPostResponse201TypeForResponse",
 )

@@ -12,20 +12,19 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0121 import ActionsPolicyWorkflowPathConditionPropWorkflowPath
 
 
-class ActionsPolicyRepoConditionsOneof1(GitHubModel):
-    """ActionsPolicyRepoConditionsOneof1"""
+class ActionsPolicyWorkflowPathConditionPropWorkflowPath(GitHubModel):
+    """ActionsPolicyWorkflowPathConditionPropWorkflowPath"""
 
-    workflow_path: Missing[ActionsPolicyWorkflowPathConditionPropWorkflowPath] = Field(
-        default=UNSET
+    include: list[str] = Field(
+        description="Array of workflow file paths or glob patterns to include. An empty array includes all\nworkflows not matched by an excluded pattern. Use `~ALL` by itself to include all workflows.\n`~ALL` cannot be combined with other included patterns."
+    )
+    exclude: list[str] = Field(
+        description="Array of workflow file paths or glob patterns to exclude. The condition will not pass\nif any of these patterns match. `~ALL` is not allowed in this array."
     )
 
 
-model_rebuild(ActionsPolicyRepoConditionsOneof1)
+model_rebuild(ActionsPolicyWorkflowPathConditionPropWorkflowPath)
 
-__all__ = ("ActionsPolicyRepoConditionsOneof1",)
+__all__ = ("ActionsPolicyWorkflowPathConditionPropWorkflowPath",)

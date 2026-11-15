@@ -15,102 +15,58 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0010 import Integration
-from .group_0049 import PinnedIssueComment
-from .group_0050 import IssueCommentMinimized
+from .group_0590 import DependabotAlertWithdrawnWebhookPropDependency
 
 
-class WebhooksIssueComment(GitHubModel):
-    """issue comment
+class DependabotAlertWithdrawnWebhook(GitHubModel):
+    """DependabotAlertWithdrawnWebhook
 
-    The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment)
-    itself.
+    Identifiers for a withdrawn Dependabot alert, captured before deletion so that
+    consumers can reconcile external records. This is not a full alert
+    representation.
     """
 
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="AuthorAssociation",
-        description="How the author is associated with the repository.",
+    id: int = Field(description="The unique identifier of the withdrawn alert.")
+    node_id: str = Field(description="The GraphQL node ID of the withdrawn alert.")
+    number: int = Field(description="The security alert number.")
+    state: Literal["withdrawn"] = Field(
+        description="The state of the Dependabot alert."
     )
-    body: str = Field(description="Contents of the issue comment")
-    created_at: _dt.datetime = Field()
-    html_url: str = Field()
-    id: int = Field(description="Unique identifier of the issue comment")
-    issue_url: str = Field()
-    node_id: str = Field()
-    performed_via_github_app: Union[Integration, None] = Field(
-        title="GitHub app",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
+    dependency: DependabotAlertWithdrawnWebhookPropDependency = Field(
+        description="Details for the vulnerable dependency."
     )
-    reactions: WebhooksIssueCommentPropReactions = Field(title="Reactions")
-    updated_at: _dt.datetime = Field()
-    url: str = Field(description="URL for the issue comment")
-    user: Union[WebhooksIssueCommentPropUser, None] = Field(title="User")
-    pin: Missing[Union[PinnedIssueComment, None]] = Field(default=UNSET)
-    minimized: Missing[Union[IssueCommentMinimized, None]] = Field(default=UNSET)
-
-
-class WebhooksIssueCommentPropReactions(GitHubModel):
-    """Reactions"""
-
-    plus_one: int = Field(alias="+1")
-    minus_one: int = Field(alias="-1")
-    confused: int = Field()
-    eyes: int = Field()
-    heart: int = Field()
-    hooray: int = Field()
-    laugh: int = Field()
-    rocket: int = Field()
-    total_count: int = Field()
-    url: str = Field()
-
-
-class WebhooksIssueCommentPropUser(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
+    security_advisory: DependabotAlertWithdrawnWebhookPropSecurityAdvisory = Field(
+        description="Identifiers of the advisory that produced the withdrawn alert."
     )
-    url: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    url: str = Field(description="The REST API URL of the alert resource.")
+    html_url: str = Field(description="The GitHub URL of the alert resource.")
+    created_at: _dt.datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    withdrawn_at: _dt.datetime = Field(
+        description="The time that the alert was withdrawn in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. This is not the advisory's withdrawal time."
+    )
 
 
-model_rebuild(WebhooksIssueComment)
-model_rebuild(WebhooksIssueCommentPropReactions)
-model_rebuild(WebhooksIssueCommentPropUser)
+class DependabotAlertWithdrawnWebhookPropSecurityAdvisory(GitHubModel):
+    """DependabotAlertWithdrawnWebhookPropSecurityAdvisory
+
+    Identifiers of the advisory that produced the withdrawn alert.
+    """
+
+    ghsa_id: str = Field(
+        description="The unique GitHub identifier assigned to the advisory."
+    )
+    cve_id: Union[str, None] = Field(
+        description="The CVE identifier assigned to the advisory, if any."
+    )
+
+
+model_rebuild(DependabotAlertWithdrawnWebhook)
+model_rebuild(DependabotAlertWithdrawnWebhookPropSecurityAdvisory)
 
 __all__ = (
-    "WebhooksIssueComment",
-    "WebhooksIssueCommentPropReactions",
-    "WebhooksIssueCommentPropUser",
+    "DependabotAlertWithdrawnWebhook",
+    "DependabotAlertWithdrawnWebhookPropSecurityAdvisory",
 )

@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,26 +16,28 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ActionsRepositoryPermissions(GitHubModel):
-    """ActionsRepositoryPermissions"""
+class OidcCustomSubRepo(GitHubModel):
+    """Actions OIDC subject customization for a repository
 
-    enabled: bool = Field(
-        description="Whether GitHub Actions is enabled on the repository."
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool = Field(
+        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
     )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+    include_claim_keys: Missing[list[str]] = Field(
         default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
     )
-    selected_actions_url: Missing[str] = Field(
+    use_immutable_subject: Missing[bool] = Field(
         default=UNSET,
-        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
+        description="Whether the repository has opted in to the immutable OIDC subject claim format. When `true`, OIDC tokens will use a stable, repository-ID-based `sub` claim. If not set at the repository level, falls back to the organization-level setting.",
     )
-    sha_pinning_required: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether actions must be pinned to a full-length commit SHA.",
+    sub_claim_prefix: Missing[str] = Field(
+        default=UNSET, description="The current `sub` claim prefix for this repository."
     )
 
 
-model_rebuild(ActionsRepositoryPermissions)
+model_rebuild(OidcCustomSubRepo)
 
-__all__ = ("ActionsRepositoryPermissions",)
+__all__ = ("OidcCustomSubRepo",)

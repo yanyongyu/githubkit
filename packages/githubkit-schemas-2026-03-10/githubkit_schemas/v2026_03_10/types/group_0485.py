@@ -9,137 +9,99 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0047 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0486 import (
-    ReviewCommentPropLinksType,
-    ReviewCommentPropLinksTypeForResponse,
-)
 
+class PullRequestPropLabelsItemsType(TypedDict):
+    """PullRequestPropLabelsItems"""
 
-class ReviewCommentType(TypedDict):
-    """Legacy Review Comment
-
-    Legacy Review Comment
-    """
-
-    is_copilot_code_review: NotRequired[bool]
-    copilot_code_review_sources: NotRequired[
-        list[ReviewCommentPropCopilotCodeReviewSourcesItemsType]
-    ]
-    url: str
-    pull_request_review_id: Union[int, None]
     id: int
     node_id: str
-    diff_hunk: str
-    path: str
-    position: Union[int, None]
-    original_position: int
-    commit_id: str
-    original_commit_id: str
-    in_reply_to_id: NotRequired[int]
-    user: Union[SimpleUserType, None]
-    body: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    html_url: str
-    pull_request_url: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    links: ReviewCommentPropLinksType
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    reactions: NotRequired[ReactionRollupType]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    start_side: NotRequired[Union[Literal["LEFT", "RIGHT"], None]]
-    line: NotRequired[int]
-    original_line: NotRequired[int]
-    start_line: NotRequired[Union[int, None]]
-    original_start_line: NotRequired[Union[int, None]]
-    subject_type: NotRequired[Literal["line", "file"]]
-
-
-class ReviewCommentTypeForResponse(TypedDict):
-    """Legacy Review Comment
-
-    Legacy Review Comment
-    """
-
-    is_copilot_code_review: NotRequired[bool]
-    copilot_code_review_sources: NotRequired[
-        list[ReviewCommentPropCopilotCodeReviewSourcesItemsTypeForResponse]
-    ]
     url: str
-    pull_request_review_id: Union[int, None]
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
+    archived_by: Union[PullRequestPropLabelsItemsPropArchivedByType, None]
+
+
+class PullRequestPropLabelsItemsTypeForResponse(TypedDict):
+    """PullRequestPropLabelsItems"""
+
     id: int
     node_id: str
-    diff_hunk: str
-    path: str
-    position: Union[int, None]
-    original_position: int
-    commit_id: str
-    original_commit_id: str
-    in_reply_to_id: NotRequired[int]
-    user: Union[SimpleUserTypeForResponse, None]
-    body: str
-    created_at: str
-    updated_at: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
+    archived_by: Union[PullRequestPropLabelsItemsPropArchivedByTypeForResponse, None]
+
+
+class PullRequestPropLabelsItemsPropArchivedByType(TypedDict):
+    """PullRequestPropLabelsItemsPropArchivedBy
+
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
     html_url: str
-    pull_request_url: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    links: ReviewCommentPropLinksTypeForResponse
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    start_side: NotRequired[Union[Literal["LEFT", "RIGHT"], None]]
-    line: NotRequired[int]
-    original_line: NotRequired[int]
-    start_line: NotRequired[Union[int, None]]
-    original_start_line: NotRequired[Union[int, None]]
-    subject_type: NotRequired[Literal["line", "file"]]
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class ReviewCommentPropCopilotCodeReviewSourcesItemsType(TypedDict):
-    """ReviewCommentPropCopilotCodeReviewSourcesItems"""
+class PullRequestPropLabelsItemsPropArchivedByTypeForResponse(TypedDict):
+    """PullRequestPropLabelsItemsPropArchivedBy
 
-    kind: Literal["SKILL", "MCP", "CUSTOM_INSTRUCTIONS"]
-    name: str
-    path: NotRequired[str]
+    The user who archived the label, or `null` if it has not been archived.
+    """
 
-
-class ReviewCommentPropCopilotCodeReviewSourcesItemsTypeForResponse(TypedDict):
-    """ReviewCommentPropCopilotCodeReviewSourcesItems"""
-
-    kind: Literal["SKILL", "MCP", "CUSTOM_INSTRUCTIONS"]
-    name: str
-    path: NotRequired[str]
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "ReviewCommentPropCopilotCodeReviewSourcesItemsType",
-    "ReviewCommentPropCopilotCodeReviewSourcesItemsTypeForResponse",
-    "ReviewCommentType",
-    "ReviewCommentTypeForResponse",
+    "PullRequestPropLabelsItemsPropArchivedByType",
+    "PullRequestPropLabelsItemsPropArchivedByTypeForResponse",
+    "PullRequestPropLabelsItemsType",
+    "PullRequestPropLabelsItemsTypeForResponse",
 )

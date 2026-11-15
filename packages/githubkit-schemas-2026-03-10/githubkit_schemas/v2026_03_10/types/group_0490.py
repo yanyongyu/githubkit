@@ -12,33 +12,50 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0231 import (
-    RepositoryRuleUpdatePropParametersType,
-    RepositoryRuleUpdatePropParametersTypeForResponse,
-)
+
+class CopilotCodeReviewRequestDeniedAllof1Type(TypedDict):
+    """CopilotCodeReviewRequestDeniedAllof1"""
+
+    failure_reason: NotRequired[
+        Literal[
+            "ACTOR_INELIGIBLE",
+            "REPOSITORY_INELIGIBLE",
+            "APP_NOT_INSTALLED",
+            "NO_QUOTA_REMAINING",
+            "LICENSED_ORGANIZATION_UNAVAILABLE",
+            "INVALID_REVIEW_EFFORT",
+            "REQUEST_FAILED",
+            "REQUEST_CONFLICT",
+            "REVIEWER_UNAVAILABLE",
+            "REQUEST_UNAVAILABLE",
+            "ACTOR_FLAGGED",
+            "RATE_LIMITED",
+        ]
+    ]
 
 
-class RepositoryRuleDetailedOneof1Type(TypedDict):
-    """RepositoryRuleDetailedOneof1"""
+class CopilotCodeReviewRequestDeniedAllof1TypeForResponse(TypedDict):
+    """CopilotCodeReviewRequestDeniedAllof1"""
 
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
-
-
-class RepositoryRuleDetailedOneof1TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof1"""
-
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersTypeForResponse]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    failure_reason: NotRequired[
+        Literal[
+            "ACTOR_INELIGIBLE",
+            "REPOSITORY_INELIGIBLE",
+            "APP_NOT_INSTALLED",
+            "NO_QUOTA_REMAINING",
+            "LICENSED_ORGANIZATION_UNAVAILABLE",
+            "INVALID_REVIEW_EFFORT",
+            "REQUEST_FAILED",
+            "REQUEST_CONFLICT",
+            "REVIEWER_UNAVAILABLE",
+            "REQUEST_UNAVAILABLE",
+            "ACTOR_FLAGGED",
+            "RATE_LIMITED",
+        ]
+    ]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof1Type",
-    "RepositoryRuleDetailedOneof1TypeForResponse",
+    "CopilotCodeReviewRequestDeniedAllof1Type",
+    "CopilotCodeReviewRequestDeniedAllof1TypeForResponse",
 )

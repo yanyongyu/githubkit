@@ -9,81 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0577 import (
-    DependabotAlertWithdrawnWebhookPropDependencyType,
-    DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse,
-)
 
+class HovercardType(TypedDict):
+    """Hovercard
 
-class DependabotAlertWithdrawnWebhookType(TypedDict):
-    """DependabotAlertWithdrawnWebhook
-
-    Identifiers for a withdrawn Dependabot alert, captured before deletion so that
-    consumers can reconcile external records. This is not a full alert
-    representation.
+    Hovercard
     """
 
-    id: int
-    node_id: str
-    number: int
-    state: Literal["withdrawn"]
-    dependency: DependabotAlertWithdrawnWebhookPropDependencyType
-    security_advisory: DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType
-    url: str
-    html_url: str
-    created_at: _dt.datetime
-    withdrawn_at: _dt.datetime
+    contexts: list[HovercardPropContextsItemsType]
 
 
-class DependabotAlertWithdrawnWebhookTypeForResponse(TypedDict):
-    """DependabotAlertWithdrawnWebhook
+class HovercardTypeForResponse(TypedDict):
+    """Hovercard
 
-    Identifiers for a withdrawn Dependabot alert, captured before deletion so that
-    consumers can reconcile external records. This is not a full alert
-    representation.
+    Hovercard
     """
 
-    id: int
-    node_id: str
-    number: int
-    state: Literal["withdrawn"]
-    dependency: DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse
-    security_advisory: (
-        DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse
-    )
-    url: str
-    html_url: str
-    created_at: str
-    withdrawn_at: str
+    contexts: list[HovercardPropContextsItemsTypeForResponse]
 
 
-class DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType(TypedDict):
-    """DependabotAlertWithdrawnWebhookPropSecurityAdvisory
+class HovercardPropContextsItemsType(TypedDict):
+    """HovercardPropContextsItems"""
 
-    Identifiers of the advisory that produced the withdrawn alert.
-    """
-
-    ghsa_id: str
-    cve_id: Union[str, None]
+    message: str
+    octicon: str
 
 
-class DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse(TypedDict):
-    """DependabotAlertWithdrawnWebhookPropSecurityAdvisory
+class HovercardPropContextsItemsTypeForResponse(TypedDict):
+    """HovercardPropContextsItems"""
 
-    Identifiers of the advisory that produced the withdrawn alert.
-    """
-
-    ghsa_id: str
-    cve_id: Union[str, None]
+    message: str
+    octicon: str
 
 
 __all__ = (
-    "DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType",
-    "DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse",
-    "DependabotAlertWithdrawnWebhookType",
-    "DependabotAlertWithdrawnWebhookTypeForResponse",
+    "HovercardPropContextsItemsType",
+    "HovercardPropContextsItemsTypeForResponse",
+    "HovercardType",
+    "HovercardTypeForResponse",
 )

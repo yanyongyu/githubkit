@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,31 +18,94 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0147 import RunnerLabel
+from .group_0124 import ActionsPolicyRepoConditionsOneof0
+from .group_0125 import ActionsPolicyRepoConditionsOneof1
+from .group_0132 import ActionsPolicyOrgConditionsOneof0
+from .group_0133 import ActionsPolicyOrgConditionsOneof1
+from .group_0134 import ActionsPolicyOrgConditionsOneof2
+from .group_0141 import ActionsPolicyEnterpriseConditionsOneof0
+from .group_0142 import ActionsPolicyEnterpriseConditionsOneof1
+from .group_0143 import ActionsPolicyEnterpriseConditionsOneof2
+from .group_0144 import ActionsPolicyEnterpriseConditionsOneof3
+from .group_0145 import ActionsPolicyEnterpriseConditionsOneof4
+from .group_0146 import ActionsPolicyEnterpriseConditionsOneof5
+from .group_0147 import (
+    ActionsRuleRestrictActionEvents,
+    ActionsRuleRestrictActionsActors,
+)
 
 
-class Runner(GitHubModel):
-    """Self hosted runners
+class ActionsPolicy(GitHubModel):
+    """Actions Policy
 
-    A self hosted runner
+    An Actions policy defines rules for workflow execution protection.
     """
 
-    id: int = Field(description="The ID of the runner.")
-    runner_group_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the runner group."
+    id: int = Field(description="The ID of the policy")
+    name: str = Field(description="The name of the policy")
+    target: Literal["actions"] = Field(description="The target of the policy")
+    source_type: Literal["Repository", "Organization", "Enterprise"] = Field(
+        description="The type of the source of the policy"
     )
-    name: str = Field(description="The name of the runner.")
-    os: str = Field(description="The Operating System of the runner.")
-    status: str = Field(description="The status of the runner.")
-    busy: bool = Field()
-    labels: list[RunnerLabel] = Field()
-    ephemeral: Missing[bool] = Field(default=UNSET)
-    version: Missing[Union[str, None]] = Field(
+    source: str = Field(description="The name of the source")
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
+    )
+    conditions: Missing[
+        Union[
+            ActionsPolicyRepoConditionsOneof0,
+            ActionsPolicyRepoConditionsOneof1,
+            ActionsPolicyOrgConditionsOneof0,
+            ActionsPolicyOrgConditionsOneof1,
+            ActionsPolicyOrgConditionsOneof2,
+            ActionsPolicyEnterpriseConditionsOneof0,
+            ActionsPolicyEnterpriseConditionsOneof1,
+            ActionsPolicyEnterpriseConditionsOneof2,
+            ActionsPolicyEnterpriseConditionsOneof3,
+            ActionsPolicyEnterpriseConditionsOneof4,
+            ActionsPolicyEnterpriseConditionsOneof5,
+            None,
+        ]
+    ] = Field(
         default=UNSET,
-        description="The version of the GitHub Actions Runner software. This is only set if the runner has connected to the service at least once.",
+        description='When workflow path targeting is available, detailed responses represent an omitted stored\nworkflow condition as `workflow_path` with `include` set to `["~ALL"]` and `exclude` set to `[]`.\nWhen workflow path targeting is unavailable, an omitted stored condition remains omitted.',
     )
+    rules: Missing[
+        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
+    ] = Field(default=UNSET, description="An array of rules within the policy")
+    node_id: Missing[str] = Field(default=UNSET)
+    links: Missing[ActionsPolicyPropLinks] = Field(default=UNSET, alias="_links")
+    created_at: Missing[_dt.datetime] = Field(default=UNSET)
+    updated_at: Missing[_dt.datetime] = Field(default=UNSET)
 
 
-model_rebuild(Runner)
+class ActionsPolicyPropLinks(GitHubModel):
+    """ActionsPolicyPropLinks"""
 
-__all__ = ("Runner",)
+    self_: Missing[ActionsPolicyPropLinksPropSelf] = Field(default=UNSET, alias="self")
+    html: Missing[ActionsPolicyPropLinksPropHtml] = Field(default=UNSET)
+
+
+class ActionsPolicyPropLinksPropSelf(GitHubModel):
+    """ActionsPolicyPropLinksPropSelf"""
+
+    href: Missing[str] = Field(default=UNSET, description="The URL of the policy")
+
+
+class ActionsPolicyPropLinksPropHtml(GitHubModel):
+    """ActionsPolicyPropLinksPropHtml"""
+
+    href: Missing[str] = Field(default=UNSET, description="The html URL of the policy")
+
+
+model_rebuild(ActionsPolicy)
+model_rebuild(ActionsPolicyPropLinks)
+model_rebuild(ActionsPolicyPropLinksPropSelf)
+model_rebuild(ActionsPolicyPropLinksPropHtml)
+
+__all__ = (
+    "ActionsPolicy",
+    "ActionsPolicyPropLinks",
+    "ActionsPolicyPropLinksPropHtml",
+    "ActionsPolicyPropLinksPropSelf",
+)

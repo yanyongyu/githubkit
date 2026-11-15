@@ -13,36 +13,32 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0195 import (
-    RepositoryRuleCodeQualityPropParametersType,
-    RepositoryRuleCodeQualityPropParametersTypeForResponse,
+    RepositoryRuleMergeQueuePropParametersType,
+    RepositoryRuleMergeQueuePropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleCodeQualityType(TypedDict):
-    """code_quality
+class RepositoryRuleMergeQueueType(TypedDict):
+    """merge_queue
 
-    Choose which severity levels of code quality results should block pull request
-    merges. When configured, a code quality analysis must be done on the pull
-    request before the changes can be merged.
+    Merges must be performed via a merge queue.
     """
 
-    type: Literal["code_quality"]
-    parameters: NotRequired[RepositoryRuleCodeQualityPropParametersType]
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
 
 
-class RepositoryRuleCodeQualityTypeForResponse(TypedDict):
-    """code_quality
+class RepositoryRuleMergeQueueTypeForResponse(TypedDict):
+    """merge_queue
 
-    Choose which severity levels of code quality results should block pull request
-    merges. When configured, a code quality analysis must be done on the pull
-    request before the changes can be merged.
+    Merges must be performed via a merge queue.
     """
 
-    type: Literal["code_quality"]
-    parameters: NotRequired[RepositoryRuleCodeQualityPropParametersTypeForResponse]
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleCodeQualityType",
-    "RepositoryRuleCodeQualityTypeForResponse",
+    "RepositoryRuleMergeQueueType",
+    "RepositoryRuleMergeQueueTypeForResponse",
 )

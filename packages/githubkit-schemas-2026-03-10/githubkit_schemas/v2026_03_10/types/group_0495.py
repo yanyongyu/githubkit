@@ -9,29 +9,137 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRuleDetailedOneof6Type(TypedDict):
-    """RepositoryRuleDetailedOneof6"""
-
-    type: Literal["required_signatures"]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0048 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0496 import (
+    ReviewCommentPropLinksType,
+    ReviewCommentPropLinksTypeForResponse,
+)
 
 
-class RepositoryRuleDetailedOneof6TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof6"""
+class ReviewCommentType(TypedDict):
+    """Legacy Review Comment
 
-    type: Literal["required_signatures"]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    Legacy Review Comment
+    """
+
+    is_copilot_code_review: NotRequired[bool]
+    copilot_code_review_sources: NotRequired[
+        list[ReviewCommentPropCopilotCodeReviewSourcesItemsType]
+    ]
+    url: str
+    pull_request_review_id: Union[int, None]
+    id: int
+    node_id: str
+    diff_hunk: str
+    path: str
+    position: Union[int, None]
+    original_position: int
+    commit_id: str
+    original_commit_id: str
+    in_reply_to_id: NotRequired[int]
+    user: Union[SimpleUserType, None]
+    body: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    html_url: str
+    pull_request_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    links: ReviewCommentPropLinksType
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    reactions: NotRequired[ReactionRollupType]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    start_side: NotRequired[Union[Literal["LEFT", "RIGHT"], None]]
+    line: NotRequired[int]
+    original_line: NotRequired[int]
+    start_line: NotRequired[Union[int, None]]
+    original_start_line: NotRequired[Union[int, None]]
+    subject_type: NotRequired[Literal["line", "file"]]
+
+
+class ReviewCommentTypeForResponse(TypedDict):
+    """Legacy Review Comment
+
+    Legacy Review Comment
+    """
+
+    is_copilot_code_review: NotRequired[bool]
+    copilot_code_review_sources: NotRequired[
+        list[ReviewCommentPropCopilotCodeReviewSourcesItemsTypeForResponse]
+    ]
+    url: str
+    pull_request_review_id: Union[int, None]
+    id: int
+    node_id: str
+    diff_hunk: str
+    path: str
+    position: Union[int, None]
+    original_position: int
+    commit_id: str
+    original_commit_id: str
+    in_reply_to_id: NotRequired[int]
+    user: Union[SimpleUserTypeForResponse, None]
+    body: str
+    created_at: str
+    updated_at: str
+    html_url: str
+    pull_request_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    links: ReviewCommentPropLinksTypeForResponse
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+    side: NotRequired[Literal["LEFT", "RIGHT"]]
+    start_side: NotRequired[Union[Literal["LEFT", "RIGHT"], None]]
+    line: NotRequired[int]
+    original_line: NotRequired[int]
+    start_line: NotRequired[Union[int, None]]
+    original_start_line: NotRequired[Union[int, None]]
+    subject_type: NotRequired[Literal["line", "file"]]
+
+
+class ReviewCommentPropCopilotCodeReviewSourcesItemsType(TypedDict):
+    """ReviewCommentPropCopilotCodeReviewSourcesItems"""
+
+    kind: Literal["SKILL", "MCP", "CUSTOM_INSTRUCTIONS"]
+    name: str
+    path: NotRequired[str]
+
+
+class ReviewCommentPropCopilotCodeReviewSourcesItemsTypeForResponse(TypedDict):
+    """ReviewCommentPropCopilotCodeReviewSourcesItems"""
+
+    kind: Literal["SKILL", "MCP", "CUSTOM_INSTRUCTIONS"]
+    name: str
+    path: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof6Type",
-    "RepositoryRuleDetailedOneof6TypeForResponse",
+    "ReviewCommentPropCopilotCodeReviewSourcesItemsType",
+    "ReviewCommentPropCopilotCodeReviewSourcesItemsTypeForResponse",
+    "ReviewCommentType",
+    "ReviewCommentTypeForResponse",
 )

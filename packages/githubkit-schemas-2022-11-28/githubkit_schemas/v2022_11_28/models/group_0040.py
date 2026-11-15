@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Annotated, Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,119 +18,50 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0032 import SimpleRepository
-from .group_0037 import DependabotAlertSecurityVulnerability
-from .group_0038 import DependabotAlertSecurityAdvisory
-from .group_0039 import DependabotAlertDismissalRequestSimple
-from .group_0041 import DependabotAlertWithRepositoryPropDependency
 
+class DependabotAlertDismissalRequestSimple(GitHubModel):
+    """Dependabot alert dismissal request
 
-class DependabotAlertWithRepository(GitHubModel):
-    """DependabotAlertWithRepository
-
-    A Dependabot alert.
+    Information about an active dismissal request for this Dependabot alert.
     """
 
-    number: int = Field(description="The security alert number.")
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"] = Field(
-        description="The state of the Dependabot alert."
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the dismissal request."
     )
-    dependency: DependabotAlertWithRepositoryPropDependency = Field(
-        description="Details for the vulnerable dependency."
+    status: Missing[Literal["pending", "approved", "rejected", "cancelled"]] = Field(
+        default=UNSET, description="The current status of the dismissal request."
     )
-    security_advisory: DependabotAlertSecurityAdvisory = Field(
-        description="Details for the GitHub Security Advisory."
+    requester: Missing[DependabotAlertDismissalRequestSimplePropRequester] = Field(
+        default=UNSET, description="The user who requested the dismissal."
     )
-    security_vulnerability: DependabotAlertSecurityVulnerability = Field(
-        description="Details pertaining to one vulnerable version range for the advisory."
-    )
-    url: str = Field(description="The REST API URL of the alert resource.")
-    html_url: str = Field(description="The GitHub URL of the alert resource.")
-    created_at: _dt.datetime = Field(
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    updated_at: _dt.datetime = Field(
-        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    dismissed_at: Union[_dt.datetime, None] = Field(
-        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    dismissed_by: Union[SimpleUser, None] = Field()
-    dismissed_reason: Union[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-        None,
-    ] = Field(description="The reason that the alert was dismissed.")
-    dismissed_comment: Union[Annotated[str, Field(max_length=280)], None] = Field(
-        description="An optional comment associated with the alert's dismissal."
-    )
-    fixed_at: Union[_dt.datetime, None] = Field(
-        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    auto_dismissed_at: Missing[Union[_dt.datetime, None]] = Field(
+    created_at: Missing[_dt.datetime] = Field(
         default=UNSET,
-        description="The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="The date and time when the dismissal request was created.",
     )
-    dismissal_request: Missing[Union[DependabotAlertDismissalRequestSimple, None]] = (
-        Field(
-            default=UNSET,
-            title="Dependabot alert dismissal request",
-            description="Information about an active dismissal request for this Dependabot alert.",
-        )
-    )
-    assignees: Missing[list[SimpleUser]] = Field(
-        default=UNSET, description="The users assigned to this alert."
-    )
-    reachability: Missing[DependabotAlertWithRepositoryPropReachability] = Field(
+    url: Missing[str] = Field(
         default=UNSET,
-        description="The reachability result for the vulnerability that triggered the alert, indicating whether a\nvulnerable function is reachable from the repository's own code.\n",
-    )
-    repository: SimpleRepository = Field(
-        title="Simple Repository", description="A GitHub repository."
+        description="The API URL to get more information about this dismissal request.",
     )
 
 
-class DependabotAlertWithRepositoryPropReachability(GitHubModel):
-    """DependabotAlertWithRepositoryPropReachability
+class DependabotAlertDismissalRequestSimplePropRequester(GitHubModel):
+    """DependabotAlertDismissalRequestSimplePropRequester
 
-    The reachability result for the vulnerability that triggered the alert,
-    indicating whether a
-    vulnerable function is reachable from the repository's own code.
+    The user who requested the dismissal.
     """
 
-    verdict: Literal[
-        "reachable", "unreachable", "potentially_reachable", "unavailable", "disabled"
-    ] = Field(
-        description="The reachability verdict for the alert.\n\n- `reachable`: a path from the repository's code reaches a vulnerable function.\n- `unreachable`: no path from the repository's code reaches a vulnerable function.\n- `potentially_reachable`: reachability could not be determined with confidence; review manually.\n- `unavailable`: no verdict has been computed for the alert yet.\n- `disabled`: reachability analysis is not enabled for the repository.\n"
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user."
     )
-    reason: Missing[
-        Literal[
-            "unknown",
-            "unavailable_unsupported_ecosystem",
-            "unavailable_analysis_timed_out",
-            "potentially_reachable_invalid_manifest_path",
-            "potentially_reachable_missing_vulnerable_function_annotation",
-            "potentially_reachable_dependency_not_found",
-            "potentially_reachable_dependency_analysis_incomplete",
-            "potentially_reachable_repository_analysis_incomplete",
-            "potentially_reachable_call_found_outside_manifest_scope",
-            "potentially_reachable_unclassified_analysis_state",
-            "reachable_vulnerable_function_called",
-            "unreachable_vulnerable_function_not_called",
-            "potentially_reachable_unresolved_dynamic_call",
-        ]
-    ] = Field(
-        default=UNSET,
-        description="The reason for the reachability verdict. This field is omitted when reachability analysis is disabled or no result has been computed.",
+    login: Missing[str] = Field(
+        default=UNSET, description="The login name of the user."
     )
 
 
-model_rebuild(DependabotAlertWithRepository)
-model_rebuild(DependabotAlertWithRepositoryPropReachability)
+model_rebuild(DependabotAlertDismissalRequestSimple)
+model_rebuild(DependabotAlertDismissalRequestSimplePropRequester)
 
 __all__ = (
-    "DependabotAlertWithRepository",
-    "DependabotAlertWithRepositoryPropReachability",
+    "DependabotAlertDismissalRequestSimple",
+    "DependabotAlertDismissalRequestSimplePropRequester",
 )

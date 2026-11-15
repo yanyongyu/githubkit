@@ -9,13 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0123 import ActionsPolicyWorkflowPathConditionPropWorkflowPath
 
 
-class ActionsPolicyRepoConditionsOneof0(GitHubModel):
-    """ActionsPolicyRepoConditionsOneof0"""
+class ActionsPolicyWorkflowPathCondition(GitHubModel):
+    """Actions policy workflow path condition
+
+    Parameters for an Actions policy workflow path condition. Omitting
+    `workflow_path` when creating
+    a policy targets all workflows without storing an explicit condition. Omitting
+    it when updating a
+    policy preserves the existing workflow targeting. For new or changed workflow
+    conditions, the API
+    requires at least one included or excluded pattern. This is validated server-
+    side rather than by
+    this schema, which can also describe existing stored conditions.
+    """
+
+    workflow_path: Missing[ActionsPolicyWorkflowPathConditionPropWorkflowPath] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(ActionsPolicyRepoConditionsOneof0)
+model_rebuild(ActionsPolicyWorkflowPathCondition)
 
-__all__ = ("ActionsPolicyRepoConditionsOneof0",)
+__all__ = ("ActionsPolicyWorkflowPathCondition",)

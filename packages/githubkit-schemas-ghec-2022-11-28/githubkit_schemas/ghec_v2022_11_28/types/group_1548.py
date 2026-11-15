@@ -9,43 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0110 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
 
 
-class OrgsOrgCopilotFeaturePoliciesPatchBodyType(TypedDict):
-    """OrgsOrgCopilotFeaturePoliciesPatchBody"""
+class OrgsOrgCopilotBillingSeatsGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
 
-    default_availability: (
-        OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType
-    )
-
-
-class OrgsOrgCopilotFeaturePoliciesPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgCopilotFeaturePoliciesPatchBody"""
-
-    default_availability: (
-        OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse
-    )
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsType]]
 
 
-class OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType(TypedDict):
-    """OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
+class OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
 
-    policy_state: Literal["enabled", "disabled"]
-
-
-class OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
-
-    policy_state: Literal["enabled", "disabled"]
+    total_seats: NotRequired[int]
+    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
 
 
 __all__ = (
-    "OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType",
-    "OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse",
-    "OrgsOrgCopilotFeaturePoliciesPatchBodyType",
-    "OrgsOrgCopilotFeaturePoliciesPatchBodyTypeForResponse",
+    "OrgsOrgCopilotBillingSeatsGetResponse200Type",
+    "OrgsOrgCopilotBillingSeatsGetResponse200TypeForResponse",
 )

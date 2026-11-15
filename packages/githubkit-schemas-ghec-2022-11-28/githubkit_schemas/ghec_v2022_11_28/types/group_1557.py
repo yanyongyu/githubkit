@@ -9,31 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType(
-    TypedDict
-):
-    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody"""
+class OrgsOrgCopilotCodeReviewRunnerPutBodyType(TypedDict):
+    """OrgsOrgCopilotCodeReviewRunnerPutBody"""
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
-    ]
+    runner_type: Literal["standard", "labeled"]
+    runner_labels: NotRequired[Union[list[str], None]]
+    runner_group_name: NotRequired[Union[str, None]]
+    allow_repository_customization: NotRequired[bool]
 
 
-class OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBody"""
+class OrgsOrgCopilotCodeReviewRunnerPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotCodeReviewRunnerPutBody"""
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
-    ]
+    runner_type: Literal["standard", "labeled"]
+    runner_labels: NotRequired[Union[list[str], None]]
+    runner_group_name: NotRequired[Union[str, None]]
+    allow_repository_customization: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyType",
-    "OrgsOrgCredentialAuthorizationsUsernameRevokeCredentialTypePostBodyTypeForResponse",
+    "OrgsOrgCopilotCodeReviewRunnerPutBodyType",
+    "OrgsOrgCopilotCodeReviewRunnerPutBodyTypeForResponse",
 )

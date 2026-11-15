@@ -9,51 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgCopilotFeaturePoliciesPatchResponse200Type(TypedDict):
-    """OrgsOrgCopilotFeaturePoliciesPatchResponse200"""
+class OrgsOrgCopilotBillingSelectedTeamsPostBodyType(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsPostBody"""
 
-    default_availability: (
-        OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType
-    )
+    selected_teams: list[str]
 
 
-class OrgsOrgCopilotFeaturePoliciesPatchResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotFeaturePoliciesPatchResponse200"""
+class OrgsOrgCopilotBillingSelectedTeamsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsPostBody"""
 
-    default_availability: OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse
-
-
-class OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType(
-    TypedDict
-):
-    """OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability
-
-    The default policy applied to newly released Copilot features and clients.
-    """
-
-    policy_state: Literal["enabled", "disabled"]
-    editable: bool
-
-
-class OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability
-
-    The default policy applied to newly released Copilot features and clients.
-    """
-
-    policy_state: Literal["enabled", "disabled"]
-    editable: bool
+    selected_teams: list[str]
 
 
 __all__ = (
-    "OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType",
-    "OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse",
-    "OrgsOrgCopilotFeaturePoliciesPatchResponse200Type",
-    "OrgsOrgCopilotFeaturePoliciesPatchResponse200TypeForResponse",
+    "OrgsOrgCopilotBillingSelectedTeamsPostBodyType",
+    "OrgsOrgCopilotBillingSelectedTeamsPostBodyTypeForResponse",
 )

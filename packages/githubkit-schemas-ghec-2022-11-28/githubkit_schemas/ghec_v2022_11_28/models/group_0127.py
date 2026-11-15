@@ -14,20 +14,25 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0109 import EnterpriseTeam
 
 
-class ExternalVulnerabilitySyncAccepted(GitHubModel):
-    """External Vulnerability Sync Accepted
+class EnterpriseUserRoleAssignmentAllof1(GitHubModel):
+    """EnterpriseUserRoleAssignmentAllof1"""
 
-    Response when an external vulnerability sync request is accepted for
-    asynchronous processing
-    """
+    assignment: Missing[Literal["direct", "indirect", "mixed"]] = Field(
+        default=UNSET,
+        description="Determines if the user has a direct, indirect, or mixed relationship to a role",
+    )
+    inherited_from: Missing[list[EnterpriseTeam]] = Field(
+        default=UNSET,
+        description="Enterprise Team the user has gotten the role through",
+    )
 
-    id: str = Field(description="Job status ID for polling")
-    url: str = Field(description="URL to poll for sync results")
-    status: Literal["queued"] = Field(description="Initial job status")
 
+model_rebuild(EnterpriseUserRoleAssignmentAllof1)
 
-model_rebuild(ExternalVulnerabilitySyncAccepted)
-
-__all__ = ("ExternalVulnerabilitySyncAccepted",)
+__all__ = ("EnterpriseUserRoleAssignmentAllof1",)

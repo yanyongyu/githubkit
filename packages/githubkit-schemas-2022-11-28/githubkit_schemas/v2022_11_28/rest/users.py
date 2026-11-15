@@ -31,6 +31,7 @@ if TYPE_CHECKING:
         Email,
         GpgKey,
         Hovercard,
+        IssueType,
         Key,
         KeySimple,
         PrivateUser,
@@ -38,6 +39,7 @@ if TYPE_CHECKING:
         SimpleUser,
         SocialAccount,
         SshSigningKey,
+        UserIssueField,
         UsersUsernameAttestationsBulkListPostResponse200,
         UsersUsernameAttestationsSubjectDigestGetResponse200,
     )
@@ -45,6 +47,8 @@ if TYPE_CHECKING:
         EmailTypeForResponse,
         GpgKeyTypeForResponse,
         HovercardTypeForResponse,
+        IssueTypeRequestType,
+        IssueTypeTypeForResponse,
         KeySimpleTypeForResponse,
         KeyTypeForResponse,
         PrivateUserTypeForResponse,
@@ -52,10 +56,13 @@ if TYPE_CHECKING:
         SimpleUserTypeForResponse,
         SocialAccountTypeForResponse,
         SshSigningKeyTypeForResponse,
+        UserCreateIssueFieldPropOptionsItemsType,
+        UserCreateIssueFieldType,
         UserEmailsDeleteBodyOneof0Type,
         UserEmailsPostBodyOneof0Type,
         UserEmailVisibilityPatchBodyType,
         UserGpgKeysPostBodyType,
+        UserIssueFieldTypeForResponse,
         UserKeysPostBodyType,
         UserPatchBodyType,
         UserSocialAccountsDeleteBodyType,
@@ -66,6 +73,8 @@ if TYPE_CHECKING:
         UsersUsernameAttestationsDeleteRequestPostBodyOneof0Type,
         UsersUsernameAttestationsDeleteRequestPostBodyOneof1Type,
         UsersUsernameAttestationsSubjectDigestGetResponse200TypeForResponse,
+        UserUpdateIssueFieldPropOptionsItemsType,
+        UserUpdateIssueFieldType,
     )
 
 
@@ -1897,6 +1906,978 @@ class UsersClient:
                 "422": ValidationError,
                 "403": BasicError,
                 "401": BasicError,
+            },
+        )
+
+    def list_issue_fields_for_authenticated_user(
+        self,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        list[Union[UserIssueField, None]],
+        list[Union[UserIssueFieldTypeForResponse, None]],
+    ]:
+        """users/list-issue-fields-for-authenticated-user
+
+        GET /user/issue-fields
+
+        Lists all issue fields for the authenticated user. OAuth app tokens and personal access tokens (classic) need the `read:user` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/users/issue-fields#list-issue-fields
+        """
+
+        from typing import Union
+
+        from ..models import BasicError, UserIssueField
+
+        url = "/user/issue-fields"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[Union[UserIssueField, None]],
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_issue_fields_for_authenticated_user(
+        self,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        list[Union[UserIssueField, None]],
+        list[Union[UserIssueFieldTypeForResponse, None]],
+    ]:
+        """users/list-issue-fields-for-authenticated-user
+
+        GET /user/issue-fields
+
+        Lists all issue fields for the authenticated user. OAuth app tokens and personal access tokens (classic) need the `read:user` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/users/issue-fields#list-issue-fields
+        """
+
+        from typing import Union
+
+        from ..models import BasicError, UserIssueField
+
+        url = "/user/issue-fields"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[Union[UserIssueField, None]],
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def create_issue_field_for_authenticated_user(
+        self,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: UserCreateIssueFieldType,
+    ) -> Response[
+        Union[UserIssueField, None], Union[UserIssueFieldTypeForResponse, None]
+    ]: ...
+
+    @overload
+    def create_issue_field_for_authenticated_user(
+        self,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: str,
+        description: Missing[Union[str, None]] = UNSET,
+        data_type: Literal["text", "date", "single_select", "multi_select", "number"],
+        visibility: Missing[Literal["restricted", "all"]] = UNSET,
+        options: Missing[
+            Union[list[UserCreateIssueFieldPropOptionsItemsType], None]
+        ] = UNSET,
+    ) -> Response[
+        Union[UserIssueField, None], Union[UserIssueFieldTypeForResponse, None]
+    ]: ...
+
+    def create_issue_field_for_authenticated_user(
+        self,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[UserCreateIssueFieldType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        Union[UserIssueField, None], Union[UserIssueFieldTypeForResponse, None]
+    ]:
+        """users/create-issue-field-for-authenticated-user
+
+        POST /user/issue-fields
+
+        Creates a new issue field for the authenticated user's personal account.
+
+        OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/users/issue-fields#create-an-issue-field
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            UserCreateIssueField,
+            UserIssueField,
+            ValidationErrorSimple,
+        )
+
+        url = "/user/issue-fields"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(UserCreateIssueField, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Union[None, UserIssueField],
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_create_issue_field_for_authenticated_user(
+        self,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: UserCreateIssueFieldType,
+    ) -> Response[
+        Union[UserIssueField, None], Union[UserIssueFieldTypeForResponse, None]
+    ]: ...
+
+    @overload
+    async def async_create_issue_field_for_authenticated_user(
+        self,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: str,
+        description: Missing[Union[str, None]] = UNSET,
+        data_type: Literal["text", "date", "single_select", "multi_select", "number"],
+        visibility: Missing[Literal["restricted", "all"]] = UNSET,
+        options: Missing[
+            Union[list[UserCreateIssueFieldPropOptionsItemsType], None]
+        ] = UNSET,
+    ) -> Response[
+        Union[UserIssueField, None], Union[UserIssueFieldTypeForResponse, None]
+    ]: ...
+
+    async def async_create_issue_field_for_authenticated_user(
+        self,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[UserCreateIssueFieldType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        Union[UserIssueField, None], Union[UserIssueFieldTypeForResponse, None]
+    ]:
+        """users/create-issue-field-for-authenticated-user
+
+        POST /user/issue-fields
+
+        Creates a new issue field for the authenticated user's personal account.
+
+        OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/users/issue-fields#create-an-issue-field
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            UserCreateIssueField,
+            UserIssueField,
+            ValidationErrorSimple,
+        )
+
+        url = "/user/issue-fields"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(UserCreateIssueField, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Union[None, UserIssueField],
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    def delete_issue_field_for_authenticated_user(
+        self,
+        issue_field_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response:
+        """users/delete-issue-field-for-authenticated-user
+
+        DELETE /user/issue-fields/{issue_field_id}
+
+        Deletes an issue field for the authenticated user.
+
+        The authenticated user must own the issue field. OAuth app tokens and personal access tokens (classic)
+        need the `user` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/users/issue-fields#delete-an-issue-field
+        """
+
+        from ..models import BasicError, ValidationErrorSimple
+
+        url = f"/user/issue-fields/{issue_field_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    async def async_delete_issue_field_for_authenticated_user(
+        self,
+        issue_field_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response:
+        """users/delete-issue-field-for-authenticated-user
+
+        DELETE /user/issue-fields/{issue_field_id}
+
+        Deletes an issue field for the authenticated user.
+
+        The authenticated user must own the issue field. OAuth app tokens and personal access tokens (classic)
+        need the `user` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/users/issue-fields#delete-an-issue-field
+        """
+
+        from ..models import BasicError, ValidationErrorSimple
+
+        url = f"/user/issue-fields/{issue_field_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    def update_issue_field_for_authenticated_user(
+        self,
+        issue_field_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: UserUpdateIssueFieldType,
+    ) -> Response[
+        Union[UserIssueField, None], Union[UserIssueFieldTypeForResponse, None]
+    ]: ...
+
+    @overload
+    def update_issue_field_for_authenticated_user(
+        self,
+        issue_field_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: Missing[str] = UNSET,
+        description: Missing[Union[str, None]] = UNSET,
+        visibility: Missing[Literal["restricted", "all"]] = UNSET,
+        options: Missing[list[UserUpdateIssueFieldPropOptionsItemsType]] = UNSET,
+    ) -> Response[
+        Union[UserIssueField, None], Union[UserIssueFieldTypeForResponse, None]
+    ]: ...
+
+    def update_issue_field_for_authenticated_user(
+        self,
+        issue_field_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[UserUpdateIssueFieldType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        Union[UserIssueField, None], Union[UserIssueFieldTypeForResponse, None]
+    ]:
+        """users/update-issue-field-for-authenticated-user
+
+        PATCH /user/issue-fields/{issue_field_id}
+
+        Updates an issue field for the authenticated user.
+
+        The authenticated user must own the issue field. OAuth app tokens and personal access tokens (classic)
+        need the `user` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/users/issue-fields#update-an-issue-field
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            UserIssueField,
+            UserUpdateIssueField,
+            ValidationErrorSimple,
+        )
+
+        url = f"/user/issue-fields/{issue_field_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(UserUpdateIssueField, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Union[None, UserIssueField],
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_update_issue_field_for_authenticated_user(
+        self,
+        issue_field_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: UserUpdateIssueFieldType,
+    ) -> Response[
+        Union[UserIssueField, None], Union[UserIssueFieldTypeForResponse, None]
+    ]: ...
+
+    @overload
+    async def async_update_issue_field_for_authenticated_user(
+        self,
+        issue_field_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: Missing[str] = UNSET,
+        description: Missing[Union[str, None]] = UNSET,
+        visibility: Missing[Literal["restricted", "all"]] = UNSET,
+        options: Missing[list[UserUpdateIssueFieldPropOptionsItemsType]] = UNSET,
+    ) -> Response[
+        Union[UserIssueField, None], Union[UserIssueFieldTypeForResponse, None]
+    ]: ...
+
+    async def async_update_issue_field_for_authenticated_user(
+        self,
+        issue_field_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[UserUpdateIssueFieldType] = UNSET,
+        **kwargs,
+    ) -> Response[
+        Union[UserIssueField, None], Union[UserIssueFieldTypeForResponse, None]
+    ]:
+        """users/update-issue-field-for-authenticated-user
+
+        PATCH /user/issue-fields/{issue_field_id}
+
+        Updates an issue field for the authenticated user.
+
+        The authenticated user must own the issue field. OAuth app tokens and personal access tokens (classic)
+        need the `user` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/users/issue-fields#update-an-issue-field
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            UserIssueField,
+            UserUpdateIssueField,
+            ValidationErrorSimple,
+        )
+
+        url = f"/user/issue-fields/{issue_field_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(UserUpdateIssueField, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Union[None, UserIssueField],
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    def list_issue_types_for_authenticated_user(
+        self,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        list[Union[IssueType, None]], list[Union[IssueTypeTypeForResponse, None]]
+    ]:
+        """users/list-issue-types-for-authenticated-user
+
+        GET /user/issue-types
+
+        Lists all issue types for the authenticated user. OAuth app tokens and personal access tokens (classic) need the `read:user` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/users/issue-types#list-issue-types
+        """
+
+        from typing import Union
+
+        from ..models import BasicError, IssueType
+
+        url = "/user/issue-types"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[Union[IssueType, None]],
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_issue_types_for_authenticated_user(
+        self,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[
+        list[Union[IssueType, None]], list[Union[IssueTypeTypeForResponse, None]]
+    ]:
+        """users/list-issue-types-for-authenticated-user
+
+        GET /user/issue-types
+
+        Lists all issue types for the authenticated user. OAuth app tokens and personal access tokens (classic) need the `read:user` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/users/issue-types#list-issue-types
+        """
+
+        from typing import Union
+
+        from ..models import BasicError, IssueType
+
+        url = "/user/issue-types"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[Union[IssueType, None]],
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def create_issue_type_for_authenticated_user(
+        self,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: IssueTypeRequestType,
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
+
+    @overload
+    def create_issue_type_for_authenticated_user(
+        self,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: str,
+        is_enabled: bool,
+        description: Missing[Union[str, None]] = UNSET,
+        color: Missing[
+            Union[
+                Literal[
+                    "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+                ],
+                None,
+            ]
+        ] = UNSET,
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
+
+    def create_issue_type_for_authenticated_user(
+        self,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[IssueTypeRequestType] = UNSET,
+        **kwargs,
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]:
+        """users/create-issue-type-for-authenticated-user
+
+        POST /user/issue-types
+
+        Creates a new issue type for the authenticated user's personal account.
+
+        OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/users/issue-types#create-an-issue-type
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            IssueType,
+            IssueTypeRequest,
+            ValidationErrorSimple,
+        )
+
+        url = "/user/issue-types"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(IssueTypeRequest, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Union[None, IssueType],
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_create_issue_type_for_authenticated_user(
+        self,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: IssueTypeRequestType,
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
+
+    @overload
+    async def async_create_issue_type_for_authenticated_user(
+        self,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: str,
+        is_enabled: bool,
+        description: Missing[Union[str, None]] = UNSET,
+        color: Missing[
+            Union[
+                Literal[
+                    "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+                ],
+                None,
+            ]
+        ] = UNSET,
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
+
+    async def async_create_issue_type_for_authenticated_user(
+        self,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[IssueTypeRequestType] = UNSET,
+        **kwargs,
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]:
+        """users/create-issue-type-for-authenticated-user
+
+        POST /user/issue-types
+
+        Creates a new issue type for the authenticated user's personal account.
+
+        OAuth app tokens and personal access tokens (classic) need the `user` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/users/issue-types#create-an-issue-type
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            IssueType,
+            IssueTypeRequest,
+            ValidationErrorSimple,
+        )
+
+        url = "/user/issue-types"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(IssueTypeRequest, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Union[None, IssueType],
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    def update_issue_type_for_authenticated_user(
+        self,
+        issue_type_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: IssueTypeRequestType,
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
+
+    @overload
+    def update_issue_type_for_authenticated_user(
+        self,
+        issue_type_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: str,
+        is_enabled: bool,
+        description: Missing[Union[str, None]] = UNSET,
+        color: Missing[
+            Union[
+                Literal[
+                    "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+                ],
+                None,
+            ]
+        ] = UNSET,
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
+
+    def update_issue_type_for_authenticated_user(
+        self,
+        issue_type_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[IssueTypeRequestType] = UNSET,
+        **kwargs,
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]:
+        """users/update-issue-type-for-authenticated-user
+
+        PUT /user/issue-types/{issue_type_id}
+
+        Updates an issue type for the authenticated user.
+
+        The authenticated user must own the issue type. OAuth app tokens and personal access tokens (classic)
+        need the `user` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/users/issue-types#update-an-issue-type
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            IssueType,
+            IssueTypeRequest,
+            ValidationErrorSimple,
+        )
+
+        url = f"/user/issue-types/{issue_type_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(IssueTypeRequest, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Union[None, IssueType],
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    @overload
+    async def async_update_issue_type_for_authenticated_user(
+        self,
+        issue_type_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: IssueTypeRequestType,
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
+
+    @overload
+    async def async_update_issue_type_for_authenticated_user(
+        self,
+        issue_type_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        name: str,
+        is_enabled: bool,
+        description: Missing[Union[str, None]] = UNSET,
+        color: Missing[
+            Union[
+                Literal[
+                    "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+                ],
+                None,
+            ]
+        ] = UNSET,
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]: ...
+
+    async def async_update_issue_type_for_authenticated_user(
+        self,
+        issue_type_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[IssueTypeRequestType] = UNSET,
+        **kwargs,
+    ) -> Response[Union[IssueType, None], Union[IssueTypeTypeForResponse, None]]:
+        """users/update-issue-type-for-authenticated-user
+
+        PUT /user/issue-types/{issue_type_id}
+
+        Updates an issue type for the authenticated user.
+
+        The authenticated user must own the issue type. OAuth app tokens and personal access tokens (classic)
+        need the `user` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/users/issue-types#update-an-issue-type
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            IssueType,
+            IssueTypeRequest,
+            ValidationErrorSimple,
+        )
+
+        url = f"/user/issue-types/{issue_type_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(IssueTypeRequest, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=Union[None, IssueType],
+            error_models={
+                "404": BasicError,
+                "422": ValidationErrorSimple,
+            },
+        )
+
+    def delete_issue_type_for_authenticated_user(
+        self,
+        issue_type_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response:
+        """users/delete-issue-type-for-authenticated-user
+
+        DELETE /user/issue-types/{issue_type_id}
+
+        Deletes an issue type for the authenticated user.
+
+        The authenticated user must own the issue type. OAuth app tokens and personal access tokens (classic)
+        need the `user` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/users/issue-types#delete-an-issue-type
+        """
+
+        from ..models import BasicError, ValidationErrorSimple
+
+        url = f"/user/issue-types/{issue_type_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "422": ValidationErrorSimple,
+                "404": BasicError,
+            },
+        )
+
+    async def async_delete_issue_type_for_authenticated_user(
+        self,
+        issue_type_id: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response:
+        """users/delete-issue-type-for-authenticated-user
+
+        DELETE /user/issue-types/{issue_type_id}
+
+        Deletes an issue type for the authenticated user.
+
+        The authenticated user must own the issue type. OAuth app tokens and personal access tokens (classic)
+        need the `user` scope to use this endpoint.
+
+        See also: https://docs.github.com/rest/users/issue-types#delete-an-issue-type
+        """
+
+        from ..models import BasicError, ValidationErrorSimple
+
+        url = f"/user/issue-types/{issue_type_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            error_models={
+                "422": ValidationErrorSimple,
+                "404": BasicError,
             },
         )
 

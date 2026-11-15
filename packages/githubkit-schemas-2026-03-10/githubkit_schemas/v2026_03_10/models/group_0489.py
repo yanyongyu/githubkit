@@ -18,23 +18,42 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRuleDetailedOneof0(GitHubModel):
-    """RepositoryRuleDetailedOneof0"""
+class CopilotCodeReviewRequestDenied(GitHubModel):
+    """Copilot Code Review Request Denied
 
-    type: Literal["creation"] = Field()
-    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+    A Copilot code review request was denied, conflicted with an existing request,
+    or could not be serviced. The `failure_reason` field is present for stable,
+    machine-readable denials -- overlapping with the reasons returned by the
+    `failureReason` field on the `requestCopilotCodeReview` GraphQL mutation, plus a
+    few additional reasons this REST endpoint reports explicitly rather than as an
+    opaque error -- and is absent for generic validation failures.
+    """
+
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    failure_reason: Missing[
+        Literal[
+            "ACTOR_INELIGIBLE",
+            "REPOSITORY_INELIGIBLE",
+            "APP_NOT_INSTALLED",
+            "NO_QUOTA_REMAINING",
+            "LICENSED_ORGANIZATION_UNAVAILABLE",
+            "INVALID_REVIEW_EFFORT",
+            "REQUEST_FAILED",
+            "REQUEST_CONFLICT",
+            "REVIEWER_UNAVAILABLE",
+            "REQUEST_UNAVAILABLE",
+            "ACTOR_FLAGGED",
+            "RATE_LIMITED",
+        ]
+    ] = Field(
         default=UNSET,
-        description="The type of source for the ruleset that includes this rule.",
-    )
-    ruleset_source: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the source of the ruleset that includes this rule.",
-    )
-    ruleset_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the ruleset that includes this rule."
+        description="The stable reason the request was denied, conflicted with an existing request, or could not be serviced.",
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof0)
+model_rebuild(CopilotCodeReviewRequestDenied)
 
-__all__ = ("RepositoryRuleDetailedOneof0",)
+__all__ = ("CopilotCodeReviewRequestDenied",)

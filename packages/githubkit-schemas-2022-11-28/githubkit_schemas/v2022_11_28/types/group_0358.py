@@ -9,28 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import TypedDict
 
-
-class CodeScanningAutofixType(TypedDict):
-    """CodeScanningAutofix"""
-
-    status: Literal["pending", "error", "success", "outdated"]
-    description: Union[str, None]
-    started_at: _dt.datetime
+from .group_0032 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0047 import IssueTypeType, IssueTypeTypeForResponse
 
 
-class CodeScanningAutofixTypeForResponse(TypedDict):
-    """CodeScanningAutofix"""
+class CodeScanningAlertLinkedIssueType(TypedDict):
+    """CodeScanningAlertLinkedIssue
 
-    status: Literal["pending", "error", "success", "outdated"]
-    description: Union[str, None]
-    started_at: str
+    A GitHub issue linked to a code scanning alert. The issue may belong to a
+    different repository.
+    """
+
+    number: int
+    title: str
+    state: str
+    url: str
+    html_url: str
+    repository: SimpleRepositoryType
+    issue_type: Union[IssueTypeType, None]
+
+
+class CodeScanningAlertLinkedIssueTypeForResponse(TypedDict):
+    """CodeScanningAlertLinkedIssue
+
+    A GitHub issue linked to a code scanning alert. The issue may belong to a
+    different repository.
+    """
+
+    number: int
+    title: str
+    state: str
+    url: str
+    html_url: str
+    repository: SimpleRepositoryTypeForResponse
+    issue_type: Union[IssueTypeTypeForResponse, None]
 
 
 __all__ = (
-    "CodeScanningAutofixType",
-    "CodeScanningAutofixTypeForResponse",
+    "CodeScanningAlertLinkedIssueType",
+    "CodeScanningAlertLinkedIssueTypeForResponse",
 )

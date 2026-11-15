@@ -19,17 +19,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UpdateBudget(GitHubModel):
-    """UpdateBudget"""
+class CreateBudget(GitHubModel):
+    """CreateBudget"""
 
     message: str = Field(
-        description="A message indicating the result of the update operation"
+        description="A message indicating the result of the create operation"
     )
-    budget: UpdateBudgetPropBudget = Field()
+    budget: CreateBudgetPropBudget = Field()
 
 
-class UpdateBudgetPropBudget(GitHubModel):
-    """UpdateBudgetPropBudget"""
+class CreateBudgetPropBudget(GitHubModel):
+    """CreateBudgetPropBudget"""
 
     id: Missing[str] = Field(default=UNSET, description="ID of the budget.")
     budget_scope: Missing[
@@ -46,14 +46,6 @@ class UpdateBudgetPropBudget(GitHubModel):
     budget_entity_name: Missing[str] = Field(
         default=UNSET, description="The name of the entity to apply the budget to"
     )
-    user: Missing[str] = Field(
-        default=UNSET,
-        description="The user login when the budget is scoped to a single user (`user` scope).",
-    )
-    consumed_amount: Missing[float] = Field(
-        default=UNSET,
-        description="The consumed amount for the specified user within the budget. Only included for `user`-scoped budgets.",
-    )
     budget_amount: Missing[int] = Field(
         default=UNSET,
         description="The budget amount in whole dollars. For license-based products, this represents the number of licenses.",
@@ -68,7 +60,7 @@ class UpdateBudgetPropBudget(GitHubModel):
     budget_type: Missing[Literal["ProductPricing", "SkuPricing", "BundlePricing"]] = (
         Field(default=UNSET, description="The type of pricing for the budget")
     )
-    budget_alerting: Missing[UpdateBudgetPropBudgetPropBudgetAlerting] = Field(
+    budget_alerting: Missing[CreateBudgetPropBudgetPropBudgetAlerting] = Field(
         default=UNSET
     )
     expires_at: Missing[_dt.date] = Field(
@@ -77,25 +69,25 @@ class UpdateBudgetPropBudget(GitHubModel):
     )
 
 
-class UpdateBudgetPropBudgetPropBudgetAlerting(GitHubModel):
-    """UpdateBudgetPropBudgetPropBudgetAlerting"""
+class CreateBudgetPropBudgetPropBudgetAlerting(GitHubModel):
+    """CreateBudgetPropBudgetPropBudgetAlerting"""
 
     will_alert: Missing[bool] = Field(
         default=UNSET,
-        description="Whether alerts are enabled for this budget. Ignored for user-scope as alerting is always disabled for them.",
+        description="Whether alerts are enabled for this budget. Rejected for user-scope as alerting is always disabled for them.",
     )
     alert_recipients: Missing[list[str]] = Field(
         default=UNSET,
-        description="Array of user login names who will receive alerts. Ignored for user-scope as alerting is always disabled for them.",
+        description="Array of user login names who will receive alerts. Rejected for user-scope as alerting is always disabled for them.",
     )
 
 
-model_rebuild(UpdateBudget)
-model_rebuild(UpdateBudgetPropBudget)
-model_rebuild(UpdateBudgetPropBudgetPropBudgetAlerting)
+model_rebuild(CreateBudget)
+model_rebuild(CreateBudgetPropBudget)
+model_rebuild(CreateBudgetPropBudgetPropBudgetAlerting)
 
 __all__ = (
-    "UpdateBudget",
-    "UpdateBudgetPropBudget",
-    "UpdateBudgetPropBudgetPropBudgetAlerting",
+    "CreateBudget",
+    "CreateBudgetPropBudget",
+    "CreateBudgetPropBudgetPropBudgetAlerting",
 )

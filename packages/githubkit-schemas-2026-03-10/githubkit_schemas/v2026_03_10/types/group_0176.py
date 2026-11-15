@@ -9,53 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0088 import MinimalRepositoryType, MinimalRepositoryTypeForResponse
+from typing_extensions import TypedDict
 
 
-class PackageType(TypedDict):
-    """Package
+class OrganizationCopilotCodeReviewRunnerType(TypedDict):
+    """Organization Copilot Code Review Runner Configuration
 
-    A software package
+    The effective runner configuration that Copilot code review uses for the
+    organization.
     """
 
-    id: int
-    name: str
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    url: str
-    html_url: str
-    version_count: int
-    visibility: Literal["private", "public"]
-    owner: NotRequired[Union[SimpleUserType, None]]
-    repository: NotRequired[Union[MinimalRepositoryType, None]]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
+    runner_type: Literal["standard", "labeled"]
+    runner_labels: list[str]
+    runner_group_name: Union[str, None]
+    allow_repository_customization: bool
+    configured_by: Literal["code_review", "coding_agent"]
 
 
-class PackageTypeForResponse(TypedDict):
-    """Package
+class OrganizationCopilotCodeReviewRunnerTypeForResponse(TypedDict):
+    """Organization Copilot Code Review Runner Configuration
 
-    A software package
+    The effective runner configuration that Copilot code review uses for the
+    organization.
     """
 
-    id: int
-    name: str
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    url: str
-    html_url: str
-    version_count: int
-    visibility: Literal["private", "public"]
-    owner: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    repository: NotRequired[Union[MinimalRepositoryTypeForResponse, None]]
-    created_at: str
-    updated_at: str
+    runner_type: Literal["standard", "labeled"]
+    runner_labels: list[str]
+    runner_group_name: Union[str, None]
+    allow_repository_customization: bool
+    configured_by: Literal["code_review", "coding_agent"]
 
 
 __all__ = (
-    "PackageType",
-    "PackageTypeForResponse",
+    "OrganizationCopilotCodeReviewRunnerType",
+    "OrganizationCopilotCodeReviewRunnerTypeForResponse",
 )

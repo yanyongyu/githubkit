@@ -9,37 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0032 import SimpleRepository
-from .group_0046 import IssueType
 
+class CodeScanningAiScanEnablement(GitHubModel):
+    """CodeScanningAiScanEnablement
 
-class CodeScanningAlertLinkedIssue(GitHubModel):
-    """CodeScanningAlertLinkedIssue
-
-    A GitHub issue linked to a code scanning alert. The issue may belong to a
-    different repository.
+    AI Scan enablement for a repository.
     """
 
-    number: int = Field(description="The issue number.")
-    title: str = Field(description="The title of the issue.")
-    state: str = Field(description="The state of the issue.")
-    url: str = Field(description="The REST API URL of the issue.")
-    html_url: str = Field(description="The URL to view the issue on GitHub.")
-    repository: SimpleRepository = Field(
-        title="Simple Repository", description="A GitHub repository."
+    pr_scan: Literal["enabled", "disabled"] = Field(
+        description="Whether AI Scan on pull requests is enabled for the repository."
     )
-    issue_type: Union[IssueType, None] = Field(
-        title="Issue Type",
-        description="The type assigned to the issue. This is only present for issues in repositories where issue types are supported.",
+    repository_scan: Missing[Literal["enabled", "disabled"]] = Field(
+        default=UNSET,
+        description="Whether the full repository AI Scan is enabled for the repository.",
     )
 
 
-model_rebuild(CodeScanningAlertLinkedIssue)
+model_rebuild(CodeScanningAiScanEnablement)
 
-__all__ = ("CodeScanningAlertLinkedIssue",)
+__all__ = ("CodeScanningAiScanEnablement",)

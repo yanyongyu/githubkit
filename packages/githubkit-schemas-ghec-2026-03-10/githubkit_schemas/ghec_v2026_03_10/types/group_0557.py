@@ -9,99 +9,118 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestPropLabelsItemsType(TypedDict):
-    """PullRequestPropLabelsItems"""
+class PageType(TypedDict):
+    """GitHub Pages
 
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
-    archived_by: Union[PullRequestPropLabelsItemsPropArchivedByType, None]
-
-
-class PullRequestPropLabelsItemsTypeForResponse(TypedDict):
-    """PullRequestPropLabelsItems"""
-
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
-    archived_by: Union[PullRequestPropLabelsItemsPropArchivedByTypeForResponse, None]
-
-
-class PullRequestPropLabelsItemsPropArchivedByType(TypedDict):
-    """PullRequestPropLabelsItemsPropArchivedBy
-
-    The user who archived the label, or `null` if it has not been archived.
+    The configuration for GitHub Pages for a repository.
     """
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
     url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    status: Union[Literal["built", "building", "errored"], None]
+    cname: Union[str, None]
+    protected_domain_state: NotRequired[
+        Union[Literal["pending", "verified", "unverified"], None]
+    ]
+    pending_domain_unverified_at: NotRequired[Union[_dt.datetime, None]]
+    custom_404: bool
+    html_url: NotRequired[str]
+    build_type: NotRequired[Union[Literal["legacy", "workflow"], None]]
+    source: NotRequired[PagesSourceHashType]
+    public: bool
+    https_certificate: NotRequired[PagesHttpsCertificateType]
+    https_enforced: NotRequired[bool]
 
 
-class PullRequestPropLabelsItemsPropArchivedByTypeForResponse(TypedDict):
-    """PullRequestPropLabelsItemsPropArchivedBy
+class PageTypeForResponse(TypedDict):
+    """GitHub Pages
 
-    The user who archived the label, or `null` if it has not been archived.
+    The configuration for GitHub Pages for a repository.
     """
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
     url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    status: Union[Literal["built", "building", "errored"], None]
+    cname: Union[str, None]
+    protected_domain_state: NotRequired[
+        Union[Literal["pending", "verified", "unverified"], None]
+    ]
+    pending_domain_unverified_at: NotRequired[Union[str, None]]
+    custom_404: bool
+    html_url: NotRequired[str]
+    build_type: NotRequired[Union[Literal["legacy", "workflow"], None]]
+    source: NotRequired[PagesSourceHashTypeForResponse]
+    public: bool
+    https_certificate: NotRequired[PagesHttpsCertificateTypeForResponse]
+    https_enforced: NotRequired[bool]
+
+
+class PagesSourceHashType(TypedDict):
+    """Pages Source Hash"""
+
+    branch: str
+    path: str
+
+
+class PagesSourceHashTypeForResponse(TypedDict):
+    """Pages Source Hash"""
+
+    branch: str
+    path: str
+
+
+class PagesHttpsCertificateType(TypedDict):
+    """Pages Https Certificate"""
+
+    state: Literal[
+        "new",
+        "authorization_created",
+        "authorization_pending",
+        "authorized",
+        "authorization_revoked",
+        "issued",
+        "uploaded",
+        "approved",
+        "errored",
+        "bad_authz",
+        "destroy_pending",
+        "dns_changed",
+    ]
+    description: str
+    domains: list[str]
+    expires_at: NotRequired[_dt.date]
+
+
+class PagesHttpsCertificateTypeForResponse(TypedDict):
+    """Pages Https Certificate"""
+
+    state: Literal[
+        "new",
+        "authorization_created",
+        "authorization_pending",
+        "authorized",
+        "authorization_revoked",
+        "issued",
+        "uploaded",
+        "approved",
+        "errored",
+        "bad_authz",
+        "destroy_pending",
+        "dns_changed",
+    ]
+    description: str
+    domains: list[str]
+    expires_at: NotRequired[str]
 
 
 __all__ = (
-    "PullRequestPropLabelsItemsPropArchivedByType",
-    "PullRequestPropLabelsItemsPropArchivedByTypeForResponse",
-    "PullRequestPropLabelsItemsType",
-    "PullRequestPropLabelsItemsTypeForResponse",
+    "PageType",
+    "PageTypeForResponse",
+    "PagesHttpsCertificateType",
+    "PagesHttpsCertificateTypeForResponse",
+    "PagesSourceHashType",
+    "PagesSourceHashTypeForResponse",
 )

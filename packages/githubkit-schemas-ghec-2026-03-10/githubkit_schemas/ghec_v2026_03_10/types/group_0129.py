@@ -10,30 +10,58 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ExternalVulnerabilitySyncStatusType(TypedDict):
-    """External Vulnerability Sync Status
+class ExternalVulnerabilitySyncResultType(TypedDict):
+    """External Vulnerability Sync Result
 
-    Status of an in-progress external vulnerability sync operation
+    Result of an external vulnerability synchronization operation
     """
 
-    id: str
-    status: Literal["processing"]
+    processed: int
+    created: int
+    updated: int
+    withdrawn: int
+    errors: int
+    results: list[ExternalVulnerabilitySyncResultPropResultsItemsType]
 
 
-class ExternalVulnerabilitySyncStatusTypeForResponse(TypedDict):
-    """External Vulnerability Sync Status
+class ExternalVulnerabilitySyncResultTypeForResponse(TypedDict):
+    """External Vulnerability Sync Result
 
-    Status of an in-progress external vulnerability sync operation
+    Result of an external vulnerability synchronization operation
     """
 
-    id: str
-    status: Literal["processing"]
+    processed: int
+    created: int
+    updated: int
+    withdrawn: int
+    errors: int
+    results: list[ExternalVulnerabilitySyncResultPropResultsItemsTypeForResponse]
+
+
+class ExternalVulnerabilitySyncResultPropResultsItemsType(TypedDict):
+    """ExternalVulnerabilitySyncResultPropResultsItems"""
+
+    external_id: str
+    status: Literal["created", "updated", "withdrawn", "error"]
+    ghsa_id: NotRequired[str]
+    error: NotRequired[str]
+
+
+class ExternalVulnerabilitySyncResultPropResultsItemsTypeForResponse(TypedDict):
+    """ExternalVulnerabilitySyncResultPropResultsItems"""
+
+    external_id: str
+    status: Literal["created", "updated", "withdrawn", "error"]
+    ghsa_id: NotRequired[str]
+    error: NotRequired[str]
 
 
 __all__ = (
-    "ExternalVulnerabilitySyncStatusType",
-    "ExternalVulnerabilitySyncStatusTypeForResponse",
+    "ExternalVulnerabilitySyncResultPropResultsItemsType",
+    "ExternalVulnerabilitySyncResultPropResultsItemsTypeForResponse",
+    "ExternalVulnerabilitySyncResultType",
+    "ExternalVulnerabilitySyncResultTypeForResponse",
 )

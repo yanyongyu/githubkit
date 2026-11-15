@@ -9,57 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Annotated, Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgProjectsV2ProjectNumberViewsPostBody(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberViewsPostBody"""
+class OrgsOrgMigrationsPostBody(GitHubModel):
+    """OrgsOrgMigrationsPostBody"""
 
-    name: str = Field(description="The name of the view.")
-    layout: Literal["table", "board", "roadmap"] = Field(
-        description="The layout of the view."
+    repositories: list[str] = Field(
+        description="A list of arrays indicating which repositories should be migrated."
     )
-    filter_: Missing[str] = Field(
+    lock_repositories: Missing[bool] = Field(
         default=UNSET,
-        alias="filter",
-        description="The filter query for the view. See [Filtering projects](https://docs.github.com/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects) for more information.",
+        description="Indicates whether repositories should be locked (to prevent manipulation) while migrating data.",
     )
-    visible_fields: Missing[list[int]] = Field(
+    exclude_metadata: Missing[bool] = Field(
         default=UNSET,
-        description="`visible_fields` is not applicable to `roadmap` layout views.\nFor `table` and `board` layouts, this represents the field IDs that should be visible in the view. If not provided, the default visible fields will be used.",
+        description="Indicates whether metadata should be excluded and only git source should be included for the migration.",
     )
-    sort_by: Missing[
-        list[
-            Annotated[
-                list[Union[int, str]],
-                Field(
-                    max_length=2 if PYDANTIC_V2 else None,
-                    min_length=2 if PYDANTIC_V2 else None,
-                ),
-            ]
-        ]
-    ] = Field(
+    exclude_git_data: Missing[bool] = Field(
         default=UNSET,
-        description='Sorting configuration for the view. Each element is a two-element array of `[field_id, direction]` where `direction` is `"asc"` or `"desc"`. Supports multiple sort criteria applied in order.',
+        description="Indicates whether the repository git data should be excluded from the migration.",
     )
-    group_by: Missing[list[int]] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
+    exclude_attachments: Missing[bool] = Field(
         default=UNSET,
-        description="The field IDs to group items by (horizontal grouping). Supports a single field. The field must support grouping; fields such as `Title`, `Reviewers`, `Linked pull requests`, `Sub-issues progress`, `Tracked by`, and `Tracks` cannot be grouped on.",
+        description="Indicates whether attachments should be excluded from the migration (to reduce migration archive file size).",
     )
-    vertical_group_by: Missing[list[int]] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
+    exclude_releases: Missing[bool] = Field(
         default=UNSET,
-        description="The field IDs to use as columns in `board` layout (vertical grouping). Supports a single field. The field must support grouping; fields such as `Title`, `Reviewers`, `Linked pull requests`, `Sub-issues progress`, `Tracked by`, and `Tracks` cannot be grouped on.",
+        description="Indicates whether releases should be excluded from the migration (to reduce migration archive file size).",
+    )
+    exclude_owner_projects: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether projects owned by the organization or users should be excluded. from the migration.",
+    )
+    org_metadata_only: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).",
+    )
+    exclude: Missing[list[Literal["repositories"]]] = Field(
+        default=UNSET,
+        description="Exclude related items from being returned in the response in order to improve performance of the request.",
     )
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberViewsPostBody)
+model_rebuild(OrgsOrgMigrationsPostBody)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberViewsPostBody",)
+__all__ = ("OrgsOrgMigrationsPostBody",)

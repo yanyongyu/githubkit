@@ -14,36 +14,21 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCredentialsExportsPostBody(GitHubModel):
-    """EnterprisesEnterpriseCredentialsExportsPostBody
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
 
-    Optional filters that scope the export to a subset of the inventory.
-    """
-
-    token_types: Missing[list[str]] = Field(
-        default=UNSET, description="The credential types to include."
-    )
-    authorization_state: Missing[
-        Literal["currently_authorized", "member_owned_only"]
-    ] = Field(default=UNSET, description="Filter by enterprise-access status.")
-    owner: Missing[str] = Field(
-        default=UNSET,
-        description="Filter to credentials owned by this user, given as a login.",
-    )
-    organization: Missing[str] = Field(
-        default=UNSET,
-        description="Filter to credentials authorized to this organization in the enterprise, given as a login.",
-    )
-    application: Missing[str] = Field(
-        default=UNSET,
-        description="Filter to credentials for this application, given as a GitHub App slug or an OAuth App client id.",
+    policy_state: Literal[
+        "enabled_for_all_orgs",
+        "disabled_for_all_orgs",
+        "enabled_for_selected_orgs",
+        "configured_by_org_admins",
+    ] = Field(
+        description="The policy state for Copilot cloud agent in the enterprise. Can be one of `enabled_for_all_orgs`, `disabled_for_all_orgs`, `enabled_for_selected_orgs`, or `configured_by_org_admins`."
     )
 
 
-model_rebuild(EnterprisesEnterpriseCredentialsExportsPostBody)
+model_rebuild(EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody)
 
-__all__ = ("EnterprisesEnterpriseCredentialsExportsPostBody",)
+__all__ = ("EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody",)

@@ -9,25 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class SimpleInstallation(GitHubModel):
-    """Simple Installation
+class UserUpdateIssueField(GitHubModel):
+    """UserUpdateIssueField"""
 
-    The GitHub App installation. Webhook payloads contain the `installation`
-    property when the event is configured
-    for and sent to a GitHub App. For more information,
-    see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-
-    github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
-    """
+    name: Missing[str] = Field(default=UNSET, description="Name of the issue field.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the issue field."
+    )
+    visibility: Missing[Literal["restricted", "all"]] = Field(
+        default=UNSET,
+        description="The visibility of the issue field. Can be `restricted` (visible only to the owner and to collaborators on the repository the field is read through) or `all` (visible to all users who can see issues).",
+    )
+    options: Missing[list[UserUpdateIssueFieldPropOptionsItems]] = Field(
+        default=UNSET,
+        description="Options for select fields. Only applicable when updating single_select or multi_select fields. When provided, this array **replaces** the entire existing set of options rather than adding to or updating individual options. To retain or update an existing option, include it in the array with its `id`. Options sent without an `id` are treated as new options and may cause existing options to be deleted and recreated.",
+    )
 
-    id: int = Field(description="The ID of the installation.")
-    node_id: str = Field(description="The global node ID of the installation.")
+
+class UserUpdateIssueFieldPropOptionsItems(GitHubModel):
+    """UserUpdateIssueFieldPropOptionsItems"""
+
+    id: Missing[int] = Field(
+        default=UNSET,
+        description="The id of an existing option to retain or update. Omit this when creating a new option.",
+    )
+    name: str = Field(description="Name of the option.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the option."
+    )
+    color: Literal[
+        "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+    ] = Field(description="Color for the option.")
+    priority: int = Field(description="Priority of the option for ordering.")
 
 
-model_rebuild(SimpleInstallation)
+model_rebuild(UserUpdateIssueField)
+model_rebuild(UserUpdateIssueFieldPropOptionsItems)
 
-__all__ = ("SimpleInstallation",)
+__all__ = (
+    "UserUpdateIssueField",
+    "UserUpdateIssueFieldPropOptionsItems",
+)

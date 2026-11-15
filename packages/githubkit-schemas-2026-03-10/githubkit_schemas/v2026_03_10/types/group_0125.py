@@ -11,26 +11,27 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-
-class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType(TypedDict):
-    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
-
-    include: NotRequired[list[str]]
-    exclude: NotRequired[list[str]]
-    protected: NotRequired[bool]
+from .group_0123 import (
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
+    ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
+)
 
 
-class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse(
-    TypedDict
-):
-    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
+class ActionsPolicyRepoConditionsOneof1Type(TypedDict):
+    """ActionsPolicyRepoConditionsOneof1"""
 
-    include: NotRequired[list[str]]
-    exclude: NotRequired[list[str]]
-    protected: NotRequired[bool]
+    workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
+
+
+class ActionsPolicyRepoConditionsOneof1TypeForResponse(TypedDict):
+    """ActionsPolicyRepoConditionsOneof1"""
+
+    workflow_path: NotRequired[
+        ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
+    ]
 
 
 __all__ = (
-    "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType",
-    "RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse",
+    "ActionsPolicyRepoConditionsOneof1Type",
+    "ActionsPolicyRepoConditionsOneof1TypeForResponse",
 )

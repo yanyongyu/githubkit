@@ -9,33 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0(GitHubModel):
-    """OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0"""
+class OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200(GitHubModel):
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200"""
 
-    type: Literal["Issue", "PullRequest"] = Field(
-        description="The type of item to add to the project. Must be either Issue or PullRequest."
+    enabled: bool = Field(
+        description="Whether the pull request creation cap is enabled"
     )
-    id: int = Field(
-        description="The unique identifier of the issue or pull request to add to the project."
+    max_open_pull_requests: int = Field(
+        le=1000.0,
+        ge=1.0,
+        description="The maximum number of open pull requests a user can have at one time",
     )
-    owner: Missing[str] = Field(
-        default=UNSET, description="The repository owner login."
-    )
-    repo: Missing[str] = Field(default=UNSET, description="The repository name.")
-    number: Missing[int] = Field(
-        default=UNSET, description="The issue or pull request number."
+    include_drafts: bool = Field(
+        description="Whether draft pull requests count toward the pull request creation cap"
     )
 
 
-model_rebuild(OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0)
+model_rebuild(OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200)
 
-__all__ = ("OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0",)
+__all__ = ("OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200",)

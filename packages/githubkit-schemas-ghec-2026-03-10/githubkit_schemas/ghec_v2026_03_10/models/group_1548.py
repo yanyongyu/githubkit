@@ -9,56 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotModelPoliciesGetResponse200(GitHubModel):
-    """OrgsOrgCopilotModelPoliciesGetResponse200"""
+class OrgsOrgCopilotBillingSelectedTeamsPostResponse201(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
 
-    default_availability: OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailability = Field(
-        description="The effective default availability for models reported as `delegate_to_default`."
-    )
-    models: list[OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItems] = Field(
-        description="The effective policies for all models available to the organization."
-    )
-
-
-class OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailability(GitHubModel):
-    """OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailability
-
-    The effective default availability for models reported as `delegate_to_default`.
+    The total number of seats created for members of the specified team(s).
     """
 
-    policy_state: Literal["enabled", "disabled"] = Field(
-        description="The effective default availability. The enterprise default is used when it\nis configured. Otherwise, the organization's default is used."
-    )
-    editable: bool = Field(
-        description="Whether the organization can update its default availability."
-    )
+    seats_created: int = Field()
 
 
-class OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItems(GitHubModel):
-    """OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItems"""
+model_rebuild(OrgsOrgCopilotBillingSelectedTeamsPostResponse201)
 
-    model_name: str = Field(description="The public identifier of the model.")
-    display_name: str = Field(description="The human-readable name of the model.")
-    policy_state: Literal[
-        "enabled", "disabled", "delegate_to_default", "unconfigured"
-    ] = Field(
-        description="The policy state after applying inheritance. `enabled` and `disabled` are\nexplicit policies configured for the organization or inherited from its\nenterprise. `delegate_to_default` means the model has no explicit policy and\nfollows `default_availability`. `unconfigured` means the model has no explicit\npolicy and is not eligible for default availability, so it is disabled."
-    )
-
-
-model_rebuild(OrgsOrgCopilotModelPoliciesGetResponse200)
-model_rebuild(OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailability)
-model_rebuild(OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItems)
-
-__all__ = (
-    "OrgsOrgCopilotModelPoliciesGetResponse200",
-    "OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailability",
-    "OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItems",
-)
+__all__ = ("OrgsOrgCopilotBillingSelectedTeamsPostResponse201",)

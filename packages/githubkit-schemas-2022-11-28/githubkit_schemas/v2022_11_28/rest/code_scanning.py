@@ -198,6 +198,7 @@ class CodeScanningClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
         pr_scan: Missing[Literal["enabled", "disabled"]] = UNSET,
+        repository_scan: Missing[Literal["enabled", "disabled"]] = UNSET,
     ) -> Response[
         CodeScanningAiScanOrgSettings, CodeScanningAiScanOrgSettingsTypeForResponse
     ]: ...
@@ -281,6 +282,7 @@ class CodeScanningClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
         pr_scan: Missing[Literal["enabled", "disabled"]] = UNSET,
+        repository_scan: Missing[Literal["enabled", "disabled"]] = UNSET,
     ) -> Response[
         CodeScanningAiScanOrgSettings, CodeScanningAiScanOrgSettingsTypeForResponse
     ]: ...
@@ -590,6 +592,7 @@ class CodeScanningClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
         pr_scan: Missing[Literal["enabled", "disabled"]] = UNSET,
+        repository_scan: Missing[Literal["enabled", "disabled"]] = UNSET,
     ) -> Response[
         CodeScanningAiScanEnablement, CodeScanningAiScanEnablementTypeForResponse
     ]: ...
@@ -674,6 +677,7 @@ class CodeScanningClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
         pr_scan: Missing[Literal["enabled", "disabled"]] = UNSET,
+        repository_scan: Missing[Literal["enabled", "disabled"]] = UNSET,
     ) -> Response[
         CodeScanningAiScanEnablement, CodeScanningAiScanEnablementTypeForResponse
     ]: ...

@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,20 +18,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodespacesPublicKey(GitHubModel):
-    """CodespacesPublicKey
+class CodeScanningAiScanOrgEnablementUpdate(GitHubModel):
+    """Code scanning AI Scan organization settings update
 
-    The public key used for setting Codespaces secrets.
+    The AI Scan organization setting to apply
     """
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
-    id: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
+    pr_scan: Missing[Literal["enabled", "disabled"]] = Field(
+        default=UNSET,
+        description="Whether AI Scan on pull requests is enabled for the organization. Organization respects enterprise policy. Disabled organizations prevent repositories from enabling AI Scan. Enabled organizations enable AI Scan for their repositories, but individual repositories can opt out.",
+    )
+    repository_scan: Missing[Literal["enabled", "disabled"]] = Field(
+        default=UNSET,
+        description="Whether the full repository AI Scan is enabled for the organization. Organization respects enterprise policy. Disabled organizations prevent repositories from enabling the full repository AI Scan. Enabled organizations enable it for their repositories, but individual repositories can opt out.",
+    )
 
 
-model_rebuild(CodespacesPublicKey)
+model_rebuild(CodeScanningAiScanOrgEnablementUpdate)
 
-__all__ = ("CodespacesPublicKey",)
+__all__ = ("CodeScanningAiScanOrgEnablementUpdate",)

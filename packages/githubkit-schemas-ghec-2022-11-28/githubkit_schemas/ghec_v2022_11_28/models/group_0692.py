@@ -9,55 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class WebhooksMarketplacePurchase(GitHubModel):
-    """Marketplace Purchase"""
+class WebhooksLabelPropArchivedBy(GitHubModel):
+    """WebhooksLabelPropArchivedBy
 
-    account: WebhooksMarketplacePurchasePropAccount = Field()
-    billing_cycle: str = Field()
-    free_trial_ends_on: Union[str, None] = Field()
-    next_billing_date: Union[str, None] = Field()
-    on_free_trial: bool = Field()
-    plan: WebhooksMarketplacePurchasePropPlan = Field()
-    unit_count: int = Field()
+    The user who archived the label, or `null` if it has not been archived.
+    """
 
-
-class WebhooksMarketplacePurchasePropAccount(GitHubModel):
-    """WebhooksMarketplacePurchasePropAccount"""
-
-    id: int = Field()
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
     login: str = Field()
-    node_id: str = Field()
-    organization_billing_email: Union[str, None] = Field()
-    type: str = Field()
-
-
-class WebhooksMarketplacePurchasePropPlan(GitHubModel):
-    """WebhooksMarketplacePurchasePropPlan"""
-
-    bullets: list[Union[str, None]] = Field()
-    description: str = Field()
-    has_free_trial: bool = Field()
     id: int = Field()
-    monthly_price_in_cents: int = Field()
-    name: str = Field()
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
-    unit_name: Union[str, None] = Field()
-    yearly_price_in_cents: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksMarketplacePurchase)
-model_rebuild(WebhooksMarketplacePurchasePropAccount)
-model_rebuild(WebhooksMarketplacePurchasePropPlan)
+model_rebuild(WebhooksLabelPropArchivedBy)
 
-__all__ = (
-    "WebhooksMarketplacePurchase",
-    "WebhooksMarketplacePurchasePropAccount",
-    "WebhooksMarketplacePurchasePropPlan",
-)
+__all__ = ("WebhooksLabelPropArchivedBy",)

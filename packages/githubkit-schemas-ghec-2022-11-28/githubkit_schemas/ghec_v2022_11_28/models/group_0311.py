@@ -14,30 +14,32 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class OrganizationCustomRepositoryRoleUpdateSchema(GitHubModel):
-    """OrganizationCustomRepositoryRoleUpdateSchema"""
+class OrganizationCopilotCodeReviewRunner(GitHubModel):
+    """Organization Copilot Code Review Runner Configuration
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the custom role."
+    The effective runner configuration that Copilot code review uses for the
+    organization.
+    """
+
+    runner_type: Literal["standard", "labeled"] = Field(
+        description="The type of runner. `standard` uses GitHub-hosted runners. `labeled` uses runners that match the configured labels or runner group."
     )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
+    runner_labels: list[str] = Field(
+        description="The runner labels used for a labeled runner."
     )
-    base_role: Missing[Literal["read", "triage", "write", "maintain"]] = Field(
-        default=UNSET,
-        description="The system role from which this role inherits permissions.",
+    runner_group_name: Union[str, None] = Field(
+        description="The runner group used for a labeled runner, or null when none is set."
     )
-    permissions: Missing[list[str]] = Field(
-        default=UNSET,
-        description="A list of additional permissions included in this role.",
+    allow_repository_customization: bool = Field(
+        description="Whether repositories can use their own runner configuration."
+    )
+    configured_by: Literal["code_review", "coding_agent"] = Field(
+        description="Which configuration the values come from. `code_review` means the organization has saved a Copilot code review runner configuration. `coding_agent` means it has not, and the values are inherited from the organization's Copilot coding agent runner configuration."
     )
 
 
-model_rebuild(OrganizationCustomRepositoryRoleUpdateSchema)
+model_rebuild(OrganizationCopilotCodeReviewRunner)
 
-__all__ = ("OrganizationCustomRepositoryRoleUpdateSchema",)
+__all__ = ("OrganizationCopilotCodeReviewRunner",)

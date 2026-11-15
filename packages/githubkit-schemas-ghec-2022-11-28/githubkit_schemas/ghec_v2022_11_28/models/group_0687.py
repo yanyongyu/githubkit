@@ -9,36 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0689 import WebhooksLabelArchivedAllof1PropArchivedBy
 
+class WebhooksWorkflowJobRun(GitHubModel):
+    """WebhooksWorkflowJobRun"""
 
-class WebhooksLabelArchived(GitHubModel):
-    """Archived label"""
-
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
-    )
-    default: bool = Field()
-    description: Union[str, None] = Field()
-    archived_at: _dt.datetime = Field(
-        description="Timestamp indicating when the label was archived."
-    )
-    archived_by: WebhooksLabelArchivedAllof1PropArchivedBy = Field(
-        description="The user who archived the label."
-    )
+    conclusion: None = Field()
+    created_at: str = Field()
+    environment: str = Field()
+    html_url: str = Field()
     id: int = Field()
-    name: str = Field(description="The name of the label.")
-    node_id: str = Field()
-    url: str = Field(description="URL for the label")
+    name: None = Field()
+    status: str = Field()
+    updated_at: str = Field()
 
 
-model_rebuild(WebhooksLabelArchived)
+model_rebuild(WebhooksWorkflowJobRun)
 
-__all__ = ("WebhooksLabelArchived",)
+__all__ = ("WebhooksWorkflowJobRun",)

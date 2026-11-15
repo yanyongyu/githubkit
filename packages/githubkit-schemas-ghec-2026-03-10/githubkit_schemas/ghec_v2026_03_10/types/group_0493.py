@@ -9,52 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class GitRefType(TypedDict):
-    """Git Reference
+class DeploymentBranchPolicyNamePatternWithTypeType(TypedDict):
+    """Deployment branch and tag policy name pattern"""
 
-    Git references within a repository
-    """
-
-    ref: str
-    node_id: str
-    url: str
-    object_: GitRefPropObjectType
+    name: str
+    type: NotRequired[Literal["branch", "tag"]]
 
 
-class GitRefTypeForResponse(TypedDict):
-    """Git Reference
+class DeploymentBranchPolicyNamePatternWithTypeTypeForResponse(TypedDict):
+    """Deployment branch and tag policy name pattern"""
 
-    Git references within a repository
-    """
-
-    ref: str
-    node_id: str
-    url: str
-    object_: GitRefPropObjectTypeForResponse
-
-
-class GitRefPropObjectType(TypedDict):
-    """GitRefPropObject"""
-
-    type: str
-    sha: str
-    url: str
-
-
-class GitRefPropObjectTypeForResponse(TypedDict):
-    """GitRefPropObject"""
-
-    type: str
-    sha: str
-    url: str
+    name: str
+    type: NotRequired[Literal["branch", "tag"]]
 
 
 __all__ = (
-    "GitRefPropObjectType",
-    "GitRefPropObjectTypeForResponse",
-    "GitRefType",
-    "GitRefTypeForResponse",
+    "DeploymentBranchPolicyNamePatternWithTypeType",
+    "DeploymentBranchPolicyNamePatternWithTypeTypeForResponse",
 )

@@ -9,29 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAiScanEnablementUpdateType(TypedDict):
-    """CodeScanningAiScanEnablementUpdate
+class CodeQualitySetupUpdateAnyof4Type(TypedDict):
+    """CodeQualitySetupUpdateAnyof4"""
 
-    AI Scan enablement update for a repository.
-    """
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: NotRequired[Union[str, None]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
+        ]
+    ]
+    ai_findings_option: Literal["disabled", "on_push"]
 
-    pr_scan: NotRequired[Literal["enabled", "disabled"]]
 
+class CodeQualitySetupUpdateAnyof4TypeForResponse(TypedDict):
+    """CodeQualitySetupUpdateAnyof4"""
 
-class CodeScanningAiScanEnablementUpdateTypeForResponse(TypedDict):
-    """CodeScanningAiScanEnablementUpdate
-
-    AI Scan enablement update for a repository.
-    """
-
-    pr_scan: NotRequired[Literal["enabled", "disabled"]]
+    state: NotRequired[Literal["configured", "not-configured"]]
+    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_label: NotRequired[Union[str, None]]
+    languages: NotRequired[
+        list[
+            Literal[
+                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+            ]
+        ]
+    ]
+    ai_findings_option: Literal["disabled", "on_push"]
 
 
 __all__ = (
-    "CodeScanningAiScanEnablementUpdateType",
-    "CodeScanningAiScanEnablementUpdateTypeForResponse",
+    "CodeQualitySetupUpdateAnyof4Type",
+    "CodeQualitySetupUpdateAnyof4TypeForResponse",
 )

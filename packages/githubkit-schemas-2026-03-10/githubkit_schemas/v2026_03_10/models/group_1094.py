@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,22 +16,24 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreatorAllof0(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
+    temsPropCreatorAllof0
 
-    Request body for requesting an automation run.
+    A GitHub user
     """
 
-    event: Literal["manual"] = Field(
-        description="The event to trigger. Only `manual` is supported."
-    )
-    context: Missing[str] = Field(
-        max_length=10000,
-        default=UNSET,
-        description="Additional context for this automation run, up to 10,000 characters. Supported only when `event` is `manual`. The context supplements the automation's configured instructions.",
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreatorAllof0
+)
 
-__all__ = ("AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody",)
+__all__ = (
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreatorAllof0",
+)

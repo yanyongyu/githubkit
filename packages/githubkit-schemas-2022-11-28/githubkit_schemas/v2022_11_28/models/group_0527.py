@@ -9,46 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0003 import SimpleUser
+
+class SecretScanningAlertMetadataItems(GitHubModel):
+    """SecretScanningAlertMetadataItems"""
+
+    key: str = Field(description="The metadata key.")
+    value: str = Field(description="The metadata value.")
 
 
-class RepositoryAdvisoryComment(GitHubModel):
-    """Repository Advisory Comment
+model_rebuild(SecretScanningAlertMetadataItems)
 
-    A comment on a repository security advisory.
-    """
-
-    id: int = Field(description="Unique identifier of the advisory comment.")
-    node_id: str = Field()
-    url: str = Field(description="API URL for the advisory comment.")
-    html_url: str = Field(description="Web URL for the advisory comment.")
-    body: str = Field(description="Contents of the advisory comment.")
-    user: Union[SimpleUser, None] = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    advisory_url: str = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
-
-
-model_rebuild(RepositoryAdvisoryComment)
-
-__all__ = ("RepositoryAdvisoryComment",)
+__all__ = ("SecretScanningAlertMetadataItems",)

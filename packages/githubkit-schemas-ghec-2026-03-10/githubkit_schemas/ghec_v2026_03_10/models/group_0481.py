@@ -9,56 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
 
+class DependabotRunnerSettingsUpdate(GitHubModel):
+    """Dependabot runner settings update
 
-class DeploymentStatus(GitHubModel):
-    """Deployment Status
-
-    The status of a deployment.
+    The runner Dependabot uses for this repository. `standard` accepts only
+    `runner_type`.
     """
 
-    url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
-    ] = Field(description="The state of the status.")
-    creator: Union[SimpleUser, None] = Field()
-    description: str = Field(
-        max_length=140, default="", description="A short description of the status."
+    runner_type: Literal["standard", "labeled"] = Field(
+        description="`labeled` for labeled runners, `standard` for standard GitHub-hosted runners."
     )
-    environment: Missing[str] = Field(
+    runner_labels: Missing[list[str]] = Field(
+        max_length=1 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="The environment of the deployment that the status is for.",
+        description="Required for `labeled`. Exactly one non-blank runner label. Not allowed for `standard`.",
     )
-    target_url: str = Field(
-        default="",
-        description="Closing down notice: the URL to associate with this status.",
+    runner_group: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Optional for `labeled`. Omitted, `null` or blank means no group. Not allowed for `standard`.",
     )
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    deployment_url: str = Field()
-    repository_url: str = Field()
-    environment_url: Missing[str] = Field(
-        default=UNSET, description="The URL for accessing your environment."
-    )
-    log_url: Missing[str] = Field(
-        default=UNSET, description="The URL to associate with this status."
-    )
-    performed_via_github_app: Missing[Union[Integration, None]] = Field(default=UNSET)
 
 
-model_rebuild(DeploymentStatus)
+model_rebuild(DependabotRunnerSettingsUpdate)
 
-__all__ = ("DeploymentStatus",)
+__all__ = ("DependabotRunnerSettingsUpdate",)

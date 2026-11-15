@@ -10,30 +10,41 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0199 import (
+    RepositoryRuleCodeCoveragePropParametersType,
+    RepositoryRuleCodeCoveragePropParametersTypeForResponse,
+)
 
 
-class RepositoryRuleLicenseComplianceScanningType(TypedDict):
-    """license_compliance_scanning
+class RepositoryRuleCodeCoverageType(TypedDict):
+    """code_coverage
 
-    Enforce any added or changed dependencies to comply with the organization's
-    license policy.
+    Enforce minimum line coverage thresholds on pull requests. This rule evaluates
+    uploaded coverage data but does not wait for coverage uploads. To ensure
+    coverage is evaluated before merging, make each status check associated with a
+    coverage upload a required status check.
     """
 
-    type: Literal["license_compliance_scanning"]
+    type: Literal["code_coverage"]
+    parameters: NotRequired[RepositoryRuleCodeCoveragePropParametersType]
 
 
-class RepositoryRuleLicenseComplianceScanningTypeForResponse(TypedDict):
-    """license_compliance_scanning
+class RepositoryRuleCodeCoverageTypeForResponse(TypedDict):
+    """code_coverage
 
-    Enforce any added or changed dependencies to comply with the organization's
-    license policy.
+    Enforce minimum line coverage thresholds on pull requests. This rule evaluates
+    uploaded coverage data but does not wait for coverage uploads. To ensure
+    coverage is evaluated before merging, make each status check associated with a
+    coverage upload a required status check.
     """
 
-    type: Literal["license_compliance_scanning"]
+    type: Literal["code_coverage"]
+    parameters: NotRequired[RepositoryRuleCodeCoveragePropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleLicenseComplianceScanningType",
-    "RepositoryRuleLicenseComplianceScanningTypeForResponse",
+    "RepositoryRuleCodeCoverageType",
+    "RepositoryRuleCodeCoverageTypeForResponse",
 )

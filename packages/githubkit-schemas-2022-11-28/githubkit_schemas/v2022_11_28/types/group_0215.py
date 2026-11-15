@@ -9,58 +9,82 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing import Any, Literal, TypeAlias, Union
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
 
-class OrganizationExternalPropertyInstallationType(TypedDict):
-    """Organization External Custom Property Installation
+class ProjectsV2ItemWithContentType(TypedDict):
+    """Projects v2 Item
 
-    A GitHub App installation that has been registered to read and write an
-    organization's external custom properties, together with the display name
-    assigned to it.
+    An item belonging to a project
     """
 
-    display_name: str
-    installation: OrganizationExternalPropertyInstallationPropInstallationType
+    id: float
+    node_id: NotRequired[str]
+    project_url: NotRequired[str]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    content: NotRequired[Union[ProjectsV2ItemWithContentPropContentType, None]]
+    creator: NotRequired[SimpleUserType]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    archived_at: Union[_dt.datetime, None]
+    item_url: NotRequired[Union[str, None]]
+    fields: NotRequired[list[ProjectsV2ItemWithContentPropFieldsItemsType]]
 
 
-class OrganizationExternalPropertyInstallationTypeForResponse(TypedDict):
-    """Organization External Custom Property Installation
+class ProjectsV2ItemWithContentTypeForResponse(TypedDict):
+    """Projects v2 Item
 
-    A GitHub App installation that has been registered to read and write an
-    organization's external custom properties, together with the display name
-    assigned to it.
+    An item belonging to a project
     """
 
-    display_name: str
-    installation: (
-        OrganizationExternalPropertyInstallationPropInstallationTypeForResponse
-    )
+    id: float
+    node_id: NotRequired[str]
+    project_url: NotRequired[str]
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    content: NotRequired[
+        Union[ProjectsV2ItemWithContentPropContentTypeForResponse, None]
+    ]
+    creator: NotRequired[SimpleUserTypeForResponse]
+    created_at: str
+    updated_at: str
+    archived_at: Union[str, None]
+    item_url: NotRequired[Union[str, None]]
+    fields: NotRequired[list[ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse]]
 
 
-class OrganizationExternalPropertyInstallationPropInstallationType(TypedDict):
-    """OrganizationExternalPropertyInstallationPropInstallation
+ProjectsV2ItemWithContentPropContentType: TypeAlias = dict[str, Any]
+"""ProjectsV2ItemWithContentPropContent
 
-    The GitHub App installation that was registered.
-    """
-
-    id: int
+The content of the item, which varies by content type.
+"""
 
 
-class OrganizationExternalPropertyInstallationPropInstallationTypeForResponse(
-    TypedDict
-):
-    """OrganizationExternalPropertyInstallationPropInstallation
+ProjectsV2ItemWithContentPropContentTypeForResponse: TypeAlias = dict[str, Any]
+"""ProjectsV2ItemWithContentPropContent
 
-    The GitHub App installation that was registered.
-    """
+The content of the item, which varies by content type.
+"""
 
-    id: int
+
+ProjectsV2ItemWithContentPropFieldsItemsType: TypeAlias = dict[str, Any]
+"""ProjectsV2ItemWithContentPropFieldsItems
+"""
+
+
+ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse: TypeAlias = dict[str, Any]
+"""ProjectsV2ItemWithContentPropFieldsItems
+"""
 
 
 __all__ = (
-    "OrganizationExternalPropertyInstallationPropInstallationType",
-    "OrganizationExternalPropertyInstallationPropInstallationTypeForResponse",
-    "OrganizationExternalPropertyInstallationType",
-    "OrganizationExternalPropertyInstallationTypeForResponse",
+    "ProjectsV2ItemWithContentPropContentType",
+    "ProjectsV2ItemWithContentPropContentTypeForResponse",
+    "ProjectsV2ItemWithContentPropFieldsItemsType",
+    "ProjectsV2ItemWithContentPropFieldsItemsTypeForResponse",
+    "ProjectsV2ItemWithContentType",
+    "ProjectsV2ItemWithContentTypeForResponse",
 )

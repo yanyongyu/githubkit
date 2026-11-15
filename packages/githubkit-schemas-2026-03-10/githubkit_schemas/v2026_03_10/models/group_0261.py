@@ -17,22 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0262 import RepositoryRuleCopilotCodeReviewPropParameters
+from .group_0262 import RepositoryRuleCodeCoveragePropParameters
 
 
-class RepositoryRuleCopilotCodeReview(GitHubModel):
-    """copilot_code_review
+class RepositoryRuleCodeCoverage(GitHubModel):
+    """code_coverage
 
-    Request Copilot code review for new pull requests automatically if the author
-    has access to Copilot code review and AI credits.
+    Enforce minimum line coverage thresholds on pull requests. This rule evaluates
+    uploaded coverage data but does not wait for coverage uploads. To ensure
+    coverage is evaluated before merging, make each status check associated with a
+    coverage upload a required status check.
     """
 
-    type: Literal["copilot_code_review"] = Field()
-    parameters: Missing[RepositoryRuleCopilotCodeReviewPropParameters] = Field(
-        default=UNSET
-    )
+    type: Literal["code_coverage"] = Field()
+    parameters: Missing[RepositoryRuleCodeCoveragePropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleCopilotCodeReview)
+model_rebuild(RepositoryRuleCodeCoverage)
 
-__all__ = ("RepositoryRuleCopilotCodeReview",)
+__all__ = ("RepositoryRuleCodeCoverage",)

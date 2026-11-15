@@ -11,27 +11,24 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0293 import (
-    OrganizationActionsSecretType,
-    OrganizationActionsSecretTypeForResponse,
-)
+from .group_0075 import ActionsPolicyType, ActionsPolicyTypeForResponse
 
 
-class OrgsOrgActionsSecretsGetResponse200Type(TypedDict):
-    """OrgsOrgActionsSecretsGetResponse200"""
+class OrgsOrgActionsPoliciesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsPoliciesGetResponse200"""
 
     total_count: int
-    secrets: list[OrganizationActionsSecretType]
+    policies: list[ActionsPolicyType]
 
 
-class OrgsOrgActionsSecretsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsSecretsGetResponse200"""
+class OrgsOrgActionsPoliciesGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgActionsPoliciesGetResponse200"""
 
     total_count: int
-    secrets: list[OrganizationActionsSecretTypeForResponse]
+    policies: list[ActionsPolicyTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgActionsSecretsGetResponse200Type",
-    "OrgsOrgActionsSecretsGetResponse200TypeForResponse",
+    "OrgsOrgActionsPoliciesGetResponse200Type",
+    "OrgsOrgActionsPoliciesGetResponse200TypeForResponse",
 )

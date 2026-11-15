@@ -11,24 +11,20 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0165 import CodespaceMachineType, CodespaceMachineTypeForResponse
+
+class ReposOwnerRepoStacksStackNumberAddPostBodyType(TypedDict):
+    """ReposOwnerRepoStacksStackNumberAddPostBody"""
+
+    pull_requests: list[int]
 
 
-class UserCodespacesCodespaceNameMachinesGetResponse200Type(TypedDict):
-    """UserCodespacesCodespaceNameMachinesGetResponse200"""
+class ReposOwnerRepoStacksStackNumberAddPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoStacksStackNumberAddPostBody"""
 
-    total_count: int
-    machines: list[CodespaceMachineType]
-
-
-class UserCodespacesCodespaceNameMachinesGetResponse200TypeForResponse(TypedDict):
-    """UserCodespacesCodespaceNameMachinesGetResponse200"""
-
-    total_count: int
-    machines: list[CodespaceMachineTypeForResponse]
+    pull_requests: list[int]
 
 
 __all__ = (
-    "UserCodespacesCodespaceNameMachinesGetResponse200Type",
-    "UserCodespacesCodespaceNameMachinesGetResponse200TypeForResponse",
+    "ReposOwnerRepoStacksStackNumberAddPostBodyType",
+    "ReposOwnerRepoStacksStackNumberAddPostBodyTypeForResponse",
 )

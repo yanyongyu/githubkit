@@ -9,36 +9,133 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0193 import (
-    RepositoryRuleMergeQueuePropParametersType,
-    RepositoryRuleMergeQueuePropParametersTypeForResponse,
-)
+
+class PullRequestMergeAsyncResultType(TypedDict):
+    """Pull Request Merge Async Result
+
+    Pull Request Merge Async Result
+    """
+
+    status: Literal["pending", "merged", "enqueued", "failed"]
+    details: Union[
+        PullRequestMergeAsyncResultPropDetailsAnyof0Type,
+        PullRequestMergeAsyncResultPropDetailsAnyof1Type,
+        PullRequestMergeAsyncResultPropDetailsAnyof2Type,
+        PullRequestMergeAsyncResultPropDetailsAnyof3Type,
+    ]
 
 
-class RepositoryRuleDetailedOneof4Type(TypedDict):
-    """RepositoryRuleDetailedOneof4"""
+class PullRequestMergeAsyncResultTypeForResponse(TypedDict):
+    """Pull Request Merge Async Result
 
-    type: Literal["merge_queue"]
-    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    Pull Request Merge Async Result
+    """
+
+    status: Literal["pending", "merged", "enqueued", "failed"]
+    details: Union[
+        PullRequestMergeAsyncResultPropDetailsAnyof0TypeForResponse,
+        PullRequestMergeAsyncResultPropDetailsAnyof1TypeForResponse,
+        PullRequestMergeAsyncResultPropDetailsAnyof2TypeForResponse,
+        PullRequestMergeAsyncResultPropDetailsAnyof3TypeForResponse,
+    ]
 
 
-class RepositoryRuleDetailedOneof4TypeForResponse(TypedDict):
-    """RepositoryRuleDetailedOneof4"""
+class PullRequestMergeAsyncResultPropDetailsAnyof0Type(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof0
 
-    type: Literal["merge_queue"]
-    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersTypeForResponse]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    When the asynchronous merge request is pending
+    """
+
+    message: str
+    uuid: str
+    merge_method: Literal["default", "merge", "squash", "rebase"]
+    merge_action: Literal["default", "merge_queue", "direct_merge"]
+    expected_head_sha: str
+    bypass_rules: NotRequired[bool]
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof0TypeForResponse(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof0
+
+    When the asynchronous merge request is pending
+    """
+
+    message: str
+    uuid: str
+    merge_method: Literal["default", "merge", "squash", "rebase"]
+    merge_action: Literal["default", "merge_queue", "direct_merge"]
+    expected_head_sha: str
+    bypass_rules: NotRequired[bool]
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof1Type(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof1
+
+    When the pull request is in a merge queue
+    """
+
+    message: str
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof1TypeForResponse(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof1
+
+    When the pull request is in a merge queue
+    """
+
+    message: str
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof2Type(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof2
+
+    When the asynchronous merge request failed
+    """
+
+    message: str
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof2TypeForResponse(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof2
+
+    When the asynchronous merge request failed
+    """
+
+    message: str
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof3Type(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof3
+
+    When the pull request has been merged
+    """
+
+    message: str
+    sha: str
+
+
+class PullRequestMergeAsyncResultPropDetailsAnyof3TypeForResponse(TypedDict):
+    """PullRequestMergeAsyncResultPropDetailsAnyof3
+
+    When the pull request has been merged
+    """
+
+    message: str
+    sha: str
 
 
 __all__ = (
-    "RepositoryRuleDetailedOneof4Type",
-    "RepositoryRuleDetailedOneof4TypeForResponse",
+    "PullRequestMergeAsyncResultPropDetailsAnyof0Type",
+    "PullRequestMergeAsyncResultPropDetailsAnyof0TypeForResponse",
+    "PullRequestMergeAsyncResultPropDetailsAnyof1Type",
+    "PullRequestMergeAsyncResultPropDetailsAnyof1TypeForResponse",
+    "PullRequestMergeAsyncResultPropDetailsAnyof2Type",
+    "PullRequestMergeAsyncResultPropDetailsAnyof2TypeForResponse",
+    "PullRequestMergeAsyncResultPropDetailsAnyof3Type",
+    "PullRequestMergeAsyncResultPropDetailsAnyof3TypeForResponse",
+    "PullRequestMergeAsyncResultType",
+    "PullRequestMergeAsyncResultTypeForResponse",
 )

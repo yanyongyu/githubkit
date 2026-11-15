@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -31,9 +31,7 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401(GitHubM
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
     errors: Missing[
-        list[
-            AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401PropErrorsItems
-        ]
+        list[AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404PropErrorsItems]
     ] = Field(
         default=UNSET,
         description="List of validation errors (present only for 422 responses)",
@@ -49,11 +47,10 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401(GitHubM
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401PropErrorsItems(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404PropErrorsItems(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401PropErrorsItem
-    s
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404PropErrorsItems
 
     A single validation error
     """
@@ -72,12 +69,10 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401PropErro
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401PropErrorsItems
-)
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404)
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404PropErrorsItems)
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401PropErrorsItems",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404PropErrorsItems",
 )

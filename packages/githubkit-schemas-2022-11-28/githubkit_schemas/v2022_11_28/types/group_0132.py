@@ -11,35 +11,37 @@ from __future__ import annotations
 
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0121 import (
+from .group_0123 import (
     ActionsPolicyWorkflowPathConditionPropWorkflowPathType,
     ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse,
 )
-from .group_0129 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse,
+from .group_0127 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
 )
 
 
-class ActionsPolicyOrgConditionsOneof2Type(TypedDict):
-    """ActionsPolicyOrgConditionsOneof2"""
+class ActionsPolicyOrgConditionsOneof0Type(TypedDict):
+    """ActionsPolicyOrgConditionsOneof0"""
 
-    repository_property: (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
     )
     workflow_path: NotRequired[ActionsPolicyWorkflowPathConditionPropWorkflowPathType]
 
 
-class ActionsPolicyOrgConditionsOneof2TypeForResponse(TypedDict):
-    """ActionsPolicyOrgConditionsOneof2"""
+class ActionsPolicyOrgConditionsOneof0TypeForResponse(TypedDict):
+    """ActionsPolicyOrgConditionsOneof0"""
 
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyTypeForResponse
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
+    )
     workflow_path: NotRequired[
         ActionsPolicyWorkflowPathConditionPropWorkflowPathTypeForResponse
     ]
 
 
 __all__ = (
-    "ActionsPolicyOrgConditionsOneof2Type",
-    "ActionsPolicyOrgConditionsOneof2TypeForResponse",
+    "ActionsPolicyOrgConditionsOneof0Type",
+    "ActionsPolicyOrgConditionsOneof0TypeForResponse",
 )

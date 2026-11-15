@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,31 +19,46 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeQualitySetupUpdateAnyof2(GitHubModel):
-    """CodeQualitySetupUpdateAnyof2"""
+class CodeQualitySetup(GitHubModel):
+    """CodeQualitySetup
+
+    Configuration for code quality setup.
+    """
 
     state: Missing[Literal["configured", "not-configured"]] = Field(
-        default=UNSET, description="The desired state of code quality setup."
-    )
-    runner_type: Missing[Literal["standard", "labeled"]] = Field(
-        default=UNSET, description="Runner type to be used."
-    )
-    runner_label: Union[str, None] = Field(
-        description="Runner label to be used if the runner type is labeled."
+        default=UNSET, description="Code quality setup has been configured or not."
     )
     languages: Missing[
         list[
             Literal[
-                "csharp", "go", "java-kotlin", "javascript-typescript", "python", "ruby"
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "rust",
             ]
         ]
     ] = Field(default=UNSET, description="Languages to be analyzed.")
-    ai_findings_option: Missing[Literal["disabled", "on_push"]] = Field(
+    runner_type: Missing[Union[Literal["standard", "labeled"], None]] = Field(
+        default=UNSET, description="Runner type to be used."
+    )
+    runner_label: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Whether AI findings run for Code Quality on this repository.",
+        description="Runner label to be used if the runner type is labeled.",
+    )
+    updated_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET, description="Timestamp of latest configuration update."
+    )
+    schedule: Missing[Union[Literal["weekly"], None]] = Field(
+        default=UNSET, description="The frequency of the periodic analysis."
+    )
+    ai_findings_option: Missing[Union[Literal["disabled", "on_push"], None]] = Field(
+        default=UNSET, description="The AI findings configuration for the repository."
     )
 
 
-model_rebuild(CodeQualitySetupUpdateAnyof2)
+model_rebuild(CodeQualitySetup)
 
-__all__ = ("CodeQualitySetupUpdateAnyof2",)
+__all__ = ("CodeQualitySetup",)

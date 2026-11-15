@@ -9,44 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0539 import (
-    TimelineCrossReferencedEventPropSourceType,
-    TimelineCrossReferencedEventPropSourceTypeForResponse,
-)
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0514 import IssueReferenceType, IssueReferenceTypeForResponse
 
 
-class TimelineCrossReferencedEventType(TypedDict):
-    """Timeline Cross Referenced Event
+class ParentIssueRemovedIssueEventType(TypedDict):
+    """Parent-issue Removed Issue Event
 
-    Timeline Cross Referenced Event
+    Parent-issue Removed Issue Event
     """
 
-    event: Literal["cross-referenced"]
-    actor: NotRequired[SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    source: TimelineCrossReferencedEventPropSourceType
-
-
-class TimelineCrossReferencedEventTypeForResponse(TypedDict):
-    """Timeline Cross Referenced Event
-
-    Timeline Cross Referenced Event
-    """
-
-    event: Literal["cross-referenced"]
-    actor: NotRequired[SimpleUserTypeForResponse]
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
     created_at: str
-    updated_at: str
-    source: TimelineCrossReferencedEventPropSourceTypeForResponse
+    performed_via_github_app: Union[IntegrationType, None]
+    parent_issue: Union[IssueReferenceType, None]
+
+
+class ParentIssueRemovedIssueEventTypeForResponse(TypedDict):
+    """Parent-issue Removed Issue Event
+
+    Parent-issue Removed Issue Event
+    """
+
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserTypeForResponse
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[IntegrationTypeForResponse, None]
+    parent_issue: Union[IssueReferenceTypeForResponse, None]
 
 
 __all__ = (
-    "TimelineCrossReferencedEventType",
-    "TimelineCrossReferencedEventTypeForResponse",
+    "ParentIssueRemovedIssueEventType",
+    "ParentIssueRemovedIssueEventTypeForResponse",
 )

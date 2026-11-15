@@ -14,48 +14,20 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ExternalVulnerabilitySyncResult(GitHubModel):
-    """External Vulnerability Sync Result
+class ExternalVulnerabilitySyncAccepted(GitHubModel):
+    """External Vulnerability Sync Accepted
 
-    Result of an external vulnerability synchronization operation
+    Response when an external vulnerability sync request is accepted for
+    asynchronous processing
     """
 
-    processed: int = Field(description="Total number of vulnerabilities processed")
-    created: int = Field(description="Number of new vulnerabilities created")
-    updated: int = Field(description="Number of existing vulnerabilities updated")
-    withdrawn: int = Field(description="Number of vulnerabilities marked as withdrawn")
-    errors: int = Field(description="Number of vulnerabilities that failed to process")
-    results: list[ExternalVulnerabilitySyncResultPropResultsItems] = Field(
-        description="Detailed result for each processed vulnerability"
-    )
+    id: str = Field(description="Job status ID for polling")
+    url: str = Field(description="URL to poll for sync results")
+    status: Literal["queued"] = Field(description="Initial job status")
 
 
-class ExternalVulnerabilitySyncResultPropResultsItems(GitHubModel):
-    """ExternalVulnerabilitySyncResultPropResultsItems"""
+model_rebuild(ExternalVulnerabilitySyncAccepted)
 
-    external_id: str = Field(
-        description="The external ID of the vulnerability (corresponds to the `id` field in the request payload)"
-    )
-    status: Literal["created", "updated", "withdrawn", "error"] = Field(
-        description="The processing status"
-    )
-    ghsa_id: Missing[str] = Field(
-        default=UNSET,
-        description="The advisory ID assigned to the vulnerability. For innersource vulnerabilities this is a GHIS ID. Present for successful operations.",
-    )
-    error: Missing[str] = Field(
-        default=UNSET, description="Error message (present only when status is 'error')"
-    )
-
-
-model_rebuild(ExternalVulnerabilitySyncResult)
-model_rebuild(ExternalVulnerabilitySyncResultPropResultsItems)
-
-__all__ = (
-    "ExternalVulnerabilitySyncResult",
-    "ExternalVulnerabilitySyncResultPropResultsItems",
-)
+__all__ = ("ExternalVulnerabilitySyncAccepted",)

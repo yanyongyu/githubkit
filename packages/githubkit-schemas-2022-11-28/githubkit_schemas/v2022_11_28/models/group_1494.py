@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,23 +18,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoForksPostBody(GitHubModel):
-    """ReposOwnerRepoForksPostBody"""
+class ReposOwnerRepoCopilotCodeReviewSettingsPatchBody(GitHubModel):
+    """ReposOwnerRepoCopilotCodeReviewSettingsPatchBody"""
 
-    organization: Missing[str] = Field(
+    review_effort: Missing[str] = Field(
         default=UNSET,
-        description="Optional parameter to specify the organization name if forking into an organization.",
+        description="The review effort for the repository. Use `inherit` to clear the repository's value. Only efforts listed in the settings' `available_review_efforts` are accepted, and a rejected effort's error message lists them. For more information, see [Review effort level](https://docs.github.com/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/code-review#review-effort-level).",
     )
-    name: Missing[str] = Field(
+    severity_filter: Missing[Literal["no_filter", "low", "low_and_medium"]] = Field(
         default=UNSET,
-        description="When forking from an existing repository, a new name for the fork.",
+        description="Which review comment severities Copilot code review leaves out. Can only be set when the severity filter is available for the repository.",
     )
-    default_branch_only: Missing[bool] = Field(
+    custom_instructions_enabled: Missing[bool] = Field(
         default=UNSET,
-        description="When forking from an existing repository, fork with only the default branch.",
+        description="Whether reviews use the repository's custom instructions.",
+    )
+    mcp_enabled: Missing[bool] = Field(
+        default=UNSET, description="Whether reviews can use MCP servers."
     )
 
 
-model_rebuild(ReposOwnerRepoForksPostBody)
+model_rebuild(ReposOwnerRepoCopilotCodeReviewSettingsPatchBody)
 
-__all__ = ("ReposOwnerRepoForksPostBody",)
+__all__ = ("ReposOwnerRepoCopilotCodeReviewSettingsPatchBody",)

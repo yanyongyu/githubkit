@@ -9,106 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Any, TypeAlias
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0479 import MetadataType, MetadataTypeForResponse
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-class SnapshotType(TypedDict):
-    """snapshot
+class DependabotRunnerSettingsType(TypedDict):
+    """Dependabot runner settings
 
-    Create a new snapshot of a repository's dependencies.
+    The runner Dependabot uses for this repository, as shown in the repository
+    settings.
     """
 
-    version: int
-    job: SnapshotPropJobType
-    sha: str
-    ref: str
-    detector: SnapshotPropDetectorType
-    metadata: NotRequired[MetadataType]
-    manifests: NotRequired[SnapshotPropManifestsType]
-    scanned: _dt.datetime
+    runner_type: Literal["standard", "labeled"]
+    runner_labels: list[str]
+    runner_group: Union[str, None]
 
 
-class SnapshotTypeForResponse(TypedDict):
-    """snapshot
+class DependabotRunnerSettingsTypeForResponse(TypedDict):
+    """Dependabot runner settings
 
-    Create a new snapshot of a repository's dependencies.
+    The runner Dependabot uses for this repository, as shown in the repository
+    settings.
     """
 
-    version: int
-    job: SnapshotPropJobTypeForResponse
-    sha: str
-    ref: str
-    detector: SnapshotPropDetectorTypeForResponse
-    metadata: NotRequired[MetadataTypeForResponse]
-    manifests: NotRequired[SnapshotPropManifestsTypeForResponse]
-    scanned: str
-
-
-class SnapshotPropJobType(TypedDict):
-    """SnapshotPropJob"""
-
-    id: str
-    correlator: str
-    html_url: NotRequired[str]
-
-
-class SnapshotPropJobTypeForResponse(TypedDict):
-    """SnapshotPropJob"""
-
-    id: str
-    correlator: str
-    html_url: NotRequired[str]
-
-
-class SnapshotPropDetectorType(TypedDict):
-    """SnapshotPropDetector
-
-    A description of the detector used.
-    """
-
-    name: str
-    version: str
-    url: str
-
-
-class SnapshotPropDetectorTypeForResponse(TypedDict):
-    """SnapshotPropDetector
-
-    A description of the detector used.
-    """
-
-    name: str
-    version: str
-    url: str
-
-
-SnapshotPropManifestsType: TypeAlias = dict[str, Any]
-"""SnapshotPropManifests
-
-A collection of package manifests, which are a collection of related
-dependencies declared in a file or representing a logical group of dependencies.
-"""
-
-
-SnapshotPropManifestsTypeForResponse: TypeAlias = dict[str, Any]
-"""SnapshotPropManifests
-
-A collection of package manifests, which are a collection of related
-dependencies declared in a file or representing a logical group of dependencies.
-"""
+    runner_type: Literal["standard", "labeled"]
+    runner_labels: list[str]
+    runner_group: Union[str, None]
 
 
 __all__ = (
-    "SnapshotPropDetectorType",
-    "SnapshotPropDetectorTypeForResponse",
-    "SnapshotPropJobType",
-    "SnapshotPropJobTypeForResponse",
-    "SnapshotPropManifestsType",
-    "SnapshotPropManifestsTypeForResponse",
-    "SnapshotType",
-    "SnapshotTypeForResponse",
+    "DependabotRunnerSettingsType",
+    "DependabotRunnerSettingsTypeForResponse",
 )

@@ -10,129 +10,338 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Any, Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
+from .group_0046 import MilestoneType, MilestoneTypeForResponse
+from .group_0047 import IssueTypeType, IssueTypeTypeForResponse
+from .group_0048 import ReactionRollupType, ReactionRollupTypeForResponse
+from .group_0049 import (
+    IssueDependenciesSummaryType,
+    IssueDependenciesSummaryTypeForResponse,
+    SubIssuesSummaryType,
+    SubIssuesSummaryTypeForResponse,
+)
+from .group_0052 import IssueCommentType, IssueCommentTypeForResponse
+from .group_0053 import IssueFieldValueType, IssueFieldValueTypeForResponse
+from .group_0554 import (
+    SearchResultTextMatchesItemsType,
+    SearchResultTextMatchesItemsTypeForResponse,
+)
 
-class GpgKeyType(TypedDict):
-    """GPG Key
 
-    A unique encryption key
+class IssueSearchResultItemType(TypedDict):
+    """Issue Search Result Item
+
+    Issue Search Result Item
     """
 
+    status: NotRequired[Union[IssueSearchResultItemPropStatusType, None]]
+    url: str
+    repository_url: str
+    labels_url: str
+    comments_url: str
+    events_url: str
+    html_url: str
     id: int
-    name: NotRequired[Union[str, None]]
-    primary_key_id: Union[int, None]
-    key_id: str
-    public_key: str
-    emails: list[GpgKeyPropEmailsItemsType]
-    subkeys: list[GpgKeyPropSubkeysItemsType]
-    can_sign: bool
-    can_encrypt_comms: bool
-    can_encrypt_storage: bool
-    can_certify: bool
+    node_id: str
+    number: int
+    title: str
+    locked: bool
+    active_lock_reason: NotRequired[Union[str, None]]
+    assignees: NotRequired[Union[list[SimpleUserType], None]]
+    user: Union[SimpleUserType, None]
+    labels: list[IssueSearchResultItemPropLabelsItemsType]
+    sub_issues_summary: NotRequired[SubIssuesSummaryType]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
+    issue_field_values: NotRequired[list[IssueFieldValueType]]
+    state: str
+    state_reason: NotRequired[Union[str, None]]
+    assignee: Union[SimpleUserType, None]
+    milestone: Union[MilestoneType, None]
+    comments: int
     created_at: _dt.datetime
-    expires_at: Union[_dt.datetime, None]
-    revoked: bool
-    raw_key: Union[str, None]
+    updated_at: _dt.datetime
+    closed_at: Union[_dt.datetime, None]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
+    pull_request: NotRequired[IssueSearchResultItemPropPullRequestType]
+    body: NotRequired[str]
+    score: float
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    draft: NotRequired[bool]
+    repository: NotRequired[RepositoryType]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
+    timeline_url: NotRequired[str]
+    type: NotRequired[Union[IssueTypeType, None]]
+    performed_via_github_app: NotRequired[Union[IntegrationType, None]]
+    pinned_comment: NotRequired[Union[IssueCommentType, None]]
+    reactions: NotRequired[ReactionRollupType]
 
 
-class GpgKeyTypeForResponse(TypedDict):
-    """GPG Key
+class IssueSearchResultItemTypeForResponse(TypedDict):
+    """Issue Search Result Item
 
-    A unique encryption key
+    Issue Search Result Item
+    """
+
+    status: NotRequired[Union[IssueSearchResultItemPropStatusTypeForResponse, None]]
+    url: str
+    repository_url: str
+    labels_url: str
+    comments_url: str
+    events_url: str
+    html_url: str
+    id: int
+    node_id: str
+    number: int
+    title: str
+    locked: bool
+    active_lock_reason: NotRequired[Union[str, None]]
+    assignees: NotRequired[Union[list[SimpleUserTypeForResponse], None]]
+    user: Union[SimpleUserTypeForResponse, None]
+    labels: list[IssueSearchResultItemPropLabelsItemsTypeForResponse]
+    sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
+    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
+    issue_field_values: NotRequired[list[IssueFieldValueTypeForResponse]]
+    state: str
+    state_reason: NotRequired[Union[str, None]]
+    assignee: Union[SimpleUserTypeForResponse, None]
+    milestone: Union[MilestoneTypeForResponse, None]
+    comments: int
+    created_at: str
+    updated_at: str
+    closed_at: Union[str, None]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsTypeForResponse]]
+    pull_request: NotRequired[IssueSearchResultItemPropPullRequestTypeForResponse]
+    body: NotRequired[str]
+    score: float
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    draft: NotRequired[bool]
+    repository: NotRequired[RepositoryTypeForResponse]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
+    timeline_url: NotRequired[str]
+    type: NotRequired[Union[IssueTypeTypeForResponse, None]]
+    performed_via_github_app: NotRequired[Union[IntegrationTypeForResponse, None]]
+    pinned_comment: NotRequired[Union[IssueCommentTypeForResponse, None]]
+    reactions: NotRequired[ReactionRollupTypeForResponse]
+
+
+class IssueSearchResultItemPropStatusType(TypedDict):
+    """IssueSearchResultItemPropStatus
+
+    The status of the issue, or `null` if it has none. Issue statuses are in preview
+    and only available to accounts enrolled in the preview.
     """
 
     id: int
+    name: str
+    category: str
+
+
+class IssueSearchResultItemPropStatusTypeForResponse(TypedDict):
+    """IssueSearchResultItemPropStatus
+
+    The status of the issue, or `null` if it has none. Issue statuses are in preview
+    and only available to accounts enrolled in the preview.
+    """
+
+    id: int
+    name: str
+    category: str
+
+
+class IssueSearchResultItemPropPullRequestType(TypedDict):
+    """IssueSearchResultItemPropPullRequest"""
+
+    merged_at: NotRequired[Union[_dt.datetime, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
+
+
+class IssueSearchResultItemPropPullRequestTypeForResponse(TypedDict):
+    """IssueSearchResultItemPropPullRequest"""
+
+    merged_at: NotRequired[Union[str, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
+
+
+class IssueSearchResultItemPropLabelsItemsType(TypedDict):
+    """IssueSearchResultItemPropLabelsItems"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    color: NotRequired[str]
+    default: NotRequired[bool]
+    description: NotRequired[Union[str, None]]
+    archived_at: NotRequired[Union[_dt.datetime, None]]
+    archived_by: NotRequired[
+        Union[IssueSearchResultItemPropLabelsItemsPropArchivedByType, None]
+    ]
+
+
+class IssueSearchResultItemPropLabelsItemsTypeForResponse(TypedDict):
+    """IssueSearchResultItemPropLabelsItems"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    color: NotRequired[str]
+    default: NotRequired[bool]
+    description: NotRequired[Union[str, None]]
+    archived_at: NotRequired[Union[str, None]]
+    archived_by: NotRequired[
+        Union[IssueSearchResultItemPropLabelsItemsPropArchivedByTypeForResponse, None]
+    ]
+
+
+class IssueSearchResultItemPropLabelsItemsPropArchivedByType(TypedDict):
+    """IssueSearchResultItemPropLabelsItemsPropArchivedBy
+
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
     name: NotRequired[Union[str, None]]
-    primary_key_id: Union[int, None]
-    key_id: str
-    public_key: str
-    emails: list[GpgKeyPropEmailsItemsTypeForResponse]
-    subkeys: list[GpgKeyPropSubkeysItemsTypeForResponse]
-    can_sign: bool
-    can_encrypt_comms: bool
-    can_encrypt_storage: bool
-    can_certify: bool
-    created_at: str
-    expires_at: Union[str, None]
-    revoked: bool
-    raw_key: Union[str, None]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class GpgKeyPropEmailsItemsType(TypedDict):
-    """GpgKeyPropEmailsItems"""
+class IssueSearchResultItemPropLabelsItemsPropArchivedByTypeForResponse(TypedDict):
+    """IssueSearchResultItemPropLabelsItemsPropArchivedBy
 
-    email: NotRequired[str]
-    verified: NotRequired[bool]
+    The user who archived the label, or `null` if it has not been archived.
+    """
 
-
-class GpgKeyPropEmailsItemsTypeForResponse(TypedDict):
-    """GpgKeyPropEmailsItems"""
-
-    email: NotRequired[str]
-    verified: NotRequired[bool]
-
-
-class GpgKeyPropSubkeysItemsType(TypedDict):
-    """GpgKeyPropSubkeysItems"""
-
-    id: NotRequired[int]
-    primary_key_id: NotRequired[int]
-    key_id: NotRequired[str]
-    public_key: NotRequired[str]
-    emails: NotRequired[list[GpgKeyPropSubkeysItemsPropEmailsItemsType]]
-    subkeys: NotRequired[list[Any]]
-    can_sign: NotRequired[bool]
-    can_encrypt_comms: NotRequired[bool]
-    can_encrypt_storage: NotRequired[bool]
-    can_certify: NotRequired[bool]
-    created_at: NotRequired[str]
-    expires_at: NotRequired[Union[str, None]]
-    raw_key: NotRequired[Union[str, None]]
-    revoked: NotRequired[bool]
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class GpgKeyPropSubkeysItemsTypeForResponse(TypedDict):
-    """GpgKeyPropSubkeysItems"""
+class SearchIssuesGetResponse200Type(TypedDict):
+    """SearchIssuesGetResponse200"""
 
-    id: NotRequired[int]
-    primary_key_id: NotRequired[int]
-    key_id: NotRequired[str]
-    public_key: NotRequired[str]
-    emails: NotRequired[list[GpgKeyPropSubkeysItemsPropEmailsItemsTypeForResponse]]
-    subkeys: NotRequired[list[Any]]
-    can_sign: NotRequired[bool]
-    can_encrypt_comms: NotRequired[bool]
-    can_encrypt_storage: NotRequired[bool]
-    can_certify: NotRequired[bool]
-    created_at: NotRequired[str]
-    expires_at: NotRequired[Union[str, None]]
-    raw_key: NotRequired[Union[str, None]]
-    revoked: NotRequired[bool]
-
-
-class GpgKeyPropSubkeysItemsPropEmailsItemsType(TypedDict):
-    """GpgKeyPropSubkeysItemsPropEmailsItems"""
-
-    email: NotRequired[str]
-    verified: NotRequired[bool]
+    total_count: int
+    incomplete_results: bool
+    items: list[IssueSearchResultItemType]
+    search_type: Literal["lexical", "semantic", "hybrid"]
+    lexical_fallback_reason: NotRequired[
+        list[
+            Literal[
+                "no_text_terms",
+                "quoted_text",
+                "non_issue_target",
+                "or_boolean_not_supported",
+                "no_accessible_repos",
+                "server_error",
+                "only_non_semantic_fields_requested",
+                "service_unavailable",
+            ]
+        ]
+    ]
 
 
-class GpgKeyPropSubkeysItemsPropEmailsItemsTypeForResponse(TypedDict):
-    """GpgKeyPropSubkeysItemsPropEmailsItems"""
+class SearchIssuesGetResponse200TypeForResponse(TypedDict):
+    """SearchIssuesGetResponse200"""
 
-    email: NotRequired[str]
-    verified: NotRequired[bool]
+    total_count: int
+    incomplete_results: bool
+    items: list[IssueSearchResultItemTypeForResponse]
+    search_type: Literal["lexical", "semantic", "hybrid"]
+    lexical_fallback_reason: NotRequired[
+        list[
+            Literal[
+                "no_text_terms",
+                "quoted_text",
+                "non_issue_target",
+                "or_boolean_not_supported",
+                "no_accessible_repos",
+                "server_error",
+                "only_non_semantic_fields_requested",
+                "service_unavailable",
+            ]
+        ]
+    ]
 
 
 __all__ = (
-    "GpgKeyPropEmailsItemsType",
-    "GpgKeyPropEmailsItemsTypeForResponse",
-    "GpgKeyPropSubkeysItemsPropEmailsItemsType",
-    "GpgKeyPropSubkeysItemsPropEmailsItemsTypeForResponse",
-    "GpgKeyPropSubkeysItemsType",
-    "GpgKeyPropSubkeysItemsTypeForResponse",
-    "GpgKeyType",
-    "GpgKeyTypeForResponse",
+    "IssueSearchResultItemPropLabelsItemsPropArchivedByType",
+    "IssueSearchResultItemPropLabelsItemsPropArchivedByTypeForResponse",
+    "IssueSearchResultItemPropLabelsItemsType",
+    "IssueSearchResultItemPropLabelsItemsTypeForResponse",
+    "IssueSearchResultItemPropPullRequestType",
+    "IssueSearchResultItemPropPullRequestTypeForResponse",
+    "IssueSearchResultItemPropStatusType",
+    "IssueSearchResultItemPropStatusTypeForResponse",
+    "IssueSearchResultItemType",
+    "IssueSearchResultItemTypeForResponse",
+    "SearchIssuesGetResponse200Type",
+    "SearchIssuesGetResponse200TypeForResponse",
 )

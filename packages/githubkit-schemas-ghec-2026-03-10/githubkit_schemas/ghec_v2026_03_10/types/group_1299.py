@@ -9,26 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Any, TypeAlias
 
-from .group_0075 import ActionsPolicyType, ActionsPolicyTypeForResponse
-
-
-class EnterprisesEnterpriseActionsPoliciesGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsPoliciesGetResponse200"""
-
-    total_count: int
-    policies: list[ActionsPolicyType]
+EmojisGetResponse200Type: TypeAlias = dict[str, Any]
+"""EmojisGetResponse200
+"""
 
 
-class EnterprisesEnterpriseActionsPoliciesGetResponse200TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseActionsPoliciesGetResponse200"""
-
-    total_count: int
-    policies: list[ActionsPolicyTypeForResponse]
+EmojisGetResponse200TypeForResponse: TypeAlias = dict[str, Any]
+"""EmojisGetResponse200
+"""
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsPoliciesGetResponse200Type",
-    "EnterprisesEnterpriseActionsPoliciesGetResponse200TypeForResponse",
+    "EmojisGetResponse200Type",
+    "EmojisGetResponse200TypeForResponse",
 )

@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Annotated, Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,115 +17,116 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0037 import DependabotAlertSecurityVulnerability
-from .group_0038 import DependabotAlertSecurityAdvisory
-from .group_0039 import DependabotAlertDismissalRequestSimple
-from .group_0395 import DependabotAlertPropDependency
 
+class FileCommit(GitHubModel):
+    """File Commit
 
-class DependabotAlert(GitHubModel):
-    """DependabotAlert
-
-    A Dependabot alert.
+    File Commit
     """
 
-    number: int = Field(description="The security alert number.")
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"] = Field(
-        description="The state of the Dependabot alert."
-    )
-    dependency: DependabotAlertPropDependency = Field(
-        description="Details for the vulnerable dependency."
-    )
-    security_advisory: DependabotAlertSecurityAdvisory = Field(
-        description="Details for the GitHub Security Advisory."
-    )
-    security_vulnerability: DependabotAlertSecurityVulnerability = Field(
-        description="Details pertaining to one vulnerable version range for the advisory."
-    )
-    url: str = Field(description="The REST API URL of the alert resource.")
-    html_url: str = Field(description="The GitHub URL of the alert resource.")
-    created_at: _dt.datetime = Field(
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    updated_at: _dt.datetime = Field(
-        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    dismissed_at: Union[_dt.datetime, None] = Field(
-        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    dismissed_by: Union[SimpleUser, None] = Field()
-    dismissed_reason: Union[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-        None,
-    ] = Field(description="The reason that the alert was dismissed.")
-    dismissed_comment: Union[Annotated[str, Field(max_length=280)], None] = Field(
-        description="An optional comment associated with the alert's dismissal."
-    )
-    fixed_at: Union[_dt.datetime, None] = Field(
-        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    auto_dismissed_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    dismissal_request: Missing[Union[DependabotAlertDismissalRequestSimple, None]] = (
-        Field(
-            default=UNSET,
-            title="Dependabot alert dismissal request",
-            description="Information about an active dismissal request for this Dependabot alert.",
-        )
-    )
-    assignees: Missing[list[SimpleUser]] = Field(
-        default=UNSET, description="The users assigned to this alert."
-    )
-    reachability: Missing[DependabotAlertPropReachability] = Field(
-        default=UNSET,
-        description="The reachability result for the vulnerability that triggered the alert, indicating whether a\nvulnerable function is reachable from the repository's own code.\n",
+    content: Union[FileCommitPropContent, None] = Field()
+    commit: FileCommitPropCommit = Field()
+
+
+class FileCommitPropContent(GitHubModel):
+    """FileCommitPropContent"""
+
+    name: Missing[str] = Field(default=UNSET)
+    path: Missing[str] = Field(default=UNSET)
+    sha: Missing[str] = Field(default=UNSET)
+    size: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    git_url: Missing[str] = Field(default=UNSET)
+    download_url: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    links: Missing[FileCommitPropContentPropLinks] = Field(
+        default=UNSET, alias="_links"
     )
 
 
-class DependabotAlertPropReachability(GitHubModel):
-    """DependabotAlertPropReachability
+class FileCommitPropContentPropLinks(GitHubModel):
+    """FileCommitPropContentPropLinks"""
 
-    The reachability result for the vulnerability that triggered the alert,
-    indicating whether a
-    vulnerable function is reachable from the repository's own code.
-    """
-
-    verdict: Literal[
-        "reachable", "unreachable", "potentially_reachable", "unavailable", "disabled"
-    ] = Field(
-        description="The reachability verdict for the alert.\n\n- `reachable`: a path from the repository's code reaches a vulnerable function.\n- `unreachable`: no path from the repository's code reaches a vulnerable function.\n- `potentially_reachable`: reachability could not be determined with confidence; review manually.\n- `unavailable`: no verdict has been computed for the alert yet.\n- `disabled`: reachability analysis is not enabled for the repository.\n"
-    )
-    reason: Missing[
-        Literal[
-            "unknown",
-            "unavailable_unsupported_ecosystem",
-            "unavailable_analysis_timed_out",
-            "potentially_reachable_invalid_manifest_path",
-            "potentially_reachable_missing_vulnerable_function_annotation",
-            "potentially_reachable_dependency_not_found",
-            "potentially_reachable_dependency_analysis_incomplete",
-            "potentially_reachable_repository_analysis_incomplete",
-            "potentially_reachable_call_found_outside_manifest_scope",
-            "potentially_reachable_unclassified_analysis_state",
-            "reachable_vulnerable_function_called",
-            "unreachable_vulnerable_function_not_called",
-            "potentially_reachable_unresolved_dynamic_call",
-        ]
-    ] = Field(
-        default=UNSET,
-        description="The reason for the reachability verdict. This field is omitted when reachability analysis is disabled or no result has been computed.",
-    )
+    self_: Missing[str] = Field(default=UNSET, alias="self")
+    git: Missing[str] = Field(default=UNSET)
+    html: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(DependabotAlert)
-model_rebuild(DependabotAlertPropReachability)
+class FileCommitPropCommit(GitHubModel):
+    """FileCommitPropCommit"""
+
+    sha: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    author: Missing[FileCommitPropCommitPropAuthor] = Field(default=UNSET)
+    committer: Missing[FileCommitPropCommitPropCommitter] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    tree: Missing[FileCommitPropCommitPropTree] = Field(default=UNSET)
+    parents: Missing[list[FileCommitPropCommitPropParentsItems]] = Field(default=UNSET)
+    verification: Missing[FileCommitPropCommitPropVerification] = Field(default=UNSET)
+
+
+class FileCommitPropCommitPropAuthor(GitHubModel):
+    """FileCommitPropCommitPropAuthor"""
+
+    date: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    email: Missing[str] = Field(default=UNSET)
+
+
+class FileCommitPropCommitPropCommitter(GitHubModel):
+    """FileCommitPropCommitPropCommitter"""
+
+    date: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    email: Missing[str] = Field(default=UNSET)
+
+
+class FileCommitPropCommitPropTree(GitHubModel):
+    """FileCommitPropCommitPropTree"""
+
+    url: Missing[str] = Field(default=UNSET)
+    sha: Missing[str] = Field(default=UNSET)
+
+
+class FileCommitPropCommitPropParentsItems(GitHubModel):
+    """FileCommitPropCommitPropParentsItems"""
+
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    sha: Missing[str] = Field(default=UNSET)
+
+
+class FileCommitPropCommitPropVerification(GitHubModel):
+    """FileCommitPropCommitPropVerification"""
+
+    verified: Missing[bool] = Field(default=UNSET)
+    reason: Missing[str] = Field(default=UNSET)
+    signature: Missing[Union[str, None]] = Field(default=UNSET)
+    payload: Missing[Union[str, None]] = Field(default=UNSET)
+    verified_at: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+model_rebuild(FileCommit)
+model_rebuild(FileCommitPropContent)
+model_rebuild(FileCommitPropContentPropLinks)
+model_rebuild(FileCommitPropCommit)
+model_rebuild(FileCommitPropCommitPropAuthor)
+model_rebuild(FileCommitPropCommitPropCommitter)
+model_rebuild(FileCommitPropCommitPropTree)
+model_rebuild(FileCommitPropCommitPropParentsItems)
+model_rebuild(FileCommitPropCommitPropVerification)
 
 __all__ = (
-    "DependabotAlert",
-    "DependabotAlertPropReachability",
+    "FileCommit",
+    "FileCommitPropCommit",
+    "FileCommitPropCommitPropAuthor",
+    "FileCommitPropCommitPropCommitter",
+    "FileCommitPropCommitPropParentsItems",
+    "FileCommitPropCommitPropTree",
+    "FileCommitPropCommitPropVerification",
+    "FileCommitPropContent",
+    "FileCommitPropContentPropLinks",
 )

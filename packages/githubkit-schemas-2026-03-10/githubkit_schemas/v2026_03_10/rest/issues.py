@@ -798,6 +798,7 @@ class IssuesClient:
         stream: bool = False,
         title: Union[str, int],
         body: Missing[str] = UNSET,
+        status: Missing[str] = UNSET,
         milestone: Missing[Union[str, int, None]] = UNSET,
         labels: Missing[
             list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
@@ -899,6 +900,7 @@ class IssuesClient:
         stream: bool = False,
         title: Union[str, int],
         body: Missing[str] = UNSET,
+        status: Missing[str] = UNSET,
         milestone: Missing[Union[str, int, None]] = UNSET,
         labels: Missing[
             list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
@@ -1862,6 +1864,7 @@ class IssuesClient:
         title: Missing[Union[str, int, None]] = UNSET,
         body: Missing[Union[str, None]] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
+        status: Missing[str] = UNSET,
         state_reason: Missing[
             Union[Literal["completed", "not_planned", "duplicate", "reopened"], None]
         ] = UNSET,
@@ -1989,6 +1992,7 @@ class IssuesClient:
         title: Missing[Union[str, int, None]] = UNSET,
         body: Missing[Union[str, None]] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
+        status: Missing[str] = UNSET,
         state_reason: Missing[
             Union[Literal["completed", "not_planned", "duplicate", "reopened"], None]
         ] = UNSET,
@@ -2401,6 +2405,8 @@ class IssuesClient:
         issue_number: int,
         artifact_number: int,
         *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
@@ -2434,11 +2440,17 @@ class IssuesClient:
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/artifacts/{artifact_number}"
 
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
             url,
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=Union[
@@ -2459,6 +2471,8 @@ class IssuesClient:
         issue_number: int,
         artifact_number: int,
         *,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
@@ -2492,11 +2506,17 @@ class IssuesClient:
 
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/artifacts/{artifact_number}"
 
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
             url,
+            params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
             response_model=Union[
@@ -4474,7 +4494,7 @@ class IssuesClient:
 
         PUT /repos/{owner}/{repo}/issues/{issue_number}/issue-field-values
 
-        Set custom field values for an issue, replacing any existing values. You can set values for organization-level issue fields that have been defined for the repository's organization.
+        Set custom field values for an issue, replacing any existing values. You can set values for issue fields that have been defined for the repository's owner.
 
         This endpoint supports the following field data types:
         - **`text`**: String values for text fields
@@ -4577,7 +4597,7 @@ class IssuesClient:
 
         PUT /repos/{owner}/{repo}/issues/{issue_number}/issue-field-values
 
-        Set custom field values for an issue, replacing any existing values. You can set values for organization-level issue fields that have been defined for the repository's organization.
+        Set custom field values for an issue, replacing any existing values. You can set values for issue fields that have been defined for the repository's owner.
 
         This endpoint supports the following field data types:
         - **`text`**: String values for text fields
@@ -4680,7 +4700,7 @@ class IssuesClient:
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/issue-field-values
 
-        Add custom field values to an issue. You can set values for organization-level issue fields that have been defined for the repository's organization.
+        Add custom field values to an issue. You can set values for issue fields that have been defined for the repository's owner.
         Adding an empty array will clear all existing field values for the issue.
 
         This endpoint supports the following field data types:
@@ -4782,7 +4802,7 @@ class IssuesClient:
 
         POST /repos/{owner}/{repo}/issues/{issue_number}/issue-field-values
 
-        Add custom field values to an issue. You can set values for organization-level issue fields that have been defined for the repository's organization.
+        Add custom field values to an issue. You can set values for issue fields that have been defined for the repository's owner.
         Adding an empty array will clear all existing field values for the issue.
 
         This endpoint supports the following field data types:

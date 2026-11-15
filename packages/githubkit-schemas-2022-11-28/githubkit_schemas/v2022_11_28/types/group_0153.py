@@ -14,28 +14,26 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationActionsVariableType(TypedDict):
-    """Actions Variable for an Organization
+class OrganizationActionsSecretType(TypedDict):
+    """Actions Secret for an Organization
 
-    Organization variable for GitHub Actions.
+    Secrets for GitHub Actions for an organization.
     """
 
     name: str
-    value: str
     created_at: _dt.datetime
     updated_at: _dt.datetime
     visibility: Literal["all", "private", "selected"]
     selected_repositories_url: NotRequired[str]
 
 
-class OrganizationActionsVariableTypeForResponse(TypedDict):
-    """Actions Variable for an Organization
+class OrganizationActionsSecretTypeForResponse(TypedDict):
+    """Actions Secret for an Organization
 
-    Organization variable for GitHub Actions.
+    Secrets for GitHub Actions for an organization.
     """
 
     name: str
-    value: str
     created_at: str
     updated_at: str
     visibility: Literal["all", "private", "selected"]
@@ -43,6 +41,6 @@ class OrganizationActionsVariableTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "OrganizationActionsVariableType",
-    "OrganizationActionsVariableTypeForResponse",
+    "OrganizationActionsSecretType",
+    "OrganizationActionsSecretTypeForResponse",
 )

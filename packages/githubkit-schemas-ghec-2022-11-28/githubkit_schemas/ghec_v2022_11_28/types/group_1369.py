@@ -9,24 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202Type(TypedDict):
-    """EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202"""
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody"""
 
-    message: str
+    default_availability: (
+        EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType
+    )
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202TypeForResponse(
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody"""
+
+    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse
+
+
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202"""
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
 
-    message: str
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
+
+
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
+
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202Type",
-    "EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202TypeForResponse",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyType",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyTypeForResponse",
 )

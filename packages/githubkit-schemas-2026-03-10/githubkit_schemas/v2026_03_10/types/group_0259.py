@@ -13,38 +13,36 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0260 import (
-    RepositoryRuleCodeCoveragePropParametersType,
-    RepositoryRuleCodeCoveragePropParametersTypeForResponse,
+    RepositoryRuleCodeQualityPropParametersType,
+    RepositoryRuleCodeQualityPropParametersTypeForResponse,
 )
 
 
-class RepositoryRuleCodeCoverageType(TypedDict):
-    """code_coverage
+class RepositoryRuleCodeQualityType(TypedDict):
+    """code_quality
 
-    Enforce minimum line coverage thresholds on pull requests. This rule evaluates
-    uploaded coverage data but does not wait for coverage uploads. To ensure
-    coverage is evaluated before merging, make each status check associated with a
-    coverage upload a required status check.
+    Choose which severity levels of code quality results should block pull request
+    merges. When configured, a code quality analysis must be done on the pull
+    request before the changes can be merged.
     """
 
-    type: Literal["code_coverage"]
-    parameters: NotRequired[RepositoryRuleCodeCoveragePropParametersType]
+    type: Literal["code_quality"]
+    parameters: NotRequired[RepositoryRuleCodeQualityPropParametersType]
 
 
-class RepositoryRuleCodeCoverageTypeForResponse(TypedDict):
-    """code_coverage
+class RepositoryRuleCodeQualityTypeForResponse(TypedDict):
+    """code_quality
 
-    Enforce minimum line coverage thresholds on pull requests. This rule evaluates
-    uploaded coverage data but does not wait for coverage uploads. To ensure
-    coverage is evaluated before merging, make each status check associated with a
-    coverage upload a required status check.
+    Choose which severity levels of code quality results should block pull request
+    merges. When configured, a code quality analysis must be done on the pull
+    request before the changes can be merged.
     """
 
-    type: Literal["code_coverage"]
-    parameters: NotRequired[RepositoryRuleCodeCoveragePropParametersTypeForResponse]
+    type: Literal["code_quality"]
+    parameters: NotRequired[RepositoryRuleCodeQualityPropParametersTypeForResponse]
 
 
 __all__ = (
-    "RepositoryRuleCodeCoverageType",
-    "RepositoryRuleCodeCoverageTypeForResponse",
+    "RepositoryRuleCodeQualityType",
+    "RepositoryRuleCodeQualityTypeForResponse",
 )

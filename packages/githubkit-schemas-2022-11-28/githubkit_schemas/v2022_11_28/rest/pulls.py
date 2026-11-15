@@ -30,6 +30,7 @@ if TYPE_CHECKING:
 
     from ..models import (
         Commit,
+        CopilotCodeReviewRequest,
         DiffEntry,
         PullRequest,
         PullRequestMergeAsyncResult,
@@ -48,6 +49,7 @@ if TYPE_CHECKING:
     )
     from ..types import (
         CommitTypeForResponse,
+        CopilotCodeReviewRequestTypeForResponse,
         DiffEntryTypeForResponse,
         PullRequestMergeAsyncResultTypeForResponse,
         PullRequestMergeResultTypeForResponse,
@@ -61,6 +63,7 @@ if TYPE_CHECKING:
         ReposOwnerRepoPullsPostBodyType,
         ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType,
         ReposOwnerRepoPullsPullNumberCommentsPostBodyType,
+        ReposOwnerRepoPullsPullNumberCopilotCodeReviewPostBodyType,
         ReposOwnerRepoPullsPullNumberMergeAsyncPutBodyType,
         ReposOwnerRepoPullsPullNumberMergePutBodyType,
         ReposOwnerRepoPullsPullNumberPatchBodyType,
@@ -1783,6 +1786,232 @@ class PullsClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=list[Commit],
+        )
+
+    @overload
+    def request_copilot_code_review(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            Union[ReposOwnerRepoPullsPullNumberCopilotCodeReviewPostBodyType, None]
+        ] = UNSET,
+    ) -> Response[
+        CopilotCodeReviewRequest, CopilotCodeReviewRequestTypeForResponse
+    ]: ...
+
+    @overload
+    def request_copilot_code_review(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        review_effort: Missing[str] = UNSET,
+    ) -> Response[
+        CopilotCodeReviewRequest, CopilotCodeReviewRequestTypeForResponse
+    ]: ...
+
+    def request_copilot_code_review(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            Union[ReposOwnerRepoPullsPullNumberCopilotCodeReviewPostBodyType, None]
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[CopilotCodeReviewRequest, CopilotCodeReviewRequestTypeForResponse]:
+        """pulls/request-copilot-code-review
+
+        POST /repos/{owner}/{repo}/pulls/{pull_number}/copilot-code-review
+
+        Requests a Copilot code review for a pull request. Every call expresses intent to start a
+        new review: if no Copilot review has been requested yet, an initial request is created; if
+        the most recent Copilot review has already completed (including if it was later dismissed or
+        superseded), a new request is created automatically to continue the review lifecycle. If a
+        Copilot code review request is already pending for the pull request, no new request is
+        created and the response is `409`.
+
+        If the actor or repository is not eligible for Copilot code review, the actor has no quota
+        remaining, or the licensing organization is unavailable, no request is created and the
+        response is `422` with a stable `failure_reason`. A `review_effort` is accepted only when that
+        effort level is available for the repository and actor; an unrecognized or unavailable
+        `review_effort` returns `422` with `failure_reason` `INVALID_REVIEW_EFFORT`. If
+        the actor, repository owner, or requesting application owner has been flagged, the response
+        is `403` with `failure_reason` `ACTOR_FLAGGED`. If the per-actor or per-owner request rate
+        limit is exceeded, the response is `429` with `failure_reason` `RATE_LIMITED`. If Copilot
+        code review cannot be serviced right now, the response is `503`.
+
+        Existing human and team review requests on the pull request are left unchanged.
+
+        See also: https://docs.github.com/rest/pulls/copilot-code-review#request-a-copilot-code-review-for-a-pull-request
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            CopilotCodeReviewRequest,
+            CopilotCodeReviewRequestDenied,
+            ReposOwnerRepoPullsPullNumberCopilotCodeReviewPostBody,
+        )
+
+        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/copilot-code-review"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                Union[None, ReposOwnerRepoPullsPullNumberCopilotCodeReviewPostBody],
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotCodeReviewRequest,
+            error_models={
+                "401": BasicError,
+                "403": CopilotCodeReviewRequestDenied,
+                "404": BasicError,
+                "409": CopilotCodeReviewRequestDenied,
+                "422": CopilotCodeReviewRequestDenied,
+                "429": CopilotCodeReviewRequestDenied,
+                "503": CopilotCodeReviewRequestDenied,
+            },
+        )
+
+    @overload
+    async def async_request_copilot_code_review(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            Union[ReposOwnerRepoPullsPullNumberCopilotCodeReviewPostBodyType, None]
+        ] = UNSET,
+    ) -> Response[
+        CopilotCodeReviewRequest, CopilotCodeReviewRequestTypeForResponse
+    ]: ...
+
+    @overload
+    async def async_request_copilot_code_review(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        review_effort: Missing[str] = UNSET,
+    ) -> Response[
+        CopilotCodeReviewRequest, CopilotCodeReviewRequestTypeForResponse
+    ]: ...
+
+    async def async_request_copilot_code_review(
+        self,
+        owner: str,
+        repo: str,
+        pull_number: int,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[
+            Union[ReposOwnerRepoPullsPullNumberCopilotCodeReviewPostBodyType, None]
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[CopilotCodeReviewRequest, CopilotCodeReviewRequestTypeForResponse]:
+        """pulls/request-copilot-code-review
+
+        POST /repos/{owner}/{repo}/pulls/{pull_number}/copilot-code-review
+
+        Requests a Copilot code review for a pull request. Every call expresses intent to start a
+        new review: if no Copilot review has been requested yet, an initial request is created; if
+        the most recent Copilot review has already completed (including if it was later dismissed or
+        superseded), a new request is created automatically to continue the review lifecycle. If a
+        Copilot code review request is already pending for the pull request, no new request is
+        created and the response is `409`.
+
+        If the actor or repository is not eligible for Copilot code review, the actor has no quota
+        remaining, or the licensing organization is unavailable, no request is created and the
+        response is `422` with a stable `failure_reason`. A `review_effort` is accepted only when that
+        effort level is available for the repository and actor; an unrecognized or unavailable
+        `review_effort` returns `422` with `failure_reason` `INVALID_REVIEW_EFFORT`. If
+        the actor, repository owner, or requesting application owner has been flagged, the response
+        is `403` with `failure_reason` `ACTOR_FLAGGED`. If the per-actor or per-owner request rate
+        limit is exceeded, the response is `429` with `failure_reason` `RATE_LIMITED`. If Copilot
+        code review cannot be serviced right now, the response is `503`.
+
+        Existing human and team review requests on the pull request are left unchanged.
+
+        See also: https://docs.github.com/rest/pulls/copilot-code-review#request-a-copilot-code-review-for-a-pull-request
+        """
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            CopilotCodeReviewRequest,
+            CopilotCodeReviewRequestDenied,
+            ReposOwnerRepoPullsPullNumberCopilotCodeReviewPostBody,
+        )
+
+        url = f"/repos/{owner}/{repo}/pulls/{pull_number}/copilot-code-review"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                Union[None, ReposOwnerRepoPullsPullNumberCopilotCodeReviewPostBody],
+                json,
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=CopilotCodeReviewRequest,
+            error_models={
+                "401": BasicError,
+                "403": CopilotCodeReviewRequestDenied,
+                "404": BasicError,
+                "409": CopilotCodeReviewRequestDenied,
+                "422": CopilotCodeReviewRequestDenied,
+                "429": CopilotCodeReviewRequestDenied,
+                "503": CopilotCodeReviewRequestDenied,
+            },
         )
 
     def list_files(

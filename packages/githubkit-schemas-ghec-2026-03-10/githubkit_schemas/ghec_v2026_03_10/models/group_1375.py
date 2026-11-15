@@ -18,26 +18,54 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBody(
+class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200"""
+
+    default_availability: Missing[
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability
+    ] = Field(default=UNSET)
+    models: list[
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems
+    ] = Field()
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBod
-    y
-    """
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability"""
 
-    credential_type: Literal[
-        "classic_pat", "fine_grained_pat", "ssh_key", "oauth_app_token"
-    ] = Field(description="The type of credential to revoke for the user.")
-    revoke_credentials: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to also destroy the actual credential of this type owned by the\nuser. This option is only available for Enterprise Managed User (EMU)\nenterprises. When set to `true`, the credential of the given type owned\nby the user will be destroyed in addition to the credential authorizations.\nNote that `oauth_app_token` credentials cannot be destroyed; for that type\nonly the credential authorizations are revoked.",
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"] = Field(
+        description="The enterprise default availability for models that have not been configured. `delegate_to_organizations` is only returned for enterprises that manage Copilot through organizations."
     )
 
 
+class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems"""
+
+    model_name: str = Field()
+    display_name: str = Field()
+    policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_organizations",
+        "delegate_to_default",
+        "unconfigured",
+    ] = Field(
+        description="The enterprise policy for the model. `delegate_to_organizations` is returned for enterprises that manage Copilot through organizations."
+    )
+
+
+model_rebuild(EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200)
 model_rebuild(
-    EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBody
+    EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability
 )
+model_rebuild(EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems)
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostBody",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems",
 )

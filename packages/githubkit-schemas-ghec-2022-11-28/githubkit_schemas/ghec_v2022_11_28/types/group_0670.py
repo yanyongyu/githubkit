@@ -9,49 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing_extensions import TypedDict
+
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class WebhooksDeployKeyType(TypedDict):
-    """WebhooksDeployKey
+class StarredRepositoryType(TypedDict):
+    """Starred Repository
 
-    The [`deploy key`](https://docs.github.com/enterprise-cloud@latest/rest/deploy-
-    keys/deploy-keys#get-a-deploy-key) resource.
+    Starred Repository
     """
 
-    added_by: NotRequired[Union[str, None]]
-    created_at: str
-    id: int
-    key: str
-    last_used: NotRequired[Union[str, None]]
-    read_only: bool
-    title: str
-    url: str
-    verified: bool
-    enabled: NotRequired[bool]
+    starred_at: _dt.datetime
+    repo: RepositoryType
 
 
-class WebhooksDeployKeyTypeForResponse(TypedDict):
-    """WebhooksDeployKey
+class StarredRepositoryTypeForResponse(TypedDict):
+    """Starred Repository
 
-    The [`deploy key`](https://docs.github.com/enterprise-cloud@latest/rest/deploy-
-    keys/deploy-keys#get-a-deploy-key) resource.
+    Starred Repository
     """
 
-    added_by: NotRequired[Union[str, None]]
-    created_at: str
-    id: int
-    key: str
-    last_used: NotRequired[Union[str, None]]
-    read_only: bool
-    title: str
-    url: str
-    verified: bool
-    enabled: NotRequired[bool]
+    starred_at: str
+    repo: RepositoryTypeForResponse
 
 
 __all__ = (
-    "WebhooksDeployKeyType",
-    "WebhooksDeployKeyTypeForResponse",
+    "StarredRepositoryType",
+    "StarredRepositoryTypeForResponse",
 )

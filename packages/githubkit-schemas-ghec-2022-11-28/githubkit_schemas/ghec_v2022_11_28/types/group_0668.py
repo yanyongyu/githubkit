@@ -9,81 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import TypedDict
 
-from .group_0669 import (
-    DependabotAlertWithdrawnWebhookPropDependencyType,
-    DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse,
-)
 
+class SocialAccountType(TypedDict):
+    """Social account
 
-class DependabotAlertWithdrawnWebhookType(TypedDict):
-    """DependabotAlertWithdrawnWebhook
-
-    Identifiers for a withdrawn Dependabot alert, captured before deletion so that
-    consumers can reconcile external records. This is not a full alert
-    representation.
+    Social media account
     """
 
-    id: int
-    node_id: str
-    number: int
-    state: Literal["withdrawn"]
-    dependency: DependabotAlertWithdrawnWebhookPropDependencyType
-    security_advisory: DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType
+    provider: str
     url: str
-    html_url: str
-    created_at: _dt.datetime
-    withdrawn_at: _dt.datetime
 
 
-class DependabotAlertWithdrawnWebhookTypeForResponse(TypedDict):
-    """DependabotAlertWithdrawnWebhook
+class SocialAccountTypeForResponse(TypedDict):
+    """Social account
 
-    Identifiers for a withdrawn Dependabot alert, captured before deletion so that
-    consumers can reconcile external records. This is not a full alert
-    representation.
+    Social media account
     """
 
-    id: int
-    node_id: str
-    number: int
-    state: Literal["withdrawn"]
-    dependency: DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse
-    security_advisory: (
-        DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse
-    )
+    provider: str
     url: str
-    html_url: str
-    created_at: str
-    withdrawn_at: str
-
-
-class DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType(TypedDict):
-    """DependabotAlertWithdrawnWebhookPropSecurityAdvisory
-
-    Identifiers of the advisory that produced the withdrawn alert.
-    """
-
-    ghsa_id: str
-    cve_id: Union[str, None]
-
-
-class DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse(TypedDict):
-    """DependabotAlertWithdrawnWebhookPropSecurityAdvisory
-
-    Identifiers of the advisory that produced the withdrawn alert.
-    """
-
-    ghsa_id: str
-    cve_id: Union[str, None]
 
 
 __all__ = (
-    "DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType",
-    "DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse",
-    "DependabotAlertWithdrawnWebhookType",
-    "DependabotAlertWithdrawnWebhookTypeForResponse",
+    "SocialAccountType",
+    "SocialAccountTypeForResponse",
 )

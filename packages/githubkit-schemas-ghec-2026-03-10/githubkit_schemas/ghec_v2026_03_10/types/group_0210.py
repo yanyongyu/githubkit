@@ -9,54 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class SecretScanningCustomPatternType(TypedDict):
-    """Secret Scanning Custom Pattern
+class SecretScanningLocationActionsLogType(TypedDict):
+    """SecretScanningLocationActionsLog
 
-    A custom pattern for secret scanning.
+    Represents an 'actions_log' secret scanning location type. The path identifies
+    the workflow definition, while line and column positions identify the secret in
+    the raw job log, not in the workflow file.
     """
 
-    id: int
-    name: str
-    pattern: str
-    slug: str
-    state: Literal["published", "unpublished"]
-    push_protection_enabled: bool
-    start_delimiter: NotRequired[Union[str, None]]
-    end_delimiter: NotRequired[Union[str, None]]
-    must_match: NotRequired[Union[list[str], None]]
-    must_not_match: NotRequired[Union[list[str], None]]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
+    path: str
+    start_line: float
+    end_line: float
+    start_column: float
+    end_column: float
 
 
-class SecretScanningCustomPatternTypeForResponse(TypedDict):
-    """Secret Scanning Custom Pattern
+class SecretScanningLocationActionsLogTypeForResponse(TypedDict):
+    """SecretScanningLocationActionsLog
 
-    A custom pattern for secret scanning.
+    Represents an 'actions_log' secret scanning location type. The path identifies
+    the workflow definition, while line and column positions identify the secret in
+    the raw job log, not in the workflow file.
     """
 
-    id: int
-    name: str
-    pattern: str
-    slug: str
-    state: Literal["published", "unpublished"]
-    push_protection_enabled: bool
-    start_delimiter: NotRequired[Union[str, None]]
-    end_delimiter: NotRequired[Union[str, None]]
-    must_match: NotRequired[Union[list[str], None]]
-    must_not_match: NotRequired[Union[list[str], None]]
-    custom_pattern_version: NotRequired[Union[str, None]]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+    path: str
+    start_line: float
+    end_line: float
+    start_column: float
+    end_column: float
 
 
 __all__ = (
-    "SecretScanningCustomPatternType",
-    "SecretScanningCustomPatternTypeForResponse",
+    "SecretScanningLocationActionsLogType",
+    "SecretScanningLocationActionsLogTypeForResponse",
 )

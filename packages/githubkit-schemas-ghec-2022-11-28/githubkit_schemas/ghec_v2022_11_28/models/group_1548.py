@@ -9,31 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
+
+from .group_0110 import CopilotSeatDetails
 
 
-class OrgsOrgCopilotFeaturePoliciesPatchBody(GitHubModel):
-    """OrgsOrgCopilotFeaturePoliciesPatchBody"""
+class OrgsOrgCopilotBillingSeatsGetResponse200(GitHubModel):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
 
-    default_availability: OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability = Field()
-
-
-class OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability(GitHubModel):
-    """OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
-
-    policy_state: Literal["enabled", "disabled"] = Field(
-        description="The organization default policy applied to newly released Copilot features and clients."
+    total_seats: Missing[int] = Field(
+        default=UNSET,
+        description="Total number of Copilot seats for the organization currently being billed.",
     )
+    seats: Missing[list[CopilotSeatDetails]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgCopilotFeaturePoliciesPatchBody)
-model_rebuild(OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability)
+model_rebuild(OrgsOrgCopilotBillingSeatsGetResponse200)
 
-__all__ = (
-    "OrgsOrgCopilotFeaturePoliciesPatchBody",
-    "OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability",
-)
+__all__ = ("OrgsOrgCopilotBillingSeatsGetResponse200",)

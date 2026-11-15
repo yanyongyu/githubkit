@@ -10,34 +10,26 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0109 import EnterpriseTeamType, EnterpriseTeamTypeForResponse
 
 
-class ExternalVulnerabilitySyncAcceptedType(TypedDict):
-    """External Vulnerability Sync Accepted
+class EnterpriseUserRoleAssignmentAllof1Type(TypedDict):
+    """EnterpriseUserRoleAssignmentAllof1"""
 
-    Response when an external vulnerability sync request is accepted for
-    asynchronous processing
-    """
-
-    id: str
-    url: str
-    status: Literal["queued"]
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
+    inherited_from: NotRequired[list[EnterpriseTeamType]]
 
 
-class ExternalVulnerabilitySyncAcceptedTypeForResponse(TypedDict):
-    """External Vulnerability Sync Accepted
+class EnterpriseUserRoleAssignmentAllof1TypeForResponse(TypedDict):
+    """EnterpriseUserRoleAssignmentAllof1"""
 
-    Response when an external vulnerability sync request is accepted for
-    asynchronous processing
-    """
-
-    id: str
-    url: str
-    status: Literal["queued"]
+    assignment: NotRequired[Literal["direct", "indirect", "mixed"]]
+    inherited_from: NotRequired[list[EnterpriseTeamTypeForResponse]]
 
 
 __all__ = (
-    "ExternalVulnerabilitySyncAcceptedType",
-    "ExternalVulnerabilitySyncAcceptedTypeForResponse",
+    "EnterpriseUserRoleAssignmentAllof1Type",
+    "EnterpriseUserRoleAssignmentAllof1TypeForResponse",
 )

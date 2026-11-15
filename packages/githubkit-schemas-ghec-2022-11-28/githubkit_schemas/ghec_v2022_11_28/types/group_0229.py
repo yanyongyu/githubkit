@@ -9,153 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class BillingCostCenterMembershipType(TypedDict):
-    """BillingCostCenterMembership"""
+class GetBudgetUserStatesType(TypedDict):
+    """GetBudgetUserStates"""
 
-    resource: BillingCostCenterMembershipPropResourceType
-    memberships: list[BillingCostCenterMembershipPropMembershipsItemsType]
-
-
-class BillingCostCenterMembershipTypeForResponse(TypedDict):
-    """BillingCostCenterMembership"""
-
-    resource: BillingCostCenterMembershipPropResourceTypeForResponse
-    memberships: list[BillingCostCenterMembershipPropMembershipsItemsTypeForResponse]
+    user_states: list[GetBudgetUserStatesPropUserStatesItemsType]
+    has_next_page: bool
+    total_count: int
 
 
-class BillingCostCenterMembershipPropResourceType(TypedDict):
-    """BillingCostCenterMembershipPropResource"""
+class GetBudgetUserStatesTypeForResponse(TypedDict):
+    """GetBudgetUserStates"""
 
-    type: Literal["user", "organization", "repository", "team"]
-    identifier: Union[
-        BillingCostCenterMembershipPropResourcePropIdentifierOneof0Type,
-        BillingCostCenterMembershipPropResourcePropIdentifierOneof1Type,
-        BillingCostCenterMembershipPropResourcePropIdentifierOneof2Type,
-        BillingCostCenterMembershipPropResourcePropIdentifierOneof3Type,
-    ]
+    user_states: list[GetBudgetUserStatesPropUserStatesItemsTypeForResponse]
+    has_next_page: bool
+    total_count: int
 
 
-class BillingCostCenterMembershipPropResourceTypeForResponse(TypedDict):
-    """BillingCostCenterMembershipPropResource"""
+class GetBudgetUserStatesPropUserStatesItemsType(TypedDict):
+    """GetBudgetUserStatesPropUserStatesItems"""
 
-    type: Literal["user", "organization", "repository", "team"]
-    identifier: Union[
-        BillingCostCenterMembershipPropResourcePropIdentifierOneof0TypeForResponse,
-        BillingCostCenterMembershipPropResourcePropIdentifierOneof1TypeForResponse,
-        BillingCostCenterMembershipPropResourcePropIdentifierOneof2TypeForResponse,
-        BillingCostCenterMembershipPropResourcePropIdentifierOneof3TypeForResponse,
-    ]
+    user: NotRequired[str]
+    consumed_amount: float
+    target_amount: float
+    override_budget_id: NotRequired[str]
 
 
-class BillingCostCenterMembershipPropResourcePropIdentifierOneof0Type(TypedDict):
-    """BillingCostCenterMembershipPropResourcePropIdentifierOneof0"""
+class GetBudgetUserStatesPropUserStatesItemsTypeForResponse(TypedDict):
+    """GetBudgetUserStatesPropUserStatesItems"""
 
-    login: str
-
-
-class BillingCostCenterMembershipPropResourcePropIdentifierOneof0TypeForResponse(
-    TypedDict
-):
-    """BillingCostCenterMembershipPropResourcePropIdentifierOneof0"""
-
-    login: str
-
-
-class BillingCostCenterMembershipPropResourcePropIdentifierOneof1Type(TypedDict):
-    """BillingCostCenterMembershipPropResourcePropIdentifierOneof1"""
-
-    name: str
-
-
-class BillingCostCenterMembershipPropResourcePropIdentifierOneof1TypeForResponse(
-    TypedDict
-):
-    """BillingCostCenterMembershipPropResourcePropIdentifierOneof1"""
-
-    name: str
-
-
-class BillingCostCenterMembershipPropResourcePropIdentifierOneof2Type(TypedDict):
-    """BillingCostCenterMembershipPropResourcePropIdentifierOneof2"""
-
-    owner: str
-    name: str
-
-
-class BillingCostCenterMembershipPropResourcePropIdentifierOneof2TypeForResponse(
-    TypedDict
-):
-    """BillingCostCenterMembershipPropResourcePropIdentifierOneof2"""
-
-    owner: str
-    name: str
-
-
-class BillingCostCenterMembershipPropResourcePropIdentifierOneof3Type(TypedDict):
-    """BillingCostCenterMembershipPropResourcePropIdentifierOneof3"""
-
-    slug: str
-
-
-class BillingCostCenterMembershipPropResourcePropIdentifierOneof3TypeForResponse(
-    TypedDict
-):
-    """BillingCostCenterMembershipPropResourcePropIdentifierOneof3"""
-
-    slug: str
-
-
-class BillingCostCenterMembershipPropMembershipsItemsType(TypedDict):
-    """BillingCostCenterMembershipPropMembershipsItems"""
-
-    cost_center: NotRequired[
-        BillingCostCenterMembershipPropMembershipsItemsPropCostCenterType
-    ]
-
-
-class BillingCostCenterMembershipPropMembershipsItemsTypeForResponse(TypedDict):
-    """BillingCostCenterMembershipPropMembershipsItems"""
-
-    cost_center: NotRequired[
-        BillingCostCenterMembershipPropMembershipsItemsPropCostCenterTypeForResponse
-    ]
-
-
-class BillingCostCenterMembershipPropMembershipsItemsPropCostCenterType(TypedDict):
-    """BillingCostCenterMembershipPropMembershipsItemsPropCostCenter"""
-
-    id: str
-    name: str
-
-
-class BillingCostCenterMembershipPropMembershipsItemsPropCostCenterTypeForResponse(
-    TypedDict
-):
-    """BillingCostCenterMembershipPropMembershipsItemsPropCostCenter"""
-
-    id: str
-    name: str
+    user: NotRequired[str]
+    consumed_amount: float
+    target_amount: float
+    override_budget_id: NotRequired[str]
 
 
 __all__ = (
-    "BillingCostCenterMembershipPropMembershipsItemsPropCostCenterType",
-    "BillingCostCenterMembershipPropMembershipsItemsPropCostCenterTypeForResponse",
-    "BillingCostCenterMembershipPropMembershipsItemsType",
-    "BillingCostCenterMembershipPropMembershipsItemsTypeForResponse",
-    "BillingCostCenterMembershipPropResourcePropIdentifierOneof0Type",
-    "BillingCostCenterMembershipPropResourcePropIdentifierOneof0TypeForResponse",
-    "BillingCostCenterMembershipPropResourcePropIdentifierOneof1Type",
-    "BillingCostCenterMembershipPropResourcePropIdentifierOneof1TypeForResponse",
-    "BillingCostCenterMembershipPropResourcePropIdentifierOneof2Type",
-    "BillingCostCenterMembershipPropResourcePropIdentifierOneof2TypeForResponse",
-    "BillingCostCenterMembershipPropResourcePropIdentifierOneof3Type",
-    "BillingCostCenterMembershipPropResourcePropIdentifierOneof3TypeForResponse",
-    "BillingCostCenterMembershipPropResourceType",
-    "BillingCostCenterMembershipPropResourceTypeForResponse",
-    "BillingCostCenterMembershipType",
-    "BillingCostCenterMembershipTypeForResponse",
+    "GetBudgetUserStatesPropUserStatesItemsType",
+    "GetBudgetUserStatesPropUserStatesItemsTypeForResponse",
+    "GetBudgetUserStatesType",
+    "GetBudgetUserStatesTypeForResponse",
 )

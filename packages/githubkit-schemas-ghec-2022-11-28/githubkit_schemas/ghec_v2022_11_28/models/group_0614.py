@@ -9,18 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ParticipationStats(GitHubModel):
-    """Participation Stats"""
+class RepositoryAdvisoryDescriptionValidationError(GitHubModel):
+    """Repository Advisory Description Validation Error
 
-    all_: list[int] = Field(alias="all")
-    owner: list[int] = Field()
+    The description does not answer the repository's report template.
+    """
+
+    message: str = Field()
+    documentation_url: str = Field()
+    errors: Missing[
+        list[RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(ParticipationStats)
+class RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems(GitHubModel):
+    """RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems"""
 
-__all__ = ("ParticipationStats",)
+    resource: Missing[str] = Field(default=UNSET)
+    field: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    code: str = Field(
+        description="A machine-readable identifier for the problem. `missing_section`, `empty_section`, `unchecked_required_option`, and `sections_out_of_order` come from validating the description against the repository's report template; other codes are shared with other validation failures on this endpoint."
+    )
+    index: Missing[int] = Field(default=UNSET)
+    value: Missing[Union[str, int, list[str], None]] = Field(default=UNSET)
+    section: Missing[str] = Field(
+        default=UNSET, description="The report template section the violation concerns."
+    )
+    option: Missing[str] = Field(
+        default=UNSET,
+        description="The checkbox option left unticked. Only present when `code` is `unchecked_required_option`.",
+    )
+
+
+model_rebuild(RepositoryAdvisoryDescriptionValidationError)
+model_rebuild(RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems)
+
+__all__ = (
+    "RepositoryAdvisoryDescriptionValidationError",
+    "RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems",
+)

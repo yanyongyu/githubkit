@@ -9,81 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBody
+class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesSchemaPatchBody"""
 
-    The team's customization document. Only the keys `pluginAssignments` and
-    `extraKnownMarketplaces` are supported.
+    properties: list[CustomPropertyBatchItemPayloadType]
+
+
+class OrgsOrgPropertiesSchemaPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgPropertiesSchemaPatchBody"""
+
+    properties: list[CustomPropertyBatchItemPayloadTypeForResponse]
+
+
+class CustomPropertyBatchItemPayloadType(TypedDict):
+    """Custom Property Batch Item Payload
+
+    Payload for a single custom property definition when creating or updating custom
+    properties in a batch
     """
 
-    plugin_assignments: NotRequired[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignmentsType
+    property_name: str
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[Literal["org_actors", "org_and_repo_actors"], None]
     ]
-    extra_known_marketplaces: NotRequired[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplacesType
-    ]
+    regex: NotRequired[Union[str, None]]
+    require_explicit_values: NotRequired[bool]
 
 
-class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBody
+class CustomPropertyBatchItemPayloadTypeForResponse(TypedDict):
+    """Custom Property Batch Item Payload
 
-    The team's customization document. Only the keys `pluginAssignments` and
-    `extraKnownMarketplaces` are supported.
+    Payload for a single custom property definition when creating or updating custom
+    properties in a batch
     """
 
-    plugin_assignments: NotRequired[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignmentsTypeForResponse
+    property_name: str
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[Literal["org_actors", "org_and_repo_actors"], None]
     ]
-    extra_known_marketplaces: NotRequired[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplacesTypeForResponse
-    ]
-
-
-OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignmentsType: TypeAlias = (
-    dict[str, Any]
-)
-"""OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignments
-
-Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.
-"""
-
-
-OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignmentsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignments
-
-Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.
-"""
-
-
-OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplacesType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplaces
-
-Additional plugin marketplaces available to the team, keyed by marketplace name.
-"""
-
-
-OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplacesTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplaces
-
-Additional plugin marketplaces available to the team, keyed by marketplace name.
-"""
+    regex: NotRequired[Union[str, None]]
+    require_explicit_values: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplacesType",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplacesTypeForResponse",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignmentsType",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignmentsTypeForResponse",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyType",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyTypeForResponse",
+    "CustomPropertyBatchItemPayloadType",
+    "CustomPropertyBatchItemPayloadTypeForResponse",
+    "OrgsOrgPropertiesSchemaPatchBodyType",
+    "OrgsOrgPropertiesSchemaPatchBodyTypeForResponse",
 )

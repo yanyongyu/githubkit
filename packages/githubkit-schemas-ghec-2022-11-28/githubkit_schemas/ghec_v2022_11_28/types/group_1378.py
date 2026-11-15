@@ -10,40 +10,32 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCredentialsExportsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseCredentialsExportsPostBody
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
 
-    Optional filters that scope the export to a subset of the inventory.
-    """
-
-    token_types: NotRequired[list[str]]
-    authorization_state: NotRequired[
-        Literal["currently_authorized", "member_owned_only"]
+    policy_state: Literal[
+        "enabled_for_all_orgs",
+        "disabled_for_all_orgs",
+        "enabled_for_selected_orgs",
+        "configured_by_org_admins",
     ]
-    owner: NotRequired[str]
-    organization: NotRequired[str]
-    application: NotRequired[str]
 
 
-class EnterprisesEnterpriseCredentialsExportsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCredentialsExportsPostBody
+class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
 
-    Optional filters that scope the export to a subset of the inventory.
-    """
-
-    token_types: NotRequired[list[str]]
-    authorization_state: NotRequired[
-        Literal["currently_authorized", "member_owned_only"]
+    policy_state: Literal[
+        "enabled_for_all_orgs",
+        "disabled_for_all_orgs",
+        "enabled_for_selected_orgs",
+        "configured_by_org_admins",
     ]
-    owner: NotRequired[str]
-    organization: NotRequired[str]
-    application: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialsExportsPostBodyType",
-    "EnterprisesEnterpriseCredentialsExportsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType",
+    "EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyTypeForResponse",
 )

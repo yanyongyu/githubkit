@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0659 import EnterpriseWebhooks
-from .group_0660 import SimpleInstallation
-from .group_0661 import OrganizationSimpleWebhooks
-from .group_0662 import RepositoryWebhooks
-from .group_0699 import WebhooksProjectCard
+from .group_0673 import EnterpriseWebhooks
+from .group_0674 import SimpleInstallation
+from .group_0675 import OrganizationSimpleWebhooks
+from .group_0676 import RepositoryWebhooks
+from .group_0969 import WebhookPackagePublishedPropPackage
 
 
-class WebhookProjectCardCreated(GitHubModel):
-    """project_card created event"""
+class WebhookPackagePublished(GitHubModel):
+    """package published event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["published"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,7 +44,9 @@ class WebhookProjectCardCreated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project_card: WebhooksProjectCard = Field(title="Project Card")
+    package: WebhookPackagePublishedPropPackage = Field(
+        description="Information about the package."
+    )
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
         title="Repository",
@@ -53,6 +55,6 @@ class WebhookProjectCardCreated(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookProjectCardCreated)
+model_rebuild(WebhookPackagePublished)
 
-__all__ = ("WebhookProjectCardCreated",)
+__all__ = ("WebhookPackagePublished",)

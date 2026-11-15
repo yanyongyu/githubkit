@@ -10,39 +10,29 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from .group_0610 import (
+    WebhooksLabelArchivedAllof1PropArchivedByType,
+    WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse,
+)
 
 
-class WebhooksProjectColumnType(TypedDict):
-    """Project Column"""
+class WebhooksLabelArchivedAllof1Type(TypedDict):
+    """WebhooksLabelArchivedAllof1"""
 
-    after_id: NotRequired[Union[int, None]]
-    cards_url: str
-    created_at: _dt.datetime
-    id: int
-    name: str
-    node_id: str
-    project_url: str
-    updated_at: _dt.datetime
-    url: str
+    archived_at: _dt.datetime
+    archived_by: WebhooksLabelArchivedAllof1PropArchivedByType
 
 
-class WebhooksProjectColumnTypeForResponse(TypedDict):
-    """Project Column"""
+class WebhooksLabelArchivedAllof1TypeForResponse(TypedDict):
+    """WebhooksLabelArchivedAllof1"""
 
-    after_id: NotRequired[Union[int, None]]
-    cards_url: str
-    created_at: str
-    id: int
-    name: str
-    node_id: str
-    project_url: str
-    updated_at: str
-    url: str
+    archived_at: str
+    archived_by: WebhooksLabelArchivedAllof1PropArchivedByTypeForResponse
 
 
 __all__ = (
-    "WebhooksProjectColumnType",
-    "WebhooksProjectColumnTypeForResponse",
+    "WebhooksLabelArchivedAllof1Type",
+    "WebhooksLabelArchivedAllof1TypeForResponse",
 )

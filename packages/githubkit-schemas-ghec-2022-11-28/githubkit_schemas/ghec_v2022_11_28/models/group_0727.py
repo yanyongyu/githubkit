@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,50 +18,42 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0659 import EnterpriseWebhooks
-from .group_0660 import SimpleInstallation
-from .group_0661 import OrganizationSimpleWebhooks
-from .group_0662 import RepositoryWebhooks
-from .group_0664 import ExemptionResponse
-from .group_0665 import ExemptionRequest
+from .group_0099 import SimpleRepository
+from .group_0217 import PublicMonitoringRepository
+from .group_0218 import BaseGist
+from .group_0728 import PublicMonitoringAlertWebhookPropAttribution
 
 
-class WebhookExemptionRequestResponseDismissed(GitHubModel):
-    """Exemption response dismissed event"""
+class PublicMonitoringAlertWebhook(GitHubModel):
+    """Public Monitoring Alert Webhook
 
-    action: Literal["response_dismissed"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)."',
+    A public monitoring alert as delivered via webhook.
+    """
+
+    number: int = Field(
+        ge=1.0,
+        description="The enterprise-scoped number of the public monitoring alert.",
     )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    url: str = Field(description="The REST API URL of the alert resource.")
+    secret_type: str = Field(
+        description="The type of secret that secret scanning detected."
     )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    secret_type_display_name: str = Field(
+        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."'
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    created_at: _dt.datetime = Field(
+        description="The time that the secret was detected in ISO 8601 format."
     )
-    exemption_request: ExemptionRequest = Field(
-        title="Exemption Request",
-        description="A request from a user to be exempted from a set of rules.",
+    validity: Literal["active", "inactive", "unknown"] = Field(
+        description="The validity status of the secret as of the latest validity check for the enterprise alert."
     )
-    exemption_response: ExemptionResponse = Field(
-        title="Exemption response",
-        description="A response to an exemption request by a delegated bypasser.",
+    repository: Union[SimpleRepository, PublicMonitoringRepository, None] = Field()
+    gist: Missing[Union[BaseGist, None]] = Field(default=UNSET)
+    attribution: PublicMonitoringAlertWebhookPropAttribution = Field(
+        description="Attribution information for the alert."
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookExemptionRequestResponseDismissed)
+model_rebuild(PublicMonitoringAlertWebhook)
 
-__all__ = ("WebhookExemptionRequestResponseDismissed",)
+__all__ = ("PublicMonitoringAlertWebhook",)

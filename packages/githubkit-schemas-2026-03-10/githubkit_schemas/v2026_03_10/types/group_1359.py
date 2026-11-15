@@ -9,47 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType(TypedDict):
-    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
+class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type(TypedDict):
+    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
 
-    repository_values: list[RepositoryExternalPropertyPayloadType]
-
-
-class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
-
-    repository_values: list[RepositoryExternalPropertyPayloadTypeForResponse]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-class RepositoryExternalPropertyPayloadType(TypedDict):
-    """Repository External Custom Property Value Payload
+class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422TypeForResponse(TypedDict):
+    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
 
-    Repository name and associated external custom property value
-    """
-
-    repository_name: str
-    value: Union[str, None]
-
-
-class RepositoryExternalPropertyPayloadTypeForResponse(TypedDict):
-    """Repository External Custom Property Value Payload
-
-    Repository name and associated external custom property value
-    """
-
-    repository_name: str
-    value: Union[str, None]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType",
-    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyTypeForResponse",
-    "RepositoryExternalPropertyPayloadType",
-    "RepositoryExternalPropertyPayloadTypeForResponse",
+    "OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type",
+    "OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422TypeForResponse",
 )

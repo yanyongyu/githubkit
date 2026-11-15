@@ -9,65 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
 
+class DependabotRunnerSettingsUpdateType(TypedDict):
+    """Dependabot runner settings update
 
-class DeploymentStatusType(TypedDict):
-    """Deployment Status
-
-    The status of a deployment.
+    The runner Dependabot uses for this repository. `standard` accepts only
+    `runner_type`.
     """
 
-    url: str
-    id: int
-    node_id: str
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
-    ]
-    creator: Union[SimpleUserType, None]
-    description: str
-    environment: NotRequired[str]
-    target_url: str
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    deployment_url: str
-    repository_url: str
-    environment_url: NotRequired[str]
-    log_url: NotRequired[str]
-    performed_via_github_app: NotRequired[Union[IntegrationType, None]]
+    runner_type: Literal["standard", "labeled"]
+    runner_labels: NotRequired[list[str]]
+    runner_group: NotRequired[Union[str, None]]
 
 
-class DeploymentStatusTypeForResponse(TypedDict):
-    """Deployment Status
+class DependabotRunnerSettingsUpdateTypeForResponse(TypedDict):
+    """Dependabot runner settings update
 
-    The status of a deployment.
+    The runner Dependabot uses for this repository. `standard` accepts only
+    `runner_type`.
     """
 
-    url: str
-    id: int
-    node_id: str
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
-    ]
-    creator: Union[SimpleUserTypeForResponse, None]
-    description: str
-    environment: NotRequired[str]
-    target_url: str
-    created_at: str
-    updated_at: str
-    deployment_url: str
-    repository_url: str
-    environment_url: NotRequired[str]
-    log_url: NotRequired[str]
-    performed_via_github_app: NotRequired[Union[IntegrationTypeForResponse, None]]
+    runner_type: Literal["standard", "labeled"]
+    runner_labels: NotRequired[list[str]]
+    runner_group: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "DeploymentStatusType",
-    "DeploymentStatusTypeForResponse",
+    "DependabotRunnerSettingsUpdateType",
+    "DependabotRunnerSettingsUpdateTypeForResponse",
 )

@@ -9,49 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0508 import IssueEventIntent
 
 
-class UnlabeledIssueEvent(GitHubModel):
-    """Unlabeled Issue Event
+class PorterLargeFile(GitHubModel):
+    """Porter Large File
 
-    Unlabeled Issue Event
+    Porter Large File
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["unlabeled"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[Integration, None] = Field()
-    label: UnlabeledIssueEventPropLabel = Field()
-    intent: Missing[Union[IssueEventIntent, None]] = Field(default=UNSET)
+    ref_name: str = Field()
+    path: str = Field()
+    oid: str = Field()
+    size: int = Field()
 
 
-class UnlabeledIssueEventPropLabel(GitHubModel):
-    """UnlabeledIssueEventPropLabel"""
+model_rebuild(PorterLargeFile)
 
-    name: str = Field()
-    color: str = Field()
-
-
-model_rebuild(UnlabeledIssueEvent)
-model_rebuild(UnlabeledIssueEventPropLabel)
-
-__all__ = (
-    "UnlabeledIssueEvent",
-    "UnlabeledIssueEventPropLabel",
-)
+__all__ = ("PorterLargeFile",)

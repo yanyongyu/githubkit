@@ -17,14 +17,16 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0260 import RepositoryRuleCodeCoveragePropParameters
+from .group_0243 import RepositoryRuleRequiredStatusChecksPropParameters
 
 
-class RepositoryRuleDetailedOneof18(GitHubModel):
-    """RepositoryRuleDetailedOneof18"""
+class RepositoryRuleDetailedOneof8(GitHubModel):
+    """RepositoryRuleDetailedOneof8"""
 
-    type: Literal["code_coverage"] = Field()
-    parameters: Missing[RepositoryRuleCodeCoveragePropParameters] = Field(default=UNSET)
+    type: Literal["required_status_checks"] = Field()
+    parameters: Missing[RepositoryRuleRequiredStatusChecksPropParameters] = Field(
+        default=UNSET
+    )
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
         description="The type of source for the ruleset that includes this rule.",
@@ -38,6 +40,6 @@ class RepositoryRuleDetailedOneof18(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof18)
+model_rebuild(RepositoryRuleDetailedOneof8)
 
-__all__ = ("RepositoryRuleDetailedOneof18",)
+__all__ = ("RepositoryRuleDetailedOneof8",)

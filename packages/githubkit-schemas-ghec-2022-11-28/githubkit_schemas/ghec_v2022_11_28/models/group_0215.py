@@ -18,18 +18,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class PublicMonitoringRepository(GitHubModel):
-    """PublicMonitoringRepository
+class SecretScanningCustomPatternToDelete(GitHubModel):
+    """Secret Scanning Custom Pattern To Delete
 
-    Delivered details for the public repository where the secret was found.
+    A custom pattern to delete in a bulk operation.
     """
 
-    name: str = Field()
-    full_name: str = Field()
-    private: bool = Field()
-    html_url: Missing[Union[str, None]] = Field(default=UNSET)
+    pattern_id: int = Field(description="The ID of the custom pattern to delete.")
+    custom_pattern_version: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
+    )
 
 
-model_rebuild(PublicMonitoringRepository)
+model_rebuild(SecretScanningCustomPatternToDelete)
 
-__all__ = ("PublicMonitoringRepository",)
+__all__ = ("SecretScanningCustomPatternToDelete",)

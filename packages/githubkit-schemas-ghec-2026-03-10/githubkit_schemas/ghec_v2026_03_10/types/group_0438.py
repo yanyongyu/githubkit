@@ -9,72 +9,113 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0097 import (
-    CodeScanningAlertLocationType,
-    CodeScanningAlertLocationTypeForResponse,
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0096 import (
+    CodeScanningAnalysisToolType,
+    CodeScanningAnalysisToolTypeForResponse,
+)
+from .group_0098 import (
+    CodeScanningAlertInstanceType,
+    CodeScanningAlertInstanceTypeForResponse,
+)
+from .group_0354 import PullRequestSimpleType, PullRequestSimpleTypeForResponse
+from .group_0436 import (
+    CodeScanningAlertLinkedIssueType,
+    CodeScanningAlertLinkedIssueTypeForResponse,
 )
 
 
-class CodeScanningAlertInstanceListType(TypedDict):
-    """CodeScanningAlertInstanceList"""
+class CodeScanningAlertType(TypedDict):
+    """CodeScanningAlert"""
 
-    ref: NotRequired[str]
-    analysis_key: NotRequired[str]
-    environment: NotRequired[str]
-    category: NotRequired[str]
-    state: NotRequired[Union[Literal["open", "fixed"], None]]
-    commit_sha: NotRequired[str]
-    message: NotRequired[CodeScanningAlertInstanceListPropMessageType]
-    location: NotRequired[CodeScanningAlertLocationType]
-    html_url: NotRequired[str]
-    classifications: NotRequired[
-        list[
-            Union[
-                Literal["source", "generated", "test", "library", "documentation"], None
-            ]
-        ]
+    number: int
+    created_at: _dt.datetime
+    updated_at: NotRequired[_dt.datetime]
+    url: str
+    html_url: str
+    instances_url: str
+    state: Union[Literal["open", "dismissed", "fixed"], None]
+    fixed_at: NotRequired[Union[_dt.datetime, None]]
+    dismissed_by: Union[SimpleUserType, None]
+    dismissed_at: Union[_dt.datetime, None]
+    dismissed_reason: Union[
+        Literal["false positive", "won't fix", "used in tests", "mitigated"], None
     ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    rule: CodeScanningAlertRuleType
+    tool: CodeScanningAnalysisToolType
+    most_recent_instance: CodeScanningAlertInstanceType
+    dismissal_approved_by: NotRequired[Union[SimpleUserType, None]]
+    assignees: NotRequired[list[SimpleUserType]]
+    linked_pull_requests: NotRequired[list[PullRequestSimpleType]]
+    linked_issues: NotRequired[list[CodeScanningAlertLinkedIssueType]]
 
 
-class CodeScanningAlertInstanceListTypeForResponse(TypedDict):
-    """CodeScanningAlertInstanceList"""
+class CodeScanningAlertTypeForResponse(TypedDict):
+    """CodeScanningAlert"""
 
-    ref: NotRequired[str]
-    analysis_key: NotRequired[str]
-    environment: NotRequired[str]
-    category: NotRequired[str]
-    state: NotRequired[Union[Literal["open", "fixed"], None]]
-    commit_sha: NotRequired[str]
-    message: NotRequired[CodeScanningAlertInstanceListPropMessageTypeForResponse]
-    location: NotRequired[CodeScanningAlertLocationTypeForResponse]
-    html_url: NotRequired[str]
-    classifications: NotRequired[
-        list[
-            Union[
-                Literal["source", "generated", "test", "library", "documentation"], None
-            ]
-        ]
+    number: int
+    created_at: str
+    updated_at: NotRequired[str]
+    url: str
+    html_url: str
+    instances_url: str
+    state: Union[Literal["open", "dismissed", "fixed"], None]
+    fixed_at: NotRequired[Union[str, None]]
+    dismissed_by: Union[SimpleUserTypeForResponse, None]
+    dismissed_at: Union[str, None]
+    dismissed_reason: Union[
+        Literal["false positive", "won't fix", "used in tests", "mitigated"], None
     ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    rule: CodeScanningAlertRuleTypeForResponse
+    tool: CodeScanningAnalysisToolTypeForResponse
+    most_recent_instance: CodeScanningAlertInstanceTypeForResponse
+    dismissal_approved_by: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    assignees: NotRequired[list[SimpleUserTypeForResponse]]
+    linked_pull_requests: NotRequired[list[PullRequestSimpleTypeForResponse]]
+    linked_issues: NotRequired[list[CodeScanningAlertLinkedIssueTypeForResponse]]
 
 
-class CodeScanningAlertInstanceListPropMessageType(TypedDict):
-    """CodeScanningAlertInstanceListPropMessage"""
+class CodeScanningAlertRuleType(TypedDict):
+    """CodeScanningAlertRule"""
 
-    text: NotRequired[str]
+    id: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    severity: NotRequired[Union[Literal["none", "note", "warning", "error"], None]]
+    security_severity_level: NotRequired[
+        Union[Literal["low", "medium", "high", "critical"], None]
+    ]
+    description: NotRequired[str]
+    full_description: NotRequired[str]
+    tags: NotRequired[Union[list[str], None]]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
 
 
-class CodeScanningAlertInstanceListPropMessageTypeForResponse(TypedDict):
-    """CodeScanningAlertInstanceListPropMessage"""
+class CodeScanningAlertRuleTypeForResponse(TypedDict):
+    """CodeScanningAlertRule"""
 
-    text: NotRequired[str]
+    id: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    severity: NotRequired[Union[Literal["none", "note", "warning", "error"], None]]
+    security_severity_level: NotRequired[
+        Union[Literal["low", "medium", "high", "critical"], None]
+    ]
+    description: NotRequired[str]
+    full_description: NotRequired[str]
+    tags: NotRequired[Union[list[str], None]]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "CodeScanningAlertInstanceListPropMessageType",
-    "CodeScanningAlertInstanceListPropMessageTypeForResponse",
-    "CodeScanningAlertInstanceListType",
-    "CodeScanningAlertInstanceListTypeForResponse",
+    "CodeScanningAlertRuleType",
+    "CodeScanningAlertRuleTypeForResponse",
+    "CodeScanningAlertType",
+    "CodeScanningAlertTypeForResponse",
 )

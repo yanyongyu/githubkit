@@ -9,18 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgInteractionLimitsGetResponse200Anyof1Type(TypedDict):
-    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
+class OrgsOrgCopilotModelPoliciesPatchBodyType(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchBody"""
+
+    default_availability: NotRequired[
+        OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType
+    ]
+    models: NotRequired[list[OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsType]]
 
 
-class OrgsOrgInteractionLimitsGetResponse200Anyof1TypeForResponse(TypedDict):
-    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
+class OrgsOrgCopilotModelPoliciesPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchBody"""
+
+    default_availability: NotRequired[
+        OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse
+    ]
+    models: NotRequired[
+        list[OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse]
+    ]
+
+
+class OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability
+
+    The organization's default availability for eligible models without an explicit
+    policy. It cannot be updated when it is inherited from the enterprise.
+    """
+
+    policy_state: Literal["enabled", "disabled"]
+
+
+class OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability
+
+    The organization's default availability for eligible models without an explicit
+    policy. It cannot be updated when it is inherited from the enterprise.
+    """
+
+    policy_state: Literal["enabled", "disabled"]
+
+
+class OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsType(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems"""
+
+    model_name: str
+    policy_state: Literal["enabled", "disabled"]
+
+
+class OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems"""
+
+    model_name: str
+    policy_state: Literal["enabled", "disabled"]
 
 
 __all__ = (
-    "OrgsOrgInteractionLimitsGetResponse200Anyof1Type",
-    "OrgsOrgInteractionLimitsGetResponse200Anyof1TypeForResponse",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsType",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse",
+    "OrgsOrgCopilotModelPoliciesPatchBodyType",
+    "OrgsOrgCopilotModelPoliciesPatchBodyTypeForResponse",
 )

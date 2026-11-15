@@ -9,34 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBody(GitHubModel):
-    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBody"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201(GitHubModel):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201
 
-    models: list[
-        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItems
-    ] = Field(min_length=1 if PYDANTIC_V2 else None)
+    The total number of seats created for the specified user(s).
+    """
 
-
-class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItems(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItems"""
-
-    model_name: str = Field(min_length=1)
-    policy_state: Literal["enabled", "disabled"] = Field()
+    seats_created: int = Field()
 
 
-model_rebuild(EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBody)
-model_rebuild(EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItems)
+model_rebuild(EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201)
 
-__all__ = (
-    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBody",
-    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItems",
-)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSelectedUsersPostResponse201",)

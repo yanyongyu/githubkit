@@ -9,22 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class CopilotSpaceCollaboratorAnyof0Allof1(GitHubModel):
-    """CopilotSpaceCollaboratorAnyof0Allof1"""
+class CodespacesPublicKey(GitHubModel):
+    """CodespacesPublicKey
 
-    actor_type: Literal["User"] = Field(description="The collaborator actor type.")
-    role: Literal["reader", "writer", "admin"] = Field(
-        description="The role granted to the collaborator"
-    )
+    The public key used for setting Codespaces secrets.
+    """
+
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
+    id: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    title: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(CopilotSpaceCollaboratorAnyof0Allof1)
+model_rebuild(CodespacesPublicKey)
 
-__all__ = ("CopilotSpaceCollaboratorAnyof0Allof1",)
+__all__ = ("CodespacesPublicKey",)

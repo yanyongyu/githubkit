@@ -14,117 +14,19 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class RepositoryRulePullRequestPropParameters(GitHubModel):
-    """RepositoryRulePullRequestPropParameters"""
+class RepositoryRuleParamsProofOfPresence(GitHubModel):
+    """ProofOfPresence
 
-    allowed_merge_methods: Missing[list[Literal["merge", "squash", "rebase"]]] = Field(
-        default=UNSET,
-        description="Array of allowed merge methods. Allowed values include `merge`, `squash`, and `rebase`. At least one option must be enabled.",
-    )
-    dismiss_stale_reviews_on_push: bool = Field(
-        description="New, reviewable commits pushed will dismiss previous pull request review approvals."
-    )
-    dismissal_restriction: Missing[RepositoryRuleParamsDismissalRestriction] = Field(
-        default=UNSET,
-        title="DismissalRestriction",
-        description="Specify people, teams, or apps allowed to dismiss pull request reviews.",
-    )
-    require_code_owner_review: bool = Field(
-        description="Require an approving review in pull requests that modify files that have a designated code owner."
-    )
-    require_extra_approval_for_unattributed_changes: Missing[bool] = Field(
-        default=UNSET,
-        description="When Copilot opens a pull request without a human collaborator, require one more approving review if a non-zero approval count is required.",
-    )
-    require_last_push_approval: bool = Field(
-        description="Whether the most recent reviewable push must be approved by someone other than the person who pushed it."
-    )
-    required_approving_review_count: int = Field(
-        le=10.0,
-        description="The number of approving reviews that are required before a pull request can be merged.",
-    )
-    required_review_thread_resolution: bool = Field(
-        description="All conversations on code must be resolved before a pull request can be merged."
-    )
-    required_reviewers: Missing[
-        list[RepositoryRuleParamsRequiredReviewerConfiguration]
-    ] = Field(
-        default=UNSET,
-        description="A collection of reviewers and associated file patterns. Each reviewer has a list of file patterns which determine the files that reviewer is required to review.",
-    )
-
-
-class RepositoryRuleParamsDismissalRestriction(GitHubModel):
-    """DismissalRestriction
-
-    Specify people, teams, or apps allowed to dismiss pull request reviews.
+    Require a fresh authentication before a pull request can be merged.
     """
 
-    allowed_actors: Missing[list[RepositoryRuleParamsActor]] = Field(
-        default=UNSET,
-        description="Specify people, teams, or apps allowed to dismiss pull request reviews.",
-    )
-    enabled: bool = Field(
-        description="Whether to restrict review dismissal to specific actors."
+    required_authentication_level: Literal["reauth", "mfa"] = Field(
+        description="The level of authentication required before a pull request can be merged."
     )
 
 
-class RepositoryRuleParamsActor(GitHubModel):
-    """Actor
+model_rebuild(RepositoryRuleParamsProofOfPresence)
 
-    An actor allowed to dismiss pull request reviews
-    """
-
-    id: int = Field(description="ID of the actor that can dismiss reviews.")
-    type: Literal["User", "Team", "IntegrationInstallation", "RepositoryRole"] = Field(
-        description="The type of the actor"
-    )
-
-
-class RepositoryRuleParamsRequiredReviewerConfiguration(GitHubModel):
-    """RequiredReviewerConfiguration
-
-    A reviewing team, and file patterns describing which files they must approve
-    changes to.
-    """
-
-    file_patterns: list[str] = Field(
-        description="Array of file patterns. Pull requests which change matching files must be approved by the specified team. File patterns use fnmatch syntax."
-    )
-    minimum_approvals: int = Field(
-        description="Minimum number of approvals required from the specified team. If set to zero, the team will be added to the pull request but approval is optional."
-    )
-    reviewer: RepositoryRuleParamsReviewer = Field(
-        title="Reviewer", description="A required reviewing team"
-    )
-
-
-class RepositoryRuleParamsReviewer(GitHubModel):
-    """Reviewer
-
-    A required reviewing team
-    """
-
-    id: int = Field(
-        description="ID of the reviewer which must review changes to matching files."
-    )
-    type: Literal["Team"] = Field(description="The type of the reviewer")
-
-
-model_rebuild(RepositoryRulePullRequestPropParameters)
-model_rebuild(RepositoryRuleParamsDismissalRestriction)
-model_rebuild(RepositoryRuleParamsActor)
-model_rebuild(RepositoryRuleParamsRequiredReviewerConfiguration)
-model_rebuild(RepositoryRuleParamsReviewer)
-
-__all__ = (
-    "RepositoryRuleParamsActor",
-    "RepositoryRuleParamsDismissalRestriction",
-    "RepositoryRuleParamsRequiredReviewerConfiguration",
-    "RepositoryRuleParamsReviewer",
-    "RepositoryRulePullRequestPropParameters",
-)
+__all__ = ("RepositoryRuleParamsProofOfPresence",)

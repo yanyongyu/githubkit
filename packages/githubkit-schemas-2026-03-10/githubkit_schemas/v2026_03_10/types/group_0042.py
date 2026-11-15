@@ -12,34 +12,43 @@ from __future__ import annotations
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0032 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0037 import (
+    DependabotAlertPackageType,
+    DependabotAlertPackageTypeForResponse,
+)
 
 
-class DependabotRepositoryAccessDetailsType(TypedDict):
-    """Dependabot Repository Access Details
+class DependabotAlertWithRepositoryPropDependencyType(TypedDict):
+    """DependabotAlertWithRepositoryPropDependency
 
-    Information about repositories that Dependabot is able to access in an
-    organization
+    Details for the vulnerable dependency.
     """
 
-    default_level: NotRequired[Union[Literal["public", "internal"], None]]
-    accessible_repositories: NotRequired[list[Union[SimpleRepositoryType, None]]]
+    package: NotRequired[DependabotAlertPackageType]
+    manifest_path: NotRequired[str]
+    version_requirement: NotRequired[Union[str, None]]
+    scope: NotRequired[Union[Literal["development", "runtime"], None]]
+    relationship: NotRequired[
+        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
+    ]
 
 
-class DependabotRepositoryAccessDetailsTypeForResponse(TypedDict):
-    """Dependabot Repository Access Details
+class DependabotAlertWithRepositoryPropDependencyTypeForResponse(TypedDict):
+    """DependabotAlertWithRepositoryPropDependency
 
-    Information about repositories that Dependabot is able to access in an
-    organization
+    Details for the vulnerable dependency.
     """
 
-    default_level: NotRequired[Union[Literal["public", "internal"], None]]
-    accessible_repositories: NotRequired[
-        list[Union[SimpleRepositoryTypeForResponse, None]]
+    package: NotRequired[DependabotAlertPackageTypeForResponse]
+    manifest_path: NotRequired[str]
+    version_requirement: NotRequired[Union[str, None]]
+    scope: NotRequired[Union[Literal["development", "runtime"], None]]
+    relationship: NotRequired[
+        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
     ]
 
 
 __all__ = (
-    "DependabotRepositoryAccessDetailsType",
-    "DependabotRepositoryAccessDetailsTypeForResponse",
+    "DependabotAlertWithRepositoryPropDependencyType",
+    "DependabotAlertWithRepositoryPropDependencyTypeForResponse",
 )

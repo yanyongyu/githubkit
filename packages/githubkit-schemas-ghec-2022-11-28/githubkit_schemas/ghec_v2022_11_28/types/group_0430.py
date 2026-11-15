@@ -13,11 +13,11 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeQualitySetupUpdateAnyof4Type(TypedDict):
-    """CodeQualitySetupUpdateAnyof4"""
+class CodeQualitySetupUpdateAnyof1Type(TypedDict):
+    """CodeQualitySetupUpdateAnyof1"""
 
     state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_type: Literal["standard", "labeled"]
     runner_label: NotRequired[Union[str, None]]
     languages: NotRequired[
         list[
@@ -26,14 +26,14 @@ class CodeQualitySetupUpdateAnyof4Type(TypedDict):
             ]
         ]
     ]
-    ai_findings_option: Literal["disabled", "on_push"]
+    ai_findings_option: NotRequired[Literal["disabled", "on_push"]]
 
 
-class CodeQualitySetupUpdateAnyof4TypeForResponse(TypedDict):
-    """CodeQualitySetupUpdateAnyof4"""
+class CodeQualitySetupUpdateAnyof1TypeForResponse(TypedDict):
+    """CodeQualitySetupUpdateAnyof1"""
 
     state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: NotRequired[Literal["standard", "labeled"]]
+    runner_type: Literal["standard", "labeled"]
     runner_label: NotRequired[Union[str, None]]
     languages: NotRequired[
         list[
@@ -42,10 +42,10 @@ class CodeQualitySetupUpdateAnyof4TypeForResponse(TypedDict):
             ]
         ]
     ]
-    ai_findings_option: Literal["disabled", "on_push"]
+    ai_findings_option: NotRequired[Literal["disabled", "on_push"]]
 
 
 __all__ = (
-    "CodeQualitySetupUpdateAnyof4Type",
-    "CodeQualitySetupUpdateAnyof4TypeForResponse",
+    "CodeQualitySetupUpdateAnyof1Type",
+    "CodeQualitySetupUpdateAnyof1TypeForResponse",
 )

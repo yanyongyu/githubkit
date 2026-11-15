@@ -13,19 +13,47 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class RepositoryRuleCodeQualityPropParametersType(TypedDict):
-    """RepositoryRuleCodeQualityPropParameters"""
+class RepositoryRuleCodeScanningPropParametersType(TypedDict):
+    """RepositoryRuleCodeScanningPropParameters"""
 
-    severity: Literal["errors", "warnings", "notes", "all"]
+    code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolType]
 
 
-class RepositoryRuleCodeQualityPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleCodeQualityPropParameters"""
+class RepositoryRuleCodeScanningPropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleCodeScanningPropParameters"""
 
-    severity: Literal["errors", "warnings", "notes", "all"]
+    code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolTypeForResponse]
+
+
+class RepositoryRuleParamsCodeScanningToolType(TypedDict):
+    """CodeScanningTool
+
+    A tool that must provide code scanning results for this rule to pass.
+    """
+
+    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
+    security_alerts_threshold: Literal[
+        "none", "critical", "high_or_higher", "medium_or_higher", "all"
+    ]
+    tool: str
+
+
+class RepositoryRuleParamsCodeScanningToolTypeForResponse(TypedDict):
+    """CodeScanningTool
+
+    A tool that must provide code scanning results for this rule to pass.
+    """
+
+    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
+    security_alerts_threshold: Literal[
+        "none", "critical", "high_or_higher", "medium_or_higher", "all"
+    ]
+    tool: str
 
 
 __all__ = (
-    "RepositoryRuleCodeQualityPropParametersType",
-    "RepositoryRuleCodeQualityPropParametersTypeForResponse",
+    "RepositoryRuleCodeScanningPropParametersType",
+    "RepositoryRuleCodeScanningPropParametersTypeForResponse",
+    "RepositoryRuleParamsCodeScanningToolType",
+    "RepositoryRuleParamsCodeScanningToolTypeForResponse",
 )

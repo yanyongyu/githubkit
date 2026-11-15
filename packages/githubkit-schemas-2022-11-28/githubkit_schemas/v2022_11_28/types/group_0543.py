@@ -11,32 +11,30 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0539 import TrafficType, TrafficTypeForResponse
 
+class CommitActivityType(TypedDict):
+    """Commit Activity
 
-class ViewTrafficType(TypedDict):
-    """View Traffic
-
-    View Traffic
+    Commit Activity
     """
 
-    count: int
-    uniques: int
-    views: list[TrafficType]
+    days: list[int]
+    total: int
+    week: int
 
 
-class ViewTrafficTypeForResponse(TypedDict):
-    """View Traffic
+class CommitActivityTypeForResponse(TypedDict):
+    """Commit Activity
 
-    View Traffic
+    Commit Activity
     """
 
-    count: int
-    uniques: int
-    views: list[TrafficTypeForResponse]
+    days: list[int]
+    total: int
+    week: int
 
 
 __all__ = (
-    "ViewTrafficType",
-    "ViewTrafficTypeForResponse",
+    "CommitActivityType",
+    "CommitActivityTypeForResponse",
 )

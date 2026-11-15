@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,89 +18,60 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0201 import ProjectsV2
-from .group_0570 import SimpleInstallation
-from .group_0571 import OrganizationSimpleWebhooks
 
+class WebhookProjectCardMovedPropProjectCardAllof0(GitHubModel):
+    """Project Card"""
 
-class WebhookProjectsV2ProjectEdited(GitHubModel):
-    """Projects v2 Project Edited Event"""
-
-    action: Literal["edited"] = Field()
-    changes: WebhookProjectsV2ProjectEditedPropChanges = Field()
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    after_id: Missing[Union[int, None]] = Field(default=UNSET)
+    archived: bool = Field(description="Whether or not the card is archived")
+    column_id: int = Field()
+    column_url: str = Field()
+    content_url: Missing[str] = Field(default=UNSET)
+    created_at: _dt.datetime = Field()
+    creator: Union[WebhookProjectCardMovedPropProjectCardAllof0PropCreator, None] = (
+        Field(title="User")
     )
-    organization: OrganizationSimpleWebhooks = Field(
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    projects_v2: ProjectsV2 = Field(
-        title="Projects v2 Project", description="A projects v2 project"
-    )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    id: int = Field(description="The project card's ID")
+    node_id: str = Field()
+    note: Union[str, None] = Field()
+    project_url: str = Field()
+    updated_at: _dt.datetime = Field()
+    url: str = Field()
 
 
-class WebhookProjectsV2ProjectEditedPropChanges(GitHubModel):
-    """WebhookProjectsV2ProjectEditedPropChanges"""
+class WebhookProjectCardMovedPropProjectCardAllof0PropCreator(GitHubModel):
+    """User"""
 
-    description: Missing[WebhookProjectsV2ProjectEditedPropChangesPropDescription] = (
-        Field(default=UNSET)
-    )
-    public: Missing[WebhookProjectsV2ProjectEditedPropChangesPropPublic] = Field(
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
         default=UNSET
     )
-    short_description: Missing[
-        WebhookProjectsV2ProjectEditedPropChangesPropShortDescription
-    ] = Field(default=UNSET)
-    title: Missing[WebhookProjectsV2ProjectEditedPropChangesPropTitle] = Field(
-        default=UNSET
-    )
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookProjectsV2ProjectEditedPropChangesPropDescription(GitHubModel):
-    """WebhookProjectsV2ProjectEditedPropChangesPropDescription"""
-
-    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropPublic(GitHubModel):
-    """WebhookProjectsV2ProjectEditedPropChangesPropPublic"""
-
-    from_: Missing[bool] = Field(default=UNSET, alias="from")
-    to: Missing[bool] = Field(default=UNSET)
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropShortDescription(GitHubModel):
-    """WebhookProjectsV2ProjectEditedPropChangesPropShortDescription"""
-
-    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropTitle(GitHubModel):
-    """WebhookProjectsV2ProjectEditedPropChangesPropTitle"""
-
-    from_: Missing[str] = Field(default=UNSET, alias="from")
-    to: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhookProjectsV2ProjectEdited)
-model_rebuild(WebhookProjectsV2ProjectEditedPropChanges)
-model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropDescription)
-model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropPublic)
-model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropShortDescription)
-model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropTitle)
+model_rebuild(WebhookProjectCardMovedPropProjectCardAllof0)
+model_rebuild(WebhookProjectCardMovedPropProjectCardAllof0PropCreator)
 
 __all__ = (
-    "WebhookProjectsV2ProjectEdited",
-    "WebhookProjectsV2ProjectEditedPropChanges",
-    "WebhookProjectsV2ProjectEditedPropChangesPropDescription",
-    "WebhookProjectsV2ProjectEditedPropChangesPropPublic",
-    "WebhookProjectsV2ProjectEditedPropChangesPropShortDescription",
-    "WebhookProjectsV2ProjectEditedPropChangesPropTitle",
+    "WebhookProjectCardMovedPropProjectCardAllof0",
+    "WebhookProjectCardMovedPropProjectCardAllof0PropCreator",
 )

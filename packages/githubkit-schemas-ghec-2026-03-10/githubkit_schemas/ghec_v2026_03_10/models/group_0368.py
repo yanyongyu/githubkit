@@ -9,174 +9,202 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
+from .group_0019 import LicenseSimple
+from .group_0020 import Repository
+from .group_0285 import SecurityAndAnalysis
+from .group_0367 import CodeOfConductSimple
 
 
-class RepositoryAdvisoryCredit(GitHubModel):
-    """RepositoryAdvisoryCredit
+class FullRepository(GitHubModel):
+    """Full Repository
 
-    A credit given to a user for a repository security advisory.
+    Full Repository
     """
 
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
-    ] = Field(description="The type of credit the user is receiving.")
-    state: Literal["accepted", "declined", "pending"] = Field(
-        description="The state of the user's acceptance of the credit."
-    )
-
-
-class RepositoryAdvisoryPropPrivateFork(GitHubModel):
-    """RepositoryAdvisoryPropPrivateFork
-
-    A temporary private fork of the advisory's repository for collaborating on a
-    fix.
-    """
-
-    id: int = Field(description="A unique identifier of the repository.")
-    node_id: str = Field(description="The GraphQL identifier of the repository.")
-    name: str = Field(description="The name of the repository.")
-    full_name: str = Field(
-        description="The full, globally unique, name of the repository."
-    )
+    id: int = Field()
+    node_id: str = Field()
+    name: str = Field()
+    full_name: str = Field()
     owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    private: bool = Field(description="Whether the repository is private.")
-    html_url: str = Field(description="The URL to view the repository on GitHub.com.")
-    description: Union[str, None] = Field(description="The repository description.")
-    fork: bool = Field(description="Whether the repository is a fork.")
-    url: str = Field(
-        description="The URL to get more information about the repository from the GitHub API."
+    private: bool = Field()
+    html_url: str = Field()
+    description: Union[str, None] = Field()
+    fork: bool = Field()
+    url: str = Field()
+    archive_url: str = Field()
+    assignees_url: str = Field()
+    blobs_url: str = Field()
+    branches_url: str = Field()
+    collaborators_url: str = Field()
+    comments_url: str = Field()
+    commits_url: str = Field()
+    compare_url: str = Field()
+    contents_url: str = Field()
+    contributors_url: str = Field()
+    deployments_url: str = Field()
+    downloads_url: str = Field()
+    events_url: str = Field()
+    forks_url: str = Field()
+    git_commits_url: str = Field()
+    git_refs_url: str = Field()
+    git_tags_url: str = Field()
+    git_url: str = Field()
+    issue_comment_url: str = Field()
+    issue_events_url: str = Field()
+    issues_url: str = Field()
+    keys_url: str = Field()
+    labels_url: str = Field()
+    languages_url: str = Field()
+    merges_url: str = Field()
+    milestones_url: str = Field()
+    notifications_url: str = Field()
+    pulls_url: str = Field()
+    releases_url: str = Field()
+    ssh_url: str = Field()
+    stargazers_url: str = Field()
+    statuses_url: str = Field()
+    subscribers_url: str = Field()
+    subscription_url: str = Field()
+    tags_url: str = Field()
+    teams_url: str = Field()
+    trees_url: str = Field()
+    clone_url: str = Field()
+    mirror_url: Union[str, None] = Field()
+    hooks_url: str = Field()
+    svn_url: str = Field()
+    homepage: Union[str, None] = Field()
+    language: Union[str, None] = Field()
+    forks_count: int = Field()
+    stargazers_count: int = Field()
+    watchers_count: int = Field()
+    size: int = Field(
+        description="The size of the repository, in kilobytes. Size is calculated hourly. When a repository is initially created, the size is 0."
     )
-    archive_url: str = Field(
-        description="A template for the API URL to download the repository as an archive."
+    default_branch: str = Field()
+    open_issues_count: int = Field()
+    is_template: Missing[bool] = Field(default=UNSET)
+    topics: Missing[list[str]] = Field(default=UNSET)
+    has_issues: bool = Field()
+    has_projects: bool = Field()
+    has_wiki: bool = Field()
+    has_pages: bool = Field()
+    has_discussions: bool = Field()
+    has_pull_requests: Missing[bool] = Field(default=UNSET)
+    pull_request_creation_policy: Missing[Literal["all", "collaborators_only"]] = Field(
+        default=UNSET,
+        description="The policy controlling who can create pull requests: all or collaborators_only.",
     )
-    assignees_url: str = Field(
-        description="A template for the API URL to list the available assignees for issues in the repository."
+    archived: bool = Field()
+    disabled: bool = Field(
+        description="Returns whether or not this repository disabled."
     )
-    blobs_url: str = Field(
-        description="A template for the API URL to create or retrieve a raw Git blob in the repository."
+    visibility: Missing[str] = Field(
+        default=UNSET,
+        description="The repository visibility: public, private, or internal.",
     )
-    branches_url: str = Field(
-        description="A template for the API URL to get information about branches in the repository."
+    pushed_at: _dt.datetime = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    permissions: Missing[FullRepositoryPropPermissions] = Field(default=UNSET)
+    allow_rebase_merge: Missing[bool] = Field(default=UNSET)
+    template_repository: Missing[Union[Repository, None]] = Field(default=UNSET)
+    temp_clone_token: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="When present and non-empty, a temporary credential for read-only Git access to this repository.\nIt expires five minutes after generation and cannot be used to push changes.\nTreat this value as sensitive and avoid recording it in logs.",
     )
-    collaborators_url: str = Field(
-        description="A template for the API URL to get information about collaborators of the repository."
+    allow_squash_merge: Missing[bool] = Field(default=UNSET)
+    allow_auto_merge: Missing[bool] = Field(default=UNSET)
+    delete_branch_on_merge: Missing[bool] = Field(default=UNSET)
+    allow_merge_commit: Missing[bool] = Field(default=UNSET)
+    allow_update_branch: Missing[bool] = Field(default=UNSET)
+    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
+        Field(
+            default=UNSET,
+            description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        )
     )
-    comments_url: str = Field(
-        description="A template for the API URL to get information about comments on the repository."
+    squash_merge_commit_message: Missing[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ] = Field(
+        default=UNSET,
+        description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
     )
-    commits_url: str = Field(
-        description="A template for the API URL to get information about commits on the repository."
+    merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
+        default=UNSET,
+        description="The default value for a merge commit title.\n\n  - `PR_TITLE` - default to the pull request's title.\n  - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
     )
-    compare_url: str = Field(
-        description="A template for the API URL to compare two commits or refs."
+    merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
+        default=UNSET,
+        description="The default value for a merge commit message.\n\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
     )
-    contents_url: str = Field(
-        description="A template for the API URL to get the contents of the repository."
+    allow_forking: Missing[bool] = Field(default=UNSET)
+    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
+    subscribers_count: int = Field()
+    network_count: int = Field()
+    license_: Union[LicenseSimple, None] = Field(alias="license")
+    organization: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
+    parent: Missing[Repository] = Field(
+        default=UNSET, title="Repository", description="A repository on GitHub."
     )
-    contributors_url: str = Field(
-        description="A template for the API URL to list the contributors to the repository."
+    source: Missing[Repository] = Field(
+        default=UNSET, title="Repository", description="A repository on GitHub."
     )
-    deployments_url: str = Field(
-        description="The API URL to list the deployments of the repository."
+    forks: int = Field()
+    master_branch: Missing[str] = Field(default=UNSET)
+    open_issues: int = Field()
+    watchers: int = Field()
+    anonymous_access_enabled: Missing[bool] = Field(
+        default=UNSET, description="Whether anonymous git access is allowed."
     )
-    downloads_url: str = Field(
-        description="The API URL to list the downloads on the repository."
+    code_of_conduct: Missing[CodeOfConductSimple] = Field(
+        default=UNSET,
+        title="Code Of Conduct Simple",
+        description="Code of Conduct Simple",
     )
-    events_url: str = Field(
-        description="The API URL to list the events of the repository."
+    security_and_analysis: Missing[Union[SecurityAndAnalysis, None]] = Field(
+        default=UNSET
     )
-    forks_url: str = Field(
-        description="The API URL to list the forks of the repository."
-    )
-    git_commits_url: str = Field(
-        description="A template for the API URL to get information about Git commits of the repository."
-    )
-    git_refs_url: str = Field(
-        description="A template for the API URL to get information about Git refs of the repository."
-    )
-    git_tags_url: str = Field(
-        description="A template for the API URL to get information about Git tags of the repository."
-    )
-    issue_comment_url: str = Field(
-        description="A template for the API URL to get information about issue comments on the repository."
-    )
-    issue_events_url: str = Field(
-        description="A template for the API URL to get information about issue events on the repository."
-    )
-    issues_url: str = Field(
-        description="A template for the API URL to get information about issues on the repository."
-    )
-    keys_url: str = Field(
-        description="A template for the API URL to get information about deploy keys on the repository."
-    )
-    labels_url: str = Field(
-        description="A template for the API URL to get information about labels of the repository."
-    )
-    languages_url: str = Field(
-        description="The API URL to get information about the languages of the repository."
-    )
-    merges_url: str = Field(
-        description="The API URL to merge branches in the repository."
-    )
-    milestones_url: str = Field(
-        description="A template for the API URL to get information about milestones of the repository."
-    )
-    notifications_url: str = Field(
-        description="A template for the API URL to get information about notifications on the repository."
-    )
-    pulls_url: str = Field(
-        description="A template for the API URL to get information about pull requests on the repository."
-    )
-    releases_url: str = Field(
-        description="A template for the API URL to get information about releases on the repository."
-    )
-    stargazers_url: str = Field(
-        description="The API URL to list the stargazers on the repository."
-    )
-    statuses_url: str = Field(
-        description="A template for the API URL to get information about statuses of a commit."
-    )
-    subscribers_url: str = Field(
-        description="The API URL to list the subscribers on the repository."
-    )
-    subscription_url: str = Field(
-        description="The API URL to subscribe to notifications for this repository."
-    )
-    tags_url: str = Field(
-        description="The API URL to get information about tags on the repository."
-    )
-    teams_url: str = Field(
-        description="The API URL to list the teams on the repository."
-    )
-    trees_url: str = Field(
-        description="A template for the API URL to create or retrieve a raw Git tree of the repository."
-    )
-    hooks_url: str = Field(
-        description="The API URL to list the hooks on the repository."
+    custom_properties: Missing[FullRepositoryPropCustomProperties] = Field(
+        default=UNSET,
+        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values.",
     )
 
 
-model_rebuild(RepositoryAdvisoryCredit)
-model_rebuild(RepositoryAdvisoryPropPrivateFork)
+class FullRepositoryPropPermissions(GitHubModel):
+    """FullRepositoryPropPermissions"""
+
+    admin: bool = Field()
+    maintain: Missing[bool] = Field(default=UNSET)
+    push: bool = Field()
+    triage: Missing[bool] = Field(default=UNSET)
+    pull: bool = Field()
+
+
+class FullRepositoryPropCustomProperties(ExtraGitHubModel):
+    """FullRepositoryPropCustomProperties
+
+    The custom properties that were defined for the repository. The keys are the
+    custom property names, and the values are the corresponding custom property
+    values.
+    """
+
+
+model_rebuild(FullRepository)
+model_rebuild(FullRepositoryPropPermissions)
+model_rebuild(FullRepositoryPropCustomProperties)
 
 __all__ = (
-    "RepositoryAdvisoryCredit",
-    "RepositoryAdvisoryPropPrivateFork",
+    "FullRepository",
+    "FullRepositoryPropCustomProperties",
+    "FullRepositoryPropPermissions",
 )

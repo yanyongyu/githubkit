@@ -12,17 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0300 import Codespace
-
-
-class OrgsOrgMembersUsernameCodespacesGetResponse200(GitHubModel):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
-
-    total_count: int = Field()
-    codespaces: list[Codespace] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(OrgsOrgMembersUsernameCodespacesGetResponse200)
+class OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202(GitHubModel):
+    """OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202"""
 
-__all__ = ("OrgsOrgMembersUsernameCodespacesGetResponse200",)
+    message: Missing[str] = Field(
+        default=UNSET, description="A message indicating the revocation has been queued"
+    )
+    warning: Missing[str] = Field(
+        default=UNSET,
+        description="A warning message if the token used for this request may be revoked",
+    )
+
+
+model_rebuild(OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202)
+
+__all__ = ("OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202",)

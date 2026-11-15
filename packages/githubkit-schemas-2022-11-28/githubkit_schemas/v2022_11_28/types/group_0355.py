@@ -9,46 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0032 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
-from .group_0046 import IssueTypeType, IssueTypeTypeForResponse
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAlertLinkedIssueType(TypedDict):
-    """CodeScanningAlertLinkedIssue
+class CodeScanningAiScanEnablementType(TypedDict):
+    """CodeScanningAiScanEnablement
 
-    A GitHub issue linked to a code scanning alert. The issue may belong to a
-    different repository.
+    AI Scan enablement for a repository.
     """
 
-    number: int
-    title: str
-    state: str
-    url: str
-    html_url: str
-    repository: SimpleRepositoryType
-    issue_type: Union[IssueTypeType, None]
+    pr_scan: Literal["enabled", "disabled"]
+    repository_scan: NotRequired[Literal["enabled", "disabled"]]
 
 
-class CodeScanningAlertLinkedIssueTypeForResponse(TypedDict):
-    """CodeScanningAlertLinkedIssue
+class CodeScanningAiScanEnablementTypeForResponse(TypedDict):
+    """CodeScanningAiScanEnablement
 
-    A GitHub issue linked to a code scanning alert. The issue may belong to a
-    different repository.
+    AI Scan enablement for a repository.
     """
 
-    number: int
-    title: str
-    state: str
-    url: str
-    html_url: str
-    repository: SimpleRepositoryTypeForResponse
-    issue_type: Union[IssueTypeTypeForResponse, None]
+    pr_scan: Literal["enabled", "disabled"]
+    repository_scan: NotRequired[Literal["enabled", "disabled"]]
 
 
 __all__ = (
-    "CodeScanningAlertLinkedIssueType",
-    "CodeScanningAlertLinkedIssueTypeForResponse",
+    "CodeScanningAiScanEnablementType",
+    "CodeScanningAiScanEnablementTypeForResponse",
 )

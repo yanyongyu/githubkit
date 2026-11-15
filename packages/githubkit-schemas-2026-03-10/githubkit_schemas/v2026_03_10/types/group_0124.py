@@ -11,35 +11,16 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0125 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse,
-)
+
+class ActionsPolicyRepoConditionsOneof0Type(TypedDict):
+    """ActionsPolicyRepoConditionsOneof0"""
 
 
-class RepositoryRulesetConditionsRepositoryNameTargetType(TypedDict):
-    """Repository ruleset conditions for repository names
-
-    Parameters for a repository name condition
-    """
-
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
-    )
-
-
-class RepositoryRulesetConditionsRepositoryNameTargetTypeForResponse(TypedDict):
-    """Repository ruleset conditions for repository names
-
-    Parameters for a repository name condition
-    """
-
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameTypeForResponse
-    )
+class ActionsPolicyRepoConditionsOneof0TypeForResponse(TypedDict):
+    """ActionsPolicyRepoConditionsOneof0"""
 
 
 __all__ = (
-    "RepositoryRulesetConditionsRepositoryNameTargetType",
-    "RepositoryRulesetConditionsRepositoryNameTargetTypeForResponse",
+    "ActionsPolicyRepoConditionsOneof0Type",
+    "ActionsPolicyRepoConditionsOneof0TypeForResponse",
 )

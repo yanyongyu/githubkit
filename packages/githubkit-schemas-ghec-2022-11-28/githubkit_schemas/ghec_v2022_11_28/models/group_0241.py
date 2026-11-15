@@ -10,41 +10,77 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class Label(GitHubModel):
+    """Label
 
-class Milestone(GitHubModel):
-    """Milestone
-
-    A collection of related issues and pull requests.
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
     """
 
-    url: str = Field()
-    html_url: str = Field()
-    labels_url: str = Field()
+    id: int = Field(description="Unique identifier for the label.")
+    node_id: str = Field()
+    url: str = Field(description="URL for the label")
+    name: str = Field(description="The name of the label.")
+    description: Union[str, None] = Field(
+        description="Optional description of the label, such as its purpose."
+    )
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
+    )
+    default: bool = Field(
+        description="Whether this label comes by default in a new repository."
+    )
+    archived_at: Union[_dt.datetime, None] = Field(
+        description="Timestamp indicating when the label was archived, or `null` if it has not been archived."
+    )
+    archived_by: Union[LabelPropArchivedBy, None] = Field(
+        description="The user who archived the label, or `null` if it has not been archived."
+    )
+
+
+class LabelPropArchivedBy(GitHubModel):
+    """LabelPropArchivedBy
+
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
     id: int = Field()
     node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    state: Literal["open", "closed"] = Field(
-        default="open", description="The state of the milestone."
-    )
-    title: str = Field(description="The title of the milestone.")
-    description: Union[str, None] = Field()
-    creator: Union[SimpleUser, None] = Field()
-    open_issues: int = Field()
-    closed_issues: int = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    closed_at: Union[_dt.datetime, None] = Field()
-    due_on: Union[_dt.datetime, None] = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(Milestone)
+model_rebuild(Label)
+model_rebuild(LabelPropArchivedBy)
 
-__all__ = ("Milestone",)
+__all__ = (
+    "Label",
+    "LabelPropArchivedBy",
+)

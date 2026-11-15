@@ -9,30 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class DependabotAlertPackageType(TypedDict):
-    """DependabotAlertPackage
+class EnterpriseTokenInventoryExportType(TypedDict):
+    """Enterprise Token Inventory Export
 
-    Details for the vulnerable package.
+    The status of an asynchronous enterprise token inventory CSV export.
     """
 
-    ecosystem: str
-    name: str
+    export_id: str
+    status: Literal["pending", "queued", "started", "success", "error"]
+    as_of: NotRequired[Union[str, None]]
 
 
-class DependabotAlertPackageTypeForResponse(TypedDict):
-    """DependabotAlertPackage
+class EnterpriseTokenInventoryExportTypeForResponse(TypedDict):
+    """Enterprise Token Inventory Export
 
-    Details for the vulnerable package.
+    The status of an asynchronous enterprise token inventory CSV export.
     """
 
-    ecosystem: str
-    name: str
+    export_id: str
+    status: Literal["pending", "queued", "started", "success", "error"]
+    as_of: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "DependabotAlertPackageType",
-    "DependabotAlertPackageTypeForResponse",
+    "EnterpriseTokenInventoryExportType",
+    "EnterpriseTokenInventoryExportTypeForResponse",
 )

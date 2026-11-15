@@ -32,6 +32,7 @@ if TYPE_CHECKING:
         DependabotAlertWithRepository,
         DependabotPublicKey,
         DependabotRepositoryAccessDetails,
+        DependabotRunnerSettings,
         DependabotSecret,
         EmptyObject,
         OrganizationDependabotSecret,
@@ -44,6 +45,8 @@ if TYPE_CHECKING:
         DependabotAlertWithRepositoryTypeForResponse,
         DependabotPublicKeyTypeForResponse,
         DependabotRepositoryAccessDetailsTypeForResponse,
+        DependabotRunnerSettingsTypeForResponse,
+        DependabotRunnerSettingsUpdateType,
         DependabotSecretTypeForResponse,
         EmptyObjectTypeForResponse,
         EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBodyType,
@@ -2583,6 +2586,294 @@ class DependabotClient:
                 "409": BasicError,
                 "410": BasicError,
                 "422": ValidationErrorSimple,
+            },
+        )
+
+    def get_repository_runner_settings(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[DependabotRunnerSettings, DependabotRunnerSettingsTypeForResponse]:
+        """dependabot/get-repository-runner-settings
+
+        GET /repos/{owner}/{repo}/dependabot/runner-settings
+
+        Gets the runner Dependabot uses for this repository: standard GitHub-hosted
+        runners, or labeled runners with their labels and optional runner group. The
+        response matches the repository's code security settings page.
+
+        Labeled runners take effect only for private and internal repositories with
+        GitHub Actions enabled. Otherwise, the response shows `standard`.
+
+        Repository administrators and users who can manage security products for the
+        repository can use this endpoint. OAuth app tokens and personal access tokens
+        (classic) require the `repo` scope for both public and private repositories.
+        GitHub App tokens and fine-grained personal access tokens require repository
+        Administration read permission. Workflow `GITHUB_TOKEN` access is not supported.
+
+        See also: https://docs.github.com/rest/dependabot/runner-settings#get-repository-dependabot-runner-settings
+        """
+
+        from ..models import BasicError, DependabotRunnerSettings
+
+        url = f"/repos/{owner}/{repo}/dependabot/runner-settings"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=DependabotRunnerSettings,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_repository_runner_settings(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[DependabotRunnerSettings, DependabotRunnerSettingsTypeForResponse]:
+        """dependabot/get-repository-runner-settings
+
+        GET /repos/{owner}/{repo}/dependabot/runner-settings
+
+        Gets the runner Dependabot uses for this repository: standard GitHub-hosted
+        runners, or labeled runners with their labels and optional runner group. The
+        response matches the repository's code security settings page.
+
+        Labeled runners take effect only for private and internal repositories with
+        GitHub Actions enabled. Otherwise, the response shows `standard`.
+
+        Repository administrators and users who can manage security products for the
+        repository can use this endpoint. OAuth app tokens and personal access tokens
+        (classic) require the `repo` scope for both public and private repositories.
+        GitHub App tokens and fine-grained personal access tokens require repository
+        Administration read permission. Workflow `GITHUB_TOKEN` access is not supported.
+
+        See also: https://docs.github.com/rest/dependabot/runner-settings#get-repository-dependabot-runner-settings
+        """
+
+        from ..models import BasicError, DependabotRunnerSettings
+
+        url = f"/repos/{owner}/{repo}/dependabot/runner-settings"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=DependabotRunnerSettings,
+            error_models={
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    @overload
+    def set_repository_runner_settings(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: DependabotRunnerSettingsUpdateType,
+    ) -> Response[
+        DependabotRunnerSettings, DependabotRunnerSettingsTypeForResponse
+    ]: ...
+
+    @overload
+    def set_repository_runner_settings(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        runner_type: Literal["standard", "labeled"],
+        runner_labels: Missing[list[str]] = UNSET,
+        runner_group: Missing[Union[str, None]] = UNSET,
+    ) -> Response[
+        DependabotRunnerSettings, DependabotRunnerSettingsTypeForResponse
+    ]: ...
+
+    def set_repository_runner_settings(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[DependabotRunnerSettingsUpdateType] = UNSET,
+        **kwargs,
+    ) -> Response[DependabotRunnerSettings, DependabotRunnerSettingsTypeForResponse]:
+        """dependabot/set-repository-runner-settings
+
+        PUT /repos/{owner}/{repo}/dependabot/runner-settings
+
+        Sets the runner Dependabot uses for this repository. This is the same setting
+        as on the repository's code security settings page.
+
+        `labeled` turns on labeled runners with exactly one runner label and an optional
+        runner group. `standard` turns them off and clears the label and group.
+
+        Labeled runners are only available for private and internal repositories with
+        GitHub Actions enabled. The response returns the settings after the change.
+
+        Repository administrators and users who can manage security products for the
+        repository can use this endpoint, subject to enterprise policy. OAuth app tokens
+        and personal access tokens (classic) require the `repo` scope. GitHub App tokens
+        and fine-grained personal access tokens require repository Administration write
+        permission. Workflow `GITHUB_TOKEN` access is not supported.
+
+        See also: https://docs.github.com/rest/dependabot/runner-settings#set-repository-dependabot-runner-settings
+        """
+
+        from ..models import (
+            BasicError,
+            DependabotRunnerSettings,
+            DependabotRunnerSettingsUpdate,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/dependabot/runner-settings"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(DependabotRunnerSettingsUpdate, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=DependabotRunnerSettings,
+            error_models={
+                "400": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_set_repository_runner_settings(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: DependabotRunnerSettingsUpdateType,
+    ) -> Response[
+        DependabotRunnerSettings, DependabotRunnerSettingsTypeForResponse
+    ]: ...
+
+    @overload
+    async def async_set_repository_runner_settings(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        runner_type: Literal["standard", "labeled"],
+        runner_labels: Missing[list[str]] = UNSET,
+        runner_group: Missing[Union[str, None]] = UNSET,
+    ) -> Response[
+        DependabotRunnerSettings, DependabotRunnerSettingsTypeForResponse
+    ]: ...
+
+    async def async_set_repository_runner_settings(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+        data: Missing[DependabotRunnerSettingsUpdateType] = UNSET,
+        **kwargs,
+    ) -> Response[DependabotRunnerSettings, DependabotRunnerSettingsTypeForResponse]:
+        """dependabot/set-repository-runner-settings
+
+        PUT /repos/{owner}/{repo}/dependabot/runner-settings
+
+        Sets the runner Dependabot uses for this repository. This is the same setting
+        as on the repository's code security settings page.
+
+        `labeled` turns on labeled runners with exactly one runner label and an optional
+        runner group. `standard` turns them off and clears the label and group.
+
+        Labeled runners are only available for private and internal repositories with
+        GitHub Actions enabled. The response returns the settings after the change.
+
+        Repository administrators and users who can manage security products for the
+        repository can use this endpoint, subject to enterprise policy. OAuth app tokens
+        and personal access tokens (classic) require the `repo` scope. GitHub App tokens
+        and fine-grained personal access tokens require repository Administration write
+        permission. Workflow `GITHUB_TOKEN` access is not supported.
+
+        See also: https://docs.github.com/rest/dependabot/runner-settings#set-repository-dependabot-runner-settings
+        """
+
+        from ..models import (
+            BasicError,
+            DependabotRunnerSettings,
+            DependabotRunnerSettingsUpdate,
+            ValidationError,
+        )
+
+        url = f"/repos/{owner}/{repo}/dependabot/runner-settings"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(DependabotRunnerSettingsUpdate, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=DependabotRunnerSettings,
+            error_models={
+                "400": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "422": ValidationError,
             },
         )
 

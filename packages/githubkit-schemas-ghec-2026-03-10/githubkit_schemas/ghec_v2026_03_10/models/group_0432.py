@@ -9,37 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0099 import SimpleRepository
-from .group_0242 import IssueType
 
+class CodeQualitySetupUpdateResponse(GitHubModel):
+    """CodeQualitySetupUpdateResponse
 
-class CodeScanningAlertLinkedIssue(GitHubModel):
-    """CodeScanningAlertLinkedIssue
-
-    A GitHub issue linked to a code scanning alert. The issue may belong to a
-    different repository.
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
     """
 
-    number: int = Field(description="The issue number.")
-    title: str = Field(description="The title of the issue.")
-    state: str = Field(description="The state of the issue.")
-    url: str = Field(description="The REST API URL of the issue.")
-    html_url: str = Field(description="The URL to view the issue on GitHub.")
-    repository: SimpleRepository = Field(
-        title="Simple Repository", description="A GitHub repository."
+    run_id: Missing[int] = Field(
+        default=UNSET, description="ID of the corresponding run."
     )
-    issue_type: Union[IssueType, None] = Field(
-        title="Issue Type",
-        description="The type assigned to the issue. This is only present for issues in repositories where issue types are supported.",
+    run_url: Missing[str] = Field(
+        default=UNSET, description="URL of the corresponding run."
     )
 
 
-model_rebuild(CodeScanningAlertLinkedIssue)
+model_rebuild(CodeQualitySetupUpdateResponse)
 
-__all__ = ("CodeScanningAlertLinkedIssue",)
+__all__ = ("CodeQualitySetupUpdateResponse",)

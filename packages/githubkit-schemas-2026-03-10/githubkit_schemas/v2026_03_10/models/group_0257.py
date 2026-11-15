@@ -17,21 +17,21 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0258 import RepositoryRuleCodeQualityPropParameters
+from .group_0258 import RepositoryRuleCodeScanningPropParameters
 
 
-class RepositoryRuleCodeQuality(GitHubModel):
-    """code_quality
+class RepositoryRuleCodeScanning(GitHubModel):
+    """code_scanning
 
-    Choose which severity levels of code quality results should block pull request
-    merges. When configured, a code quality analysis must be done on the pull
-    request before the changes can be merged.
+    Choose which tools must provide code scanning results before the reference is
+    updated. When configured, code scanning must be enabled and have results for
+    both the commit and the reference being updated.
     """
 
-    type: Literal["code_quality"] = Field()
-    parameters: Missing[RepositoryRuleCodeQualityPropParameters] = Field(default=UNSET)
+    type: Literal["code_scanning"] = Field()
+    parameters: Missing[RepositoryRuleCodeScanningPropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleCodeQuality)
+model_rebuild(RepositoryRuleCodeScanning)
 
-__all__ = ("RepositoryRuleCodeQuality",)
+__all__ = ("RepositoryRuleCodeScanning",)

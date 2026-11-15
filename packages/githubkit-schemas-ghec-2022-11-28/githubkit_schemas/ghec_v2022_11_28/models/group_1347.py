@@ -9,54 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200"""
+class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200"""
 
-    custom_agents: Missing[
-        Union[
-            list[
-                EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems
-            ],
-            None,
-        ]
-    ] = Field(
-        default=UNSET,
-        description="List of custom agents defined in the repository. Returns `null` if no source repository is configured.",
-    )
+    models: list[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems
+    ] = Field()
 
 
-class EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems(
+class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems"""
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems"""
 
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="The display name of the custom agent (derived from filename).",
+    model_name: str = Field()
+    display_name: str = Field()
+    policy_state: Literal["enabled", "disabled", "optional"] = Field(
+        description="When editable, the agent apps policy's configured value, or `optional` if no agent apps policy has been configured for this model.\nWhen locked, the enterprise's explicit value or its applied default availability for an eligible model.\nReturns `disabled` when locked without an explicit enterprise value and the model is excluded from default availability."
     )
-    file_path: Missing[str] = Field(
-        default=UNSET, description="The path to the agent definition file."
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_default",
+        "unconfigured",
+    ] = Field(
+        description="The separately read enterprise-layer policy for this model, used to determine whether the agent apps policy can be edited."
     )
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL to view the agent definition file."
+    editable: bool = Field(
+        description="Whether the enterprise policy and available apps policy controls allow the agent apps policy to be updated."
     )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsGetResponse200)
+model_rebuild(EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200)
 model_rebuild(
-    EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems
+    EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems
 )
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200",
-    "EnterprisesEnterpriseCopilotCustomAgentsGetResponse200PropCustomAgentsItems",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems",
 )

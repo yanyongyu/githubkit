@@ -9,81 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBody
+class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType(TypedDict):
+    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
 
-    The team's customization document. Only the keys `pluginAssignments` and
-    `extraKnownMarketplaces` are supported.
+    repository_values: list[RepositoryExternalPropertyPayloadType]
+
+
+class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
+
+    repository_values: list[RepositoryExternalPropertyPayloadTypeForResponse]
+
+
+class RepositoryExternalPropertyPayloadType(TypedDict):
+    """Repository External Custom Property Value Payload
+
+    Repository name and associated external custom property value
     """
 
-    plugin_assignments: NotRequired[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignmentsType
-    ]
-    extra_known_marketplaces: NotRequired[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplacesType
-    ]
+    repository_name: str
+    value: Union[str, None]
 
 
-class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBody
+class RepositoryExternalPropertyPayloadTypeForResponse(TypedDict):
+    """Repository External Custom Property Value Payload
 
-    The team's customization document. Only the keys `pluginAssignments` and
-    `extraKnownMarketplaces` are supported.
+    Repository name and associated external custom property value
     """
 
-    plugin_assignments: NotRequired[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignmentsTypeForResponse
-    ]
-    extra_known_marketplaces: NotRequired[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplacesTypeForResponse
-    ]
-
-
-OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignmentsType: TypeAlias = (
-    dict[str, Any]
-)
-"""OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignments
-
-Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.
-"""
-
-
-OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignmentsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignments
-
-Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.
-"""
-
-
-OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplacesType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplaces
-
-Additional plugin marketplaces available to the team, keyed by marketplace name.
-"""
-
-
-OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplacesTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplaces
-
-Additional plugin marketplaces available to the team, keyed by marketplace name.
-"""
+    repository_name: str
+    value: Union[str, None]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplacesType",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplacesTypeForResponse",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignmentsType",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignmentsTypeForResponse",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyType",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyTypeForResponse",
+    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType",
+    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyTypeForResponse",
+    "RepositoryExternalPropertyPayloadType",
+    "RepositoryExternalPropertyPayloadTypeForResponse",
 )

@@ -11,31 +11,30 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0156 import TeamType, TeamTypeForResponse
 
+class PlanningStatusType(TypedDict):
+    """Planning status
 
-class PullRequestReviewRequestType(TypedDict):
-    """Pull Request Review Request
-
-    Pull Request Review Request
+    A planning status and its lifecycle category.
     """
 
-    users: list[SimpleUserType]
-    teams: list[TeamType]
+    id: int
+    name: str
+    category: str
 
 
-class PullRequestReviewRequestTypeForResponse(TypedDict):
-    """Pull Request Review Request
+class PlanningStatusTypeForResponse(TypedDict):
+    """Planning status
 
-    Pull Request Review Request
+    A planning status and its lifecycle category.
     """
 
-    users: list[SimpleUserTypeForResponse]
-    teams: list[TeamTypeForResponse]
+    id: int
+    name: str
+    category: str
 
 
 __all__ = (
-    "PullRequestReviewRequestType",
-    "PullRequestReviewRequestTypeForResponse",
+    "PlanningStatusType",
+    "PlanningStatusTypeForResponse",
 )

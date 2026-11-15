@@ -9,53 +9,86 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0099 import SimpleRepository
+from .group_0217 import PublicMonitoringRepository
+from .group_0218 import BaseGist
+from .group_0221 import PublicMonitoringAlertPropAttribution
 
-class AdvancedSecurityActiveCommitters(GitHubModel):
-    """AdvancedSecurityActiveCommitters"""
 
-    total_advanced_security_committers: Missing[int] = Field(default=UNSET)
-    total_count: Missing[int] = Field(default=UNSET)
-    maximum_advanced_security_committers: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of GitHub Advanced Security licences required if all repositories were to enable GitHub Advanced Security",
+class PublicMonitoringAlert(GitHubModel):
+    """PublicMonitoringAlert"""
+
+    number: int = Field(
+        ge=1.0, description="The enterprise-scoped public monitoring alert number."
     )
-    purchased_advanced_security_committers: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of GitHub Advanced Security licences purchased",
+    url: str = Field(description="The REST API URL of the alert resource.")
+    secret_type: Missing[str] = Field(
+        default=UNSET, description="The type of secret that secret scanning detected."
     )
-    repositories: list[AdvancedSecurityActiveCommittersRepository] = Field()
+    secret_type_display_name: Missing[str] = Field(
+        default=UNSET,
+        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."',
+    )
+    validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
+        default=UNSET,
+        description="The validity status of the secret as of the latest validity check.",
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The time that the secret was detected in ISO 8601 format.",
+    )
+    state: Missing[Literal["open", "resolved"]] = Field(
+        default=UNSET,
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
+    )
+    resolution: Missing[Union[Literal["dismissed", "fixed"], None]] = Field(
+        default=UNSET,
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
+    )
+    resolved_by: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
+    resolved_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    resolution_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="An optional comment when resolving or reopening an alert.",
+    )
+    secret: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The secret that was detected."
+    )
+    repository: Missing[Union[SimpleRepository, PublicMonitoringRepository, None]] = (
+        Field(default=UNSET)
+    )
+    gist: Missing[Union[BaseGist, PublicMonitoringAlertPropGistAnyof1, None]] = Field(
+        default=UNSET, description="The gist the secret was found in."
+    )
+    attribution: Missing[PublicMonitoringAlertPropAttribution] = Field(
+        default=UNSET, description="Attribution information for the alert."
+    )
 
 
-class AdvancedSecurityActiveCommittersRepository(GitHubModel):
-    """AdvancedSecurityActiveCommittersRepository"""
+class PublicMonitoringAlertPropGistAnyof1(GitHubModel):
+    """PublicMonitoringAlertPropGistAnyof1"""
 
-    name: str = Field()
-    advanced_security_committers: int = Field()
-    advanced_security_committers_breakdown: list[
-        AdvancedSecurityActiveCommittersUser
-    ] = Field()
+    id: str = Field()
+    html_url: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-class AdvancedSecurityActiveCommittersUser(GitHubModel):
-    """AdvancedSecurityActiveCommittersUser"""
-
-    user_login: str = Field()
-    last_pushed_date: str = Field()
-    last_pushed_email: str = Field()
-
-
-model_rebuild(AdvancedSecurityActiveCommitters)
-model_rebuild(AdvancedSecurityActiveCommittersRepository)
-model_rebuild(AdvancedSecurityActiveCommittersUser)
+model_rebuild(PublicMonitoringAlert)
+model_rebuild(PublicMonitoringAlertPropGistAnyof1)
 
 __all__ = (
-    "AdvancedSecurityActiveCommitters",
-    "AdvancedSecurityActiveCommittersRepository",
-    "AdvancedSecurityActiveCommittersUser",
+    "PublicMonitoringAlert",
+    "PublicMonitoringAlertPropGistAnyof1",
 )

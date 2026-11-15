@@ -9,42 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0037 import (
+    DependabotAlertPackageType,
+    DependabotAlertPackageTypeForResponse,
+)
 
-class WebhooksChangesType(TypedDict):
-    """WebhooksChanges
 
-    The changes to the comment.
+class DependabotAlertWithdrawnWebhookPropDependencyType(TypedDict):
+    """DependabotAlertWithdrawnWebhookPropDependency
+
+    Details for the vulnerable dependency.
     """
 
-    body: NotRequired[WebhooksChangesPropBodyType]
+    package: DependabotAlertPackageType
+    manifest_path: Union[str, None]
+    version_requirement: NotRequired[Union[str, None]]
+    scope: Union[Literal["development", "runtime"], None]
+    relationship: NotRequired[
+        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
+    ]
 
 
-class WebhooksChangesTypeForResponse(TypedDict):
-    """WebhooksChanges
+class DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse(TypedDict):
+    """DependabotAlertWithdrawnWebhookPropDependency
 
-    The changes to the comment.
+    Details for the vulnerable dependency.
     """
 
-    body: NotRequired[WebhooksChangesPropBodyTypeForResponse]
-
-
-class WebhooksChangesPropBodyType(TypedDict):
-    """WebhooksChangesPropBody"""
-
-    from_: str
-
-
-class WebhooksChangesPropBodyTypeForResponse(TypedDict):
-    """WebhooksChangesPropBody"""
-
-    from_: str
+    package: DependabotAlertPackageTypeForResponse
+    manifest_path: Union[str, None]
+    version_requirement: NotRequired[Union[str, None]]
+    scope: Union[Literal["development", "runtime"], None]
+    relationship: NotRequired[
+        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
+    ]
 
 
 __all__ = (
-    "WebhooksChangesPropBodyType",
-    "WebhooksChangesPropBodyTypeForResponse",
-    "WebhooksChangesType",
-    "WebhooksChangesTypeForResponse",
+    "DependabotAlertWithdrawnWebhookPropDependencyType",
+    "DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse",
 )

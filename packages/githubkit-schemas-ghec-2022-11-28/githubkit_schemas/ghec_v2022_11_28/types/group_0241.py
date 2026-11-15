@@ -10,61 +10,109 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class MilestoneType(TypedDict):
-    """Milestone
+class LabelType(TypedDict):
+    """Label
 
-    A collection of related issues and pull requests.
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
     """
 
-    url: str
-    html_url: str
-    labels_url: str
     id: int
     node_id: str
-    number: int
-    state: Literal["open", "closed"]
-    title: str
+    url: str
+    name: str
     description: Union[str, None]
-    creator: Union[SimpleUserType, None]
-    open_issues: int
-    closed_issues: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    closed_at: Union[_dt.datetime, None]
-    due_on: Union[_dt.datetime, None]
+    color: str
+    default: bool
+    archived_at: Union[_dt.datetime, None]
+    archived_by: Union[LabelPropArchivedByType, None]
 
 
-class MilestoneTypeForResponse(TypedDict):
-    """Milestone
+class LabelTypeForResponse(TypedDict):
+    """Label
 
-    A collection of related issues and pull requests.
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
     """
 
-    url: str
-    html_url: str
-    labels_url: str
     id: int
     node_id: str
-    number: int
-    state: Literal["open", "closed"]
-    title: str
+    url: str
+    name: str
     description: Union[str, None]
-    creator: Union[SimpleUserTypeForResponse, None]
-    open_issues: int
-    closed_issues: int
-    created_at: str
-    updated_at: str
-    closed_at: Union[str, None]
-    due_on: Union[str, None]
+    color: str
+    default: bool
+    archived_at: Union[str, None]
+    archived_by: Union[LabelPropArchivedByTypeForResponse, None]
+
+
+class LabelPropArchivedByType(TypedDict):
+    """LabelPropArchivedBy
+
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class LabelPropArchivedByTypeForResponse(TypedDict):
+    """LabelPropArchivedBy
+
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "MilestoneType",
-    "MilestoneTypeForResponse",
+    "LabelPropArchivedByType",
+    "LabelPropArchivedByTypeForResponse",
+    "LabelType",
+    "LabelTypeForResponse",
 )

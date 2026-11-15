@@ -78,6 +78,7 @@ if TYPE_CHECKING:
         PagesDeploymentStatus,
         PagesHealthCheck,
         ParticipationStats,
+        PlanningStatus,
         ProtectedBranch,
         ProtectedBranchAdminEnforced,
         ProtectedBranchPullRequestReview,
@@ -198,6 +199,7 @@ if TYPE_CHECKING:
         PagesHealthCheckTypeForResponse,
         PageTypeForResponse,
         ParticipationStatsTypeForResponse,
+        PlanningStatusTypeForResponse,
         ProtectedBranchAdminEnforcedTypeForResponse,
         ProtectedBranchPullRequestReviewTypeForResponse,
         ProtectedBranchTypeForResponse,
@@ -16992,6 +16994,102 @@ class ReposClient:
             headers=exclude_unset(headers),
             stream=stream,
             response_model=PagesHealthCheck,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def list_planning_statuses(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[list[PlanningStatus], list[PlanningStatusTypeForResponse]]:
+        """repos/list-planning-statuses
+
+        GET /repos/{owner}/{repo}/planning-statuses
+
+        Lists the selectable planning statuses available.
+        Planning statuses are returned in deterministic display order:
+        Backlog, Todo, In progress, In review, Done, Not planned, and Duplicate.
+        Clients should expect new keys to be added.
+        Returns `404 Not Found` when issue statuses aren't available in the repository.
+
+        > [!NOTE]
+        > Issue statuses are in preview and subject to change. They're only available to accounts enrolled in the preview.
+
+        You need read access to the repository's issues to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope
+        to use this endpoint with a private repository.
+
+        Fine-grained access tokens require the "Issues" repository permission (read).
+
+        See also: https://docs.github.com/rest/repos/planning-statuses#list-planning-statuses-for-a-repository
+        """
+
+        from ..models import BasicError, PlanningStatus
+
+        url = f"/repos/{owner}/{repo}/planning-statuses"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[PlanningStatus],
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_planning_statuses(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Mapping[str, str] | None = None,
+        stream: bool = False,
+    ) -> Response[list[PlanningStatus], list[PlanningStatusTypeForResponse]]:
+        """repos/list-planning-statuses
+
+        GET /repos/{owner}/{repo}/planning-statuses
+
+        Lists the selectable planning statuses available.
+        Planning statuses are returned in deterministic display order:
+        Backlog, Todo, In progress, In review, Done, Not planned, and Duplicate.
+        Clients should expect new keys to be added.
+        Returns `404 Not Found` when issue statuses aren't available in the repository.
+
+        > [!NOTE]
+        > Issue statuses are in preview and subject to change. They're only available to accounts enrolled in the preview.
+
+        You need read access to the repository's issues to use this endpoint.
+
+        OAuth app tokens and personal access tokens (classic) need the `repo` scope
+        to use this endpoint with a private repository.
+
+        Fine-grained access tokens require the "Issues" repository permission (read).
+
+        See also: https://docs.github.com/rest/repos/planning-statuses#list-planning-statuses-for-a-repository
+        """
+
+        from ..models import BasicError, PlanningStatus
+
+        url = f"/repos/{owner}/{repo}/planning-statuses"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            stream=stream,
+            response_model=list[PlanningStatus],
             error_models={
                 "404": BasicError,
             },

@@ -18,23 +18,23 @@ from githubkit.utils import UNSET
 from .group_0054 import (
     RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
 )
-from .group_0067 import (
-    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty,
+from .group_0065 import (
+    EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId,
 )
-from .group_0146 import RepositoryRulesetConditionsPropRefName
+from .group_0148 import RepositoryRulesetConditionsPropRefName
 
 
-class EnterpriseRulesetConditionsOneof4(GitHubModel):
-    """organization_property_and_repository_name
+class EnterpriseRulesetConditionsOneof2(GitHubModel):
+    """organization_id_and_repository_name
 
-    Conditions to target organizations by property and all repositories
+    Conditions to target organizations by id and all repositories
     """
 
-    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty = Field()
+    organization_id: EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId = Field()
     repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
     ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
 
 
-model_rebuild(EnterpriseRulesetConditionsOneof4)
+model_rebuild(EnterpriseRulesetConditionsOneof2)
 
-__all__ = ("EnterpriseRulesetConditionsOneof4",)
+__all__ = ("EnterpriseRulesetConditionsOneof2",)

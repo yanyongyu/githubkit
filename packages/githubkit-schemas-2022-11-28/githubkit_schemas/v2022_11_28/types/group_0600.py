@@ -9,29 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksLabelUnarchivedAllof1Type(TypedDict):
-    """WebhooksLabelUnarchivedAllof1"""
+class WebhooksLabelPropArchivedByType(TypedDict):
+    """WebhooksLabelPropArchivedBy
 
-    archived_at: Union[_dt.datetime, None]
-    archived_by: Union[WebhooksLabelUnarchivedAllof1PropArchivedByType, None]
-
-
-class WebhooksLabelUnarchivedAllof1TypeForResponse(TypedDict):
-    """WebhooksLabelUnarchivedAllof1"""
-
-    archived_at: Union[str, None]
-    archived_by: Union[WebhooksLabelUnarchivedAllof1PropArchivedByTypeForResponse, None]
-
-
-class WebhooksLabelUnarchivedAllof1PropArchivedByType(TypedDict):
-    """WebhooksLabelUnarchivedAllof1PropArchivedBy
-
-    The user who archived the label. This is `null` after the label is unarchived.
+    The user who archived the label, or `null` if it has not been archived.
     """
 
     name: NotRequired[Union[str, None]]
@@ -58,10 +43,10 @@ class WebhooksLabelUnarchivedAllof1PropArchivedByType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhooksLabelUnarchivedAllof1PropArchivedByTypeForResponse(TypedDict):
-    """WebhooksLabelUnarchivedAllof1PropArchivedBy
+class WebhooksLabelPropArchivedByTypeForResponse(TypedDict):
+    """WebhooksLabelPropArchivedBy
 
-    The user who archived the label. This is `null` after the label is unarchived.
+    The user who archived the label, or `null` if it has not been archived.
     """
 
     name: NotRequired[Union[str, None]]
@@ -89,8 +74,6 @@ class WebhooksLabelUnarchivedAllof1PropArchivedByTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhooksLabelUnarchivedAllof1PropArchivedByType",
-    "WebhooksLabelUnarchivedAllof1PropArchivedByTypeForResponse",
-    "WebhooksLabelUnarchivedAllof1Type",
-    "WebhooksLabelUnarchivedAllof1TypeForResponse",
+    "WebhooksLabelPropArchivedByType",
+    "WebhooksLabelPropArchivedByTypeForResponse",
 )

@@ -9,110 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0032 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
 
-class LabelType(TypedDict):
-    """Label
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
+class DependabotRepositoryAccessDetailsType(TypedDict):
+    """Dependabot Repository Access Details
+
+    Information about repositories that Dependabot is able to access in an
+    organization
     """
 
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
-    archived_at: Union[_dt.datetime, None]
-    archived_by: Union[LabelPropArchivedByType, None]
+    default_level: NotRequired[Union[Literal["public", "internal"], None]]
+    accessible_repositories: NotRequired[list[Union[SimpleRepositoryType, None]]]
 
 
-class LabelTypeForResponse(TypedDict):
-    """Label
+class DependabotRepositoryAccessDetailsTypeForResponse(TypedDict):
+    """Dependabot Repository Access Details
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
+    Information about repositories that Dependabot is able to access in an
+    organization
     """
 
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
-    archived_at: Union[str, None]
-    archived_by: Union[LabelPropArchivedByTypeForResponse, None]
-
-
-class LabelPropArchivedByType(TypedDict):
-    """LabelPropArchivedBy
-
-    The user who archived the label, or `null` if it has not been archived.
-    """
-
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
-
-
-class LabelPropArchivedByTypeForResponse(TypedDict):
-    """LabelPropArchivedBy
-
-    The user who archived the label, or `null` if it has not been archived.
-    """
-
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    default_level: NotRequired[Union[Literal["public", "internal"], None]]
+    accessible_repositories: NotRequired[
+        list[Union[SimpleRepositoryTypeForResponse, None]]
+    ]
 
 
 __all__ = (
-    "LabelPropArchivedByType",
-    "LabelPropArchivedByTypeForResponse",
-    "LabelType",
-    "LabelTypeForResponse",
+    "DependabotRepositoryAccessDetailsType",
+    "DependabotRepositoryAccessDetailsTypeForResponse",
 )

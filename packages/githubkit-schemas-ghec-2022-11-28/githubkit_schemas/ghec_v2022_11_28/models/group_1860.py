@@ -9,41 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0608 import PullRequestStackPullRequest
 
+class ReposOwnerRepoReleasesAssetsAssetIdPatchBody(GitHubModel):
+    """ReposOwnerRepoReleasesAssetsAssetIdPatchBody"""
 
-class ReposOwnerRepoStacksStackNumberUnstackPostResponse200(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200"""
-
-    id: int = Field()
-    number: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    base: ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase = Field()
-    open_: bool = Field(
-        alias="open",
-        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
+    name: Missing[str] = Field(default=UNSET, description="The file name of the asset.")
+    label: Missing[str] = Field(
+        default=UNSET,
+        description="An alternate short description of the asset. Used in place of the filename.",
     )
-    created_at: _dt.datetime = Field()
-    pull_requests: list[PullRequestStackPullRequest] = Field()
+    state: Missing[str] = Field(default=UNSET)
 
 
-class ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase(GitHubModel):
-    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase"""
+model_rebuild(ReposOwnerRepoReleasesAssetsAssetIdPatchBody)
 
-    ref: str = Field()
-
-
-model_rebuild(ReposOwnerRepoStacksStackNumberUnstackPostResponse200)
-model_rebuild(ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase)
-
-__all__ = (
-    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200",
-    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase",
-)
+__all__ = ("ReposOwnerRepoReleasesAssetsAssetIdPatchBody",)

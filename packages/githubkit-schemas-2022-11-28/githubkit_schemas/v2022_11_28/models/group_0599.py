@@ -16,21 +16,21 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0587 import WebhooksLabelPropArchivedBy
+from .group_0600 import WebhooksLabelPropArchivedBy
 
 
-class WebhooksLabelUnarchived(GitHubModel):
-    """Unarchived label"""
+class WebhooksLabel(GitHubModel):
+    """Label"""
 
     color: str = Field(
         description="6-character hex code, without the leading #, identifying the color"
     )
     default: bool = Field()
     description: Union[str, None] = Field()
-    archived_at: Union[Union[_dt.datetime, None], None] = Field(
+    archived_at: Union[_dt.datetime, None] = Field(
         description="Timestamp indicating when the label was archived, or `null` if it has not been archived."
     )
-    archived_by: Union[Union[None, WebhooksLabelPropArchivedBy], None] = Field(
+    archived_by: Union[WebhooksLabelPropArchivedBy, None] = Field(
         description="The user who archived the label, or `null` if it has not been archived."
     )
     id: int = Field()
@@ -39,6 +39,6 @@ class WebhooksLabelUnarchived(GitHubModel):
     url: str = Field(description="URL for the label")
 
 
-model_rebuild(WebhooksLabelUnarchived)
+model_rebuild(WebhooksLabel)
 
-__all__ = ("WebhooksLabelUnarchived",)
+__all__ = ("WebhooksLabel",)

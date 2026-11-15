@@ -9,28 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class RepositoryRuleCodeCoveragePropParameters(GitHubModel):
-    """RepositoryRuleCodeCoveragePropParameters"""
+class RepositoryRuleCodeQualityPropParameters(GitHubModel):
+    """RepositoryRuleCodeQualityPropParameters"""
 
-    max_coverage_drop: Missing[float] = Field(
-        le=100.0,
-        default=UNSET,
-        description="The maximum percentage points that line coverage may drop relative to the default branch. Pull requests that reduce line coverage by more than this amount will be blocked.",
-    )
-    minimum_coverage: Missing[float] = Field(
-        le=100.0,
-        default=UNSET,
-        description="The absolute minimum line coverage percentage required. Pull requests with line coverage below this threshold will be blocked.",
+    severity: Literal["errors", "warnings", "notes", "all"] = Field(
+        description="The lowest severity level at which code quality reviews need to be resolved before commits can be merged."
     )
 
 
-model_rebuild(RepositoryRuleCodeCoveragePropParameters)
+model_rebuild(RepositoryRuleCodeQualityPropParameters)
 
-__all__ = ("RepositoryRuleCodeCoveragePropParameters",)
+__all__ = ("RepositoryRuleCodeQualityPropParameters",)

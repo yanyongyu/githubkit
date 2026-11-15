@@ -9,40 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ExemptionResponseType(TypedDict):
-    """Exemption response
+class UserCreateIssueFieldType(TypedDict):
+    """UserCreateIssueField"""
 
-    A response to an exemption request by a delegated bypasser.
-    """
-
-    id: NotRequired[int]
-    reviewer_id: NotRequired[int]
-    reviewer_login: NotRequired[str]
-    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
-    reviewer_comment: NotRequired[Union[str, None]]
-    created_at: NotRequired[_dt.datetime]
+    name: str
+    description: NotRequired[Union[str, None]]
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
+    visibility: NotRequired[Literal["restricted", "all"]]
+    options: NotRequired[Union[list[UserCreateIssueFieldPropOptionsItemsType], None]]
 
 
-class ExemptionResponseTypeForResponse(TypedDict):
-    """Exemption response
+class UserCreateIssueFieldTypeForResponse(TypedDict):
+    """UserCreateIssueField"""
 
-    A response to an exemption request by a delegated bypasser.
-    """
+    name: str
+    description: NotRequired[Union[str, None]]
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
+    visibility: NotRequired[Literal["restricted", "all"]]
+    options: NotRequired[
+        Union[list[UserCreateIssueFieldPropOptionsItemsTypeForResponse], None]
+    ]
 
-    id: NotRequired[int]
-    reviewer_id: NotRequired[int]
-    reviewer_login: NotRequired[str]
-    status: NotRequired[Literal["approved", "rejected", "dismissed"]]
-    reviewer_comment: NotRequired[Union[str, None]]
-    created_at: NotRequired[str]
+
+class UserCreateIssueFieldPropOptionsItemsType(TypedDict):
+    """UserCreateIssueFieldPropOptionsItems"""
+
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
+    priority: int
+
+
+class UserCreateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
+    """UserCreateIssueFieldPropOptionsItems"""
+
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
+    priority: int
 
 
 __all__ = (
-    "ExemptionResponseType",
-    "ExemptionResponseTypeForResponse",
+    "UserCreateIssueFieldPropOptionsItemsType",
+    "UserCreateIssueFieldPropOptionsItemsTypeForResponse",
+    "UserCreateIssueFieldType",
+    "UserCreateIssueFieldTypeForResponse",
 )

@@ -16,19 +16,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRuleCopilotCodeReviewPropParameters(GitHubModel):
-    """RepositoryRuleCopilotCodeReviewPropParameters"""
+class RepositoryRuleCodeCoveragePropParameters(GitHubModel):
+    """RepositoryRuleCodeCoveragePropParameters"""
 
-    review_draft_pull_requests: Missing[bool] = Field(
+    max_coverage_drop: Missing[float] = Field(
+        le=100.0,
         default=UNSET,
-        description="Copilot automatically reviews draft pull requests before they are marked as ready for review.",
+        description="The maximum percentage points that line coverage may drop relative to the default branch. Pull requests that reduce line coverage by more than this amount will be blocked.",
     )
-    review_on_push: Missing[bool] = Field(
+    minimum_coverage: Missing[float] = Field(
+        le=100.0,
         default=UNSET,
-        description="Copilot automatically reviews each new push to the pull request.",
+        description="The absolute minimum line coverage percentage required. Pull requests with line coverage below this threshold will be blocked.",
     )
 
 
-model_rebuild(RepositoryRuleCopilotCodeReviewPropParameters)
+model_rebuild(RepositoryRuleCodeCoveragePropParameters)
 
-__all__ = ("RepositoryRuleCopilotCodeReviewPropParameters",)
+__all__ = ("RepositoryRuleCodeCoveragePropParameters",)

@@ -9,124 +9,91 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class IssuePropLabelsItemsOneof1Type(TypedDict):
-    """IssuePropLabelsItemsOneof1"""
+class IssueFieldValueType(TypedDict):
+    """Issue Field Value
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
-    default: NotRequired[bool]
-    archived_by: NotRequired[Union[IssuePropLabelsItemsOneof1PropArchivedByType, None]]
+    A value assigned to an issue field
+    """
 
-
-class IssuePropLabelsItemsOneof1TypeForResponse(TypedDict):
-    """IssuePropLabelsItemsOneof1"""
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    name: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[Union[str, None]]
-    default: NotRequired[bool]
-    archived_by: NotRequired[
-        Union[IssuePropLabelsItemsOneof1PropArchivedByTypeForResponse, None]
+    issue_field_id: int
+    issue_field_name: NotRequired[str]
+    node_id: str
+    data_type: Literal["text", "single_select", "multi_select", "number", "date"]
+    value: Union[str, float, int, None]
+    single_select_option: NotRequired[
+        Union[IssueFieldValuePropSingleSelectOptionType, None]
+    ]
+    multi_select_options: NotRequired[
+        Union[list[IssueFieldValuePropMultiSelectOptionsItemsType], None]
     ]
 
 
-class IssuePropLabelsItemsOneof1PropArchivedByType(TypedDict):
-    """IssuePropLabelsItemsOneof1PropArchivedBy
+class IssueFieldValueTypeForResponse(TypedDict):
+    """Issue Field Value
 
-    The user who archived the label, or `null` if it has not been archived.
+    A value assigned to an issue field
     """
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
+    issue_field_id: int
+    issue_field_name: NotRequired[str]
     node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    data_type: Literal["text", "single_select", "multi_select", "number", "date"]
+    value: Union[str, float, int, None]
+    single_select_option: NotRequired[
+        Union[IssueFieldValuePropSingleSelectOptionTypeForResponse, None]
+    ]
+    multi_select_options: NotRequired[
+        Union[list[IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse], None]
+    ]
 
 
-class IssuePropLabelsItemsOneof1PropArchivedByTypeForResponse(TypedDict):
-    """IssuePropLabelsItemsOneof1PropArchivedBy
+class IssueFieldValuePropSingleSelectOptionType(TypedDict):
+    """IssueFieldValuePropSingleSelectOption
 
-    The user who archived the label, or `null` if it has not been archived.
+    Details about the selected option (only present for single_select fields)
     """
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
     id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
-    user_view_type: NotRequired[str]
+    name: str
+    color: str
 
 
-class IssuePropPullRequestType(TypedDict):
-    """IssuePropPullRequest"""
+class IssueFieldValuePropSingleSelectOptionTypeForResponse(TypedDict):
+    """IssueFieldValuePropSingleSelectOption
 
-    merged_at: NotRequired[Union[_dt.datetime, None]]
-    diff_url: Union[str, None]
-    html_url: Union[str, None]
-    patch_url: Union[str, None]
-    url: Union[str, None]
+    Details about the selected option (only present for single_select fields)
+    """
+
+    id: int
+    name: str
+    color: str
 
 
-class IssuePropPullRequestTypeForResponse(TypedDict):
-    """IssuePropPullRequest"""
+class IssueFieldValuePropMultiSelectOptionsItemsType(TypedDict):
+    """IssueFieldValuePropMultiSelectOptionsItems"""
 
-    merged_at: NotRequired[Union[str, None]]
-    diff_url: Union[str, None]
-    html_url: Union[str, None]
-    patch_url: Union[str, None]
-    url: Union[str, None]
+    id: int
+    name: str
+    color: str
+
+
+class IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse(TypedDict):
+    """IssueFieldValuePropMultiSelectOptionsItems"""
+
+    id: int
+    name: str
+    color: str
 
 
 __all__ = (
-    "IssuePropLabelsItemsOneof1PropArchivedByType",
-    "IssuePropLabelsItemsOneof1PropArchivedByTypeForResponse",
-    "IssuePropLabelsItemsOneof1Type",
-    "IssuePropLabelsItemsOneof1TypeForResponse",
-    "IssuePropPullRequestType",
-    "IssuePropPullRequestTypeForResponse",
+    "IssueFieldValuePropMultiSelectOptionsItemsType",
+    "IssueFieldValuePropMultiSelectOptionsItemsTypeForResponse",
+    "IssueFieldValuePropSingleSelectOptionType",
+    "IssueFieldValuePropSingleSelectOptionTypeForResponse",
+    "IssueFieldValueType",
+    "IssueFieldValueTypeForResponse",
 )

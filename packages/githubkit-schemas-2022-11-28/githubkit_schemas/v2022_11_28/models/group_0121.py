@@ -9,22 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ActionsPolicyWorkflowPathConditionPropWorkflowPath(GitHubModel):
-    """ActionsPolicyWorkflowPathConditionPropWorkflowPath"""
+class ActionsSetDefaultWorkflowPermissions(GitHubModel):
+    """ActionsSetDefaultWorkflowPermissions"""
 
-    include: list[str] = Field(
-        description="Array of workflow file paths or glob patterns to include. An empty array includes all\nworkflows not matched by an excluded pattern. Use `~ALL` by itself to include all workflows.\n`~ALL` cannot be combined with other included patterns."
+    default_workflow_permissions: Missing[Literal["read", "write"]] = Field(
+        default=UNSET,
+        description="The default workflow permissions granted to the GITHUB_TOKEN when running workflows.",
     )
-    exclude: list[str] = Field(
-        description="Array of workflow file paths or glob patterns to exclude. The condition will not pass\nif any of these patterns match. `~ALL` is not allowed in this array."
+    can_approve_pull_request_reviews: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether GitHub Actions can approve pull requests. Enabling this can be a security risk.",
     )
 
 
-model_rebuild(ActionsPolicyWorkflowPathConditionPropWorkflowPath)
+model_rebuild(ActionsSetDefaultWorkflowPermissions)
 
-__all__ = ("ActionsPolicyWorkflowPathConditionPropWorkflowPath",)
+__all__ = ("ActionsSetDefaultWorkflowPermissions",)

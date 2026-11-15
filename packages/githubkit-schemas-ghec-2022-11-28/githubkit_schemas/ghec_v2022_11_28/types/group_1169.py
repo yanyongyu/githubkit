@@ -9,195 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsType(
-    TypedDict
-):
-    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200Items
+class AgentsAutomationsGetResponse401Type(TypedDict):
+    """AgentsAutomationsGetResponse401
 
-    An available trigger for automations
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    id: str
-    title: str
-    description: str
-    fields: list[
-        AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsType
+    message: str
+    errors: NotRequired[list[AgentsAutomationsGetResponse401PropErrorsItemsType]]
+    documentation_url: str
+    error_code: NotRequired[str]
+    limited_resource: NotRequired[str]
+
+
+class AgentsAutomationsGetResponse401TypeForResponse(TypedDict):
+    """AgentsAutomationsGetResponse401
+
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
+    """
+
+    message: str
+    errors: NotRequired[
+        list[AgentsAutomationsGetResponse401PropErrorsItemsTypeForResponse]
     ]
+    documentation_url: str
+    error_code: NotRequired[str]
+    limited_resource: NotRequired[str]
 
 
-class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200Items
+class AgentsAutomationsGetResponse401PropErrorsItemsType(TypedDict):
+    """AgentsAutomationsGetResponse401PropErrorsItems
 
-    An available trigger for automations
+    A single validation error
     """
 
-    id: str
-    title: str
-    description: str
-    fields: list[
-        AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsTypeForResponse
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
     ]
+    message: NotRequired[str]
 
 
-class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsType(
-    TypedDict
-):
-    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsIte
-    ms
+class AgentsAutomationsGetResponse401PropErrorsItemsTypeForResponse(TypedDict):
+    """AgentsAutomationsGetResponse401PropErrorsItems
 
-    A filter that can be configured when using a trigger in an automation.
+    A single validation error
     """
 
-    id: str
-    label: str
-    required: bool
-    description: NotRequired[str]
-    schema: Union[
-        AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0Type,
-        AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1Type,
-        AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2Type,
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
     ]
-
-
-class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsIte
-    ms
-
-    A filter that can be configured when using a trigger in an automation.
-    """
-
-    id: str
-    label: str
-    required: bool
-    description: NotRequired[str]
-    schema: Union[
-        AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0TypeForResponse,
-        AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1TypeForResponse,
-        AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2TypeForResponse,
-    ]
-
-
-class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0Type(
-    TypedDict
-):
-    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsIte
-    msPropSchemaOneof0
-    """
-
-    type: Literal["string"]
-    enum: NotRequired[list[str]]
-    min_length: NotRequired[int]
-
-
-class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0TypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsIte
-    msPropSchemaOneof0
-    """
-
-    type: Literal["string"]
-    enum: NotRequired[list[str]]
-    min_length: NotRequired[int]
-
-
-class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2Type(
-    TypedDict
-):
-    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsIte
-    msPropSchemaOneof2
-    """
-
-    type: Literal["integer"]
-    enum: NotRequired[list[int]]
-    minimum: NotRequired[int]
-    maximum: NotRequired[int]
-
-
-class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2TypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsIte
-    msPropSchemaOneof2
-    """
-
-    type: Literal["integer"]
-    enum: NotRequired[list[int]]
-    minimum: NotRequired[int]
-    maximum: NotRequired[int]
-
-
-class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1Type(
-    TypedDict
-):
-    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsIte
-    msPropSchemaOneof1
-    """
-
-    type: Literal["array"]
-    items: AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItemsType
-    min_items: NotRequired[int]
-    max_items: NotRequired[int]
-    unique_items: NotRequired[bool]
-
-
-class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1TypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsIte
-    msPropSchemaOneof1
-    """
-
-    type: Literal["array"]
-    items: AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItemsTypeForResponse
-    min_items: NotRequired[int]
-    max_items: NotRequired[int]
-    unique_items: NotRequired[bool]
-
-
-class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItemsType(
-    TypedDict
-):
-    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsIte
-    msPropSchemaOneof1PropItems
-    """
-
-    type: Literal["string"]
-    enum: NotRequired[list[str]]
-    min_length: NotRequired[int]
-
-
-class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItemsTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsIte
-    msPropSchemaOneof1PropItems
-    """
-
-    type: Literal["string"]
-    enum: NotRequired[list[str]]
-    min_length: NotRequired[int]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0Type",
-    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0TypeForResponse",
-    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItemsType",
-    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItemsTypeForResponse",
-    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1Type",
-    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1TypeForResponse",
-    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2Type",
-    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2TypeForResponse",
-    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsType",
-    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsTypeForResponse",
-    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsType",
-    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsTypeForResponse",
+    "AgentsAutomationsGetResponse401PropErrorsItemsType",
+    "AgentsAutomationsGetResponse401PropErrorsItemsTypeForResponse",
+    "AgentsAutomationsGetResponse401Type",
+    "AgentsAutomationsGetResponse401TypeForResponse",
 )

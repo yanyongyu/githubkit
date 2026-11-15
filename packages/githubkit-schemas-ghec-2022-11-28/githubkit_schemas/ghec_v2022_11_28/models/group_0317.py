@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,47 +19,51 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ExternalGroup(GitHubModel):
-    """ExternalGroup
+class DismissalRequestResponse(GitHubModel):
+    """Dismissal request response
 
-    Information about an external group's usage and its members
+    A response made by a requester to dismiss the request.
     """
 
-    group_id: int = Field(description="The internal ID of the group")
-    group_name: str = Field(description="The display name for the group")
-    updated_at: Missing[str] = Field(
-        default=UNSET, description="The date when the group was last updated_at"
+    id: Missing[int] = Field(
+        default=UNSET, description="The ID of the response to the dismissal request."
     )
-    teams: list[ExternalGroupPropTeamsItems] = Field(
-        description="An array of teams linked to this group"
+    reviewer: Missing[DismissalRequestResponsePropReviewer] = Field(
+        default=UNSET, description="The user who reviewed the dismissal request."
     )
-    members: list[ExternalGroupPropMembersItems] = Field(
-        description="An array of external members linked to this group"
+    message: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The response comment of the reviewer."
+    )
+    status: Missing[Literal["approved", "denied", "dismissed"]] = Field(
+        default=UNSET,
+        description="The response status to the dismissal request until dismissed.",
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="The date and time the response to the dismissal request was created.",
     )
 
 
-class ExternalGroupPropTeamsItems(GitHubModel):
-    """ExternalGroupPropTeamsItems"""
+class DismissalRequestResponsePropReviewer(GitHubModel):
+    """DismissalRequestResponsePropReviewer
 
-    team_id: int = Field(description="The id for a team")
-    team_name: str = Field(description="The name of the team")
+    The user who reviewed the dismissal request.
+    """
+
+    actor_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the GitHub user who reviewed the dismissal request.",
+    )
+    actor_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the GitHub user who reviewed the dismissal request.",
+    )
 
 
-class ExternalGroupPropMembersItems(GitHubModel):
-    """ExternalGroupPropMembersItems"""
-
-    member_id: int = Field(description="The internal user ID of the identity")
-    member_login: str = Field(description="The handle/login for the user")
-    member_name: str = Field(description="The user display name/profile name")
-    member_email: str = Field(description="An email attached to a user")
-
-
-model_rebuild(ExternalGroup)
-model_rebuild(ExternalGroupPropTeamsItems)
-model_rebuild(ExternalGroupPropMembersItems)
+model_rebuild(DismissalRequestResponse)
+model_rebuild(DismissalRequestResponsePropReviewer)
 
 __all__ = (
-    "ExternalGroup",
-    "ExternalGroupPropMembersItems",
-    "ExternalGroupPropTeamsItems",
+    "DismissalRequestResponse",
+    "DismissalRequestResponsePropReviewer",
 )

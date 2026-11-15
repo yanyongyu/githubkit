@@ -9,205 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class FileCommitType(TypedDict):
-    """File Commit
+class ContentDirectoryItemsType(TypedDict):
+    """ContentDirectoryItems"""
 
-    File Commit
-    """
-
-    content: Union[FileCommitPropContentType, None]
-    commit: FileCommitPropCommitType
-
-
-class FileCommitTypeForResponse(TypedDict):
-    """File Commit
-
-    File Commit
-    """
-
-    content: Union[FileCommitPropContentTypeForResponse, None]
-    commit: FileCommitPropCommitTypeForResponse
+    type: Literal["dir", "file", "submodule", "symlink"]
+    size: int
+    name: str
+    path: str
+    content: NotRequired[str]
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentDirectoryItemsPropLinksType
 
 
-class FileCommitPropContentType(TypedDict):
-    """FileCommitPropContent"""
+class ContentDirectoryItemsTypeForResponse(TypedDict):
+    """ContentDirectoryItems"""
 
-    name: NotRequired[str]
-    path: NotRequired[str]
-    sha: NotRequired[str]
-    size: NotRequired[int]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    git_url: NotRequired[str]
-    download_url: NotRequired[str]
-    type: NotRequired[str]
-    links: NotRequired[FileCommitPropContentPropLinksType]
-
-
-class FileCommitPropContentTypeForResponse(TypedDict):
-    """FileCommitPropContent"""
-
-    name: NotRequired[str]
-    path: NotRequired[str]
-    sha: NotRequired[str]
-    size: NotRequired[int]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    git_url: NotRequired[str]
-    download_url: NotRequired[str]
-    type: NotRequired[str]
-    links: NotRequired[FileCommitPropContentPropLinksTypeForResponse]
+    type: Literal["dir", "file", "submodule", "symlink"]
+    size: int
+    name: str
+    path: str
+    content: NotRequired[str]
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentDirectoryItemsPropLinksTypeForResponse
 
 
-class FileCommitPropContentPropLinksType(TypedDict):
-    """FileCommitPropContentPropLinks"""
+class ContentDirectoryItemsPropLinksType(TypedDict):
+    """ContentDirectoryItemsPropLinks"""
 
-    self_: NotRequired[str]
-    git: NotRequired[str]
-    html: NotRequired[str]
-
-
-class FileCommitPropContentPropLinksTypeForResponse(TypedDict):
-    """FileCommitPropContentPropLinks"""
-
-    self_: NotRequired[str]
-    git: NotRequired[str]
-    html: NotRequired[str]
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
-class FileCommitPropCommitType(TypedDict):
-    """FileCommitPropCommit"""
+class ContentDirectoryItemsPropLinksTypeForResponse(TypedDict):
+    """ContentDirectoryItemsPropLinks"""
 
-    sha: NotRequired[str]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    author: NotRequired[FileCommitPropCommitPropAuthorType]
-    committer: NotRequired[FileCommitPropCommitPropCommitterType]
-    message: NotRequired[str]
-    tree: NotRequired[FileCommitPropCommitPropTreeType]
-    parents: NotRequired[list[FileCommitPropCommitPropParentsItemsType]]
-    verification: NotRequired[FileCommitPropCommitPropVerificationType]
-
-
-class FileCommitPropCommitTypeForResponse(TypedDict):
-    """FileCommitPropCommit"""
-
-    sha: NotRequired[str]
-    node_id: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    author: NotRequired[FileCommitPropCommitPropAuthorTypeForResponse]
-    committer: NotRequired[FileCommitPropCommitPropCommitterTypeForResponse]
-    message: NotRequired[str]
-    tree: NotRequired[FileCommitPropCommitPropTreeTypeForResponse]
-    parents: NotRequired[list[FileCommitPropCommitPropParentsItemsTypeForResponse]]
-    verification: NotRequired[FileCommitPropCommitPropVerificationTypeForResponse]
-
-
-class FileCommitPropCommitPropAuthorType(TypedDict):
-    """FileCommitPropCommitPropAuthor"""
-
-    date: NotRequired[str]
-    name: NotRequired[str]
-    email: NotRequired[str]
-
-
-class FileCommitPropCommitPropAuthorTypeForResponse(TypedDict):
-    """FileCommitPropCommitPropAuthor"""
-
-    date: NotRequired[str]
-    name: NotRequired[str]
-    email: NotRequired[str]
-
-
-class FileCommitPropCommitPropCommitterType(TypedDict):
-    """FileCommitPropCommitPropCommitter"""
-
-    date: NotRequired[str]
-    name: NotRequired[str]
-    email: NotRequired[str]
-
-
-class FileCommitPropCommitPropCommitterTypeForResponse(TypedDict):
-    """FileCommitPropCommitPropCommitter"""
-
-    date: NotRequired[str]
-    name: NotRequired[str]
-    email: NotRequired[str]
-
-
-class FileCommitPropCommitPropTreeType(TypedDict):
-    """FileCommitPropCommitPropTree"""
-
-    url: NotRequired[str]
-    sha: NotRequired[str]
-
-
-class FileCommitPropCommitPropTreeTypeForResponse(TypedDict):
-    """FileCommitPropCommitPropTree"""
-
-    url: NotRequired[str]
-    sha: NotRequired[str]
-
-
-class FileCommitPropCommitPropParentsItemsType(TypedDict):
-    """FileCommitPropCommitPropParentsItems"""
-
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    sha: NotRequired[str]
-
-
-class FileCommitPropCommitPropParentsItemsTypeForResponse(TypedDict):
-    """FileCommitPropCommitPropParentsItems"""
-
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    sha: NotRequired[str]
-
-
-class FileCommitPropCommitPropVerificationType(TypedDict):
-    """FileCommitPropCommitPropVerification"""
-
-    verified: NotRequired[bool]
-    reason: NotRequired[str]
-    signature: NotRequired[Union[str, None]]
-    payload: NotRequired[Union[str, None]]
-    verified_at: NotRequired[Union[str, None]]
-
-
-class FileCommitPropCommitPropVerificationTypeForResponse(TypedDict):
-    """FileCommitPropCommitPropVerification"""
-
-    verified: NotRequired[bool]
-    reason: NotRequired[str]
-    signature: NotRequired[Union[str, None]]
-    payload: NotRequired[Union[str, None]]
-    verified_at: NotRequired[Union[str, None]]
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
 
 
 __all__ = (
-    "FileCommitPropCommitPropAuthorType",
-    "FileCommitPropCommitPropAuthorTypeForResponse",
-    "FileCommitPropCommitPropCommitterType",
-    "FileCommitPropCommitPropCommitterTypeForResponse",
-    "FileCommitPropCommitPropParentsItemsType",
-    "FileCommitPropCommitPropParentsItemsTypeForResponse",
-    "FileCommitPropCommitPropTreeType",
-    "FileCommitPropCommitPropTreeTypeForResponse",
-    "FileCommitPropCommitPropVerificationType",
-    "FileCommitPropCommitPropVerificationTypeForResponse",
-    "FileCommitPropCommitType",
-    "FileCommitPropCommitTypeForResponse",
-    "FileCommitPropContentPropLinksType",
-    "FileCommitPropContentPropLinksTypeForResponse",
-    "FileCommitPropContentType",
-    "FileCommitPropContentTypeForResponse",
-    "FileCommitType",
-    "FileCommitTypeForResponse",
+    "ContentDirectoryItemsPropLinksType",
+    "ContentDirectoryItemsPropLinksTypeForResponse",
+    "ContentDirectoryItemsType",
+    "ContentDirectoryItemsTypeForResponse",
 )

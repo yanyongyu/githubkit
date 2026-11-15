@@ -9,9 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,50 +16,38 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class SecretScanningCustomPattern(GitHubModel):
-    """Secret Scanning Custom Pattern
+class SecretScanningLocationDiscussionBody(GitHubModel):
+    """SecretScanningLocationDiscussionBody
 
-    A custom pattern for secret scanning.
+    Represents a 'discussion_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of a discussion.
     """
 
-    id: int = Field(description="The ID of the custom pattern.")
-    name: str = Field(description="The name of the custom pattern.")
-    pattern: str = Field(description="The regular expression of the custom pattern.")
-    slug: str = Field(
-        description="A URL-friendly identifier for the custom pattern, derived from its name."
-    )
-    state: Literal["published", "unpublished"] = Field(
-        description="The state of the custom pattern."
-    )
-    push_protection_enabled: bool = Field(
-        description="Whether push protection is enabled for this custom pattern."
-    )
-    start_delimiter: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The start delimiter regex for the custom pattern."
-    )
-    end_delimiter: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The end delimiter regex for the custom pattern."
-    )
-    must_match: Missing[Union[list[str], None]] = Field(
-        default=UNSET, description="List of regexes that the secret must match."
-    )
-    must_not_match: Missing[Union[list[str], None]] = Field(
-        default=UNSET, description="List of regexes that the secret must not match."
-    )
-    custom_pattern_version: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
-    )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The date and time the custom pattern was created in ISO 8601 format.",
-    )
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET,
-        description="The date and time the custom pattern was last updated in ISO 8601 format.",
+    discussion_body_url: str = Field(
+        description="The URL to the discussion where the secret was detected."
     )
 
 
-model_rebuild(SecretScanningCustomPattern)
+class SecretScanningLocationPullRequestComment(GitHubModel):
+    """SecretScanningLocationPullRequestComment
 
-__all__ = ("SecretScanningCustomPattern",)
+    Represents a 'pull_request_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a pull request.
+    """
+
+    pull_request_comment_url: str = Field(
+        description="The API URL to get the pull request comment where the secret was detected."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET,
+        description="The GitHub URL for the pull request comment where the secret was detected.",
+    )
+
+
+model_rebuild(SecretScanningLocationDiscussionBody)
+model_rebuild(SecretScanningLocationPullRequestComment)
+
+__all__ = (
+    "SecretScanningLocationDiscussionBody",
+    "SecretScanningLocationPullRequestComment",
+)

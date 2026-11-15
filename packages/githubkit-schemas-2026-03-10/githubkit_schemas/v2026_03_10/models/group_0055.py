@@ -9,23 +9,83 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0056 import PullRequestMinimalPropBase, PullRequestMinimalPropHead
+
+class IssuePropStatus(GitHubModel):
+    """IssuePropStatus
+
+    The status of the issue, or `null` if it has none. Issue statuses are in preview
+    and only available to accounts enrolled in the preview.
+    """
+
+    id: int = Field(description="The stable identifier of the planning status.")
+    name: str = Field(
+        description="The display name of the planning status, which may change in the future."
+    )
+    category: str = Field(
+        description="A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added."
+    )
 
 
-class PullRequestMinimal(GitHubModel):
-    """Pull Request Minimal"""
+class IssuePropLabelsItemsOneof1(GitHubModel):
+    """IssuePropLabelsItemsOneof1"""
 
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+    color: Missing[Union[str, None]] = Field(default=UNSET)
+    default: Missing[bool] = Field(default=UNSET)
+    archived_by: Missing[Union[IssuePropLabelsItemsOneof1PropArchivedBy, None]] = Field(
+        default=UNSET,
+        description="The user who archived the label, or `null` if it has not been archived.",
+    )
+
+
+class IssuePropLabelsItemsOneof1PropArchivedBy(GitHubModel):
+    """IssuePropLabelsItemsOneof1PropArchivedBy
+
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
     id: int = Field()
-    number: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
     url: str = Field()
-    head: PullRequestMinimalPropHead = Field()
-    base: PullRequestMinimalPropBase = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(PullRequestMinimal)
+model_rebuild(IssuePropStatus)
+model_rebuild(IssuePropLabelsItemsOneof1)
+model_rebuild(IssuePropLabelsItemsOneof1PropArchivedBy)
 
-__all__ = ("PullRequestMinimal",)
+__all__ = (
+    "IssuePropLabelsItemsOneof1",
+    "IssuePropLabelsItemsOneof1PropArchivedBy",
+    "IssuePropStatus",
+)

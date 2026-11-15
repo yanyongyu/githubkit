@@ -10,95 +10,77 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Any, TypeAlias, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0099 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
-from .group_0215 import (
-    PublicMonitoringRepositoryType,
-    PublicMonitoringRepositoryTypeForResponse,
-)
-from .group_0216 import BaseGistType, BaseGistTypeForResponse
-from .group_0219 import (
-    PublicMonitoringAlertPropAttributionType,
-    PublicMonitoringAlertPropAttributionTypeForResponse,
-)
 
 
-class PublicMonitoringAlertType(TypedDict):
-    """PublicMonitoringAlert"""
+class BaseGistType(TypedDict):
+    """Base Gist
 
-    number: int
+    Base Gist
+    """
+
     url: str
-    secret_type: NotRequired[str]
-    secret_type_display_name: NotRequired[str]
-    validity: NotRequired[Literal["active", "inactive", "unknown"]]
-    created_at: NotRequired[_dt.datetime]
-    state: NotRequired[Literal["open", "resolved"]]
-    resolution: NotRequired[Union[Literal["dismissed", "fixed"], None]]
-    resolved_by: NotRequired[Union[SimpleUserType, None]]
-    resolved_at: NotRequired[Union[_dt.datetime, None]]
-    resolution_comment: NotRequired[Union[str, None]]
-    secret: NotRequired[Union[str, None]]
-    repository: NotRequired[
-        Union[SimpleRepositoryType, PublicMonitoringRepositoryType, None]
-    ]
-    gist: NotRequired[
-        Union[BaseGistType, PublicMonitoringAlertPropGistAnyof1Type, None]
-    ]
-    attribution: NotRequired[PublicMonitoringAlertPropAttributionType]
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: BaseGistPropFilesType
+    public: bool
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    comments_url: str
+    owner: NotRequired[SimpleUserType]
+    truncated: NotRequired[bool]
 
 
-class PublicMonitoringAlertTypeForResponse(TypedDict):
-    """PublicMonitoringAlert"""
+class BaseGistTypeForResponse(TypedDict):
+    """Base Gist
 
-    number: int
+    Base Gist
+    """
+
     url: str
-    secret_type: NotRequired[str]
-    secret_type_display_name: NotRequired[str]
-    validity: NotRequired[Literal["active", "inactive", "unknown"]]
-    created_at: NotRequired[str]
-    state: NotRequired[Literal["open", "resolved"]]
-    resolution: NotRequired[Union[Literal["dismissed", "fixed"], None]]
-    resolved_by: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    resolved_at: NotRequired[Union[str, None]]
-    resolution_comment: NotRequired[Union[str, None]]
-    secret: NotRequired[Union[str, None]]
-    repository: NotRequired[
-        Union[
-            SimpleRepositoryTypeForResponse,
-            PublicMonitoringRepositoryTypeForResponse,
-            None,
-        ]
-    ]
-    gist: NotRequired[
-        Union[
-            BaseGistTypeForResponse,
-            PublicMonitoringAlertPropGistAnyof1TypeForResponse,
-            None,
-        ]
-    ]
-    attribution: NotRequired[PublicMonitoringAlertPropAttributionTypeForResponse]
-
-
-class PublicMonitoringAlertPropGistAnyof1Type(TypedDict):
-    """PublicMonitoringAlertPropGistAnyof1"""
-
+    forks_url: str
+    commits_url: str
     id: str
-    html_url: NotRequired[Union[str, None]]
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: BaseGistPropFilesTypeForResponse
+    public: bool
+    created_at: str
+    updated_at: str
+    description: Union[str, None]
+    comments: int
+    comments_enabled: NotRequired[bool]
+    comments_url: str
+    owner: NotRequired[SimpleUserTypeForResponse]
+    truncated: NotRequired[bool]
 
 
-class PublicMonitoringAlertPropGistAnyof1TypeForResponse(TypedDict):
-    """PublicMonitoringAlertPropGistAnyof1"""
+BaseGistPropFilesType: TypeAlias = dict[str, Any]
+"""BaseGistPropFiles
+"""
 
-    id: str
-    html_url: NotRequired[Union[str, None]]
+
+BaseGistPropFilesTypeForResponse: TypeAlias = dict[str, Any]
+"""BaseGistPropFiles
+"""
 
 
 __all__ = (
-    "PublicMonitoringAlertPropGistAnyof1Type",
-    "PublicMonitoringAlertPropGistAnyof1TypeForResponse",
-    "PublicMonitoringAlertType",
-    "PublicMonitoringAlertTypeForResponse",
+    "BaseGistPropFilesType",
+    "BaseGistPropFilesTypeForResponse",
+    "BaseGistType",
+    "BaseGistTypeForResponse",
 )

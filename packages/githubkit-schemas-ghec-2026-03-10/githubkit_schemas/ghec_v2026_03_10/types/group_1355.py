@@ -9,71 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200"""
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody"""
 
-    models: list[
-        EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItemsType
-    ]
+    selected_usernames: list[str]
 
 
-class EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200TypeForResponse(
+class EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200"""
+    """EnterprisesEnterpriseCopilotBillingSelectedUsersPostBody"""
 
-    models: list[
-        EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItemsTypeForResponse
-    ]
-
-
-class EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItemsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItems"""
-
-    model_name: str
-    display_name: str
-    policy_state: Literal["enabled", "disabled"]
-    enterprise_policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_organizations",
-        "delegate_to_default",
-        "unconfigured",
-    ]
-    editable: bool
-    required_for_copilot_fusion_max: NotRequired[Literal[True]]
-
-
-class EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItems"""
-
-    model_name: str
-    display_name: str
-    policy_state: Literal["enabled", "disabled"]
-    enterprise_policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_organizations",
-        "delegate_to_default",
-        "unconfigured",
-    ]
-    editable: bool
-    required_for_copilot_fusion_max: NotRequired[Literal[True]]
+    selected_usernames: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItemsType",
-    "EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItemsTypeForResponse",
-    "EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200Type",
-    "EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyType",
+    "EnterprisesEnterpriseCopilotBillingSelectedUsersPostBodyTypeForResponse",
 )

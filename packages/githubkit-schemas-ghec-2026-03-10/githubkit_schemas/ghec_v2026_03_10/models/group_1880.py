@@ -9,20 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0299 import CodespaceMachine
+from .group_0617 import PullRequestStackPullRequest
 
 
-class UserCodespacesCodespaceNameMachinesGetResponse200(GitHubModel):
-    """UserCodespacesCodespaceNameMachinesGetResponse200"""
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200"""
 
-    total_count: int = Field()
-    machines: list[CodespaceMachine] = Field()
+    id: int = Field()
+    number: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    base: ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase = Field()
+    open_: bool = Field(
+        alias="open",
+        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
+    )
+    created_at: _dt.datetime = Field()
+    pull_requests: list[PullRequestStackPullRequest] = Field()
 
 
-model_rebuild(UserCodespacesCodespaceNameMachinesGetResponse200)
+class ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase(GitHubModel):
+    """ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase"""
 
-__all__ = ("UserCodespacesCodespaceNameMachinesGetResponse200",)
+    ref: str = Field()
+
+
+model_rebuild(ReposOwnerRepoStacksStackNumberUnstackPostResponse200)
+model_rebuild(ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase)
+
+__all__ = (
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200",
+    "ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase",
+)

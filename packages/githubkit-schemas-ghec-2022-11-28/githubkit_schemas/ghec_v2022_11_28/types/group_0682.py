@@ -9,42 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+import datetime as _dt
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0683 import (
+    DependabotAlertWithdrawnWebhookPropDependencyType,
+    DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse,
+)
 
 
-class WebhooksChangesType(TypedDict):
-    """WebhooksChanges
+class DependabotAlertWithdrawnWebhookType(TypedDict):
+    """DependabotAlertWithdrawnWebhook
 
-    The changes to the comment.
+    Identifiers for a withdrawn Dependabot alert, captured before deletion so that
+    consumers can reconcile external records. This is not a full alert
+    representation.
     """
 
-    body: NotRequired[WebhooksChangesPropBodyType]
+    id: int
+    node_id: str
+    number: int
+    state: Literal["withdrawn"]
+    dependency: DependabotAlertWithdrawnWebhookPropDependencyType
+    security_advisory: DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType
+    url: str
+    html_url: str
+    created_at: _dt.datetime
+    withdrawn_at: _dt.datetime
 
 
-class WebhooksChangesTypeForResponse(TypedDict):
-    """WebhooksChanges
+class DependabotAlertWithdrawnWebhookTypeForResponse(TypedDict):
+    """DependabotAlertWithdrawnWebhook
 
-    The changes to the comment.
+    Identifiers for a withdrawn Dependabot alert, captured before deletion so that
+    consumers can reconcile external records. This is not a full alert
+    representation.
     """
 
-    body: NotRequired[WebhooksChangesPropBodyTypeForResponse]
+    id: int
+    node_id: str
+    number: int
+    state: Literal["withdrawn"]
+    dependency: DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse
+    security_advisory: (
+        DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse
+    )
+    url: str
+    html_url: str
+    created_at: str
+    withdrawn_at: str
 
 
-class WebhooksChangesPropBodyType(TypedDict):
-    """WebhooksChangesPropBody"""
+class DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType(TypedDict):
+    """DependabotAlertWithdrawnWebhookPropSecurityAdvisory
 
-    from_: str
+    Identifiers of the advisory that produced the withdrawn alert.
+    """
+
+    ghsa_id: str
+    cve_id: Union[str, None]
 
 
-class WebhooksChangesPropBodyTypeForResponse(TypedDict):
-    """WebhooksChangesPropBody"""
+class DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse(TypedDict):
+    """DependabotAlertWithdrawnWebhookPropSecurityAdvisory
 
-    from_: str
+    Identifiers of the advisory that produced the withdrawn alert.
+    """
+
+    ghsa_id: str
+    cve_id: Union[str, None]
 
 
 __all__ = (
-    "WebhooksChangesPropBodyType",
-    "WebhooksChangesPropBodyTypeForResponse",
-    "WebhooksChangesType",
-    "WebhooksChangesTypeForResponse",
+    "DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType",
+    "DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse",
+    "DependabotAlertWithdrawnWebhookType",
+    "DependabotAlertWithdrawnWebhookTypeForResponse",
 )

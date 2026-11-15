@@ -9,123 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class ActionsRuleRestrictActionsActors(GitHubModel):
-    """restrict_actions_actors
-
-    Choose specific actors that are authorized to trigger Actions workflows.
-    """
-
-    type: Literal["restrict_actions_actors"] = Field()
-    parameters: Missing[ActionsRuleRestrictActionsActorsPropParameters] = Field(
-        default=UNSET
-    )
-
-
-class ActionsRuleRestrictActionsActorsPropParameters(GitHubModel):
-    """ActionsRuleRestrictActionsActorsPropParameters"""
-
-    allowed_actors: list[ActionsRuleParamsActor] = Field(
-        description="Select the actors who can run Actions workflows."
-    )
-
-
-class ActionsRuleParamsActor(GitHubModel):
-    """Actor
-
-    An actor authorized to trigger Actions workflows
-    """
-
-    id: int = Field(
-        description="ID of the actor authorized to trigger Actions workflows."
-    )
-    type: Literal[
-        "User",
-        "Bot",
-        "Team",
-        "BusinessTeam",
-        "EnterpriseTeam",
-        "IntegrationInstallation",
-        "App",
-        "RepositoryRole",
-    ] = Field(description="The type of the actor")
-
-
-class ActionsRuleRestrictActionEvents(GitHubModel):
-    """restrict_action_events
-
-    Choose specific GitHub events that will trigger Actions workflows.
-    """
-
-    type: Literal["restrict_action_events"] = Field()
-    parameters: Missing[ActionsRuleRestrictActionEventsPropParameters] = Field(
-        default=UNSET
-    )
-
-
-class ActionsRuleRestrictActionEventsPropParameters(GitHubModel):
-    """ActionsRuleRestrictActionEventsPropParameters"""
-
-    allowed_events: list[
-        Literal[
-            "branch_protection_rule",
-            "check_run",
-            "check_suite",
-            "create",
-            "delete",
-            "deployment",
-            "deployment_status",
-            "discussion",
-            "discussion_comment",
-            "fork",
-            "gollum",
-            "image_version",
-            "issue_comment",
-            "issues",
-            "label",
-            "merge_group",
-            "milestone",
-            "page_build",
-            "project",
-            "project_card",
-            "project_column",
-            "public",
-            "pull_request",
-            "pull_request_review",
-            "pull_request_review_comment",
-            "pull_request_target",
-            "push",
-            "registry_package",
-            "release",
-            "repository_dispatch",
-            "schedule",
-            "status",
-            "watch",
-            "workflow_call",
-            "workflow_dispatch",
-            "workflow_run",
-        ]
-    ] = Field(description="Select the events that can trigger Actions workflows.")
-
-
-model_rebuild(ActionsRuleRestrictActionsActors)
-model_rebuild(ActionsRuleRestrictActionsActorsPropParameters)
-model_rebuild(ActionsRuleParamsActor)
-model_rebuild(ActionsRuleRestrictActionEvents)
-model_rebuild(ActionsRuleRestrictActionEventsPropParameters)
-
-__all__ = (
-    "ActionsRuleParamsActor",
-    "ActionsRuleRestrictActionEvents",
-    "ActionsRuleRestrictActionEventsPropParameters",
-    "ActionsRuleRestrictActionsActors",
-    "ActionsRuleRestrictActionsActorsPropParameters",
+from .group_0123 import ActionsPolicyWorkflowPathConditionPropWorkflowPath
+from .group_0127 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
 )
+from .group_0140 import (
+    EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty,
+)
+
+
+class ActionsPolicyEnterpriseConditionsOneof4(GitHubModel):
+    """organization_property_and_repository_name
+
+    Conditions to target organizations by property and repositories by name
+    """
+
+    organization_property: EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty = Field()
+    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
+    workflow_path: Missing[ActionsPolicyWorkflowPathConditionPropWorkflowPath] = Field(
+        default=UNSET
+    )
+
+
+model_rebuild(ActionsPolicyEnterpriseConditionsOneof4)
+
+__all__ = ("ActionsPolicyEnterpriseConditionsOneof4",)

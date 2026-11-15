@@ -9,53 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing import Any, TypeAlias
+
+LanguageType: TypeAlias = dict[str, Any]
+"""Language
+
+Language
+"""
 
 
-class PagesDeploymentStatusType(TypedDict):
-    """GitHub Pages deployment status"""
+LanguageTypeForResponse: TypeAlias = dict[str, Any]
+"""Language
 
-    status: NotRequired[
-        Literal[
-            "deployment_in_progress",
-            "syncing_files",
-            "finished_file_sync",
-            "updating_pages",
-            "purging_cdn",
-            "deployment_cancelled",
-            "deployment_failed",
-            "deployment_content_failed",
-            "deployment_attempt_error",
-            "deployment_lost",
-            "succeed",
-            "deployment_queued",
-        ]
-    ]
-
-
-class PagesDeploymentStatusTypeForResponse(TypedDict):
-    """GitHub Pages deployment status"""
-
-    status: NotRequired[
-        Literal[
-            "deployment_in_progress",
-            "syncing_files",
-            "finished_file_sync",
-            "updating_pages",
-            "purging_cdn",
-            "deployment_cancelled",
-            "deployment_failed",
-            "deployment_content_failed",
-            "deployment_attempt_error",
-            "deployment_lost",
-            "succeed",
-            "deployment_queued",
-        ]
-    ]
+Language
+"""
 
 
 __all__ = (
-    "PagesDeploymentStatusType",
-    "PagesDeploymentStatusTypeForResponse",
+    "LanguageType",
+    "LanguageTypeForResponse",
 )

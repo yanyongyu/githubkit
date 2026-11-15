@@ -10,20 +10,33 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class Traffic(GitHubModel):
-    """Traffic"""
-
-    timestamp: _dt.datetime = Field()
-    uniques: int = Field()
-    count: int = Field()
+from .group_0003 import SimpleUser
+from .group_0058 import PullRequestMinimalPropBase, PullRequestMinimalPropHead
 
 
-model_rebuild(Traffic)
+class PullRequestStackPullRequest(GitHubModel):
+    """Pull Request Stack Pull Request"""
 
-__all__ = ("Traffic",)
+    id: int = Field()
+    number: int = Field()
+    url: str = Field()
+    head: PullRequestMinimalPropHead = Field()
+    base: PullRequestMinimalPropBase = Field()
+    node_id: str = Field()
+    title: str = Field()
+    state: Literal["open", "closed"] = Field()
+    merged_at: Union[_dt.datetime, None] = Field()
+    draft: bool = Field()
+    html_url: str = Field()
+    user: Union[SimpleUser, None] = Field()
+
+
+model_rebuild(PullRequestStackPullRequest)
+
+__all__ = ("PullRequestStackPullRequest",)

@@ -13,20 +13,20 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0618 import Traffic
 
+class StargazerHistory(GitHubModel):
+    """Stargazer History
 
-class ViewTraffic(GitHubModel):
-    """View Traffic
-
-    View Traffic
+    Stargazer History
     """
 
-    count: int = Field()
-    uniques: int = Field()
-    views: list[Traffic] = Field()
+    days: list[int] = Field(
+        description="The number of stars created on each day of the week, starting on Sunday."
+    )
+    total: int = Field(description="The number of stars created during the week.")
+    week: int = Field(description="The start of the week, given as a Unix timestamp.")
 
 
-model_rebuild(ViewTraffic)
+model_rebuild(StargazerHistory)
 
-__all__ = ("ViewTraffic",)
+__all__ = ("StargazerHistory",)

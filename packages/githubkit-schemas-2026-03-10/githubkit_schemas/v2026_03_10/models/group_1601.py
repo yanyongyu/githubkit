@@ -9,41 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0527 import PullRequestStackPullRequest
 
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
 
-class ReposOwnerRepoStacksPostResponse201(GitHubModel):
-    """ReposOwnerRepoStacksPostResponse201"""
-
-    id: int = Field()
-    number: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    base: ReposOwnerRepoStacksPostResponse201PropBase = Field()
-    open_: bool = Field(
-        alias="open",
-        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
+    message: str = Field(
+        description="The message for the pull request review dismissal"
     )
-    created_at: _dt.datetime = Field()
-    pull_requests: list[PullRequestStackPullRequest] = Field()
+    event: Missing[Literal["DISMISS"]] = Field(default=UNSET)
 
 
-class ReposOwnerRepoStacksPostResponse201PropBase(GitHubModel):
-    """ReposOwnerRepoStacksPostResponse201PropBase"""
+model_rebuild(ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody)
 
-    ref: str = Field()
-
-
-model_rebuild(ReposOwnerRepoStacksPostResponse201)
-model_rebuild(ReposOwnerRepoStacksPostResponse201PropBase)
-
-__all__ = (
-    "ReposOwnerRepoStacksPostResponse201",
-    "ReposOwnerRepoStacksPostResponse201PropBase",
-)
+__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody",)

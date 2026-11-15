@@ -9,55 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422Type(TypedDict):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422"""
+class EnterprisesEnterpriseCredentialsExportsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseCredentialsExportsPostBody
 
-    message: NotRequired[str]
-    validation_errors: NotRequired[
-        EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType
+    Optional filters that scope the export to a subset of the inventory.
+    """
+
+    token_types: NotRequired[list[str]]
+    authorization_state: NotRequired[
+        Literal["currently_authorized", "member_owned_only"]
     ]
+    owner: NotRequired[str]
+    organization: NotRequired[str]
+    application: NotRequired[str]
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422"""
+class EnterprisesEnterpriseCredentialsExportsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCredentialsExportsPostBody
 
-    message: NotRequired[str]
-    validation_errors: NotRequired[
-        EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse
+    Optional filters that scope the export to a subset of the inventory.
+    """
+
+    token_types: NotRequired[list[str]]
+    authorization_state: NotRequired[
+        Literal["currently_authorized", "member_owned_only"]
     ]
-
-
-EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType: TypeAlias = dict[
-    str, Any
-]
-"""EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationEr
-rors
-
-A map of validation errors keyed by the zero-based index of the pattern that
-failed.
-"""
-
-
-EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationEr
-rors
-
-A map of validation errors keyed by the zero-based index of the pattern that
-failed.
-"""
+    owner: NotRequired[str]
+    organization: NotRequired[str]
+    application: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsType",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422PropValidationErrorsTypeForResponse",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422Type",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse422TypeForResponse",
+    "EnterprisesEnterpriseCredentialsExportsPostBodyType",
+    "EnterprisesEnterpriseCredentialsExportsPostBodyTypeForResponse",
 )

@@ -11,40 +11,23 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items(ExtraGitHubModel):
-    """EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody"""
 
-    type: Missing[str] = Field(
-        default=UNSET, description="The record type (request or response)."
+    organization_id: int = Field(
+        description="The ID of the organization to use as the custom agents source."
     )
-    user_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the user who made the request."
-    )
-    enterprise_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the enterprise."
-    )
-    github_request_id: Missing[str] = Field(
-        default=UNSET, description="The GitHub request ID."
-    )
-    endpoint: Missing[str] = Field(
-        default=UNSET, description="The API endpoint called."
-    )
-    body: Missing[str] = Field(
-        default=UNSET, description="The request or response body."
-    )
-    timestamp: Missing[int] = Field(
-        default=UNSET, alias="@timestamp", description="Milliseconds since Unix epoch."
-    )
-    event_id: Missing[str] = Field(
-        default=UNSET, description="The source-assigned event ID."
+    create_ruleset: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to create a ruleset to protect agent definition files. Defaults to true.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items)
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody)
 
-__all__ = ("EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items",)
+__all__ = ("EnterprisesEnterpriseCopilotCustomAgentsSourcePutBody",)

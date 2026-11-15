@@ -9,22 +9,89 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class RepositoryRuleUpdatePropParametersType(TypedDict):
-    """RepositoryRuleUpdatePropParameters"""
+class RepositoryRuleCreationType(TypedDict):
+    """creation
 
-    update_allows_fetch_and_merge: bool
+    Only allow users with bypass permission to create matching refs.
+    """
+
+    type: Literal["creation"]
 
 
-class RepositoryRuleUpdatePropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleUpdatePropParameters"""
+class RepositoryRuleCreationTypeForResponse(TypedDict):
+    """creation
 
-    update_allows_fetch_and_merge: bool
+    Only allow users with bypass permission to create matching refs.
+    """
+
+    type: Literal["creation"]
+
+
+class RepositoryRuleDeletionType(TypedDict):
+    """deletion
+
+    Only allow users with bypass permissions to delete matching refs.
+    """
+
+    type: Literal["deletion"]
+
+
+class RepositoryRuleDeletionTypeForResponse(TypedDict):
+    """deletion
+
+    Only allow users with bypass permissions to delete matching refs.
+    """
+
+    type: Literal["deletion"]
+
+
+class RepositoryRuleRequiredSignaturesType(TypedDict):
+    """required_signatures
+
+    Commits pushed to matching refs must have verified signatures.
+    """
+
+    type: Literal["required_signatures"]
+
+
+class RepositoryRuleRequiredSignaturesTypeForResponse(TypedDict):
+    """required_signatures
+
+    Commits pushed to matching refs must have verified signatures.
+    """
+
+    type: Literal["required_signatures"]
+
+
+class RepositoryRuleNonFastForwardType(TypedDict):
+    """non_fast_forward
+
+    Prevent users with push access from force pushing to refs.
+    """
+
+    type: Literal["non_fast_forward"]
+
+
+class RepositoryRuleNonFastForwardTypeForResponse(TypedDict):
+    """non_fast_forward
+
+    Prevent users with push access from force pushing to refs.
+    """
+
+    type: Literal["non_fast_forward"]
 
 
 __all__ = (
-    "RepositoryRuleUpdatePropParametersType",
-    "RepositoryRuleUpdatePropParametersTypeForResponse",
+    "RepositoryRuleCreationType",
+    "RepositoryRuleCreationTypeForResponse",
+    "RepositoryRuleDeletionType",
+    "RepositoryRuleDeletionTypeForResponse",
+    "RepositoryRuleNonFastForwardType",
+    "RepositoryRuleNonFastForwardTypeForResponse",
+    "RepositoryRuleRequiredSignaturesType",
+    "RepositoryRuleRequiredSignaturesTypeForResponse",
 )

@@ -9,26 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0348 import Link
-
-
-class PullRequestSimplePropLinks(GitHubModel):
-    """PullRequestSimplePropLinks"""
-
-    comments: Link = Field(title="Link", description="Hypermedia Link")
-    commits: Link = Field(title="Link", description="Hypermedia Link")
-    statuses: Link = Field(title="Link", description="Hypermedia Link")
-    html: Link = Field(title="Link", description="Hypermedia Link")
-    issue: Link = Field(title="Link", description="Hypermedia Link")
-    review_comments: Link = Field(title="Link", description="Hypermedia Link")
-    review_comment: Link = Field(title="Link", description="Hypermedia Link")
-    self_: Link = Field(alias="self", title="Link", description="Hypermedia Link")
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(PullRequestSimplePropLinks)
+class PullRequestStack(GitHubModel):
+    """Pull Request Stack
 
-__all__ = ("PullRequestSimplePropLinks",)
+    The stack information associated with a pull request.
+    """
+
+    base: PullRequestStackPropBase = Field()
+    size: Missing[int] = Field(
+        default=UNSET, description="The total number of pull requests in the stack."
+    )
+    position: Missing[int] = Field(
+        default=UNSET,
+        description="The one-based position of this pull request within the stack, where 1 is the bottom of the stack.",
+    )
+    id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the stack that this pull request belongs to.",
+    )
+    number: Missing[int] = Field(
+        default=UNSET,
+        description="The number of the stack that this pull request belongs to.",
+    )
+
+
+class PullRequestStackPropBase(GitHubModel):
+    """PullRequestStackPropBase"""
+
+    ref: str = Field(
+        description="The base ref of the stack this pull request belongs to."
+    )
+    sha: Union[str, None] = Field(
+        description="The base SHA of the stack this pull request belongs to."
+    )
+
+
+model_rebuild(PullRequestStack)
+model_rebuild(PullRequestStackPropBase)
+
+__all__ = (
+    "PullRequestStack",
+    "PullRequestStackPropBase",
+)

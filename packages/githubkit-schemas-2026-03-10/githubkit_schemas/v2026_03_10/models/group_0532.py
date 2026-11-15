@@ -17,33 +17,44 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class RepositoryAdvisoryDescriptionValidationError(GitHubModel):
+    """Repository Advisory Description Validation Error
 
-class ContributorActivity(GitHubModel):
-    """Contributor Activity
-
-    Contributor Activity
+    The description does not answer the repository's report template.
     """
 
-    author: Union[SimpleUser, None] = Field()
-    total: int = Field()
-    weeks: list[ContributorActivityPropWeeksItems] = Field()
+    message: str = Field()
+    documentation_url: str = Field()
+    errors: Missing[
+        list[RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems]
+    ] = Field(default=UNSET)
 
 
-class ContributorActivityPropWeeksItems(GitHubModel):
-    """ContributorActivityPropWeeksItems"""
+class RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems(GitHubModel):
+    """RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems"""
 
-    w: Missing[int] = Field(default=UNSET)
-    a: Missing[int] = Field(default=UNSET)
-    d: Missing[int] = Field(default=UNSET)
-    c: Missing[int] = Field(default=UNSET)
+    resource: Missing[str] = Field(default=UNSET)
+    field: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    code: str = Field(
+        description="A machine-readable identifier for the problem. `missing_section`, `empty_section`, `unchecked_required_option`, and `sections_out_of_order` come from validating the description against the repository's report template; other codes are shared with other validation failures on this endpoint."
+    )
+    index: Missing[int] = Field(default=UNSET)
+    value: Missing[Union[str, int, list[str], None]] = Field(default=UNSET)
+    section: Missing[str] = Field(
+        default=UNSET, description="The report template section the violation concerns."
+    )
+    option: Missing[str] = Field(
+        default=UNSET,
+        description="The checkbox option left unticked. Only present when `code` is `unchecked_required_option`.",
+    )
 
 
-model_rebuild(ContributorActivity)
-model_rebuild(ContributorActivityPropWeeksItems)
+model_rebuild(RepositoryAdvisoryDescriptionValidationError)
+model_rebuild(RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems)
 
 __all__ = (
-    "ContributorActivity",
-    "ContributorActivityPropWeeksItems",
+    "RepositoryAdvisoryDescriptionValidationError",
+    "RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems",
 )

@@ -19,109 +19,16 @@ from githubkit.typing import Missing, UniqueList
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200
 
-    A page of an automation's revision history, newest first.
-    """
-
-    revisions: list[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItems
-    ] = Field(description="Revisions ordered by revision number descending.")
-
-
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItems(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    tems
-
-    An immutable snapshot of an automation's public definition after one
-    configuration save, with the attribution needed to understand who made the
-    change.
-    Legacy history may also contain lifecycle-only snapshots.
-    """
-
-    id: str = Field(description="The unique identifier of this revision.")
-    automation_id: str = Field(description="The automation this revision belongs to.")
-    revision_number: int = Field(
-        description="Position of this revision in the automation's history, starting at 1."
-    )
-    change_type: Literal[
-        "created", "edited", "enabled", "disabled", "deleted", "rolled_back", "unknown"
-    ] = Field(description="The kind of change recorded by the revision.")
-    creator: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreator
-    ] = Field(
-        default=UNSET,
-        description="The automation's original creator. Omitted when not recorded.",
-    )
-    editor: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropEditor
-    ] = Field(
-        default=UNSET,
-        description="The person who made this change. Omitted for system changes and legacy records.",
-    )
-    editor_type: Missing[Literal["user", "system", "unknown"]] = Field(
-        default=UNSET, description="The kind of actor that made the change."
-    )
-    changed_at: _dt.datetime = Field(description="When the change was applied.")
-    restored_from_revision_id: Missing[str] = Field(
-        default=UNSET,
-        description="The revision a rollback restored. Present only when `change_type` is `rolled_back`.",
-    )
-    snapshot: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshot
-    ] = Field(
-        default=UNSET,
-        description="The automation's public detail representation after the change,\nincluding its enabled state at configuration-save time, not its current\nlifecycle state. Legacy deleted revisions are identified by `change_type`.\n",
-    )
-
-
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreator(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropCreator
-
-    The automation's original creator. Omitted when not recorded.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
-    )
-
-
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropEditor(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropEditor
-
-    The person who made this change. Omitted for system changes and legacy records.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
-    )
-
-
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshot(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshot
-
-    The automation's public detail representation after the change,
-    including its enabled state at configuration-save time, not its current
-    lifecycle state. Legacy deleted revisions are identified by `change_type`.
+    A full representation of an automation including all configuration fields.
     """
 
     id: str = Field(description="The unique identifier of the automation.")
     name: str = Field(description="The name of the automation.")
     enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the automation was enabled when this configuration was saved.",
+        default=UNSET, description="Whether the automation is currently enabled."
     )
     type: Missing[Literal["personal", "shared"]] = Field(
         default=UNSET,
@@ -131,8 +38,12 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
         default=UNSET,
         description="When true, event-triggered runs require the event actor to have repo write permission, even when the org's allow_read_access_triggers policy is enabled. Does not apply to interval-scheduled runs, which always run as the automation owner.",
     )
+    continuous_history: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, runs of this automation build on the session history of its previous runs, and runs of the same automation are serialized. Not tracked in revision history.",
+    )
     triggers: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggers
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggers
     ] = Field(default=UNSET, description="Trigger configuration for the automation.")
     prompt: str = Field(description="The prompt for the automation.")
     tools: Missing[list[str]] = Field(
@@ -150,16 +61,15 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     updated_at: _dt.datetime = Field(
         description="When the automation was last updated."
     )
-    created_by: AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropCreatedBy = Field(
+    created_by: AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropCreatedBy = Field(
         description="A GitHub user"
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropCreatedBy(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropCreatedBy(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropCreatedBy
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropCreatedBy
 
     A GitHub user
     """
@@ -169,130 +79,129 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggers(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggers(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggers
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggers
 
     Trigger configuration for the automation.
     """
 
     interval: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropInterval
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropInterval
     ] = Field(default=UNSET)
     issue_opened: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueOpened
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueOpened
     ] = Field(default=UNSET)
     issue_labeled: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueLabeled
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueLabeled
     ] = Field(default=UNSET)
     workflow_run: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropWorkflowRun
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropWorkflowRun
     ] = Field(default=UNSET)
     pull_request_opened: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestOpened
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestOpened
     ] = Field(default=UNSET)
     pull_request_synchronize: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestSynchronize
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestSynchronize
     ] = Field(default=UNSET)
     pull_request_merged: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestMerged
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMerged
     ] = Field(default=UNSET)
     issue_comment: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueComment
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueComment
     ] = Field(default=UNSET)
     pull_request_comment: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestComment
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestComment
     ] = Field(default=UNSET)
     discussion_opened: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionOpened
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionOpened
     ] = Field(default=UNSET)
     discussion_updated: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionUpdated
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionUpdated
     ] = Field(default=UNSET)
     discussion_comment: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionComment
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionComment
     ] = Field(default=UNSET)
     issue_assigned: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueAssigned
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueAssigned
     ] = Field(default=UNSET)
     pull_request_assigned: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestAssigned
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestAssigned
     ] = Field(default=UNSET)
     sub_issue_added: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropSubIssueAdded
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSubIssueAdded
     ] = Field(default=UNSET)
     pull_request_ready_for_review: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReadyForReview
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReadyForReview
     ] = Field(default=UNSET)
     pull_request_labeled: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestLabeled
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestLabeled
     ] = Field(default=UNSET)
     pull_request_merge_conflict: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestMergeConflict
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergeConflict
     ] = Field(default=UNSET)
     pull_request_review_submitted: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewSubmitted
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewSubmitted
     ] = Field(default=UNSET)
     pull_request_review_requested: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewRequested
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewRequested
     ] = Field(default=UNSET)
     issue_closed: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueClosed
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueClosed
     ] = Field(default=UNSET)
     issue_reopened: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueReopened
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueReopened
     ] = Field(default=UNSET)
     pull_request_closed: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestClosed
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestClosed
     ] = Field(default=UNSET)
     pull_request_reopened: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReopened
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReopened
     ] = Field(default=UNSET)
     pull_request_converted_to_draft: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestConvertedToDraft
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestConvertedToDraft
     ] = Field(default=UNSET)
     pull_request_review_dismissed: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewDismissed
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewDismissed
     ] = Field(default=UNSET)
     pull_request_review_thread_resolved: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewThreadResolved
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadResolved
     ] = Field(default=UNSET)
     pull_request_review_thread_unresolved: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewThreadUnresolved
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadUnresolved
     ] = Field(default=UNSET)
     automation_completed: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropAutomationCompleted
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationCompleted
     ] = Field(default=UNSET)
     automation_failed: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropAutomationFailed
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationFailed
     ] = Field(default=UNSET)
     code_scanning_alert: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropCodeScanningAlert
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropCodeScanningAlert
     ] = Field(
         default=UNSET,
         description="Runs on the default branch when a security alert of this kind is created in the repository. These are system events without an issue, pull request, or human actor, and cannot be run manually.",
     )
     secret_scanning_alert: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropSecretScanningAlert
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSecretScanningAlert
     ] = Field(
         default=UNSET,
         description="Runs on the default branch when a security alert of this kind is created in the repository. These are system events without an issue, pull request, or human actor, and cannot be run manually.",
     )
     dependabot_alert: Missing[
-        AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDependabotAlert
+        AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDependabotAlert
     ] = Field(
         default=UNSET,
         description="Runs on the default branch when a security alert of this kind is created in the repository. These are system events without an issue, pull request, or human actor, and cannot be run manually.",
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropInterval(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropInterval(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropInterval
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropInterva
+    l
     """
 
     cadence: UniqueList[Literal["hourly", "daily", "weekly"]] = Field(
@@ -323,11 +232,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueOpened(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueOpened(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropIssueOpened
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueOp
+    ened
     """
 
     query: Missing[str] = Field(
@@ -345,11 +254,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueLabeled(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueLabeled(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropIssueLabeled
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueLa
+    beled
     """
 
     query: Missing[str] = Field(
@@ -371,11 +280,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropWorkflowRun(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropWorkflowRun(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropWorkflowRun
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropWorkflo
+    wRun
     """
 
     workflows: list[Annotated[str, Field(min_length=1)]] = Field(
@@ -402,11 +311,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestOpened(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestOpened(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropPullRequestOpened
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestOpened
     """
 
     query: Missing[str] = Field(
@@ -429,11 +338,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestSynchronize(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestSynchronize(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropPullRequestSynchronize
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestSynchronize
     """
 
     query: Missing[str] = Field(
@@ -456,11 +365,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestMerged(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMerged(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropPullRequestMerged
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestMerged
     """
 
     query: Missing[str] = Field(
@@ -483,11 +392,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueComment(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueComment(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropIssueComment
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueCo
+    mment
     """
 
     query: Missing[str] = Field(
@@ -509,11 +418,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestComment(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestComment(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropPullRequestComment
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestComment
     """
 
     comment_types: UniqueList[Literal["timeline_comment", "review_comment"]] = Field(
@@ -545,11 +454,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionOpened(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionOpened(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropDiscussionOpened
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscuss
+    ionOpened
     """
 
     categories: Missing[UniqueList[str]] = Field(
@@ -571,11 +480,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionUpdated(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionUpdated(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropDiscussionUpdated
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscuss
+    ionUpdated
     """
 
     categories: Missing[UniqueList[str]] = Field(
@@ -597,11 +506,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionComment(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionComment(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropDiscussionComment
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscuss
+    ionComment
     """
 
     comment_types: Missing[UniqueList[Literal["comment", "reply"]]] = Field(
@@ -629,11 +538,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueAssigned(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueAssigned(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropIssueAssigned
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueAs
+    signed
     """
 
     query: Missing[str] = Field(
@@ -656,11 +565,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestAssigned(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestAssigned(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropPullRequestAssigned
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestAssigned
     """
 
     query: Missing[str] = Field(
@@ -688,11 +597,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropSubIssueAdded(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSubIssueAdded(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropSubIssueAdded
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSubIssu
+    eAdded
     """
 
     query: Missing[str] = Field(
@@ -710,11 +619,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReadyForReview(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReadyForReview(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropPullRequestReadyForReview
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestReadyForReview
     """
 
     query: Missing[str] = Field(
@@ -737,11 +646,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestLabeled(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestLabeled(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropPullRequestLabeled
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestLabeled
     """
 
     query: Missing[str] = Field(
@@ -768,11 +677,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestMergeConflict(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergeConflict(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropPullRequestMergeConflict
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestMergeConflict
     """
 
     query: Missing[str] = Field(
@@ -795,11 +704,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewSubmitted(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewSubmitted(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropPullRequestReviewSubmitted
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestReviewSubmitted
     """
 
     query: Missing[str] = Field(
@@ -827,11 +736,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewRequested(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewRequested(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropPullRequestReviewRequested
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestReviewRequested
     """
 
     query: Missing[str] = Field(
@@ -854,11 +763,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueClosed(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueClosed(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropIssueClosed
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueCl
+    osed
     """
 
     query: Missing[str] = Field(
@@ -876,11 +785,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueReopened(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueReopened(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropIssueReopened
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueRe
+    opened
     """
 
     query: Missing[str] = Field(
@@ -898,38 +807,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestClosed(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestClosed(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropPullRequestClosed
-    """
-
-    query: Missing[str] = Field(
-        min_length=1,
-        default=UNSET,
-        description="A GitHub issue or pull request search query.",
-    )
-    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Gitignore-style changed-file path globs.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
-    )
-    allow_copilot_triggers: Missing[bool] = Field(
-        default=UNSET,
-        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
-    )
-
-
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReopened(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropPullRequestReopened
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestClosed
     """
 
     query: Missing[str] = Field(
@@ -952,11 +834,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestConvertedToDraft(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReopened(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropPullRequestConvertedToDraft
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestReopened
     """
 
     query: Missing[str] = Field(
@@ -979,11 +861,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewDismissed(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestConvertedToDraft(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropPullRequestReviewDismissed
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestConvertedToDraft
     """
 
     query: Missing[str] = Field(
@@ -1006,11 +888,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewThreadResolved(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewDismissed(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropPullRequestReviewThreadResolved
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestReviewDismissed
     """
 
     query: Missing[str] = Field(
@@ -1033,11 +915,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewThreadUnresolved(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadResolved(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropPullRequestReviewThreadUnresolved
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestReviewThreadResolved
     """
 
     query: Missing[str] = Field(
@@ -1060,11 +942,38 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropAutomationCompleted(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadUnresolved(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropAutomationCompleted
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullReq
+    uestReviewThreadUnresolved
+    """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationCompleted(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomat
+    ionCompleted
     """
 
     automation_ids: UniqueList[str] = Field(
@@ -1082,11 +991,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropAutomationFailed(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationFailed(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropAutomationFailed
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomat
+    ionFailed
     """
 
     automation_ids: UniqueList[str] = Field(
@@ -1110,11 +1019,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropCodeScanningAlert(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropCodeScanningAlert(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropCodeScanningAlert
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropCodeSca
+    nningAlert
 
     Runs on the default branch when a security alert of this kind is created in the
     repository. These are system events without an issue, pull request, or human
@@ -1131,11 +1040,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropSecretScanningAlert(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSecretScanningAlert(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropSecretScanningAlert
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSecretS
+    canningAlert
 
     Runs on the default branch when a security alert of this kind is created in the
     repository. These are system events without an issue, pull request, or human
@@ -1152,11 +1061,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDependabotAlert(
+class AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDependabotAlert(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropSnapshotPropTriggersPropDependabotAlert
+    """AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDependa
+    botAlert
 
     Runs on the default branch when a security alert of this kind is created in the
     repository. These are system events without an issue, pull request, or human
@@ -1173,164 +1082,144 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200)
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200)
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropCreatedBy)
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggers)
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItems
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropInterval
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreator
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueOpened
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropEditor
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueLabeled
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshot
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropWorkflowRun
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropCreatedBy
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestOpened
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggers
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestSynchronize
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropInterval
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMerged
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueOpened
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueComment
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueLabeled
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestComment
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropWorkflowRun
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionOpened
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestOpened
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionUpdated
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestSynchronize
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionComment
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestMerged
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueAssigned
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueComment
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestAssigned
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestComment
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSubIssueAdded
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionOpened
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReadyForReview
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionUpdated
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestLabeled
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionComment
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergeConflict
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueAssigned
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewSubmitted
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestAssigned
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewRequested
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropSubIssueAdded
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueClosed
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReadyForReview
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueReopened
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestLabeled
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestClosed
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestMergeConflict
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReopened
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewSubmitted
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestConvertedToDraft
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewRequested
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewDismissed
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueClosed
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadResolved
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueReopened
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadUnresolved
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestClosed
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationCompleted
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReopened
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationFailed
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestConvertedToDraft
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropCodeScanningAlert
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewDismissed
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSecretScanningAlert
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewThreadResolved
-)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewThreadUnresolved
-)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropAutomationCompleted
-)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropAutomationFailed
-)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropCodeScanningAlert
-)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropSecretScanningAlert
-)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDependabotAlert
+    AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDependabotAlert
 )
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItems",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreator",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropEditor",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshot",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropCreatedBy",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggers",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropAutomationCompleted",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropAutomationFailed",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropCodeScanningAlert",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDependabotAlert",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionComment",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionOpened",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionUpdated",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropInterval",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueAssigned",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueClosed",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueComment",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueLabeled",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueOpened",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueReopened",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestAssigned",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestClosed",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestComment",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestConvertedToDraft",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestLabeled",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestMergeConflict",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestMerged",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestOpened",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReadyForReview",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReopened",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewDismissed",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewRequested",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewSubmitted",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewThreadResolved",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewThreadUnresolved",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestSynchronize",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropSecretScanningAlert",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropSubIssueAdded",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropWorkflowRun",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropCreatedBy",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggers",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationCompleted",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationFailed",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropCodeScanningAlert",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDependabotAlert",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionComment",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionOpened",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionUpdated",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropInterval",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueAssigned",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueClosed",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueComment",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueLabeled",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueOpened",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueReopened",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestAssigned",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestClosed",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestComment",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestConvertedToDraft",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestLabeled",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergeConflict",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMerged",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestOpened",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReadyForReview",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReopened",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewDismissed",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewRequested",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewSubmitted",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadResolved",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadUnresolved",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestSynchronize",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSecretScanningAlert",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSubIssueAdded",
+    "AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropWorkflowRun",
 )

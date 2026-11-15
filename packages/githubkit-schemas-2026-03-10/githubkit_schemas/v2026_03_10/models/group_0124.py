@@ -9,24 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0125 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
-)
+
+class ActionsPolicyRepoConditionsOneof0(GitHubModel):
+    """ActionsPolicyRepoConditionsOneof0"""
 
 
-class RepositoryRulesetConditionsRepositoryNameTarget(GitHubModel):
-    """Repository ruleset conditions for repository names
+model_rebuild(ActionsPolicyRepoConditionsOneof0)
 
-    Parameters for a repository name condition
-    """
-
-    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
-
-
-model_rebuild(RepositoryRulesetConditionsRepositoryNameTarget)
-
-__all__ = ("RepositoryRulesetConditionsRepositoryNameTarget",)
+__all__ = ("ActionsPolicyRepoConditionsOneof0",)

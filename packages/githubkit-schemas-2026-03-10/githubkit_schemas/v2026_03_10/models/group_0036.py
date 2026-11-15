@@ -9,23 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class DependabotAlertPackage(GitHubModel):
-    """DependabotAlertPackage
+class EnterpriseCopilotCodeReviewPolicy(GitHubModel):
+    """Enterprise Copilot Code Review Policy
 
-    Details for the vulnerable package.
+    The configured enterprise policy, rather than a user's effective Copilot code
+    review access.
     """
 
-    ecosystem: str = Field(
-        description="The package's language or package management ecosystem."
+    policy_state: Union[
+        Literal[
+            "enabled_for_all_organizations",
+            "disabled_for_all_organizations",
+            "configured_by_organization_admins",
+        ],
+        None,
+    ] = Field(
+        description="The configured policy. Null means the enterprise has not configured a policy."
     )
-    name: str = Field(description="The unique package name within its ecosystem.")
 
 
-model_rebuild(DependabotAlertPackage)
+model_rebuild(EnterpriseCopilotCodeReviewPolicy)
 
-__all__ = ("DependabotAlertPackage",)
+__all__ = ("EnterpriseCopilotCodeReviewPolicy",)

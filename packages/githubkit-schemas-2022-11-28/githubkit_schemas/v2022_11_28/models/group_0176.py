@@ -9,40 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0088 import MinimalRepository
 
 
-class Package(GitHubModel):
-    """Package
+class OrganizationCopilotCodeReviewRunner(GitHubModel):
+    """Organization Copilot Code Review Runner Configuration
 
-    A software package
+    The effective runner configuration that Copilot code review uses for the
+    organization.
     """
 
-    id: int = Field(description="Unique identifier of the package.")
-    name: str = Field(description="The name of the package.")
-    package_type: Literal[
-        "npm", "maven", "rubygems", "docker", "nuget", "container"
-    ] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    version_count: int = Field(description="The number of versions of the package.")
-    visibility: Literal["private", "public"] = Field()
-    owner: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
-    repository: Missing[Union[MinimalRepository, None]] = Field(default=UNSET)
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
+    runner_type: Literal["standard", "labeled"] = Field(
+        description="The type of runner. `standard` uses GitHub-hosted runners. `labeled` uses runners that match the configured labels or runner group."
+    )
+    runner_labels: list[str] = Field(
+        description="The runner labels used for a labeled runner."
+    )
+    runner_group_name: Union[str, None] = Field(
+        description="The runner group used for a labeled runner, or null when none is set."
+    )
+    allow_repository_customization: bool = Field(
+        description="Whether repositories can use their own runner configuration."
+    )
+    configured_by: Literal["code_review", "coding_agent"] = Field(
+        description="Which configuration the values come from. `code_review` means the organization has saved a Copilot code review runner configuration. `coding_agent` means it has not, and the values are inherited from the organization's Copilot coding agent runner configuration."
+    )
 
 
-model_rebuild(Package)
+model_rebuild(OrganizationCopilotCodeReviewRunner)
 
-__all__ = ("Package",)
+__all__ = ("OrganizationCopilotCodeReviewRunner",)

@@ -9,30 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
-
-class ReleaseNotesContentType(TypedDict):
-    """Generated Release Notes Content
-
-    Generated name and body describing a release
-    """
-
-    name: str
-    body: str
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class ReleaseNotesContentTypeForResponse(TypedDict):
-    """Generated Release Notes Content
+class PullRequestPropHeadType(TypedDict):
+    """PullRequestPropHead"""
 
-    Generated name and body describing a release
-    """
+    label: Union[str, None]
+    ref: str
+    repo: Union[RepositoryType, None]
+    sha: str
+    user: Union[SimpleUserType, None]
 
-    name: str
-    body: str
+
+class PullRequestPropHeadTypeForResponse(TypedDict):
+    """PullRequestPropHead"""
+
+    label: Union[str, None]
+    ref: str
+    repo: Union[RepositoryTypeForResponse, None]
+    sha: str
+    user: Union[SimpleUserTypeForResponse, None]
+
+
+class PullRequestPropBaseType(TypedDict):
+    """PullRequestPropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: SimpleUserType
+
+
+class PullRequestPropBaseTypeForResponse(TypedDict):
+    """PullRequestPropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryTypeForResponse
+    sha: str
+    user: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "ReleaseNotesContentType",
-    "ReleaseNotesContentTypeForResponse",
+    "PullRequestPropBaseType",
+    "PullRequestPropBaseTypeForResponse",
+    "PullRequestPropHeadType",
+    "PullRequestPropHeadTypeForResponse",
 )

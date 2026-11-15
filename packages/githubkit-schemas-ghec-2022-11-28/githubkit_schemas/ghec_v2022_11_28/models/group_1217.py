@@ -13,25 +13,26 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-from githubkit.typing import UniqueList
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody(GitHubModel):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202
 
-    The Agent Merge enrollment configuration
-
-    Examples:
-        {'allowed_actions': ['fix_ci']}
+    Response from accepting an automation run request.
     """
 
-    allowed_actions: UniqueList[Literal["fix_ci", "resolve_merge_conflicts"]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The set of actions that Copilot may perform on the pull request.",
+    task_id: str = Field(
+        description="The preallocated ID of the accepted run. The task may not yet be readable, and downstream skips or failures can prevent its creation."
+    )
+    automation_id: str = Field(
+        description="The ID of the automation that was triggered."
+    )
+    event: Literal["manual"] = Field(
+        description='The trigger event name, always "manual" for public API runs.'
     )
 
 
-model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody)
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202)
 
-__all__ = ("AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody",)
+__all__ = ("AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202",)

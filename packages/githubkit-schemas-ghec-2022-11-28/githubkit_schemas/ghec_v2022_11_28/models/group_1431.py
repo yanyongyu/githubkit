@@ -9,19 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class NotificationsPutResponse202(GitHubModel):
-    """NotificationsPutResponse202"""
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody(GitHubModel):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody"""
 
-    message: Missing[str] = Field(default=UNSET)
+    models: list[
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems
+    ] = Field(min_length=1 if PYDANTIC_V2 else None)
 
 
-model_rebuild(NotificationsPutResponse202)
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems"""
 
-__all__ = ("NotificationsPutResponse202",)
+    model_name: str = Field(min_length=1)
+    policy_state: Literal["enabled", "disabled", "optional"] = Field(
+        description="Use `optional` to remove the team's policy."
+    )
+
+
+model_rebuild(EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody)
+model_rebuild(
+    EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems
+)
+
+__all__ = (
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody",
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems",
+)

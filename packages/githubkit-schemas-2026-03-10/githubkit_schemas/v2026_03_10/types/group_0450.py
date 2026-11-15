@@ -10,17 +10,18 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0426 import IssueReferenceType, IssueReferenceTypeForResponse
+from .group_0431 import IssueTypeWebhookType, IssueTypeWebhookTypeForResponse
+from .group_0433 import IssueEventIntentType, IssueEventIntentTypeForResponse
 
 
-class ParentIssueRemovedIssueEventType(TypedDict):
-    """Parent-issue Removed Issue Event
+class IssueTypeAddedIssueEventType(TypedDict):
+    """Issue Type Added Issue Event
 
-    Parent-issue Removed Issue Event
+    Issue Type Added Issue Event
     """
 
     id: int
@@ -32,13 +33,14 @@ class ParentIssueRemovedIssueEventType(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[IntegrationType, None]
-    parent_issue: Union[IssueReferenceType, None]
+    issue_type: Union[IssueTypeWebhookType, None]
+    intent: NotRequired[Union[IssueEventIntentType, None]]
 
 
-class ParentIssueRemovedIssueEventTypeForResponse(TypedDict):
-    """Parent-issue Removed Issue Event
+class IssueTypeAddedIssueEventTypeForResponse(TypedDict):
+    """Issue Type Added Issue Event
 
-    Parent-issue Removed Issue Event
+    Issue Type Added Issue Event
     """
 
     id: int
@@ -50,10 +52,11 @@ class ParentIssueRemovedIssueEventTypeForResponse(TypedDict):
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[IntegrationTypeForResponse, None]
-    parent_issue: Union[IssueReferenceTypeForResponse, None]
+    issue_type: Union[IssueTypeWebhookTypeForResponse, None]
+    intent: NotRequired[Union[IssueEventIntentTypeForResponse, None]]
 
 
 __all__ = (
-    "ParentIssueRemovedIssueEventType",
-    "ParentIssueRemovedIssueEventTypeForResponse",
+    "IssueTypeAddedIssueEventType",
+    "IssueTypeAddedIssueEventTypeForResponse",
 )

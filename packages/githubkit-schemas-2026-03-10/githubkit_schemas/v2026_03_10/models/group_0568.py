@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,75 +19,69 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class BillingUsageSummaryReportUser(GitHubModel):
-    """BillingUsageSummaryReportUser"""
+class UserIssueField(GitHubModel):
+    """User Issue Field
 
-    time_period: BillingUsageSummaryReportUserPropTimePeriod = Field(alias="timePeriod")
-    user: str = Field(description="The unique identifier of the user.")
-    repository: Missing[str] = Field(
-        default=UNSET, description="The name of the repository for the usage report."
-    )
-    product: Missing[str] = Field(
-        default=UNSET, description="The product for the usage report."
-    )
-    sku: Missing[str] = Field(
-        default=UNSET, description="The SKU for the usage report."
-    )
-    usage_items: list[BillingUsageSummaryReportUserPropUsageItemsItems] = Field(
-        alias="usageItems"
-    )
+    A custom attribute defined by a personal account for attaching structured data
+    to issues.
+    """
 
-
-class BillingUsageSummaryReportUserPropTimePeriod(GitHubModel):
-    """BillingUsageSummaryReportUserPropTimePeriod"""
-
-    year: int = Field(description="The year for the usage report.")
-    month: Missing[int] = Field(
-        default=UNSET, description="The month for the usage report."
+    id: int = Field(description="The unique identifier of the issue field.")
+    node_id: str = Field(description="The node identifier of the issue field.")
+    name: str = Field(description="The name of the issue field.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The description of the issue field."
     )
-    day: Missing[int] = Field(
-        default=UNSET, description="The day for the usage report."
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"] = (
+        Field(description="The data type of the issue field.")
     )
-
-
-class BillingUsageSummaryReportUserPropUsageItemsItems(GitHubModel):
-    """BillingUsageSummaryReportUserPropUsageItemsItems"""
-
-    product: str = Field(description="Product name.")
-    sku: str = Field(description="SKU name.")
-    unit_type: str = Field(
-        alias="unitType", description="Unit type of the usage line item."
+    visibility: Missing[Literal["restricted", "all"]] = Field(
+        default=UNSET,
+        description="The visibility of the issue field. Can be `restricted` (visible only to the owner and to collaborators on the repository the field is read through) or `all` (visible to all users who can see issues).",
     )
-    price_per_unit: float = Field(
-        alias="pricePerUnit", description="Price per unit of the usage line item."
+    options: Missing[Union[list[UserIssueFieldPropOptionsItems], None]] = Field(
+        default=UNSET,
+        description="Available options for single select and multi select fields.",
     )
-    gross_quantity: float = Field(
-        alias="grossQuantity", description="Gross quantity of the usage line item."
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the issue field was created."
     )
-    gross_amount: float = Field(
-        alias="grossAmount", description="Gross amount of the usage line item."
-    )
-    discount_quantity: float = Field(
-        alias="discountQuantity",
-        description="Discount quantity of the usage line item.",
-    )
-    discount_amount: float = Field(
-        alias="discountAmount", description="Discount amount of the usage line item."
-    )
-    net_quantity: float = Field(
-        alias="netQuantity", description="Net quantity of the usage line item."
-    )
-    net_amount: float = Field(
-        alias="netAmount", description="Net amount of the usage line item."
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the issue field was updated."
     )
 
 
-model_rebuild(BillingUsageSummaryReportUser)
-model_rebuild(BillingUsageSummaryReportUserPropTimePeriod)
-model_rebuild(BillingUsageSummaryReportUserPropUsageItemsItems)
+class UserIssueFieldPropOptionsItems(GitHubModel):
+    """UserIssueFieldPropOptionsItems"""
+
+    id: int = Field(description="The unique identifier of the option.")
+    name: str = Field(description="The name of the option.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The description of the option."
+    )
+    color: Missing[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ] = Field(default=UNSET, description="The color of the option.")
+    priority: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The priority of the option for ordering."
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the option was created."
+    )
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the option was last updated."
+    )
+
+
+model_rebuild(UserIssueField)
+model_rebuild(UserIssueFieldPropOptionsItems)
 
 __all__ = (
-    "BillingUsageSummaryReportUser",
-    "BillingUsageSummaryReportUserPropTimePeriod",
-    "BillingUsageSummaryReportUserPropUsageItemsItems",
+    "UserIssueField",
+    "UserIssueFieldPropOptionsItems",
 )

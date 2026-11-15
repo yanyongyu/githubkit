@@ -9,21 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0140 import CustomPropertyValue
+
+class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
+
+    total_count: int = Field()
+    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignment] = Field()
 
 
-class OrganizationsOrgOrgPropertiesValuesPatchBody(GitHubModel):
-    """OrganizationsOrgOrgPropertiesValuesPatchBody"""
+class VisualStudioSubscriptionAssignment(GitHubModel):
+    """Visual Studio Subscription Assignment
 
-    properties: list[CustomPropertyValue] = Field(
-        description="A list of custom property names and associated values to apply to the organization."
+    Visual Studio Subscription Assignment
+    """
+
+    visual_studio_subscription_email: Missing[str] = Field(
+        default=UNSET,
+        description="The email associated with the Visual Studio subscription assignment in the visual studio portal.",
+    )
+    subscription_id: Missing[str] = Field(
+        default=UNSET,
+        description="The ID of the Visual Studio Subscription. This is a GUID that comes from the Visual Studio management portal.",
+    )
+    username: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The GitHub username of the user associated with the Visual Studio subscription assignment.",
+    )
+    manual_match: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates if the Visual Studio subscription assignment was manually matched to a user.",
     )
 
 
-model_rebuild(OrganizationsOrgOrgPropertiesValuesPatchBody)
+model_rebuild(EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200)
+model_rebuild(VisualStudioSubscriptionAssignment)
 
-__all__ = ("OrganizationsOrgOrgPropertiesValuesPatchBody",)
+__all__ = (
+    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200",
+    "VisualStudioSubscriptionAssignment",
+)

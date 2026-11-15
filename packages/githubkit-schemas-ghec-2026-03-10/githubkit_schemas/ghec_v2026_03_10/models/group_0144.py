@@ -18,32 +18,42 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class RepositoryRulesetBypassActor(GitHubModel):
-    """Repository Ruleset Bypass Actor
+class CustomPropertyBatchItemPayload(GitHubModel):
+    """Custom Property Batch Item Payload
 
-    An actor that can bypass rules in a ruleset
+    Payload for a single custom property definition when creating or updating custom
+    properties in a batch
     """
 
-    actor_id: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The ID of the actor that can bypass a ruleset. Required for `Integration`, `RepositoryRole`, `Team`, and `User` actor types. If `actor_type` is `OrganizationAdmin`, `actor_id` is ignored. If `actor_type` is `DeployKey`, this should be null. If `actor_type` is `EnterpriseOwner`, `actor_id` is ignored. `OrganizationAdmin`, `EnterpriseOwner` and `EnterpriseRole` are not applicable for personal repositories.",
+    property_name: str = Field(description="The name of the property")
+    value_type: Literal[
+        "string", "single_select", "multi_select", "true_false", "url"
+    ] = Field(description="The type of the value for the property")
+    required: Missing[bool] = Field(
+        default=UNSET, description="Whether the property is required."
     )
-    actor_type: Literal[
-        "Integration",
-        "OrganizationAdmin",
-        "RepositoryRole",
-        "Team",
-        "DeployKey",
-        "EnterpriseOwner",
-        "EnterpriseRole",
-        "User",
-    ] = Field(description="The type of actor that can bypass a ruleset")
-    bypass_mode: Missing[Literal["always", "pull_request", "exempt"]] = Field(
+    default_value: Missing[Union[str, list[str], None]] = Field(
+        default=UNSET, description="Default value of the property"
+    )
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Short description of the property"
+    )
+    allowed_values: Missing[Union[list[str], None]] = Field(
         default=UNSET,
-        description="When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type. Also, `pull_request` is only applicable to branch rulesets. When `bypass_mode` is `exempt`, rules will not be run for that actor and a bypass audit entry will not be created.",
+        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
+    )
+    values_editable_by: Missing[
+        Union[Literal["org_actors", "org_and_repo_actors"], None]
+    ] = Field(default=UNSET, description="Who can edit the values of the property")
+    regex: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A regular expression (RE2 syntax) that values of the property must match.\nOnly supported for properties with a `value_type` of `string`.",
+    )
+    require_explicit_values: Missing[bool] = Field(
+        default=UNSET, description="Whether setting properties values is mandatory"
     )
 
 
-model_rebuild(RepositoryRulesetBypassActor)
+model_rebuild(CustomPropertyBatchItemPayload)
 
-__all__ = ("RepositoryRulesetBypassActor",)
+__all__ = ("CustomPropertyBatchItemPayload",)

@@ -9,53 +9,99 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type(TypedDict):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
 
-    total_count: int
-    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignmentType]
+    id: NotRequired[str]
+    name: NotRequired[str]
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: NotRequired[
+        list[
+            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType
+        ]
+    ]
+    ai_credit_pool_enabled: NotRequired[bool]
+    ai_credit_pool_state: NotRequired[
+        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolStateType
+    ]
 
 
-class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200TypeForResponse(
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200"""
 
-    total_count: int
-    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignmentTypeForResponse]
+    id: NotRequired[str]
+    name: NotRequired[str]
+    azure_subscription: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["active", "deleted"]]
+    resources: NotRequired[
+        list[
+            EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse
+        ]
+    ]
+    ai_credit_pool_enabled: NotRequired[bool]
+    ai_credit_pool_state: NotRequired[
+        EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolStateTypeForResponse
+    ]
 
 
-class VisualStudioSubscriptionAssignmentType(TypedDict):
-    """Visual Studio Subscription Assignment
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
 
-    Visual Studio Subscription Assignment
+    type: NotRequired[str]
+    name: NotRequired[str]
+
+
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItems"""
+
+    type: NotRequired[str]
+    name: NotRequired[str]
+
+
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolStateType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolSt
+    ate
+
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
     """
 
-    visual_studio_subscription_email: NotRequired[str]
-    subscription_id: NotRequired[str]
-    username: NotRequired[Union[str, None]]
-    manual_match: NotRequired[bool]
+    target_amount: NotRequired[Union[float, None]]
+    current_amount: NotRequired[Union[float, None]]
 
 
-class VisualStudioSubscriptionAssignmentTypeForResponse(TypedDict):
-    """Visual Studio Subscription Assignment
+class EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolStateTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolSt
+    ate
 
-    Visual Studio Subscription Assignment
+    Read-only cap-budget projection for the cost center. Only present when the cost
+    center draws from the AI credit pool.
     """
 
-    visual_studio_subscription_email: NotRequired[str]
-    subscription_id: NotRequired[str]
-    username: NotRequired[Union[str, None]]
-    manual_match: NotRequired[bool]
+    target_amount: NotRequired[Union[float, None]]
+    current_amount: NotRequired[Union[float, None]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200Type",
-    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200TypeForResponse",
-    "VisualStudioSubscriptionAssignmentType",
-    "VisualStudioSubscriptionAssignmentTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolStateType",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropAiCreditPoolStateTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsType",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200PropResourcesItemsTypeForResponse",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200Type",
+    "EnterprisesEnterpriseSettingsBillingCostCentersPostResponse200TypeForResponse",
 )

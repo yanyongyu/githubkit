@@ -9,23 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class DependabotAlertPackage(GitHubModel):
-    """DependabotAlertPackage
+class EnterpriseTokenInventoryExport(GitHubModel):
+    """Enterprise Token Inventory Export
 
-    Details for the vulnerable package.
+    The status of an asynchronous enterprise token inventory CSV export.
     """
 
-    ecosystem: str = Field(
-        description="The package's language or package management ecosystem."
+    export_id: str = Field(
+        description="Opaque id for the export, used to poll its status."
     )
-    name: str = Field(description="The unique package name within its ecosystem.")
+    status: Literal["pending", "queued", "started", "success", "error"] = Field(
+        description="The state of the export job."
+    )
+    as_of: Missing[Union[str, None]] = Field(
+        default=UNSET, description="When the export was requested."
+    )
 
 
-model_rebuild(DependabotAlertPackage)
+model_rebuild(EnterpriseTokenInventoryExport)
 
-__all__ = ("DependabotAlertPackage",)
+__all__ = ("EnterpriseTokenInventoryExport",)

@@ -16,17 +16,28 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1(GitHubModel):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1"""
+class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200"""
 
-    credential_id: int = Field()
-    credential_type: Literal["ssh_key"] = Field()
-    fingerprint: str = Field(
-        description="The SHA-256 fingerprint of the authorized SSH key."
+    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability = Field()
+
+
+class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability"""
+
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"] = Field(
+        description="The enterprise default policy applied to newly released Copilot features and clients. `delegate_to_organizations` means each organization sets its own default."
     )
-    organizations: list[str] = Field()
 
 
-model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1)
+model_rebuild(EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200)
+model_rebuild(
+    EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability
+)
 
-__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1",)
+__all__ = (
+    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability",
+)

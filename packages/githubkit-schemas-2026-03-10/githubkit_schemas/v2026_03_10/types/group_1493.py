@@ -9,26 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoForksPostBodyType(TypedDict):
-    """ReposOwnerRepoForksPostBody"""
+class ReposOwnerRepoCopilotCodeReviewSettingsPatchBodyType(TypedDict):
+    """ReposOwnerRepoCopilotCodeReviewSettingsPatchBody"""
 
-    organization: NotRequired[str]
-    name: NotRequired[str]
-    default_branch_only: NotRequired[bool]
+    review_effort: NotRequired[str]
+    severity_filter: NotRequired[Literal["no_filter", "low", "low_and_medium"]]
+    custom_instructions_enabled: NotRequired[bool]
+    mcp_enabled: NotRequired[bool]
 
 
-class ReposOwnerRepoForksPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoForksPostBody"""
+class ReposOwnerRepoCopilotCodeReviewSettingsPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCopilotCodeReviewSettingsPatchBody"""
 
-    organization: NotRequired[str]
-    name: NotRequired[str]
-    default_branch_only: NotRequired[bool]
+    review_effort: NotRequired[str]
+    severity_filter: NotRequired[Literal["no_filter", "low", "low_and_medium"]]
+    custom_instructions_enabled: NotRequired[bool]
+    mcp_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoForksPostBodyType",
-    "ReposOwnerRepoForksPostBodyTypeForResponse",
+    "ReposOwnerRepoCopilotCodeReviewSettingsPatchBodyType",
+    "ReposOwnerRepoCopilotCodeReviewSettingsPatchBodyTypeForResponse",
 )

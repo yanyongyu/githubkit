@@ -13,28 +13,22 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ApiInsightsUserStatsItemsType(TypedDict):
-    """ApiInsightsUserStatsItems"""
+class ApiInsightsRouteStatsItemsType(TypedDict):
+    """ApiInsightsRouteStatsItems"""
 
-    actor_type: NotRequired[str]
-    actor_name: NotRequired[str]
-    actor_id: NotRequired[int]
-    integration_id: NotRequired[Union[int, None]]
-    oauth_application_id: NotRequired[Union[int, None]]
+    http_method: NotRequired[str]
+    api_route: NotRequired[str]
     total_request_count: NotRequired[int]
     rate_limited_request_count: NotRequired[int]
     last_rate_limited_timestamp: NotRequired[Union[str, None]]
     last_request_timestamp: NotRequired[str]
 
 
-class ApiInsightsUserStatsItemsTypeForResponse(TypedDict):
-    """ApiInsightsUserStatsItems"""
+class ApiInsightsRouteStatsItemsTypeForResponse(TypedDict):
+    """ApiInsightsRouteStatsItems"""
 
-    actor_type: NotRequired[str]
-    actor_name: NotRequired[str]
-    actor_id: NotRequired[int]
-    integration_id: NotRequired[Union[int, None]]
-    oauth_application_id: NotRequired[Union[int, None]]
+    http_method: NotRequired[str]
+    api_route: NotRequired[str]
     total_request_count: NotRequired[int]
     rate_limited_request_count: NotRequired[int]
     last_rate_limited_timestamp: NotRequired[Union[str, None]]
@@ -42,6 +36,6 @@ class ApiInsightsUserStatsItemsTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "ApiInsightsUserStatsItemsType",
-    "ApiInsightsUserStatsItemsTypeForResponse",
+    "ApiInsightsRouteStatsItemsType",
+    "ApiInsightsRouteStatsItemsTypeForResponse",
 )

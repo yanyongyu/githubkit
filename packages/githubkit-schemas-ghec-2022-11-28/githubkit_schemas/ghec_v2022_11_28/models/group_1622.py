@@ -11,63 +11,21 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+
+from .group_0144 import CustomPropertyBatchItemPayload
 
 
-class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200(ExtraGitHubModel):
-    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200
+class OrgsOrgPropertiesSchemaPatchBody(GitHubModel):
+    """OrgsOrgPropertiesSchemaPatchBody"""
 
-    The team's customization document. Only the keys `pluginAssignments` and
-    `extraKnownMarketplaces` are supported.
-    """
-
-    plugin_assignments: Missing[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignments
-    ] = Field(
-        default=UNSET,
-        alias="pluginAssignments",
-        description="Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.",
-    )
-    extra_known_marketplaces: Missing[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplaces
-    ] = Field(
-        default=UNSET,
-        alias="extraKnownMarketplaces",
-        description="Additional plugin marketplaces available to the team, keyed by marketplace name.",
+    properties: list[CustomPropertyBatchItemPayload] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The array of custom properties to create or update.",
     )
 
 
-class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignments(
-    ExtraGitHubModel
-):
-    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignments
+model_rebuild(OrgsOrgPropertiesSchemaPatchBody)
 
-    Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.
-    """
-
-
-class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplaces(
-    ExtraGitHubModel
-):
-    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplace
-    s
-
-    Additional plugin marketplaces available to the team, keyed by marketplace name.
-    """
-
-
-model_rebuild(OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200)
-model_rebuild(
-    OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignments
-)
-model_rebuild(
-    OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplaces
-)
-
-__all__ = (
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplaces",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignments",
-)
+__all__ = ("OrgsOrgPropertiesSchemaPatchBody",)

@@ -9,26 +9,93 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgInteractionLimitsPullsCreationCapGetResponse200Type(TypedDict):
-    """OrgsOrgInteractionLimitsPullsCreationCapGetResponse200"""
+class OrgsOrgCopilotCodeReviewSettingsPatchResponse409Type(TypedDict):
+    """OrgsOrgCopilotCodeReviewSettingsPatchResponse409"""
 
-    enabled: bool
-    max_open_pull_requests: int
-    include_drafts: NotRequired[bool]
+    message: str
+    documentation_url: NotRequired[str]
+    status: NotRequired[str]
+    code: Literal["SETTING_NOT_EDITABLE"]
+    settings: OrganizationCopilotCodeReviewSettingsType
 
 
-class OrgsOrgInteractionLimitsPullsCreationCapGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgInteractionLimitsPullsCreationCapGetResponse200"""
+class OrgsOrgCopilotCodeReviewSettingsPatchResponse409TypeForResponse(TypedDict):
+    """OrgsOrgCopilotCodeReviewSettingsPatchResponse409"""
 
-    enabled: bool
-    max_open_pull_requests: int
-    include_drafts: NotRequired[bool]
+    message: str
+    documentation_url: NotRequired[str]
+    status: NotRequired[str]
+    code: Literal["SETTING_NOT_EDITABLE"]
+    settings: OrganizationCopilotCodeReviewSettingsTypeForResponse
+
+
+class OrganizationCopilotCodeReviewSettingsType(TypedDict):
+    """Organization Copilot Code Review Settings
+
+    The organization's Copilot code review settings.
+    """
+
+    default_review_effort: (
+        OrganizationCopilotCodeReviewSettingsPropDefaultReviewEffortType
+    )
+    available_review_efforts: list[str]
+
+
+class OrganizationCopilotCodeReviewSettingsTypeForResponse(TypedDict):
+    """Organization Copilot Code Review Settings
+
+    The organization's Copilot code review settings.
+    """
+
+    default_review_effort: (
+        OrganizationCopilotCodeReviewSettingsPropDefaultReviewEffortTypeForResponse
+    )
+    available_review_efforts: list[str]
+
+
+class OrganizationCopilotCodeReviewSettingsPropDefaultReviewEffortType(TypedDict):
+    """OrganizationCopilotCodeReviewSettingsPropDefaultReviewEffort
+
+    The default review effort for repositories in the organization that do not
+    choose their own. For more information, see [Review effort
+    level](https://docs.github.com/copilot/concepts/agent-capabilities/agent-
+    powered-workflows-and-operations/code-review#review-effort-level).
+    """
+
+    configured: Union[str, None]
+    effective: str
+    github_default: str
+    editable: bool
+    managed_by: Literal["enterprise", "organization"]
+
+
+class OrganizationCopilotCodeReviewSettingsPropDefaultReviewEffortTypeForResponse(
+    TypedDict
+):
+    """OrganizationCopilotCodeReviewSettingsPropDefaultReviewEffort
+
+    The default review effort for repositories in the organization that do not
+    choose their own. For more information, see [Review effort
+    level](https://docs.github.com/copilot/concepts/agent-capabilities/agent-
+    powered-workflows-and-operations/code-review#review-effort-level).
+    """
+
+    configured: Union[str, None]
+    effective: str
+    github_default: str
+    editable: bool
+    managed_by: Literal["enterprise", "organization"]
 
 
 __all__ = (
-    "OrgsOrgInteractionLimitsPullsCreationCapGetResponse200Type",
-    "OrgsOrgInteractionLimitsPullsCreationCapGetResponse200TypeForResponse",
+    "OrganizationCopilotCodeReviewSettingsPropDefaultReviewEffortType",
+    "OrganizationCopilotCodeReviewSettingsPropDefaultReviewEffortTypeForResponse",
+    "OrganizationCopilotCodeReviewSettingsType",
+    "OrganizationCopilotCodeReviewSettingsTypeForResponse",
+    "OrgsOrgCopilotCodeReviewSettingsPatchResponse409Type",
+    "OrgsOrgCopilotCodeReviewSettingsPatchResponse409TypeForResponse",
 )

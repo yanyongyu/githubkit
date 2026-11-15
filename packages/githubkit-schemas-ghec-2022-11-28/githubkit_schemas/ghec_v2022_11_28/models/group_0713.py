@@ -18,42 +18,56 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0099 import SimpleRepository
-from .group_0215 import PublicMonitoringRepository
-from .group_0216 import BaseGist
-from .group_0714 import PublicMonitoringAlertWebhookPropAttribution
+
+class WebhooksProjectCard(GitHubModel):
+    """Project Card"""
+
+    after_id: Missing[Union[int, None]] = Field(default=UNSET)
+    archived: bool = Field(description="Whether or not the card is archived")
+    column_id: int = Field()
+    column_url: str = Field()
+    content_url: Missing[str] = Field(default=UNSET)
+    created_at: _dt.datetime = Field()
+    creator: Union[WebhooksProjectCardPropCreator, None] = Field(title="User")
+    id: int = Field(description="The project card's ID")
+    node_id: str = Field()
+    note: Union[str, None] = Field()
+    project_url: str = Field()
+    updated_at: _dt.datetime = Field()
+    url: str = Field()
 
 
-class PublicMonitoringAlertWebhook(GitHubModel):
-    """Public Monitoring Alert Webhook
+class WebhooksProjectCardPropCreator(GitHubModel):
+    """User"""
 
-    A public monitoring alert as delivered via webhook.
-    """
-
-    number: int = Field(
-        ge=1.0,
-        description="The enterprise-scoped number of the public monitoring alert.",
-    )
-    url: str = Field(description="The REST API URL of the alert resource.")
-    secret_type: str = Field(
-        description="The type of secret that secret scanning detected."
-    )
-    secret_type_display_name: str = Field(
-        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."'
-    )
-    created_at: _dt.datetime = Field(
-        description="The time that the secret was detected in ISO 8601 format."
-    )
-    validity: Literal["active", "inactive", "unknown"] = Field(
-        description="The validity status of the secret as of the latest validity check for the enterprise alert."
-    )
-    repository: Union[SimpleRepository, PublicMonitoringRepository, None] = Field()
-    gist: Missing[Union[BaseGist, None]] = Field(default=UNSET)
-    attribution: PublicMonitoringAlertWebhookPropAttribution = Field(
-        description="Attribution information for the alert."
-    )
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(PublicMonitoringAlertWebhook)
+model_rebuild(WebhooksProjectCard)
+model_rebuild(WebhooksProjectCardPropCreator)
 
-__all__ = ("PublicMonitoringAlertWebhook",)
+__all__ = (
+    "WebhooksProjectCard",
+    "WebhooksProjectCardPropCreator",
+)

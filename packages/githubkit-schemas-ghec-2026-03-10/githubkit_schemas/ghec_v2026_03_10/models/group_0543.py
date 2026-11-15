@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,29 +19,24 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0506 import IssueEventIntent
+from .group_0544 import TimelineCrossReferencedEventPropSource
 
 
-class StateChangeIssueEvent(GitHubModel):
-    """State Change Issue Event
+class TimelineCrossReferencedEvent(GitHubModel):
+    """Timeline Cross Referenced Event
 
-    State Change Issue Event
+    Timeline Cross Referenced Event
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: str = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[Integration, None] = Field()
-    state_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    intent: Missing[Union[IssueEventIntent, None]] = Field(default=UNSET)
+    event: Literal["cross-referenced"] = Field()
+    actor: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    source: TimelineCrossReferencedEventPropSource = Field()
 
 
-model_rebuild(StateChangeIssueEvent)
+model_rebuild(TimelineCrossReferencedEvent)
 
-__all__ = ("StateChangeIssueEvent",)
+__all__ = ("TimelineCrossReferencedEvent",)

@@ -9,32 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class ReferrerTrafficType(TypedDict):
-    """Referrer Traffic
 
-    Referrer Traffic
+class StargazerType(TypedDict):
+    """Stargazer
+
+    Stargazer
     """
 
-    referrer: str
-    count: int
-    uniques: int
+    starred_at: _dt.datetime
+    user: Union[SimpleUserType, None]
 
 
-class ReferrerTrafficTypeForResponse(TypedDict):
-    """Referrer Traffic
+class StargazerTypeForResponse(TypedDict):
+    """Stargazer
 
-    Referrer Traffic
+    Stargazer
     """
 
-    referrer: str
-    count: int
-    uniques: int
+    starred_at: str
+    user: Union[SimpleUserTypeForResponse, None]
 
 
 __all__ = (
-    "ReferrerTrafficType",
-    "ReferrerTrafficTypeForResponse",
+    "StargazerType",
+    "StargazerTypeForResponse",
 )

@@ -9,70 +9,96 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-
-class AdvancedSecurityActiveCommittersType(TypedDict):
-    """AdvancedSecurityActiveCommitters"""
-
-    total_advanced_security_committers: NotRequired[int]
-    total_count: NotRequired[int]
-    maximum_advanced_security_committers: NotRequired[int]
-    purchased_advanced_security_committers: NotRequired[int]
-    repositories: list[AdvancedSecurityActiveCommittersRepositoryType]
-
-
-class AdvancedSecurityActiveCommittersTypeForResponse(TypedDict):
-    """AdvancedSecurityActiveCommitters"""
-
-    total_advanced_security_committers: NotRequired[int]
-    total_count: NotRequired[int]
-    maximum_advanced_security_committers: NotRequired[int]
-    purchased_advanced_security_committers: NotRequired[int]
-    repositories: list[AdvancedSecurityActiveCommittersRepositoryTypeForResponse]
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0099 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from .group_0217 import (
+    PublicMonitoringRepositoryType,
+    PublicMonitoringRepositoryTypeForResponse,
+)
+from .group_0218 import BaseGistType, BaseGistTypeForResponse
+from .group_0221 import (
+    PublicMonitoringAlertPropAttributionType,
+    PublicMonitoringAlertPropAttributionTypeForResponse,
+)
 
 
-class AdvancedSecurityActiveCommittersRepositoryType(TypedDict):
-    """AdvancedSecurityActiveCommittersRepository"""
+class PublicMonitoringAlertType(TypedDict):
+    """PublicMonitoringAlert"""
 
-    name: str
-    advanced_security_committers: int
-    advanced_security_committers_breakdown: list[
-        AdvancedSecurityActiveCommittersUserType
+    number: int
+    url: str
+    secret_type: NotRequired[str]
+    secret_type_display_name: NotRequired[str]
+    validity: NotRequired[Literal["active", "inactive", "unknown"]]
+    created_at: NotRequired[_dt.datetime]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[Union[Literal["dismissed", "fixed"], None]]
+    resolved_by: NotRequired[Union[SimpleUserType, None]]
+    resolved_at: NotRequired[Union[_dt.datetime, None]]
+    resolution_comment: NotRequired[Union[str, None]]
+    secret: NotRequired[Union[str, None]]
+    repository: NotRequired[
+        Union[SimpleRepositoryType, PublicMonitoringRepositoryType, None]
     ]
-
-
-class AdvancedSecurityActiveCommittersRepositoryTypeForResponse(TypedDict):
-    """AdvancedSecurityActiveCommittersRepository"""
-
-    name: str
-    advanced_security_committers: int
-    advanced_security_committers_breakdown: list[
-        AdvancedSecurityActiveCommittersUserTypeForResponse
+    gist: NotRequired[
+        Union[BaseGistType, PublicMonitoringAlertPropGistAnyof1Type, None]
     ]
+    attribution: NotRequired[PublicMonitoringAlertPropAttributionType]
 
 
-class AdvancedSecurityActiveCommittersUserType(TypedDict):
-    """AdvancedSecurityActiveCommittersUser"""
+class PublicMonitoringAlertTypeForResponse(TypedDict):
+    """PublicMonitoringAlert"""
 
-    user_login: str
-    last_pushed_date: str
-    last_pushed_email: str
+    number: int
+    url: str
+    secret_type: NotRequired[str]
+    secret_type_display_name: NotRequired[str]
+    validity: NotRequired[Literal["active", "inactive", "unknown"]]
+    created_at: NotRequired[str]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[Union[Literal["dismissed", "fixed"], None]]
+    resolved_by: NotRequired[Union[SimpleUserTypeForResponse, None]]
+    resolved_at: NotRequired[Union[str, None]]
+    resolution_comment: NotRequired[Union[str, None]]
+    secret: NotRequired[Union[str, None]]
+    repository: NotRequired[
+        Union[
+            SimpleRepositoryTypeForResponse,
+            PublicMonitoringRepositoryTypeForResponse,
+            None,
+        ]
+    ]
+    gist: NotRequired[
+        Union[
+            BaseGistTypeForResponse,
+            PublicMonitoringAlertPropGistAnyof1TypeForResponse,
+            None,
+        ]
+    ]
+    attribution: NotRequired[PublicMonitoringAlertPropAttributionTypeForResponse]
 
 
-class AdvancedSecurityActiveCommittersUserTypeForResponse(TypedDict):
-    """AdvancedSecurityActiveCommittersUser"""
+class PublicMonitoringAlertPropGistAnyof1Type(TypedDict):
+    """PublicMonitoringAlertPropGistAnyof1"""
 
-    user_login: str
-    last_pushed_date: str
-    last_pushed_email: str
+    id: str
+    html_url: NotRequired[Union[str, None]]
+
+
+class PublicMonitoringAlertPropGistAnyof1TypeForResponse(TypedDict):
+    """PublicMonitoringAlertPropGistAnyof1"""
+
+    id: str
+    html_url: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "AdvancedSecurityActiveCommittersRepositoryType",
-    "AdvancedSecurityActiveCommittersRepositoryTypeForResponse",
-    "AdvancedSecurityActiveCommittersType",
-    "AdvancedSecurityActiveCommittersTypeForResponse",
-    "AdvancedSecurityActiveCommittersUserType",
-    "AdvancedSecurityActiveCommittersUserTypeForResponse",
+    "PublicMonitoringAlertPropGistAnyof1Type",
+    "PublicMonitoringAlertPropGistAnyof1TypeForResponse",
+    "PublicMonitoringAlertType",
+    "PublicMonitoringAlertTypeForResponse",
 )

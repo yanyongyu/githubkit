@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,36 +17,31 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class ReposOwnerRepoPullsPullNumberMergeAsyncPutBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberMergeAsyncPutBody"""
-
-    commit_title: Missing[str] = Field(
-        default=UNSET,
-        description="Title for the automatic commit message. Only supported for direct merges.",
-    )
-    commit_message: Missing[str] = Field(
-        default=UNSET,
-        description="Extra detail to append to automatic commit message. Only supported for direct merges.",
-    )
-    sha: Missing[str] = Field(
-        default=UNSET,
-        description="SHA that pull request head must match to allow merge. If not provided, the current head of the PR at the time of the request will be used; if the PR is pushed in between the merge being requested and being executed, the merge will be cancelled.",
-    )
-    merge_method: Missing[Literal["merge", "squash", "rebase"]] = Field(
-        default=UNSET,
-        description="The merge method to use for a direct merge. Only supported for direct merges.",
-    )
-    merge_action: Missing[Literal["default", "direct_merge", "merge_queue"]] = Field(
-        default=UNSET,
-        description="The action that will be taken to merge the pull request. `direct_merge` merges the pull request directly without using a merge queue; `merge_queue` adds the pull request to a merge queue; `default` uses a merge queue if one is configured for the target branch, or merges directly otherwise. If omitted, defaults to `default`.",
-    )
-    bypass_rules: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to bypass repository rules that the authenticated actor is permitted to bypass.",
-    )
+from .group_1570 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberMergeAsyncPutBody)
+class ReposOwnerRepoPagesPutBodyAnyof0(GitHubModel):
+    """ReposOwnerRepoPagesPutBodyAnyof0"""
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergeAsyncPutBody",)
+    cname: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site)."',
+    )
+    https_enforced: Missing[bool] = Field(
+        default=UNSET,
+        description="Specify whether HTTPS should be enforced for the repository.",
+    )
+    build_type: Literal["legacy", "workflow"] = Field(
+        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch."
+    )
+    source: Missing[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
+        ]
+    ] = Field(default=UNSET)
+
+
+model_rebuild(ReposOwnerRepoPagesPutBodyAnyof0)
+
+__all__ = ("ReposOwnerRepoPagesPutBodyAnyof0",)

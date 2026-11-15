@@ -9,47 +9,191 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0147 import RunnerLabelType, RunnerLabelTypeForResponse
+from .group_0124 import (
+    ActionsPolicyRepoConditionsOneof0Type,
+    ActionsPolicyRepoConditionsOneof0TypeForResponse,
+)
+from .group_0125 import (
+    ActionsPolicyRepoConditionsOneof1Type,
+    ActionsPolicyRepoConditionsOneof1TypeForResponse,
+)
+from .group_0132 import (
+    ActionsPolicyOrgConditionsOneof0Type,
+    ActionsPolicyOrgConditionsOneof0TypeForResponse,
+)
+from .group_0133 import (
+    ActionsPolicyOrgConditionsOneof1Type,
+    ActionsPolicyOrgConditionsOneof1TypeForResponse,
+)
+from .group_0134 import (
+    ActionsPolicyOrgConditionsOneof2Type,
+    ActionsPolicyOrgConditionsOneof2TypeForResponse,
+)
+from .group_0141 import (
+    ActionsPolicyEnterpriseConditionsOneof0Type,
+    ActionsPolicyEnterpriseConditionsOneof0TypeForResponse,
+)
+from .group_0142 import (
+    ActionsPolicyEnterpriseConditionsOneof1Type,
+    ActionsPolicyEnterpriseConditionsOneof1TypeForResponse,
+)
+from .group_0143 import (
+    ActionsPolicyEnterpriseConditionsOneof2Type,
+    ActionsPolicyEnterpriseConditionsOneof2TypeForResponse,
+)
+from .group_0144 import (
+    ActionsPolicyEnterpriseConditionsOneof3Type,
+    ActionsPolicyEnterpriseConditionsOneof3TypeForResponse,
+)
+from .group_0145 import (
+    ActionsPolicyEnterpriseConditionsOneof4Type,
+    ActionsPolicyEnterpriseConditionsOneof4TypeForResponse,
+)
+from .group_0146 import (
+    ActionsPolicyEnterpriseConditionsOneof5Type,
+    ActionsPolicyEnterpriseConditionsOneof5TypeForResponse,
+)
+from .group_0147 import (
+    ActionsRuleRestrictActionEventsType,
+    ActionsRuleRestrictActionEventsTypeForResponse,
+    ActionsRuleRestrictActionsActorsType,
+    ActionsRuleRestrictActionsActorsTypeForResponse,
+)
 
 
-class RunnerType(TypedDict):
-    """Self hosted runners
+class ActionsPolicyType(TypedDict):
+    """Actions Policy
 
-    A self hosted runner
+    An Actions policy defines rules for workflow execution protection.
     """
 
     id: int
-    runner_group_id: NotRequired[int]
     name: str
-    os: str
-    status: str
-    busy: bool
-    labels: list[RunnerLabelType]
-    ephemeral: NotRequired[bool]
-    version: NotRequired[Union[str, None]]
+    target: Literal["actions"]
+    source_type: Literal["Repository", "Organization", "Enterprise"]
+    source: str
+    enforcement: Literal["disabled", "active", "evaluate"]
+    conditions: NotRequired[
+        Union[
+            ActionsPolicyRepoConditionsOneof0Type,
+            ActionsPolicyRepoConditionsOneof1Type,
+            ActionsPolicyOrgConditionsOneof0Type,
+            ActionsPolicyOrgConditionsOneof1Type,
+            ActionsPolicyOrgConditionsOneof2Type,
+            ActionsPolicyEnterpriseConditionsOneof0Type,
+            ActionsPolicyEnterpriseConditionsOneof1Type,
+            ActionsPolicyEnterpriseConditionsOneof2Type,
+            ActionsPolicyEnterpriseConditionsOneof3Type,
+            ActionsPolicyEnterpriseConditionsOneof4Type,
+            ActionsPolicyEnterpriseConditionsOneof5Type,
+            None,
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                ActionsRuleRestrictActionsActorsType,
+                ActionsRuleRestrictActionEventsType,
+            ]
+        ]
+    ]
+    node_id: NotRequired[str]
+    links: NotRequired[ActionsPolicyPropLinksType]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
 
-class RunnerTypeForResponse(TypedDict):
-    """Self hosted runners
+class ActionsPolicyTypeForResponse(TypedDict):
+    """Actions Policy
 
-    A self hosted runner
+    An Actions policy defines rules for workflow execution protection.
     """
 
     id: int
-    runner_group_id: NotRequired[int]
     name: str
-    os: str
-    status: str
-    busy: bool
-    labels: list[RunnerLabelTypeForResponse]
-    ephemeral: NotRequired[bool]
-    version: NotRequired[Union[str, None]]
+    target: Literal["actions"]
+    source_type: Literal["Repository", "Organization", "Enterprise"]
+    source: str
+    enforcement: Literal["disabled", "active", "evaluate"]
+    conditions: NotRequired[
+        Union[
+            ActionsPolicyRepoConditionsOneof0TypeForResponse,
+            ActionsPolicyRepoConditionsOneof1TypeForResponse,
+            ActionsPolicyOrgConditionsOneof0TypeForResponse,
+            ActionsPolicyOrgConditionsOneof1TypeForResponse,
+            ActionsPolicyOrgConditionsOneof2TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof0TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof1TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof2TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof3TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof4TypeForResponse,
+            ActionsPolicyEnterpriseConditionsOneof5TypeForResponse,
+            None,
+        ]
+    ]
+    rules: NotRequired[
+        list[
+            Union[
+                ActionsRuleRestrictActionsActorsTypeForResponse,
+                ActionsRuleRestrictActionEventsTypeForResponse,
+            ]
+        ]
+    ]
+    node_id: NotRequired[str]
+    links: NotRequired[ActionsPolicyPropLinksTypeForResponse]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+
+
+class ActionsPolicyPropLinksType(TypedDict):
+    """ActionsPolicyPropLinks"""
+
+    self_: NotRequired[ActionsPolicyPropLinksPropSelfType]
+    html: NotRequired[ActionsPolicyPropLinksPropHtmlType]
+
+
+class ActionsPolicyPropLinksTypeForResponse(TypedDict):
+    """ActionsPolicyPropLinks"""
+
+    self_: NotRequired[ActionsPolicyPropLinksPropSelfTypeForResponse]
+    html: NotRequired[ActionsPolicyPropLinksPropHtmlTypeForResponse]
+
+
+class ActionsPolicyPropLinksPropSelfType(TypedDict):
+    """ActionsPolicyPropLinksPropSelf"""
+
+    href: NotRequired[str]
+
+
+class ActionsPolicyPropLinksPropSelfTypeForResponse(TypedDict):
+    """ActionsPolicyPropLinksPropSelf"""
+
+    href: NotRequired[str]
+
+
+class ActionsPolicyPropLinksPropHtmlType(TypedDict):
+    """ActionsPolicyPropLinksPropHtml"""
+
+    href: NotRequired[str]
+
+
+class ActionsPolicyPropLinksPropHtmlTypeForResponse(TypedDict):
+    """ActionsPolicyPropLinksPropHtml"""
+
+    href: NotRequired[str]
 
 
 __all__ = (
-    "RunnerType",
-    "RunnerTypeForResponse",
+    "ActionsPolicyPropLinksPropHtmlType",
+    "ActionsPolicyPropLinksPropHtmlTypeForResponse",
+    "ActionsPolicyPropLinksPropSelfType",
+    "ActionsPolicyPropLinksPropSelfTypeForResponse",
+    "ActionsPolicyPropLinksType",
+    "ActionsPolicyPropLinksTypeForResponse",
+    "ActionsPolicyType",
+    "ActionsPolicyTypeForResponse",
 )

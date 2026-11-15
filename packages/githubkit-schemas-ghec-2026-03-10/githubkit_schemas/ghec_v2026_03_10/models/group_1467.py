@@ -13,16 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0292 import OrganizationActionsSecret
+from .group_0075 import ActionsPolicy
 
 
-class OrgsOrgActionsSecretsGetResponse200(GitHubModel):
-    """OrgsOrgActionsSecretsGetResponse200"""
+class OrgsOrgActionsPoliciesGetResponse200(GitHubModel):
+    """OrgsOrgActionsPoliciesGetResponse200"""
 
-    total_count: int = Field()
-    secrets: list[OrganizationActionsSecret] = Field()
+    total_count: int = Field(description="The total number of Actions policies.")
+    policies: list[ActionsPolicy] = Field(description="An array of Actions policies.")
 
 
-model_rebuild(OrgsOrgActionsSecretsGetResponse200)
+model_rebuild(OrgsOrgActionsPoliciesGetResponse200)
 
-__all__ = ("OrgsOrgActionsSecretsGetResponse200",)
+__all__ = ("OrgsOrgActionsPoliciesGetResponse200",)

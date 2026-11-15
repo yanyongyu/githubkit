@@ -13,55 +13,100 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0099 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
-from .group_0215 import (
-    PublicMonitoringRepositoryType,
-    PublicMonitoringRepositoryTypeForResponse,
-)
-from .group_0216 import BaseGistType, BaseGistTypeForResponse
-from .group_0714 import (
-    PublicMonitoringAlertWebhookPropAttributionType,
-    PublicMonitoringAlertWebhookPropAttributionTypeForResponse,
-)
 
+class WebhooksProjectCardType(TypedDict):
+    """Project Card"""
 
-class PublicMonitoringAlertWebhookType(TypedDict):
-    """Public Monitoring Alert Webhook
-
-    A public monitoring alert as delivered via webhook.
-    """
-
-    number: int
-    url: str
-    secret_type: str
-    secret_type_display_name: str
+    after_id: NotRequired[Union[int, None]]
+    archived: bool
+    column_id: int
+    column_url: str
+    content_url: NotRequired[str]
     created_at: _dt.datetime
-    validity: Literal["active", "inactive", "unknown"]
-    repository: Union[SimpleRepositoryType, PublicMonitoringRepositoryType, None]
-    gist: NotRequired[Union[BaseGistType, None]]
-    attribution: PublicMonitoringAlertWebhookPropAttributionType
-
-
-class PublicMonitoringAlertWebhookTypeForResponse(TypedDict):
-    """Public Monitoring Alert Webhook
-
-    A public monitoring alert as delivered via webhook.
-    """
-
-    number: int
+    creator: Union[WebhooksProjectCardPropCreatorType, None]
+    id: int
+    node_id: str
+    note: Union[str, None]
+    project_url: str
+    updated_at: _dt.datetime
     url: str
-    secret_type: str
-    secret_type_display_name: str
+
+
+class WebhooksProjectCardTypeForResponse(TypedDict):
+    """Project Card"""
+
+    after_id: NotRequired[Union[int, None]]
+    archived: bool
+    column_id: int
+    column_url: str
+    content_url: NotRequired[str]
     created_at: str
-    validity: Literal["active", "inactive", "unknown"]
-    repository: Union[
-        SimpleRepositoryTypeForResponse, PublicMonitoringRepositoryTypeForResponse, None
-    ]
-    gist: NotRequired[Union[BaseGistTypeForResponse, None]]
-    attribution: PublicMonitoringAlertWebhookPropAttributionTypeForResponse
+    creator: Union[WebhooksProjectCardPropCreatorTypeForResponse, None]
+    id: int
+    node_id: str
+    note: Union[str, None]
+    project_url: str
+    updated_at: str
+    url: str
+
+
+class WebhooksProjectCardPropCreatorType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhooksProjectCardPropCreatorTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "PublicMonitoringAlertWebhookType",
-    "PublicMonitoringAlertWebhookTypeForResponse",
+    "WebhooksProjectCardPropCreatorType",
+    "WebhooksProjectCardPropCreatorTypeForResponse",
+    "WebhooksProjectCardType",
+    "WebhooksProjectCardTypeForResponse",
 )

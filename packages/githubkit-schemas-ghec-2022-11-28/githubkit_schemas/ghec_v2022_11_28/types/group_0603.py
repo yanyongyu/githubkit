@@ -9,67 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0179 import (
+    RepositoryRuleMaxFilePathLengthPropParametersType,
+    RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse,
+)
 
-class RepositoryAdvisoryDescriptionValidationErrorType(TypedDict):
-    """Repository Advisory Description Validation Error
 
-    The description does not answer the repository's report template.
-    """
+class RepositoryRuleDetailedOneof22Type(TypedDict):
+    """RepositoryRuleDetailedOneof22"""
 
-    message: str
-    documentation_url: str
-    errors: NotRequired[
-        list[RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType]
+    type: Literal["max_file_path_length"]
+    parameters: NotRequired[RepositoryRuleMaxFilePathLengthPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
+class RepositoryRuleDetailedOneof22TypeForResponse(TypedDict):
+    """RepositoryRuleDetailedOneof22"""
+
+    type: Literal["max_file_path_length"]
+    parameters: NotRequired[
+        RepositoryRuleMaxFilePathLengthPropParametersTypeForResponse
     ]
-
-
-class RepositoryAdvisoryDescriptionValidationErrorTypeForResponse(TypedDict):
-    """Repository Advisory Description Validation Error
-
-    The description does not answer the repository's report template.
-    """
-
-    message: str
-    documentation_url: str
-    errors: NotRequired[
-        list[RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsTypeForResponse]
-    ]
-
-
-class RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType(TypedDict):
-    """RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems"""
-
-    resource: NotRequired[str]
-    field: NotRequired[str]
-    message: NotRequired[str]
-    code: str
-    index: NotRequired[int]
-    value: NotRequired[Union[str, int, list[str], None]]
-    section: NotRequired[str]
-    option: NotRequired[str]
-
-
-class RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsTypeForResponse(
-    TypedDict
-):
-    """RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems"""
-
-    resource: NotRequired[str]
-    field: NotRequired[str]
-    message: NotRequired[str]
-    code: str
-    index: NotRequired[int]
-    value: NotRequired[Union[str, int, list[str], None]]
-    section: NotRequired[str]
-    option: NotRequired[str]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
 __all__ = (
-    "RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsType",
-    "RepositoryAdvisoryDescriptionValidationErrorPropErrorsItemsTypeForResponse",
-    "RepositoryAdvisoryDescriptionValidationErrorType",
-    "RepositoryAdvisoryDescriptionValidationErrorTypeForResponse",
+    "RepositoryRuleDetailedOneof22Type",
+    "RepositoryRuleDetailedOneof22TypeForResponse",
 )

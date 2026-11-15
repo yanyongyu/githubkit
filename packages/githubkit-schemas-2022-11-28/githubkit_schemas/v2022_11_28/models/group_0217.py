@@ -9,25 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CustomPropertyValue(GitHubModel):
-    """Custom Property Value
+class OrganizationExternalPropertyInstallation(GitHubModel):
+    """Organization External Custom Property Installation
 
-    Custom property name and associated value
+    A GitHub App installation that has been registered to read and write an
+    organization's external custom properties, together with the display name
+    assigned to it.
     """
 
-    property_name: str = Field(description="The name of the property")
-    value: Union[str, list[str], None] = Field(
-        description="The value assigned to the property"
+    display_name: str = Field(
+        description="The display name assigned to the app installation's external custom properties in the organization."
+    )
+    installation: OrganizationExternalPropertyInstallationPropInstallation = Field(
+        description="The GitHub App installation that was registered."
     )
 
 
-model_rebuild(CustomPropertyValue)
+class OrganizationExternalPropertyInstallationPropInstallation(GitHubModel):
+    """OrganizationExternalPropertyInstallationPropInstallation
 
-__all__ = ("CustomPropertyValue",)
+    The GitHub App installation that was registered.
+    """
+
+    id: int = Field(description="The unique identifier of the GitHub App installation.")
+
+
+model_rebuild(OrganizationExternalPropertyInstallation)
+model_rebuild(OrganizationExternalPropertyInstallationPropInstallation)
+
+__all__ = (
+    "OrganizationExternalPropertyInstallation",
+    "OrganizationExternalPropertyInstallationPropInstallation",
+)

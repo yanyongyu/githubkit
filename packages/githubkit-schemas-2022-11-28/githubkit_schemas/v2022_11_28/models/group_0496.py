@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,29 +18,79 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0236 import RepositoryRuleRequiredDeploymentsPropParameters
+from .group_0003 import SimpleUser
 
 
-class RepositoryRuleDetailedOneof5(GitHubModel):
-    """RepositoryRuleDetailedOneof5"""
+class PullRequestReview(GitHubModel):
+    """Pull Request Review
 
-    type: Literal["required_deployments"] = Field()
-    parameters: Missing[RepositoryRuleRequiredDeploymentsPropParameters] = Field(
-        default=UNSET
-    )
-    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+    Pull Request Reviews are reviews on pull requests.
+    """
+
+    id: int = Field(description="Unique identifier of the review")
+    node_id: str = Field()
+    user: Union[SimpleUser, None] = Field()
+    body: str = Field(description="The text of the review.")
+    state: str = Field()
+    is_copilot_code_review: Missing[bool] = Field(
         default=UNSET,
-        description="The type of source for the ruleset that includes this rule.",
+        description="Whether this review was produced by Copilot code review. Bot authorship alone does not establish provenance.",
     )
-    ruleset_source: Missing[str] = Field(
+    copilot_code_review_effort: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The name of the source of the ruleset that includes this rule.",
+        description="The persisted effective effort used to produce this Copilot code review, or null if unavailable. For more information, see [Review effort level](https://docs.github.com/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/code-review#review-effort-level).",
     )
-    ruleset_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the ruleset that includes this rule."
+    html_url: str = Field()
+    pull_request_url: str = Field()
+    links: PullRequestReviewPropLinks = Field(alias="_links")
+    submitted_at: Missing[_dt.datetime] = Field(default=UNSET)
+    commit_id: Union[str, None] = Field(
+        description="A commit SHA for the review. If the commit object was garbage collected or forcibly deleted, then it no longer exists in Git and this value will be `null`."
+    )
+    body_html: Missing[str] = Field(default=UNSET)
+    body_text: Missing[str] = Field(default=UNSET)
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof5)
+class PullRequestReviewPropLinks(GitHubModel):
+    """PullRequestReviewPropLinks"""
 
-__all__ = ("RepositoryRuleDetailedOneof5",)
+    html: PullRequestReviewPropLinksPropHtml = Field()
+    pull_request: PullRequestReviewPropLinksPropPullRequest = Field()
+
+
+class PullRequestReviewPropLinksPropHtml(GitHubModel):
+    """PullRequestReviewPropLinksPropHtml"""
+
+    href: str = Field()
+
+
+class PullRequestReviewPropLinksPropPullRequest(GitHubModel):
+    """PullRequestReviewPropLinksPropPullRequest"""
+
+    href: str = Field()
+
+
+model_rebuild(PullRequestReview)
+model_rebuild(PullRequestReviewPropLinks)
+model_rebuild(PullRequestReviewPropLinksPropHtml)
+model_rebuild(PullRequestReviewPropLinksPropPullRequest)
+
+__all__ = (
+    "PullRequestReview",
+    "PullRequestReviewPropLinks",
+    "PullRequestReviewPropLinksPropHtml",
+    "PullRequestReviewPropLinksPropPullRequest",
+)

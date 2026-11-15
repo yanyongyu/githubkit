@@ -9,24 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0537 import Traffic
+from .group_0003 import SimpleUser
 
 
-class CloneTraffic(GitHubModel):
-    """Clone Traffic
+class PullRequestStackPullRequestAllof1(GitHubModel):
+    """PullRequestStackPullRequestAllof1"""
 
-    Clone Traffic
-    """
+    node_id: str = Field()
+    title: str = Field()
+    state: Literal["open", "closed"] = Field()
+    merged_at: Union[_dt.datetime, None] = Field()
+    draft: bool = Field()
+    html_url: str = Field()
+    user: Union[SimpleUser, None] = Field()
 
-    count: int = Field()
-    uniques: int = Field()
-    clones: list[Traffic] = Field()
 
+model_rebuild(PullRequestStackPullRequestAllof1)
 
-model_rebuild(CloneTraffic)
-
-__all__ = ("CloneTraffic",)
+__all__ = ("PullRequestStackPullRequestAllof1",)

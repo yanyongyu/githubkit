@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,19 +16,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class SecretScanningCustomPatternToDelete(GitHubModel):
-    """Secret Scanning Custom Pattern To Delete
+class SecretScanningCustomPatternToCreate(GitHubModel):
+    """Secret Scanning Custom Pattern To Create
 
-    A custom pattern to delete in a bulk operation.
+    A custom pattern to create in a bulk operation.
     """
 
-    pattern_id: int = Field(description="The ID of the custom pattern to delete.")
-    custom_pattern_version: Missing[Union[str, None]] = Field(
+    name: str = Field(description="The name of the custom pattern.")
+    pattern: str = Field(description="The regular expression of the custom pattern.")
+    start_delimiter: Missing[str] = Field(
         default=UNSET,
-        description="The version of the entity. This is used to confirm you're updating the current version of the entity and mitigate unintentionally overriding someone else's update.",
+        description="The start delimiter regex for the custom pattern.\nDefaults to `\\A|[^0-9A-Za-z]` when not specified.",
+    )
+    end_delimiter: Missing[str] = Field(
+        default=UNSET,
+        description="The end delimiter regex for the custom pattern.\nDefaults to `\\z|[^0-9A-Za-z]` when not specified.",
+    )
+    must_match: Missing[list[str]] = Field(
+        default=UNSET, description="List of regexes that the secret must match."
+    )
+    must_not_match: Missing[list[str]] = Field(
+        default=UNSET, description="List of regexes that the secret must not match."
     )
 
 
-model_rebuild(SecretScanningCustomPatternToDelete)
+model_rebuild(SecretScanningCustomPatternToCreate)
 
-__all__ = ("SecretScanningCustomPatternToDelete",)
+__all__ = ("SecretScanningCustomPatternToCreate",)

@@ -13,19 +13,31 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class RepositoryRuleCodeQualityPropParametersType(TypedDict):
-    """RepositoryRuleCodeQualityPropParameters"""
+class RepositoryRuleMergeQueuePropParametersType(TypedDict):
+    """RepositoryRuleMergeQueuePropParameters"""
 
-    severity: Literal["errors", "warnings", "notes", "all"]
+    check_response_timeout_minutes: int
+    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"]
+    max_entries_to_build: int
+    max_entries_to_merge: int
+    merge_method: Literal["MERGE", "SQUASH", "REBASE"]
+    min_entries_to_merge: int
+    min_entries_to_merge_wait_minutes: int
 
 
-class RepositoryRuleCodeQualityPropParametersTypeForResponse(TypedDict):
-    """RepositoryRuleCodeQualityPropParameters"""
+class RepositoryRuleMergeQueuePropParametersTypeForResponse(TypedDict):
+    """RepositoryRuleMergeQueuePropParameters"""
 
-    severity: Literal["errors", "warnings", "notes", "all"]
+    check_response_timeout_minutes: int
+    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"]
+    max_entries_to_build: int
+    max_entries_to_merge: int
+    merge_method: Literal["MERGE", "SQUASH", "REBASE"]
+    min_entries_to_merge: int
+    min_entries_to_merge_wait_minutes: int
 
 
 __all__ = (
-    "RepositoryRuleCodeQualityPropParametersType",
-    "RepositoryRuleCodeQualityPropParametersTypeForResponse",
+    "RepositoryRuleMergeQueuePropParametersType",
+    "RepositoryRuleMergeQueuePropParametersTypeForResponse",
 )

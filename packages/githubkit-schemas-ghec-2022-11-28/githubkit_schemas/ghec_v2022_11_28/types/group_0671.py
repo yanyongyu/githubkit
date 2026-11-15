@@ -9,41 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing_extensions import TypedDict
 
 
-class WebhooksWorkflowType(TypedDict):
-    """Workflow"""
+class HovercardType(TypedDict):
+    """Hovercard
 
-    badge_url: str
-    created_at: _dt.datetime
-    html_url: str
-    id: int
-    name: str
-    node_id: str
-    path: str
-    state: str
-    updated_at: _dt.datetime
-    url: str
+    Hovercard
+    """
+
+    contexts: list[HovercardPropContextsItemsType]
 
 
-class WebhooksWorkflowTypeForResponse(TypedDict):
-    """Workflow"""
+class HovercardTypeForResponse(TypedDict):
+    """Hovercard
 
-    badge_url: str
-    created_at: str
-    html_url: str
-    id: int
-    name: str
-    node_id: str
-    path: str
-    state: str
-    updated_at: str
-    url: str
+    Hovercard
+    """
+
+    contexts: list[HovercardPropContextsItemsTypeForResponse]
+
+
+class HovercardPropContextsItemsType(TypedDict):
+    """HovercardPropContextsItems"""
+
+    message: str
+    octicon: str
+
+
+class HovercardPropContextsItemsTypeForResponse(TypedDict):
+    """HovercardPropContextsItems"""
+
+    message: str
+    octicon: str
 
 
 __all__ = (
-    "WebhooksWorkflowType",
-    "WebhooksWorkflowTypeForResponse",
+    "HovercardPropContextsItemsType",
+    "HovercardPropContextsItemsTypeForResponse",
+    "HovercardType",
+    "HovercardTypeForResponse",
 )

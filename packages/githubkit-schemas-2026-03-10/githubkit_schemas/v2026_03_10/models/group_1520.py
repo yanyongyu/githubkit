@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,135 +18,45 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1"""
+class ReposOwnerRepoGitTreesPostBody(GitHubModel):
+    """ReposOwnerRepoGitTreesPostBody"""
 
-    artifact: IssueArtifact = Field(
-        title="Issue artifact",
-        description="Issue artifacts are named, typed pieces of content attached to an issue.\nThey give people and agents a durable place to preserve context and\nsupporting material alongside the work. Each artifact has a number unique\nwithin the issue.",
+    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItems] = Field(
+        description="Objects (of `path`, `mode`, `type`, and `sha`) specifying a tree structure."
     )
-    versions: list[
-        ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItems
-    ] = Field(
-        description="The artifact version history, ordered from newest to oldest."
-    )
-
-
-class IssueArtifact(GitHubModel):
-    """Issue artifact
-
-    Issue artifacts are named, typed pieces of content attached to an issue.
-    They give people and agents a durable place to preserve context and
-    supporting material alongside the work. Each artifact has a number unique
-    within the issue.
-    """
-
-    id: int = Field(description="The globally unique identifier of the artifact.")
-    html_url: Missing[str] = Field(
+    base_tree: Missing[str] = Field(
         default=UNSET,
-        description="The canonical browser URL for the artifact in its issue context.",
-    )
-    number: int = Field(description="The artifact number within the issue.")
-    type: str = Field(
-        description="The artifact type. The types supported for external creation and filtering are:\n\n- `generic` is a general-purpose Markdown document.\n- `link` represents a named link.\n- `plan` is a Markdown plan.\n- `embedded_html` is a self-contained HTML document. Its `body` contains the HTML source."
-    )
-    name: str = Field(description="The human-readable name of the artifact.")
-    body: str = Field(
-        description="The artifact content. For `embedded_html` artifacts, this is the HTML source."
-    )
-    body_html: Union[str, None] = Field(
-        description="The artifact content rendered as HTML, or `null` if rendering times out or is skipped\nto protect the response's time budget. The raw content remains available in `body`."
-    )
-    description: str = Field(description="A short, generated summary of the artifact.")
-    creator: Union[IssueArtifactPropCreator, None] = Field(
-        description="The user or integration that created the artifact."
-    )
-    updated_by_actor: Union[IssueArtifactPropUpdatedByActor, None] = Field(
-        description="The user or integration that most recently updated the artifact."
-    )
-    created_at: Union[_dt.datetime, None] = Field(
-        description="The time the artifact was created."
-    )
-    updated_at: Union[_dt.datetime, None] = Field(
-        description="The time the artifact was last updated."
+        description="The SHA1 of an existing Git tree object which will be used as the base for the new tree. If provided, a new Git tree object will be created from entries in the Git tree object pointed to by `base_tree` and entries defined in the `tree` parameter. Entries defined in the `tree` parameter will overwrite items from `base_tree` with the same `path`. If you're creating new changes on a branch, then normally you'd set `base_tree` to the SHA1 of the Git tree object of the current latest commit on the branch you're working on.\nIf not provided, GitHub will create a new Git tree object from only the entries defined in the `tree` parameter. If you create a new commit pointing to such a tree, then all files which were a part of the parent commit's tree and were not defined in the `tree` parameter will be listed as deleted by the new commit.",
     )
 
 
-class IssueArtifactPropCreator(GitHubModel):
-    """IssueArtifactPropCreator
+class ReposOwnerRepoGitTreesPostBodyPropTreeItems(GitHubModel):
+    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
 
-    The user or integration that created the artifact.
-    """
-
-    login: str = Field()
-    id: int = Field()
-
-
-class IssueArtifactPropUpdatedByActor(GitHubModel):
-    """IssueArtifactPropUpdatedByActor
-
-    The user or integration that most recently updated the artifact.
-    """
-
-    login: str = Field()
-    id: int = Field()
-
-
-class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItems(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVe
-    rsionsItems
-    """
-
-    version: int = Field(description="The sequential version number.")
-    name: str = Field(description="The artifact name at this version.")
-    body: str = Field(description="The artifact content at this version.")
-    body_html: Union[str, None] = Field(
-        description="The artifact content at this version rendered as HTML, or `null` if rendering times out\nor is skipped to protect the response's time budget. The raw content remains available in `body`."
+    path: Missing[str] = Field(
+        default=UNSET, description="The file referenced in the tree."
     )
-    created_at: Union[_dt.datetime, None] = Field(
-        description="The time this version was created."
+    mode: Missing[Literal["100644", "100755", "040000", "160000", "120000"]] = Field(
+        default=UNSET,
+        description="The file mode; one of `100644` for file (blob), `100755` for executable (blob), `040000` for subdirectory (tree), `160000` for submodule (commit), or `120000` for a blob that specifies the path of a symlink.",
     )
-    actor: Union[
-        ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActor,
-        None,
-    ] = Field(description="The user or integration that created this version.")
+    type: Missing[Literal["blob", "tree", "commit"]] = Field(
+        default=UNSET, description="Either `blob`, `tree`, or `commit`."
+    )
+    sha: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The SHA1 checksum ID of the object in the tree. Also called `tree.sha`. If the value is `null` then the file will be deleted.  \n  \n**Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha` and `content` will return an error.",
+    )
+    content: Missing[str] = Field(
+        default=UNSET,
+        description="The content you want this file to have. GitHub will write this blob out and use that SHA for this entry. Use either this, or `tree.sha`.  \n  \n**Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha` and `content` will return an error.",
+    )
 
 
-class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActor(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVe
-    rsionsItemsPropActor
-
-    The user or integration that created this version.
-    """
-
-    login: str = Field()
-    id: int = Field()
-
-
-model_rebuild(
-    ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1
-)
-model_rebuild(IssueArtifact)
-model_rebuild(IssueArtifactPropCreator)
-model_rebuild(IssueArtifactPropUpdatedByActor)
-model_rebuild(
-    ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItems
-)
-model_rebuild(
-    ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActor
-)
+model_rebuild(ReposOwnerRepoGitTreesPostBody)
+model_rebuild(ReposOwnerRepoGitTreesPostBodyPropTreeItems)
 
 __all__ = (
-    "IssueArtifact",
-    "IssueArtifactPropCreator",
-    "IssueArtifactPropUpdatedByActor",
-    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1",
-    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItems",
-    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActor",
+    "ReposOwnerRepoGitTreesPostBody",
+    "ReposOwnerRepoGitTreesPostBodyPropTreeItems",
 )

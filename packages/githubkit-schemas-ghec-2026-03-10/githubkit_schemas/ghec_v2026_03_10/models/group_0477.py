@@ -9,17 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from typing import Literal, Union
+
+from pydantic import Field
+
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Metadata(ExtraGitHubModel):
-    """metadata
+class RepositoryCopilotCodeReviewSettings(GitHubModel):
+    """Repository Copilot Code Review Settings
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
+    The repository's Copilot code review settings. These settings tune reviews; they
+    do not enable Copilot code review.
     """
 
+    review_effort: RepositoryCopilotCodeReviewSettingsPropReviewEffort = Field(
+        description="The review effort for the repository. For more information, see [Review effort level](https://docs.github.com/enterprise-cloud@latest/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/code-review#review-effort-level)."
+    )
+    available_review_efforts: list[str] = Field(
+        description="The review efforts that can currently be set for this repository, in display order."
+    )
+    severity_filter: Literal["no_filter", "low", "low_and_medium"] = Field(
+        description="Which review comment severities Copilot code review leaves out. `no_filter` keeps every comment, `low` leaves out low-severity comments, and `low_and_medium` leaves out low- and medium-severity comments."
+    )
+    custom_instructions_enabled: bool = Field(
+        description="Whether reviews use the repository's custom instructions."
+    )
+    mcp_enabled: bool = Field(description="Whether reviews can use MCP servers.")
 
-model_rebuild(Metadata)
 
-__all__ = ("Metadata",)
+class RepositoryCopilotCodeReviewSettingsPropReviewEffort(GitHubModel):
+    """RepositoryCopilotCodeReviewSettingsPropReviewEffort
+
+    The review effort for the repository. For more information, see [Review effort
+    level](https://docs.github.com/enterprise-cloud@latest/copilot/concepts/agent-
+    capabilities/agent-powered-workflows-and-operations/code-review#review-effort-
+    level).
+    """
+
+    configured: Union[str, None] = Field(
+        description="The review effort stored for the repository. Null means the repository inherits the default, or has stored a value that is not currently available."
+    )
+    effective: str = Field(
+        description="The review effort reviews use when the requester and the pull request do not choose one. When that effort is not currently available for the repository, this reports the effort reviews would use without it."
+    )
+
+
+model_rebuild(RepositoryCopilotCodeReviewSettings)
+model_rebuild(RepositoryCopilotCodeReviewSettingsPropReviewEffort)
+
+__all__ = (
+    "RepositoryCopilotCodeReviewSettings",
+    "RepositoryCopilotCodeReviewSettingsPropReviewEffort",
+)

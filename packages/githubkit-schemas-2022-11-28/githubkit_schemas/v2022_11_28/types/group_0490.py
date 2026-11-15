@@ -10,34 +10,30 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleRulesetInfoType(TypedDict):
-    """repository ruleset data for rule
+class CopilotCodeReviewRequestType(TypedDict):
+    """Copilot Code Review Request
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
+    A request for Copilot to review a pull request.
     """
 
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    node_id: str
+    state: Literal["PENDING"]
 
 
-class RepositoryRuleRulesetInfoTypeForResponse(TypedDict):
-    """repository ruleset data for rule
+class CopilotCodeReviewRequestTypeForResponse(TypedDict):
+    """Copilot Code Review Request
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
+    A request for Copilot to review a pull request.
     """
 
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    node_id: str
+    state: Literal["PENDING"]
 
 
 __all__ = (
-    "RepositoryRuleRulesetInfoType",
-    "RepositoryRuleRulesetInfoTypeForResponse",
+    "CopilotCodeReviewRequestType",
+    "CopilotCodeReviewRequestTypeForResponse",
 )

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,135 +19,43 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1"""
+class ReposOwnerRepoGitTagsPostBody(GitHubModel):
+    """ReposOwnerRepoGitTagsPostBody"""
 
-    artifact: IssueArtifact = Field(
-        title="Issue artifact",
-        description="Issue artifacts are named, typed pieces of content attached to an issue.\nThey give people and agents a durable place to preserve context and\nsupporting material alongside the work. Each artifact has a number unique\nwithin the issue.",
+    tag: str = Field(
+        description='The tag\'s name. This is typically a version (e.g., "v0.0.1").'
     )
-    versions: list[
-        ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItems
-    ] = Field(
-        description="The artifact version history, ordered from newest to oldest."
+    message: str = Field(description="The tag message.")
+    object_: str = Field(
+        alias="object", description="The SHA of the git object this is tagging."
     )
-
-
-class IssueArtifact(GitHubModel):
-    """Issue artifact
-
-    Issue artifacts are named, typed pieces of content attached to an issue.
-    They give people and agents a durable place to preserve context and
-    supporting material alongside the work. Each artifact has a number unique
-    within the issue.
-    """
-
-    id: int = Field(description="The globally unique identifier of the artifact.")
-    html_url: Missing[str] = Field(
+    type: Literal["commit", "tree", "blob"] = Field(
+        description="The type of the object we're tagging. Normally this is a `commit` but it can also be a `tree` or a `blob`."
+    )
+    tagger: Missing[ReposOwnerRepoGitTagsPostBodyPropTagger] = Field(
         default=UNSET,
-        description="The canonical browser URL for the artifact in its issue context.",
-    )
-    number: int = Field(description="The artifact number within the issue.")
-    type: str = Field(
-        description="The artifact type. The types supported for external creation and filtering are:\n\n- `generic` is a general-purpose Markdown document.\n- `link` represents a named link.\n- `plan` is a Markdown plan.\n- `embedded_html` is a self-contained HTML document. Its `body` contains the HTML source."
-    )
-    name: str = Field(description="The human-readable name of the artifact.")
-    body: str = Field(
-        description="The artifact content. For `embedded_html` artifacts, this is the HTML source."
-    )
-    body_html: Union[str, None] = Field(
-        description="The artifact content rendered as HTML, or `null` if rendering times out or is skipped\nto protect the response's time budget. The raw content remains available in `body`."
-    )
-    description: str = Field(description="A short, generated summary of the artifact.")
-    creator: Union[IssueArtifactPropCreator, None] = Field(
-        description="The user or integration that created the artifact."
-    )
-    updated_by_actor: Union[IssueArtifactPropUpdatedByActor, None] = Field(
-        description="The user or integration that most recently updated the artifact."
-    )
-    created_at: Union[_dt.datetime, None] = Field(
-        description="The time the artifact was created."
-    )
-    updated_at: Union[_dt.datetime, None] = Field(
-        description="The time the artifact was last updated."
+        description="An object with information about the individual creating the tag.",
     )
 
 
-class IssueArtifactPropCreator(GitHubModel):
-    """IssueArtifactPropCreator
+class ReposOwnerRepoGitTagsPostBodyPropTagger(GitHubModel):
+    """ReposOwnerRepoGitTagsPostBodyPropTagger
 
-    The user or integration that created the artifact.
+    An object with information about the individual creating the tag.
     """
 
-    login: str = Field()
-    id: int = Field()
-
-
-class IssueArtifactPropUpdatedByActor(GitHubModel):
-    """IssueArtifactPropUpdatedByActor
-
-    The user or integration that most recently updated the artifact.
-    """
-
-    login: str = Field()
-    id: int = Field()
-
-
-class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItems(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVe
-    rsionsItems
-    """
-
-    version: int = Field(description="The sequential version number.")
-    name: str = Field(description="The artifact name at this version.")
-    body: str = Field(description="The artifact content at this version.")
-    body_html: Union[str, None] = Field(
-        description="The artifact content at this version rendered as HTML, or `null` if rendering times out\nor is skipped to protect the response's time budget. The raw content remains available in `body`."
+    name: str = Field(description="The name of the author of the tag")
+    email: str = Field(description="The email of the author of the tag")
+    date: Missing[_dt.datetime] = Field(
+        default=UNSET,
+        description="When this object was tagged. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    created_at: Union[_dt.datetime, None] = Field(
-        description="The time this version was created."
-    )
-    actor: Union[
-        ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActor,
-        None,
-    ] = Field(description="The user or integration that created this version.")
 
 
-class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActor(
-    GitHubModel
-):
-    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVe
-    rsionsItemsPropActor
-
-    The user or integration that created this version.
-    """
-
-    login: str = Field()
-    id: int = Field()
-
-
-model_rebuild(
-    ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1
-)
-model_rebuild(IssueArtifact)
-model_rebuild(IssueArtifactPropCreator)
-model_rebuild(IssueArtifactPropUpdatedByActor)
-model_rebuild(
-    ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItems
-)
-model_rebuild(
-    ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActor
-)
+model_rebuild(ReposOwnerRepoGitTagsPostBody)
+model_rebuild(ReposOwnerRepoGitTagsPostBodyPropTagger)
 
 __all__ = (
-    "IssueArtifact",
-    "IssueArtifactPropCreator",
-    "IssueArtifactPropUpdatedByActor",
-    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1",
-    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItems",
-    "ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActor",
+    "ReposOwnerRepoGitTagsPostBody",
+    "ReposOwnerRepoGitTagsPostBodyPropTagger",
 )

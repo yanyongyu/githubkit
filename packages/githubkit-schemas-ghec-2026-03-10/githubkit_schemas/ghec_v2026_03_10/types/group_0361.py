@@ -9,58 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+import datetime as _dt
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationExternalPropertyInstallationType(TypedDict):
-    """Organization External Custom Property Installation
+class ProjectsV2FieldIterationConfigurationType(TypedDict):
+    """ProjectsV2FieldIterationConfiguration
 
-    A GitHub App installation that has been registered to read and write an
-    organization's external custom properties, together with the display name
-    assigned to it.
+    The configuration for iteration fields.
     """
 
-    display_name: str
-    installation: OrganizationExternalPropertyInstallationPropInstallationType
+    start_date: _dt.date
+    duration: int
+    iterations: NotRequired[
+        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsType]
+    ]
 
 
-class OrganizationExternalPropertyInstallationTypeForResponse(TypedDict):
-    """Organization External Custom Property Installation
+class ProjectsV2FieldIterationConfigurationTypeForResponse(TypedDict):
+    """ProjectsV2FieldIterationConfiguration
 
-    A GitHub App installation that has been registered to read and write an
-    organization's external custom properties, together with the display name
-    assigned to it.
+    The configuration for iteration fields.
     """
 
-    display_name: str
-    installation: (
-        OrganizationExternalPropertyInstallationPropInstallationTypeForResponse
-    )
+    start_date: str
+    duration: int
+    iterations: NotRequired[
+        list[ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse]
+    ]
 
 
-class OrganizationExternalPropertyInstallationPropInstallationType(TypedDict):
-    """OrganizationExternalPropertyInstallationPropInstallation
+class ProjectsV2FieldIterationConfigurationPropIterationsItemsType(TypedDict):
+    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
 
-    The GitHub App installation that was registered.
-    """
+    title: str
+    start_date: _dt.date
+    duration: int
 
-    id: int
 
-
-class OrganizationExternalPropertyInstallationPropInstallationTypeForResponse(
+class ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse(
     TypedDict
 ):
-    """OrganizationExternalPropertyInstallationPropInstallation
+    """ProjectsV2FieldIterationConfigurationPropIterationsItems"""
 
-    The GitHub App installation that was registered.
-    """
-
-    id: int
+    title: str
+    start_date: str
+    duration: int
 
 
 __all__ = (
-    "OrganizationExternalPropertyInstallationPropInstallationType",
-    "OrganizationExternalPropertyInstallationPropInstallationTypeForResponse",
-    "OrganizationExternalPropertyInstallationType",
-    "OrganizationExternalPropertyInstallationTypeForResponse",
+    "ProjectsV2FieldIterationConfigurationPropIterationsItemsType",
+    "ProjectsV2FieldIterationConfigurationPropIterationsItemsTypeForResponse",
+    "ProjectsV2FieldIterationConfigurationType",
+    "ProjectsV2FieldIterationConfigurationTypeForResponse",
 )

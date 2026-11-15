@@ -9,67 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class EnterpriseLicensePolicyItemPropLicenses(GitHubModel):
-    """EnterpriseLicensePolicyItemPropLicenses"""
-
-    allowed: list[EnterpriseLicensePolicyItemPropLicensesPropAllowedItems] = Field(
-        description="The licenses allowed by this policy."
-    )
-
-
-class EnterpriseLicensePolicyItemPropLicensesPropAllowedItems(GitHubModel):
-    """Allowed license"""
-
-    spdx_id: str = Field(description="The SPDX identifier of the license.")
-    added_at: Union[_dt.datetime, None] = Field(
-        description="The time the license was added to the policy."
-    )
-
-
-class EnterpriseLicensePolicyItemPropPackagesItems(GitHubModel):
-    """License policy package exception"""
-
-    package_manager: Literal[
-        "unknown",
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "gomod",
-        "rust",
-        "actions",
-        "pub",
-        "swift",
-    ] = Field(description="The package manager the package belongs to.")
-    name: str = Field(description="The name of the package.")
-    action: Literal["unknown", "allowed", "private"] = Field(
-        description="How the package is treated by the policy."
-    )
-    reason: str = Field(description="The reason the exception was added.")
-    extra_allowed_spdx_ids: list[str] = Field(
-        description="Additional SPDX identifiers allowed for this package."
-    )
-    added_at: Union[_dt.datetime, None] = Field(
-        description="The time the exception was added to the policy."
-    )
-
-
-model_rebuild(EnterpriseLicensePolicyItemPropLicenses)
-model_rebuild(EnterpriseLicensePolicyItemPropLicensesPropAllowedItems)
-model_rebuild(EnterpriseLicensePolicyItemPropPackagesItems)
-
-__all__ = (
-    "EnterpriseLicensePolicyItemPropLicenses",
-    "EnterpriseLicensePolicyItemPropLicensesPropAllowedItems",
-    "EnterpriseLicensePolicyItemPropPackagesItems",
+from .group_0132 import (
+    EnterpriseLicensePolicyItemPropLicenses,
+    EnterpriseLicensePolicyItemPropPackagesItems,
 )
+
+
+class EnterpriseLicensePolicyItem(GitHubModel):
+    """Enterprise license policy content"""
+
+    licenses: EnterpriseLicensePolicyItemPropLicenses = Field()
+    packages: list[EnterpriseLicensePolicyItemPropPackagesItems] = Field(
+        description="The package-level exceptions in this policy."
+    )
+
+
+model_rebuild(EnterpriseLicensePolicyItem)
+
+__all__ = ("EnterpriseLicensePolicyItem",)

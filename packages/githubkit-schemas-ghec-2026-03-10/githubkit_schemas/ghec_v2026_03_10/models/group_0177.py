@@ -12,18 +12,22 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryRuleMaxFilePathLengthPropParameters(GitHubModel):
-    """RepositoryRuleMaxFilePathLengthPropParameters"""
+class RepositoryRuleFilePathRestrictionPropParameters(GitHubModel):
+    """RepositoryRuleFilePathRestrictionPropParameters"""
 
-    max_file_path_length: int = Field(
-        le=32767.0,
-        ge=1.0,
-        description="The maximum amount of characters allowed in file paths.",
+    ignored_file_paths: Missing[list[str]] = Field(
+        default=UNSET,
+        description="Files matching these patterns are allowed even when they also match a restricted path.",
+    )
+    restricted_file_paths: list[str] = Field(
+        description="The file paths that are restricted from being pushed to the commit graph."
     )
 
 
-model_rebuild(RepositoryRuleMaxFilePathLengthPropParameters)
+model_rebuild(RepositoryRuleFilePathRestrictionPropParameters)
 
-__all__ = ("RepositoryRuleMaxFilePathLengthPropParameters",)
+__all__ = ("RepositoryRuleFilePathRestrictionPropParameters",)

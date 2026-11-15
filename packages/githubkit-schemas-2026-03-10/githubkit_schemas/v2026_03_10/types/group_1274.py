@@ -12,19 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof0Type(TypedDict):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof0"""
+class OrgsOrgAgentsVariablesNameRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgAgentsVariablesNameRepositoriesPutBody"""
 
-    subject_digests: list[str]
+    selected_repository_ids: list[int]
 
 
-class OrgsOrgAttestationsDeleteRequestPostBodyOneof0TypeForResponse(TypedDict):
-    """OrgsOrgAttestationsDeleteRequestPostBodyOneof0"""
+class OrgsOrgAgentsVariablesNameRepositoriesPutBodyTypeForResponse(TypedDict):
+    """OrgsOrgAgentsVariablesNameRepositoriesPutBody"""
 
-    subject_digests: list[str]
+    selected_repository_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgAttestationsDeleteRequestPostBodyOneof0Type",
-    "OrgsOrgAttestationsDeleteRequestPostBodyOneof0TypeForResponse",
+    "OrgsOrgAgentsVariablesNameRepositoriesPutBodyType",
+    "OrgsOrgAgentsVariablesNameRepositoriesPutBodyTypeForResponse",
 )

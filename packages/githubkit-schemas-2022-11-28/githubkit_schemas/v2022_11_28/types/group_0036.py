@@ -9,30 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 
-class DependabotAlertPackageType(TypedDict):
-    """DependabotAlertPackage
+class EnterpriseCopilotCodeReviewPolicyType(TypedDict):
+    """Enterprise Copilot Code Review Policy
 
-    Details for the vulnerable package.
+    The configured enterprise policy, rather than a user's effective Copilot code
+    review access.
     """
 
-    ecosystem: str
-    name: str
+    policy_state: Union[
+        Literal[
+            "enabled_for_all_organizations",
+            "disabled_for_all_organizations",
+            "configured_by_organization_admins",
+        ],
+        None,
+    ]
 
 
-class DependabotAlertPackageTypeForResponse(TypedDict):
-    """DependabotAlertPackage
+class EnterpriseCopilotCodeReviewPolicyTypeForResponse(TypedDict):
+    """Enterprise Copilot Code Review Policy
 
-    Details for the vulnerable package.
+    The configured enterprise policy, rather than a user's effective Copilot code
+    review access.
     """
 
-    ecosystem: str
-    name: str
+    policy_state: Union[
+        Literal[
+            "enabled_for_all_organizations",
+            "disabled_for_all_organizations",
+            "configured_by_organization_admins",
+        ],
+        None,
+    ]
 
 
 __all__ = (
-    "DependabotAlertPackageType",
-    "DependabotAlertPackageTypeForResponse",
+    "EnterpriseCopilotCodeReviewPolicyType",
+    "EnterpriseCopilotCodeReviewPolicyTypeForResponse",
 )

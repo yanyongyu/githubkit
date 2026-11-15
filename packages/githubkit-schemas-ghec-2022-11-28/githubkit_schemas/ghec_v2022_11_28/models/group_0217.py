@@ -18,39 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class PublicMonitoringSecretAuthor(GitHubModel):
-    """PublicMonitoringSecretAuthor
+class PublicMonitoringRepository(GitHubModel):
+    """PublicMonitoringRepository
 
-    Delivered public details for the user attributed as the secret author.
+    Delivered details for the public repository where the secret was found.
     """
 
-    login: str = Field()
-    avatar_url: Missing[Union[str, None]] = Field(default=UNSET)
+    name: str = Field()
+    full_name: str = Field()
+    private: bool = Field()
     html_url: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-class PublicMonitoringAlertLocation(GitHubModel):
-    """PublicMonitoringAlertLocation
+model_rebuild(PublicMonitoringRepository)
 
-    Delivered source location details for a public monitoring alert.
-    """
-
-    path: Missing[str] = Field(default=UNSET)
-    start_line: Missing[int] = Field(default=UNSET)
-    end_line: Missing[int] = Field(default=UNSET)
-    start_column: Missing[int] = Field(default=UNSET)
-    end_column: Missing[int] = Field(default=UNSET)
-    blob_sha: Missing[str] = Field(default=UNSET)
-    commit_sha: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    content_number: Missing[int] = Field(default=UNSET)
-    content_id: Missing[int] = Field(default=UNSET)
-
-
-model_rebuild(PublicMonitoringSecretAuthor)
-model_rebuild(PublicMonitoringAlertLocation)
-
-__all__ = (
-    "PublicMonitoringAlertLocation",
-    "PublicMonitoringSecretAuthor",
-)
+__all__ = ("PublicMonitoringRepository",)

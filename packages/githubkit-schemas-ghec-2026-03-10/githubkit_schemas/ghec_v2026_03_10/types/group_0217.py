@@ -13,67 +13,31 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class PublicMonitoringSecretAuthorType(TypedDict):
-    """PublicMonitoringSecretAuthor
+class PublicMonitoringRepositoryType(TypedDict):
+    """PublicMonitoringRepository
 
-    Delivered public details for the user attributed as the secret author.
+    Delivered details for the public repository where the secret was found.
     """
 
-    login: str
-    avatar_url: NotRequired[Union[str, None]]
+    name: str
+    full_name: str
+    private: bool
     html_url: NotRequired[Union[str, None]]
 
 
-class PublicMonitoringSecretAuthorTypeForResponse(TypedDict):
-    """PublicMonitoringSecretAuthor
+class PublicMonitoringRepositoryTypeForResponse(TypedDict):
+    """PublicMonitoringRepository
 
-    Delivered public details for the user attributed as the secret author.
+    Delivered details for the public repository where the secret was found.
     """
 
-    login: str
-    avatar_url: NotRequired[Union[str, None]]
+    name: str
+    full_name: str
+    private: bool
     html_url: NotRequired[Union[str, None]]
-
-
-class PublicMonitoringAlertLocationType(TypedDict):
-    """PublicMonitoringAlertLocation
-
-    Delivered source location details for a public monitoring alert.
-    """
-
-    path: NotRequired[str]
-    start_line: NotRequired[int]
-    end_line: NotRequired[int]
-    start_column: NotRequired[int]
-    end_column: NotRequired[int]
-    blob_sha: NotRequired[str]
-    commit_sha: NotRequired[str]
-    html_url: NotRequired[str]
-    content_number: NotRequired[int]
-    content_id: NotRequired[int]
-
-
-class PublicMonitoringAlertLocationTypeForResponse(TypedDict):
-    """PublicMonitoringAlertLocation
-
-    Delivered source location details for a public monitoring alert.
-    """
-
-    path: NotRequired[str]
-    start_line: NotRequired[int]
-    end_line: NotRequired[int]
-    start_column: NotRequired[int]
-    end_column: NotRequired[int]
-    blob_sha: NotRequired[str]
-    commit_sha: NotRequired[str]
-    html_url: NotRequired[str]
-    content_number: NotRequired[int]
-    content_id: NotRequired[int]
 
 
 __all__ = (
-    "PublicMonitoringAlertLocationType",
-    "PublicMonitoringAlertLocationTypeForResponse",
-    "PublicMonitoringSecretAuthorType",
-    "PublicMonitoringSecretAuthorTypeForResponse",
+    "PublicMonitoringRepositoryType",
+    "PublicMonitoringRepositoryTypeForResponse",
 )

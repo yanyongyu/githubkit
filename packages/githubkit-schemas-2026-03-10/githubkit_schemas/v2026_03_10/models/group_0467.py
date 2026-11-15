@@ -10,33 +10,186 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
+from .group_0048 import ReactionRollup
 
-class DeployKey(GitHubModel):
-    """Deploy Key
 
-    An SSH key granting access to a single repository.
+class PullRequestReviewComment(GitHubModel):
+    """Pull Request Review Comment
+
+    Pull Request Review Comments are comments on a portion of the Pull Request's
+    diff.
     """
 
-    id: int = Field()
-    key: str = Field()
-    url: str = Field()
-    title: str = Field()
-    verified: bool = Field()
-    created_at: str = Field()
-    read_only: bool = Field()
-    added_by: Missing[Union[str, None]] = Field(default=UNSET)
-    last_used: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    enabled: Missing[bool] = Field(default=UNSET)
+    is_copilot_code_review: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this comment was produced by Copilot code review. Not returned for issue timeline events.",
+    )
+    copilot_code_review_sources: Missing[
+        list[PullRequestReviewCommentPropCopilotCodeReviewSourcesItems]
+    ] = Field(
+        max_length=16 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Sources reported as contributing to this comment; may be incomplete. Not returned for issue timeline events.",
+    )
+    url: str = Field(description="URL for the pull request review comment")
+    pull_request_review_id: Union[int, None] = Field(
+        description="The ID of the pull request review to which the comment belongs."
+    )
+    id: int = Field(description="The ID of the pull request review comment.")
+    node_id: str = Field(description="The node ID of the pull request review comment.")
+    diff_hunk: str = Field(
+        description="The diff of the line that the comment refers to."
+    )
+    path: str = Field(
+        description="The relative path of the file to which the comment applies."
+    )
+    position: Missing[int] = Field(
+        default=UNSET,
+        description="The line index in the diff to which the comment applies. This field is closing down; use `line` instead.",
+    )
+    original_position: Missing[int] = Field(
+        default=UNSET,
+        description="The index of the original line in the diff to which the comment applies. This field is closing down; use `original_line` instead.",
+    )
+    commit_id: str = Field(
+        description="The SHA of the commit to which the comment applies."
+    )
+    original_commit_id: str = Field(
+        description="The SHA of the original commit to which the comment applies."
+    )
+    in_reply_to_id: Missing[int] = Field(
+        default=UNSET, description="The comment ID to reply to."
+    )
+    user: Union[SimpleUser, None] = Field()
+    body: str = Field(description="The text of the comment.")
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    html_url: str = Field(description="HTML URL for the pull request review comment.")
+    pull_request_url: str = Field(
+        description="URL for the pull request that the review comment belongs to."
+    )
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    links: PullRequestReviewCommentPropLinks = Field(alias="_links")
+    start_line: Missing[Union[int, None]] = Field(
+        default=UNSET,
+        description="The first line of the range for a multi-line comment.",
+    )
+    original_start_line: Missing[Union[int, None]] = Field(
+        default=UNSET,
+        description="The first line of the range for a multi-line comment.",
+    )
+    start_side: Missing[Union[Literal["LEFT", "RIGHT"], None]] = Field(
+        default=UNSET,
+        description="The side of the first line of the range for a multi-line comment.",
+    )
+    line: Missing[int] = Field(
+        default=UNSET,
+        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment",
+    )
+    original_line: Missing[int] = Field(
+        default=UNSET,
+        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment",
+    )
+    side: Missing[Literal["LEFT", "RIGHT"]] = Field(
+        default=UNSET,
+        description="The side of the diff to which the comment applies. The side of the last line of the range for a multi-line comment",
+    )
+    subject_type: Missing[Literal["line", "file"]] = Field(
+        default=UNSET,
+        description="The level at which the comment is targeted, can be a diff line or a file.",
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    body_html: Missing[str] = Field(default=UNSET)
+    body_text: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(DeployKey)
+class PullRequestReviewCommentPropCopilotCodeReviewSourcesItems(GitHubModel):
+    """PullRequestReviewCommentPropCopilotCodeReviewSourcesItems"""
 
-__all__ = ("DeployKey",)
+    kind: Literal["SKILL", "MCP", "CUSTOM_INSTRUCTIONS"] = Field(
+        description="The kind of contributing source."
+    )
+    name: str = Field(
+        description='The reported source name, or "custom instructions" for CUSTOM_INSTRUCTIONS. Copilot Dreaming\'s reviewer agent and checks skill are reported as one SKILL source named "Copilot dreaming".'
+    )
+    path: Missing[str] = Field(
+        default=UNSET,
+        description="The validated repository-relative source path, if available. Commit OIDs are not exposed.",
+    )
+
+
+class PullRequestReviewCommentPropLinks(GitHubModel):
+    """PullRequestReviewCommentPropLinks"""
+
+    self_: PullRequestReviewCommentPropLinksPropSelf = Field(alias="self")
+    html: PullRequestReviewCommentPropLinksPropHtml = Field()
+    pull_request: PullRequestReviewCommentPropLinksPropPullRequest = Field()
+
+
+class PullRequestReviewCommentPropLinksPropSelf(GitHubModel):
+    """PullRequestReviewCommentPropLinksPropSelf"""
+
+    href: str = Field()
+
+
+class PullRequestReviewCommentPropLinksPropHtml(GitHubModel):
+    """PullRequestReviewCommentPropLinksPropHtml"""
+
+    href: str = Field()
+
+
+class PullRequestReviewCommentPropLinksPropPullRequest(GitHubModel):
+    """PullRequestReviewCommentPropLinksPropPullRequest"""
+
+    href: str = Field()
+
+
+class TimelineLineCommentedEvent(GitHubModel):
+    """Timeline Line Commented Event
+
+    Timeline Line Commented Event
+    """
+
+    event: Missing[Literal["line_commented"]] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    comments: Missing[list[PullRequestReviewComment]] = Field(default=UNSET)
+
+
+model_rebuild(PullRequestReviewComment)
+model_rebuild(PullRequestReviewCommentPropCopilotCodeReviewSourcesItems)
+model_rebuild(PullRequestReviewCommentPropLinks)
+model_rebuild(PullRequestReviewCommentPropLinksPropSelf)
+model_rebuild(PullRequestReviewCommentPropLinksPropHtml)
+model_rebuild(PullRequestReviewCommentPropLinksPropPullRequest)
+model_rebuild(TimelineLineCommentedEvent)
+
+__all__ = (
+    "PullRequestReviewComment",
+    "PullRequestReviewCommentPropCopilotCodeReviewSourcesItems",
+    "PullRequestReviewCommentPropLinks",
+    "PullRequestReviewCommentPropLinksPropHtml",
+    "PullRequestReviewCommentPropLinksPropPullRequest",
+    "PullRequestReviewCommentPropLinksPropSelf",
+    "TimelineLineCommentedEvent",
+)

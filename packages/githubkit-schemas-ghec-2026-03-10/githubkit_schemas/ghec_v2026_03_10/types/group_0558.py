@@ -9,56 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 from typing_extensions import TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
 
 
-class PullRequestPropHeadType(TypedDict):
-    """PullRequestPropHead"""
+class PageBuildType(TypedDict):
+    """Page Build
 
-    label: Union[str, None]
-    ref: str
-    repo: Union[RepositoryType, None]
-    sha: str
-    user: Union[SimpleUserType, None]
+    Page Build
+    """
 
-
-class PullRequestPropHeadTypeForResponse(TypedDict):
-    """PullRequestPropHead"""
-
-    label: Union[str, None]
-    ref: str
-    repo: Union[RepositoryTypeForResponse, None]
-    sha: str
-    user: Union[SimpleUserTypeForResponse, None]
+    url: str
+    status: str
+    error: PageBuildPropErrorType
+    pusher: Union[SimpleUserType, None]
+    commit: str
+    duration: int
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
 
 
-class PullRequestPropBaseType(TypedDict):
-    """PullRequestPropBase"""
+class PageBuildTypeForResponse(TypedDict):
+    """Page Build
 
-    label: str
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: SimpleUserType
+    Page Build
+    """
+
+    url: str
+    status: str
+    error: PageBuildPropErrorTypeForResponse
+    pusher: Union[SimpleUserTypeForResponse, None]
+    commit: str
+    duration: int
+    created_at: str
+    updated_at: str
 
 
-class PullRequestPropBaseTypeForResponse(TypedDict):
-    """PullRequestPropBase"""
+class PageBuildPropErrorType(TypedDict):
+    """PageBuildPropError"""
 
-    label: str
-    ref: str
-    repo: RepositoryTypeForResponse
-    sha: str
-    user: SimpleUserTypeForResponse
+    message: Union[str, None]
+
+
+class PageBuildPropErrorTypeForResponse(TypedDict):
+    """PageBuildPropError"""
+
+    message: Union[str, None]
 
 
 __all__ = (
-    "PullRequestPropBaseType",
-    "PullRequestPropBaseTypeForResponse",
-    "PullRequestPropHeadType",
-    "PullRequestPropHeadTypeForResponse",
+    "PageBuildPropErrorType",
+    "PageBuildPropErrorTypeForResponse",
+    "PageBuildType",
+    "PageBuildTypeForResponse",
 )

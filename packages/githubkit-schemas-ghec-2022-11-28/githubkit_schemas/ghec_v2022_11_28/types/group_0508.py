@@ -9,39 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class IssueEventIntentType(TypedDict):
-    """Issue Event Intent
+class CheckImmutableReleasesType(TypedDict):
+    """Check immutable releases
 
-    The intent behind an agent's action on an issue, including the rationale and
-    confidence. Present (and `null` when the event carried no agent intent) on
-    supported event types while the issue suggestions feature is enabled for the
-    repository; the property is omitted entirely when the feature is disabled or the
-    event type does not support intent.
+    Check immutable releases
     """
 
-    rationale: NotRequired[Union[str, None]]
-    confidence: NotRequired[Union[Literal["LOW", "MEDIUM", "HIGH"], None]]
+    enabled: bool
+    enforced_by_owner: bool
 
 
-class IssueEventIntentTypeForResponse(TypedDict):
-    """Issue Event Intent
+class CheckImmutableReleasesTypeForResponse(TypedDict):
+    """Check immutable releases
 
-    The intent behind an agent's action on an issue, including the rationale and
-    confidence. Present (and `null` when the event carried no agent intent) on
-    supported event types while the issue suggestions feature is enabled for the
-    repository; the property is omitted entirely when the feature is disabled or the
-    event type does not support intent.
+    Check immutable releases
     """
 
-    rationale: NotRequired[Union[str, None]]
-    confidence: NotRequired[Union[Literal["LOW", "MEDIUM", "HIGH"], None]]
+    enabled: bool
+    enforced_by_owner: bool
 
 
 __all__ = (
-    "IssueEventIntentType",
-    "IssueEventIntentTypeForResponse",
+    "CheckImmutableReleasesType",
+    "CheckImmutableReleasesTypeForResponse",
 )
