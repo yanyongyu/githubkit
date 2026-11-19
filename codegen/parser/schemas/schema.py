@@ -419,14 +419,18 @@ class ListSchema(SchemaData):
 
     @override
     def get_type_string(self, include_constraints: bool = True) -> str:
-        type_string = f"list[{self.item_schema.get_type_string()}]"
+        type_string = f"builtins.list[{self.item_schema.get_type_string()}]"
         if include_constraints and (args := self._get_field_args()):
             return f"Annotated[{type_string}, {self._get_field_string(args)}]"
         return type_string
 
     @override
     def get_param_type_string(self) -> str:
-        return f"list[{self.item_schema.get_param_type_string()}]"
+        # We **must** refer to `builtins.list` here explicitly to avoid shadowing:
+        # class A:
+        #     def list(self): ...
+        #     def meth(self) -> list[int]: ...  # Oops, it's the `list` method, bad hint
+        return f"builtins.list[{self.item_schema.get_param_type_string()}]"
 
     @override
     def get_response_type_string(self) -> str:
@@ -436,18 +440,21 @@ class ListSchema(SchemaData):
     def get_model_imports(self) -> set[str]:
         imports = super().get_model_imports()
         imports.add("from githubkit.compat import PYDANTIC_V2")
+        imports.add("import builtins")
         imports.update(self.item_schema.get_model_imports())
         return imports
 
     @override
     def get_type_imports(self) -> set[str]:
         imports = super().get_type_imports()
+        imports.add("import builtins")
         imports.update(self.item_schema.get_type_imports())
         return imports
 
     @override
     def get_param_imports(self) -> set[str]:
         imports = super().get_param_imports()
+        imports.add("import builtins")
         imports.update(self.item_schema.get_param_imports())
         return imports
 
@@ -455,6 +462,7 @@ class ListSchema(SchemaData):
     def get_using_imports(self) -> set[str]:
         imports = super().get_using_imports()
         imports.add("from githubkit.compat import PYDANTIC_V2")
+        imports.add("import builtins")
         imports.update(self.item_schema.get_using_imports())
         return imports
 
