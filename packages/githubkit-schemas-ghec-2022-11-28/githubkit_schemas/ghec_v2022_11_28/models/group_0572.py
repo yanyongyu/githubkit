@@ -18,9 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CopilotCodeReviewRequestDeniedAllof1(GitHubModel):
-    """CopilotCodeReviewRequestDeniedAllof1"""
+class CopilotCodeReviewRequestDenied(GitHubModel):
+    """Copilot Code Review Request Denied
 
+    A Copilot code review request was denied, conflicted with an existing request,
+    or could not be serviced. The `failure_reason` field is present for stable,
+    machine-readable denials -- overlapping with the reasons returned by the
+    `failureReason` field on the `requestCopilotCodeReview` GraphQL mutation, plus a
+    few additional reasons this REST endpoint reports explicitly rather than as an
+    opaque error -- and is absent for generic validation failures.
+    """
+
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
     failure_reason: Missing[
         Literal[
             "ACTOR_INELIGIBLE",
@@ -42,6 +54,6 @@ class CopilotCodeReviewRequestDeniedAllof1(GitHubModel):
     )
 
 
-model_rebuild(CopilotCodeReviewRequestDeniedAllof1)
+model_rebuild(CopilotCodeReviewRequestDenied)
 
-__all__ = ("CopilotCodeReviewRequestDeniedAllof1",)
+__all__ = ("CopilotCodeReviewRequestDenied",)

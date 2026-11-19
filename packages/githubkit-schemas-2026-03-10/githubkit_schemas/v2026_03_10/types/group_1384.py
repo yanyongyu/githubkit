@@ -105,12 +105,12 @@ from .group_0272 import (
 )
 
 
-class OrgsOrgRulesetsRulesetIdPutBodyType(TypedDict):
-    """OrgsOrgRulesetsRulesetIdPutBody"""
+class OrgsOrgRulesetsPostBodyType(TypedDict):
+    """OrgsOrgRulesetsPostBody"""
 
-    name: NotRequired[str]
+    name: str
     target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
     bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
     conditions: NotRequired[
         Union[
@@ -148,12 +148,12 @@ class OrgsOrgRulesetsRulesetIdPutBodyType(TypedDict):
     ]
 
 
-class OrgsOrgRulesetsRulesetIdPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgRulesetsRulesetIdPutBody"""
+class OrgsOrgRulesetsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgRulesetsPostBody"""
 
-    name: NotRequired[str]
+    name: str
     target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
     bypass_actors: NotRequired[list[RepositoryRulesetBypassActorTypeForResponse]]
     conditions: NotRequired[
         Union[
@@ -192,6 +192,6 @@ class OrgsOrgRulesetsRulesetIdPutBodyTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "OrgsOrgRulesetsRulesetIdPutBodyType",
-    "OrgsOrgRulesetsRulesetIdPutBodyTypeForResponse",
+    "OrgsOrgRulesetsPostBodyType",
+    "OrgsOrgRulesetsPostBodyTypeForResponse",
 )

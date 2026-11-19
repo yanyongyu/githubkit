@@ -12,25 +12,25 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1Type(
+class ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0Type(
     TypedDict
 ):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1"""
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0"""
 
-    reviewers: NotRequired[list[str]]
-    team_reviewers: list[str]
+    reviewers: list[str]
+    team_reviewers: NotRequired[list[str]]
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1TypeForResponse(
+class ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1"""
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0"""
 
-    reviewers: NotRequired[list[str]]
-    team_reviewers: list[str]
+    reviewers: list[str]
+    team_reviewers: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1Type",
-    "ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1TypeForResponse",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0Type",
+    "ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0TypeForResponse",
 )

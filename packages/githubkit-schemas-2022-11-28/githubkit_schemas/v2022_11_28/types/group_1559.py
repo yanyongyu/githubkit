@@ -12,19 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody"""
+class ReposOwnerRepoIssuesIssueNumberRelatesToPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberRelatesToPostBody"""
 
-    sub_issue_id: int
+    issue_id: int
 
 
-class ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody"""
+class ReposOwnerRepoIssuesIssueNumberRelatesToPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberRelatesToPostBody"""
 
-    sub_issue_id: int
+    issue_id: int
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyType",
-    "ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBodyTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberRelatesToPostBodyType",
+    "ReposOwnerRepoIssuesIssueNumberRelatesToPostBodyTypeForResponse",
 )

@@ -9,83 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200Type(TypedDict):
-    """OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200
+class OrgsOrgTeamsTeamSlugPatchBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugPatchBody"""
 
-    The team's customization document. Only the keys `pluginAssignments` and
-    `extraKnownMarketplaces` are supported.
-    """
-
-    plugin_assignments: NotRequired[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignmentsType
+    name: NotRequired[str]
+    description: NotRequired[str]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
     ]
-    extra_known_marketplaces: NotRequired[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplacesType
+    permission: NotRequired[Literal["pull", "push", "admin"]]
+    parent_team_id: NotRequired[Union[int, None]]
+    parent_team_slug: NotRequired[Union[str, None]]
+
+
+class OrgsOrgTeamsTeamSlugPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgTeamsTeamSlugPatchBody"""
+
+    name: NotRequired[str]
+    description: NotRequired[str]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
     ]
-
-
-class OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200
-
-    The team's customization document. Only the keys `pluginAssignments` and
-    `extraKnownMarketplaces` are supported.
-    """
-
-    plugin_assignments: NotRequired[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignmentsTypeForResponse
-    ]
-    extra_known_marketplaces: NotRequired[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplacesTypeForResponse
-    ]
-
-
-OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignmentsType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments
-
-Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.
-"""
-
-
-OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignmentsTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments
-
-Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.
-"""
-
-
-OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplacesType: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplace
-s
-
-Additional plugin marketplaces available to the team, keyed by marketplace name.
-"""
-
-
-OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplacesTypeForResponse: TypeAlias = dict[
-    str, Any
-]
-"""OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplace
-s
-
-Additional plugin marketplaces available to the team, keyed by marketplace name.
-"""
+    permission: NotRequired[Literal["pull", "push", "admin"]]
+    parent_team_id: NotRequired[Union[int, None]]
+    parent_team_slug: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplacesType",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplacesTypeForResponse",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignmentsType",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignmentsTypeForResponse",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200Type",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200TypeForResponse",
+    "OrgsOrgTeamsTeamSlugPatchBodyType",
+    "OrgsOrgTeamsTeamSlugPatchBodyTypeForResponse",
 )

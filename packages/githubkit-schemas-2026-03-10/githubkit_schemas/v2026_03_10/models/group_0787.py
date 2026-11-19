@@ -18,29 +18,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
+from .group_0020 import Repository
 from .group_0054 import Issue
-from .group_0583 import SimpleInstallation
-from .group_0584 import OrganizationSimpleWebhooks
-from .group_0585 import RepositoryWebhooks
+from .group_0584 import SimpleInstallation
+from .group_0585 import OrganizationSimpleWebhooks
+from .group_0586 import RepositoryWebhooks
 
 
-class WebhookIssueRelatesToAdded(GitHubModel):
-    """relates to issue added event"""
+class WebhookIssueDependenciesBlockingRemoved(GitHubModel):
+    """blocking issue removed event"""
 
-    action: Literal["relates_to_added"] = Field()
-    issue_id: Missing[float] = Field(
-        default=UNSET, description="The ID of the issue the relationship was added to."
+    action: Literal["blocking_removed"] = Field()
+    blocked_issue_id: Missing[float] = Field(
+        default=UNSET, description="The ID of the blocked issue."
     )
-    issue: Missing[Issue] = Field(
+    blocked_issue: Missing[Issue] = Field(
         default=UNSET,
         title="Issue",
         description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
     )
-    related_issue_id: Missing[float] = Field(
-        default=UNSET,
-        description="The ID of the related issue. Only present when both issues belong to the same repository.",
+    blocked_issue_repo: Missing[Repository] = Field(
+        default=UNSET, title="Repository", description="A repository on GitHub."
     )
-    related_issue: Missing[Issue] = Field(
+    blocking_issue_id: Missing[float] = Field(
+        default=UNSET, description="The ID of the blocking issue."
+    )
+    blocking_issue: Missing[Issue] = Field(
         default=UNSET,
         title="Issue",
         description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
@@ -61,6 +64,6 @@ class WebhookIssueRelatesToAdded(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssueRelatesToAdded)
+model_rebuild(WebhookIssueDependenciesBlockingRemoved)
 
-__all__ = ("WebhookIssueRelatesToAdded",)
+__all__ = ("WebhookIssueDependenciesBlockingRemoved",)

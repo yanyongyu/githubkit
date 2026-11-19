@@ -16,11 +16,11 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropEditorAllof0(
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreatorAllof0(
     GitHubModel
 ):
     """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropEditorAllof0
+    temsPropCreatorAllof0
 
     A GitHub user
     """
@@ -31,9 +31,9 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
 
 
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropEditorAllof0
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreatorAllof0
 )
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropEditorAllof0",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreatorAllof0",
 )

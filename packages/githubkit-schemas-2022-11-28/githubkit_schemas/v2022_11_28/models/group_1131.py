@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse404(GitHubModel):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse404
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse403(GitHubModel):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse403
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -31,7 +31,7 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse404(GitHubModel):
         description='Summary message (e.g. "Validation Failed", "Not Found")'
     )
     errors: Missing[
-        list[AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse404PropErrorsItems]
+        list[AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse403PropErrorsItems]
     ] = Field(
         default=UNSET,
         description="List of validation errors (present only for 422 responses)",
@@ -47,10 +47,10 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse404(GitHubModel):
     )
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse404PropErrorsItems(
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse403PropErrorsItems(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse404PropErrorsItems
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse403PropErrorsItems
 
     A single validation error
     """
@@ -69,12 +69,12 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse404PropErrorsItems
     )
 
 
-model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse404)
+model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse403)
 model_rebuild(
-    AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse404PropErrorsItems
+    AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse403PropErrorsItems
 )
 
 __all__ = (
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse404",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse404PropErrorsItems",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse403",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse403PropErrorsItems",
 )

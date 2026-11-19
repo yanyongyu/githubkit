@@ -9,49 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0037 import (
+    DependabotAlertPackageType,
+    DependabotAlertPackageTypeForResponse,
+)
 
-class WebhooksDeployKeyType(TypedDict):
-    """WebhooksDeployKey
 
-    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
-    deploy-key) resource.
+class DependabotAlertWithdrawnWebhookPropDependencyType(TypedDict):
+    """DependabotAlertWithdrawnWebhookPropDependency
+
+    Details for the vulnerable dependency.
     """
 
-    added_by: NotRequired[Union[str, None]]
-    created_at: str
-    id: int
-    key: str
-    last_used: NotRequired[Union[str, None]]
-    read_only: bool
-    title: str
-    url: str
-    verified: bool
-    enabled: NotRequired[bool]
+    package: DependabotAlertPackageType
+    manifest_path: Union[str, None]
+    version_requirement: NotRequired[Union[str, None]]
+    scope: Union[Literal["development", "runtime"], None]
+    relationship: NotRequired[
+        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
+    ]
 
 
-class WebhooksDeployKeyTypeForResponse(TypedDict):
-    """WebhooksDeployKey
+class DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse(TypedDict):
+    """DependabotAlertWithdrawnWebhookPropDependency
 
-    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
-    deploy-key) resource.
+    Details for the vulnerable dependency.
     """
 
-    added_by: NotRequired[Union[str, None]]
-    created_at: str
-    id: int
-    key: str
-    last_used: NotRequired[Union[str, None]]
-    read_only: bool
-    title: str
-    url: str
-    verified: bool
-    enabled: NotRequired[bool]
+    package: DependabotAlertPackageTypeForResponse
+    manifest_path: Union[str, None]
+    version_requirement: NotRequired[Union[str, None]]
+    scope: Union[Literal["development", "runtime"], None]
+    relationship: NotRequired[
+        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
+    ]
 
 
 __all__ = (
-    "WebhooksDeployKeyType",
-    "WebhooksDeployKeyTypeForResponse",
+    "DependabotAlertWithdrawnWebhookPropDependencyType",
+    "DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse",
 )

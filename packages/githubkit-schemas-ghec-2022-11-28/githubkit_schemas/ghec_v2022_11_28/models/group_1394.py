@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,32 +16,26 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCredentialsExportsPostBody(GitHubModel):
-    """EnterprisesEnterpriseCredentialsExportsPostBody
-
-    Optional filters that scope the export to a subset of the inventory.
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostRes
+    ponse202
     """
 
-    token_types: Missing[list[str]] = Field(
-        default=UNSET, description="The credential types to include."
+    message: Missing[str] = Field(
+        default=UNSET, description="A message indicating the revocation has been queued"
     )
-    authorization_state: Missing[
-        Literal["currently_authorized", "member_owned_only"]
-    ] = Field(default=UNSET, description="Filter by enterprise-access status.")
-    owner: Missing[str] = Field(
+    warning: Missing[str] = Field(
         default=UNSET,
-        description="Filter to credentials owned by this user, given as a login.",
-    )
-    organization: Missing[str] = Field(
-        default=UNSET,
-        description="Filter to credentials authorized to this organization in the enterprise, given as a login.",
-    )
-    application: Missing[str] = Field(
-        default=UNSET,
-        description="Filter to credentials for this application, given as a GitHub App slug or an OAuth App client id.",
+        description="A warning message if the token used for this request may be revoked",
     )
 
 
-model_rebuild(EnterprisesEnterpriseCredentialsExportsPostBody)
+model_rebuild(
+    EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202
+)
 
-__all__ = ("EnterprisesEnterpriseCredentialsExportsPostBody",)
+__all__ = (
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202",
+)

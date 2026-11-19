@@ -14,35 +14,59 @@ from typing import Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0003 import SimpleUser
-from .group_0020 import Repository
-
-
-class PullRequestPropHead(GitHubModel):
-    """PullRequestPropHead"""
-
-    label: Union[str, None] = Field()
-    ref: str = Field()
-    repo: Union[Repository, None] = Field()
-    sha: str = Field()
-    user: Union[SimpleUser, None] = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class PullRequestPropBase(GitHubModel):
-    """PullRequestPropBase"""
+class PullRequestPropLabelsItems(GitHubModel):
+    """PullRequestPropLabelsItems"""
 
-    label: str = Field()
-    ref: str = Field()
-    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
-    sha: str = Field()
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    name: str = Field()
+    description: Union[str, None] = Field()
+    color: str = Field()
+    default: bool = Field()
+    archived_by: Union[PullRequestPropLabelsItemsPropArchivedBy, None] = Field(
+        description="The user who archived the label, or `null` if it has not been archived."
+    )
 
 
-model_rebuild(PullRequestPropHead)
-model_rebuild(PullRequestPropBase)
+class PullRequestPropLabelsItemsPropArchivedBy(GitHubModel):
+    """PullRequestPropLabelsItemsPropArchivedBy
+
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(PullRequestPropLabelsItems)
+model_rebuild(PullRequestPropLabelsItemsPropArchivedBy)
 
 __all__ = (
-    "PullRequestPropBase",
-    "PullRequestPropHead",
+    "PullRequestPropLabelsItems",
+    "PullRequestPropLabelsItemsPropArchivedBy",
 )

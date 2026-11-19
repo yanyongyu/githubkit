@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 
 from pydantic import Field
@@ -18,48 +17,21 @@ from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import UniqueList
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200(GitHubModel):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody(GitHubModel):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody
 
-    The Agent Merge configuration for an enrolled pull request.
+    The Agent Merge enrollment configuration
 
     Examples:
-        {'allowed_actions': ['fix_ci', 'resolve_merge_conflicts'], 'created_at':
-    '2026-09-09T12:00:00Z', 'updated_at': '2026-09-09T12:00:00Z', 'user': {'id':
-    9876}}
+        {'allowed_actions': ['fix_ci']}
     """
 
     allowed_actions: UniqueList[Literal["fix_ci", "resolve_merge_conflicts"]] = Field(
         min_length=1 if PYDANTIC_V2 else None,
-        description="The set of actions which Copilot may perform on the pull request.",
-    )
-    created_at: _dt.datetime = Field(
-        description="Timestamp when the pull request was enrolled for Agent Merge."
-    )
-    updated_at: _dt.datetime = Field(
-        description="Timestamp when the Agent Merge enrollment was last updated."
-    )
-    user: AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUser = Field(
-        description="The user who most recently enabled Agent Merge for the pull request"
+        description="The set of actions that Copilot may perform on the pull request.",
     )
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUser(GitHubModel):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUser
+model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody)
 
-    The user who most recently enabled Agent Merge for the pull request
-
-    Examples:
-        {'id': 9876}
-    """
-
-    id: int = Field(ge=1.0, description="The unique identifier of the user")
-
-
-model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200)
-model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUser)
-
-__all__ = (
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUser",
-)
+__all__ = ("AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody",)

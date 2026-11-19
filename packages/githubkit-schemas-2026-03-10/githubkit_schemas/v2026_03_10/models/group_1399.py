@@ -9,65 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200(ExtraGitHubModel):
-    """OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200
+class OrgsOrgTeamsTeamSlugPatchBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugPatchBody"""
 
-    The team's customization document. Only the keys `pluginAssignments` and
-    `extraKnownMarketplaces` are supported.
-    """
-
-    plugin_assignments: Missing[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments
+    name: Missing[str] = Field(default=UNSET, description="The name of the team.")
+    description: Missing[str] = Field(
+        default=UNSET, description="The description of the team."
+    )
+    privacy: Missing[Literal["secret", "closed"]] = Field(
+        default=UNSET,
+        description="The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. When a team is nested, the `privacy` for parent teams cannot be `secret`. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.",
+    )
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
     ] = Field(
         default=UNSET,
-        alias="pluginAssignments",
-        description="Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.",
+        description="The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are: \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.",
     )
-    extra_known_marketplaces: Missing[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplaces
-    ] = Field(
+    permission: Missing[Literal["pull", "push", "admin"]] = Field(
         default=UNSET,
-        alias="extraKnownMarketplaces",
-        description="Additional plugin marketplaces available to the team, keyed by marketplace name.",
+        description="**Closing down notice**. The permission that new repositories will be added to the team with when none is specified.",
+    )
+    parent_team_id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The ID of a team to set as the parent team."
+    )
+    parent_team_slug: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The slug of a team to set as the parent team. Ignored when `parent_team_id` is also provided.",
     )
 
 
-class OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments(
-    ExtraGitHubModel
-):
-    """OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments
+model_rebuild(OrgsOrgTeamsTeamSlugPatchBody)
 
-    Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.
-    """
-
-
-class OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplaces(
-    ExtraGitHubModel
-):
-    """OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplace
-    s
-
-    Additional plugin marketplaces available to the team, keyed by marketplace name.
-    """
-
-
-model_rebuild(OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200)
-model_rebuild(
-    OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments
-)
-model_rebuild(
-    OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplaces
-)
-
-__all__ = (
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplaces",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments",
-)
+__all__ = ("OrgsOrgTeamsTeamSlugPatchBody",)

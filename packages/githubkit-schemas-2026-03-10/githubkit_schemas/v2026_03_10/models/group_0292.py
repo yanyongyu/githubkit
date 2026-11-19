@@ -9,256 +9,174 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Annotated, Literal, Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0001 import CvssSeverities
 from .group_0003 import SimpleUser
-from .group_0158 import Team
-from .group_0291 import RepositoryAdvisoryCredit, RepositoryAdvisoryPropPrivateFork
 
 
-class RepositoryAdvisory(GitHubModel):
-    """RepositoryAdvisory
+class RepositoryAdvisoryCredit(GitHubModel):
+    """RepositoryAdvisoryCredit
 
-    A repository security advisory.
+    A credit given to a user for a repository security advisory.
     """
 
-    ghsa_id: str = Field(description="The GitHub Security Advisory ID.")
-    cve_id: Union[str, None] = Field(
-        description="The Common Vulnerabilities and Exposures (CVE) ID."
-    )
-    url: str = Field(description="The API URL for the advisory.")
-    html_url: str = Field(description="The URL for the advisory.")
-    summary: str = Field(
-        max_length=1024, description="A short summary of the advisory."
-    )
-    description: Union[Annotated[str, Field(max_length=65535)], None] = Field(
-        description="A detailed description of what the advisory entails."
-    )
-    severity: Union[Literal["critical", "high", "medium", "low"], None] = Field(
-        description="The severity of the advisory."
-    )
-    author: Union[RepositoryAdvisoryPropAuthor, None] = Field(
-        description="The author of the advisory."
-    )
-    publisher: Union[RepositoryAdvisoryPropPublisher, None] = Field(
-        description="The publisher of the advisory."
-    )
-    identifiers: list[RepositoryAdvisoryPropIdentifiersItems] = Field()
-    state: Literal["published", "closed", "withdrawn", "draft", "triage"] = Field(
-        description="The state of the advisory."
-    )
-    created_at: Union[_dt.datetime, None] = Field(
-        description="The date and time of when the advisory was created, in ISO 8601 format."
-    )
-    updated_at: Union[_dt.datetime, None] = Field(
-        description="The date and time of when the advisory was last updated, in ISO 8601 format."
-    )
-    published_at: Union[_dt.datetime, None] = Field(
-        description="The date and time of when the advisory was published, in ISO 8601 format."
-    )
-    closed_at: Union[_dt.datetime, None] = Field(
-        description="The date and time of when the advisory was closed, in ISO 8601 format."
-    )
-    withdrawn_at: Union[_dt.datetime, None] = Field(
-        description="The date and time of when the advisory was withdrawn, in ISO 8601 format."
-    )
-    submission: Union[RepositoryAdvisoryPropSubmission, None] = Field()
-    vulnerabilities: Union[list[RepositoryAdvisoryVulnerability], None] = Field()
-    cvss_severities: Missing[Union[CvssSeverities, None]] = Field(default=UNSET)
-    cwes: Union[list[RepositoryAdvisoryPropCwesItems], None] = Field()
-    cwe_ids: Union[list[str], None] = Field(description="A list of only the CWE IDs.")
-    credits_: Union[list[RepositoryAdvisoryPropCreditsItems], None] = Field(
-        alias="credits"
-    )
-    credits_detailed: Union[list[RepositoryAdvisoryCredit], None] = Field()
-    collaborating_users: Union[list[SimpleUser], None] = Field(
-        description="A list of users that collaborate on the advisory."
-    )
-    collaborating_teams: Union[list[Team], None] = Field(
-        description="A list of teams that collaborate on the advisory."
-    )
-    private_fork: Union[RepositoryAdvisoryPropPrivateFork, None] = Field(
-        description="A temporary private fork of the advisory's repository for collaborating on a fix."
-    )
-
-
-class RepositoryAdvisoryPropAuthor(GitHubModel):
-    """RepositoryAdvisoryPropAuthor
-
-    The author of the advisory.
-    """
-
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class RepositoryAdvisoryPropPublisher(GitHubModel):
-    """RepositoryAdvisoryPropPublisher
-
-    The publisher of the advisory.
-    """
-
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-class RepositoryAdvisoryPropIdentifiersItems(GitHubModel):
-    """RepositoryAdvisoryPropIdentifiersItems"""
-
-    type: Literal["CVE", "GHSA"] = Field(description="The type of identifier.")
-    value: str = Field(description="The identifier value.")
-
-
-class RepositoryAdvisoryPropSubmission(GitHubModel):
-    """RepositoryAdvisoryPropSubmission"""
-
-    accepted: bool = Field(
-        description="Whether a private vulnerability report was accepted by the repository's administrators."
-    )
-
-
-class RepositoryAdvisoryPropCwesItems(GitHubModel):
-    """RepositoryAdvisoryPropCwesItems"""
-
-    cwe_id: str = Field(description="The Common Weakness Enumeration (CWE) identifier.")
-    name: str = Field(description="The name of the CWE.")
-
-
-class RepositoryAdvisoryPropCreditsItems(GitHubModel):
-    """RepositoryAdvisoryPropCreditsItems"""
-
-    login: Missing[str] = Field(
-        default=UNSET, description="The username of the user credited."
-    )
-    type: Missing[
-        Literal[
-            "analyst",
-            "finder",
-            "reporter",
-            "coordinator",
-            "remediation_developer",
-            "remediation_reviewer",
-            "remediation_verifier",
-            "tool",
-            "sponsor",
-            "other",
-        ]
-    ] = Field(default=UNSET, description="The type of credit the user is receiving.")
-
-
-class RepositoryAdvisoryVulnerability(GitHubModel):
-    """RepositoryAdvisoryVulnerability
-
-    A product affected by the vulnerability detailed in a repository security
-    advisory.
-    """
-
-    package: Union[RepositoryAdvisoryVulnerabilityPropPackage, None] = Field(
-        description="The name of the package affected by the vulnerability."
-    )
-    vulnerable_version_range: Union[str, None] = Field(
-        description="The range of the package versions affected by the vulnerability."
-    )
-    patched_versions: Union[str, None] = Field(
-        description="The package version(s) that resolve the vulnerability."
-    )
-    vulnerable_functions: Union[list[str], None] = Field(
-        description="The functions in the package that are affected."
-    )
-
-
-class RepositoryAdvisoryVulnerabilityPropPackage(GitHubModel):
-    """RepositoryAdvisoryVulnerabilityPropPackage
-
-    The name of the package affected by the vulnerability.
-    """
-
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
         "other",
-        "swift",
-    ] = Field(description="The package's language or package management ecosystem.")
-    name: Union[str, None] = Field(
-        description="The unique package name within its ecosystem."
+    ] = Field(description="The type of credit the user is receiving.")
+    state: Literal["accepted", "declined", "pending"] = Field(
+        description="The state of the user's acceptance of the credit."
     )
 
 
-model_rebuild(RepositoryAdvisory)
-model_rebuild(RepositoryAdvisoryPropAuthor)
-model_rebuild(RepositoryAdvisoryPropPublisher)
-model_rebuild(RepositoryAdvisoryPropIdentifiersItems)
-model_rebuild(RepositoryAdvisoryPropSubmission)
-model_rebuild(RepositoryAdvisoryPropCwesItems)
-model_rebuild(RepositoryAdvisoryPropCreditsItems)
-model_rebuild(RepositoryAdvisoryVulnerability)
-model_rebuild(RepositoryAdvisoryVulnerabilityPropPackage)
+class RepositoryAdvisoryPropPrivateFork(GitHubModel):
+    """RepositoryAdvisoryPropPrivateFork
+
+    A temporary private fork of the advisory's repository for collaborating on a
+    fix.
+    """
+
+    id: int = Field(description="A unique identifier of the repository.")
+    node_id: str = Field(description="The GraphQL identifier of the repository.")
+    name: str = Field(description="The name of the repository.")
+    full_name: str = Field(
+        description="The full, globally unique, name of the repository."
+    )
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    private: bool = Field(description="Whether the repository is private.")
+    html_url: str = Field(description="The URL to view the repository on GitHub.com.")
+    description: Union[str, None] = Field(description="The repository description.")
+    fork: bool = Field(description="Whether the repository is a fork.")
+    url: str = Field(
+        description="The URL to get more information about the repository from the GitHub API."
+    )
+    archive_url: str = Field(
+        description="A template for the API URL to download the repository as an archive."
+    )
+    assignees_url: str = Field(
+        description="A template for the API URL to list the available assignees for issues in the repository."
+    )
+    blobs_url: str = Field(
+        description="A template for the API URL to create or retrieve a raw Git blob in the repository."
+    )
+    branches_url: str = Field(
+        description="A template for the API URL to get information about branches in the repository."
+    )
+    collaborators_url: str = Field(
+        description="A template for the API URL to get information about collaborators of the repository."
+    )
+    comments_url: str = Field(
+        description="A template for the API URL to get information about comments on the repository."
+    )
+    commits_url: str = Field(
+        description="A template for the API URL to get information about commits on the repository."
+    )
+    compare_url: str = Field(
+        description="A template for the API URL to compare two commits or refs."
+    )
+    contents_url: str = Field(
+        description="A template for the API URL to get the contents of the repository."
+    )
+    contributors_url: str = Field(
+        description="A template for the API URL to list the contributors to the repository."
+    )
+    deployments_url: str = Field(
+        description="The API URL to list the deployments of the repository."
+    )
+    downloads_url: str = Field(
+        description="The API URL to list the downloads on the repository."
+    )
+    events_url: str = Field(
+        description="The API URL to list the events of the repository."
+    )
+    forks_url: str = Field(
+        description="The API URL to list the forks of the repository."
+    )
+    git_commits_url: str = Field(
+        description="A template for the API URL to get information about Git commits of the repository."
+    )
+    git_refs_url: str = Field(
+        description="A template for the API URL to get information about Git refs of the repository."
+    )
+    git_tags_url: str = Field(
+        description="A template for the API URL to get information about Git tags of the repository."
+    )
+    issue_comment_url: str = Field(
+        description="A template for the API URL to get information about issue comments on the repository."
+    )
+    issue_events_url: str = Field(
+        description="A template for the API URL to get information about issue events on the repository."
+    )
+    issues_url: str = Field(
+        description="A template for the API URL to get information about issues on the repository."
+    )
+    keys_url: str = Field(
+        description="A template for the API URL to get information about deploy keys on the repository."
+    )
+    labels_url: str = Field(
+        description="A template for the API URL to get information about labels of the repository."
+    )
+    languages_url: str = Field(
+        description="The API URL to get information about the languages of the repository."
+    )
+    merges_url: str = Field(
+        description="The API URL to merge branches in the repository."
+    )
+    milestones_url: str = Field(
+        description="A template for the API URL to get information about milestones of the repository."
+    )
+    notifications_url: str = Field(
+        description="A template for the API URL to get information about notifications on the repository."
+    )
+    pulls_url: str = Field(
+        description="A template for the API URL to get information about pull requests on the repository."
+    )
+    releases_url: str = Field(
+        description="A template for the API URL to get information about releases on the repository."
+    )
+    stargazers_url: str = Field(
+        description="The API URL to list the stargazers on the repository."
+    )
+    statuses_url: str = Field(
+        description="A template for the API URL to get information about statuses of a commit."
+    )
+    subscribers_url: str = Field(
+        description="The API URL to list the subscribers on the repository."
+    )
+    subscription_url: str = Field(
+        description="The API URL to subscribe to notifications for this repository."
+    )
+    tags_url: str = Field(
+        description="The API URL to get information about tags on the repository."
+    )
+    teams_url: str = Field(
+        description="The API URL to list the teams on the repository."
+    )
+    trees_url: str = Field(
+        description="A template for the API URL to create or retrieve a raw Git tree of the repository."
+    )
+    hooks_url: str = Field(
+        description="The API URL to list the hooks on the repository."
+    )
+
+
+model_rebuild(RepositoryAdvisoryCredit)
+model_rebuild(RepositoryAdvisoryPropPrivateFork)
 
 __all__ = (
-    "RepositoryAdvisory",
-    "RepositoryAdvisoryPropAuthor",
-    "RepositoryAdvisoryPropCreditsItems",
-    "RepositoryAdvisoryPropCwesItems",
-    "RepositoryAdvisoryPropIdentifiersItems",
-    "RepositoryAdvisoryPropPublisher",
-    "RepositoryAdvisoryPropSubmission",
-    "RepositoryAdvisoryVulnerability",
-    "RepositoryAdvisoryVulnerabilityPropPackage",
+    "RepositoryAdvisoryCredit",
+    "RepositoryAdvisoryPropPrivateFork",
 )

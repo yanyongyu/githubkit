@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,70 +16,24 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401(
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropEditorAllof0(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200Prop
+    EditorAllof0
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    A GitHub user
     """
 
-    message: str = Field(
-        description='Summary message (e.g. "Validation Failed", "Not Found")'
-    )
-    errors: Missing[
-        list[
-            AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401PropErrorsItems
-        ]
-    ] = Field(
-        default=UNSET,
-        description="List of validation errors (present only for 422 responses)",
-    )
-    documentation_url: str = Field(description="URL to relevant API documentation")
-    error_code: Missing[str] = Field(
-        default=UNSET,
-        description="Stable machine-readable code identifying the specific known failure. Omitted for failures without a classified cause.",
-    )
-    limited_resource: Missing[str] = Field(
-        default=UNSET,
-        description="Which resource was rate limited, present when `error_code` is `rate_limit_exceeded` and the resource is known. One of `api`, `sandbox`, or `token_mint`. Clients should tolerate new values.",
-    )
-
-
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401PropErrorsItems(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401Prop
-    ErrorsItems
-
-    A single validation error
-    """
-
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ] = Field(description="Machine-readable error code")
-    message: Missing[str] = Field(
-        default=UNSET,
-        description='Human-readable message (populated when code is "custom")',
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user"
     )
 
 
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401
-)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401PropErrorsItems
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropEditorAllof0
 )
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401PropErrorsItems",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropEditorAllof0",
 )

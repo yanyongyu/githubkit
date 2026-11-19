@@ -18,20 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoImportPatchBody(GitHubModel):
-    """ReposOwnerRepoImportPatchBody"""
+class ReposOwnerRepoImportPutBody(GitHubModel):
+    """ReposOwnerRepoImportPutBody"""
 
+    vcs_url: str = Field(description="The URL of the originating repository.")
+    vcs: Missing[Literal["subversion", "git", "mercurial", "tfvc"]] = Field(
+        default=UNSET,
+        description="The originating VCS type. Without this parameter, the import job will take additional time to detect the VCS type before beginning the import. This detection step will be reflected in the response.",
+    )
     vcs_username: Missing[str] = Field(
         default=UNSET,
-        description="The username to provide to the originating repository.",
+        description="If authentication is required, the username to provide to `vcs_url`.",
     )
     vcs_password: Missing[str] = Field(
         default=UNSET,
-        description="The password to provide to the originating repository.",
-    )
-    vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = Field(
-        default=UNSET,
-        description="The type of version control system you are migrating from.",
+        description="If authentication is required, the password to provide to `vcs_url`.",
     )
     tfvc_project: Missing[str] = Field(
         default=UNSET,
@@ -39,6 +40,6 @@ class ReposOwnerRepoImportPatchBody(GitHubModel):
     )
 
 
-model_rebuild(ReposOwnerRepoImportPatchBody)
+model_rebuild(ReposOwnerRepoImportPutBody)
 
-__all__ = ("ReposOwnerRepoImportPatchBody",)
+__all__ = ("ReposOwnerRepoImportPutBody",)

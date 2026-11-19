@@ -9,44 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class CodespaceExportDetailsType(TypedDict):
-    """Fetches information about an export of a codespace.
+class CodespacesUserPublicKeyType(TypedDict):
+    """CodespacesUserPublicKey
 
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
+    The public key used for setting user Codespaces' Secrets.
     """
 
-    state: NotRequired[Union[str, None]]
-    completed_at: NotRequired[Union[_dt.datetime, None]]
-    branch: NotRequired[Union[str, None]]
-    sha: NotRequired[Union[str, None]]
-    id: NotRequired[str]
-    export_url: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
+    key_id: str
+    key: str
 
 
-class CodespaceExportDetailsTypeForResponse(TypedDict):
-    """Fetches information about an export of a codespace.
+class CodespacesUserPublicKeyTypeForResponse(TypedDict):
+    """CodespacesUserPublicKey
 
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
+    The public key used for setting user Codespaces' Secrets.
     """
 
-    state: NotRequired[Union[str, None]]
-    completed_at: NotRequired[Union[str, None]]
-    branch: NotRequired[Union[str, None]]
-    sha: NotRequired[Union[str, None]]
-    id: NotRequired[str]
-    export_url: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
+    key_id: str
+    key: str
 
 
 __all__ = (
-    "CodespaceExportDetailsType",
-    "CodespaceExportDetailsTypeForResponse",
+    "CodespacesUserPublicKeyType",
+    "CodespacesUserPublicKeyTypeForResponse",
 )

@@ -16,15 +16,24 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody(GitHubModel):
-    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody"""
+class EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202"""
 
-    revoke_credentials: Missing[bool] = Field(
+    message: Missing[str] = Field(
+        default=UNSET, description="A message indicating the revocation has been queued"
+    )
+    warning: Missing[str] = Field(
         default=UNSET,
-        description="Whether to also destroy the actual credentials (PATs and SSH keys) owned by\nthe user. This option is only available for Enterprise Managed User (EMU)\nenterprises. When set to `true`, all PATs (v1 and v2) and SSH keys owned\nby the user will be destroyed in addition to the credential authorizations.",
+        description="A warning message if the token used for this request may be revoked",
     )
 
 
-model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody)
+model_rebuild(
+    EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202
+)
 
-__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokePostBody",)
+__all__ = (
+    "EnterprisesEnterpriseCredentialAuthorizationsRevokeCredentialTypePostResponse202",
+)

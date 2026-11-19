@@ -9,93 +9,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
+
+from githubkit.typing import UniqueList
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400Type(TypedDict):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201Type(TypedDict):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    The Agent Merge configuration for an enrolled pull request.
+
+    Examples:
+        {'allowed_actions': ['fix_ci', 'resolve_merge_conflicts'], 'created_at':
+    '2026-09-09T12:00:00Z', 'updated_at': '2026-09-09T12:00:00Z', 'user': {'id':
+    9876}}
     """
 
-    message: str
-    errors: NotRequired[
-        list[
-            AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400PropErrorsItemsType
-        ]
-    ]
-    documentation_url: str
-    error_code: NotRequired[str]
-    limited_resource: NotRequired[str]
+    allowed_actions: UniqueList[Literal["fix_ci", "resolve_merge_conflicts"]]
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    user: AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUserType
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400TypeForResponse(
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201TypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201
 
-    Structured error response following GitHub REST API conventions.
-    For 422 Unprocessable Entity the errors array contains validation
-    details; for other error status codes only message and
-    documentation_url are returned.
+    The Agent Merge configuration for an enrolled pull request.
+
+    Examples:
+        {'allowed_actions': ['fix_ci', 'resolve_merge_conflicts'], 'created_at':
+    '2026-09-09T12:00:00Z', 'updated_at': '2026-09-09T12:00:00Z', 'user': {'id':
+    9876}}
     """
 
-    message: str
-    errors: NotRequired[
-        list[
-            AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400PropErrorsItemsTypeForResponse
-        ]
-    ]
-    documentation_url: str
-    error_code: NotRequired[str]
-    limited_resource: NotRequired[str]
+    allowed_actions: UniqueList[Literal["fix_ci", "resolve_merge_conflicts"]]
+    created_at: str
+    updated_at: str
+    user: AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUserTypeForResponse
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400PropErrorsItemsType(
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUserType(
     TypedDict
 ):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400PropErrorsItems
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUser
 
-    A single validation error
+    The user who most recently enabled Agent Merge for the pull request
+
+    Examples:
+        {'id': 9876}
     """
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    id: int
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400PropErrorsItemsTypeForResponse(
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUserTypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400PropErrorsItems
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUser
 
-    A single validation error
+    The user who most recently enabled Agent Merge for the pull request
+
+    Examples:
+        {'id': 9876}
     """
 
-    code: Literal[
-        "missing",
-        "missing_field",
-        "invalid",
-        "already_exists",
-        "unprocessable",
-        "custom",
-    ]
-    message: NotRequired[str]
+    id: int
 
 
 __all__ = (
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400PropErrorsItemsType",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400Type",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400TypeForResponse",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUserType",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUserTypeForResponse",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201Type",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201TypeForResponse",
 )

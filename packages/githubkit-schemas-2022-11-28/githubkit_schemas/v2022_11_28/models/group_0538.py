@@ -16,54 +16,39 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0003 import SimpleUser
 
-class PullRequestStackMinimal(GitHubModel):
-    """Pull Request Stack Minimal"""
 
-    id: int = Field()
-    number: int = Field()
+class RepositoryAdvisoryComment(GitHubModel):
+    """Repository Advisory Comment
+
+    A comment on a repository security advisory.
+    """
+
+    id: int = Field(description="Unique identifier of the advisory comment.")
     node_id: str = Field()
-    url: str = Field()
-    base: PullRequestStackMinimalPropBase = Field()
-    open_: bool = Field(
-        alias="open",
-        description="Whether the stack has any open pull request. False when all pull requests are merged or closed.",
-    )
+    url: str = Field(description="API URL for the advisory comment.")
+    html_url: str = Field(description="Web URL for the advisory comment.")
+    body: str = Field(description="Contents of the advisory comment.")
+    user: Union[SimpleUser, None] = Field()
     created_at: _dt.datetime = Field()
-    pull_requests: list[PullRequestStackMinimalPropPullRequestsItems] = Field()
+    updated_at: _dt.datetime = Field()
+    advisory_url: str = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
 
 
-class PullRequestStackMinimalPropBase(GitHubModel):
-    """PullRequestStackMinimalPropBase"""
+model_rebuild(RepositoryAdvisoryComment)
 
-    ref: str = Field()
-
-
-class PullRequestStackMinimalPropPullRequestsItems(GitHubModel):
-    """PullRequestStackMinimalPropPullRequestsItems"""
-
-    number: int = Field()
-    state: Literal["open", "closed"] = Field()
-    draft: bool = Field()
-    merged_at: Union[_dt.datetime, None] = Field()
-    head: PullRequestStackMinimalPropPullRequestsItemsPropHead = Field()
-
-
-class PullRequestStackMinimalPropPullRequestsItemsPropHead(GitHubModel):
-    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
-
-    ref: str = Field()
-    sha: str = Field()
-
-
-model_rebuild(PullRequestStackMinimal)
-model_rebuild(PullRequestStackMinimalPropBase)
-model_rebuild(PullRequestStackMinimalPropPullRequestsItems)
-model_rebuild(PullRequestStackMinimalPropPullRequestsItemsPropHead)
-
-__all__ = (
-    "PullRequestStackMinimal",
-    "PullRequestStackMinimalPropBase",
-    "PullRequestStackMinimalPropPullRequestsItems",
-    "PullRequestStackMinimalPropPullRequestsItemsPropHead",
-)
+__all__ = ("RepositoryAdvisoryComment",)

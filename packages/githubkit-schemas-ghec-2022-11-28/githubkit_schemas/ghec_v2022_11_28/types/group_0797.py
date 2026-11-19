@@ -13,21 +13,21 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0242 import DiscussionType, DiscussionTypeForResponse
-from .group_0673 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0674 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0675 import (
+from .group_0243 import DiscussionType, DiscussionTypeForResponse
+from .group_0674 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0675 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0676 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0676 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0690 import WebhooksCommentType, WebhooksCommentTypeForResponse
+from .group_0677 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0691 import WebhooksCommentType, WebhooksCommentTypeForResponse
 
 
-class WebhookDiscussionCommentDeletedType(TypedDict):
-    """discussion_comment deleted event"""
+class WebhookDiscussionCommentCreatedType(TypedDict):
+    """discussion_comment created event"""
 
-    action: Literal["deleted"]
+    action: Literal["created"]
     comment: WebhooksCommentType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
@@ -37,10 +37,10 @@ class WebhookDiscussionCommentDeletedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDiscussionCommentDeletedTypeForResponse(TypedDict):
-    """discussion_comment deleted event"""
+class WebhookDiscussionCommentCreatedTypeForResponse(TypedDict):
+    """discussion_comment created event"""
 
-    action: Literal["deleted"]
+    action: Literal["created"]
     comment: WebhooksCommentTypeForResponse
     discussion: DiscussionTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
@@ -51,6 +51,6 @@ class WebhookDiscussionCommentDeletedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDiscussionCommentDeletedType",
-    "WebhookDiscussionCommentDeletedTypeForResponse",
+    "WebhookDiscussionCommentCreatedType",
+    "WebhookDiscussionCommentCreatedTypeForResponse",
 )

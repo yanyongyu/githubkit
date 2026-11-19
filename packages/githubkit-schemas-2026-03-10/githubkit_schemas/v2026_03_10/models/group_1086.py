@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse503(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse503
+class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -32,7 +32,7 @@ class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse503(GitHubModel):
     )
     errors: Missing[
         list[
-            AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse503PropErrorsItems
+            AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItems
         ]
     ] = Field(
         default=UNSET,
@@ -49,10 +49,10 @@ class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse503(GitHubModel):
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse503PropErrorsItems(
+class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItems(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse503PropErrorsItems
+    """AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItems
 
     A single validation error
     """
@@ -71,12 +71,12 @@ class AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse503PropErrorsItem
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse503)
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404)
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse503PropErrorsItems
+    AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItems
 )
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse503",
-    "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse503PropErrorsItems",
+    "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404",
+    "AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItems",
 )

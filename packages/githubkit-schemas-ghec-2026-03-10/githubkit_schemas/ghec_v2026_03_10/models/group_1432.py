@@ -9,46 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseTeamsTeamSlugPatchBody(GitHubModel):
-    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200(GitHubModel):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200"""
 
-    name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A new name for the team."
+    models: list[
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItems
+    ] = Field()
+
+
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsIt
+    ems
+    """
+
+    model_name: str = Field()
+    display_name: str = Field()
+    policy_state: Literal["enabled", "disabled", "optional"] = Field(
+        description="When editable, the team's configured value, or `optional` if the team has not configured this model.\nWhen locked, the enterprise's explicit value or its applied default availability for an eligible model.\nReturns `disabled` when locked without an explicit enterprise value and the model is excluded from default availability."
     )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A new description for the team."
-    )
-    sync_to_organizations: Missing[Literal["all", "disabled"]] = Field(
-        default=UNSET,
-        description="Retired: this field is no longer supported.\nWhether the enterprise team should be reflected in each organization.\nThis value cannot be changed.\n",
-    )
-    organization_selection_type: Missing[Literal["disabled", "selected", "all"]] = (
-        Field(
-            default=UNSET,
-            description="Specifies which organizations in the enterprise should have access to this team. Can be one of `disabled`, `selected`, or `all`.\n`disabled`: The team is not assigned to any organizations. This is the default when you create a new team.\n`selected`: The team is assigned to specific organizations. You can then use the [add organization assignments API](https://docs.github.com/enterprise-cloud@latest/rest/enterprise-teams/enterprise-team-organizations#add-organization-assignments).\n`all`: The team is assigned to all current and future organizations in the enterprise.\n",
-        )
-    )
-    group_id: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The ID of the IdP group to assign team membership with. The new IdP group will replace the existing one, or replace existing direct members if the team isn't currently linked to an IdP group.",
-    )
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_default",
+        "unconfigured",
     ] = Field(
-        default=UNSET,
-        description="The notification setting the team is set to. The options are:\n\n* `notifications_enabled` - team members receive notifications when the team is @mentioned.\n* `notifications_disabled` - no one receives notifications.\n",
+        description="The separately read enterprise-layer policy for this model, used to determine whether the team can edit its policy."
+    )
+    editable: bool = Field(
+        description="Whether the enterprise policy and available team policy controls allow the team's policy to be updated."
     )
 
 
-model_rebuild(EnterprisesEnterpriseTeamsTeamSlugPatchBody)
+model_rebuild(EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200)
+model_rebuild(
+    EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItems
+)
 
-__all__ = ("EnterprisesEnterpriseTeamsTeamSlugPatchBody",)
+__all__ = (
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200",
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItems",
+)

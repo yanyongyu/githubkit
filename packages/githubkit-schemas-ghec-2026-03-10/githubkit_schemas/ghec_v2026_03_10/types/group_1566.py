@@ -13,47 +13,39 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgCopilotFeaturePoliciesPatchResponse200Type(TypedDict):
-    """OrgsOrgCopilotFeaturePoliciesPatchResponse200"""
+class OrgsOrgCopilotFeaturePoliciesPatchBodyType(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesPatchBody"""
 
     default_availability: (
-        OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType
+        OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType
     )
 
 
-class OrgsOrgCopilotFeaturePoliciesPatchResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotFeaturePoliciesPatchResponse200"""
+class OrgsOrgCopilotFeaturePoliciesPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesPatchBody"""
 
-    default_availability: OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse
+    default_availability: (
+        OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse
+    )
 
 
-class OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType(
-    TypedDict
-):
-    """OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability
-
-    The default policy applied to newly released Copilot features and clients.
-    """
+class OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
 
     policy_state: Literal["enabled", "disabled"]
-    editable: bool
 
 
-class OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse(
+class OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability
-
-    The default policy applied to newly released Copilot features and clients.
-    """
+    """OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
 
     policy_state: Literal["enabled", "disabled"]
-    editable: bool
 
 
 __all__ = (
-    "OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType",
-    "OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse",
-    "OrgsOrgCopilotFeaturePoliciesPatchResponse200Type",
-    "OrgsOrgCopilotFeaturePoliciesPatchResponse200TypeForResponse",
+    "OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType",
+    "OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse",
+    "OrgsOrgCopilotFeaturePoliciesPatchBodyType",
+    "OrgsOrgCopilotFeaturePoliciesPatchBodyTypeForResponse",
 )

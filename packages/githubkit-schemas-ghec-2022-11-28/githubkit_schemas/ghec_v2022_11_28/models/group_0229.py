@@ -12,47 +12,17 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class GetBudgetUserStates(GitHubModel):
-    """GetBudgetUserStates"""
+class DeleteBudget(GitHubModel):
+    """DeleteBudget"""
 
-    user_states: list[GetBudgetUserStatesPropUserStatesItems] = Field(
-        description="Per-user state entries for the budget."
+    message: str = Field(
+        description="A message indicating the result of the deletion operation"
     )
-    has_next_page: bool = Field(
-        description="Indicates if there are more pages of results available."
-    )
-    total_count: int = Field(
-        description="Total number of user state entries matching the query."
-    )
+    id: str = Field(description="The ID of the deleted budget")
 
 
-class GetBudgetUserStatesPropUserStatesItems(GitHubModel):
-    """GetBudgetUserStatesPropUserStatesItems"""
+model_rebuild(DeleteBudget)
 
-    user: Missing[str] = Field(
-        default=UNSET,
-        description="The login of the user, when the user record is available.",
-    )
-    consumed_amount: float = Field(
-        description="The amount currently consumed by this user against the budget."
-    )
-    target_amount: float = Field(
-        description="The target amount allocated to this user within the budget."
-    )
-    override_budget_id: Missing[str] = Field(
-        default=UNSET,
-        description="The ID of a user-scoped budget that overrides the per-user allocation, when present.",
-    )
-
-
-model_rebuild(GetBudgetUserStates)
-model_rebuild(GetBudgetUserStatesPropUserStatesItems)
-
-__all__ = (
-    "GetBudgetUserStates",
-    "GetBudgetUserStatesPropUserStatesItems",
-)
+__all__ = ("DeleteBudget",)

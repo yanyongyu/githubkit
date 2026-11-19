@@ -9,34 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseDependabotRepositoryAccessPatchBody
+class EnterprisesEnterpriseCredentialsExportsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseCredentialsExportsPostBody
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    Optional filters that scope the export to a subset of the inventory.
     """
 
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    token_types: NotRequired[list[str]]
+    authorization_state: NotRequired[
+        Literal["currently_authorized", "member_owned_only"]
+    ]
+    owner: NotRequired[str]
+    organization: NotRequired[str]
+    application: NotRequired[str]
 
 
-class EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseDependabotRepositoryAccessPatchBody
+class EnterprisesEnterpriseCredentialsExportsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCredentialsExportsPostBody
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    Optional filters that scope the export to a subset of the inventory.
     """
 
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    token_types: NotRequired[list[str]]
+    authorization_state: NotRequired[
+        Literal["currently_authorized", "member_owned_only"]
+    ]
+    owner: NotRequired[str]
+    organization: NotRequired[str]
+    application: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyType",
-    "EnterprisesEnterpriseDependabotRepositoryAccessPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseCredentialsExportsPostBodyType",
+    "EnterprisesEnterpriseCredentialsExportsPostBodyTypeForResponse",
 )

@@ -33,8 +33,8 @@ from .group_0089 import (
 from .group_0090 import GoogleCloudConfigType, GoogleCloudConfigTypeForResponse
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
+class EnterprisesEnterpriseAuditLogStreamsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
 
     enabled: bool
     stream_type: Literal[
@@ -45,7 +45,6 @@ class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType(TypedDict):
         "HTTPS Event Collector",
         "Google Cloud Storage",
         "Datadog",
-        "Microsoft Agent 365",
     ]
     vendor_specific: Union[
         AzureBlobConfigType,
@@ -56,12 +55,11 @@ class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType(TypedDict):
         HecConfigType,
         GoogleCloudConfigType,
         DatadogConfigType,
-        EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyPropVendorSpecificOneof8Type,
     ]
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
+class EnterprisesEnterpriseAuditLogStreamsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
 
     enabled: bool
     stream_type: Literal[
@@ -72,7 +70,6 @@ class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyTypeForResponse(TypedDi
         "HTTPS Event Collector",
         "Google Cloud Storage",
         "Datadog",
-        "Microsoft Agent 365",
     ]
     vendor_specific: Union[
         AzureBlobConfigTypeForResponse,
@@ -83,31 +80,10 @@ class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyTypeForResponse(TypedDi
         HecConfigTypeForResponse,
         GoogleCloudConfigTypeForResponse,
         DatadogConfigTypeForResponse,
-        EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyPropVendorSpecificOneof8TypeForResponse,
     ]
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyPropVendorSpecificOneof8Type(
-    TypedDict
-):
-    """MicrosoftAgent365Config
-
-    Empty configuration used when pausing or resuming a Microsoft Agent 365 stream.
-    """
-
-
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyPropVendorSpecificOneof8TypeForResponse(
-    TypedDict
-):
-    """MicrosoftAgent365Config
-
-    Empty configuration used when pausing or resuming a Microsoft Agent 365 stream.
-    """
-
-
 __all__ = (
-    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyPropVendorSpecificOneof8Type",
-    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyPropVendorSpecificOneof8TypeForResponse",
-    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType",
-    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyTypeForResponse",
+    "EnterprisesEnterpriseAuditLogStreamsPostBodyType",
+    "EnterprisesEnterpriseAuditLogStreamsPostBodyTypeForResponse",
 )

@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropEditorAllof0Type(
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreatorAllof0Type(
     TypedDict
 ):
     """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropEditorAllof0
+    temsPropCreatorAllof0
 
     A GitHub user
     """
@@ -24,11 +24,11 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
     id: NotRequired[int]
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropEditorAllof0TypeForResponse(
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreatorAllof0TypeForResponse(
     TypedDict
 ):
     """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsI
-    temsPropEditorAllof0
+    temsPropCreatorAllof0
 
     A GitHub user
     """
@@ -37,6 +37,6 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevi
 
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropEditorAllof0Type",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropEditorAllof0TypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreatorAllof0Type",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreatorAllof0TypeForResponse",
 )

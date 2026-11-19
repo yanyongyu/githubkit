@@ -14,49 +14,41 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0048 import ReactionRollup
-from .group_0498 import ReviewCommentPropLinks
 
 
-class ReviewComment(GitHubModel):
-    """Legacy Review Comment
+class PullRequestReview(GitHubModel):
+    """Pull Request Review
 
-    Legacy Review Comment
+    Pull Request Reviews are reviews on pull requests.
     """
 
+    id: int = Field(description="Unique identifier of the review")
+    node_id: str = Field()
+    user: Union[SimpleUser, None] = Field()
+    body: str = Field(description="The text of the review.")
+    state: str = Field()
     is_copilot_code_review: Missing[bool] = Field(
         default=UNSET,
-        description="Whether this comment was produced by Copilot code review.",
+        description="Whether this review was produced by Copilot code review. Bot authorship alone does not establish provenance.",
     )
-    copilot_code_review_sources: Missing[
-        list[ReviewCommentPropCopilotCodeReviewSourcesItems]
-    ] = Field(
-        max_length=16 if PYDANTIC_V2 else None,
+    copilot_code_review_effort: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Sources reported as contributing to this comment; may be incomplete.",
+        description="The persisted effective effort used to produce this Copilot code review, or null if unavailable. For more information, see [Review effort level](https://docs.github.com/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/code-review#review-effort-level).",
     )
-    url: str = Field()
-    pull_request_review_id: Union[int, None] = Field()
-    id: int = Field()
-    node_id: str = Field()
-    diff_hunk: str = Field()
-    path: str = Field()
-    position: Union[int, None] = Field()
-    original_position: int = Field()
-    commit_id: str = Field()
-    original_commit_id: str = Field()
-    in_reply_to_id: Missing[int] = Field(default=UNSET)
-    user: Union[SimpleUser, None] = Field()
-    body: str = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
     html_url: str = Field()
     pull_request_url: str = Field()
+    links: PullRequestReviewPropLinks = Field(alias="_links")
+    submitted_at: Missing[_dt.datetime] = Field(default=UNSET)
+    commit_id: Union[str, None] = Field(
+        description="A commit SHA for the review. If the commit object was garbage collected or forcibly deleted, then it no longer exists in Git and this value will be `null`."
+    )
+    body_html: Missing[str] = Field(default=UNSET)
+    body_text: Missing[str] = Field(default=UNSET)
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -70,59 +62,35 @@ class ReviewComment(GitHubModel):
         title="author_association",
         description="How the author is associated with the repository.",
     )
-    links: ReviewCommentPropLinks = Field(alias="_links")
-    body_text: Missing[str] = Field(default=UNSET)
-    body_html: Missing[str] = Field(default=UNSET)
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
-    side: Missing[Literal["LEFT", "RIGHT"]] = Field(
-        default=UNSET,
-        description="The side of the first line of the range for a multi-line comment.",
-    )
-    start_side: Missing[Union[Literal["LEFT", "RIGHT"], None]] = Field(
-        default=UNSET,
-        description="The side of the first line of the range for a multi-line comment.",
-    )
-    line: Missing[int] = Field(
-        default=UNSET,
-        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment",
-    )
-    original_line: Missing[int] = Field(
-        default=UNSET,
-        description="The original line of the blob to which the comment applies. The last line of the range for a multi-line comment",
-    )
-    start_line: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The first line of the range for a multi-line comment.",
-    )
-    original_start_line: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The original first line of the range for a multi-line comment.",
-    )
-    subject_type: Missing[Literal["line", "file"]] = Field(
-        default=UNSET,
-        description="The level at which the comment is targeted, can be a diff line or a file.",
-    )
 
 
-class ReviewCommentPropCopilotCodeReviewSourcesItems(GitHubModel):
-    """ReviewCommentPropCopilotCodeReviewSourcesItems"""
+class PullRequestReviewPropLinks(GitHubModel):
+    """PullRequestReviewPropLinks"""
 
-    kind: Literal["SKILL", "MCP", "CUSTOM_INSTRUCTIONS"] = Field(
-        description="The kind of contributing source."
-    )
-    name: str = Field(
-        description='The reported source name, or "custom instructions" for CUSTOM_INSTRUCTIONS. Copilot Dreaming\'s reviewer agent and checks skill are reported as one SKILL source named "Copilot dreaming".'
-    )
-    path: Missing[str] = Field(
-        default=UNSET,
-        description="The validated repository-relative source path, if available. Commit OIDs are not exposed.",
-    )
+    html: PullRequestReviewPropLinksPropHtml = Field()
+    pull_request: PullRequestReviewPropLinksPropPullRequest = Field()
 
 
-model_rebuild(ReviewComment)
-model_rebuild(ReviewCommentPropCopilotCodeReviewSourcesItems)
+class PullRequestReviewPropLinksPropHtml(GitHubModel):
+    """PullRequestReviewPropLinksPropHtml"""
+
+    href: str = Field()
+
+
+class PullRequestReviewPropLinksPropPullRequest(GitHubModel):
+    """PullRequestReviewPropLinksPropPullRequest"""
+
+    href: str = Field()
+
+
+model_rebuild(PullRequestReview)
+model_rebuild(PullRequestReviewPropLinks)
+model_rebuild(PullRequestReviewPropLinksPropHtml)
+model_rebuild(PullRequestReviewPropLinksPropPullRequest)
 
 __all__ = (
-    "ReviewComment",
-    "ReviewCommentPropCopilotCodeReviewSourcesItems",
+    "PullRequestReview",
+    "PullRequestReviewPropLinks",
+    "PullRequestReviewPropLinksPropHtml",
+    "PullRequestReviewPropLinksPropPullRequest",
 )

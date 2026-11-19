@@ -13,38 +13,40 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserUpdateIssueFieldType(TypedDict):
-    """UserUpdateIssueField"""
+class UserCreateIssueFieldType(TypedDict):
+    """UserCreateIssueField"""
 
-    name: NotRequired[str]
+    name: str
     description: NotRequired[Union[str, None]]
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
     visibility: NotRequired[Literal["restricted", "all"]]
-    options: NotRequired[list[UserUpdateIssueFieldPropOptionsItemsType]]
+    options: NotRequired[Union[list[UserCreateIssueFieldPropOptionsItemsType], None]]
 
 
-class UserUpdateIssueFieldTypeForResponse(TypedDict):
-    """UserUpdateIssueField"""
+class UserCreateIssueFieldTypeForResponse(TypedDict):
+    """UserCreateIssueField"""
 
-    name: NotRequired[str]
+    name: str
     description: NotRequired[Union[str, None]]
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
     visibility: NotRequired[Literal["restricted", "all"]]
-    options: NotRequired[list[UserUpdateIssueFieldPropOptionsItemsTypeForResponse]]
+    options: NotRequired[
+        Union[list[UserCreateIssueFieldPropOptionsItemsTypeForResponse], None]
+    ]
 
 
-class UserUpdateIssueFieldPropOptionsItemsType(TypedDict):
-    """UserUpdateIssueFieldPropOptionsItems"""
+class UserCreateIssueFieldPropOptionsItemsType(TypedDict):
+    """UserCreateIssueFieldPropOptionsItems"""
 
-    id: NotRequired[int]
     name: str
     description: NotRequired[Union[str, None]]
     color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
     priority: int
 
 
-class UserUpdateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
-    """UserUpdateIssueFieldPropOptionsItems"""
+class UserCreateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
+    """UserCreateIssueFieldPropOptionsItems"""
 
-    id: NotRequired[int]
     name: str
     description: NotRequired[Union[str, None]]
     color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
@@ -52,8 +54,8 @@ class UserUpdateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "UserUpdateIssueFieldPropOptionsItemsType",
-    "UserUpdateIssueFieldPropOptionsItemsTypeForResponse",
-    "UserUpdateIssueFieldType",
-    "UserUpdateIssueFieldTypeForResponse",
+    "UserCreateIssueFieldPropOptionsItemsType",
+    "UserCreateIssueFieldPropOptionsItemsTypeForResponse",
+    "UserCreateIssueFieldType",
+    "UserCreateIssueFieldTypeForResponse",
 )

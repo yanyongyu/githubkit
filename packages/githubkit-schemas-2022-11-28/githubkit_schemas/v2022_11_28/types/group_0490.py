@@ -9,31 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
-
-class CopilotCodeReviewRequestType(TypedDict):
-    """Copilot Code Review Request
-
-    A request for Copilot to review a pull request.
-    """
-
-    node_id: str
-    state: Literal["PENDING"]
+from .group_0204 import LinkType, LinkTypeForResponse
 
 
-class CopilotCodeReviewRequestTypeForResponse(TypedDict):
-    """Copilot Code Review Request
+class PullRequestPropLinksType(TypedDict):
+    """PullRequestPropLinks"""
 
-    A request for Copilot to review a pull request.
-    """
+    comments: LinkType
+    commits: LinkType
+    statuses: LinkType
+    html: LinkType
+    issue: LinkType
+    review_comments: LinkType
+    review_comment: LinkType
+    self_: LinkType
 
-    node_id: str
-    state: Literal["PENDING"]
+
+class PullRequestPropLinksTypeForResponse(TypedDict):
+    """PullRequestPropLinks"""
+
+    comments: LinkTypeForResponse
+    commits: LinkTypeForResponse
+    statuses: LinkTypeForResponse
+    html: LinkTypeForResponse
+    issue: LinkTypeForResponse
+    review_comments: LinkTypeForResponse
+    review_comment: LinkTypeForResponse
+    self_: LinkTypeForResponse
 
 
 __all__ = (
-    "CopilotCodeReviewRequestType",
-    "CopilotCodeReviewRequestTypeForResponse",
+    "PullRequestPropLinksType",
+    "PullRequestPropLinksTypeForResponse",
 )

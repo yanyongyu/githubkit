@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Annotated, Literal
 
 from pydantic import Field
@@ -19,184 +18,166 @@ from githubkit.typing import Missing, UniqueList
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsPostResponse201
+class AgentsReposOwnerRepoAutomationsPostBody(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsPostBody
 
-    A full representation of an automation including all configuration fields.
+    Request body for creating an automation.
     """
 
-    id: str = Field(description="The unique identifier of the automation.")
     name: str = Field(description="The name of the automation.")
-    enabled: Missing[bool] = Field(
-        default=UNSET, description="Whether the automation is currently enabled."
+    triggers: Missing[AgentsReposOwnerRepoAutomationsPostBodyPropTriggers] = Field(
+        default=UNSET, description="Trigger configuration for the automation."
     )
-    type: Missing[Literal["personal", "shared"]] = Field(
+    prompt: str = Field(max_length=10000, description="The prompt for the automation.")
+    model: Missing[str] = Field(
         default=UNSET,
-        description="The type of automation. `personal` keeps it private to its creator and its runs act as that user. `shared` makes it belong to the repository, visible to anyone with read access to the repository, and its runs act as the Copilot app rather than as a person.",
+        description="The model to use for sessions triggered by this automation. Omit or leave empty to let the platform select the model.",
     )
-    require_actor_write_permission: Missing[bool] = Field(
+    reasoning_effort: Missing[
+        Literal["", "none", "low", "medium", "high", "xhigh", "max"]
+    ] = Field(
         default=UNSET,
-        description="When true, event-triggered runs require the event actor to have repo write permission, even when the org's allow_read_access_triggers policy is enabled. Does not apply to interval-scheduled runs, which always run as the automation owner.",
+        description="The reasoning effort to use for sessions triggered by this automation. Omit or leave empty to use the model's default.",
     )
-    continuous_history: Missing[bool] = Field(
-        default=UNSET,
-        description="When true, runs of this automation build on the session history of its previous runs, and runs of the same automation are serialized. Not tracked in revision history.",
-    )
-    triggers: Missing[AgentsReposOwnerRepoAutomationsPostResponse201PropTriggers] = (
-        Field(default=UNSET, description="Trigger configuration for the automation.")
-    )
-    prompt: str = Field(description="The prompt for the automation.")
     tools: Missing[list[str]] = Field(
         default=UNSET, description="The tools available to the automation."
     )
-    model: Missing[str] = Field(
+    enabled: Missing[bool] = Field(
         default=UNSET,
-        description="The model override for sessions triggered by this automation. Absent when the platform selects the model.",
+        description="Whether the automation should be created enabled. Defaults to true when omitted.",
     )
-    reasoning_effort: Missing[str] = Field(
+    type: Missing[Literal["personal", "shared"]] = Field(
         default=UNSET,
-        description="The reasoning effort override for sessions triggered by this automation. Absent when the model's default is used.",
+        description="The type of automation, fixed at creation. `personal` keeps it private to its creator and its runs act as that user. `shared` makes it belong to the repository, visible to anyone with read access to the repository and maintainable by anyone with write access to the repository, and its runs act as the Copilot app rather than as a person. `shared` is rejected when repository ownership is not available for the repository. Supported values: `personal`, `shared`. Defaults to `personal`.",
     )
-    created_at: _dt.datetime = Field(description="When the automation was created.")
-    updated_at: _dt.datetime = Field(
-        description="When the automation was last updated."
+    require_actor_write_permission: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, event-triggered runs require the event actor to have repo write permission, even when the org's allow_read_access_triggers policy is enabled. When policy validation is enabled, explicitly setting false returns 422 if effective organization or repository policy disallows read-access triggers. If omitted, defaults to false when policy permits read-access triggers, otherwise true. The actor requirement does not apply to interval-scheduled runs, which always run as the automation owner.",
     )
-    created_by: AgentsReposOwnerRepoAutomationsPostResponse201PropCreatedBy = Field(
-        description="A GitHub user"
-    )
-
-
-class AgentsReposOwnerRepoAutomationsPostResponse201PropCreatedBy(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropCreatedBy
-
-    A GitHub user
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the user"
+    continuous_history: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, runs of this automation build on the session history of its previous runs, and runs of the same automation are serialized. Not tracked in revision history. Defaults to false.",
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggers(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggers
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggers(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggers
 
     Trigger configuration for the automation.
     """
 
     interval: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropInterval
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropInterval
     ] = Field(default=UNSET)
     issue_opened: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueOpened
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueOpened
     ] = Field(default=UNSET)
     issue_labeled: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueLabeled
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueLabeled
     ] = Field(default=UNSET)
     workflow_run: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropWorkflowRun
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropWorkflowRun
     ] = Field(default=UNSET)
     pull_request_opened: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestOpened
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestOpened
     ] = Field(default=UNSET)
     pull_request_synchronize: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestSynchronize
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestSynchronize
     ] = Field(default=UNSET)
     pull_request_merged: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestMerged
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMerged
     ] = Field(default=UNSET)
     issue_comment: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueComment
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueComment
     ] = Field(default=UNSET)
     pull_request_comment: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestComment
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestComment
     ] = Field(default=UNSET)
     discussion_opened: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionOpened
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionOpened
     ] = Field(default=UNSET)
     discussion_updated: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionUpdated
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionUpdated
     ] = Field(default=UNSET)
     discussion_comment: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionComment
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionComment
     ] = Field(default=UNSET)
     issue_assigned: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueAssigned
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueAssigned
     ] = Field(default=UNSET)
     pull_request_assigned: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestAssigned
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestAssigned
     ] = Field(default=UNSET)
     sub_issue_added: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropSubIssueAdded
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSubIssueAdded
     ] = Field(default=UNSET)
     pull_request_ready_for_review: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReadyForReview
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReadyForReview
     ] = Field(default=UNSET)
     pull_request_labeled: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestLabeled
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestLabeled
     ] = Field(default=UNSET)
     pull_request_merge_conflict: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestMergeConflict
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMergeConflict
     ] = Field(default=UNSET)
     pull_request_review_submitted: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewSubmitted
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewSubmitted
     ] = Field(default=UNSET)
     pull_request_review_requested: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewRequested
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewRequested
     ] = Field(default=UNSET)
     issue_closed: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueClosed
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueClosed
     ] = Field(default=UNSET)
     issue_reopened: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueReopened
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueReopened
     ] = Field(default=UNSET)
     pull_request_closed: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestClosed
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestClosed
     ] = Field(default=UNSET)
     pull_request_reopened: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReopened
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReopened
     ] = Field(default=UNSET)
     pull_request_converted_to_draft: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestConvertedToDraft
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestConvertedToDraft
     ] = Field(default=UNSET)
     pull_request_review_dismissed: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewDismissed
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewDismissed
     ] = Field(default=UNSET)
     pull_request_review_thread_resolved: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewThreadResolved
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadResolved
     ] = Field(default=UNSET)
     pull_request_review_thread_unresolved: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewThreadUnresolved
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadUnresolved
     ] = Field(default=UNSET)
     automation_completed: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropAutomationCompleted
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationCompleted
     ] = Field(default=UNSET)
     automation_failed: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropAutomationFailed
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationFailed
     ] = Field(default=UNSET)
     code_scanning_alert: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropCodeScanningAlert
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropCodeScanningAlert
     ] = Field(
         default=UNSET,
         description="Runs on the default branch when a security alert of this kind is created in the repository. These are system events without an issue, pull request, or human actor, and cannot be run manually.",
     )
     secret_scanning_alert: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropSecretScanningAlert
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSecretScanningAlert
     ] = Field(
         default=UNSET,
         description="Runs on the default branch when a security alert of this kind is created in the repository. These are system events without an issue, pull request, or human actor, and cannot be run manually.",
     )
     dependabot_alert: Missing[
-        AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDependabotAlert
+        AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDependabotAlert
     ] = Field(
         default=UNSET,
         description="Runs on the default branch when a security alert of this kind is created in the repository. These are system events without an issue, pull request, or human actor, and cannot be run manually.",
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropInterval(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropInterval"""
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropInterval(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropInterval"""
 
     cadence: UniqueList[Literal["hourly", "daily", "weekly"]] = Field(
         min_length=1 if PYDANTIC_V2 else None,
@@ -226,10 +207,8 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropInterval(
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueOpened(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueOpened"""
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueOpened(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueOpened"""
 
     query: Missing[str] = Field(
         min_length=1,
@@ -246,10 +225,8 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueOpened(
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueLabeled(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueLabeled"""
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueLabeled(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueLabeled"""
 
     query: Missing[str] = Field(
         min_length=1,
@@ -270,10 +247,8 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueLabeled
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropWorkflowRun(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropWorkflowRun"""
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropWorkflowRun(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropWorkflowRun"""
 
     workflows: list[Annotated[str, Field(min_length=1)]] = Field(
         min_length=1 if PYDANTIC_V2 else None,
@@ -299,10 +274,10 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropWorkflowRun(
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestOpened(
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestOpened(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestOpened"""
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestOpened"""
 
     query: Missing[str] = Field(
         min_length=1,
@@ -324,12 +299,10 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestO
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestSynchronize(
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestSynchronize(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestSynchro
-    nize
-    """
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestSynchronize"""
 
     query: Missing[str] = Field(
         min_length=1,
@@ -351,10 +324,10 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestS
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestMerged(
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMerged(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestMerged"""
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMerged"""
 
     query: Missing[str] = Field(
         min_length=1,
@@ -376,10 +349,8 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestM
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueComment(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueComment"""
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueComment(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueComment"""
 
     query: Missing[str] = Field(
         min_length=1,
@@ -400,10 +371,10 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueComment
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestComment(
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestComment(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestComment"""
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestComment"""
 
     comment_types: UniqueList[Literal["timeline_comment", "review_comment"]] = Field(
         max_length=2 if PYDANTIC_V2 else None,
@@ -434,10 +405,10 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestC
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionOpened(
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionOpened(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionOpened"""
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionOpened"""
 
     categories: Missing[UniqueList[str]] = Field(
         min_length=1 if PYDANTIC_V2 else None,
@@ -458,10 +429,10 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionOp
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionUpdated(
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionUpdated(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionUpdated"""
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionUpdated"""
 
     categories: Missing[UniqueList[str]] = Field(
         min_length=1 if PYDANTIC_V2 else None,
@@ -482,10 +453,10 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionUp
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionComment(
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionComment(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionComment"""
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionComment"""
 
     comment_types: Missing[UniqueList[Literal["comment", "reply"]]] = Field(
         max_length=2 if PYDANTIC_V2 else None,
@@ -512,10 +483,8 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionCo
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueAssigned(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueAssigned"""
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueAssigned(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueAssigned"""
 
     query: Missing[str] = Field(
         min_length=1,
@@ -537,12 +506,10 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueAssigne
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestAssigned(
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestAssigned(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestAssigne
-    d
-    """
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestAssigned"""
 
     query: Missing[str] = Field(
         min_length=1,
@@ -569,10 +536,8 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestA
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropSubIssueAdded(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropSubIssueAdded"""
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSubIssueAdded(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSubIssueAdded"""
 
     query: Missing[str] = Field(
         min_length=1,
@@ -589,12 +554,10 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropSubIssueAdde
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReadyForReview(
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReadyForReview(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReadyFo
-    rReview
-    """
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReadyForReview"""
 
     query: Missing[str] = Field(
         min_length=1,
@@ -616,10 +579,10 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestR
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestLabeled(
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestLabeled(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestLabeled"""
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestLabeled"""
 
     query: Missing[str] = Field(
         min_length=1,
@@ -645,12 +608,10 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestL
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestMergeConflict(
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMergeConflict(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestMergeCo
-    nflict
-    """
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMergeConflict"""
 
     query: Missing[str] = Field(
         min_length=1,
@@ -672,11 +633,11 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestM
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewSubmitted(
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewSubmitted(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewS
-    ubmitted
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewSubmitte
+    d
     """
 
     query: Missing[str] = Field(
@@ -704,102 +665,10 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestR
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewRequested(
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewRequested(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewR
-    equested
-    """
-
-    query: Missing[str] = Field(
-        min_length=1,
-        default=UNSET,
-        description="A GitHub issue or pull request search query.",
-    )
-    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Gitignore-style changed-file path globs.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
-    )
-    allow_copilot_triggers: Missing[bool] = Field(
-        default=UNSET,
-        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
-    )
-
-
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueClosed(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueClosed"""
-
-    query: Missing[str] = Field(
-        min_length=1,
-        default=UNSET,
-        description="A GitHub issue or pull request search query.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
-    )
-    allow_copilot_triggers: Missing[bool] = Field(
-        default=UNSET,
-        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
-    )
-
-
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueReopened(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueReopened"""
-
-    query: Missing[str] = Field(
-        min_length=1,
-        default=UNSET,
-        description="A GitHub issue or pull request search query.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
-    )
-    allow_copilot_triggers: Missing[bool] = Field(
-        default=UNSET,
-        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
-    )
-
-
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestClosed(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestClosed"""
-
-    query: Missing[str] = Field(
-        min_length=1,
-        default=UNSET,
-        description="A GitHub issue or pull request search query.",
-    )
-    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Gitignore-style changed-file path globs.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
-    )
-    allow_copilot_triggers: Missing[bool] = Field(
-        default=UNSET,
-        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
-    )
-
-
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReopened(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReopene
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewRequeste
     d
     """
 
@@ -823,11 +692,97 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestR
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestConvertedToDraft(
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueClosed(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueClosed"""
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueReopened(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueReopened"""
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestClosed(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestConvert
-    edToDraft
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestClosed"""
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReopened(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReopened"""
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestConvertedToDraft(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestConvertedToDra
+    ft
     """
 
     query: Missing[str] = Field(
@@ -850,93 +805,91 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestC
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewDismissed(
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewDismissed(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewD
-    ismissed
-    """
-
-    query: Missing[str] = Field(
-        min_length=1,
-        default=UNSET,
-        description="A GitHub issue or pull request search query.",
-    )
-    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Gitignore-style changed-file path globs.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
-    )
-    allow_copilot_triggers: Missing[bool] = Field(
-        default=UNSET,
-        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
-    )
-
-
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewThreadResolved(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewT
-    hreadResolved
-    """
-
-    query: Missing[str] = Field(
-        min_length=1,
-        default=UNSET,
-        description="A GitHub issue or pull request search query.",
-    )
-    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Gitignore-style changed-file path globs.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
-    )
-    allow_copilot_triggers: Missing[bool] = Field(
-        default=UNSET,
-        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
-    )
-
-
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewThreadUnresolved(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewT
-    hreadUnresolved
-    """
-
-    query: Missing[str] = Field(
-        min_length=1,
-        default=UNSET,
-        description="A GitHub issue or pull request search query.",
-    )
-    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Gitignore-style changed-file path globs.",
-    )
-    write_scope: Missing[Literal["trigger", "repository"]] = Field(
-        default=UNSET,
-        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
-    )
-    allow_copilot_triggers: Missing[bool] = Field(
-        default=UNSET,
-        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
-    )
-
-
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropAutomationCompleted(
-    GitHubModel
-):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropAutomationComplete
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewDismisse
     d
     """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadResolved(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadRe
+    solved
+    """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadUnresolved(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadUn
+    resolved
+    """
+
+    query: Missing[str] = Field(
+        min_length=1,
+        default=UNSET,
+        description="A GitHub issue or pull request search query.",
+    )
+    paths: Missing[list[Annotated[str, Field(min_length=1)]]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Gitignore-style changed-file path globs.",
+    )
+    write_scope: Missing[Literal["trigger", "repository"]] = Field(
+        default=UNSET,
+        description="Sets the write scope for this trigger's runs. Omit to inherit the automation's effective scope (default `trigger`). Organization or repository policy may restrict the effective scope to `trigger`. Explicitly setting `repository` on create or edit returns 422 when policy validation is enabled and that policy applies.",
+    )
+    allow_copilot_triggers: Missing[bool] = Field(
+        default=UNSET,
+        description="When true, events Copilot creates, including from other automations and Copilot sessions, can start this automation through this trigger. Defaults to false. The Copilot coding agent app cannot turn it on: creating a trigger with true, or changing it from false to true, returns 422.",
+    )
+
+
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationCompleted(
+    GitHubModel
+):
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationCompleted"""
 
     automation_ids: UniqueList[str] = Field(
         max_length=3 if PYDANTIC_V2 else None,
@@ -953,10 +906,10 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropAutomationCo
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropAutomationFailed(
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationFailed(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropAutomationFailed"""
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationFailed"""
 
     automation_ids: UniqueList[str] = Field(
         max_length=3 if PYDANTIC_V2 else None,
@@ -979,10 +932,10 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropAutomationFa
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropCodeScanningAlert(
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropCodeScanningAlert(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropCodeScanningAlert
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropCodeScanningAlert
 
     Runs on the default branch when a security alert of this kind is created in the
     repository. These are system events without an issue, pull request, or human
@@ -999,11 +952,10 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropCodeScanning
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropSecretScanningAlert(
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSecretScanningAlert(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropSecretScanningAler
-    t
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSecretScanningAlert
 
     Runs on the default branch when a security alert of this kind is created in the
     repository. These are system events without an issue, pull request, or human
@@ -1020,10 +972,10 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropSecretScanni
     )
 
 
-class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDependabotAlert(
+class AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDependabotAlert(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDependabotAlert
+    """AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDependabotAlert
 
     Runs on the default branch when a security alert of this kind is created in the
     repository. These are system events without an issue, pull request, or human
@@ -1040,136 +992,102 @@ class AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDependabotAl
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsPostResponse201)
-model_rebuild(AgentsReposOwnerRepoAutomationsPostResponse201PropCreatedBy)
-model_rebuild(AgentsReposOwnerRepoAutomationsPostResponse201PropTriggers)
-model_rebuild(AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropInterval)
-model_rebuild(AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueOpened)
+model_rebuild(AgentsReposOwnerRepoAutomationsPostBody)
+model_rebuild(AgentsReposOwnerRepoAutomationsPostBodyPropTriggers)
+model_rebuild(AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropInterval)
+model_rebuild(AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueOpened)
+model_rebuild(AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueLabeled)
+model_rebuild(AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropWorkflowRun)
+model_rebuild(AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestOpened)
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueLabeled
+    AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestSynchronize
 )
-model_rebuild(AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropWorkflowRun)
+model_rebuild(AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMerged)
+model_rebuild(AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueComment)
+model_rebuild(AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestComment)
+model_rebuild(AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionOpened)
+model_rebuild(AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionUpdated)
+model_rebuild(AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionComment)
+model_rebuild(AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueAssigned)
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestOpened
+    AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestAssigned
 )
+model_rebuild(AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSubIssueAdded)
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestSynchronize
+    AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReadyForReview
 )
+model_rebuild(AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestLabeled)
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestMerged
-)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueComment
-)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestComment
-)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionOpened
-)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionUpdated
+    AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMergeConflict
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionComment
+    AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewSubmitted
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueAssigned
+    AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewRequested
+)
+model_rebuild(AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueClosed)
+model_rebuild(AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueReopened)
+model_rebuild(AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestClosed)
+model_rebuild(
+    AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReopened
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestAssigned
+    AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestConvertedToDraft
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropSubIssueAdded
+    AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewDismissed
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReadyForReview
+    AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadResolved
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestLabeled
+    AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadUnresolved
 )
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestMergeConflict
+    AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationCompleted
 )
+model_rebuild(AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationFailed)
+model_rebuild(AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropCodeScanningAlert)
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewSubmitted
+    AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSecretScanningAlert
 )
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewRequested
-)
-model_rebuild(AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueClosed)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueReopened
-)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestClosed
-)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReopened
-)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestConvertedToDraft
-)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewDismissed
-)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewThreadResolved
-)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewThreadUnresolved
-)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropAutomationCompleted
-)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropAutomationFailed
-)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropCodeScanningAlert
-)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropSecretScanningAlert
-)
-model_rebuild(
-    AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDependabotAlert
-)
+model_rebuild(AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDependabotAlert)
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsPostResponse201",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropCreatedBy",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggers",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropAutomationCompleted",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropAutomationFailed",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropCodeScanningAlert",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDependabotAlert",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionComment",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionOpened",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionUpdated",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropInterval",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueAssigned",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueClosed",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueComment",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueLabeled",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueOpened",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueReopened",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestAssigned",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestClosed",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestComment",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestConvertedToDraft",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestLabeled",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestMergeConflict",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestMerged",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestOpened",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReadyForReview",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReopened",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewDismissed",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewRequested",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewSubmitted",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewThreadResolved",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewThreadUnresolved",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestSynchronize",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropSecretScanningAlert",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropSubIssueAdded",
-    "AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropWorkflowRun",
+    "AgentsReposOwnerRepoAutomationsPostBody",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggers",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationCompleted",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationFailed",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropCodeScanningAlert",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDependabotAlert",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionComment",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionOpened",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionUpdated",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropInterval",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueAssigned",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueClosed",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueComment",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueLabeled",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueOpened",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueReopened",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestAssigned",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestClosed",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestComment",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestConvertedToDraft",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestLabeled",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMergeConflict",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMerged",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestOpened",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReadyForReview",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReopened",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewDismissed",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewRequested",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewSubmitted",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadResolved",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadUnresolved",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestSynchronize",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSecretScanningAlert",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSubIssueAdded",
+    "AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropWorkflowRun",
 )

@@ -11,44 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0299 import RateLimitType, RateLimitTypeForResponse
-from .group_0301 import (
-    RateLimitOverviewPropResourcesType,
-    RateLimitOverviewPropResourcesTypeForResponse,
-)
+
+class RateLimitType(TypedDict):
+    """Rate Limit"""
+
+    limit: int
+    remaining: int
+    reset: int
+    used: int
 
 
-class RateLimitOverviewType(TypedDict):
-    """Rate Limit Overview
+class RateLimitTypeForResponse(TypedDict):
+    """Rate Limit"""
 
-    Rate limit status for the applicable requester and resource category. Requests
-    authenticated as a user share the user's rate limit across credentials. Requests
-    without authentication use the requesting IP address. API requests routed
-    through
-    either an API hostname or a web hostname can count against the same applicable
-    limit.
-    """
-
-    resources: RateLimitOverviewPropResourcesType
-    rate: RateLimitType
-
-
-class RateLimitOverviewTypeForResponse(TypedDict):
-    """Rate Limit Overview
-
-    Rate limit status for the applicable requester and resource category. Requests
-    authenticated as a user share the user's rate limit across credentials. Requests
-    without authentication use the requesting IP address. API requests routed
-    through
-    either an API hostname or a web hostname can count against the same applicable
-    limit.
-    """
-
-    resources: RateLimitOverviewPropResourcesTypeForResponse
-    rate: RateLimitTypeForResponse
+    limit: int
+    remaining: int
+    reset: int
+    used: int
 
 
 __all__ = (
-    "RateLimitOverviewType",
-    "RateLimitOverviewTypeForResponse",
+    "RateLimitType",
+    "RateLimitTypeForResponse",
 )

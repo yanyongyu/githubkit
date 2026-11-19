@@ -13,12 +13,12 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeQualitySetupUpdateAnyof2Type(TypedDict):
-    """CodeQualitySetupUpdateAnyof2"""
+class CodeQualitySetupUpdateAnyof1Type(TypedDict):
+    """CodeQualitySetupUpdateAnyof1"""
 
     state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: NotRequired[Literal["standard", "labeled"]]
-    runner_label: Union[str, None]
+    runner_type: Literal["standard", "labeled"]
+    runner_label: NotRequired[Union[str, None]]
     languages: NotRequired[
         list[
             Literal[
@@ -29,12 +29,12 @@ class CodeQualitySetupUpdateAnyof2Type(TypedDict):
     ai_findings_option: NotRequired[Literal["disabled", "on_push"]]
 
 
-class CodeQualitySetupUpdateAnyof2TypeForResponse(TypedDict):
-    """CodeQualitySetupUpdateAnyof2"""
+class CodeQualitySetupUpdateAnyof1TypeForResponse(TypedDict):
+    """CodeQualitySetupUpdateAnyof1"""
 
     state: NotRequired[Literal["configured", "not-configured"]]
-    runner_type: NotRequired[Literal["standard", "labeled"]]
-    runner_label: Union[str, None]
+    runner_type: Literal["standard", "labeled"]
+    runner_label: NotRequired[Union[str, None]]
     languages: NotRequired[
         list[
             Literal[
@@ -46,6 +46,6 @@ class CodeQualitySetupUpdateAnyof2TypeForResponse(TypedDict):
 
 
 __all__ = (
-    "CodeQualitySetupUpdateAnyof2Type",
-    "CodeQualitySetupUpdateAnyof2TypeForResponse",
+    "CodeQualitySetupUpdateAnyof1Type",
+    "CodeQualitySetupUpdateAnyof1TypeForResponse",
 )

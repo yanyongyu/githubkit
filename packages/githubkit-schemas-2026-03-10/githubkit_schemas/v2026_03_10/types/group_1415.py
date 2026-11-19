@@ -28,11 +28,11 @@ from .group_0147 import (
 )
 
 
-class ReposOwnerRepoActionsPoliciesPolicyIdPutBodyType(TypedDict):
-    """ReposOwnerRepoActionsPoliciesPolicyIdPutBody"""
+class ReposOwnerRepoActionsPoliciesPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsPoliciesPostBody"""
 
-    name: NotRequired[str]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    name: str
+    enforcement: Literal["disabled", "active", "evaluate"]
     conditions: NotRequired[
         Union[
             ActionsPolicyRepoConditionsOneof0Type, ActionsPolicyRepoConditionsOneof1Type
@@ -48,11 +48,11 @@ class ReposOwnerRepoActionsPoliciesPolicyIdPutBodyType(TypedDict):
     ]
 
 
-class ReposOwnerRepoActionsPoliciesPolicyIdPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoActionsPoliciesPolicyIdPutBody"""
+class ReposOwnerRepoActionsPoliciesPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoActionsPoliciesPostBody"""
 
-    name: NotRequired[str]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    name: str
+    enforcement: Literal["disabled", "active", "evaluate"]
     conditions: NotRequired[
         Union[
             ActionsPolicyRepoConditionsOneof0TypeForResponse,
@@ -70,6 +70,6 @@ class ReposOwnerRepoActionsPoliciesPolicyIdPutBodyTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "ReposOwnerRepoActionsPoliciesPolicyIdPutBodyType",
-    "ReposOwnerRepoActionsPoliciesPolicyIdPutBodyTypeForResponse",
+    "ReposOwnerRepoActionsPoliciesPostBodyType",
+    "ReposOwnerRepoActionsPoliciesPostBodyTypeForResponse",
 )

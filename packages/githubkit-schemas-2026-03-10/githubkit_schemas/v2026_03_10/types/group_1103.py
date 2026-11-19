@@ -13,10 +13,10 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404Type(
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401Type(
     TypedDict
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -27,7 +27,7 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse4
     message: str
     errors: NotRequired[
         list[
-            AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404PropErrorsItemsType
+            AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401PropErrorsItemsType
         ]
     ]
     documentation_url: str
@@ -35,10 +35,10 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse4
     limited_resource: NotRequired[str]
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404TypeForResponse(
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401TypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -49,7 +49,7 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse4
     message: str
     errors: NotRequired[
         list[
-            AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404PropErrorsItemsTypeForResponse
+            AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401PropErrorsItemsTypeForResponse
         ]
     ]
     documentation_url: str
@@ -57,10 +57,10 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse4
     limited_resource: NotRequired[str]
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404PropErrorsItemsType(
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401PropErrorsItemsType(
     TypedDict
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404Prop
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401Prop
     ErrorsItems
 
     A single validation error
@@ -77,10 +77,10 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse4
     message: NotRequired[str]
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404PropErrorsItemsTypeForResponse(
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401PropErrorsItemsTypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404Prop
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401Prop
     ErrorsItems
 
     A single validation error
@@ -98,8 +98,8 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse4
 
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404PropErrorsItemsType",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404PropErrorsItemsTypeForResponse",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404Type",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404TypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401PropErrorsItemsType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401Type",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401TypeForResponse",
 )

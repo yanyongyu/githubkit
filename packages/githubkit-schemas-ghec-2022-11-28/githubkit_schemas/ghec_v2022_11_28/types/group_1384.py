@@ -13,27 +13,25 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1Type(TypedDict):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1"""
+class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0Type(TypedDict):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0"""
 
     credential_id: int
-    credential_type: Literal["ssh_key"]
-    fingerprint: str
+    credential_type: Literal["classic_pat"]
     organizations: list[str]
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1TypeForResponse(
+class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1"""
+    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0"""
 
     credential_id: int
-    credential_type: Literal["ssh_key"]
-    fingerprint: str
+    credential_type: Literal["classic_pat"]
     organizations: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1Type",
-    "EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1TypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0Type",
+    "EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0TypeForResponse",
 )

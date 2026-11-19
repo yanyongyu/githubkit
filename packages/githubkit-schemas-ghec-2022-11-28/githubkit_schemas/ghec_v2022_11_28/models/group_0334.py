@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,12 +19,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationCreateIssueField(GitHubModel):
-    """OrganizationCreateIssueField"""
+class IssueField(GitHubModel):
+    """Issue Field
 
-    name: str = Field(description="Name of the issue field.")
+    A custom attribute defined by a repository owner for attaching structured data
+    to issues.
+    """
+
+    id: int = Field(description="The unique identifier of the issue field.")
+    node_id: str = Field(description="The node identifier of the issue field.")
+    name: str = Field(description="The name of the issue field.")
     description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the issue field."
+        default=UNSET, description="The description of the issue field."
     )
     data_type: Literal["text", "date", "single_select", "multi_select", "number"] = (
         Field(description="The data type of the issue field.")
@@ -31,34 +38,52 @@ class OrganizationCreateIssueField(GitHubModel):
     visibility: Missing[Literal["organization_members_only", "all", "restricted"]] = (
         Field(
             default=UNSET,
-            description="The visibility of the issue field. Can be `restricted` (visible to organization members and to collaborators on the repository the field is read through) or `all` (visible to all users who can see issues). `organization_members_only` is deprecated. Use `restricted` instead. Removal will be announced for a future REST API version; existing REST API versions will continue to support this value. Only used when the visibility settings feature is enabled. Defaults to `organization_members_only`.",
+            description="The visibility of the issue field. Organization-owned fields return `organization_members_only` for restricted visibility (visible to organization members and to collaborators on the repository the field is read through), or `all` (visible to all users who can see issues). For create and update requests, use `restricted` instead of the deprecated `organization_members_only` input. Existing REST API versions continue to return `organization_members_only` for restricted organization-owned fields, even when a request uses `restricted`. Any change to this response spelling will be introduced in a future REST API version.",
         )
     )
-    options: Missing[
-        Union[list[OrganizationCreateIssueFieldPropOptionsItems], None]
-    ] = Field(
+    options: Missing[Union[list[IssueFieldPropOptionsItems], None]] = Field(
         default=UNSET,
-        description="Options for select fields. Required when data_type is 'single_select' or 'multi_select'.",
+        description="Available options for single select and multi select fields.",
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the issue field was created."
+    )
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the issue field was last updated."
     )
 
 
-class OrganizationCreateIssueFieldPropOptionsItems(GitHubModel):
-    """OrganizationCreateIssueFieldPropOptionsItems"""
+class IssueFieldPropOptionsItems(GitHubModel):
+    """IssueFieldPropOptionsItems"""
 
-    name: str = Field(description="Name of the option.")
+    id: int = Field(description="The unique identifier of the option.")
+    name: str = Field(description="The name of the option.")
     description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the option."
+        default=UNSET, description="The description of the option."
     )
-    color: Literal[
-        "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-    ] = Field(description="Color for the option.")
-    priority: int = Field(description="Priority of the option for ordering.")
+    color: Missing[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ] = Field(default=UNSET, description="The color of the option.")
+    priority: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The priority of the option for ordering."
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the option was created."
+    )
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the option was last updated."
+    )
 
 
-model_rebuild(OrganizationCreateIssueField)
-model_rebuild(OrganizationCreateIssueFieldPropOptionsItems)
+model_rebuild(IssueField)
+model_rebuild(IssueFieldPropOptionsItems)
 
 __all__ = (
-    "OrganizationCreateIssueField",
-    "OrganizationCreateIssueFieldPropOptionsItems",
+    "IssueField",
+    "IssueFieldPropOptionsItems",
 )

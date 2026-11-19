@@ -13,10 +13,10 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1"""
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    state: NotRequired[Literal["open", "dismissed"]]
+    state: Literal["open", "dismissed"]
     dismissed_reason: NotRequired[
         Union[
             Literal["false positive", "won't fix", "used in tests", "mitigated"], None
@@ -24,15 +24,15 @@ class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1Type(TypedDict):
     ]
     dismissed_comment: NotRequired[Union[str, None]]
     create_request: NotRequired[bool]
-    assignees: list[str]
+    assignees: NotRequired[list[str]]
 
 
-class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1TypeForResponse(
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1"""
+    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    state: NotRequired[Literal["open", "dismissed"]]
+    state: Literal["open", "dismissed"]
     dismissed_reason: NotRequired[
         Union[
             Literal["false positive", "won't fix", "used in tests", "mitigated"], None
@@ -40,10 +40,10 @@ class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1TypeForResponse(
     ]
     dismissed_comment: NotRequired[Union[str, None]]
     create_request: NotRequired[bool]
-    assignees: list[str]
+    assignees: NotRequired[list[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1Type",
-    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1TypeForResponse",
+    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0Type",
+    "ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse",
 )

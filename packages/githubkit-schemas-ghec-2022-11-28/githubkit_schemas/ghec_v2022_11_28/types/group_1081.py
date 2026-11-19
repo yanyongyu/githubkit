@@ -13,41 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0673 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0674 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0675 import (
+from .group_0674 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0675 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0676 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0676 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0723 import WebhooksReleaseType, WebhooksReleaseTypeForResponse
+from .group_0677 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0725 import WebhooksRelease1Type, WebhooksRelease1TypeForResponse
 
 
-class WebhookReleaseReleasedType(TypedDict):
-    """release released event"""
+class WebhookReleasePublishedType(TypedDict):
+    """release published event"""
 
-    action: Literal["released"]
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhooksReleaseType
+    release: WebhooksRelease1Type
     repository: RepositoryWebhooksType
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookReleaseReleasedTypeForResponse(TypedDict):
-    """release released event"""
+class WebhookReleasePublishedTypeForResponse(TypedDict):
+    """release published event"""
 
-    action: Literal["released"]
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
-    release: WebhooksReleaseTypeForResponse
+    release: WebhooksRelease1TypeForResponse
     repository: RepositoryWebhooksTypeForResponse
     sender: NotRequired[SimpleUserTypeForResponse]
 
 
 __all__ = (
-    "WebhookReleaseReleasedType",
-    "WebhookReleaseReleasedTypeForResponse",
+    "WebhookReleasePublishedType",
+    "WebhookReleasePublishedTypeForResponse",
 )

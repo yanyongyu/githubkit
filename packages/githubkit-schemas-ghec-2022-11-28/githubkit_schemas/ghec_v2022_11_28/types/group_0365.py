@@ -12,25 +12,55 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ExternalPropertyType(TypedDict):
-    """External Property
+class OrganizationExternalPropertyInstallationType(TypedDict):
+    """Organization External Custom Property Installation
 
-    External custom property defined for a GitHub App installation
+    A GitHub App installation that has been registered to read and write an
+    organization's external custom properties, together with the display name
+    assigned to it.
     """
 
-    property_name: str
+    display_name: str
+    installation: OrganizationExternalPropertyInstallationPropInstallationType
 
 
-class ExternalPropertyTypeForResponse(TypedDict):
-    """External Property
+class OrganizationExternalPropertyInstallationTypeForResponse(TypedDict):
+    """Organization External Custom Property Installation
 
-    External custom property defined for a GitHub App installation
+    A GitHub App installation that has been registered to read and write an
+    organization's external custom properties, together with the display name
+    assigned to it.
     """
 
-    property_name: str
+    display_name: str
+    installation: (
+        OrganizationExternalPropertyInstallationPropInstallationTypeForResponse
+    )
+
+
+class OrganizationExternalPropertyInstallationPropInstallationType(TypedDict):
+    """OrganizationExternalPropertyInstallationPropInstallation
+
+    The GitHub App installation that was registered.
+    """
+
+    id: int
+
+
+class OrganizationExternalPropertyInstallationPropInstallationTypeForResponse(
+    TypedDict
+):
+    """OrganizationExternalPropertyInstallationPropInstallation
+
+    The GitHub App installation that was registered.
+    """
+
+    id: int
 
 
 __all__ = (
-    "ExternalPropertyType",
-    "ExternalPropertyTypeForResponse",
+    "OrganizationExternalPropertyInstallationPropInstallationType",
+    "OrganizationExternalPropertyInstallationPropInstallationTypeForResponse",
+    "OrganizationExternalPropertyInstallationType",
+    "OrganizationExternalPropertyInstallationTypeForResponse",
 )

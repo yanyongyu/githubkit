@@ -18,54 +18,44 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200(GitHubModel):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200"""
+class EnterprisesEnterpriseCopilotModelPoliciesPatchBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchBody"""
 
     default_availability: Missing[
-        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability
+        EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailability
     ] = Field(default=UNSET)
-    models: list[
-        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems
-    ] = Field()
+    models: Missing[
+        list[EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItems]
+    ] = Field(default=UNSET)
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability(
+class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailability(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability"""
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailability"""
 
     policy_state: Literal["enabled", "disabled", "delegate_to_organizations"] = Field(
-        description="The enterprise default availability for models that have not been configured. `delegate_to_organizations` is only returned for enterprises that manage Copilot through organizations."
+        description="`delegate_to_organizations` is only accepted for enterprises that manage Copilot through organizations."
     )
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems"""
+class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItems(GitHubModel):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItems"""
 
-    model_name: str = Field()
-    display_name: str = Field()
+    model_name: str = Field(min_length=1)
     policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_organizations",
-        "delegate_to_default",
-        "unconfigured",
+        "enabled", "disabled", "delegate_to_teams_and_apps", "delegate_to_organizations"
     ] = Field(
-        description="The enterprise policy for the model. `delegate_to_organizations` is returned for enterprises that manage Copilot through organizations."
+        description="`delegate_to_organizations` is only accepted for enterprises that manage Copilot through organizations."
     )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200)
-model_rebuild(
-    EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability
-)
-model_rebuild(EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems)
+model_rebuild(EnterprisesEnterpriseCopilotModelPoliciesPatchBody)
+model_rebuild(EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailability)
+model_rebuild(EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItems)
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200",
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability",
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchBody",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailability",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItems",
 )

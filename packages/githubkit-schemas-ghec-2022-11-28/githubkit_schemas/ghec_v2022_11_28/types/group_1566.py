@@ -9,49 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotFeaturePoliciesGetResponse200Type(TypedDict):
-    """OrgsOrgCopilotFeaturePoliciesGetResponse200"""
+class OrgsOrgCopilotContentExclusionPutResponse200Type(TypedDict):
+    """OrgsOrgCopilotContentExclusionPutResponse200"""
 
-    default_availability: (
-        OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityType
-    )
+    message: NotRequired[str]
 
 
-class OrgsOrgCopilotFeaturePoliciesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotFeaturePoliciesGetResponse200"""
+class OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotContentExclusionPutResponse200"""
 
-    default_availability: OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityTypeForResponse
-
-
-class OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityType(TypedDict):
-    """OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability
-
-    The default policy applied to newly released Copilot features and clients.
-    """
-
-    policy_state: Literal["enabled", "disabled"]
-    editable: bool
-
-
-class OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability
-
-    The default policy applied to newly released Copilot features and clients.
-    """
-
-    policy_state: Literal["enabled", "disabled"]
-    editable: bool
+    message: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityType",
-    "OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityTypeForResponse",
-    "OrgsOrgCopilotFeaturePoliciesGetResponse200Type",
-    "OrgsOrgCopilotFeaturePoliciesGetResponse200TypeForResponse",
+    "OrgsOrgCopilotContentExclusionPutResponse200Type",
+    "OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse",
 )

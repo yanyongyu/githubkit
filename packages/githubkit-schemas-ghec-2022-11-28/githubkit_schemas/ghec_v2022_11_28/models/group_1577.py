@@ -16,8 +16,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202(GitHubModel):
-    """OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202"""
+class OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202(GitHubModel):
+    """OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202"""
 
     message: Missing[str] = Field(
         default=UNSET, description="A message indicating the revocation has been queued"
@@ -28,6 +28,6 @@ class OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202(GitHubModel):
     )
 
 
-model_rebuild(OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202)
+model_rebuild(OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202)
 
-__all__ = ("OrgsOrgCredentialAuthorizationsUsernameRevokePostResponse202",)
+__all__ = ("OrgsOrgCredentialAuthorizationsRevokeCredentialTypePostResponse202",)

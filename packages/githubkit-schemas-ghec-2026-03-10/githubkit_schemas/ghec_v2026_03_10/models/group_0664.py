@@ -18,30 +18,29 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserUpdateIssueField(GitHubModel):
-    """UserUpdateIssueField"""
+class UserCreateIssueField(GitHubModel):
+    """UserCreateIssueField"""
 
-    name: Missing[str] = Field(default=UNSET, description="Name of the issue field.")
+    name: str = Field(description="Name of the issue field.")
     description: Missing[Union[str, None]] = Field(
         default=UNSET, description="Description of the issue field."
     )
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"] = (
+        Field(description="The data type of the issue field.")
+    )
     visibility: Missing[Literal["restricted", "all"]] = Field(
         default=UNSET,
-        description="The visibility of the issue field. Can be `restricted` (visible only to the owner and to collaborators on the repository the field is read through) or `all` (visible to all users who can see issues).",
+        description="The visibility of the issue field. Can be `restricted` (visible only to the owner and to collaborators on the repository the field is read through) or `all` (visible to all users who can see issues). Defaults to `restricted`.",
     )
-    options: Missing[list[UserUpdateIssueFieldPropOptionsItems]] = Field(
+    options: Missing[Union[list[UserCreateIssueFieldPropOptionsItems], None]] = Field(
         default=UNSET,
-        description="Options for select fields. Only applicable when updating single_select or multi_select fields. When provided, this array **replaces** the entire existing set of options rather than adding to or updating individual options. To retain or update an existing option, include it in the array with its `id`. Options sent without an `id` are treated as new options and may cause existing options to be deleted and recreated.",
+        description="Options for select fields. Required when data_type is 'single_select' or 'multi_select'.",
     )
 
 
-class UserUpdateIssueFieldPropOptionsItems(GitHubModel):
-    """UserUpdateIssueFieldPropOptionsItems"""
+class UserCreateIssueFieldPropOptionsItems(GitHubModel):
+    """UserCreateIssueFieldPropOptionsItems"""
 
-    id: Missing[int] = Field(
-        default=UNSET,
-        description="The id of an existing option to retain or update. Omit this when creating a new option.",
-    )
     name: str = Field(description="Name of the option.")
     description: Missing[Union[str, None]] = Field(
         default=UNSET, description="Description of the option."
@@ -52,10 +51,10 @@ class UserUpdateIssueFieldPropOptionsItems(GitHubModel):
     priority: int = Field(description="Priority of the option for ordering.")
 
 
-model_rebuild(UserUpdateIssueField)
-model_rebuild(UserUpdateIssueFieldPropOptionsItems)
+model_rebuild(UserCreateIssueField)
+model_rebuild(UserCreateIssueFieldPropOptionsItems)
 
 __all__ = (
-    "UserUpdateIssueField",
-    "UserUpdateIssueFieldPropOptionsItems",
+    "UserCreateIssueField",
+    "UserCreateIssueFieldPropOptionsItems",
 )

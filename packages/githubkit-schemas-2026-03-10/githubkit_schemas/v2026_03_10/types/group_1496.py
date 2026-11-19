@@ -12,47 +12,47 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
-from .group_1494 import (
+from .group_1495 import (
     ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType,
     ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse,
 )
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0"""
 
-    state: NotRequired[Literal["dismissed", "open"]]
+    state: Literal["dismissed", "open"]
     dismissed_reason: NotRequired[
         Literal[
             "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
         ]
     ]
     dismissed_comment: NotRequired[str]
-    assignees: list[str]
+    assignees: NotRequired[list[str]]
     agent_assignment: NotRequired[
         ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType
     ]
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1TypeForResponse(
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1"""
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0"""
 
-    state: NotRequired[Literal["dismissed", "open"]]
+    state: Literal["dismissed", "open"]
     dismissed_reason: NotRequired[
         Literal[
             "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
         ]
     ]
     dismissed_comment: NotRequired[str]
-    assignees: list[str]
+    assignees: NotRequired[list[str]]
     agent_assignment: NotRequired[
         ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse
     ]
 
 
 __all__ = (
-    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1Type",
-    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1TypeForResponse",
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0Type",
+    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0TypeForResponse",
 )

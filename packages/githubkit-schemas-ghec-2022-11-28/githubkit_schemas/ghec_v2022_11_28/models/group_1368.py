@@ -9,35 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422(GitHubModel):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422"""
 
-    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability = Field()
-
-
-class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability"""
-
-    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"] = Field(
-        description="The enterprise default policy applied to newly released Copilot features and clients. `delegate_to_organizations` means each organization sets its own default."
-    )
+    message: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200)
-model_rebuild(
-    EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability
-)
+model_rebuild(EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422)
 
-__all__ = (
-    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200",
-    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability",
-)
+__all__ = ("EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422",)

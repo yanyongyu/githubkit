@@ -13,44 +13,44 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0672 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0673 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0674 import (
+from .group_0245 import IssueTypeType, IssueTypeTypeForResponse
+from .group_0673 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0674 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0675 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0675 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0696 import WebhooksIssueType, WebhooksIssueTypeForResponse
-from .group_0699 import WebhooksUserMannequinType, WebhooksUserMannequinTypeForResponse
+from .group_0676 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0697 import WebhooksIssueType, WebhooksIssueTypeForResponse
 
 
-class WebhookIssuesUnassignedType(TypedDict):
-    """issues unassigned event"""
+class WebhookIssuesTypedType(TypedDict):
+    """issues typed event"""
 
-    action: Literal["unassigned"]
-    assignee: NotRequired[Union[WebhooksUserMannequinType, None]]
+    action: Literal["typed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     issue: WebhooksIssueType
+    type: Union[IssueTypeType, None]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesUnassignedTypeForResponse(TypedDict):
-    """issues unassigned event"""
+class WebhookIssuesTypedTypeForResponse(TypedDict):
+    """issues typed event"""
 
-    action: Literal["unassigned"]
-    assignee: NotRequired[Union[WebhooksUserMannequinTypeForResponse, None]]
+    action: Literal["typed"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     issue: WebhooksIssueTypeForResponse
+    type: Union[IssueTypeTypeForResponse, None]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesUnassignedType",
-    "WebhookIssuesUnassignedTypeForResponse",
+    "WebhookIssuesTypedType",
+    "WebhookIssuesTypedTypeForResponse",
 )

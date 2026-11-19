@@ -9,69 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgHookType(TypedDict):
-    """Org Hook
+class RepositoryFineGrainedPermissionType(TypedDict):
+    """Repository Fine-Grained Permission
 
-    Org Hook
+    A fine-grained permission that protects repository resources.
     """
 
-    id: int
-    url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
     name: str
-    events: list[str]
-    active: bool
-    config: OrgHookPropConfigType
-    updated_at: _dt.datetime
-    created_at: _dt.datetime
-    type: str
+    description: str
 
 
-class OrgHookTypeForResponse(TypedDict):
-    """Org Hook
+class RepositoryFineGrainedPermissionTypeForResponse(TypedDict):
+    """Repository Fine-Grained Permission
 
-    Org Hook
+    A fine-grained permission that protects repository resources.
     """
 
-    id: int
-    url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
     name: str
-    events: list[str]
-    active: bool
-    config: OrgHookPropConfigTypeForResponse
-    updated_at: str
-    created_at: str
-    type: str
-
-
-class OrgHookPropConfigType(TypedDict):
-    """OrgHookPropConfig"""
-
-    url: NotRequired[str]
-    insecure_ssl: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-
-
-class OrgHookPropConfigTypeForResponse(TypedDict):
-    """OrgHookPropConfig"""
-
-    url: NotRequired[str]
-    insecure_ssl: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
+    description: str
 
 
 __all__ = (
-    "OrgHookPropConfigType",
-    "OrgHookPropConfigTypeForResponse",
-    "OrgHookType",
-    "OrgHookTypeForResponse",
+    "RepositoryFineGrainedPermissionType",
+    "RepositoryFineGrainedPermissionTypeForResponse",
 )

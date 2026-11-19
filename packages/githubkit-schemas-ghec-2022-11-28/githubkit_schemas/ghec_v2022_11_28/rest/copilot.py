@@ -3228,9 +3228,6 @@ class CopilotClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic), or another supported fine-grained permission.
-
         See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-usage-records-for-an-enterprise
         """
 
@@ -3300,9 +3297,6 @@ class CopilotClient:
         Only EMU (GHEC and GHEC with Data Residency) enterprise owners can access this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
-
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic), or another supported fine-grained permission.
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics#get-copilot-usage-records-for-an-enterprise
         """
@@ -8279,6 +8273,7 @@ class CopilotClient:
         severity_filter: Missing[Literal["no_filter", "low", "low_and_medium"]] = UNSET,
         custom_instructions_enabled: Missing[bool] = UNSET,
         mcp_enabled: Missing[bool] = UNSET,
+        cross_repo_context_enabled: Missing[bool] = UNSET,
     ) -> Response[
         RepositoryCopilotCodeReviewSettings,
         RepositoryCopilotCodeReviewSettingsTypeForResponse,
@@ -8381,6 +8376,7 @@ class CopilotClient:
         severity_filter: Missing[Literal["no_filter", "low", "low_and_medium"]] = UNSET,
         custom_instructions_enabled: Missing[bool] = UNSET,
         mcp_enabled: Missing[bool] = UNSET,
+        cross_repo_context_enabled: Missing[bool] = UNSET,
     ) -> Response[
         RepositoryCopilotCodeReviewSettings,
         RepositoryCopilotCodeReviewSettingsTypeForResponse,

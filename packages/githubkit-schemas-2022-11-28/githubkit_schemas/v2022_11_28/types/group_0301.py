@@ -9,46 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0299 import RateLimitType, RateLimitTypeForResponse
-
-
-class RateLimitOverviewPropResourcesType(TypedDict):
-    """RateLimitOverviewPropResources"""
-
-    core: RateLimitType
-    graphql: NotRequired[RateLimitType]
-    search: RateLimitType
-    code_search: NotRequired[RateLimitType]
-    source_import: NotRequired[RateLimitType]
-    integration_manifest: NotRequired[RateLimitType]
-    actions_runner_registration: NotRequired[RateLimitType]
-    scim: NotRequired[RateLimitType]
-    dependency_snapshots: NotRequired[RateLimitType]
-    dependency_sbom: NotRequired[RateLimitType]
-    code_scanning_autofix: NotRequired[RateLimitType]
-    copilot_usage_records: NotRequired[RateLimitType]
+from .group_0300 import RateLimitType, RateLimitTypeForResponse
+from .group_0302 import (
+    RateLimitOverviewPropResourcesType,
+    RateLimitOverviewPropResourcesTypeForResponse,
+)
 
 
-class RateLimitOverviewPropResourcesTypeForResponse(TypedDict):
-    """RateLimitOverviewPropResources"""
+class RateLimitOverviewType(TypedDict):
+    """Rate Limit Overview
 
-    core: RateLimitTypeForResponse
-    graphql: NotRequired[RateLimitTypeForResponse]
-    search: RateLimitTypeForResponse
-    code_search: NotRequired[RateLimitTypeForResponse]
-    source_import: NotRequired[RateLimitTypeForResponse]
-    integration_manifest: NotRequired[RateLimitTypeForResponse]
-    actions_runner_registration: NotRequired[RateLimitTypeForResponse]
-    scim: NotRequired[RateLimitTypeForResponse]
-    dependency_snapshots: NotRequired[RateLimitTypeForResponse]
-    dependency_sbom: NotRequired[RateLimitTypeForResponse]
-    code_scanning_autofix: NotRequired[RateLimitTypeForResponse]
-    copilot_usage_records: NotRequired[RateLimitTypeForResponse]
+    Rate limit status for the applicable requester and resource category. Requests
+    authenticated as a user share the user's rate limit across credentials. Requests
+    without authentication use the requesting IP address. API requests routed
+    through
+    either an API hostname or a web hostname can count against the same applicable
+    limit.
+    """
+
+    resources: RateLimitOverviewPropResourcesType
+    rate: RateLimitType
+
+
+class RateLimitOverviewTypeForResponse(TypedDict):
+    """Rate Limit Overview
+
+    Rate limit status for the applicable requester and resource category. Requests
+    authenticated as a user share the user's rate limit across credentials. Requests
+    without authentication use the requesting IP address. API requests routed
+    through
+    either an API hostname or a web hostname can count against the same applicable
+    limit.
+    """
+
+    resources: RateLimitOverviewPropResourcesTypeForResponse
+    rate: RateLimitTypeForResponse
 
 
 __all__ = (
-    "RateLimitOverviewPropResourcesType",
-    "RateLimitOverviewPropResourcesTypeForResponse",
+    "RateLimitOverviewType",
+    "RateLimitOverviewTypeForResponse",
 )

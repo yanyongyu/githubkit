@@ -13,52 +13,55 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgCopilotModelPoliciesPatchResponse200(GitHubModel):
-    """OrgsOrgCopilotModelPoliciesPatchResponse200"""
+class OrgsOrgCopilotModelPoliciesPatchBody(GitHubModel):
+    """OrgsOrgCopilotModelPoliciesPatchBody"""
 
-    default_availability: OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailability = Field(
-        description="The effective default availability for models reported as `delegate_to_default`."
+    default_availability: Missing[
+        OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability
+    ] = Field(
+        default=UNSET,
+        description="The organization's default availability for eligible models without an explicit\npolicy. It cannot be updated when it is inherited from the enterprise.",
     )
-    models: list[OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItems] = Field(
-        description="The effective policies for all models available to the organization."
+    models: Missing[list[OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems]] = Field(
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="The model policies to update. Each `model_name` must be unique.",
     )
 
 
-class OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailability(GitHubModel):
-    """OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailability
+class OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability(GitHubModel):
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability
 
-    The effective default availability for models reported as `delegate_to_default`.
+    The organization's default availability for eligible models without an explicit
+    policy. It cannot be updated when it is inherited from the enterprise.
     """
 
+    policy_state: Literal["enabled", "disabled"] = Field()
+
+
+class OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems(GitHubModel):
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems"""
+
+    model_name: str = Field(
+        min_length=1,
+        description="The public identifier of a model returned by the get endpoint.",
+    )
     policy_state: Literal["enabled", "disabled"] = Field(
-        description="The effective default availability. The enterprise default is used when it\nis configured. Otherwise, the organization's default is used."
-    )
-    editable: bool = Field(
-        description="Whether the organization can update its default availability."
+        description="The explicit policy state to set for the organization."
     )
 
 
-class OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItems(GitHubModel):
-    """OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItems"""
-
-    model_name: str = Field(description="The public identifier of the model.")
-    display_name: str = Field(description="The human-readable name of the model.")
-    policy_state: Literal[
-        "enabled", "disabled", "delegate_to_default", "unconfigured"
-    ] = Field(
-        description="The policy state after applying inheritance. `enabled` and `disabled` are\nexplicit policies configured for the organization or inherited from its\nenterprise. `delegate_to_default` means the model has no explicit policy and\nfollows `default_availability`. `unconfigured` means the model has no explicit\npolicy and is not eligible for default availability, so it is disabled."
-    )
-
-
-model_rebuild(OrgsOrgCopilotModelPoliciesPatchResponse200)
-model_rebuild(OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailability)
-model_rebuild(OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItems)
+model_rebuild(OrgsOrgCopilotModelPoliciesPatchBody)
+model_rebuild(OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability)
+model_rebuild(OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems)
 
 __all__ = (
-    "OrgsOrgCopilotModelPoliciesPatchResponse200",
-    "OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailability",
-    "OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItems",
+    "OrgsOrgCopilotModelPoliciesPatchBody",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems",
 )

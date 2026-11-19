@@ -12,19 +12,14 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberCopilotCodeReviewPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberCopilotCodeReviewPostBody"""
+class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody"""
 
-    review_effort: Missing[str] = Field(
-        default=UNSET,
-        description="The effort level to use for the Copilot code review. Omit to use the default effort level. Only effort levels available for the repository and actor are accepted. For more information, see [Review effort level](https://docs.github.com/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/code-review#review-effort-level).",
-    )
+    body: str = Field(description="The text of the review comment.")
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberCopilotCodeReviewPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberCopilotCodeReviewPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody",)

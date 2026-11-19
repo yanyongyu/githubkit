@@ -18,32 +18,33 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationUpdateIssueField(GitHubModel):
-    """OrganizationUpdateIssueField"""
+class OrganizationCreateIssueField(GitHubModel):
+    """OrganizationCreateIssueField"""
 
-    name: Missing[str] = Field(default=UNSET, description="Name of the issue field.")
+    name: str = Field(description="Name of the issue field.")
     description: Missing[Union[str, None]] = Field(
         default=UNSET, description="Description of the issue field."
+    )
+    data_type: Literal["text", "date", "single_select", "multi_select", "number"] = (
+        Field(description="The data type of the issue field.")
     )
     visibility: Missing[Literal["organization_members_only", "all", "restricted"]] = (
         Field(
             default=UNSET,
-            description="The visibility of the issue field. Can be `restricted` (visible to organization members and to collaborators on the repository the field is read through) or `all` (visible to all users who can see issues). `organization_members_only` is deprecated. Use `restricted` instead. Removal will be announced for a future REST API version; existing REST API versions will continue to support this value. Only used when the visibility settings feature is enabled.",
+            description="The visibility of the issue field. Can be `restricted` (visible to organization members and to collaborators on the repository the field is read through) or `all` (visible to all users who can see issues). `organization_members_only` is deprecated. Use `restricted` instead. Removal will be announced for a future REST API version; existing REST API versions will continue to support this value. Only used when the visibility settings feature is enabled. Defaults to `organization_members_only`.",
         )
     )
-    options: Missing[list[OrganizationUpdateIssueFieldPropOptionsItems]] = Field(
+    options: Missing[
+        Union[list[OrganizationCreateIssueFieldPropOptionsItems], None]
+    ] = Field(
         default=UNSET,
-        description="Options for select fields. Only applicable when updating single_select or multi_select fields. When provided, this array **replaces** the entire existing set of options rather than adding to or updating individual options. To retain or update an existing option, include it in the array with its `id`. Options sent without an `id` are treated as new options and may cause existing options to be deleted and recreated.",
+        description="Options for select fields. Required when data_type is 'single_select' or 'multi_select'.",
     )
 
 
-class OrganizationUpdateIssueFieldPropOptionsItems(GitHubModel):
-    """OrganizationUpdateIssueFieldPropOptionsItems"""
+class OrganizationCreateIssueFieldPropOptionsItems(GitHubModel):
+    """OrganizationCreateIssueFieldPropOptionsItems"""
 
-    id: Missing[int] = Field(
-        default=UNSET,
-        description="The id of an existing option to retain or update. Omit this when creating a new option.",
-    )
     name: str = Field(description="Name of the option.")
     description: Missing[Union[str, None]] = Field(
         default=UNSET, description="Description of the option."
@@ -54,10 +55,10 @@ class OrganizationUpdateIssueFieldPropOptionsItems(GitHubModel):
     priority: int = Field(description="Priority of the option for ordering.")
 
 
-model_rebuild(OrganizationUpdateIssueField)
-model_rebuild(OrganizationUpdateIssueFieldPropOptionsItems)
+model_rebuild(OrganizationCreateIssueField)
+model_rebuild(OrganizationCreateIssueFieldPropOptionsItems)
 
 __all__ = (
-    "OrganizationUpdateIssueField",
-    "OrganizationUpdateIssueFieldPropOptionsItems",
+    "OrganizationCreateIssueField",
+    "OrganizationCreateIssueFieldPropOptionsItems",
 )

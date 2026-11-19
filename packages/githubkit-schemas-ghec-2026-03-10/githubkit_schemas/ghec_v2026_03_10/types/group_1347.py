@@ -13,43 +13,63 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody"""
+class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200"""
 
     models: list[
-        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsType
+        EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItemsType
     ]
 
 
-class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody"""
+class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200"""
 
     models: list[
-        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsTypeForResponse
+        EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItemsTypeForResponse
     ]
 
 
-class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsType(
+class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItemsType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems"""
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems"""
 
     model_name: str
+    display_name: str
     policy_state: Literal["enabled", "disabled", "optional"]
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_default",
+        "unconfigured",
+    ]
+    editable: bool
 
 
-class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsTypeForResponse(
+class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItemsTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems"""
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems"""
 
     model_name: str
+    display_name: str
     policy_state: Literal["enabled", "disabled", "optional"]
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_default",
+        "unconfigured",
+    ]
+    editable: bool
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsType",
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItemsTypeForResponse",
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyType",
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItemsType",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200Type",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200TypeForResponse",
 )

@@ -16,19 +16,19 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1(
+class ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0(
     GitHubModel
 ):
-    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1"""
+    """ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0"""
 
-    name: Missing[str] = Field(
-        min_length=1,
-        default=UNSET,
-        description="The new human-readable name of the artifact.",
+    name: str = Field(
+        min_length=1, description="The new human-readable name of the artifact."
     )
-    body: str = Field(min_length=1, description="The new artifact content.")
+    body: Missing[str] = Field(
+        min_length=1, default=UNSET, description="The new artifact content."
+    )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0",)

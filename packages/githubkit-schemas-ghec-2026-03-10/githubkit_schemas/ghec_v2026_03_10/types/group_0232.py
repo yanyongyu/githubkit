@@ -13,73 +13,149 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class GetCostCenterType(TypedDict):
-    """GetCostCenter"""
+class BillingCostCenterMembershipType(TypedDict):
+    """BillingCostCenterMembership"""
+
+    resource: BillingCostCenterMembershipPropResourceType
+    memberships: list[BillingCostCenterMembershipPropMembershipsItemsType]
+
+
+class BillingCostCenterMembershipTypeForResponse(TypedDict):
+    """BillingCostCenterMembership"""
+
+    resource: BillingCostCenterMembershipPropResourceTypeForResponse
+    memberships: list[BillingCostCenterMembershipPropMembershipsItemsTypeForResponse]
+
+
+class BillingCostCenterMembershipPropResourceType(TypedDict):
+    """BillingCostCenterMembershipPropResource"""
+
+    type: Literal["user", "organization", "repository", "team"]
+    identifier: Union[
+        BillingCostCenterMembershipPropResourcePropIdentifierOneof0Type,
+        BillingCostCenterMembershipPropResourcePropIdentifierOneof1Type,
+        BillingCostCenterMembershipPropResourcePropIdentifierOneof2Type,
+        BillingCostCenterMembershipPropResourcePropIdentifierOneof3Type,
+    ]
+
+
+class BillingCostCenterMembershipPropResourceTypeForResponse(TypedDict):
+    """BillingCostCenterMembershipPropResource"""
+
+    type: Literal["user", "organization", "repository", "team"]
+    identifier: Union[
+        BillingCostCenterMembershipPropResourcePropIdentifierOneof0TypeForResponse,
+        BillingCostCenterMembershipPropResourcePropIdentifierOneof1TypeForResponse,
+        BillingCostCenterMembershipPropResourcePropIdentifierOneof2TypeForResponse,
+        BillingCostCenterMembershipPropResourcePropIdentifierOneof3TypeForResponse,
+    ]
+
+
+class BillingCostCenterMembershipPropResourcePropIdentifierOneof0Type(TypedDict):
+    """BillingCostCenterMembershipPropResourcePropIdentifierOneof0"""
+
+    login: str
+
+
+class BillingCostCenterMembershipPropResourcePropIdentifierOneof0TypeForResponse(
+    TypedDict
+):
+    """BillingCostCenterMembershipPropResourcePropIdentifierOneof0"""
+
+    login: str
+
+
+class BillingCostCenterMembershipPropResourcePropIdentifierOneof1Type(TypedDict):
+    """BillingCostCenterMembershipPropResourcePropIdentifierOneof1"""
+
+    name: str
+
+
+class BillingCostCenterMembershipPropResourcePropIdentifierOneof1TypeForResponse(
+    TypedDict
+):
+    """BillingCostCenterMembershipPropResourcePropIdentifierOneof1"""
+
+    name: str
+
+
+class BillingCostCenterMembershipPropResourcePropIdentifierOneof2Type(TypedDict):
+    """BillingCostCenterMembershipPropResourcePropIdentifierOneof2"""
+
+    owner: str
+    name: str
+
+
+class BillingCostCenterMembershipPropResourcePropIdentifierOneof2TypeForResponse(
+    TypedDict
+):
+    """BillingCostCenterMembershipPropResourcePropIdentifierOneof2"""
+
+    owner: str
+    name: str
+
+
+class BillingCostCenterMembershipPropResourcePropIdentifierOneof3Type(TypedDict):
+    """BillingCostCenterMembershipPropResourcePropIdentifierOneof3"""
+
+    slug: str
+
+
+class BillingCostCenterMembershipPropResourcePropIdentifierOneof3TypeForResponse(
+    TypedDict
+):
+    """BillingCostCenterMembershipPropResourcePropIdentifierOneof3"""
+
+    slug: str
+
+
+class BillingCostCenterMembershipPropMembershipsItemsType(TypedDict):
+    """BillingCostCenterMembershipPropMembershipsItems"""
+
+    cost_center: NotRequired[
+        BillingCostCenterMembershipPropMembershipsItemsPropCostCenterType
+    ]
+
+
+class BillingCostCenterMembershipPropMembershipsItemsTypeForResponse(TypedDict):
+    """BillingCostCenterMembershipPropMembershipsItems"""
+
+    cost_center: NotRequired[
+        BillingCostCenterMembershipPropMembershipsItemsPropCostCenterTypeForResponse
+    ]
+
+
+class BillingCostCenterMembershipPropMembershipsItemsPropCostCenterType(TypedDict):
+    """BillingCostCenterMembershipPropMembershipsItemsPropCostCenter"""
 
     id: str
     name: str
-    azure_subscription: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["active", "deleted"]]
-    resources: list[GetCostCenterPropResourcesItemsType]
-    has_next_page: NotRequired[bool]
-    ai_credit_pool_enabled: NotRequired[bool]
-    ai_credit_pool_state: NotRequired[GetCostCenterPropAiCreditPoolStateType]
 
 
-class GetCostCenterTypeForResponse(TypedDict):
-    """GetCostCenter"""
+class BillingCostCenterMembershipPropMembershipsItemsPropCostCenterTypeForResponse(
+    TypedDict
+):
+    """BillingCostCenterMembershipPropMembershipsItemsPropCostCenter"""
 
     id: str
     name: str
-    azure_subscription: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["active", "deleted"]]
-    resources: list[GetCostCenterPropResourcesItemsTypeForResponse]
-    has_next_page: NotRequired[bool]
-    ai_credit_pool_enabled: NotRequired[bool]
-    ai_credit_pool_state: NotRequired[GetCostCenterPropAiCreditPoolStateTypeForResponse]
-
-
-class GetCostCenterPropResourcesItemsType(TypedDict):
-    """GetCostCenterPropResourcesItems"""
-
-    type: str
-    name: str
-
-
-class GetCostCenterPropResourcesItemsTypeForResponse(TypedDict):
-    """GetCostCenterPropResourcesItems"""
-
-    type: str
-    name: str
-
-
-class GetCostCenterPropAiCreditPoolStateType(TypedDict):
-    """GetCostCenterPropAiCreditPoolState
-
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
-    """
-
-    target_amount: NotRequired[Union[float, None]]
-    current_amount: NotRequired[Union[float, None]]
-
-
-class GetCostCenterPropAiCreditPoolStateTypeForResponse(TypedDict):
-    """GetCostCenterPropAiCreditPoolState
-
-    Read-only cap-budget projection for the cost center. Only present when the cost
-    center draws from the AI credit pool.
-    """
-
-    target_amount: NotRequired[Union[float, None]]
-    current_amount: NotRequired[Union[float, None]]
 
 
 __all__ = (
-    "GetCostCenterPropAiCreditPoolStateType",
-    "GetCostCenterPropAiCreditPoolStateTypeForResponse",
-    "GetCostCenterPropResourcesItemsType",
-    "GetCostCenterPropResourcesItemsTypeForResponse",
-    "GetCostCenterType",
-    "GetCostCenterTypeForResponse",
+    "BillingCostCenterMembershipPropMembershipsItemsPropCostCenterType",
+    "BillingCostCenterMembershipPropMembershipsItemsPropCostCenterTypeForResponse",
+    "BillingCostCenterMembershipPropMembershipsItemsType",
+    "BillingCostCenterMembershipPropMembershipsItemsTypeForResponse",
+    "BillingCostCenterMembershipPropResourcePropIdentifierOneof0Type",
+    "BillingCostCenterMembershipPropResourcePropIdentifierOneof0TypeForResponse",
+    "BillingCostCenterMembershipPropResourcePropIdentifierOneof1Type",
+    "BillingCostCenterMembershipPropResourcePropIdentifierOneof1TypeForResponse",
+    "BillingCostCenterMembershipPropResourcePropIdentifierOneof2Type",
+    "BillingCostCenterMembershipPropResourcePropIdentifierOneof2TypeForResponse",
+    "BillingCostCenterMembershipPropResourcePropIdentifierOneof3Type",
+    "BillingCostCenterMembershipPropResourcePropIdentifierOneof3TypeForResponse",
+    "BillingCostCenterMembershipPropResourceType",
+    "BillingCostCenterMembershipPropResourceTypeForResponse",
+    "BillingCostCenterMembershipType",
+    "BillingCostCenterMembershipTypeForResponse",
 )

@@ -11,24 +11,25 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0141 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+from .group_0144 import (
+    CustomPropertyBatchItemPayloadType,
+    CustomPropertyBatchItemPayloadTypeForResponse,
+)
 
 
-class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesValuesPatchBody"""
+class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesSchemaPatchBody"""
 
-    repository_names: list[str]
-    properties: list[CustomPropertyValueType]
+    properties: list[CustomPropertyBatchItemPayloadType]
 
 
-class OrgsOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgPropertiesValuesPatchBody"""
+class OrgsOrgPropertiesSchemaPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgPropertiesSchemaPatchBody"""
 
-    repository_names: list[str]
-    properties: list[CustomPropertyValueTypeForResponse]
+    properties: list[CustomPropertyBatchItemPayloadTypeForResponse]
 
 
 __all__ = (
-    "OrgsOrgPropertiesValuesPatchBodyType",
-    "OrgsOrgPropertiesValuesPatchBodyTypeForResponse",
+    "OrgsOrgPropertiesSchemaPatchBodyType",
+    "OrgsOrgPropertiesSchemaPatchBodyTypeForResponse",
 )

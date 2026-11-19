@@ -10,34 +10,45 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
+
+from .group_0037 import (
+    DependabotAlertPackageType,
+    DependabotAlertPackageTypeForResponse,
+)
 
 
-class DependabotRunnerSettingsType(TypedDict):
-    """Dependabot runner settings
+class DependabotAlertPropDependencyType(TypedDict):
+    """DependabotAlertPropDependency
 
-    The runner Dependabot uses for this repository, as shown in the repository
-    settings.
+    Details for the vulnerable dependency.
     """
 
-    runner_type: Literal["standard", "labeled"]
-    runner_labels: list[str]
-    runner_group: Union[str, None]
+    package: NotRequired[DependabotAlertPackageType]
+    manifest_path: NotRequired[str]
+    version_requirement: NotRequired[Union[str, None]]
+    scope: NotRequired[Union[Literal["development", "runtime"], None]]
+    relationship: NotRequired[
+        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
+    ]
 
 
-class DependabotRunnerSettingsTypeForResponse(TypedDict):
-    """Dependabot runner settings
+class DependabotAlertPropDependencyTypeForResponse(TypedDict):
+    """DependabotAlertPropDependency
 
-    The runner Dependabot uses for this repository, as shown in the repository
-    settings.
+    Details for the vulnerable dependency.
     """
 
-    runner_type: Literal["standard", "labeled"]
-    runner_labels: list[str]
-    runner_group: Union[str, None]
+    package: NotRequired[DependabotAlertPackageTypeForResponse]
+    manifest_path: NotRequired[str]
+    version_requirement: NotRequired[Union[str, None]]
+    scope: NotRequired[Union[Literal["development", "runtime"], None]]
+    relationship: NotRequired[
+        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
+    ]
 
 
 __all__ = (
-    "DependabotRunnerSettingsType",
-    "DependabotRunnerSettingsTypeForResponse",
+    "DependabotAlertPropDependencyType",
+    "DependabotAlertPropDependencyTypeForResponse",
 )

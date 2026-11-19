@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0583 import EnterpriseWebhooks
-from .group_0584 import SimpleInstallation
-from .group_0585 import OrganizationSimpleWebhooks
-from .group_0586 import RepositoryWebhooks
-from .group_0599 import WebhooksLabel
+from .group_0584 import EnterpriseWebhooks
+from .group_0585 import SimpleInstallation
+from .group_0586 import OrganizationSimpleWebhooks
+from .group_0587 import RepositoryWebhooks
+from .group_0610 import WebhooksLabelArchived
 
 
-class WebhookLabelCreated(GitHubModel):
-    """label created event"""
+class WebhookLabelArchived(GitHubModel):
+    """label archived event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["archived"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,7 +39,7 @@ class WebhookLabelCreated(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    label: WebhooksLabel = Field(title="Label")
+    label: WebhooksLabelArchived = Field(title="Archived label")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -49,11 +49,9 @@ class WebhookLabelCreated(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookLabelCreated)
+model_rebuild(WebhookLabelArchived)
 
-__all__ = ("WebhookLabelCreated",)
+__all__ = ("WebhookLabelArchived",)

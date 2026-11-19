@@ -13,44 +13,41 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0672 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0673 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0674 import (
+from .group_0673 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0674 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0675 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0675 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0920 import (
-    WebhookIssuesReopenedPropIssueType,
-    WebhookIssuesReopenedPropIssueTypeForResponse,
-)
+from .group_0676 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0699 import WebhooksIssue2Type, WebhooksIssue2TypeForResponse
 
 
-class WebhookIssuesReopenedType(TypedDict):
-    """issues reopened event"""
+class WebhookIssuesPinnedType(TypedDict):
+    """issues pinned event"""
 
-    action: Literal["reopened"]
+    action: Literal["pinned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesReopenedPropIssueType
+    issue: WebhooksIssue2Type
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesReopenedTypeForResponse(TypedDict):
-    """issues reopened event"""
+class WebhookIssuesPinnedTypeForResponse(TypedDict):
+    """issues pinned event"""
 
-    action: Literal["reopened"]
+    action: Literal["pinned"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesReopenedPropIssueTypeForResponse
+    issue: WebhooksIssue2TypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesReopenedType",
-    "WebhookIssuesReopenedTypeForResponse",
+    "WebhookIssuesPinnedType",
+    "WebhookIssuesPinnedTypeForResponse",
 )

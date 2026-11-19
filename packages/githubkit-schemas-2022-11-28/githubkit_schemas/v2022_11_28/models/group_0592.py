@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,26 +17,36 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0037 import DependabotAlertPackage
 
-class WebhooksDeployKey(GitHubModel):
-    """WebhooksDeployKey
 
-    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
-    deploy-key) resource.
+class DependabotAlertWithdrawnWebhookPropDependency(GitHubModel):
+    """DependabotAlertWithdrawnWebhookPropDependency
+
+    Details for the vulnerable dependency.
     """
 
-    added_by: Missing[Union[str, None]] = Field(default=UNSET)
-    created_at: str = Field()
-    id: int = Field()
-    key: str = Field()
-    last_used: Missing[Union[str, None]] = Field(default=UNSET)
-    read_only: bool = Field()
-    title: str = Field()
-    url: str = Field()
-    verified: bool = Field()
-    enabled: Missing[bool] = Field(default=UNSET)
+    package: DependabotAlertPackage = Field(
+        description="Details for the vulnerable package."
+    )
+    manifest_path: Union[str, None] = Field(
+        description="The full path to the dependency manifest file, relative to the root of the repository."
+    )
+    version_requirement: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The dependency version or version constraint last recorded for the dependency associated with this alert.\nFor dependencies detected from a lockfile, this can be the resolved version.\nFor manifest-only dependencies, it can be the declared version constraint. Returns `null` when unavailable.\n\nAn empty string can indicate an unconstrained dependency. The stored value is limited to 64 bytes;\nlonger requirements may have been truncated and may no longer form a complete, valid version constraint.\n\nWhen multiple vulnerable versions of a dependency correspond to the same alert, this field contains one\nrecorded version or constraint and may not represent all vulnerable versions.\n",
+    )
+    scope: Union[Literal["development", "runtime"], None] = Field(
+        description="The execution scope of the vulnerable dependency."
+    )
+    relationship: Missing[
+        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
+    ] = Field(
+        default=UNSET,
+        description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
+    )
 
 
-model_rebuild(WebhooksDeployKey)
+model_rebuild(DependabotAlertWithdrawnWebhookPropDependency)
 
-__all__ = ("WebhooksDeployKey",)
+__all__ = ("DependabotAlertWithdrawnWebhookPropDependency",)

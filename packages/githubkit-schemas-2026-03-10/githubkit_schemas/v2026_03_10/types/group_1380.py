@@ -9,65 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesSchemaPatchBody"""
+class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType(TypedDict):
+    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
 
-    properties: list[CustomPropertyBatchItemPayloadType]
-
-
-class OrgsOrgPropertiesSchemaPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgPropertiesSchemaPatchBody"""
-
-    properties: list[CustomPropertyBatchItemPayloadTypeForResponse]
+    repository_values: list[RepositoryExternalPropertyPayloadType]
 
 
-class CustomPropertyBatchItemPayloadType(TypedDict):
-    """Custom Property Batch Item Payload
+class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
 
-    Payload for a single custom property definition when creating or updating custom
-    properties in a batch
+    repository_values: list[RepositoryExternalPropertyPayloadTypeForResponse]
+
+
+class RepositoryExternalPropertyPayloadType(TypedDict):
+    """Repository External Custom Property Value Payload
+
+    Repository name and associated external custom property value
     """
 
-    property_name: str
-    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[Literal["org_actors", "org_and_repo_actors"], None]
-    ]
-    regex: NotRequired[Union[str, None]]
-    require_explicit_values: NotRequired[bool]
+    repository_name: str
+    value: Union[str, None]
 
 
-class CustomPropertyBatchItemPayloadTypeForResponse(TypedDict):
-    """Custom Property Batch Item Payload
+class RepositoryExternalPropertyPayloadTypeForResponse(TypedDict):
+    """Repository External Custom Property Value Payload
 
-    Payload for a single custom property definition when creating or updating custom
-    properties in a batch
+    Repository name and associated external custom property value
     """
 
-    property_name: str
-    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, list[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[list[str], None]]
-    values_editable_by: NotRequired[
-        Union[Literal["org_actors", "org_and_repo_actors"], None]
-    ]
-    regex: NotRequired[Union[str, None]]
-    require_explicit_values: NotRequired[bool]
+    repository_name: str
+    value: Union[str, None]
 
 
 __all__ = (
-    "CustomPropertyBatchItemPayloadType",
-    "CustomPropertyBatchItemPayloadTypeForResponse",
-    "OrgsOrgPropertiesSchemaPatchBodyType",
-    "OrgsOrgPropertiesSchemaPatchBodyTypeForResponse",
+    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType",
+    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyTypeForResponse",
+    "RepositoryExternalPropertyPayloadType",
+    "RepositoryExternalPropertyPayloadTypeForResponse",
 )

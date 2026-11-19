@@ -18,20 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0582 import EnterpriseWebhooks
-from .group_0583 import SimpleInstallation
-from .group_0584 import OrganizationSimpleWebhooks
-from .group_0585 import RepositoryWebhooks
-from .group_0589 import DependabotAlertWithdrawnWebhook
+from .group_0399 import DependabotAlert
+from .group_0583 import EnterpriseWebhooks
+from .group_0584 import SimpleInstallation
+from .group_0585 import OrganizationSimpleWebhooks
+from .group_0586 import RepositoryWebhooks
 
 
-class WebhookDependabotAlertWithdrawn(GitHubModel):
-    """Dependabot alert withdrawn event"""
+class WebhookDependabotAlertReopened(GitHubModel):
+    """Dependabot alert reopened event"""
 
-    action: Literal["withdrawn"] = Field()
-    alert: DependabotAlertWithdrawnWebhook = Field(
-        description="Identifiers for a withdrawn Dependabot alert, captured before deletion so that\nconsumers can reconcile external records. This is not a full alert representation.\n"
-    )
+    action: Literal["reopened"] = Field()
+    alert: DependabotAlert = Field(description="A Dependabot alert.")
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -54,6 +52,6 @@ class WebhookDependabotAlertWithdrawn(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDependabotAlertWithdrawn)
+model_rebuild(WebhookDependabotAlertReopened)
 
-__all__ = ("WebhookDependabotAlertWithdrawn",)
+__all__ = ("WebhookDependabotAlertReopened",)

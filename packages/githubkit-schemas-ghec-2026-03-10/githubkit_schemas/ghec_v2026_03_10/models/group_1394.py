@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,21 +18,32 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseDependabotRepositoryAccessPatchBody(GitHubModel):
-    """EnterprisesEnterpriseDependabotRepositoryAccessPatchBody
+class EnterprisesEnterpriseCredentialsExportsPostBody(GitHubModel):
+    """EnterprisesEnterpriseCredentialsExportsPostBody
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    Optional filters that scope the export to a subset of the inventory.
     """
 
-    repository_ids_to_add: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to add."
+    token_types: Missing[list[str]] = Field(
+        default=UNSET, description="The credential types to include."
     )
-    repository_ids_to_remove: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to remove."
+    authorization_state: Missing[
+        Literal["currently_authorized", "member_owned_only"]
+    ] = Field(default=UNSET, description="Filter by enterprise-access status.")
+    owner: Missing[str] = Field(
+        default=UNSET,
+        description="Filter to credentials owned by this user, given as a login.",
+    )
+    organization: Missing[str] = Field(
+        default=UNSET,
+        description="Filter to credentials authorized to this organization in the enterprise, given as a login.",
+    )
+    application: Missing[str] = Field(
+        default=UNSET,
+        description="Filter to credentials for this application, given as a GitHub App slug or an OAuth App client id.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseDependabotRepositoryAccessPatchBody)
+model_rebuild(EnterprisesEnterpriseCredentialsExportsPostBody)
 
-__all__ = ("EnterprisesEnterpriseDependabotRepositoryAccessPatchBody",)
+__all__ = ("EnterprisesEnterpriseCredentialsExportsPostBody",)

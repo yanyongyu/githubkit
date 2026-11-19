@@ -13,77 +13,79 @@ from typing import Any, TypeAlias
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBody
+class OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200Type(TypedDict):
+    """OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200
 
     The team's customization document. Only the keys `pluginAssignments` and
     `extraKnownMarketplaces` are supported.
     """
 
     plugin_assignments: NotRequired[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignmentsType
+        OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignmentsType
     ]
     extra_known_marketplaces: NotRequired[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplacesType
+        OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplacesType
     ]
 
 
-class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBody
+class OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200TypeForResponse(TypedDict):
+    """OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200
 
     The team's customization document. Only the keys `pluginAssignments` and
     `extraKnownMarketplaces` are supported.
     """
 
     plugin_assignments: NotRequired[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignmentsTypeForResponse
+        OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignmentsTypeForResponse
     ]
     extra_known_marketplaces: NotRequired[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplacesTypeForResponse
+        OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplacesTypeForResponse
     ]
 
 
-OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignmentsType: TypeAlias = (
-    dict[str, Any]
-)
-"""OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignments
+OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignmentsType: TypeAlias = dict[
+    str, Any
+]
+"""OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments
 
 Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.
 """
 
 
-OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignmentsTypeForResponse: TypeAlias = dict[
+OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignmentsTypeForResponse: TypeAlias = dict[
     str, Any
 ]
-"""OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignments
+"""OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments
 
 Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.
 """
 
 
-OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplacesType: TypeAlias = dict[
+OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplacesType: TypeAlias = dict[
     str, Any
 ]
-"""OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplaces
+"""OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplace
+s
 
 Additional plugin marketplaces available to the team, keyed by marketplace name.
 """
 
 
-OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplacesTypeForResponse: TypeAlias = dict[
+OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplacesTypeForResponse: TypeAlias = dict[
     str, Any
 ]
-"""OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplaces
+"""OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplace
+s
 
 Additional plugin marketplaces available to the team, keyed by marketplace name.
 """
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplacesType",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplacesTypeForResponse",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignmentsType",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignmentsTypeForResponse",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyType",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyTypeForResponse",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplacesType",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplacesTypeForResponse",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignmentsType",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignmentsTypeForResponse",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200Type",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200TypeForResponse",
 )

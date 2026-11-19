@@ -9,29 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
-
-class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0Type(TypedDict):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0"""
-
-    credential_id: int
-    credential_type: Literal["classic_pat"]
-    organizations: list[str]
+from githubkit.typing import UniqueList
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0"""
+class EnterprisesEnterpriseCredentialAuthorizationsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostBody"""
 
-    credential_id: int
-    credential_type: Literal["classic_pat"]
-    organizations: list[str]
+    credential_id: Union[int, str]
+    credential_type: Literal["classic_pat", "ssh_key"]
+    organizations: UniqueList[str]
+
+
+class EnterprisesEnterpriseCredentialAuthorizationsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostBody"""
+
+    credential_id: Union[int, str]
+    credential_type: Literal["classic_pat", "ssh_key"]
+    organizations: UniqueList[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0Type",
-    "EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0TypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsPostBodyType",
+    "EnterprisesEnterpriseCredentialAuthorizationsPostBodyTypeForResponse",
 )

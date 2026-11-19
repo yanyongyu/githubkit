@@ -5664,6 +5664,7 @@ class CopilotClient:
         severity_filter: Missing[Literal["no_filter", "low", "low_and_medium"]] = UNSET,
         custom_instructions_enabled: Missing[bool] = UNSET,
         mcp_enabled: Missing[bool] = UNSET,
+        cross_repo_context_enabled: Missing[bool] = UNSET,
     ) -> Response[
         RepositoryCopilotCodeReviewSettings,
         RepositoryCopilotCodeReviewSettingsTypeForResponse,
@@ -5766,6 +5767,7 @@ class CopilotClient:
         severity_filter: Missing[Literal["no_filter", "low", "low_and_medium"]] = UNSET,
         custom_instructions_enabled: Missing[bool] = UNSET,
         mcp_enabled: Missing[bool] = UNSET,
+        cross_repo_context_enabled: Missing[bool] = UNSET,
     ) -> Response[
         RepositoryCopilotCodeReviewSettings,
         RepositoryCopilotCodeReviewSettingsTypeForResponse,

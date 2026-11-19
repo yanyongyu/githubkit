@@ -13,49 +13,34 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200(GitHubModel):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200"""
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody(GitHubModel):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody"""
 
     models: list[
-        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItems
-    ] = Field()
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems
+    ] = Field(min_length=1 if PYDANTIC_V2 else None)
 
 
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItems(
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems(
     GitHubModel
 ):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsIt
-    ems
-    """
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems"""
 
-    model_name: str = Field()
-    display_name: str = Field()
+    model_name: str = Field(min_length=1)
     policy_state: Literal["enabled", "disabled", "optional"] = Field(
-        description="When editable, the team's configured value, or `optional` if the team has not configured this model.\nWhen locked, the enterprise's explicit value or its applied default availability for an eligible model.\nReturns `disabled` when locked without an explicit enterprise value and the model is excluded from default availability."
-    )
-    enterprise_policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_default",
-        "unconfigured",
-    ] = Field(
-        description="The separately read enterprise-layer policy for this model, used to determine whether the team can edit its policy."
-    )
-    editable: bool = Field(
-        description="Whether the enterprise policy and available team policy controls allow the team's policy to be updated."
+        description="Use `optional` to remove the team's policy."
     )
 
 
-model_rebuild(EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200)
+model_rebuild(EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody)
 model_rebuild(
-    EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItems
+    EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems
 )
 
 __all__ = (
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200",
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItems",
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody",
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems",
 )

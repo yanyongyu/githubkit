@@ -9,16 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from typing import Literal, Union
+
+from pydantic import Field
+
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CopilotOrganizationContentExclusionDetails(ExtraGitHubModel):
-    """Copilot Organization Content Exclusion Details
+class OrganizationCopilotCodeReviewRunner(GitHubModel):
+    """Organization Copilot Code Review Runner Configuration
 
-    List all Copilot Content Exclusion rules for an organization.
+    The effective runner configuration that Copilot code review uses for the
+    organization.
     """
 
+    runner_type: Literal["standard", "labeled"] = Field(
+        description="The type of runner. `standard` uses GitHub-hosted runners. `labeled` uses runners that match the configured labels or runner group."
+    )
+    runner_labels: list[str] = Field(
+        description="The runner labels used for a labeled runner."
+    )
+    runner_group_name: Union[str, None] = Field(
+        description="The runner group used for a labeled runner, or null when none is set."
+    )
+    allow_repository_customization: bool = Field(
+        description="Whether repositories can use their own runner configuration."
+    )
+    configured_by: Literal["code_review", "coding_agent"] = Field(
+        description="Which configuration the values come from. `code_review` means the organization has saved a Copilot code review runner configuration. `coding_agent` means it has not, and the values are inherited from the organization's Copilot coding agent runner configuration."
+    )
 
-model_rebuild(CopilotOrganizationContentExclusionDetails)
 
-__all__ = ("CopilotOrganizationContentExclusionDetails",)
+model_rebuild(OrganizationCopilotCodeReviewRunner)
+
+__all__ = ("OrganizationCopilotCodeReviewRunner",)

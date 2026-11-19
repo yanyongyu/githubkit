@@ -10,48 +10,70 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBody"""
+class EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200"""
 
     models: list[
-        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItemsType
+        EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItemsType
     ]
 
 
-class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyTypeForResponse(
+class EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBody"""
+    """EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200"""
 
     models: list[
-        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItemsTypeForResponse
+        EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItemsTypeForResponse
     ]
 
 
-class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItemsType(
+class EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItemsType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItems"""
+    """EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItems"""
 
     model_name: str
+    display_name: str
     policy_state: Literal["enabled", "disabled"]
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_organizations",
+        "delegate_to_default",
+        "unconfigured",
+    ]
+    editable: bool
+    required_for_copilot_fusion_max: NotRequired[Literal[True]]
 
 
-class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItemsTypeForResponse(
+class EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItemsTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItems"""
+    """EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItems"""
 
     model_name: str
+    display_name: str
     policy_state: Literal["enabled", "disabled"]
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_organizations",
+        "delegate_to_default",
+        "unconfigured",
+    ]
+    editable: bool
+    required_for_copilot_fusion_max: NotRequired[Literal[True]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItemsType",
-    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItemsTypeForResponse",
-    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyType",
-    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItemsType",
+    "EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200Type",
+    "EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200TypeForResponse",
 )

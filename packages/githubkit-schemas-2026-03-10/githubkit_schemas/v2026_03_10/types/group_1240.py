@@ -32,11 +32,11 @@ from .group_0147 import (
 )
 
 
-class OrgsOrgActionsPoliciesPolicyIdPutBodyType(TypedDict):
-    """OrgsOrgActionsPoliciesPolicyIdPutBody"""
+class OrgsOrgActionsPoliciesPostBodyType(TypedDict):
+    """OrgsOrgActionsPoliciesPostBody"""
 
-    name: NotRequired[str]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    name: str
+    enforcement: Literal["disabled", "active", "evaluate"]
     conditions: NotRequired[
         Union[
             ActionsPolicyOrgConditionsOneof0Type,
@@ -54,11 +54,11 @@ class OrgsOrgActionsPoliciesPolicyIdPutBodyType(TypedDict):
     ]
 
 
-class OrgsOrgActionsPoliciesPolicyIdPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgActionsPoliciesPolicyIdPutBody"""
+class OrgsOrgActionsPoliciesPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgActionsPoliciesPostBody"""
 
-    name: NotRequired[str]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    name: str
+    enforcement: Literal["disabled", "active", "evaluate"]
     conditions: NotRequired[
         Union[
             ActionsPolicyOrgConditionsOneof0TypeForResponse,
@@ -77,6 +77,6 @@ class OrgsOrgActionsPoliciesPolicyIdPutBodyTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "OrgsOrgActionsPoliciesPolicyIdPutBodyType",
-    "OrgsOrgActionsPoliciesPolicyIdPutBodyTypeForResponse",
+    "OrgsOrgActionsPoliciesPostBodyType",
+    "OrgsOrgActionsPoliciesPostBodyTypeForResponse",
 )

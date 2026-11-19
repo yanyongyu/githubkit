@@ -11,79 +11,117 @@ from __future__ import annotations
 
 import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
-from .group_0590 import (
-    DependabotAlertWithdrawnWebhookPropDependencyType,
-    DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse,
-)
+from .group_0010 import IntegrationType, IntegrationTypeForResponse
+from .group_0057 import PullRequestMinimalType, PullRequestMinimalTypeForResponse
+from .group_0341 import DeploymentSimpleType, DeploymentSimpleTypeForResponse
+from .group_0588 import SimpleCheckSuiteType, SimpleCheckSuiteTypeForResponse
 
 
-class DependabotAlertWithdrawnWebhookType(TypedDict):
-    """DependabotAlertWithdrawnWebhook
+class CheckRunWithSimpleCheckSuiteType(TypedDict):
+    """CheckRun
 
-    Identifiers for a withdrawn Dependabot alert, captured before deletion so that
-    consumers can reconcile external records. This is not a full alert
-    representation.
+    A check performed on the code of a given code change
     """
 
-    id: int
-    node_id: str
-    number: int
-    state: Literal["withdrawn"]
-    dependency: DependabotAlertWithdrawnWebhookPropDependencyType
-    security_advisory: DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType
-    url: str
+    app: Union[IntegrationType, None]
+    check_suite: SimpleCheckSuiteType
+    completed_at: Union[_dt.datetime, None]
+    conclusion: Union[
+        Literal[
+            "waiting",
+            "pending",
+            "startup_failure",
+            "stale",
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+        None,
+    ]
+    deployment: NotRequired[DeploymentSimpleType]
+    details_url: str
+    external_id: str
+    head_sha: str
     html_url: str
-    created_at: _dt.datetime
-    withdrawn_at: _dt.datetime
-
-
-class DependabotAlertWithdrawnWebhookTypeForResponse(TypedDict):
-    """DependabotAlertWithdrawnWebhook
-
-    Identifiers for a withdrawn Dependabot alert, captured before deletion so that
-    consumers can reconcile external records. This is not a full alert
-    representation.
-    """
-
     id: int
+    name: str
     node_id: str
-    number: int
-    state: Literal["withdrawn"]
-    dependency: DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse
-    security_advisory: (
-        DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse
-    )
+    output: CheckRunWithSimpleCheckSuitePropOutputType
+    pull_requests: list[PullRequestMinimalType]
+    started_at: _dt.datetime
+    status: Literal["queued", "in_progress", "completed", "pending"]
     url: str
+
+
+class CheckRunWithSimpleCheckSuiteTypeForResponse(TypedDict):
+    """CheckRun
+
+    A check performed on the code of a given code change
+    """
+
+    app: Union[IntegrationTypeForResponse, None]
+    check_suite: SimpleCheckSuiteTypeForResponse
+    completed_at: Union[str, None]
+    conclusion: Union[
+        Literal[
+            "waiting",
+            "pending",
+            "startup_failure",
+            "stale",
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+        None,
+    ]
+    deployment: NotRequired[DeploymentSimpleTypeForResponse]
+    details_url: str
+    external_id: str
+    head_sha: str
     html_url: str
-    created_at: str
-    withdrawn_at: str
+    id: int
+    name: str
+    node_id: str
+    output: CheckRunWithSimpleCheckSuitePropOutputTypeForResponse
+    pull_requests: list[PullRequestMinimalTypeForResponse]
+    started_at: str
+    status: Literal["queued", "in_progress", "completed", "pending"]
+    url: str
 
 
-class DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType(TypedDict):
-    """DependabotAlertWithdrawnWebhookPropSecurityAdvisory
+class CheckRunWithSimpleCheckSuitePropOutputType(TypedDict):
+    """CheckRunWithSimpleCheckSuitePropOutput"""
 
-    Identifiers of the advisory that produced the withdrawn alert.
-    """
+    annotations_count: int
+    annotations_url: str
+    summary: Union[str, None]
+    text: Union[str, None]
+    title: Union[str, None]
 
-    ghsa_id: str
-    cve_id: Union[str, None]
 
+class CheckRunWithSimpleCheckSuitePropOutputTypeForResponse(TypedDict):
+    """CheckRunWithSimpleCheckSuitePropOutput"""
 
-class DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse(TypedDict):
-    """DependabotAlertWithdrawnWebhookPropSecurityAdvisory
-
-    Identifiers of the advisory that produced the withdrawn alert.
-    """
-
-    ghsa_id: str
-    cve_id: Union[str, None]
+    annotations_count: int
+    annotations_url: str
+    summary: Union[str, None]
+    text: Union[str, None]
+    title: Union[str, None]
 
 
 __all__ = (
-    "DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType",
-    "DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse",
-    "DependabotAlertWithdrawnWebhookType",
-    "DependabotAlertWithdrawnWebhookTypeForResponse",
+    "CheckRunWithSimpleCheckSuitePropOutputType",
+    "CheckRunWithSimpleCheckSuitePropOutputTypeForResponse",
+    "CheckRunWithSimpleCheckSuiteType",
+    "CheckRunWithSimpleCheckSuiteTypeForResponse",
 )

@@ -9,23 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, TypeAlias
-
-CopilotOrganizationContentExclusionDetailsType: TypeAlias = dict[str, Any]
-"""Copilot Organization Content Exclusion Details
-
-List all Copilot Content Exclusion rules for an organization.
-"""
+from typing import Literal, Union
+from typing_extensions import TypedDict
 
 
-CopilotOrganizationContentExclusionDetailsTypeForResponse: TypeAlias = dict[str, Any]
-"""Copilot Organization Content Exclusion Details
+class OrganizationCopilotCodeReviewRunnerType(TypedDict):
+    """Organization Copilot Code Review Runner Configuration
 
-List all Copilot Content Exclusion rules for an organization.
-"""
+    The effective runner configuration that Copilot code review uses for the
+    organization.
+    """
+
+    runner_type: Literal["standard", "labeled"]
+    runner_labels: list[str]
+    runner_group_name: Union[str, None]
+    allow_repository_customization: bool
+    configured_by: Literal["code_review", "coding_agent"]
+
+
+class OrganizationCopilotCodeReviewRunnerTypeForResponse(TypedDict):
+    """Organization Copilot Code Review Runner Configuration
+
+    The effective runner configuration that Copilot code review uses for the
+    organization.
+    """
+
+    runner_type: Literal["standard", "labeled"]
+    runner_labels: list[str]
+    runner_group_name: Union[str, None]
+    allow_repository_customization: bool
+    configured_by: Literal["code_review", "coding_agent"]
 
 
 __all__ = (
-    "CopilotOrganizationContentExclusionDetailsType",
-    "CopilotOrganizationContentExclusionDetailsTypeForResponse",
+    "OrganizationCopilotCodeReviewRunnerType",
+    "OrganizationCopilotCodeReviewRunnerTypeForResponse",
 )

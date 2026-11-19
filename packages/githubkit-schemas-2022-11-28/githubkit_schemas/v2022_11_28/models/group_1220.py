@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,8 +19,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody(GitHubModel):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody"""
+class OrganizationsOrgSettingsBillingBudgetsPostBody(GitHubModel):
+    """OrganizationsOrgSettingsBillingBudgetsPostBody"""
 
     budget_amount: Missing[int] = Field(
         default=UNSET,
@@ -28,36 +28,58 @@ class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody(GitHubModel):
     )
     prevent_further_usage: Missing[bool] = Field(
         default=UNSET,
-        description="Whether to prevent additional spending once the budget is exceeded. For budgets with `user` or `multi_user_customer` scope, this must remain `true`.",
+        description="Whether to prevent additional spending once the budget is exceeded. For `user` and `multi_user_customer` scopes, this must be `true`.",
     )
     budget_alerting: Missing[
-        OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting
+        OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting
     ] = Field(default=UNSET)
-    expires_at: Missing[Union[_dt.date, Literal[0], None]] = Field(
+    budget_scope: Missing[
+        Literal["organization", "repository", "multi_user_customer", "user"]
+    ] = Field(
         default=UNSET,
-        description="The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted.\nIf not set, the budget will not expire. Setting to `null` or `0` will remove the expiration date from a budget if set.\n\nOnly supported for existing user-scoped budgets.",
+        description="The scope of the budget for this organization.\n\n- `organization`: Apply the budget to the organization.\n- `repository`: Apply the budget to a specific repository in the organization.\n- `multi_user_customer`: Apply a universal budget to all users in the organization.\n- `user`: Apply the budget to a single user in the organization.\n\n`user` and `multi_user_customer` scopes are only supported when\n`budget_product_sku` is `ai_credits` or `premium_requests`.",
+    )
+    budget_entity_name: Missing[str] = Field(
+        default=UNSET,
+        description="The entity to apply the budget to. The expected value depends on `budget_scope`.\n\n- `repository`: The repository name, or `owner/repo`.\n- `organization`, `multi_user_customer`, and `user`: Not used. For `user`, set the `user` field instead.",
+    )
+    budget_type: Missing[Literal["BundlePricing", "ProductPricing", "SkuPricing"]] = (
+        Field(
+            default=UNSET,
+            description="The type of pricing model used by the budget. Determines how `budget_product_sku` is interpreted.\n\n- `BundlePricing`: Covers all AI credit SKUs. Set `budget_product_sku` to `ai_credits`.\n- `ProductPricing`: Covers all SKUs that belong to a product. Set `budget_product_sku` to a product such as `actions` or `packages`.\n- `SkuPricing`: Covers a single, specific SKU. Set `budget_product_sku` to a SKU such as `actions_linux`.",
+        )
+    )
+    budget_product_sku: Missing[str] = Field(
+        default=UNSET,
+        description="A single product or SKU that will be covered in the budget",
+    )
+    user: Missing[str] = Field(
+        default=UNSET,
+        description="The username of the user for `user` scope budgets. This field is required when `budget_scope` is `user`.",
+    )
+    expires_at: Missing[_dt.date] = Field(
+        default=UNSET,
+        description="The date the budget will expire in `YYYY-MM-DD` format. Only dates in the future are accepted.\nIf not provided, the budget will not expire.\n\nOnly supported for budgets with `budget_scope` of `user`",
     )
 
 
-class OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting(
-    GitHubModel
-):
-    """OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting"""
+class OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting(GitHubModel):
+    """OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting"""
 
     will_alert: Missing[bool] = Field(
         default=UNSET,
-        description="Whether alerts are enabled for this budget. Ignored for user-scopes as alerting is always disabled for them.",
+        description="Whether alerts are enabled for this budget. Rejected for user-scope as alerting is always disabled for them.",
     )
     alert_recipients: Missing[list[str]] = Field(
         default=UNSET,
-        description="Array of user login names who will receive alerts. Ignored for user-scopes as alerting is always disabled for them.",
+        description="Array of user login names who will receive alerts. Rejected for user-scope as alerting is always disabled for them.",
     )
 
 
-model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody)
-model_rebuild(OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting)
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsPostBody)
+model_rebuild(OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting)
 
 __all__ = (
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody",
-    "OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting",
+    "OrganizationsOrgSettingsBillingBudgetsPostBody",
+    "OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting",
 )

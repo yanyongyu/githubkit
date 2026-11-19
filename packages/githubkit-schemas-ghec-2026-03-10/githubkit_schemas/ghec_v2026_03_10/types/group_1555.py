@@ -9,29 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class OrgsOrgCopilotCodeReviewRunnerPutBodyType(TypedDict):
-    """OrgsOrgCopilotCodeReviewRunnerPutBody"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
 
-    runner_type: Literal["standard", "labeled"]
-    runner_labels: NotRequired[Union[list[str], None]]
-    runner_group_name: NotRequired[Union[str, None]]
-    allow_repository_customization: NotRequired[bool]
+    The total number of seats set to "pending cancellation" for the specified users.
+    """
+
+    seats_cancelled: int
 
 
-class OrgsOrgCopilotCodeReviewRunnerPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgCopilotCodeReviewRunnerPutBody"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
 
-    runner_type: Literal["standard", "labeled"]
-    runner_labels: NotRequired[Union[list[str], None]]
-    runner_group_name: NotRequired[Union[str, None]]
-    allow_repository_customization: NotRequired[bool]
+    The total number of seats set to "pending cancellation" for the specified users.
+    """
+
+    seats_cancelled: int
 
 
 __all__ = (
-    "OrgsOrgCopilotCodeReviewRunnerPutBodyType",
-    "OrgsOrgCopilotCodeReviewRunnerPutBodyTypeForResponse",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type",
+    "OrgsOrgCopilotBillingSelectedUsersDeleteResponse200TypeForResponse",
 )

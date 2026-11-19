@@ -11,30 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200(GitHubModel):
-    """Package license compliance results
+class ReposOwnerRepoLicenseCompliancePackageChecksPostBody(GitHubModel):
+    """ReposOwnerRepoLicenseCompliancePackageChecksPostBody"""
 
-    License compliance results keyed by the original submitted package URLs.
-    """
-
-    purls: ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls = (
-        Field()
+    purls: list[str] = Field(
+        max_length=40 if PYDANTIC_V2 else None,
+        description="Up to 40 package URLs to check against the license compliance policy. Duplicate package URLs count toward the limit but are checked once.",
     )
 
 
-class ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls"""
+model_rebuild(ReposOwnerRepoLicenseCompliancePackageChecksPostBody)
 
-
-model_rebuild(ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200)
-model_rebuild(ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls)
-
-__all__ = (
-    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200",
-    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls",
-)
+__all__ = ("ReposOwnerRepoLicenseCompliancePackageChecksPostBody",)

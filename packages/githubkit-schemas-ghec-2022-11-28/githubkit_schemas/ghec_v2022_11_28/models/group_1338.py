@@ -26,8 +26,8 @@ from .group_0089 import AmazonS3OidcConfig, SplunkConfig
 from .group_0090 import GoogleCloudConfig
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody(GitHubModel):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
+class EnterprisesEnterpriseAuditLogStreamsPostBody(GitHubModel):
+    """EnterprisesEnterpriseAuditLogStreamsPostBody"""
 
     enabled: bool = Field(description="This setting pauses or resumes a stream.")
     stream_type: Literal[
@@ -38,7 +38,6 @@ class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody(GitHubModel):
         "HTTPS Event Collector",
         "Google Cloud Storage",
         "Datadog",
-        "Microsoft Agent 365",
     ] = Field(
         description="The audit log streaming provider. The name is case sensitive."
     )
@@ -51,25 +50,9 @@ class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody(GitHubModel):
         HecConfig,
         GoogleCloudConfig,
         DatadogConfig,
-        EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyPropVendorSpecificOneof8,
     ] = Field()
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyPropVendorSpecificOneof8(
-    GitHubModel
-):
-    """MicrosoftAgent365Config
+model_rebuild(EnterprisesEnterpriseAuditLogStreamsPostBody)
 
-    Empty configuration used when pausing or resuming a Microsoft Agent 365 stream.
-    """
-
-
-model_rebuild(EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody)
-model_rebuild(
-    EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyPropVendorSpecificOneof8
-)
-
-__all__ = (
-    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody",
-    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyPropVendorSpecificOneof8",
-)
+__all__ = ("EnterprisesEnterpriseAuditLogStreamsPostBody",)

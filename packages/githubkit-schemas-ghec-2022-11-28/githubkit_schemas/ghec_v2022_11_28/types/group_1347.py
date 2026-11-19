@@ -9,67 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200"""
+class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
 
-    models: list[
-        EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItemsType
+    advanced_security_enabled_for_new_repositories: NotRequired[bool]
+    advanced_security_enabled_new_user_namespace_repos: NotRequired[bool]
+    dependabot_alerts_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
+    secret_scanning_non_provider_patterns_enabled_for_new_repositories: NotRequired[
+        Union[bool, None]
     ]
 
 
-class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200"""
+class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
 
-    models: list[
-        EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItemsTypeForResponse
+    advanced_security_enabled_for_new_repositories: NotRequired[bool]
+    advanced_security_enabled_new_user_namespace_repos: NotRequired[bool]
+    dependabot_alerts_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
+    secret_scanning_non_provider_patterns_enabled_for_new_repositories: NotRequired[
+        Union[bool, None]
     ]
-
-
-class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItemsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems"""
-
-    model_name: str
-    display_name: str
-    policy_state: Literal["enabled", "disabled", "optional"]
-    enterprise_policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_default",
-        "unconfigured",
-    ]
-    editable: bool
-
-
-class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems"""
-
-    model_name: str
-    display_name: str
-    policy_state: Literal["enabled", "disabled", "optional"]
-    enterprise_policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_default",
-        "unconfigured",
-    ]
-    editable: bool
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItemsType",
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItemsTypeForResponse",
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200Type",
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType",
+    "EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyTypeForResponse",
 )

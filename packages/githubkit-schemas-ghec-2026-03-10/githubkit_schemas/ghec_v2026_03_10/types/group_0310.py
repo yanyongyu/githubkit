@@ -9,39 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrganizationCopilotCodeReviewRunnerType(TypedDict):
-    """Organization Copilot Code Review Runner Configuration
+class CopilotOrganizationDetailsType(TypedDict):
+    """Copilot Organization Details
 
-    The effective runner configuration that Copilot code review uses for the
-    organization.
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot Business or Copilot Enterprise subscription.
     """
 
-    runner_type: Literal["standard", "labeled"]
-    runner_labels: list[str]
-    runner_group_name: Union[str, None]
-    allow_repository_customization: bool
-    configured_by: Literal["code_review", "coding_agent"]
+    seat_breakdown: CopilotOrganizationSeatBreakdownType
+    public_code_suggestions: Literal["allow", "block", "unconfigured"]
+    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
+    ]
+    plan_type: NotRequired[Literal["business", "enterprise", "access"]]
 
 
-class OrganizationCopilotCodeReviewRunnerTypeForResponse(TypedDict):
-    """Organization Copilot Code Review Runner Configuration
+class CopilotOrganizationDetailsTypeForResponse(TypedDict):
+    """Copilot Organization Details
 
-    The effective runner configuration that Copilot code review uses for the
-    organization.
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot Business or Copilot Enterprise subscription.
     """
 
-    runner_type: Literal["standard", "labeled"]
-    runner_labels: list[str]
-    runner_group_name: Union[str, None]
-    allow_repository_customization: bool
-    configured_by: Literal["code_review", "coding_agent"]
+    seat_breakdown: CopilotOrganizationSeatBreakdownTypeForResponse
+    public_code_suggestions: Literal["allow", "block", "unconfigured"]
+    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
+    ]
+    plan_type: NotRequired[Literal["business", "enterprise", "access"]]
+
+
+class CopilotOrganizationSeatBreakdownType(TypedDict):
+    """Copilot Seat Breakdown
+
+    The breakdown of Copilot Business seats for the organization.
+    """
+
+    total: NotRequired[int]
+    added_this_cycle: NotRequired[int]
+    pending_cancellation: NotRequired[int]
+    pending_invitation: NotRequired[int]
+    active_this_cycle: NotRequired[int]
+    inactive_this_cycle: NotRequired[int]
+
+
+class CopilotOrganizationSeatBreakdownTypeForResponse(TypedDict):
+    """Copilot Seat Breakdown
+
+    The breakdown of Copilot Business seats for the organization.
+    """
+
+    total: NotRequired[int]
+    added_this_cycle: NotRequired[int]
+    pending_cancellation: NotRequired[int]
+    pending_invitation: NotRequired[int]
+    active_this_cycle: NotRequired[int]
+    inactive_this_cycle: NotRequired[int]
 
 
 __all__ = (
-    "OrganizationCopilotCodeReviewRunnerType",
-    "OrganizationCopilotCodeReviewRunnerTypeForResponse",
+    "CopilotOrganizationDetailsType",
+    "CopilotOrganizationDetailsTypeForResponse",
+    "CopilotOrganizationSeatBreakdownType",
+    "CopilotOrganizationSeatBreakdownTypeForResponse",
 )

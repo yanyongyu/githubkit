@@ -465,9 +465,6 @@ class ReposClient:
 
         Create a repository ruleset for an enterprise.
 
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
-
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#create-an-enterprise-repository-ruleset
         """
 
@@ -579,9 +576,6 @@ class ReposClient:
 
         Create a repository ruleset for an enterprise.
 
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
-
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#create-an-enterprise-repository-ruleset
         """
 
@@ -634,9 +628,6 @@ class ReposClient:
         **Note:** To prevent leaking sensitive information, the `bypass_actors` property is only returned if the user
         making the API request has write access to the ruleset.
 
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
-
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#get-an-enterprise-repository-ruleset
         """
 
@@ -674,9 +665,6 @@ class ReposClient:
 
         **Note:** To prevent leaking sensitive information, the `bypass_actors` property is only returned if the user
         making the API request has write access to the ruleset.
-
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#get-an-enterprise-repository-ruleset
         """
@@ -777,9 +765,6 @@ class ReposClient:
         PUT /enterprises/{enterprise}/rulesets/{ruleset_id}
 
         Update a ruleset for an enterprise.
-
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#update-an-enterprise-repository-ruleset
         """
@@ -896,9 +881,6 @@ class ReposClient:
         PUT /enterprises/{enterprise}/rulesets/{ruleset_id}
 
         Update a ruleset for an enterprise.
-
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#update-an-enterprise-repository-ruleset
         """
@@ -951,9 +933,6 @@ class ReposClient:
 
         Delete a ruleset for an enterprise.
 
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
-
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#delete-an-enterprise-repository-ruleset
         """
 
@@ -987,9 +966,6 @@ class ReposClient:
         DELETE /enterprises/{enterprise}/rulesets/{ruleset_id}
 
         Delete a ruleset for an enterprise.
-
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/rules#delete-an-enterprise-repository-ruleset
         """

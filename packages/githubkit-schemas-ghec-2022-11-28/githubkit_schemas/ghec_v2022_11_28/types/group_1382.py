@@ -9,29 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from githubkit.typing import UniqueList
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostBody"""
+class EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsType(TypedDict):
+    """EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items"""
 
-    credential_id: Union[int, str]
-    credential_type: Literal["classic_pat", "ssh_key"]
-    organizations: UniqueList[str]
+    type: NotRequired[str]
+    user_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+    github_request_id: NotRequired[str]
+    endpoint: NotRequired[str]
+    body: NotRequired[str]
+    timestamp: NotRequired[int]
+    event_id: NotRequired[str]
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostBody"""
+class EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotUsageRecordsGetResponse200Items"""
 
-    credential_id: Union[int, str]
-    credential_type: Literal["classic_pat", "ssh_key"]
-    organizations: UniqueList[str]
+    type: NotRequired[str]
+    user_id: NotRequired[int]
+    enterprise_id: NotRequired[int]
+    github_request_id: NotRequired[str]
+    endpoint: NotRequired[str]
+    body: NotRequired[str]
+    timestamp: NotRequired[int]
+    event_id: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsPostBodyType",
-    "EnterprisesEnterpriseCredentialAuthorizationsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsType",
+    "EnterprisesEnterpriseCopilotUsageRecordsGetResponse200ItemsTypeForResponse",
 )

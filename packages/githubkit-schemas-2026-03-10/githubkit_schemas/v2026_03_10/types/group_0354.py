@@ -13,27 +13,27 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class CodeScanningAiScanEnablementUpdateType(TypedDict):
-    """CodeScanningAiScanEnablementUpdate
+class CodeScanningAiScanEnablementType(TypedDict):
+    """CodeScanningAiScanEnablement
 
-    AI Scan enablement update for a repository.
+    AI Scan enablement for a repository.
     """
 
-    pr_scan: NotRequired[Literal["enabled", "disabled"]]
+    pr_scan: Literal["enabled", "disabled"]
     repository_scan: NotRequired[Literal["enabled", "disabled"]]
 
 
-class CodeScanningAiScanEnablementUpdateTypeForResponse(TypedDict):
-    """CodeScanningAiScanEnablementUpdate
+class CodeScanningAiScanEnablementTypeForResponse(TypedDict):
+    """CodeScanningAiScanEnablement
 
-    AI Scan enablement update for a repository.
+    AI Scan enablement for a repository.
     """
 
-    pr_scan: NotRequired[Literal["enabled", "disabled"]]
+    pr_scan: Literal["enabled", "disabled"]
     repository_scan: NotRequired[Literal["enabled", "disabled"]]
 
 
 __all__ = (
-    "CodeScanningAiScanEnablementUpdateType",
-    "CodeScanningAiScanEnablementUpdateTypeForResponse",
+    "CodeScanningAiScanEnablementType",
+    "CodeScanningAiScanEnablementTypeForResponse",
 )

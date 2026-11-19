@@ -18,35 +18,25 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200"""
+class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200"""
 
-    default_availability: Missing[
-        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailability
-    ] = Field(default=UNSET)
     models: list[
-        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItems
+        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200PropModelsItems
     ] = Field()
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailability(
+class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200PropModelsItems(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailability"""
-
-    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"] = Field(
-        description="The enterprise default availability for models that have not been configured. `delegate_to_organizations` is only returned for enterprises that manage Copilot through organizations."
-    )
-
-
-class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItems(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItems"""
+    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200PropModelsItems"""
 
     model_name: str = Field()
     display_name: str = Field()
-    policy_state: Literal[
+    policy_state: Literal["enabled", "disabled"] = Field(
+        description="When editable, the Copilot Fusion layer's configured value, or `enabled` if the Copilot Fusion layer has not configured this model,\nbecause Copilot Fusion only restricts models it explicitly disables.\nWhen locked, the enterprise's explicit value or its applied default availability for an eligible model.\nReturns `enabled` when locked to an applied default availability that is delegated to organizations.\nReturns `disabled` when locked without an explicit enterprise value and the model is excluded from default availability."
+    )
+    enterprise_policy_state: Literal[
         "enabled",
         "disabled",
         "delegate_to_teams_and_apps",
@@ -54,18 +44,23 @@ class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItems(
         "delegate_to_default",
         "unconfigured",
     ] = Field(
-        description="The enterprise policy for the model. `delegate_to_organizations` is returned for enterprises that manage Copilot through organizations."
+        description="The separately read enterprise-layer policy for this model, used to determine whether the Copilot Fusion layer can edit its policy."
+    )
+    editable: bool = Field(
+        description="Whether the enterprise policy allows the Copilot Fusion layer's policy to be updated."
+    )
+    required_for_copilot_fusion_max: Missing[Literal[True]] = Field(
+        default=UNSET,
+        description="Indicates that the model registry explicitly marks this model as required for Copilot Fusion Max.\nOnly present with the value `true`; otherwise omitted.\nOmission does not guarantee that the model is optional or that Copilot Fusion Max is available.\nThis read-only metadata does not change model policy.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotModelPoliciesGetResponse200)
+model_rebuild(EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200)
 model_rebuild(
-    EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailability
+    EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200PropModelsItems
 )
-model_rebuild(EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItems)
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200",
-    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailability",
-    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItems",
+    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200",
+    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200PropModelsItems",
 )

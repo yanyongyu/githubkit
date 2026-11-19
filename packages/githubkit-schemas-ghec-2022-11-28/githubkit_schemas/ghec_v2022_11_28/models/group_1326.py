@@ -9,30 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200"""
-
-    runner_version: str = Field(description="The runner version string.")
-    registration_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The date after which this runner version can no longer register. Only set for runner versions below the minimum version required to register (currently 2.329.0); `null` for versions with no registration end date.",
-    )
-    runtime_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The date after which jobs will no longer be dispatched to runners on this version. `null` when no newer runner release exists yet.",
-    )
+from .group_0077 import Runner
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200)
+class EnterprisesEnterpriseActionsRunnersGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersDeprecationsVersionGetResponse200",)
+    total_count: Missing[float] = Field(default=UNSET)
+    runners: Missing[list[Runner]] = Field(default=UNSET)
+
+
+model_rebuild(EnterprisesEnterpriseActionsRunnersGetResponse200)
+
+__all__ = ("EnterprisesEnterpriseActionsRunnersGetResponse200",)

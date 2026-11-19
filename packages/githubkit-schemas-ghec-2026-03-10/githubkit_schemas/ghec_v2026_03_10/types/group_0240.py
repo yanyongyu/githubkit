@@ -9,62 +9,102 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterpriseTeamWithMemberCountType(TypedDict):
-    """Enterprise Team
+class BillingUsageSummaryReportGheType(TypedDict):
+    """BillingUsageSummaryReportGhe"""
 
-    Group of enterprise owners and/or members
-    """
+    time_period: BillingUsageSummaryReportGhePropTimePeriodType
+    enterprise: str
+    organization: NotRequired[str]
+    repository: NotRequired[str]
+    product: NotRequired[str]
+    sku: NotRequired[str]
+    cost_center: NotRequired[BillingUsageSummaryReportGhePropCostCenterType]
+    usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItemsType]
 
-    id: int
+
+class BillingUsageSummaryReportGheTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportGhe"""
+
+    time_period: BillingUsageSummaryReportGhePropTimePeriodTypeForResponse
+    enterprise: str
+    organization: NotRequired[str]
+    repository: NotRequired[str]
+    product: NotRequired[str]
+    sku: NotRequired[str]
+    cost_center: NotRequired[BillingUsageSummaryReportGhePropCostCenterTypeForResponse]
+    usage_items: list[BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse]
+
+
+class BillingUsageSummaryReportGhePropTimePeriodType(TypedDict):
+    """BillingUsageSummaryReportGhePropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingUsageSummaryReportGhePropTimePeriodTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportGhePropTimePeriod"""
+
+    year: int
+    month: NotRequired[int]
+    day: NotRequired[int]
+
+
+class BillingUsageSummaryReportGhePropCostCenterType(TypedDict):
+    """BillingUsageSummaryReportGhePropCostCenter"""
+
+    id: str
     name: str
-    description: NotRequired[str]
-    slug: str
-    url: str
-    sync_to_organizations: NotRequired[str]
-    organization_selection_type: NotRequired[str]
-    group_id: Union[str, None]
-    group_name: NotRequired[Union[str, None]]
-    html_url: str
-    members_url: str
-    members_count: int
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
 
 
-class EnterpriseTeamWithMemberCountTypeForResponse(TypedDict):
-    """Enterprise Team
+class BillingUsageSummaryReportGhePropCostCenterTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportGhePropCostCenter"""
 
-    Group of enterprise owners and/or members
-    """
-
-    id: int
+    id: str
     name: str
-    description: NotRequired[str]
-    slug: str
-    url: str
-    sync_to_organizations: NotRequired[str]
-    organization_selection_type: NotRequired[str]
-    group_id: Union[str, None]
-    group_name: NotRequired[Union[str, None]]
-    html_url: str
-    members_url: str
-    members_count: int
-    created_at: str
-    updated_at: str
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
+
+
+class BillingUsageSummaryReportGhePropUsageItemsItemsType(TypedDict):
+    """BillingUsageSummaryReportGhePropUsageItemsItems"""
+
+    product: str
+    sku: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
+
+
+class BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
+    """BillingUsageSummaryReportGhePropUsageItemsItems"""
+
+    product: str
+    sku: str
+    unit_type: str
+    price_per_unit: float
+    gross_quantity: float
+    gross_amount: float
+    discount_quantity: float
+    discount_amount: float
+    net_quantity: float
+    net_amount: float
 
 
 __all__ = (
-    "EnterpriseTeamWithMemberCountType",
-    "EnterpriseTeamWithMemberCountTypeForResponse",
+    "BillingUsageSummaryReportGhePropCostCenterType",
+    "BillingUsageSummaryReportGhePropCostCenterTypeForResponse",
+    "BillingUsageSummaryReportGhePropTimePeriodType",
+    "BillingUsageSummaryReportGhePropTimePeriodTypeForResponse",
+    "BillingUsageSummaryReportGhePropUsageItemsItemsType",
+    "BillingUsageSummaryReportGhePropUsageItemsItemsTypeForResponse",
+    "BillingUsageSummaryReportGheType",
+    "BillingUsageSummaryReportGheTypeForResponse",
 )

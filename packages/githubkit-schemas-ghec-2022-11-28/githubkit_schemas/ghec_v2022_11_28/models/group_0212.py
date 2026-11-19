@@ -19,7 +19,7 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class SecretScanningCustomPattern(GitHubModel):
+class SecretScanningCustomPatternWithDryRun(GitHubModel):
     """Secret Scanning Custom Pattern
 
     A custom pattern for secret scanning.
@@ -63,6 +63,6 @@ class SecretScanningCustomPattern(GitHubModel):
     )
 
 
-model_rebuild(SecretScanningCustomPattern)
+model_rebuild(SecretScanningCustomPatternWithDryRun)
 
-__all__ = ("SecretScanningCustomPattern",)
+__all__ = ("SecretScanningCustomPatternWithDryRun",)

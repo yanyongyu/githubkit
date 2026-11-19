@@ -13,86 +13,64 @@ import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import TypedDict
 
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 
-class PullRequestStackMinimalType(TypedDict):
-    """Pull Request Stack Minimal"""
+
+class RepositoryAdvisoryCommentType(TypedDict):
+    """Repository Advisory Comment
+
+    A comment on a repository security advisory.
+    """
 
     id: int
-    number: int
     node_id: str
     url: str
-    base: PullRequestStackMinimalPropBaseType
-    open_: bool
+    html_url: str
+    body: str
+    user: Union[SimpleUserType, None]
     created_at: _dt.datetime
-    pull_requests: list[PullRequestStackMinimalPropPullRequestsItemsType]
+    updated_at: _dt.datetime
+    advisory_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
-class PullRequestStackMinimalTypeForResponse(TypedDict):
-    """Pull Request Stack Minimal"""
+class RepositoryAdvisoryCommentTypeForResponse(TypedDict):
+    """Repository Advisory Comment
+
+    A comment on a repository security advisory.
+    """
 
     id: int
-    number: int
     node_id: str
     url: str
-    base: PullRequestStackMinimalPropBaseTypeForResponse
-    open_: bool
+    html_url: str
+    body: str
+    user: Union[SimpleUserTypeForResponse, None]
     created_at: str
-    pull_requests: list[PullRequestStackMinimalPropPullRequestsItemsTypeForResponse]
-
-
-class PullRequestStackMinimalPropBaseType(TypedDict):
-    """PullRequestStackMinimalPropBase"""
-
-    ref: str
-
-
-class PullRequestStackMinimalPropBaseTypeForResponse(TypedDict):
-    """PullRequestStackMinimalPropBase"""
-
-    ref: str
-
-
-class PullRequestStackMinimalPropPullRequestsItemsType(TypedDict):
-    """PullRequestStackMinimalPropPullRequestsItems"""
-
-    number: int
-    state: Literal["open", "closed"]
-    draft: bool
-    merged_at: Union[_dt.datetime, None]
-    head: PullRequestStackMinimalPropPullRequestsItemsPropHeadType
-
-
-class PullRequestStackMinimalPropPullRequestsItemsTypeForResponse(TypedDict):
-    """PullRequestStackMinimalPropPullRequestsItems"""
-
-    number: int
-    state: Literal["open", "closed"]
-    draft: bool
-    merged_at: Union[str, None]
-    head: PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse
-
-
-class PullRequestStackMinimalPropPullRequestsItemsPropHeadType(TypedDict):
-    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
-
-    ref: str
-    sha: str
-
-
-class PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse(TypedDict):
-    """PullRequestStackMinimalPropPullRequestsItemsPropHead"""
-
-    ref: str
-    sha: str
+    updated_at: str
+    advisory_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
 
 
 __all__ = (
-    "PullRequestStackMinimalPropBaseType",
-    "PullRequestStackMinimalPropBaseTypeForResponse",
-    "PullRequestStackMinimalPropPullRequestsItemsPropHeadType",
-    "PullRequestStackMinimalPropPullRequestsItemsPropHeadTypeForResponse",
-    "PullRequestStackMinimalPropPullRequestsItemsType",
-    "PullRequestStackMinimalPropPullRequestsItemsTypeForResponse",
-    "PullRequestStackMinimalType",
-    "PullRequestStackMinimalTypeForResponse",
+    "RepositoryAdvisoryCommentType",
+    "RepositoryAdvisoryCommentTypeForResponse",
 )

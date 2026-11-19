@@ -9,257 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_1540 import (
+    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsType,
+    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsTypeForResponse,
+)
 
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsType(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions
 
-    Pending suggestions for each suggestible field (`type`,
-    `issue_field_values`, `labels`, `assignees`, `state`) the
-    request touched. Omitted for fields not in the request or
-    with no pending or ignored suggestions. Items tagged
-    `ignored` are echoes of the current request's inputs that
-    were not persisted as pending suggestions.
-    """
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1Type(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1"""
 
-    type: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItemsType
-        ]
-    ]
-    issue_field_values: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItemsType
-        ]
-    ]
-    labels: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItemsType
-        ]
-    ]
-    assignees: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItemsType
-        ]
-    ]
-    state: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItemsType
-        ]
+    suggestions: NotRequired[
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsType
     ]
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions
+class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1"""
 
-    Pending suggestions for each suggestible field (`type`,
-    `issue_field_values`, `labels`, `assignees`, `state`) the
-    request touched. Omitted for fields not in the request or
-    with no pending or ignored suggestions. Items tagged
-    `ignored` are echoes of the current request's inputs that
-    were not persisted as pending suggestions.
-    """
-
-    type: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItemsTypeForResponse
-        ]
+    suggestions: NotRequired[
+        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsTypeForResponse
     ]
-    issue_field_values: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItemsTypeForResponse
-        ]
-    ]
-    labels: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItemsTypeForResponse
-        ]
-    ]
-    assignees: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItemsTypeForResponse
-        ]
-    ]
-    state: NotRequired[
-        list[
-            ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItemsTypeForResponse
-        ]
-    ]
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItem
-    s
-    """
-
-    value: NotRequired[str]
-    rationale: NotRequired[str]
-    suggest: NotRequired[bool]
-    confidence: NotRequired[Literal["low", "medium", "high"]]
-    ignored: NotRequired[bool]
-    ignored_reason: NotRequired[Literal["already_applied", "issue_already_closed"]]
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItem
-    s
-    """
-
-    value: NotRequired[str]
-    rationale: NotRequired[str]
-    suggest: NotRequired[bool]
-    confidence: NotRequired[Literal["low", "medium", "high"]]
-    ignored: NotRequired[bool]
-    ignored_reason: NotRequired[Literal["already_applied", "issue_already_closed"]]
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFie
-    ldValuesItems
-    """
-
-    field_id: NotRequired[int]
-    value: NotRequired[Union[str, float, list[str]]]
-    rationale: NotRequired[str]
-    suggest: NotRequired[bool]
-    confidence: NotRequired[Literal["low", "medium", "high"]]
-    ignored: NotRequired[bool]
-    ignored_reason: NotRequired[Literal["already_applied", "issue_already_closed"]]
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFie
-    ldValuesItems
-    """
-
-    field_id: NotRequired[int]
-    value: NotRequired[Union[str, float, list[str]]]
-    rationale: NotRequired[str]
-    suggest: NotRequired[bool]
-    confidence: NotRequired[Literal["low", "medium", "high"]]
-    ignored: NotRequired[bool]
-    ignored_reason: NotRequired[Literal["already_applied", "issue_already_closed"]]
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsIt
-    ems
-    """
-
-    name: NotRequired[str]
-    rationale: NotRequired[str]
-    suggest: NotRequired[bool]
-    confidence: NotRequired[Literal["low", "medium", "high"]]
-    ignored: NotRequired[bool]
-    ignored_reason: NotRequired[Literal["already_applied", "issue_already_closed"]]
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsIt
-    ems
-    """
-
-    name: NotRequired[str]
-    rationale: NotRequired[str]
-    suggest: NotRequired[bool]
-    confidence: NotRequired[Literal["low", "medium", "high"]]
-    ignored: NotRequired[bool]
-    ignored_reason: NotRequired[Literal["already_applied", "issue_already_closed"]]
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssignee
-    sItems
-    """
-
-    login: NotRequired[str]
-    rationale: NotRequired[str]
-    suggest: NotRequired[bool]
-    confidence: NotRequired[Literal["low", "medium", "high"]]
-    ignored: NotRequired[bool]
-    ignored_reason: NotRequired[Literal["already_applied", "issue_already_closed"]]
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssignee
-    sItems
-    """
-
-    login: NotRequired[str]
-    rationale: NotRequired[str]
-    suggest: NotRequired[bool]
-    confidence: NotRequired[Literal["low", "medium", "high"]]
-    ignored: NotRequired[bool]
-    ignored_reason: NotRequired[Literal["already_applied", "issue_already_closed"]]
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateIte
-    ms
-    """
-
-    value: NotRequired[str]
-    state_reason: NotRequired[str]
-    duplicate_issue_id: NotRequired[int]
-    rationale: NotRequired[str]
-    suggest: NotRequired[bool]
-    confidence: NotRequired[Literal["low", "medium", "high"]]
-    ignored: NotRequired[bool]
-    ignored_reason: NotRequired[Literal["already_applied", "issue_already_closed"]]
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItemsTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateIte
-    ms
-    """
-
-    value: NotRequired[str]
-    state_reason: NotRequired[str]
-    duplicate_issue_id: NotRequired[int]
-    rationale: NotRequired[str]
-    suggest: NotRequired[bool]
-    confidence: NotRequired[Literal["low", "medium", "high"]]
-    ignored: NotRequired[bool]
-    ignored_reason: NotRequired[Literal["already_applied", "issue_already_closed"]]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItemsType",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItemsTypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItemsType",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItemsTypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItemsType",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItemsTypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItemsType",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItemsTypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItemsType",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItemsTypeForResponse",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsType",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1Type",
+    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1TypeForResponse",
 )

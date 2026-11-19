@@ -9,41 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0124 import ActionsPolicyRepoConditionsOneof0
-from .group_0125 import ActionsPolicyRepoConditionsOneof1
-from .group_0147 import (
-    ActionsRuleRestrictActionEvents,
-    ActionsRuleRestrictActionsActors,
-)
+from .group_0148 import ActionsPolicy
 
 
-class ReposOwnerRepoActionsPoliciesPostBody(GitHubModel):
-    """ReposOwnerRepoActionsPoliciesPostBody"""
+class ReposOwnerRepoActionsPoliciesGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsPoliciesGetResponse200"""
 
-    name: str = Field(description="The name of the policy.")
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
-    )
-    conditions: Missing[
-        Union[ActionsPolicyRepoConditionsOneof0, ActionsPolicyRepoConditionsOneof1]
-    ] = Field(
-        default=UNSET,
-        title="Repository Actions policy conditions",
-        description="Conditions for a repository Actions policy. The object may be empty to preserve or use the\ndefault workflow targeting, or contain only `workflow_path`.",
-    )
-    rules: Missing[
-        list[Union[ActionsRuleRestrictActionsActors, ActionsRuleRestrictActionEvents]]
-    ] = Field(default=UNSET, description="An array of rules within the policy.")
+    total_count: int = Field(description="The total number of Actions policies.")
+    policies: list[ActionsPolicy] = Field(description="An array of Actions policies.")
 
 
-model_rebuild(ReposOwnerRepoActionsPoliciesPostBody)
+model_rebuild(ReposOwnerRepoActionsPoliciesGetResponse200)
 
-__all__ = ("ReposOwnerRepoActionsPoliciesPostBody",)
+__all__ = ("ReposOwnerRepoActionsPoliciesGetResponse200",)

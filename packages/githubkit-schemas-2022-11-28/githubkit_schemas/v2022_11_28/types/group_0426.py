@@ -9,27 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import TypedDict
 
 
-class HookResponseType(TypedDict):
-    """Hook Response"""
+class RepositoryHashAlgorithmType(TypedDict):
+    """Repository hash algorithm
 
-    code: Union[int, None]
-    status: Union[str, None]
-    message: Union[str, None]
+    Repository hash algorithm
+    """
+
+    hash_algorithm: Literal["sha1", "sha256"]
 
 
-class HookResponseTypeForResponse(TypedDict):
-    """Hook Response"""
+class RepositoryHashAlgorithmTypeForResponse(TypedDict):
+    """Repository hash algorithm
 
-    code: Union[int, None]
-    status: Union[str, None]
-    message: Union[str, None]
+    Repository hash algorithm
+    """
+
+    hash_algorithm: Literal["sha1", "sha256"]
 
 
 __all__ = (
-    "HookResponseType",
-    "HookResponseTypeForResponse",
+    "RepositoryHashAlgorithmType",
+    "RepositoryHashAlgorithmTypeForResponse",
 )

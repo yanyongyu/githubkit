@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -19,68 +19,42 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class Label(GitHubModel):
-    """Label
+class EnterpriseTeamWithMemberCount(GitHubModel):
+    """Enterprise Team
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
+    Group of enterprise owners and/or members
     """
 
-    id: int = Field(description="Unique identifier for the label.")
-    node_id: str = Field()
-    url: str = Field(description="URL for the label")
-    name: str = Field(description="The name of the label.")
-    description: Union[str, None] = Field(
-        description="Optional description of the label, such as its purpose."
-    )
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
-    )
-    default: bool = Field(
-        description="Whether this label comes by default in a new repository."
-    )
-    archived_at: Union[_dt.datetime, None] = Field(
-        description="Timestamp indicating when the label was archived, or `null` if it has not been archived."
-    )
-    archived_by: Union[LabelPropArchivedBy, None] = Field(
-        description="The user who archived the label, or `null` if it has not been archived."
-    )
-
-
-class LabelPropArchivedBy(GitHubModel):
-    """LabelPropArchivedBy
-
-    The user who archived the label, or `null` if it has not been archived.
-    """
-
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
     id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
+    name: str = Field()
+    description: Missing[str] = Field(default=UNSET)
+    slug: str = Field()
     url: str = Field()
+    sync_to_organizations: Missing[str] = Field(
+        default=UNSET,
+        description="Retired: this field will not be returned with GHEC enterprise teams.",
+    )
+    organization_selection_type: Missing[str] = Field(default=UNSET)
+    group_id: Union[str, None] = Field()
+    group_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Retired: this field will not be returned with GHEC enterprise teams.",
+    )
     html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
+    members_url: str = Field()
+    members_count: int = Field(
+        description="The number of members in the enterprise team."
+    )
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ] = Field(
+        default=UNSET,
+        description="Whether team members will receive notifications when the team is mentioned.",
+    )
 
 
-model_rebuild(Label)
-model_rebuild(LabelPropArchivedBy)
+model_rebuild(EnterpriseTeamWithMemberCount)
 
-__all__ = (
-    "Label",
-    "LabelPropArchivedBy",
-)
+__all__ = ("EnterpriseTeamWithMemberCount",)

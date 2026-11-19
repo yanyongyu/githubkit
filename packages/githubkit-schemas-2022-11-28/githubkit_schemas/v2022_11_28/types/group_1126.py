@@ -9,80 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal
 from typing_extensions import TypedDict
 
 from githubkit.typing import UniqueList
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200Type(TypedDict):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutBodyType(TypedDict):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody
 
-    The Agent Merge configuration for an enrolled pull request.
+    The Agent Merge enrollment configuration
 
     Examples:
-        {'allowed_actions': ['fix_ci', 'resolve_merge_conflicts'], 'created_at':
-    '2026-09-09T12:00:00Z', 'updated_at': '2026-09-09T12:00:00Z', 'user': {'id':
-    9876}}
+        {'allowed_actions': ['fix_ci']}
     """
 
     allowed_actions: UniqueList[Literal["fix_ci", "resolve_merge_conflicts"]]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    user: AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUserType
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200TypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutBodyTypeForResponse(TypedDict):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody
 
-    The Agent Merge configuration for an enrolled pull request.
+    The Agent Merge enrollment configuration
 
     Examples:
-        {'allowed_actions': ['fix_ci', 'resolve_merge_conflicts'], 'created_at':
-    '2026-09-09T12:00:00Z', 'updated_at': '2026-09-09T12:00:00Z', 'user': {'id':
-    9876}}
+        {'allowed_actions': ['fix_ci']}
     """
 
     allowed_actions: UniqueList[Literal["fix_ci", "resolve_merge_conflicts"]]
-    created_at: str
-    updated_at: str
-    user: AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUserTypeForResponse
-
-
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUserType(
-    TypedDict
-):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUser
-
-    The user who most recently enabled Agent Merge for the pull request
-
-    Examples:
-        {'id': 9876}
-    """
-
-    id: int
-
-
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUserTypeForResponse(
-    TypedDict
-):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUser
-
-    The user who most recently enabled Agent Merge for the pull request
-
-    Examples:
-        {'id': 9876}
-    """
-
-    id: int
 
 
 __all__ = (
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUserType",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUserTypeForResponse",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200Type",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200TypeForResponse",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutBodyType",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutBodyTypeForResponse",
 )

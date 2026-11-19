@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,9 +19,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgPrivateRegistriesPostBody(GitHubModel):
-    """OrgsOrgPrivateRegistriesPostBody"""
+class OrgsOrgPrivateRegistriesGetResponse200(GitHubModel):
+    """OrgsOrgPrivateRegistriesGetResponse200"""
 
+    total_count: int = Field()
+    configurations: list[OrgPrivateRegistryConfiguration] = Field()
+
+
+class OrgPrivateRegistryConfiguration(GitHubModel):
+    """Organization private registry
+
+    Private registry configuration for an organization
+    """
+
+    name: str = Field(description="The name of the private registry configuration.")
     registry_type: Literal[
         "maven_repository",
         "nuget_feed",
@@ -38,31 +50,6 @@ class OrgsOrgPrivateRegistriesPostBody(GitHubModel):
         "python_index",
         "terraform_registry",
     ] = Field(description="The registry type.")
-    url: str = Field(description="The URL of the private registry.")
-    username: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The username to use when authenticating with the private registry. This field should be omitted if the private registry does not require a username for authentication.",
-    )
-    replaces_base: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether this private registry should replace the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When set to `true`, Dependabot will only use this registry and will not fall back to the public registry. When set to `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
-    )
-    encrypted_value: Missing[str] = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        default=UNSET,
-        description="The value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get private registries public key for an organization](https://docs.github.com/rest/private-registries/organization-configurations#get-private-registries-public-key-for-an-organization) endpoint. Required when `auth_type` is `token` or `username_password`. Should be omitted for OIDC auth types.",
-    )
-    key_id: Missing[str] = Field(
-        default=UNSET,
-        description="The ID of the key you used to encrypt the secret. Required when `auth_type` is `token` or `username_password`. Should be omitted for OIDC auth types.",
-    )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry."
-    )
-    selected_repository_ids: Missing[list[int]] = Field(
-        default=UNSET,
-        description="An array of repository IDs that can access the organization private registry. You can only provide a list of repository IDs when `visibility` is set to `selected`. You can manage the list of selected repositories using the [Update a private registry for an organization](https://docs.github.com/rest/private-registries/organization-configurations#update-a-private-registry-for-an-organization) endpoint. This field should be omitted if `visibility` is set to `all` or `private`.",
-    )
     auth_type: Missing[
         Literal[
             "token",
@@ -75,71 +62,67 @@ class OrgsOrgPrivateRegistriesPostBody(GitHubModel):
             "anonymous",
         ]
     ] = Field(
+        default=UNSET, description="The authentication type for the private registry."
+    )
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL of the private registry."
+    )
+    username: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The authentication type for the private registry. Defaults to `token` if not specified. Use `oidc_azure`, `oidc_aws`, `oidc_jfrog`, `oidc_cloudsmith`, or `oidc_gcp` for OIDC authentication. Use `anonymous` for registries that do not require authentication; `username`, `encrypted_value`, and `key_id` must be omitted.",
+        description="The username to use when authenticating with the private registry.",
+    )
+    replaces_base: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this private registry replaces the base registry (e.g., npmjs.org for npm, rubygems.org for rubygems). When `true`, Dependabot will only use this registry and will not fall back to the public registry. When `false` (default), Dependabot will use this registry for scoped packages but may fall back to the public registry for other packages.",
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Which type of organization repositories have access to the private registry."
     )
     tenant_id: Missing[str] = Field(
-        default=UNSET,
-        description="The tenant ID of the Azure AD application. Required when `auth_type` is `oidc_azure`.",
+        default=UNSET, description="The tenant ID of the Azure AD application."
     )
     client_id: Missing[str] = Field(
-        default=UNSET,
-        description="The client ID of the Azure AD application. Required when `auth_type` is `oidc_azure`.",
+        default=UNSET, description="The client ID of the Azure AD application."
     )
-    aws_region: Missing[str] = Field(
-        default=UNSET,
-        description="The AWS region. Required when `auth_type` is `oidc_aws`.",
-    )
-    account_id: Missing[str] = Field(
-        default=UNSET,
-        description="The AWS account ID. Required when `auth_type` is `oidc_aws`.",
-    )
-    role_name: Missing[str] = Field(
-        default=UNSET,
-        description="The AWS IAM role name. Required when `auth_type` is `oidc_aws`.",
-    )
-    domain: Missing[str] = Field(
-        default=UNSET,
-        description="The CodeArtifact domain. Required when `auth_type` is `oidc_aws`.",
-    )
+    aws_region: Missing[str] = Field(default=UNSET, description="The AWS region.")
+    account_id: Missing[str] = Field(default=UNSET, description="The AWS account ID.")
+    role_name: Missing[str] = Field(default=UNSET, description="The AWS IAM role name.")
+    domain: Missing[str] = Field(default=UNSET, description="The CodeArtifact domain.")
     domain_owner: Missing[str] = Field(
-        default=UNSET,
-        description="The CodeArtifact domain owner (AWS account ID). Required when `auth_type` is `oidc_aws`.",
+        default=UNSET, description="The CodeArtifact domain owner."
     )
     jfrog_oidc_provider_name: Missing[str] = Field(
-        default=UNSET,
-        description="The JFrog OIDC provider name. Required when `auth_type` is `oidc_jfrog`.",
+        default=UNSET, description="The JFrog OIDC provider name."
     )
-    audience: Missing[str] = Field(
-        default=UNSET,
-        description="The OIDC audience. Optional for `oidc_aws`, `oidc_jfrog`, and `oidc_gcp`, and required for `oidc_cloudsmith` auth types.",
-    )
+    audience: Missing[str] = Field(default=UNSET, description="The OIDC audience.")
     identity_mapping_name: Missing[str] = Field(
-        default=UNSET,
-        description="The JFrog identity mapping name. Optional for `oidc_jfrog` auth type.",
+        default=UNSET, description="The JFrog identity mapping name."
     )
     namespace: Missing[str] = Field(
-        default=UNSET,
-        description="The Cloudsmith organization namespace. Required when `auth_type` is `oidc_cloudsmith`.",
+        default=UNSET, description="The Cloudsmith organization namespace."
     )
     service_slug: Missing[str] = Field(
-        default=UNSET,
-        description="The Cloudsmith service account slug. Required when `auth_type` is `oidc_cloudsmith`.",
+        default=UNSET, description="The Cloudsmith service account slug."
     )
     api_host: Missing[str] = Field(
-        default=UNSET,
-        description="The Cloudsmith API host. Optional for `oidc_cloudsmith` auth type. If omitted, `api.cloudsmith.io` is used by default.",
+        default=UNSET, description="The Cloudsmith API host."
     )
     workload_identity_provider: Missing[str] = Field(
         default=UNSET,
-        description="The full resource name of the GCP Workload Identity Provider (e.g. `projects/<NUM>/locations/global/workloadIdentityPools/<POOL>/providers/<PROVIDER>`). Required when `auth_type` is `oidc_gcp`.",
+        description="The full resource name of the GCP Workload Identity Provider (e.g. `projects/<NUM>/locations/global/workloadIdentityPools/<POOL>/providers/<PROVIDER>`).",
     )
     service_account: Missing[str] = Field(
         default=UNSET,
-        description="The GCP service account email to impersonate. Optional for `oidc_gcp` auth type. If omitted, the federated token is used directly (direct WIF).",
+        description="The GCP service account email to impersonate. If omitted, the federated token is used directly (direct WIF).",
     )
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
 
 
-model_rebuild(OrgsOrgPrivateRegistriesPostBody)
+model_rebuild(OrgsOrgPrivateRegistriesGetResponse200)
+model_rebuild(OrgPrivateRegistryConfiguration)
 
-__all__ = ("OrgsOrgPrivateRegistriesPostBody",)
+__all__ = (
+    "OrgPrivateRegistryConfiguration",
+    "OrgsOrgPrivateRegistriesGetResponse200",
+)

@@ -13,43 +13,39 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200"""
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody"""
 
-    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType
+    default_availability: (
+        EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType
+    )
 
 
-class EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200TypeForResponse(
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody"""
+
+    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse
+
+
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200"""
-
-    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse
-
-
-class EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabili
-    ty
-    """
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
 
     policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
 
 
-class EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse(
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabili
-    ty
-    """
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
 
     policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType",
-    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse",
-    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200Type",
-    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityType",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailabilityTypeForResponse",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyType",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyTypeForResponse",
 )

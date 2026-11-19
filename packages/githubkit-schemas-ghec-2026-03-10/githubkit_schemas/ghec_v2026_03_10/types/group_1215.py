@@ -13,29 +13,89 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBodyType(TypedDict):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422Type(TypedDict):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422
 
-    Request body for requesting an automation run.
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    event: Literal["manual"]
-    context: NotRequired[str]
+    message: str
+    errors: NotRequired[
+        list[
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422PropErrorsItemsType
+        ]
+    ]
+    documentation_url: str
+    error_code: NotRequired[str]
+    limited_resource: NotRequired[str]
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBodyTypeForResponse(
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422TypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422
 
-    Request body for requesting an automation run.
+    Structured error response following GitHub REST API conventions.
+    For 422 Unprocessable Entity the errors array contains validation
+    details; for other error status codes only message and
+    documentation_url are returned.
     """
 
-    event: Literal["manual"]
-    context: NotRequired[str]
+    message: str
+    errors: NotRequired[
+        list[
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422PropErrorsItemsTypeForResponse
+        ]
+    ]
+    documentation_url: str
+    error_code: NotRequired[str]
+    limited_resource: NotRequired[str]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422PropErrorsItemsType(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
+
+
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422PropErrorsItemsTypeForResponse(
+    TypedDict
+):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422PropErrorsItems
+
+    A single validation error
+    """
+
+    code: Literal[
+        "missing",
+        "missing_field",
+        "invalid",
+        "already_exists",
+        "unprocessable",
+        "custom",
+    ]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBodyType",
-    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBodyTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422PropErrorsItemsType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422PropErrorsItemsTypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422Type",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422TypeForResponse",
 )

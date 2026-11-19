@@ -16,20 +16,20 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1(
+class ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0(
     GitHubModel
 ):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1"""
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0"""
 
-    reviewers: Missing[list[str]] = Field(
+    reviewers: list[str] = Field(
+        description="An array of user `login`s whose reviews will be rerequested."
+    )
+    team_reviewers: Missing[list[str]] = Field(
         default=UNSET,
-        description="An array of user `login`s whose reviews will be rerequested.",
-    )
-    team_reviewers: list[str] = Field(
-        description="An array of team `slug`s whose reviews will be rerequested."
+        description="An array of team `slug`s whose reviews will be rerequested.",
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1)
+model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1",)
+__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0",)

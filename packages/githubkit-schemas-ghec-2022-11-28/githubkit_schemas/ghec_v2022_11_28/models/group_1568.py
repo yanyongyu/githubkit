@@ -16,32 +16,24 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotFeaturePoliciesPatchResponse200(GitHubModel):
-    """OrgsOrgCopilotFeaturePoliciesPatchResponse200"""
+class OrgsOrgCopilotFeaturePoliciesPatchBody(GitHubModel):
+    """OrgsOrgCopilotFeaturePoliciesPatchBody"""
 
-    default_availability: OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability = Field(
-        description="The default policy applied to newly released Copilot features and clients."
-    )
+    default_availability: OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability = Field()
 
 
-class OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability(GitHubModel):
-    """OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability
-
-    The default policy applied to newly released Copilot features and clients.
-    """
+class OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability(GitHubModel):
+    """OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
 
     policy_state: Literal["enabled", "disabled"] = Field(
-        description="The effective default availability. The enterprise default is used when the\nenterprise has set one. Otherwise, the organization's own default is used."
-    )
-    editable: bool = Field(
-        description="Whether the organization can update its default availability."
+        description="The organization default policy applied to newly released Copilot features and clients."
     )
 
 
-model_rebuild(OrgsOrgCopilotFeaturePoliciesPatchResponse200)
-model_rebuild(OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability)
+model_rebuild(OrgsOrgCopilotFeaturePoliciesPatchBody)
+model_rebuild(OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability)
 
 __all__ = (
-    "OrgsOrgCopilotFeaturePoliciesPatchResponse200",
-    "OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability",
+    "OrgsOrgCopilotFeaturePoliciesPatchBody",
+    "OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability",
 )

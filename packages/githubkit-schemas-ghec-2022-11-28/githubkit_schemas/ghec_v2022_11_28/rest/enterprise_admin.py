@@ -4732,9 +4732,6 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:audit_log` scope to use this endpoint.
 
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
-
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/audit-log#get-the-audit-log-for-an-enterprise
         """
 
@@ -4788,9 +4785,6 @@ class EnterpriseAdminClient:
         The authenticated user must be an enterprise admin to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `read:audit_log` scope to use this endpoint.
-
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/audit-log#get-the-audit-log-for-an-enterprise
         """
@@ -5889,9 +5883,6 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
-
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/licensing#list-enterprise-consumed-licenses
         """
 
@@ -5933,9 +5924,6 @@ class EnterpriseAdminClient:
         The authenticated user must be an enterprise admin to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
-
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/licensing#list-enterprise-consumed-licenses
         """
@@ -10091,9 +10079,6 @@ class EnterpriseAdminClient:
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
 
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
-
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/licensing#get-a-license-sync-status
         """
 
@@ -10127,9 +10112,6 @@ class EnterpriseAdminClient:
         The authenticated user must be an enterprise admin to use this endpoint.
 
         OAuth app tokens and personal access tokens (classic) need the `read:enterprise` scope to use this endpoint.
-
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/enterprise-admin/licensing#get-a-license-sync-status
         """

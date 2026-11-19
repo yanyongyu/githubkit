@@ -9,30 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksRepositoriesItemsType(TypedDict):
-    """WebhooksRepositoriesItems"""
+class WebhooksLabelPropArchivedByType(TypedDict):
+    """WebhooksLabelPropArchivedBy
 
-    full_name: str
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
     id: int
-    name: str
     node_id: str
-    private: bool
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class WebhooksRepositoriesItemsTypeForResponse(TypedDict):
-    """WebhooksRepositoriesItems"""
+class WebhooksLabelPropArchivedByTypeForResponse(TypedDict):
+    """WebhooksLabelPropArchivedBy
 
-    full_name: str
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
     id: int
-    name: str
     node_id: str
-    private: bool
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksRepositoriesItemsType",
-    "WebhooksRepositoriesItemsTypeForResponse",
+    "WebhooksLabelPropArchivedByType",
+    "WebhooksLabelPropArchivedByTypeForResponse",
 )

@@ -44,11 +44,11 @@ from .group_0074 import (
 )
 
 
-class EnterprisesEnterpriseActionsPoliciesPolicyIdPutBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsPoliciesPolicyIdPutBody"""
+class EnterprisesEnterpriseActionsPoliciesPostBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsPoliciesPostBody"""
 
-    name: NotRequired[str]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    name: str
+    enforcement: Literal["disabled", "active", "evaluate"]
     conditions: NotRequired[
         Union[
             ActionsPolicyEnterpriseConditionsOneof0Type,
@@ -69,11 +69,11 @@ class EnterprisesEnterpriseActionsPoliciesPolicyIdPutBodyType(TypedDict):
     ]
 
 
-class EnterprisesEnterpriseActionsPoliciesPolicyIdPutBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseActionsPoliciesPolicyIdPutBody"""
+class EnterprisesEnterpriseActionsPoliciesPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseActionsPoliciesPostBody"""
 
-    name: NotRequired[str]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    name: str
+    enforcement: Literal["disabled", "active", "evaluate"]
     conditions: NotRequired[
         Union[
             ActionsPolicyEnterpriseConditionsOneof0TypeForResponse,
@@ -95,6 +95,6 @@ class EnterprisesEnterpriseActionsPoliciesPolicyIdPutBodyTypeForResponse(TypedDi
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsPoliciesPolicyIdPutBodyType",
-    "EnterprisesEnterpriseActionsPoliciesPolicyIdPutBodyTypeForResponse",
+    "EnterprisesEnterpriseActionsPoliciesPostBodyType",
+    "EnterprisesEnterpriseActionsPoliciesPostBodyTypeForResponse",
 )

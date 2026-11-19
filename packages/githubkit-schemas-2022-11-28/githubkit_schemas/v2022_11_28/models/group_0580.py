@@ -16,10 +16,10 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class BillingPremiumRequestUsageReportUser(GitHubModel):
-    """BillingPremiumRequestUsageReportUser"""
+class BillingAiCreditUsageReportUser(GitHubModel):
+    """BillingAiCreditUsageReportUser"""
 
-    time_period: BillingPremiumRequestUsageReportUserPropTimePeriod = Field(
+    time_period: BillingAiCreditUsageReportUserPropTimePeriod = Field(
         alias="timePeriod"
     )
     user: str = Field(description="The unique identifier of the user.")
@@ -29,13 +29,13 @@ class BillingPremiumRequestUsageReportUser(GitHubModel):
     model: Missing[str] = Field(
         default=UNSET, description="The model for the usage report."
     )
-    usage_items: list[BillingPremiumRequestUsageReportUserPropUsageItemsItems] = Field(
+    usage_items: list[BillingAiCreditUsageReportUserPropUsageItemsItems] = Field(
         alias="usageItems"
     )
 
 
-class BillingPremiumRequestUsageReportUserPropTimePeriod(GitHubModel):
-    """BillingPremiumRequestUsageReportUserPropTimePeriod"""
+class BillingAiCreditUsageReportUserPropTimePeriod(GitHubModel):
+    """BillingAiCreditUsageReportUserPropTimePeriod"""
 
     year: int = Field(description="The year for the usage report.")
     month: Missing[int] = Field(
@@ -46,8 +46,8 @@ class BillingPremiumRequestUsageReportUserPropTimePeriod(GitHubModel):
     )
 
 
-class BillingPremiumRequestUsageReportUserPropUsageItemsItems(GitHubModel):
-    """BillingPremiumRequestUsageReportUserPropUsageItemsItems"""
+class BillingAiCreditUsageReportUserPropUsageItemsItems(GitHubModel):
+    """BillingAiCreditUsageReportUserPropUsageItemsItems"""
 
     product: str = Field(description="Product name.")
     sku: str = Field(description="SKU name.")
@@ -79,12 +79,12 @@ class BillingPremiumRequestUsageReportUserPropUsageItemsItems(GitHubModel):
     )
 
 
-model_rebuild(BillingPremiumRequestUsageReportUser)
-model_rebuild(BillingPremiumRequestUsageReportUserPropTimePeriod)
-model_rebuild(BillingPremiumRequestUsageReportUserPropUsageItemsItems)
+model_rebuild(BillingAiCreditUsageReportUser)
+model_rebuild(BillingAiCreditUsageReportUserPropTimePeriod)
+model_rebuild(BillingAiCreditUsageReportUserPropUsageItemsItems)
 
 __all__ = (
-    "BillingPremiumRequestUsageReportUser",
-    "BillingPremiumRequestUsageReportUserPropTimePeriod",
-    "BillingPremiumRequestUsageReportUserPropUsageItemsItems",
+    "BillingAiCreditUsageReportUser",
+    "BillingAiCreditUsageReportUserPropTimePeriod",
+    "BillingAiCreditUsageReportUserPropUsageItemsItems",
 )

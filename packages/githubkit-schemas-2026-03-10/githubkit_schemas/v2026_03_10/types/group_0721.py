@@ -14,22 +14,22 @@ from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
 from .group_0018 import InstallationType, InstallationTypeForResponse
-from .group_0582 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0584 import (
+from .group_0583 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0585 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0585 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0600 import (
+from .group_0586 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0601 import (
     WebhooksRepositoriesItemsType,
     WebhooksRepositoriesItemsTypeForResponse,
 )
 
 
-class WebhookInstallationNewPermissionsAcceptedType(TypedDict):
-    """installation new_permissions_accepted event"""
+class WebhookInstallationDeletedType(TypedDict):
+    """installation deleted event"""
 
-    action: Literal["new_permissions_accepted"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -39,10 +39,10 @@ class WebhookInstallationNewPermissionsAcceptedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookInstallationNewPermissionsAcceptedTypeForResponse(TypedDict):
-    """installation new_permissions_accepted event"""
+class WebhookInstallationDeletedTypeForResponse(TypedDict):
+    """installation deleted event"""
 
-    action: Literal["new_permissions_accepted"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: InstallationTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -53,6 +53,6 @@ class WebhookInstallationNewPermissionsAcceptedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookInstallationNewPermissionsAcceptedType",
-    "WebhookInstallationNewPermissionsAcceptedTypeForResponse",
+    "WebhookInstallationDeletedType",
+    "WebhookInstallationDeletedTypeForResponse",
 )

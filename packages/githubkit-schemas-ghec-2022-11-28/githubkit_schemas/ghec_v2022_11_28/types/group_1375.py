@@ -13,71 +13,83 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchBody"""
+class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200"""
 
     default_availability: NotRequired[
-        EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType
+        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType
     ]
-    models: NotRequired[
-        list[EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsType]
+    models: list[
+        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsType
     ]
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchBody"""
+class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200TypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200"""
 
     default_availability: NotRequired[
-        EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse
+        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse
     ]
-    models: NotRequired[
-        list[
-            EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse
-        ]
+    models: list[
+        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse
     ]
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType(
+class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailability"""
+    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailability"""
 
     policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse(
+class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailability"""
+    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailability"""
 
     policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsType(TypedDict):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItems"""
+class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItems"""
 
     model_name: str
+    display_name: str
     policy_state: Literal[
-        "enabled", "disabled", "delegate_to_teams_and_apps", "delegate_to_organizations"
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_organizations",
+        "delegate_to_default",
+        "unconfigured",
     ]
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse(
+class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItems"""
+    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItems"""
 
     model_name: str
+    display_name: str
     policy_state: Literal[
-        "enabled", "disabled", "delegate_to_teams_and_apps", "delegate_to_organizations"
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_organizations",
+        "delegate_to_default",
+        "unconfigured",
     ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType",
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse",
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsType",
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse",
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyType",
-    "EnterprisesEnterpriseCopilotModelPoliciesPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType",
+    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse",
+    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsType",
+    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200Type",
+    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200TypeForResponse",
 )

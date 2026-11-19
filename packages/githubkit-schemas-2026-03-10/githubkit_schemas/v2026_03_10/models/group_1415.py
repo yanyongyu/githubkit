@@ -25,13 +25,12 @@ from .group_0147 import (
 )
 
 
-class ReposOwnerRepoActionsPoliciesPolicyIdPutBody(GitHubModel):
-    """ReposOwnerRepoActionsPoliciesPolicyIdPutBody"""
+class ReposOwnerRepoActionsPoliciesPostBody(GitHubModel):
+    """ReposOwnerRepoActionsPoliciesPostBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the policy.")
-    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
-        default=UNSET,
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
+    name: str = Field(description="The name of the policy.")
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
     )
     conditions: Missing[
         Union[ActionsPolicyRepoConditionsOneof0, ActionsPolicyRepoConditionsOneof1]
@@ -45,6 +44,6 @@ class ReposOwnerRepoActionsPoliciesPolicyIdPutBody(GitHubModel):
     ] = Field(default=UNSET, description="An array of rules within the policy.")
 
 
-model_rebuild(ReposOwnerRepoActionsPoliciesPolicyIdPutBody)
+model_rebuild(ReposOwnerRepoActionsPoliciesPostBody)
 
-__all__ = ("ReposOwnerRepoActionsPoliciesPolicyIdPutBody",)
+__all__ = ("ReposOwnerRepoActionsPoliciesPostBody",)

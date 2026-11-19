@@ -9,162 +9,190 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0010 import IntegrationType, IntegrationTypeForResponse
-from .group_0020 import RepositoryType, RepositoryTypeForResponse
-from .group_0046 import MilestoneType, MilestoneTypeForResponse
-from .group_0047 import IssueTypeType, IssueTypeTypeForResponse
-from .group_0048 import ReactionRollupType, ReactionRollupTypeForResponse
-from .group_0049 import (
-    IssueDependenciesSummaryType,
-    IssueDependenciesSummaryTypeForResponse,
-    SubIssuesSummaryType,
-    SubIssuesSummaryTypeForResponse,
-)
-from .group_0052 import IssueCommentType, IssueCommentTypeForResponse
-from .group_0053 import IssueFieldValueType, IssueFieldValueTypeForResponse
-from .group_0055 import (
-    IssuePropLabelsItemsOneof1Type,
-    IssuePropLabelsItemsOneof1TypeForResponse,
-    IssuePropStatusType,
-    IssuePropStatusTypeForResponse,
-)
-from .group_0056 import IssuePropPullRequestType, IssuePropPullRequestTypeForResponse
-from .group_1540 import (
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsType,
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsTypeForResponse,
-)
 
+class ReposOwnerRepoIssuesIssueNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
 
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200"""
-
-    id: int
-    node_id: str
-    url: str
-    repository_url: str
-    labels_url: str
-    comments_url: str
-    events_url: str
-    html_url: str
-    number: int
-    state: str
-    status: NotRequired[Union[IssuePropStatusType, None]]
-    state_reason: NotRequired[
-        Union[Literal["completed", "reopened", "not_planned", "duplicate"], None]
-    ]
-    title: str
+    title: NotRequired[Union[str, int, None]]
     body: NotRequired[Union[str, None]]
-    user: Union[SimpleUserType, None]
-    labels: list[Union[str, IssuePropLabelsItemsOneof1Type]]
-    assignee: Union[SimpleUserType, None]
-    assignees: NotRequired[list[SimpleUserType]]
-    milestone: Union[MilestoneType, None]
-    locked: bool
-    active_lock_reason: NotRequired[Union[str, None]]
-    comments: int
-    pull_request: NotRequired[IssuePropPullRequestType]
-    closed_at: Union[_dt.datetime, None]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    draft: NotRequired[bool]
-    closed_by: NotRequired[Union[SimpleUserType, None]]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    timeline_url: NotRequired[str]
-    type: NotRequired[Union[IssueTypeType, None]]
-    repository: NotRequired[RepositoryType]
-    performed_via_github_app: NotRequired[Union[IntegrationType, None]]
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
+    assignee: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["open", "closed"]]
+    status: NotRequired[str]
+    state_reason: NotRequired[
+        Union[Literal["completed", "not_planned", "duplicate", "reopened"], None]
+    ]
+    duplicate_issue_id: NotRequired[int]
+    milestone: NotRequired[Union[str, int, None]]
+    labels: NotRequired[
+        list[
+            Union[
+                str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type
+            ]
         ]
     ]
-    reactions: NotRequired[ReactionRollupType]
-    sub_issues_summary: NotRequired[SubIssuesSummaryType]
-    parent_issue_url: NotRequired[Union[str, None]]
-    pinned_comment: NotRequired[Union[IssueCommentType, None]]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryType]
-    issue_field_values: NotRequired[list[IssueFieldValueType]]
-    suggestions: NotRequired[
-        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsType
-    ]
-
-
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200TypeForResponse(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200"""
-
-    id: int
-    node_id: str
-    url: str
-    repository_url: str
-    labels_url: str
-    comments_url: str
-    events_url: str
-    html_url: str
-    number: int
-    state: str
-    status: NotRequired[Union[IssuePropStatusTypeForResponse, None]]
-    state_reason: NotRequired[
-        Union[Literal["completed", "reopened", "not_planned", "duplicate"], None]
-    ]
-    title: str
-    body: NotRequired[Union[str, None]]
-    user: Union[SimpleUserTypeForResponse, None]
-    labels: list[Union[str, IssuePropLabelsItemsOneof1TypeForResponse]]
-    assignee: Union[SimpleUserTypeForResponse, None]
-    assignees: NotRequired[list[SimpleUserTypeForResponse]]
-    milestone: Union[MilestoneTypeForResponse, None]
-    locked: bool
-    active_lock_reason: NotRequired[Union[str, None]]
-    comments: int
-    pull_request: NotRequired[IssuePropPullRequestTypeForResponse]
-    closed_at: Union[str, None]
-    created_at: str
-    updated_at: str
-    draft: NotRequired[bool]
-    closed_by: NotRequired[Union[SimpleUserTypeForResponse, None]]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    timeline_url: NotRequired[str]
-    type: NotRequired[Union[IssueTypeTypeForResponse, None]]
-    repository: NotRequired[RepositoryTypeForResponse]
-    performed_via_github_app: NotRequired[Union[IntegrationTypeForResponse, None]]
-    author_association: NotRequired[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
+    assignees: NotRequired[
+        list[
+            Union[
+                str,
+                ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1Type,
+            ]
         ]
     ]
-    reactions: NotRequired[ReactionRollupTypeForResponse]
-    sub_issues_summary: NotRequired[SubIssuesSummaryTypeForResponse]
-    parent_issue_url: NotRequired[Union[str, None]]
-    pinned_comment: NotRequired[Union[IssueCommentTypeForResponse, None]]
-    issue_dependencies_summary: NotRequired[IssueDependenciesSummaryTypeForResponse]
-    issue_field_values: NotRequired[list[IssueFieldValueTypeForResponse]]
-    suggestions: NotRequired[
-        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsTypeForResponse
+    issue_field_values: NotRequired[
+        list[ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType]
     ]
+    type: NotRequired[
+        Union[str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1Type, None]
+    ]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
+
+    title: NotRequired[Union[str, int, None]]
+    body: NotRequired[Union[str, None]]
+    assignee: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["open", "closed"]]
+    status: NotRequired[str]
+    state_reason: NotRequired[
+        Union[Literal["completed", "not_planned", "duplicate", "reopened"], None]
+    ]
+    duplicate_issue_id: NotRequired[int]
+    milestone: NotRequired[Union[str, int, None]]
+    labels: NotRequired[
+        list[
+            Union[
+                str,
+                ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1TypeForResponse,
+            ]
+        ]
+    ]
+    assignees: NotRequired[
+        list[
+            Union[
+                str,
+                ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1TypeForResponse,
+            ]
+        ]
+    ]
+    issue_field_values: NotRequired[
+        list[
+            ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsTypeForResponse
+        ]
+    ]
+    type: NotRequired[
+        Union[
+            str,
+            ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1TypeForResponse,
+            None,
+        ]
+    ]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
+
+    id: NotRequired[int]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1Type(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1"""
+
+    login: NotRequired[str]
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1TypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1"""
+
+    login: NotRequired[str]
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems"""
+
+    field_id: int
+    value: Union[str, float, list[str]]
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsTypeForResponse(
+    TypedDict
+):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems"""
+
+    field_id: int
+    value: Union[str, float, list[str]]
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1Type(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1
+
+    The issue type with optional metadata.
+    """
+
+    value: NotRequired[Union[str, None]]
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1TypeForResponse(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1
+
+    The issue type with optional metadata.
+    """
+
+    value: NotRequired[Union[str, None]]
+    rationale: NotRequired[str]
+    suggest: NotRequired[bool]
+    confidence: NotRequired[Literal["low", "medium", "high"]]
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200Type",
-    "ReposOwnerRepoIssuesIssueNumberPatchResponse200TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1Type",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsType",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItemsTypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1Type",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1TypeForResponse",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyType",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyTypeForResponse",
 )

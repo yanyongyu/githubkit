@@ -19,16 +19,16 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0045 import Discussion
-from .group_0583 import EnterpriseWebhooks
-from .group_0584 import SimpleInstallation
-from .group_0585 import OrganizationSimpleWebhooks
-from .group_0586 import RepositoryWebhooks
+from .group_0584 import EnterpriseWebhooks
+from .group_0585 import SimpleInstallation
+from .group_0586 import OrganizationSimpleWebhooks
+from .group_0587 import RepositoryWebhooks
 
 
-class WebhookDiscussionUnpinned(GitHubModel):
-    """discussion unpinned event"""
+class WebhookDiscussionUnlocked(GitHubModel):
+    """discussion unlocked event"""
 
-    action: Literal["unpinned"] = Field()
+    action: Literal["unlocked"] = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -54,6 +54,6 @@ class WebhookDiscussionUnpinned(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDiscussionUnpinned)
+model_rebuild(WebhookDiscussionUnlocked)
 
-__all__ = ("WebhookDiscussionUnpinned",)
+__all__ = ("WebhookDiscussionUnlocked",)

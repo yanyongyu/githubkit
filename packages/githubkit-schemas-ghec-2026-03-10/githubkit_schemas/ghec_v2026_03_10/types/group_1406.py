@@ -117,12 +117,12 @@ from .group_0189 import (
 )
 
 
-class EnterprisesEnterpriseRulesetsRulesetIdPutBodyType(TypedDict):
-    """EnterprisesEnterpriseRulesetsRulesetIdPutBody"""
+class EnterprisesEnterpriseRulesetsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseRulesetsPostBody"""
 
-    name: NotRequired[str]
+    name: str
     target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
     bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
     conditions: NotRequired[
         Union[
@@ -163,12 +163,12 @@ class EnterprisesEnterpriseRulesetsRulesetIdPutBodyType(TypedDict):
     ]
 
 
-class EnterprisesEnterpriseRulesetsRulesetIdPutBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseRulesetsRulesetIdPutBody"""
+class EnterprisesEnterpriseRulesetsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseRulesetsPostBody"""
 
-    name: NotRequired[str]
+    name: str
     target: NotRequired[Literal["branch", "tag", "push", "repository"]]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
     bypass_actors: NotRequired[list[RepositoryRulesetBypassActorTypeForResponse]]
     conditions: NotRequired[
         Union[
@@ -210,6 +210,6 @@ class EnterprisesEnterpriseRulesetsRulesetIdPutBodyTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "EnterprisesEnterpriseRulesetsRulesetIdPutBodyType",
-    "EnterprisesEnterpriseRulesetsRulesetIdPutBodyTypeForResponse",
+    "EnterprisesEnterpriseRulesetsPostBodyType",
+    "EnterprisesEnterpriseRulesetsPostBodyTypeForResponse",
 )

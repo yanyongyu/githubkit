@@ -9,26 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
-
-from .group_0110 import CopilotSeatDetailsType, CopilotSeatDetailsTypeForResponse
-
-
-class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
-
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsType]]
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200"""
 
-    total_seats: NotRequired[int]
-    seats: NotRequired[list[CopilotSeatDetailsTypeForResponse]]
+    models: list[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItemsType
+    ]
+
+
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200"""
+
+    models: list[
+        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItemsTypeForResponse
+    ]
+
+
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItemsType(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItems"""
+
+    model_name: str
+    display_name: str
+    policy_state: Literal["enabled", "disabled", "optional"]
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_default",
+        "unconfigured",
+    ]
+    editable: bool
+
+
+class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItemsTypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItems"""
+
+    model_name: str
+    display_name: str
+    policy_state: Literal["enabled", "disabled", "optional"]
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_default",
+        "unconfigured",
+    ]
+    editable: bool
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type",
-    "EnterprisesEnterpriseCopilotBillingSeatsGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItemsType",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200PropModelsItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200Type",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchResponse200TypeForResponse",
 )

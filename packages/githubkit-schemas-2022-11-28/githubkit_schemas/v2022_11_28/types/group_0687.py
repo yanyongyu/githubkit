@@ -13,20 +13,20 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0583 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0584 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0585 import (
+from .group_0584 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0585 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0586 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0586 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0592 import WebhooksDeployKeyType, WebhooksDeployKeyTypeForResponse
+from .group_0587 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0593 import WebhooksDeployKeyType, WebhooksDeployKeyTypeForResponse
 
 
-class WebhookDeployKeyDeletedType(TypedDict):
-    """deploy_key deleted event"""
+class WebhookDeployKeyCreatedType(TypedDict):
+    """deploy_key created event"""
 
-    action: Literal["deleted"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     key: WebhooksDeployKeyType
@@ -35,10 +35,10 @@ class WebhookDeployKeyDeletedType(TypedDict):
     sender: SimpleUserType
 
 
-class WebhookDeployKeyDeletedTypeForResponse(TypedDict):
-    """deploy_key deleted event"""
+class WebhookDeployKeyCreatedTypeForResponse(TypedDict):
+    """deploy_key created event"""
 
-    action: Literal["deleted"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     key: WebhooksDeployKeyTypeForResponse
@@ -48,6 +48,6 @@ class WebhookDeployKeyDeletedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookDeployKeyDeletedType",
-    "WebhookDeployKeyDeletedTypeForResponse",
+    "WebhookDeployKeyCreatedType",
+    "WebhookDeployKeyCreatedTypeForResponse",
 )

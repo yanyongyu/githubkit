@@ -13,25 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0299 import RateLimit
-from .group_0301 import RateLimitOverviewPropResources
+
+class RateLimit(GitHubModel):
+    """Rate Limit"""
+
+    limit: int = Field()
+    remaining: int = Field()
+    reset: int = Field()
+    used: int = Field()
 
 
-class RateLimitOverview(GitHubModel):
-    """Rate Limit Overview
+model_rebuild(RateLimit)
 
-    Rate limit status for the applicable requester and resource category. Requests
-    authenticated as a user share the user's rate limit across credentials. Requests
-    without authentication use the requesting IP address. API requests routed
-    through
-    either an API hostname or a web hostname can count against the same applicable
-    limit.
-    """
-
-    resources: RateLimitOverviewPropResources = Field()
-    rate: RateLimit = Field(title="Rate Limit")
-
-
-model_rebuild(RateLimitOverview)
-
-__all__ = ("RateLimitOverview",)
+__all__ = ("RateLimit",)

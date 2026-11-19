@@ -20,14 +20,11 @@ from githubkit.utils import UNSET
 from .group_0030 import CodeScanningDefaultSetupOptions, CodeScanningOptions
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody"""
+class EnterprisesEnterpriseCodeSecurityConfigurationsPostBody(GitHubModel):
+    """EnterprisesEnterpriseCodeSecurityConfigurationsPostBody"""
 
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the code security configuration. Must be unique across the enterprise.",
+    name: str = Field(
+        description="The name of the code security configuration. Must be unique within the enterprise."
     )
     description: Missing[str] = Field(
         max_length=255,
@@ -54,7 +51,7 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody(
         description="The enablement status of Automatic dependency submission",
     )
     dependency_graph_autosubmit_action_options: Missing[
-        EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions
+        EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions
     ] = Field(
         default=UNSET, description="Feature options for Automatic dependency submission"
     )
@@ -63,13 +60,17 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody(
     )
     dependabot_reachability: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
         default=UNSET,
-        description="The enablement status of reachability analysis for Dependabot. Only available for enterprises with access to reachability analysis.\nRequires Dependabot alerts to be enabled when set to `enabled`. Must be `disabled` when Dependabot alerts is `disabled`.\n`not_set` leaves existing repository settings unchanged. Omit this field to preserve the configuration's current value.",
+        description="The enablement status of reachability analysis for Dependabot. Only available for enterprises with access to reachability analysis.\nRequires Dependabot alerts to be enabled when set to `enabled`. Must be `disabled` when Dependabot alerts is `disabled`.\n`not_set` leaves existing repository settings unchanged.",
     )
     dependabot_security_updates: Missing[Literal["enabled", "disabled", "not_set"]] = (
         Field(
             default=UNSET,
             description="The enablement status of Dependabot security updates",
         )
+    )
+    code_scanning_options: Missing[Union[CodeScanningOptions, None]] = Field(
+        default=UNSET,
+        description="Security Configuration feature options for code scanning",
     )
     code_scanning_default_setup: Missing[Literal["enabled", "disabled", "not_set"]] = (
         Field(
@@ -81,10 +82,6 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody(
         Union[CodeScanningDefaultSetupOptions, None]
     ] = Field(
         default=UNSET, description="Feature options for code scanning default setup"
-    )
-    code_scanning_options: Missing[Union[CodeScanningOptions, None]] = Field(
-        default=UNSET,
-        description="Security Configuration feature options for code scanning",
     )
     code_scanning_delegated_alert_dismissal: Missing[
         Literal["enabled", "disabled", "not_set"]
@@ -115,7 +112,7 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody(
         Literal["enabled", "disabled", "not_set"]
     ] = Field(
         default=UNSET,
-        description="The enablement status of secret scanning non-provider patterns",
+        description="The enablement status of secret scanning non provider patterns",
     )
     secret_scanning_generic_secrets: Missing[
         Literal["enabled", "disabled", "not_set"]
@@ -154,11 +151,11 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody(
     )
 
 
-class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions(
+class EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDepen
-    dencyGraphAutosubmitActionOptions
+    """EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosu
+    bmitActionOptions
 
     Feature options for Automatic dependency submission
     """
@@ -169,12 +166,12 @@ class EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPro
     )
 
 
-model_rebuild(EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody)
+model_rebuild(EnterprisesEnterpriseCodeSecurityConfigurationsPostBody)
 model_rebuild(
-    EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions
+    EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions
 )
 
 __all__ = (
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody",
-    "EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsPostBody",
+    "EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions",
 )

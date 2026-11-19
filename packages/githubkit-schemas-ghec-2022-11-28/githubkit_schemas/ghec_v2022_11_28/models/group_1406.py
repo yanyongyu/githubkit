@@ -9,103 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
-from .group_0146 import RepositoryRulesetBypassActor
-from .group_0149 import EnterpriseRulesetConditionsOneof0
-from .group_0150 import EnterpriseRulesetConditionsOneof1
-from .group_0151 import EnterpriseRulesetConditionsOneof2
-from .group_0152 import EnterpriseRulesetConditionsOneof3
-from .group_0153 import EnterpriseRulesetConditionsOneof4
-from .group_0154 import EnterpriseRulesetConditionsOneof5
-from .group_0155 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
-from .group_0156 import RepositoryRuleUpdate
-from .group_0158 import RepositoryRuleRequiredLinearHistory
-from .group_0159 import RepositoryRuleRequiredDeployments
-from .group_0162 import RepositoryRulePullRequest
-from .group_0164 import RepositoryRuleRequiredStatusChecks
-from .group_0166 import RepositoryRuleCommitMessagePattern
-from .group_0168 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0170 import RepositoryRuleCommitterEmailPattern
-from .group_0172 import RepositoryRuleBranchNamePattern
-from .group_0174 import RepositoryRuleTagNamePattern
-from .group_0176 import RepositoryRuleFilePathRestriction
-from .group_0178 import RepositoryRuleMaxFilePathLength
-from .group_0180 import RepositoryRuleFileExtensionRestriction
-from .group_0182 import RepositoryRuleMaxFileSize
-from .group_0185 import RepositoryRuleWorkflows
-from .group_0187 import RepositoryRuleCodeScanning
-from .group_0189 import RepositoryRuleCopilotCodeReview
+from .group_0144 import CustomPropertyBatchItemPayload
 
 
-class EnterprisesEnterpriseRulesetsPostBody(GitHubModel):
-    """EnterprisesEnterpriseRulesetsPostBody"""
+class EnterprisesEnterprisePropertiesSchemaPatchBody(GitHubModel):
+    """EnterprisesEnterprisePropertiesSchemaPatchBody"""
 
-    name: str = Field(description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push", "repository"]] = Field(
-        default=UNSET, description="The target of the ruleset"
+    properties: list[CustomPropertyBatchItemPayload] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The array of custom properties to create or update.",
     )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page. `evaluate` is not available for the `repository` target."
-    )
-    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
-        default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
-    )
-    conditions: Missing[
-        Union[
-            EnterpriseRulesetConditionsOneof0,
-            EnterpriseRulesetConditionsOneof1,
-            EnterpriseRulesetConditionsOneof2,
-            EnterpriseRulesetConditionsOneof3,
-            EnterpriseRulesetConditionsOneof4,
-            EnterpriseRulesetConditionsOneof5,
-        ]
-    ] = Field(
-        default=UNSET,
-        title="Enterprise ruleset conditions",
-        description="Conditions for an enterprise ruleset.\nThe `conditions` object supports either of the following combinations: - `organization_id` and `repository_name` - `organization_id` and `repository_property` - `organization_name` and `repository_name` - `organization_name` and `repository_property` - `organization_property` and `repository_name` - `organization_property` and `repository_property`\nFor branch and tag rulesets, the `conditions` object should also contain the `ref_name` property.",
-    )
-    rules: Missing[
-        list[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleFilePathRestriction,
-                RepositoryRuleMaxFilePathLength,
-                RepositoryRuleFileExtensionRestriction,
-                RepositoryRuleMaxFileSize,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-                RepositoryRuleCopilotCodeReview,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(EnterprisesEnterpriseRulesetsPostBody)
+model_rebuild(EnterprisesEnterprisePropertiesSchemaPatchBody)
 
-__all__ = ("EnterprisesEnterpriseRulesetsPostBody",)
+__all__ = ("EnterprisesEnterprisePropertiesSchemaPatchBody",)

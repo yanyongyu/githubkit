@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -17,110 +18,42 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0207 import (
-    SecretScanningLocationCommit,
-    SecretScanningLocationDiscussionComment,
-    SecretScanningLocationDiscussionTitle,
-    SecretScanningLocationIssueBody,
-    SecretScanningLocationPullRequestBody,
-    SecretScanningLocationPullRequestReview,
-    SecretScanningLocationWikiCommit,
-)
-from .group_0208 import (
-    SecretScanningLocationIssueComment,
-    SecretScanningLocationIssueTitle,
-    SecretScanningLocationPullRequestReviewComment,
-    SecretScanningLocationPullRequestTitle,
-)
-from .group_0209 import (
-    SecretScanningLocationDiscussionBody,
-    SecretScanningLocationPullRequestComment,
-)
-from .group_0219 import PublicMonitoringAlertLocation, PublicMonitoringSecretAuthor
+from .group_0099 import SimpleRepository
+from .group_0218 import PublicMonitoringRepository
+from .group_0219 import BaseGist
+from .group_0729 import PublicMonitoringAlertWebhookPropAttribution
 
 
-class PublicMonitoringAlertWebhookPropAttribution(GitHubModel):
-    """PublicMonitoringAlertWebhookPropAttribution
+class PublicMonitoringAlertWebhook(GitHubModel):
+    """Public Monitoring Alert Webhook
 
-    Attribution information for the alert.
+    A public monitoring alert as delivered via webhook.
     """
 
-    secret_author: Missing[Union[SimpleUser, PublicMonitoringSecretAuthor, None]] = (
-        Field(default=UNSET)
+    number: int = Field(
+        ge=1.0,
+        description="The enterprise-scoped number of the public monitoring alert.",
     )
-    committer_email: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The email address associated with the secret's author.",
+    url: str = Field(description="The REST API URL of the alert resource.")
+    secret_type: str = Field(
+        description="The type of secret that secret scanning detected."
     )
-    commit: Missing[
-        Union[SecretScanningLocationCommit, PublicMonitoringAlertLocation]
-    ] = Field(default=UNSET)
-    wiki_commit: Missing[
-        Union[SecretScanningLocationWikiCommit, PublicMonitoringAlertLocation]
-    ] = Field(default=UNSET)
-    issue_title: Missing[
-        Union[SecretScanningLocationIssueTitle, PublicMonitoringAlertLocation]
-    ] = Field(default=UNSET)
-    issue_body: Missing[
-        Union[SecretScanningLocationIssueBody, PublicMonitoringAlertLocation]
-    ] = Field(default=UNSET)
-    issue_comment: Missing[
-        Union[SecretScanningLocationIssueComment, PublicMonitoringAlertLocation]
-    ] = Field(default=UNSET)
-    pull_request_title: Missing[
-        Union[SecretScanningLocationPullRequestTitle, PublicMonitoringAlertLocation]
-    ] = Field(default=UNSET)
-    pull_request_body: Missing[
-        Union[SecretScanningLocationPullRequestBody, PublicMonitoringAlertLocation]
-    ] = Field(default=UNSET)
-    pull_request_comment: Missing[
-        Union[SecretScanningLocationPullRequestComment, PublicMonitoringAlertLocation]
-    ] = Field(default=UNSET)
-    pull_request_review_comment: Missing[
-        Union[
-            SecretScanningLocationPullRequestReviewComment,
-            PublicMonitoringAlertLocation,
-        ]
-    ] = Field(default=UNSET)
-    pull_request_review: Missing[
-        Union[SecretScanningLocationPullRequestReview, PublicMonitoringAlertLocation]
-    ] = Field(default=UNSET)
-    pull_request_timeline_comment: Missing[PublicMonitoringAlertLocation] = Field(
-        default=UNSET,
-        description="Delivered source location details for a public monitoring alert.",
+    secret_type_display_name: str = Field(
+        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."'
     )
-    discussion_title: Missing[
-        Union[SecretScanningLocationDiscussionTitle, PublicMonitoringAlertLocation]
-    ] = Field(default=UNSET)
-    discussion_body: Missing[
-        Union[SecretScanningLocationDiscussionBody, PublicMonitoringAlertLocation]
-    ] = Field(default=UNSET)
-    discussion_comment: Missing[
-        Union[SecretScanningLocationDiscussionComment, PublicMonitoringAlertLocation]
-    ] = Field(default=UNSET)
-    commit_metadata: Missing[PublicMonitoringAlertLocation] = Field(
-        default=UNSET,
-        description="Delivered source location details for a public monitoring alert.",
+    created_at: _dt.datetime = Field(
+        description="The time that the secret was detected in ISO 8601 format."
     )
-    commit_comment: Missing[PublicMonitoringAlertLocation] = Field(
-        default=UNSET,
-        description="Delivered source location details for a public monitoring alert.",
+    validity: Literal["active", "inactive", "unknown"] = Field(
+        description="The validity status of the secret as of the latest validity check for the enterprise alert."
     )
-    actions_log: Missing[PublicMonitoringAlertLocation] = Field(
-        default=UNSET,
-        description="Delivered source location details for a public monitoring alert.",
-    )
-    gist_blob: Missing[PublicMonitoringAlertLocation] = Field(
-        default=UNSET,
-        description="Delivered source location details for a public monitoring alert.",
-    )
-    method: Missing[Literal["member_activity", "verified_domain"]] = Field(
-        default=UNSET,
-        description="The method used to attribute the alert to the enterprise.",
+    repository: Union[SimpleRepository, PublicMonitoringRepository, None] = Field()
+    gist: Missing[Union[BaseGist, None]] = Field(default=UNSET)
+    attribution: PublicMonitoringAlertWebhookPropAttribution = Field(
+        description="Attribution information for the alert."
     )
 
 
-model_rebuild(PublicMonitoringAlertWebhookPropAttribution)
+model_rebuild(PublicMonitoringAlertWebhook)
 
-__all__ = ("PublicMonitoringAlertWebhookPropAttribution",)
+__all__ = ("PublicMonitoringAlertWebhook",)

@@ -16,28 +16,28 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody(GitHubModel):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody"""
+class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200"""
 
-    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability = Field()
+    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability = Field()
 
 
-class EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability(
+class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
+    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability"""
 
     policy_state: Literal["enabled", "disabled", "delegate_to_organizations"] = Field(
-        description="The enterprise default policy applied to newly released Copilot features and clients. `delegate_to_organizations` is only accepted for enterprises that manage Copilot through organizations."
+        description="The enterprise default policy applied to newly released Copilot features and clients. `delegate_to_organizations` means each organization sets its own default."
     )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody)
+model_rebuild(EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200)
 model_rebuild(
-    EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability
+    EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability
 )
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBody",
-    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchBodyPropDefaultAvailability",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability",
 )

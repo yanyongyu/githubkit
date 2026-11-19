@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse409(GitHubModel):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse409
+class AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse404(GitHubModel):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse404
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -32,7 +32,7 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse409(GitHubModel
     )
     errors: Missing[
         list[
-            AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse409PropErrorsItems
+            AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse404PropErrorsItems
         ]
     ] = Field(
         default=UNSET,
@@ -49,10 +49,10 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse409(GitHubModel
     )
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse409PropErrorsItems(
+class AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse404PropErrorsItems(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse409PropErrorsItems
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse404PropErrorsItems
 
     A single validation error
     """
@@ -71,12 +71,12 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse409PropErrorsIt
     )
 
 
-model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse409)
+model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse404)
 model_rebuild(
-    AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse409PropErrorsItems
+    AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse404PropErrorsItems
 )
 
 __all__ = (
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse409",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse409PropErrorsItems",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse404",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse404PropErrorsItems",
 )

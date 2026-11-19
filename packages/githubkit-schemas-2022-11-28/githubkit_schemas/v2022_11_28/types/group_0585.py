@@ -9,57 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
 
-class OrganizationSimpleWebhooksType(TypedDict):
-    """Organization Simple
+class SimpleInstallationType(TypedDict):
+    """Simple Installation
 
-    A GitHub organization. Webhook payloads contain the `organization` property when
-    the webhook is configured for an
-    organization, or when the event occurs from activity in a repository owned by an
-    organization.
+    The GitHub App installation. Webhook payloads contain the `installation`
+    property when the event is configured
+    for and sent to a GitHub App. For more information,
+    see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-
+    github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
     """
 
-    login: str
     id: int
     node_id: str
-    url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
-    description: Union[str, None]
 
 
-class OrganizationSimpleWebhooksTypeForResponse(TypedDict):
-    """Organization Simple
+class SimpleInstallationTypeForResponse(TypedDict):
+    """Simple Installation
 
-    A GitHub organization. Webhook payloads contain the `organization` property when
-    the webhook is configured for an
-    organization, or when the event occurs from activity in a repository owned by an
-    organization.
+    The GitHub App installation. Webhook payloads contain the `installation`
+    property when the event is configured
+    for and sent to a GitHub App. For more information,
+    see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-
+    github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
     """
 
-    login: str
     id: int
     node_id: str
-    url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
-    description: Union[str, None]
 
 
 __all__ = (
-    "OrganizationSimpleWebhooksType",
-    "OrganizationSimpleWebhooksTypeForResponse",
+    "SimpleInstallationType",
+    "SimpleInstallationTypeForResponse",
 )

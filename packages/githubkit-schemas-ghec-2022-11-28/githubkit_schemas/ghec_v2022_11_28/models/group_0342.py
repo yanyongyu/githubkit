@@ -18,28 +18,23 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrganizationCustomOrganizationRoleUpdateSchema(GitHubModel):
-    """OrganizationCustomOrganizationRoleUpdateSchema"""
+class OrganizationCustomOrganizationRoleCreateSchema(GitHubModel):
+    """OrganizationCustomOrganizationRoleCreateSchema"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the custom role."
-    )
+    name: str = Field(description="The name of the custom role.")
     description: Missing[str] = Field(
         default=UNSET,
-        description="A short description about the intended use of this role or the permissions it grants.",
+        description="A short description about the intended usage of this role or what permissions it grants.",
     )
-    permissions: Missing[list[str]] = Field(
-        default=UNSET,
-        description="A list of additional permissions included in this role.",
+    permissions: list[str] = Field(
+        description="A list of additional permissions included in this role."
     )
-    base_role: Missing[
-        Literal["none", "read", "triage", "write", "maintain", "admin"]
-    ] = Field(
+    base_role: Missing[Literal["read", "triage", "write", "maintain", "admin"]] = Field(
         default=UNSET,
         description="The system role from which this role can inherit permissions.",
     )
 
 
-model_rebuild(OrganizationCustomOrganizationRoleUpdateSchema)
+model_rebuild(OrganizationCustomOrganizationRoleCreateSchema)
 
-__all__ = ("OrganizationCustomOrganizationRoleUpdateSchema",)
+__all__ = ("OrganizationCustomOrganizationRoleCreateSchema",)

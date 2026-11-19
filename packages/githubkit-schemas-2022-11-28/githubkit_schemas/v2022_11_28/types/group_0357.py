@@ -9,48 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
-from typing_extensions import TypedDict
-
-from .group_0032 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestsOnAlertsType(TypedDict):
-    """Pull Requests on Alerts
+class CodeScanningAiScanEnablementUpdateType(TypedDict):
+    """CodeScanningAiScanEnablementUpdate
 
-    A pull request linked to a code scanning alert.
+    AI Scan enablement update for a repository.
     """
 
-    number: int
-    id: int
-    repository: SimpleRepositoryType
-    title: str
-    state: Literal["open", "closed", "merged"]
-    merged_at: Union[_dt.datetime, None]
-    html_url: str
-    url: str
-    draft: bool
+    pr_scan: NotRequired[Literal["enabled", "disabled"]]
+    repository_scan: NotRequired[Literal["enabled", "disabled"]]
 
 
-class PullRequestsOnAlertsTypeForResponse(TypedDict):
-    """Pull Requests on Alerts
+class CodeScanningAiScanEnablementUpdateTypeForResponse(TypedDict):
+    """CodeScanningAiScanEnablementUpdate
 
-    A pull request linked to a code scanning alert.
+    AI Scan enablement update for a repository.
     """
 
-    number: int
-    id: int
-    repository: SimpleRepositoryTypeForResponse
-    title: str
-    state: Literal["open", "closed", "merged"]
-    merged_at: Union[str, None]
-    html_url: str
-    url: str
-    draft: bool
+    pr_scan: NotRequired[Literal["enabled", "disabled"]]
+    repository_scan: NotRequired[Literal["enabled", "disabled"]]
 
 
 __all__ = (
-    "PullRequestsOnAlertsType",
-    "PullRequestsOnAlertsTypeForResponse",
+    "CodeScanningAiScanEnablementUpdateType",
+    "CodeScanningAiScanEnablementUpdateTypeForResponse",
 )

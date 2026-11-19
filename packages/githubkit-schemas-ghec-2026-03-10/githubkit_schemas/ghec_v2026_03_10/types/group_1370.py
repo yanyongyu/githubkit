@@ -10,70 +10,46 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200"""
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200"""
 
-    models: list[
-        EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItemsType
-    ]
+    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType
 
 
-class EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200TypeForResponse(
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200"""
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200"""
 
-    models: list[
-        EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItemsTypeForResponse
-    ]
+    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse
 
 
-class EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItemsType(
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItems"""
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabili
+    ty
+    """
 
-    model_name: str
-    display_name: str
-    policy_state: Literal["enabled", "disabled"]
-    enterprise_policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_organizations",
-        "delegate_to_default",
-        "unconfigured",
-    ]
-    editable: bool
-    required_for_copilot_fusion_max: NotRequired[Literal[True]]
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
 
 
-class EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItemsTypeForResponse(
+class EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItems"""
+    """EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabili
+    ty
+    """
 
-    model_name: str
-    display_name: str
-    policy_state: Literal["enabled", "disabled"]
-    enterprise_policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_organizations",
-        "delegate_to_default",
-        "unconfigured",
-    ]
-    editable: bool
-    required_for_copilot_fusion_max: NotRequired[Literal[True]]
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItemsType",
-    "EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItemsTypeForResponse",
-    "EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200Type",
-    "EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200Type",
+    "EnterprisesEnterpriseCopilotFeaturePoliciesPatchResponse200TypeForResponse",
 )

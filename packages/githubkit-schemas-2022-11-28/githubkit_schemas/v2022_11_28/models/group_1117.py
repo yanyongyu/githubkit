@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -32,7 +32,7 @@ class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503(GitHubMode
     )
     errors: Missing[
         list[
-            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503PropErrorsItems
+            AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422PropErrorsItems
         ]
     ] = Field(
         default=UNSET,
@@ -49,10 +49,10 @@ class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503(GitHubMode
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503PropErrorsItems(
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422PropErrorsItems(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503PropErrorsItems
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422PropErrorsItems
 
     A single validation error
     """
@@ -71,12 +71,12 @@ class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503PropErrorsI
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503)
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422)
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503PropErrorsItems
+    AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422PropErrorsItems
 )
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503",
-    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503PropErrorsItems",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422PropErrorsItems",
 )

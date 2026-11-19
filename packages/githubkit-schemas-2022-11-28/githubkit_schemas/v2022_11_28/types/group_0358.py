@@ -9,46 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 from typing_extensions import TypedDict
 
 from .group_0032 import SimpleRepositoryType, SimpleRepositoryTypeForResponse
-from .group_0047 import IssueTypeType, IssueTypeTypeForResponse
 
 
-class CodeScanningAlertLinkedIssueType(TypedDict):
-    """CodeScanningAlertLinkedIssue
+class PullRequestsOnAlertsType(TypedDict):
+    """Pull Requests on Alerts
 
-    A GitHub issue linked to a code scanning alert. The issue may belong to a
-    different repository.
+    A pull request linked to a code scanning alert.
     """
 
     number: int
-    title: str
-    state: str
-    url: str
-    html_url: str
+    id: int
     repository: SimpleRepositoryType
-    issue_type: Union[IssueTypeType, None]
+    title: str
+    state: Literal["open", "closed", "merged"]
+    merged_at: Union[_dt.datetime, None]
+    html_url: str
+    url: str
+    draft: bool
 
 
-class CodeScanningAlertLinkedIssueTypeForResponse(TypedDict):
-    """CodeScanningAlertLinkedIssue
+class PullRequestsOnAlertsTypeForResponse(TypedDict):
+    """Pull Requests on Alerts
 
-    A GitHub issue linked to a code scanning alert. The issue may belong to a
-    different repository.
+    A pull request linked to a code scanning alert.
     """
 
     number: int
-    title: str
-    state: str
-    url: str
-    html_url: str
+    id: int
     repository: SimpleRepositoryTypeForResponse
-    issue_type: Union[IssueTypeTypeForResponse, None]
+    title: str
+    state: Literal["open", "closed", "merged"]
+    merged_at: Union[str, None]
+    html_url: str
+    url: str
+    draft: bool
 
 
 __all__ = (
-    "CodeScanningAlertLinkedIssueType",
-    "CodeScanningAlertLinkedIssueTypeForResponse",
+    "PullRequestsOnAlertsType",
+    "PullRequestsOnAlertsTypeForResponse",
 )

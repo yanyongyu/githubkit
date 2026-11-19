@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Any, Union
 
 from pydantic import Field
 
@@ -19,69 +19,70 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserIssueField(GitHubModel):
-    """User Issue Field
+class GpgKey(GitHubModel):
+    """GPG Key
 
-    A custom attribute defined by a personal account for attaching structured data
-    to issues.
+    A unique encryption key
     """
 
-    id: int = Field(description="The unique identifier of the issue field.")
-    node_id: str = Field(description="The node identifier of the issue field.")
-    name: str = Field(description="The name of the issue field.")
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The description of the issue field."
-    )
-    data_type: Literal["text", "date", "single_select", "multi_select", "number"] = (
-        Field(description="The data type of the issue field.")
-    )
-    visibility: Missing[Literal["restricted", "all"]] = Field(
-        default=UNSET,
-        description="The visibility of the issue field. Can be `restricted` (visible only to the owner and to collaborators on the repository the field is read through) or `all` (visible to all users who can see issues).",
-    )
-    options: Missing[Union[list[UserIssueFieldPropOptionsItems], None]] = Field(
-        default=UNSET,
-        description="Available options for single select and multi select fields.",
-    )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="The time the issue field was created."
-    )
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="The time the issue field was updated."
-    )
+    id: int = Field()
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    primary_key_id: Union[int, None] = Field()
+    key_id: str = Field()
+    public_key: str = Field()
+    emails: list[GpgKeyPropEmailsItems] = Field()
+    subkeys: list[GpgKeyPropSubkeysItems] = Field()
+    can_sign: bool = Field()
+    can_encrypt_comms: bool = Field()
+    can_encrypt_storage: bool = Field()
+    can_certify: bool = Field()
+    created_at: _dt.datetime = Field()
+    expires_at: Union[_dt.datetime, None] = Field()
+    revoked: bool = Field()
+    raw_key: Union[str, None] = Field()
 
 
-class UserIssueFieldPropOptionsItems(GitHubModel):
-    """UserIssueFieldPropOptionsItems"""
+class GpgKeyPropEmailsItems(GitHubModel):
+    """GpgKeyPropEmailsItems"""
 
-    id: int = Field(description="The unique identifier of the option.")
-    name: str = Field(description="The name of the option.")
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The description of the option."
-    )
-    color: Missing[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ] = Field(default=UNSET, description="The color of the option.")
-    priority: Missing[Union[int, None]] = Field(
-        default=UNSET, description="The priority of the option for ordering."
-    )
-    created_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="The time the option was created."
-    )
-    updated_at: Missing[_dt.datetime] = Field(
-        default=UNSET, description="The time the option was last updated."
-    )
+    email: Missing[str] = Field(default=UNSET)
+    verified: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(UserIssueField)
-model_rebuild(UserIssueFieldPropOptionsItems)
+class GpgKeyPropSubkeysItems(GitHubModel):
+    """GpgKeyPropSubkeysItems"""
+
+    id: Missing[int] = Field(default=UNSET)
+    primary_key_id: Missing[int] = Field(default=UNSET)
+    key_id: Missing[str] = Field(default=UNSET)
+    public_key: Missing[str] = Field(default=UNSET)
+    emails: Missing[list[GpgKeyPropSubkeysItemsPropEmailsItems]] = Field(default=UNSET)
+    subkeys: Missing[list[Any]] = Field(default=UNSET)
+    can_sign: Missing[bool] = Field(default=UNSET)
+    can_encrypt_comms: Missing[bool] = Field(default=UNSET)
+    can_encrypt_storage: Missing[bool] = Field(default=UNSET)
+    can_certify: Missing[bool] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    expires_at: Missing[Union[str, None]] = Field(default=UNSET)
+    raw_key: Missing[Union[str, None]] = Field(default=UNSET)
+    revoked: Missing[bool] = Field(default=UNSET)
+
+
+class GpgKeyPropSubkeysItemsPropEmailsItems(GitHubModel):
+    """GpgKeyPropSubkeysItemsPropEmailsItems"""
+
+    email: Missing[str] = Field(default=UNSET)
+    verified: Missing[bool] = Field(default=UNSET)
+
+
+model_rebuild(GpgKey)
+model_rebuild(GpgKeyPropEmailsItems)
+model_rebuild(GpgKeyPropSubkeysItems)
+model_rebuild(GpgKeyPropSubkeysItemsPropEmailsItems)
 
 __all__ = (
-    "UserIssueField",
-    "UserIssueFieldPropOptionsItems",
+    "GpgKey",
+    "GpgKeyPropEmailsItems",
+    "GpgKeyPropSubkeysItems",
+    "GpgKeyPropSubkeysItemsPropEmailsItems",
 )

@@ -9,43 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200"""
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422Type(TypedDict):
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422"""
 
-    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityType
+    message: NotRequired[str]
 
 
-class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200TypeForResponse(
+class EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200"""
+    """EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422"""
 
-    default_availability: EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityTypeForResponse
-
-
-class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability"""
-
-    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
-
-
-class EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailability"""
-
-    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityType",
-    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200PropDefaultAvailabilityTypeForResponse",
-    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200Type",
-    "EnterprisesEnterpriseCopilotFeaturePoliciesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422Type",
+    "EnterprisesEnterpriseCopilotCustomAgentsSourcePutResponse422TypeForResponse",
 )

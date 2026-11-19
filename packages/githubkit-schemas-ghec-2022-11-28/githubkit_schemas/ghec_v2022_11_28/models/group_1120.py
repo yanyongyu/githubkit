@@ -17,18 +17,17 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0673 import EnterpriseWebhooks
-from .group_0674 import SimpleInstallation
-from .group_0675 import OrganizationSimpleWebhooks
-from .group_0676 import RepositoryWebhooks
-from .group_0727 import PublicMonitoringAlertWebhook
+from .group_0674 import EnterpriseWebhooks
+from .group_0675 import SimpleInstallation
+from .group_0676 import OrganizationSimpleWebhooks
+from .group_0677 import RepositoryWebhooks
+from .group_0728 import PublicMonitoringAlertWebhook
 
 
-class WebhookSecretScanningPublicMonitoringAlertDismissed(GitHubModel):
-    """secret_scanning_public_monitoring_alert dismissed event"""
+class WebhookSecretScanningPublicMonitoringAlertCreated(GitHubModel):
+    """secret_scanning_public_monitoring_alert created event"""
 
-    action: Literal["dismissed"] = Field()
+    action: Literal["created"] = Field()
     alert: PublicMonitoringAlertWebhook = Field(
         title="Public Monitoring Alert Webhook",
         description="A public monitoring alert as delivered via webhook.",
@@ -52,11 +51,8 @@ class WebhookSecretScanningPublicMonitoringAlertDismissed(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
 
 
-model_rebuild(WebhookSecretScanningPublicMonitoringAlertDismissed)
+model_rebuild(WebhookSecretScanningPublicMonitoringAlertCreated)
 
-__all__ = ("WebhookSecretScanningPublicMonitoringAlertDismissed",)
+__all__ = ("WebhookSecretScanningPublicMonitoringAlertCreated",)

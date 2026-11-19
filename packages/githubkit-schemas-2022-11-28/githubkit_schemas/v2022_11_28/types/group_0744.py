@@ -9,11 +9,12 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType(TypedDict):
+class WebhookIssueCommentDeletedPropIssueAllof0PropAssigneeType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -40,36 +41,86 @@ class WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType(Type
     user_view_type: NotRequired[str]
 
 
-class WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorTypeForResponse(
+class WebhookIssueCommentDeletedPropIssueAllof0PropAssigneeTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItemsType(TypedDict):
+    """Label"""
+
+    color: str
+    default: bool
+    description: Union[str, None]
+    id: int
+    name: str
+    node_id: str
+    url: str
+
+
+class WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItemsTypeForResponse(
     TypedDict
 ):
-    """User"""
+    """Label"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
+    color: str
+    default: bool
+    description: Union[str, None]
     id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    name: str
+    node_id: str
+    url: str
+
+
+class WebhookIssueCommentDeletedPropIssueAllof0PropPullRequestType(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest"""
+
+    diff_url: NotRequired[str]
+    html_url: NotRequired[str]
+    merged_at: NotRequired[Union[_dt.datetime, None]]
+    patch_url: NotRequired[str]
     url: NotRequired[str]
-    user_view_type: NotRequired[str]
+
+
+class WebhookIssueCommentDeletedPropIssueAllof0PropPullRequestTypeForResponse(
+    TypedDict
+):
+    """WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest"""
+
+    diff_url: NotRequired[str]
+    html_url: NotRequired[str]
+    merged_at: NotRequired[Union[str, None]]
+    patch_url: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType",
-    "WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorTypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropAssigneeType",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropAssigneeTypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItemsType",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItemsTypeForResponse",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropPullRequestType",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropPullRequestTypeForResponse",
 )

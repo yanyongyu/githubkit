@@ -14,46 +14,20 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
 
-class CopilotCodeReviewRequestDenied(GitHubModel):
-    """Copilot Code Review Request Denied
+class CopilotCodeReviewRequest(GitHubModel):
+    """Copilot Code Review Request
 
-    A Copilot code review request was denied, conflicted with an existing request,
-    or could not be serviced. The `failure_reason` field is present for stable,
-    machine-readable denials -- overlapping with the reasons returned by the
-    `failureReason` field on the `requestCopilotCodeReview` GraphQL mutation, plus a
-    few additional reasons this REST endpoint reports explicitly rather than as an
-    opaque error -- and is absent for generic validation failures.
+    A request for Copilot to review a pull request.
     """
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    status: Missing[str] = Field(default=UNSET)
-    failure_reason: Missing[
-        Literal[
-            "ACTOR_INELIGIBLE",
-            "REPOSITORY_INELIGIBLE",
-            "APP_NOT_INSTALLED",
-            "NO_QUOTA_REMAINING",
-            "LICENSED_ORGANIZATION_UNAVAILABLE",
-            "INVALID_REVIEW_EFFORT",
-            "REQUEST_FAILED",
-            "REQUEST_CONFLICT",
-            "REVIEWER_UNAVAILABLE",
-            "REQUEST_UNAVAILABLE",
-            "ACTOR_FLAGGED",
-            "RATE_LIMITED",
-        ]
-    ] = Field(
-        default=UNSET,
-        description="The stable reason the request was denied, conflicted with an existing request, or could not be serviced.",
+    node_id: str = Field(description="The global node ID of the review request.")
+    state: Literal["PENDING"] = Field(
+        description="The current state of the review request."
     )
 
 
-model_rebuild(CopilotCodeReviewRequestDenied)
+model_rebuild(CopilotCodeReviewRequest)
 
-__all__ = ("CopilotCodeReviewRequestDenied",)
+__all__ = ("CopilotCodeReviewRequest",)

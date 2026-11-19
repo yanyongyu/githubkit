@@ -9,25 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class CopilotCodeReviewRequest(GitHubModel):
-    """Copilot Code Review Request
-
-    A request for Copilot to review a pull request.
-    """
-
-    node_id: str = Field(description="The global node ID of the review request.")
-    state: Literal["PENDING"] = Field(
-        description="The current state of the review request."
-    )
+from .group_0204 import Link
 
 
-model_rebuild(CopilotCodeReviewRequest)
+class PullRequestPropLinks(GitHubModel):
+    """PullRequestPropLinks"""
 
-__all__ = ("CopilotCodeReviewRequest",)
+    comments: Link = Field(title="Link", description="Hypermedia Link")
+    commits: Link = Field(title="Link", description="Hypermedia Link")
+    statuses: Link = Field(title="Link", description="Hypermedia Link")
+    html: Link = Field(title="Link", description="Hypermedia Link")
+    issue: Link = Field(title="Link", description="Hypermedia Link")
+    review_comments: Link = Field(title="Link", description="Hypermedia Link")
+    review_comment: Link = Field(title="Link", description="Hypermedia Link")
+    self_: Link = Field(alias="self", title="Link", description="Hypermedia Link")
+
+
+model_rebuild(PullRequestPropLinks)
+
+__all__ = ("PullRequestPropLinks",)

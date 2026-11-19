@@ -9,52 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class TagType(TypedDict):
-    """Tag
+class RepositorySubscriptionType(TypedDict):
+    """Repository Invitation
 
-    Tag
+    Repository invitations let you manage who you collaborate with.
     """
 
-    name: str
-    commit: TagPropCommitType
-    zipball_url: str
-    tarball_url: str
-    node_id: str
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: _dt.datetime
+    url: str
+    repository_url: str
 
 
-class TagTypeForResponse(TypedDict):
-    """Tag
+class RepositorySubscriptionTypeForResponse(TypedDict):
+    """Repository Invitation
 
-    Tag
+    Repository invitations let you manage who you collaborate with.
     """
 
-    name: str
-    commit: TagPropCommitTypeForResponse
-    zipball_url: str
-    tarball_url: str
-    node_id: str
-
-
-class TagPropCommitType(TypedDict):
-    """TagPropCommit"""
-
-    sha: str
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: str
     url: str
-
-
-class TagPropCommitTypeForResponse(TypedDict):
-    """TagPropCommit"""
-
-    sha: str
-    url: str
+    repository_url: str
 
 
 __all__ = (
-    "TagPropCommitType",
-    "TagPropCommitTypeForResponse",
-    "TagType",
-    "TagTypeForResponse",
+    "RepositorySubscriptionType",
+    "RepositorySubscriptionTypeForResponse",
 )

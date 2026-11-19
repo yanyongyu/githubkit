@@ -18,22 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningAiScanOrgEnablementUpdate(GitHubModel):
-    """Code scanning AI Scan organization settings update
+class CodeScanningAiScanOrgSettings(GitHubModel):
+    """Code scanning AI Scan organization settings
 
-    The AI Scan organization setting to apply
+    The AI Scan organization setting
     """
 
-    pr_scan: Missing[Literal["enabled", "disabled"]] = Field(
-        default=UNSET,
-        description="Whether AI Scan on pull requests is enabled for the organization. Organization respects enterprise policy. Disabled organizations prevent repositories from enabling AI Scan. Enabled organizations enable AI Scan for their repositories, but individual repositories can opt out.",
+    pr_scan: Literal["enabled", "disabled"] = Field(
+        description="Whether AI Scan on pull requests is enabled for the organization. The organization setting respects enterprise policy, and repositories inherit it: when disabled, repositories cannot enable AI Scan; when enabled, repositories can still opt out."
     )
     repository_scan: Missing[Literal["enabled", "disabled"]] = Field(
         default=UNSET,
-        description="Whether the full repository AI Scan is enabled for the organization. Organization respects enterprise policy. Disabled organizations prevent repositories from enabling the full repository AI Scan. Enabled organizations enable it for their repositories, but individual repositories can opt out.",
+        description="Whether the full repository AI Scan is enabled for the organization. The organization setting respects enterprise policy, and repositories inherit it: when disabled, repositories cannot enable the full repository AI Scan; when enabled, repositories can still opt out.",
     )
 
 
-model_rebuild(CodeScanningAiScanOrgEnablementUpdate)
+model_rebuild(CodeScanningAiScanOrgSettings)
 
-__all__ = ("CodeScanningAiScanOrgEnablementUpdate",)
+__all__ = ("CodeScanningAiScanOrgSettings",)

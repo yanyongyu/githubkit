@@ -13,16 +13,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0148 import ActionsPolicy
+
+class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody(GitHubModel):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody"""
+
+    selected_repository_ids: list[int] = Field(
+        description="IDs of repositories that can use repository-level self-hosted runners"
+    )
 
 
-class OrgsOrgActionsPoliciesGetResponse200(GitHubModel):
-    """OrgsOrgActionsPoliciesGetResponse200"""
+model_rebuild(OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody)
 
-    total_count: int = Field(description="The total number of Actions policies.")
-    policies: list[ActionsPolicy] = Field(description="An array of Actions policies.")
-
-
-model_rebuild(OrgsOrgActionsPoliciesGetResponse200)
-
-__all__ = ("OrgsOrgActionsPoliciesGetResponse200",)
+__all__ = ("OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody",)

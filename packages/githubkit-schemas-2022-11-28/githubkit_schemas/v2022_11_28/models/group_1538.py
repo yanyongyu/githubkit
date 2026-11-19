@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,113 +17,152 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0010 import Integration
-from .group_0020 import Repository
-from .group_0046 import Milestone
-from .group_0047 import IssueType
-from .group_0048 import ReactionRollup
-from .group_0049 import IssueDependenciesSummary, SubIssuesSummary
-from .group_0052 import IssueComment
-from .group_0053 import IssueFieldValue
-from .group_0055 import IssuePropLabelsItemsOneof1, IssuePropStatus
-from .group_0056 import IssuePropPullRequest
-from .group_1540 import (
-    ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions,
-)
 
+class ReposOwnerRepoIssuesIssueNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
 
-class ReposOwnerRepoIssuesIssueNumberPatchResponse200(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberPatchResponse200"""
-
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field(description="URL for the issue")
-    repository_url: str = Field()
-    labels_url: str = Field()
-    comments_url: str = Field()
-    events_url: str = Field()
-    html_url: str = Field()
-    number: int = Field(
-        description="Number uniquely identifying the issue within its repository"
+    title: Missing[Union[str, int, None]] = Field(
+        default=UNSET, description="The title of the issue."
     )
-    state: str = Field(description="State of the issue; either 'open' or 'closed'")
-    status: Missing[Union[IssuePropStatus, None]] = Field(
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The contents of the issue."
+    )
+    assignee: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The status of the issue, or `null` if it has none. Issue statuses are in preview and only available to accounts enrolled in the preview.",
+        description="Username to assign to this issue. **This field is closing down.**",
+    )
+    state: Missing[Literal["open", "closed"]] = Field(
+        default=UNSET, description="The open or closed state of the issue."
+    )
+    status: Missing[str] = Field(
+        default=UNSET,
+        description="The status to give the issue. Can be `Backlog`, `Todo`, `In progress`, `In review`, `Done`, `Not planned`, or `Duplicate`. If omitted, the current status is preserved unless `state` or `state_reason` changes. Setting a status also updates `state` and `state_reason` as needed. If provided, `state` and `state_reason` must be consistent with the requested status. Changing the status to `Duplicate` requires `duplicate_issue_id`. Cannot be `null` or an empty string. The status and other applied field changes are saved together. If the status cannot be saved, those field changes are rolled back. Ignored when issue statuses aren't available in the repository. Issue statuses are in preview and only available to accounts enrolled in the preview.",
     )
     state_reason: Missing[
-        Union[Literal["completed", "reopened", "not_planned", "duplicate"], None]
-    ] = Field(default=UNSET, description="The reason for the current state")
-    title: str = Field(description="Title of the issue")
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Contents of the issue"
-    )
-    user: Union[SimpleUser, None] = Field()
-    labels: list[Union[str, IssuePropLabelsItemsOneof1]] = Field(
-        description="Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository"
-    )
-    assignee: Union[SimpleUser, None] = Field()
-    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
-    milestone: Union[Milestone, None] = Field()
-    locked: bool = Field()
-    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    comments: int = Field()
-    pull_request: Missing[IssuePropPullRequest] = Field(default=UNSET)
-    closed_at: Union[_dt.datetime, None] = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    draft: Missing[bool] = Field(default=UNSET)
-    closed_by: Missing[Union[SimpleUser, None]] = Field(default=UNSET)
-    body_html: Missing[Union[str, None]] = Field(default=UNSET)
-    body_text: Missing[Union[str, None]] = Field(default=UNSET)
-    timeline_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Union[IssueType, None]] = Field(
+        Union[Literal["completed", "not_planned", "duplicate", "reopened"], None]
+    ] = Field(
         default=UNSET,
-        title="Issue Type",
-        description="The type assigned to the issue. This is only present for issues in repositories where issue types are supported.",
+        description="The reason for the state change. Ignored unless `state` is changed.",
     )
-    repository: Missing[Repository] = Field(
-        default=UNSET, title="Repository", description="A repository on GitHub."
+    duplicate_issue_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the issue that this issue duplicates, used when marking this issue as a duplicate with `status: Duplicate` or `state_reason: duplicate`. The issue must exist and be accessible to the authenticated user.",
     )
-    performed_via_github_app: Missing[Union[Integration, None]] = Field(default=UNSET)
-    author_association: Missing[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
+    milestone: Missing[Union[str, int, None]] = Field(default=UNSET)
+    labels: Missing[
+        list[Union[str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1]]
+    ] = Field(
+        default=UNSET,
+        description="Labels to associate with this issue. Pass one or more labels to _replace_ the set of labels on this issue. Send an empty array (`[]`) to clear all labels from the issue. Only users with push access can set labels for issues. Without push access to the repository, label changes are silently dropped.",
+    )
+    assignees: Missing[
+        list[
+            Union[str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1]
         ]
     ] = Field(
         default=UNSET,
-        title="author_association",
-        description="How the author is associated with the repository.",
+        description="Usernames to assign to this issue. Pass one or more user logins to _replace_ the set of assignees on this issue. Send an empty array (`[]`) to clear all assignees from the issue. Only users with push access can set assignees for new issues. Without push access to the repository, assignee changes are silently dropped.",
     )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
-    sub_issues_summary: Missing[SubIssuesSummary] = Field(
-        default=UNSET, title="Sub-issues Summary"
-    )
-    parent_issue_url: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="URL to get the parent issue of this issue, if it is a sub-issue",
-    )
-    pinned_comment: Missing[Union[IssueComment, None]] = Field(default=UNSET)
-    issue_dependencies_summary: Missing[IssueDependenciesSummary] = Field(
-        default=UNSET, title="Issue Dependencies Summary"
-    )
-    issue_field_values: Missing[list[IssueFieldValue]] = Field(default=UNSET)
-    suggestions: Missing[
-        ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions
+    issue_field_values: Missing[
+        list[ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems]
     ] = Field(
         default=UNSET,
-        description="Pending suggestions for each suggestible field (`type`,\n`issue_field_values`, `labels`, `assignees`, `state`) the\nrequest touched. Omitted for fields not in the request or\nwith no pending or ignored suggestions. Items tagged\n`ignored` are echoes of the current request's inputs that\nwere not persisted as pending suggestions.\n",
+        description="An array of issue field values to set on this issue. Each field value must include the field ID and the value to set. Only users with push access can set field values for issues",
+    )
+    type: Missing[
+        Union[str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1, None]
+    ] = Field(
+        default=UNSET,
+        description="The issue type to associate with this issue. Only users with push access can set the type for issues. Without push access to the repository, type changes are silently dropped.",
     )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchResponse200)
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberPatchResponse200",)
+    id: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+    color: Missing[Union[str, None]] = Field(default=UNSET)
+    rationale: Missing[str] = Field(
+        default=UNSET, description="Optional reasoning for selecting this label."
+    )
+    suggest: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the change is stored as a pending suggestion for human review rather than applied directly.",
+    )
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(
+        default=UNSET, description="The confidence level for this label choice."
+    )
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1"""
+
+    login: Missing[str] = Field(default=UNSET)
+    rationale: Missing[str] = Field(
+        default=UNSET, description="Optional reasoning for selecting this assignee."
+    )
+    suggest: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the change is stored as a pending suggestion for human review rather than applied directly.",
+    )
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(
+        default=UNSET, description="The confidence level for this assignee choice."
+    )
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems"""
+
+    field_id: int = Field(description="The ID of the issue field to set")
+    value: Union[str, float, list[str]] = Field(
+        description="The value to set for the field. For multi-select fields, provide an array of option names."
+    )
+    rationale: Missing[str] = Field(
+        default=UNSET, description="Optional reasoning for setting this field value."
+    )
+    suggest: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the change is stored as a pending suggestion for human review rather than applied directly.",
+    )
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(
+        default=UNSET, description="The confidence level for this field value choice."
+    )
+
+
+class ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1
+
+    The issue type with optional metadata.
+    """
+
+    value: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The name of the issue type to associate with this issue, or `null` to remove the current issue type.",
+    )
+    rationale: Missing[str] = Field(
+        default=UNSET, description="Optional reasoning for selecting this type."
+    )
+    suggest: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the change is stored as a pending suggestion for human review rather than applied directly.",
+    )
+    confidence: Missing[Literal["low", "medium", "high"]] = Field(
+        default=UNSET, description="The confidence level for this type choice."
+    )
+
+
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1)
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberPatchBody",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1",
+    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1",
+)

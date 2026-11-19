@@ -13,34 +13,32 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyType(TypedDict):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBody"""
+class OrgsOrgCopilotSpacesPostBodyType(TypedDict):
+    """OrgsOrgCopilotSpacesPostBody"""
 
-    name: NotRequired[str]
+    name: str
     description: NotRequired[str]
     general_instructions: NotRequired[str]
     base_role: NotRequired[Literal["reader", "writer", "admin", "no_access"]]
     resources_attributes: NotRequired[
-        list[OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType]
+        list[OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsType]
     ]
 
 
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBody"""
+class OrgsOrgCopilotSpacesPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotSpacesPostBody"""
 
-    name: NotRequired[str]
+    name: str
     description: NotRequired[str]
     general_instructions: NotRequired[str]
     base_role: NotRequired[Literal["reader", "writer", "admin", "no_access"]]
     resources_attributes: NotRequired[
-        list[
-            OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse
-        ]
+        list[OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse]
     ]
 
 
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType(TypedDict):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
+class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsType(TypedDict):
+    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems"""
 
     resource_type: NotRequired[
         Literal[
@@ -54,14 +52,14 @@ class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType(Typ
         ]
     ]
     metadata: NotRequired[
-        OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType
+        OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType
     ]
 
 
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse(
+class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
+    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems"""
 
     resource_type: NotRequired[
         Literal[
@@ -75,14 +73,14 @@ class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForR
         ]
     ]
     metadata: NotRequired[
-        OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse
+        OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse
     ]
 
 
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType(
+class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType(
     TypedDict
 ):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
+    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
 
     Metadata specific to the resource type.
     """
@@ -94,10 +92,10 @@ class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMeta
     number: NotRequired[int]
 
 
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse(
+class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
+    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
 
     Metadata specific to the resource type.
     """
@@ -110,10 +108,10 @@ class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMeta
 
 
 __all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType",
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse",
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType",
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse",
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyType",
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyTypeForResponse",
+    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType",
+    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse",
+    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsType",
+    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse",
+    "OrgsOrgCopilotSpacesPostBodyType",
+    "OrgsOrgCopilotSpacesPostBodyTypeForResponse",
 )

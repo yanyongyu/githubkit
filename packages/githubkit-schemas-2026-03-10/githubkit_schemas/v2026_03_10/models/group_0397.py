@@ -9,55 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryCopilotCodeReviewSettings(GitHubModel):
-    """Repository Copilot Code Review Settings
+class Contributor(GitHubModel):
+    """Contributor
 
-    The repository's Copilot code review settings. These settings tune reviews; they
-    do not enable Copilot code review.
+    Contributor
     """
 
-    review_effort: RepositoryCopilotCodeReviewSettingsPropReviewEffort = Field(
-        description="The review effort for the repository. For more information, see [Review effort level](https://docs.github.com/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/code-review#review-effort-level)."
-    )
-    available_review_efforts: list[str] = Field(
-        description="The review efforts that can currently be set for this repository, in display order."
-    )
-    severity_filter: Literal["no_filter", "low", "low_and_medium"] = Field(
-        description="Which review comment severities Copilot code review leaves out. `no_filter` keeps every comment, `low` leaves out low-severity comments, and `low_and_medium` leaves out low- and medium-severity comments."
-    )
-    custom_instructions_enabled: bool = Field(
-        description="Whether reviews use the repository's custom instructions."
-    )
-    mcp_enabled: bool = Field(description="Whether reviews can use MCP servers.")
+    login: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[Union[str, None]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    type: str = Field()
+    site_admin: Missing[bool] = Field(default=UNSET)
+    contributions: int = Field()
+    email: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
-class RepositoryCopilotCodeReviewSettingsPropReviewEffort(GitHubModel):
-    """RepositoryCopilotCodeReviewSettingsPropReviewEffort
+model_rebuild(Contributor)
 
-    The review effort for the repository. For more information, see [Review effort
-    level](https://docs.github.com/copilot/concepts/agent-capabilities/agent-
-    powered-workflows-and-operations/code-review#review-effort-level).
-    """
-
-    configured: Union[str, None] = Field(
-        description="The review effort stored for the repository. Null means the repository inherits the default, or has stored a value that is not currently available."
-    )
-    effective: str = Field(
-        description="The review effort reviews use when the requester and the pull request do not choose one. When that effort is not currently available for the repository, this reports the effort reviews would use without it."
-    )
-
-
-model_rebuild(RepositoryCopilotCodeReviewSettings)
-model_rebuild(RepositoryCopilotCodeReviewSettingsPropReviewEffort)
-
-__all__ = (
-    "RepositoryCopilotCodeReviewSettings",
-    "RepositoryCopilotCodeReviewSettingsPropReviewEffort",
-)
+__all__ = ("Contributor",)

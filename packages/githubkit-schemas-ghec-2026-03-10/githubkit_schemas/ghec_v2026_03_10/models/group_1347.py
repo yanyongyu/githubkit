@@ -13,32 +13,47 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody(GitHubModel):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody"""
+class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200"""
 
     models: list[
-        EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems
-    ] = Field(min_length=1 if PYDANTIC_V2 else None)
+        EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems
+    ] = Field()
 
 
-class EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems(
+class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems"""
+    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems"""
 
-    model_name: str = Field(min_length=1)
+    model_name: str = Field()
+    display_name: str = Field()
     policy_state: Literal["enabled", "disabled", "optional"] = Field(
-        description="Use `optional` to remove the apps policy."
+        description="When editable, the agent apps policy's configured value, or `optional` if no agent apps policy has been configured for this model.\nWhen locked, the enterprise's explicit value or its applied default availability for an eligible model.\nReturns `disabled` when locked without an explicit enterprise value and the model is excluded from default availability."
+    )
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_default",
+        "unconfigured",
+    ] = Field(
+        description="The separately read enterprise-layer policy for this model, used to determine whether the agent apps policy can be edited."
+    )
+    editable: bool = Field(
+        description="Whether the enterprise policy and available apps policy controls allow the agent apps policy to be updated."
     )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody)
-model_rebuild(EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems)
+model_rebuild(EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200)
+model_rebuild(
+    EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems
+)
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBody",
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesPatchBodyPropModelsItems",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200",
+    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems",
 )

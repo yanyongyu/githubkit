@@ -11,34 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0141 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
 
+class ExternalPropertyType(TypedDict):
+    """External Property
 
-class OrgRepoCustomPropertyValuesType(TypedDict):
-    """Organization Repository Custom Property Values
-
-    List of custom property values for a repository
+    External custom property defined for a GitHub App installation
     """
 
-    repository_id: int
-    repository_name: str
-    repository_full_name: str
-    properties: list[CustomPropertyValueType]
+    property_name: str
 
 
-class OrgRepoCustomPropertyValuesTypeForResponse(TypedDict):
-    """Organization Repository Custom Property Values
+class ExternalPropertyTypeForResponse(TypedDict):
+    """External Property
 
-    List of custom property values for a repository
+    External custom property defined for a GitHub App installation
     """
 
-    repository_id: int
-    repository_name: str
-    repository_full_name: str
-    properties: list[CustomPropertyValueTypeForResponse]
+    property_name: str
 
 
 __all__ = (
-    "OrgRepoCustomPropertyValuesType",
-    "OrgRepoCustomPropertyValuesTypeForResponse",
+    "ExternalPropertyType",
+    "ExternalPropertyTypeForResponse",
 )

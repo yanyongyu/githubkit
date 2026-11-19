@@ -9,45 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0582 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0583 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0584 import (
+from .group_0047 import IssueTypeType, IssueTypeTypeForResponse
+from .group_0583 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0584 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0585 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0585 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0608 import WebhooksLabelArchivedType, WebhooksLabelArchivedTypeForResponse
+from .group_0586 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0605 import WebhooksIssueType, WebhooksIssueTypeForResponse
 
 
-class WebhookLabelArchivedType(TypedDict):
-    """label archived event"""
+class WebhookIssuesUntypedType(TypedDict):
+    """issues untyped event"""
 
-    action: Literal["archived"]
+    action: Literal["untyped"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    label: WebhooksLabelArchivedType
+    issue: WebhooksIssueType
+    type: Union[IssueTypeType, None]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookLabelArchivedTypeForResponse(TypedDict):
-    """label archived event"""
+class WebhookIssuesUntypedTypeForResponse(TypedDict):
+    """issues untyped event"""
 
-    action: Literal["archived"]
+    action: Literal["untyped"]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    label: WebhooksLabelArchivedTypeForResponse
+    issue: WebhooksIssueTypeForResponse
+    type: Union[IssueTypeTypeForResponse, None]
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookLabelArchivedType",
-    "WebhookLabelArchivedTypeForResponse",
+    "WebhookIssuesUntypedType",
+    "WebhookIssuesUntypedTypeForResponse",
 )

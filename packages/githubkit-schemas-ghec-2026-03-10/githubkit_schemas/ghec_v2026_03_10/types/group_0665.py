@@ -9,44 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class KeyType(TypedDict):
-    """Key
+class UserUpdateIssueFieldType(TypedDict):
+    """UserUpdateIssueField"""
 
-    Key
-    """
-
-    key: str
-    id: int
-    url: str
-    title: str
-    created_at: _dt.datetime
-    verified: bool
-    read_only: bool
-    last_used: NotRequired[Union[_dt.datetime, None]]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    visibility: NotRequired[Literal["restricted", "all"]]
+    options: NotRequired[list[UserUpdateIssueFieldPropOptionsItemsType]]
 
 
-class KeyTypeForResponse(TypedDict):
-    """Key
+class UserUpdateIssueFieldTypeForResponse(TypedDict):
+    """UserUpdateIssueField"""
 
-    Key
-    """
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    visibility: NotRequired[Literal["restricted", "all"]]
+    options: NotRequired[list[UserUpdateIssueFieldPropOptionsItemsTypeForResponse]]
 
-    key: str
-    id: int
-    url: str
-    title: str
-    created_at: str
-    verified: bool
-    read_only: bool
-    last_used: NotRequired[Union[str, None]]
+
+class UserUpdateIssueFieldPropOptionsItemsType(TypedDict):
+    """UserUpdateIssueFieldPropOptionsItems"""
+
+    id: NotRequired[int]
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
+    priority: int
+
+
+class UserUpdateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
+    """UserUpdateIssueFieldPropOptionsItems"""
+
+    id: NotRequired[int]
+    name: str
+    description: NotRequired[Union[str, None]]
+    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
+    priority: int
 
 
 __all__ = (
-    "KeyType",
-    "KeyTypeForResponse",
+    "UserUpdateIssueFieldPropOptionsItemsType",
+    "UserUpdateIssueFieldPropOptionsItemsTypeForResponse",
+    "UserUpdateIssueFieldType",
+    "UserUpdateIssueFieldTypeForResponse",
 )

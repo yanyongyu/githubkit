@@ -13,9 +13,21 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class CopilotCodeReviewRequestDeniedAllof1Type(TypedDict):
-    """CopilotCodeReviewRequestDeniedAllof1"""
+class CopilotCodeReviewRequestDeniedType(TypedDict):
+    """Copilot Code Review Request Denied
 
+    A Copilot code review request was denied, conflicted with an existing request,
+    or could not be serviced. The `failure_reason` field is present for stable,
+    machine-readable denials -- overlapping with the reasons returned by the
+    `failureReason` field on the `requestCopilotCodeReview` GraphQL mutation, plus a
+    few additional reasons this REST endpoint reports explicitly rather than as an
+    opaque error -- and is absent for generic validation failures.
+    """
+
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    url: NotRequired[str]
+    status: NotRequired[str]
     failure_reason: NotRequired[
         Literal[
             "ACTOR_INELIGIBLE",
@@ -34,9 +46,21 @@ class CopilotCodeReviewRequestDeniedAllof1Type(TypedDict):
     ]
 
 
-class CopilotCodeReviewRequestDeniedAllof1TypeForResponse(TypedDict):
-    """CopilotCodeReviewRequestDeniedAllof1"""
+class CopilotCodeReviewRequestDeniedTypeForResponse(TypedDict):
+    """Copilot Code Review Request Denied
 
+    A Copilot code review request was denied, conflicted with an existing request,
+    or could not be serviced. The `failure_reason` field is present for stable,
+    machine-readable denials -- overlapping with the reasons returned by the
+    `failureReason` field on the `requestCopilotCodeReview` GraphQL mutation, plus a
+    few additional reasons this REST endpoint reports explicitly rather than as an
+    opaque error -- and is absent for generic validation failures.
+    """
+
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    url: NotRequired[str]
+    status: NotRequired[str]
     failure_reason: NotRequired[
         Literal[
             "ACTOR_INELIGIBLE",
@@ -56,6 +80,6 @@ class CopilotCodeReviewRequestDeniedAllof1TypeForResponse(TypedDict):
 
 
 __all__ = (
-    "CopilotCodeReviewRequestDeniedAllof1Type",
-    "CopilotCodeReviewRequestDeniedAllof1TypeForResponse",
+    "CopilotCodeReviewRequestDeniedType",
+    "CopilotCodeReviewRequestDeniedTypeForResponse",
 )

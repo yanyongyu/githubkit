@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404
+class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -32,7 +32,7 @@ class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404(GitHubModel
     )
     errors: Missing[
         list[
-            AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404PropErrorsItems
+            AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401PropErrorsItems
         ]
     ] = Field(
         default=UNSET,
@@ -49,10 +49,10 @@ class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404(GitHubModel
     )
 
 
-class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404PropErrorsItems(
+class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401PropErrorsItems(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404PropErrorsItems
+    """AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401PropErrorsItems
 
     A single validation error
     """
@@ -71,12 +71,12 @@ class AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404PropErrorsIt
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404)
+model_rebuild(AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401)
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404PropErrorsItems
+    AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401PropErrorsItems
 )
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404",
-    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404PropErrorsItems",
+    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401",
+    "AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401PropErrorsItems",
 )

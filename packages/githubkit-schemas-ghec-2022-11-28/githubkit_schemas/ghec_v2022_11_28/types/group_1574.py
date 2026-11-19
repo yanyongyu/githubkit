@@ -9,24 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202Type(TypedDict):
-    """OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202"""
+class OrgsOrgCopilotPoliciesCodeReviewPutResponse409Type(TypedDict):
+    """OrgsOrgCopilotPoliciesCodeReviewPutResponse409"""
 
-    message: NotRequired[str]
-    warning: NotRequired[str]
+    message: str
+    documentation_url: NotRequired[str]
+    status: NotRequired[str]
+    code: Literal["POLICY_MANAGED_BY_ENTERPRISE"]
+    policy: OrganizationCopilotCodeReviewPolicyType
 
 
-class OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse(TypedDict):
-    """OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202"""
+class OrgsOrgCopilotPoliciesCodeReviewPutResponse409TypeForResponse(TypedDict):
+    """OrgsOrgCopilotPoliciesCodeReviewPutResponse409"""
 
-    message: NotRequired[str]
-    warning: NotRequired[str]
+    message: str
+    documentation_url: NotRequired[str]
+    status: NotRequired[str]
+    code: Literal["POLICY_MANAGED_BY_ENTERPRISE"]
+    policy: OrganizationCopilotCodeReviewPolicyTypeForResponse
+
+
+class OrganizationCopilotCodeReviewPolicyType(TypedDict):
+    """Organization Copilot Code Review Policy
+
+    The organization's configured and effective Copilot code review policy.
+    """
+
+    configured_state: Union[Literal["enabled", "disabled"], None]
+    effective_state: Literal["enabled", "disabled"]
+    editable: bool
+    managed_by: Literal["enterprise", "organization"]
+
+
+class OrganizationCopilotCodeReviewPolicyTypeForResponse(TypedDict):
+    """Organization Copilot Code Review Policy
+
+    The organization's configured and effective Copilot code review policy.
+    """
+
+    configured_state: Union[Literal["enabled", "disabled"], None]
+    effective_state: Literal["enabled", "disabled"]
+    editable: bool
+    managed_by: Literal["enterprise", "organization"]
 
 
 __all__ = (
-    "OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202Type",
-    "OrgsOrgCredentialAuthorizationsRevokeAllPostResponse202TypeForResponse",
+    "OrganizationCopilotCodeReviewPolicyType",
+    "OrganizationCopilotCodeReviewPolicyTypeForResponse",
+    "OrgsOrgCopilotPoliciesCodeReviewPutResponse409Type",
+    "OrgsOrgCopilotPoliciesCodeReviewPutResponse409TypeForResponse",
 )

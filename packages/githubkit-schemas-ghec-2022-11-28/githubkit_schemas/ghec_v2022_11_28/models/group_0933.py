@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -18,17 +18,18 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
-from .group_0673 import EnterpriseWebhooks
-from .group_0674 import SimpleInstallation
-from .group_0675 import OrganizationSimpleWebhooks
-from .group_0676 import RepositoryWebhooks
-from .group_0701 import WebhooksLabelArchived
+from .group_0245 import IssueType
+from .group_0674 import EnterpriseWebhooks
+from .group_0675 import SimpleInstallation
+from .group_0676 import OrganizationSimpleWebhooks
+from .group_0677 import RepositoryWebhooks
+from .group_0698 import WebhooksIssue
 
 
-class WebhookLabelArchived(GitHubModel):
-    """label archived event"""
+class WebhookIssuesUntyped(GitHubModel):
+    """issues untyped event"""
 
-    action: Literal["archived"] = Field()
+    action: Literal["untyped"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,7 +40,14 @@ class WebhookLabelArchived(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    label: WebhooksLabelArchived = Field(title="Archived label")
+    issue: WebhooksIssue = Field(
+        title="Issue",
+        description="The [issue](https://docs.github.com/enterprise-cloud@latest/rest/issues/issues#get-an-issue) itself.",
+    )
+    type: Union[IssueType, None] = Field(
+        title="Issue Type",
+        description="The type assigned to the issue. This is only present for issues in repositories where issue types are supported.",
+    )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -52,6 +60,6 @@ class WebhookLabelArchived(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookLabelArchived)
+model_rebuild(WebhookIssuesUntyped)
 
-__all__ = ("WebhookLabelArchived",)
+__all__ = ("WebhookIssuesUntyped",)

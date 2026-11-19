@@ -10,1127 +10,858 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from githubkit.typing import UniqueList
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0584 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0585 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0586 import (
+    OrganizationSimpleWebhooksType,
+    OrganizationSimpleWebhooksTypeForResponse,
+)
+from .group_0587 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0594 import WebhooksWorkflowType, WebhooksWorkflowTypeForResponse
 
 
-class AgentsAutomationsGetResponse200ItemsType(TypedDict):
-    """AgentsAutomationsGetResponse200Items
+class WebhookWorkflowRunRequestedType(TypedDict):
+    """workflow_run requested event"""
 
-    A summary representation of an automation including repository identity (used in
-    cross-repository list responses).
-    """
+    action: Literal["requested"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+    workflow: Union[WebhooksWorkflowType, None]
+    workflow_run: WebhookWorkflowRunRequestedPropWorkflowRunType
 
-    tools: NotRequired[list[str]]
-    id: str
-    repository: AgentsAutomationsGetResponse200ItemsPropRepositoryType
-    name: str
-    enabled: NotRequired[bool]
-    type: NotRequired[Literal["personal", "shared"]]
-    require_actor_write_permission: NotRequired[bool]
-    model: NotRequired[str]
-    reasoning_effort: NotRequired[str]
-    triggers: NotRequired[AgentsAutomationsGetResponse200ItemsPropTriggersType]
+
+class WebhookWorkflowRunRequestedTypeForResponse(TypedDict):
+    """workflow_run requested event"""
+
+    action: Literal["requested"]
+    enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
+    installation: NotRequired[SimpleInstallationTypeForResponse]
+    organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
+    repository: RepositoryWebhooksTypeForResponse
+    sender: SimpleUserTypeForResponse
+    workflow: Union[WebhooksWorkflowTypeForResponse, None]
+    workflow_run: WebhookWorkflowRunRequestedPropWorkflowRunTypeForResponse
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunType(TypedDict):
+    """Workflow Run"""
+
+    actor: Union[WebhookWorkflowRunRequestedPropWorkflowRunPropActorType, None]
+    artifacts_url: str
+    cancel_url: str
+    check_suite_id: int
+    check_suite_node_id: str
+    check_suite_url: str
+    conclusion: Union[
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "timed_out",
+            "action_required",
+            "stale",
+            "skipped",
+            "startup_failure",
+        ],
+        None,
+    ]
     created_at: _dt.datetime
+    event: str
+    head_branch: Union[str, None]
+    head_commit: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitType
+    head_repository: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryType
+    head_sha: str
+    html_url: str
+    id: int
+    jobs_url: str
+    logs_url: str
+    name: Union[str, None]
+    node_id: str
+    path: str
+    previous_attempt_url: Union[str, None]
+    pull_requests: list[
+        WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsType
+    ]
+    referenced_workflows: NotRequired[
+        Union[
+            list[
+                WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItemsType
+            ],
+            None,
+        ]
+    ]
+    repository: WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryType
+    rerun_url: str
+    run_attempt: int
+    run_number: int
+    run_started_at: _dt.datetime
+    status: Literal[
+        "requested", "in_progress", "completed", "queued", "pending", "waiting"
+    ]
+    triggering_actor: Union[
+        WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActorType, None
+    ]
     updated_at: _dt.datetime
-    created_by: AgentsAutomationsGetResponse200ItemsPropCreatedByType
+    url: str
+    workflow_id: int
+    workflow_url: str
+    display_title: str
 
 
-class AgentsAutomationsGetResponse200ItemsTypeForResponse(TypedDict):
-    """AgentsAutomationsGetResponse200Items
+class WebhookWorkflowRunRequestedPropWorkflowRunTypeForResponse(TypedDict):
+    """Workflow Run"""
 
-    A summary representation of an automation including repository identity (used in
-    cross-repository list responses).
-    """
-
-    tools: NotRequired[list[str]]
-    id: str
-    repository: AgentsAutomationsGetResponse200ItemsPropRepositoryTypeForResponse
-    name: str
-    enabled: NotRequired[bool]
-    type: NotRequired[Literal["personal", "shared"]]
-    require_actor_write_permission: NotRequired[bool]
-    model: NotRequired[str]
-    reasoning_effort: NotRequired[str]
-    triggers: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersTypeForResponse
+    actor: Union[
+        WebhookWorkflowRunRequestedPropWorkflowRunPropActorTypeForResponse, None
+    ]
+    artifacts_url: str
+    cancel_url: str
+    check_suite_id: int
+    check_suite_node_id: str
+    check_suite_url: str
+    conclusion: Union[
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "timed_out",
+            "action_required",
+            "stale",
+            "skipped",
+            "startup_failure",
+        ],
+        None,
     ]
     created_at: str
+    event: str
+    head_branch: Union[str, None]
+    head_commit: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitTypeForResponse
+    head_repository: (
+        WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryTypeForResponse
+    )
+    head_sha: str
+    html_url: str
+    id: int
+    jobs_url: str
+    logs_url: str
+    name: Union[str, None]
+    node_id: str
+    path: str
+    previous_attempt_url: Union[str, None]
+    pull_requests: list[
+        WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsTypeForResponse
+    ]
+    referenced_workflows: NotRequired[
+        Union[
+            list[
+                WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItemsTypeForResponse
+            ],
+            None,
+        ]
+    ]
+    repository: WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryTypeForResponse
+    rerun_url: str
+    run_attempt: int
+    run_number: int
+    run_started_at: str
+    status: Literal[
+        "requested", "in_progress", "completed", "queued", "pending", "waiting"
+    ]
+    triggering_actor: Union[
+        WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActorTypeForResponse,
+        None,
+    ]
     updated_at: str
-    created_by: AgentsAutomationsGetResponse200ItemsPropCreatedByTypeForResponse
+    url: str
+    workflow_id: int
+    workflow_url: str
+    display_title: str
 
 
-class AgentsAutomationsGetResponse200ItemsPropRepositoryType(TypedDict):
-    """AgentsAutomationsGetResponse200ItemsPropRepository
+class WebhookWorkflowRunRequestedPropWorkflowRunPropActorType(TypedDict):
+    """User"""
 
-    Repository identity for an automation in cross-repository list responses.
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropActorTypeForResponse(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItemsType(
+    TypedDict
+):
+    """WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems"""
+
+    path: str
+    ref: NotRequired[str]
+    sha: str
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems"""
+
+    path: str
+    ref: NotRequired[str]
+    sha: str
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActorType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActorTypeForResponse(
+    TypedDict
+):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitType(TypedDict):
+    """SimpleCommit"""
+
+    author: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthorType
+    committer: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitterType
+    id: str
+    message: str
+    timestamp: str
+    tree_id: str
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitTypeForResponse(
+    TypedDict
+):
+    """SimpleCommit"""
+
+    author: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthorTypeForResponse
+    committer: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitterTypeForResponse
+    id: str
+    message: str
+    timestamp: str
+    tree_id: str
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthorType(TypedDict):
+    """Committer
+
+    Metaproperties for Git author/committer information.
     """
+
+    date: NotRequired[_dt.datetime]
+    email: Union[str, None]
+    name: str
+    username: NotRequired[str]
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthorTypeForResponse(
+    TypedDict
+):
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
+
+    date: NotRequired[str]
+    email: Union[str, None]
+    name: str
+    username: NotRequired[str]
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitterType(
+    TypedDict
+):
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
+
+    date: NotRequired[_dt.datetime]
+    email: Union[str, None]
+    name: str
+    username: NotRequired[str]
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitterTypeForResponse(
+    TypedDict
+):
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
+
+    date: NotRequired[str]
+    email: Union[str, None]
+    name: str
+    username: NotRequired[str]
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryType(TypedDict):
+    """Repository Lite"""
+
+    archive_url: str
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    deployments_url: str
+    description: Union[str, None]
+    downloads_url: str
+    events_url: str
+    fork: bool
+    forks_url: str
+    full_name: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    hooks_url: str
+    html_url: str
+    id: int
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    languages_url: str
+    merges_url: str
+    milestones_url: str
+    name: str
+    node_id: str
+    notifications_url: str
+    owner: Union[
+        WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwnerType, None
+    ]
+    private: bool
+    pulls_url: str
+    releases_url: str
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    tags_url: str
+    teams_url: str
+    trees_url: str
+    url: str
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryTypeForResponse(
+    TypedDict
+):
+    """Repository Lite"""
+
+    archive_url: str
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    deployments_url: str
+    description: Union[str, None]
+    downloads_url: str
+    events_url: str
+    fork: bool
+    forks_url: str
+    full_name: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    hooks_url: str
+    html_url: str
+    id: int
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    languages_url: str
+    merges_url: str
+    milestones_url: str
+    name: str
+    node_id: str
+    notifications_url: str
+    owner: Union[
+        WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwnerTypeForResponse,
+        None,
+    ]
+    private: bool
+    pulls_url: str
+    releases_url: str
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    tags_url: str
+    teams_url: str
+    trees_url: str
+    url: str
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwnerType(
+    TypedDict
+):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwnerTypeForResponse(
+    TypedDict
+):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryType(TypedDict):
+    """Repository Lite"""
+
+    archive_url: str
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    deployments_url: str
+    description: Union[str, None]
+    downloads_url: str
+    events_url: str
+    fork: bool
+    forks_url: str
+    full_name: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    hooks_url: str
+    html_url: str
+    id: int
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    languages_url: str
+    merges_url: str
+    milestones_url: str
+    name: str
+    node_id: str
+    notifications_url: str
+    owner: Union[
+        WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwnerType, None
+    ]
+    private: bool
+    pulls_url: str
+    releases_url: str
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    tags_url: str
+    teams_url: str
+    trees_url: str
+    url: str
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryTypeForResponse(
+    TypedDict
+):
+    """Repository Lite"""
+
+    archive_url: str
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    deployments_url: str
+    description: Union[str, None]
+    downloads_url: str
+    events_url: str
+    fork: bool
+    forks_url: str
+    full_name: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    hooks_url: str
+    html_url: str
+    id: int
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    languages_url: str
+    merges_url: str
+    milestones_url: str
+    name: str
+    node_id: str
+    notifications_url: str
+    owner: Union[
+        WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwnerTypeForResponse,
+        None,
+    ]
+    private: bool
+    pulls_url: str
+    releases_url: str
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    tags_url: str
+    teams_url: str
+    trees_url: str
+    url: str
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwnerType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwnerTypeForResponse(
+    TypedDict
+):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsType(TypedDict):
+    """WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems"""
+
+    base: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBaseType
+    head: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadType
+    id: int
+    number: int
+    url: str
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsTypeForResponse(
+    TypedDict
+):
+    """WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems"""
+
+    base: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBaseTypeForResponse
+    head: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadTypeForResponse
+    id: int
+    number: int
+    url: str
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBaseType(
+    TypedDict
+):
+    """WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase"""
+
+    ref: str
+    repo: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoType
+    sha: str
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBaseTypeForResponse(
+    TypedDict
+):
+    """WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase"""
+
+    ref: str
+    repo: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoTypeForResponse
+    sha: str
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoType(
+    TypedDict
+):
+    """Repo Ref"""
 
     id: int
-    owner: str
     name: str
+    url: str
 
 
-class AgentsAutomationsGetResponse200ItemsPropRepositoryTypeForResponse(TypedDict):
-    """AgentsAutomationsGetResponse200ItemsPropRepository
-
-    Repository identity for an automation in cross-repository list responses.
-    """
+class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoTypeForResponse(
+    TypedDict
+):
+    """Repo Ref"""
 
     id: int
-    owner: str
     name: str
+    url: str
 
 
-class AgentsAutomationsGetResponse200ItemsPropCreatedByType(TypedDict):
-    """AgentsAutomationsGetResponse200ItemsPropCreatedBy
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsAutomationsGetResponse200ItemsPropCreatedByTypeForResponse(TypedDict):
-    """AgentsAutomationsGetResponse200ItemsPropCreatedBy
-
-    A GitHub user
-    """
-
-    id: NotRequired[int]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersType(TypedDict):
-    """AgentsAutomationsGetResponse200ItemsPropTriggers
-
-    Trigger configuration for the automation.
-    """
-
-    interval: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropIntervalType
-    ]
-    issue_opened: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpenedType
-    ]
-    issue_labeled: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeledType
-    ]
-    workflow_run: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRunType
-    ]
-    pull_request_opened: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpenedType
-    ]
-    pull_request_synchronize: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronizeType
-    ]
-    pull_request_merged: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergedType
-    ]
-    issue_comment: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueCommentType
-    ]
-    pull_request_comment: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestCommentType
-    ]
-    discussion_opened: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpenedType
-    ]
-    discussion_updated: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdatedType
-    ]
-    discussion_comment: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionCommentType
-    ]
-    issue_assigned: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssignedType
-    ]
-    pull_request_assigned: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssignedType
-    ]
-    sub_issue_added: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAddedType
-    ]
-    pull_request_ready_for_review: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReviewType
-    ]
-    pull_request_labeled: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeledType
-    ]
-    pull_request_merge_conflict: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflictType
-    ]
-    pull_request_review_submitted: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmittedType
-    ]
-    pull_request_review_requested: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequestedType
-    ]
-    issue_closed: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueClosedType
-    ]
-    issue_reopened: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueReopenedType
-    ]
-    pull_request_closed: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestClosedType
-    ]
-    pull_request_reopened: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReopenedType
-    ]
-    pull_request_converted_to_draft: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestConvertedToDraftType
-    ]
-    pull_request_review_dismissed: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewDismissedType
-    ]
-    pull_request_review_thread_resolved: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadResolvedType
-    ]
-    pull_request_review_thread_unresolved: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadUnresolvedType
-    ]
-    automation_completed: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompletedType
-    ]
-    automation_failed: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationFailedType
-    ]
-    code_scanning_alert: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropCodeScanningAlertType
-    ]
-    secret_scanning_alert: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropSecretScanningAlertType
-    ]
-    dependabot_alert: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropDependabotAlertType
-    ]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersTypeForResponse(TypedDict):
-    """AgentsAutomationsGetResponse200ItemsPropTriggers
-
-    Trigger configuration for the automation.
-    """
-
-    interval: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropIntervalTypeForResponse
-    ]
-    issue_opened: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpenedTypeForResponse
-    ]
-    issue_labeled: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeledTypeForResponse
-    ]
-    workflow_run: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRunTypeForResponse
-    ]
-    pull_request_opened: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpenedTypeForResponse
-    ]
-    pull_request_synchronize: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronizeTypeForResponse
-    ]
-    pull_request_merged: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergedTypeForResponse
-    ]
-    issue_comment: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueCommentTypeForResponse
-    ]
-    pull_request_comment: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestCommentTypeForResponse
-    ]
-    discussion_opened: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpenedTypeForResponse
-    ]
-    discussion_updated: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdatedTypeForResponse
-    ]
-    discussion_comment: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionCommentTypeForResponse
-    ]
-    issue_assigned: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssignedTypeForResponse
-    ]
-    pull_request_assigned: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssignedTypeForResponse
-    ]
-    sub_issue_added: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAddedTypeForResponse
-    ]
-    pull_request_ready_for_review: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReviewTypeForResponse
-    ]
-    pull_request_labeled: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeledTypeForResponse
-    ]
-    pull_request_merge_conflict: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflictTypeForResponse
-    ]
-    pull_request_review_submitted: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmittedTypeForResponse
-    ]
-    pull_request_review_requested: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequestedTypeForResponse
-    ]
-    issue_closed: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueClosedTypeForResponse
-    ]
-    issue_reopened: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueReopenedTypeForResponse
-    ]
-    pull_request_closed: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestClosedTypeForResponse
-    ]
-    pull_request_reopened: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReopenedTypeForResponse
-    ]
-    pull_request_converted_to_draft: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestConvertedToDraftTypeForResponse
-    ]
-    pull_request_review_dismissed: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewDismissedTypeForResponse
-    ]
-    pull_request_review_thread_resolved: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadResolvedTypeForResponse
-    ]
-    pull_request_review_thread_unresolved: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadUnresolvedTypeForResponse
-    ]
-    automation_completed: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompletedTypeForResponse
-    ]
-    automation_failed: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationFailedTypeForResponse
-    ]
-    code_scanning_alert: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropCodeScanningAlertTypeForResponse
-    ]
-    secret_scanning_alert: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropSecretScanningAlertTypeForResponse
-    ]
-    dependabot_alert: NotRequired[
-        AgentsAutomationsGetResponse200ItemsPropTriggersPropDependabotAlertTypeForResponse
-    ]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropIntervalType(TypedDict):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropInterval"""
-
-    cadence: UniqueList[Literal["hourly", "daily", "weekly"]]
-    hour_utc: NotRequired[int]
-    day_of_week: NotRequired[int]
-    minute_utc: NotRequired[Literal[0, 15, 30, 45]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropIntervalTypeForResponse(
+class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadType(
     TypedDict
 ):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropInterval"""
+    """WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead"""
 
-    cadence: UniqueList[Literal["hourly", "daily", "weekly"]]
-    hour_utc: NotRequired[int]
-    day_of_week: NotRequired[int]
-    minute_utc: NotRequired[Literal[0, 15, 30, 45]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
+    ref: str
+    repo: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType
+    sha: str
 
 
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpenedType(TypedDict):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpened"""
-
-    query: NotRequired[str]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpenedTypeForResponse(
+class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadTypeForResponse(
     TypedDict
 ):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpened"""
+    """WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead"""
 
-    query: NotRequired[str]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeledType(TypedDict):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeled"""
-
-    query: NotRequired[str]
-    labels: NotRequired[UniqueList[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
+    ref: str
+    repo: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoTypeForResponse
+    sha: str
 
 
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeledTypeForResponse(
+class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType(
     TypedDict
 ):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeled"""
+    """Repo Ref"""
 
-    query: NotRequired[str]
-    labels: NotRequired[UniqueList[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRunType(TypedDict):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRun"""
-
-    workflows: list[str]
-    conclusions: list[Literal["failure"]]
-    query: NotRequired[str]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
+    id: int
+    name: str
+    url: str
 
 
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRunTypeForResponse(
+class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoTypeForResponse(
     TypedDict
 ):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRun"""
-
-    workflows: list[str]
-    conclusions: list[Literal["failure"]]
-    query: NotRequired[str]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpenedType(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpened"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpenedTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpened"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronizeType(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronize"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronizeTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronize"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergedType(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMerged"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergedTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMerged"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueCommentType(TypedDict):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueComment"""
-
-    query: NotRequired[str]
-    body_substring: NotRequired[str]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueCommentTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueComment"""
-
-    query: NotRequired[str]
-    body_substring: NotRequired[str]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestCommentType(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestComment"""
-
-    comment_types: UniqueList[Literal["timeline_comment", "review_comment"]]
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    body_substring: NotRequired[str]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestCommentTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestComment"""
-
-    comment_types: UniqueList[Literal["timeline_comment", "review_comment"]]
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    body_substring: NotRequired[str]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpenedType(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpened"""
-
-    categories: NotRequired[UniqueList[str]]
-    body_substring: NotRequired[str]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpenedTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpened"""
-
-    categories: NotRequired[UniqueList[str]]
-    body_substring: NotRequired[str]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdatedType(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdated"""
-
-    categories: NotRequired[UniqueList[str]]
-    body_substring: NotRequired[str]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdatedTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdated"""
-
-    categories: NotRequired[UniqueList[str]]
-    body_substring: NotRequired[str]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionCommentType(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionComment"""
-
-    comment_types: NotRequired[UniqueList[Literal["comment", "reply"]]]
-    categories: NotRequired[UniqueList[str]]
-    body_substring: NotRequired[str]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionCommentTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionComment"""
-
-    comment_types: NotRequired[UniqueList[Literal["comment", "reply"]]]
-    categories: NotRequired[UniqueList[str]]
-    body_substring: NotRequired[str]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssignedType(TypedDict):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssigned"""
-
-    query: NotRequired[str]
-    assignees: NotRequired[UniqueList[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssignedTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssigned"""
-
-    query: NotRequired[str]
-    assignees: NotRequired[UniqueList[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssignedType(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssigned"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    assignees: NotRequired[UniqueList[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssignedTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssigned"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    assignees: NotRequired[UniqueList[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAddedType(TypedDict):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAdded"""
-
-    query: NotRequired[str]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAddedTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAdded"""
-
-    query: NotRequired[str]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReviewType(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReview"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReviewTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReview"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeledType(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeled"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    labels: NotRequired[UniqueList[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeledTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeled"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    labels: NotRequired[UniqueList[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflictType(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflict"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflictTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflict"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmittedType(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmitted"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    states: UniqueList[Literal["approved", "changes_requested", "commented"]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmittedTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmitted"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    states: UniqueList[Literal["approved", "changes_requested", "commented"]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequestedType(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequested"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequestedTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequested"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueClosedType(TypedDict):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueClosed"""
-
-    query: NotRequired[str]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueClosedTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueClosed"""
-
-    query: NotRequired[str]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueReopenedType(TypedDict):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueReopened"""
-
-    query: NotRequired[str]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueReopenedTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueReopened"""
-
-    query: NotRequired[str]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestClosedType(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestClosed"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestClosedTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestClosed"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReopenedType(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReopened"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReopenedTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReopened"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestConvertedToDraftType(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestConvertedToDraft"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestConvertedToDraftTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestConvertedToDraft"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewDismissedType(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewDismissed"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewDismissedTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewDismissed"""
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadResolvedType(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadResol
-    ved
-    """
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadResolvedTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadResol
-    ved
-    """
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadUnresolvedType(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadUnres
-    olved
-    """
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadUnresolvedTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadUnres
-    olved
-    """
-
-    query: NotRequired[str]
-    paths: NotRequired[list[str]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompletedType(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompleted"""
-
-    automation_ids: UniqueList[str]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompletedTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompleted"""
-
-    automation_ids: UniqueList[str]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationFailedType(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationFailed"""
-
-    automation_ids: UniqueList[str]
-    reasons: NotRequired[UniqueList[Literal["reported", "crashed", "timed_out"]]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationFailedTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationFailed"""
-
-    automation_ids: UniqueList[str]
-    reasons: NotRequired[UniqueList[Literal["reported", "crashed", "timed_out"]]]
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropCodeScanningAlertType(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropCodeScanningAlert
-
-    Runs on the default branch when a security alert of this kind is created in the
-    repository. These are system events without an issue, pull request, or human
-    actor, and cannot be run manually.
-    """
-
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropCodeScanningAlertTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropCodeScanningAlert
-
-    Runs on the default branch when a security alert of this kind is created in the
-    repository. These are system events without an issue, pull request, or human
-    actor, and cannot be run manually.
-    """
-
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropSecretScanningAlertType(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropSecretScanningAlert
-
-    Runs on the default branch when a security alert of this kind is created in the
-    repository. These are system events without an issue, pull request, or human
-    actor, and cannot be run manually.
-    """
-
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropSecretScanningAlertTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropSecretScanningAlert
-
-    Runs on the default branch when a security alert of this kind is created in the
-    repository. These are system events without an issue, pull request, or human
-    actor, and cannot be run manually.
-    """
-
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropDependabotAlertType(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropDependabotAlert
-
-    Runs on the default branch when a security alert of this kind is created in the
-    repository. These are system events without an issue, pull request, or human
-    actor, and cannot be run manually.
-    """
-
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
-
-
-class AgentsAutomationsGetResponse200ItemsPropTriggersPropDependabotAlertTypeForResponse(
-    TypedDict
-):
-    """AgentsAutomationsGetResponse200ItemsPropTriggersPropDependabotAlert
-
-    Runs on the default branch when a security alert of this kind is created in the
-    repository. These are system events without an issue, pull request, or human
-    actor, and cannot be run manually.
-    """
-
-    write_scope: NotRequired[Literal["trigger", "repository"]]
-    allow_copilot_triggers: NotRequired[bool]
+    """Repo Ref"""
+
+    id: int
+    name: str
+    url: str
 
 
 __all__ = (
-    "AgentsAutomationsGetResponse200ItemsPropCreatedByType",
-    "AgentsAutomationsGetResponse200ItemsPropCreatedByTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropRepositoryType",
-    "AgentsAutomationsGetResponse200ItemsPropRepositoryTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompletedType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompletedTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationFailedType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationFailedTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropCodeScanningAlertType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropCodeScanningAlertTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropDependabotAlertType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropDependabotAlertTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionCommentType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionCommentTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpenedType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpenedTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdatedType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdatedTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIntervalType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIntervalTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssignedType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssignedTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueClosedType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueClosedTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueCommentType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueCommentTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeledType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeledTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpenedType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpenedTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueReopenedType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueReopenedTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssignedType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssignedTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestClosedType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestClosedTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestCommentType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestCommentTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestConvertedToDraftType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestConvertedToDraftTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeledType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeledTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflictType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflictTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergedType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergedTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpenedType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpenedTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReviewType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReviewTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReopenedType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReopenedTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewDismissedType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewDismissedTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequestedType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequestedTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmittedType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmittedTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadResolvedType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadResolvedTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadUnresolvedType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadUnresolvedTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronizeType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronizeTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropSecretScanningAlertType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropSecretScanningAlertTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAddedType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAddedTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRunType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRunTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersType",
-    "AgentsAutomationsGetResponse200ItemsPropTriggersTypeForResponse",
-    "AgentsAutomationsGetResponse200ItemsType",
-    "AgentsAutomationsGetResponse200ItemsTypeForResponse",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropActorType",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropActorTypeForResponse",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthorType",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthorTypeForResponse",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitterType",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitterTypeForResponse",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitType",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitTypeForResponse",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwnerType",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwnerTypeForResponse",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryType",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryTypeForResponse",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoType",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoTypeForResponse",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBaseType",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBaseTypeForResponse",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoTypeForResponse",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadType",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadTypeForResponse",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsType",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsTypeForResponse",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItemsType",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItemsTypeForResponse",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwnerType",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwnerTypeForResponse",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryType",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryTypeForResponse",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActorType",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActorTypeForResponse",
+    "WebhookWorkflowRunRequestedPropWorkflowRunType",
+    "WebhookWorkflowRunRequestedPropWorkflowRunTypeForResponse",
+    "WebhookWorkflowRunRequestedType",
+    "WebhookWorkflowRunRequestedTypeForResponse",
 )

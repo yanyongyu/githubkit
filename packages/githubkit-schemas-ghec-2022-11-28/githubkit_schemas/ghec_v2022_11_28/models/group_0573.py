@@ -9,22 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class PullRequestMergeResult(GitHubModel):
-    """Pull Request Merge Result
+class CopilotCodeReviewRequestDeniedAllof1(GitHubModel):
+    """CopilotCodeReviewRequestDeniedAllof1"""
 
-    Pull Request Merge Result
-    """
+    failure_reason: Missing[
+        Literal[
+            "ACTOR_INELIGIBLE",
+            "REPOSITORY_INELIGIBLE",
+            "APP_NOT_INSTALLED",
+            "NO_QUOTA_REMAINING",
+            "LICENSED_ORGANIZATION_UNAVAILABLE",
+            "INVALID_REVIEW_EFFORT",
+            "REQUEST_FAILED",
+            "REQUEST_CONFLICT",
+            "REVIEWER_UNAVAILABLE",
+            "REQUEST_UNAVAILABLE",
+            "ACTOR_FLAGGED",
+            "RATE_LIMITED",
+        ]
+    ] = Field(
+        default=UNSET,
+        description="The stable reason the request was denied, conflicted with an existing request, or could not be serviced.",
+    )
 
-    sha: str = Field()
-    merged: bool = Field()
-    message: str = Field()
 
+model_rebuild(CopilotCodeReviewRequestDeniedAllof1)
 
-model_rebuild(PullRequestMergeResult)
-
-__all__ = ("PullRequestMergeResult",)
+__all__ = ("CopilotCodeReviewRequestDeniedAllof1",)

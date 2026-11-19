@@ -9,48 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0583 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0584 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0585 import (
+from .group_0584 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0585 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0586 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0586 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0792 import (
-    WebhookIssuesClosedPropIssueType,
-    WebhookIssuesClosedPropIssueTypeForResponse,
-)
+from .group_0587 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0597 import WebhooksUserType, WebhooksUserTypeForResponse
+from .group_0606 import WebhooksIssueType, WebhooksIssueTypeForResponse
 
 
-class WebhookIssuesClosedType(TypedDict):
-    """issues closed event"""
+class WebhookIssuesAssignedType(TypedDict):
+    """issues assigned event"""
 
-    action: Literal["closed"]
+    action: Literal["assigned"]
+    assignee: NotRequired[Union[WebhooksUserType, None]]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesClosedPropIssueType
+    issue: WebhooksIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserType
 
 
-class WebhookIssuesClosedTypeForResponse(TypedDict):
-    """issues closed event"""
+class WebhookIssuesAssignedTypeForResponse(TypedDict):
+    """issues assigned event"""
 
-    action: Literal["closed"]
+    action: Literal["assigned"]
+    assignee: NotRequired[Union[WebhooksUserTypeForResponse, None]]
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     installation: NotRequired[SimpleInstallationTypeForResponse]
-    issue: WebhookIssuesClosedPropIssueTypeForResponse
+    issue: WebhooksIssueTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
     repository: RepositoryWebhooksTypeForResponse
     sender: SimpleUserTypeForResponse
 
 
 __all__ = (
-    "WebhookIssuesClosedType",
-    "WebhookIssuesClosedTypeForResponse",
+    "WebhookIssuesAssignedType",
+    "WebhookIssuesAssignedTypeForResponse",
 )

@@ -16,22 +16,22 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBody(ExtraGitHubModel):
-    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBody
+class OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200(ExtraGitHubModel):
+    """OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200
 
     The team's customization document. Only the keys `pluginAssignments` and
     `extraKnownMarketplaces` are supported.
     """
 
     plugin_assignments: Missing[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignments
+        OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments
     ] = Field(
         default=UNSET,
         alias="pluginAssignments",
         description="Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.",
     )
     extra_known_marketplaces: Missing[
-        OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplaces
+        OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplaces
     ] = Field(
         default=UNSET,
         alias="extraKnownMarketplaces",
@@ -39,32 +39,35 @@ class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBody(ExtraGitHubModel):
     )
 
 
-class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignments(
+class OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments(
     ExtraGitHubModel
 ):
-    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignments
+    """OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments
 
     Plugins assigned to the team, keyed by `PLUGIN@MARKETPLACE`.
     """
 
 
-class OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplaces(
+class OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplaces(
     ExtraGitHubModel
 ):
-    """OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplaces
+    """OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplace
+    s
 
     Additional plugin marketplaces available to the team, keyed by marketplace name.
     """
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBody)
-model_rebuild(OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignments)
+model_rebuild(OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200)
 model_rebuild(
-    OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplaces
+    OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments
+)
+model_rebuild(
+    OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplaces
 )
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBody",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplaces",
-    "OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignments",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplaces",
+    "OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments",
 )

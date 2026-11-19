@@ -13,39 +13,33 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class DependencyGraphDiffItems(GitHubModel):
-    """DependencyGraphDiffItems"""
+class DependabotRunnerSettingsUpdate(GitHubModel):
+    """Dependabot runner settings update
 
-    change_type: Literal["added", "removed"] = Field()
-    manifest: str = Field()
-    ecosystem: str = Field()
-    name: str = Field()
-    version: str = Field()
-    package_url: Union[str, None] = Field()
-    license_: Union[str, None] = Field(alias="license")
-    source_repository_url: Union[str, None] = Field()
-    vulnerabilities: list[DependencyGraphDiffItemsPropVulnerabilitiesItems] = Field()
-    scope: Literal["unknown", "runtime", "development"] = Field(
-        description="Where the dependency is utilized. `development` means that the dependency is only utilized in the development environment. `runtime` means that the dependency is utilized at runtime and in the development environment."
+    The runner Dependabot uses for this repository. `standard` accepts only
+    `runner_type`.
+    """
+
+    runner_type: Literal["standard", "labeled"] = Field(
+        description="`labeled` for labeled runners, `standard` for standard GitHub-hosted runners."
+    )
+    runner_labels: Missing[list[str]] = Field(
+        max_length=1 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Required for `labeled`. Exactly one non-blank runner label. Not allowed for `standard`.",
+    )
+    runner_group: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Optional for `labeled`. Omitted, `null` or blank means no group. Not allowed for `standard`.",
     )
 
 
-class DependencyGraphDiffItemsPropVulnerabilitiesItems(GitHubModel):
-    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
+model_rebuild(DependabotRunnerSettingsUpdate)
 
-    severity: str = Field()
-    advisory_ghsa_id: str = Field()
-    advisory_summary: str = Field()
-    advisory_url: str = Field()
-
-
-model_rebuild(DependencyGraphDiffItems)
-model_rebuild(DependencyGraphDiffItemsPropVulnerabilitiesItems)
-
-__all__ = (
-    "DependencyGraphDiffItems",
-    "DependencyGraphDiffItemsPropVulnerabilitiesItems",
-)
+__all__ = ("DependabotRunnerSettingsUpdate",)

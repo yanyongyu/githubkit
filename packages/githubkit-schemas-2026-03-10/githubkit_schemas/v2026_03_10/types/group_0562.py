@@ -14,10 +14,10 @@ from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class PrivateUserType(TypedDict):
-    """Private User
+class PublicUserType(TypedDict):
+    """Public User
 
-    Private User
+    Public User
     """
 
     login: str
@@ -54,21 +54,18 @@ class PrivateUserType(TypedDict):
     following: int
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    private_gists: int
-    total_private_repos: int
-    owned_private_repos: int
-    disk_usage: int
-    collaborators: int
-    two_factor_authentication: bool
-    plan: NotRequired[PrivateUserPropPlanType]
-    business_plus: NotRequired[bool]
-    ldap_dn: NotRequired[str]
+    plan: NotRequired[PublicUserPropPlanType]
+    private_gists: NotRequired[int]
+    total_private_repos: NotRequired[int]
+    owned_private_repos: NotRequired[int]
+    disk_usage: NotRequired[int]
+    collaborators: NotRequired[int]
 
 
-class PrivateUserTypeForResponse(TypedDict):
-    """Private User
+class PublicUserTypeForResponse(TypedDict):
+    """Public User
 
-    Private User
+    Public User
     """
 
     login: str
@@ -105,19 +102,16 @@ class PrivateUserTypeForResponse(TypedDict):
     following: int
     created_at: str
     updated_at: str
-    private_gists: int
-    total_private_repos: int
-    owned_private_repos: int
-    disk_usage: int
-    collaborators: int
-    two_factor_authentication: bool
-    plan: NotRequired[PrivateUserPropPlanTypeForResponse]
-    business_plus: NotRequired[bool]
-    ldap_dn: NotRequired[str]
+    plan: NotRequired[PublicUserPropPlanTypeForResponse]
+    private_gists: NotRequired[int]
+    total_private_repos: NotRequired[int]
+    owned_private_repos: NotRequired[int]
+    disk_usage: NotRequired[int]
+    collaborators: NotRequired[int]
 
 
-class PrivateUserPropPlanType(TypedDict):
-    """PrivateUserPropPlan"""
+class PublicUserPropPlanType(TypedDict):
+    """PublicUserPropPlan"""
 
     collaborators: int
     name: str
@@ -125,8 +119,8 @@ class PrivateUserPropPlanType(TypedDict):
     private_repos: int
 
 
-class PrivateUserPropPlanTypeForResponse(TypedDict):
-    """PrivateUserPropPlan"""
+class PublicUserPropPlanTypeForResponse(TypedDict):
+    """PublicUserPropPlan"""
 
     collaborators: int
     name: str
@@ -135,8 +129,8 @@ class PrivateUserPropPlanTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "PrivateUserPropPlanType",
-    "PrivateUserPropPlanTypeForResponse",
-    "PrivateUserType",
-    "PrivateUserTypeForResponse",
+    "PublicUserPropPlanType",
+    "PublicUserPropPlanTypeForResponse",
+    "PublicUserType",
+    "PublicUserTypeForResponse",
 )

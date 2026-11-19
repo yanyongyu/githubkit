@@ -11,17 +11,30 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoMergeUpstreamPostBody(GitHubModel):
-    """ReposOwnerRepoMergeUpstreamPostBody"""
+class ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200(GitHubModel):
+    """Package license compliance results
 
-    branch: str = Field(
-        description="The name of the branch which should be updated to match upstream."
+    License compliance results keyed by the original submitted package URLs.
+    """
+
+    purls: ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls = (
+        Field()
     )
 
 
-model_rebuild(ReposOwnerRepoMergeUpstreamPostBody)
+class ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls(
+    ExtraGitHubModel
+):
+    """ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls"""
 
-__all__ = ("ReposOwnerRepoMergeUpstreamPostBody",)
+
+model_rebuild(ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200)
+model_rebuild(ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls)
+
+__all__ = (
+    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200",
+    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls",
+)

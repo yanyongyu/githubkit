@@ -13,19 +13,69 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgCopilotPoliciesCodeReviewPutBodyType(TypedDict):
-    """OrgsOrgCopilotPoliciesCodeReviewPutBody"""
+class OrgsOrgCopilotModelPoliciesPatchResponse200Type(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchResponse200"""
 
-    state: Literal["enabled", "disabled"]
+    default_availability: (
+        OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityType
+    )
+    models: list[OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItemsType]
 
 
-class OrgsOrgCopilotPoliciesCodeReviewPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgCopilotPoliciesCodeReviewPutBody"""
+class OrgsOrgCopilotModelPoliciesPatchResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchResponse200"""
 
-    state: Literal["enabled", "disabled"]
+    default_availability: OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse
+    models: list[
+        OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse
+    ]
+
+
+class OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityType(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailability
+
+    The effective default availability for models reported as `delegate_to_default`.
+    """
+
+    policy_state: Literal["enabled", "disabled"]
+    editable: bool
+
+
+class OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailability
+
+    The effective default availability for models reported as `delegate_to_default`.
+    """
+
+    policy_state: Literal["enabled", "disabled"]
+    editable: bool
+
+
+class OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItemsType(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItems"""
+
+    model_name: str
+    display_name: str
+    policy_state: Literal["enabled", "disabled", "delegate_to_default", "unconfigured"]
+
+
+class OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItems"""
+
+    model_name: str
+    display_name: str
+    policy_state: Literal["enabled", "disabled", "delegate_to_default", "unconfigured"]
 
 
 __all__ = (
-    "OrgsOrgCopilotPoliciesCodeReviewPutBodyType",
-    "OrgsOrgCopilotPoliciesCodeReviewPutBodyTypeForResponse",
+    "OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityType",
+    "OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse",
+    "OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItemsType",
+    "OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse",
+    "OrgsOrgCopilotModelPoliciesPatchResponse200Type",
+    "OrgsOrgCopilotModelPoliciesPatchResponse200TypeForResponse",
 )

@@ -9,96 +9,11 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class WebhooksAnswerType(TypedDict):
-    """WebhooksAnswer"""
-
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    child_comment_count: int
-    created_at: _dt.datetime
-    discussion_id: int
-    html_url: str
-    id: int
-    node_id: str
-    parent_id: Union[int, None]
-    reactions: NotRequired[WebhooksAnswerPropReactionsType]
-    repository_url: str
-    updated_at: _dt.datetime
-    user: Union[WebhooksAnswerPropUserType, None]
-
-
-class WebhooksAnswerTypeForResponse(TypedDict):
-    """WebhooksAnswer"""
-
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    child_comment_count: int
-    created_at: str
-    discussion_id: int
-    html_url: str
-    id: int
-    node_id: str
-    parent_id: Union[int, None]
-    reactions: NotRequired[WebhooksAnswerPropReactionsTypeForResponse]
-    repository_url: str
-    updated_at: str
-    user: Union[WebhooksAnswerPropUserTypeForResponse, None]
-
-
-class WebhooksAnswerPropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhooksAnswerPropReactionsTypeForResponse(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhooksAnswerPropUserType(TypedDict):
+class WebhooksUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -125,7 +40,7 @@ class WebhooksAnswerPropUserType(TypedDict):
     user_view_type: NotRequired[str]
 
 
-class WebhooksAnswerPropUserTypeForResponse(TypedDict):
+class WebhooksUserTypeForResponse(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -153,10 +68,6 @@ class WebhooksAnswerPropUserTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhooksAnswerPropReactionsType",
-    "WebhooksAnswerPropReactionsTypeForResponse",
-    "WebhooksAnswerPropUserType",
-    "WebhooksAnswerPropUserTypeForResponse",
-    "WebhooksAnswerType",
-    "WebhooksAnswerTypeForResponse",
+    "WebhooksUserType",
+    "WebhooksUserTypeForResponse",
 )

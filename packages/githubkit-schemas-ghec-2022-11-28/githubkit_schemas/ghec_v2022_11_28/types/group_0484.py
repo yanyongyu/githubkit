@@ -10,62 +10,34 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class DependencyGraphDiffItemsType(TypedDict):
-    """DependencyGraphDiffItems"""
+class DependabotRunnerSettingsUpdateType(TypedDict):
+    """Dependabot runner settings update
 
-    change_type: Literal["added", "removed"]
-    manifest: str
-    ecosystem: str
-    name: str
-    version: str
-    package_url: Union[str, None]
-    license_: Union[str, None]
-    source_repository_url: Union[str, None]
-    vulnerabilities: list[DependencyGraphDiffItemsPropVulnerabilitiesItemsType]
-    scope: Literal["unknown", "runtime", "development"]
+    The runner Dependabot uses for this repository. `standard` accepts only
+    `runner_type`.
+    """
+
+    runner_type: Literal["standard", "labeled"]
+    runner_labels: NotRequired[list[str]]
+    runner_group: NotRequired[Union[str, None]]
 
 
-class DependencyGraphDiffItemsTypeForResponse(TypedDict):
-    """DependencyGraphDiffItems"""
+class DependabotRunnerSettingsUpdateTypeForResponse(TypedDict):
+    """Dependabot runner settings update
 
-    change_type: Literal["added", "removed"]
-    manifest: str
-    ecosystem: str
-    name: str
-    version: str
-    package_url: Union[str, None]
-    license_: Union[str, None]
-    source_repository_url: Union[str, None]
-    vulnerabilities: list[
-        DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse
-    ]
-    scope: Literal["unknown", "runtime", "development"]
+    The runner Dependabot uses for this repository. `standard` accepts only
+    `runner_type`.
+    """
 
-
-class DependencyGraphDiffItemsPropVulnerabilitiesItemsType(TypedDict):
-    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
-
-    severity: str
-    advisory_ghsa_id: str
-    advisory_summary: str
-    advisory_url: str
-
-
-class DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse(TypedDict):
-    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
-
-    severity: str
-    advisory_ghsa_id: str
-    advisory_summary: str
-    advisory_url: str
+    runner_type: Literal["standard", "labeled"]
+    runner_labels: NotRequired[list[str]]
+    runner_group: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "DependencyGraphDiffItemsPropVulnerabilitiesItemsType",
-    "DependencyGraphDiffItemsPropVulnerabilitiesItemsTypeForResponse",
-    "DependencyGraphDiffItemsType",
-    "DependencyGraphDiffItemsTypeForResponse",
+    "DependabotRunnerSettingsUpdateType",
+    "DependabotRunnerSettingsUpdateTypeForResponse",
 )

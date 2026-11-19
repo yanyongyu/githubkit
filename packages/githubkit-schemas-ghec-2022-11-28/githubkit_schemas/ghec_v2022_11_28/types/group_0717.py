@@ -10,47 +10,39 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+
+class WebhooksProjectChangesType(TypedDict):
+    """WebhooksProjectChanges"""
+
+    archived_at: NotRequired[WebhooksProjectChangesPropArchivedAtType]
 
 
-class ProjectsV2ItemType(TypedDict):
-    """Projects v2 Item
+class WebhooksProjectChangesTypeForResponse(TypedDict):
+    """WebhooksProjectChanges"""
 
-    An item belonging to a project
-    """
-
-    id: float
-    node_id: NotRequired[str]
-    project_node_id: NotRequired[str]
-    content_node_id: str
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    creator: NotRequired[SimpleUserType]
-    created_at: _dt.datetime
-    updated_at: _dt.datetime
-    archived_at: Union[_dt.datetime, None]
+    archived_at: NotRequired[WebhooksProjectChangesPropArchivedAtTypeForResponse]
 
 
-class ProjectsV2ItemTypeForResponse(TypedDict):
-    """Projects v2 Item
+class WebhooksProjectChangesPropArchivedAtType(TypedDict):
+    """WebhooksProjectChangesPropArchivedAt"""
 
-    An item belonging to a project
-    """
+    from_: NotRequired[Union[_dt.datetime, None]]
+    to: NotRequired[Union[_dt.datetime, None]]
 
-    id: float
-    node_id: NotRequired[str]
-    project_node_id: NotRequired[str]
-    content_node_id: str
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    creator: NotRequired[SimpleUserTypeForResponse]
-    created_at: str
-    updated_at: str
-    archived_at: Union[str, None]
+
+class WebhooksProjectChangesPropArchivedAtTypeForResponse(TypedDict):
+    """WebhooksProjectChangesPropArchivedAt"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ProjectsV2ItemType",
-    "ProjectsV2ItemTypeForResponse",
+    "WebhooksProjectChangesPropArchivedAtType",
+    "WebhooksProjectChangesPropArchivedAtTypeForResponse",
+    "WebhooksProjectChangesType",
+    "WebhooksProjectChangesTypeForResponse",
 )

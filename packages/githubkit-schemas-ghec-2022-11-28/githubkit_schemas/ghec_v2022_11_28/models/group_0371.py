@@ -9,174 +9,311 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class RuleSuite(GitHubModel):
+    """Rule Suite
 
-class RepositoryAdvisoryCredit(GitHubModel):
-    """RepositoryAdvisoryCredit
-
-    A credit given to a user for a repository security advisory.
+    Response
     """
 
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
-    ] = Field(description="The type of credit the user is receiving.")
-    state: Literal["accepted", "declined", "pending"] = Field(
-        description="The state of the user's acceptance of the credit."
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the rule insight."
+    )
+    actor_id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The number that identifies the user."
+    )
+    actor_name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The handle for the GitHub user account."
+    )
+    before_sha: Missing[str] = Field(
+        default=UNSET, description="The previous commit SHA of the ref."
+    )
+    after_sha: Missing[str] = Field(
+        default=UNSET, description="The new commit SHA of the ref."
+    )
+    ref: Missing[str] = Field(
+        default=UNSET, description="The ref name that the evaluation ran on."
+    )
+    repository_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the repository associated with the rule evaluation.",
+    )
+    repository_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the repository without the `.git` extension.",
+    )
+    pushed_at: Missing[_dt.datetime] = Field(default=UNSET)
+    result: Missing[Literal["pass", "fail", "bypass"]] = Field(
+        default=UNSET,
+        description="The result of the rule evaluations for rules with the `active` enforcement status.",
+    )
+    evaluation_result: Missing[Union[Literal["pass", "fail", "bypass"], None]] = Field(
+        default=UNSET,
+        description="The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`. Null if no rules with `evaluate` enforcement status were run.",
+    )
+    rule_evaluations: Missing[list[RuleSuitePropRuleEvaluationsItems]] = Field(
+        default=UNSET, description="Details on the evaluated rules."
     )
 
 
-class RepositoryAdvisoryPropPrivateFork(GitHubModel):
-    """RepositoryAdvisoryPropPrivateFork
+class RuleSuitePropRuleEvaluationsItems(GitHubModel):
+    """RuleSuitePropRuleEvaluationsItems"""
 
-    A temporary private fork of the advisory's repository for collaborating on a
-    fix.
+    rule_source: Missing[RuleSuitePropRuleEvaluationsItemsPropRuleSource] = Field(
+        default=UNSET
+    )
+    enforcement: Missing[Literal["active", "evaluate", "deleted ruleset"]] = Field(
+        default=UNSET, description="The enforcement level of this rule source."
+    )
+    result: Missing[Literal["pass", "fail"]] = Field(
+        default=UNSET,
+        description="The result of the evaluation of the individual rule.",
+    )
+    rule_type: Missing[str] = Field(default=UNSET, description="The type of rule.")
+    metadata: Missing[
+        Union[RuleSuitePullRequest, RuleSuiteRequiredStatusChecks, None]
+    ] = Field(
+        default=UNSET, description="Additional metadata about the rule evaluation."
+    )
+    details: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The detailed failure message for the rule. Null if the rule passed.",
+    )
+
+
+class RuleSuitePropRuleEvaluationsItemsPropRuleSource(GitHubModel):
+    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
+
+    type: Missing[str] = Field(default=UNSET, description="The type of rule source.")
+    id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The ID of the rule source."
+    )
+    name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the rule source."
+    )
+
+
+class RuleSuiteRequiredStatusChecks(GitHubModel):
+    """Required status checks rule suite metadata
+
+    Metadata for a required status checks rule evaluation result.
     """
 
-    id: int = Field(description="A unique identifier of the repository.")
-    node_id: str = Field(description="The GraphQL identifier of the repository.")
-    name: str = Field(description="The name of the repository.")
-    full_name: str = Field(
-        description="The full, globally unique, name of the repository."
-    )
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    private: bool = Field(description="Whether the repository is private.")
-    html_url: str = Field(description="The URL to view the repository on GitHub.com.")
-    description: Union[str, None] = Field(description="The repository description.")
-    fork: bool = Field(description="Whether the repository is a fork.")
-    url: str = Field(
-        description="The URL to get more information about the repository from the GitHub API."
-    )
-    archive_url: str = Field(
-        description="A template for the API URL to download the repository as an archive."
-    )
-    assignees_url: str = Field(
-        description="A template for the API URL to list the available assignees for issues in the repository."
-    )
-    blobs_url: str = Field(
-        description="A template for the API URL to create or retrieve a raw Git blob in the repository."
-    )
-    branches_url: str = Field(
-        description="A template for the API URL to get information about branches in the repository."
-    )
-    collaborators_url: str = Field(
-        description="A template for the API URL to get information about collaborators of the repository."
-    )
-    comments_url: str = Field(
-        description="A template for the API URL to get information about comments on the repository."
-    )
-    commits_url: str = Field(
-        description="A template for the API URL to get information about commits on the repository."
-    )
-    compare_url: str = Field(
-        description="A template for the API URL to compare two commits or refs."
-    )
-    contents_url: str = Field(
-        description="A template for the API URL to get the contents of the repository."
-    )
-    contributors_url: str = Field(
-        description="A template for the API URL to list the contributors to the repository."
-    )
-    deployments_url: str = Field(
-        description="The API URL to list the deployments of the repository."
-    )
-    downloads_url: str = Field(
-        description="The API URL to list the downloads on the repository."
-    )
-    events_url: str = Field(
-        description="The API URL to list the events of the repository."
-    )
-    forks_url: str = Field(
-        description="The API URL to list the forks of the repository."
-    )
-    git_commits_url: str = Field(
-        description="A template for the API URL to get information about Git commits of the repository."
-    )
-    git_refs_url: str = Field(
-        description="A template for the API URL to get information about Git refs of the repository."
-    )
-    git_tags_url: str = Field(
-        description="A template for the API URL to get information about Git tags of the repository."
-    )
-    issue_comment_url: str = Field(
-        description="A template for the API URL to get information about issue comments on the repository."
-    )
-    issue_events_url: str = Field(
-        description="A template for the API URL to get information about issue events on the repository."
-    )
-    issues_url: str = Field(
-        description="A template for the API URL to get information about issues on the repository."
-    )
-    keys_url: str = Field(
-        description="A template for the API URL to get information about deploy keys on the repository."
-    )
-    labels_url: str = Field(
-        description="A template for the API URL to get information about labels of the repository."
-    )
-    languages_url: str = Field(
-        description="The API URL to get information about the languages of the repository."
-    )
-    merges_url: str = Field(
-        description="The API URL to merge branches in the repository."
-    )
-    milestones_url: str = Field(
-        description="A template for the API URL to get information about milestones of the repository."
-    )
-    notifications_url: str = Field(
-        description="A template for the API URL to get information about notifications on the repository."
-    )
-    pulls_url: str = Field(
-        description="A template for the API URL to get information about pull requests on the repository."
-    )
-    releases_url: str = Field(
-        description="A template for the API URL to get information about releases on the repository."
-    )
-    stargazers_url: str = Field(
-        description="The API URL to list the stargazers on the repository."
-    )
-    statuses_url: str = Field(
-        description="A template for the API URL to get information about statuses of a commit."
-    )
-    subscribers_url: str = Field(
-        description="The API URL to list the subscribers on the repository."
-    )
-    subscription_url: str = Field(
-        description="The API URL to subscribe to notifications for this repository."
-    )
-    tags_url: str = Field(
-        description="The API URL to get information about tags on the repository."
-    )
-    teams_url: str = Field(
-        description="The API URL to list the teams on the repository."
-    )
-    trees_url: str = Field(
-        description="A template for the API URL to create or retrieve a raw Git tree of the repository."
-    )
-    hooks_url: str = Field(
-        description="The API URL to list the hooks on the repository."
+    checks: Missing[list[RuleSuiteRequiredStatusChecksPropChecksItems]] = Field(
+        default=UNSET,
+        description="The status checks associated with the rule evaluation.",
     )
 
 
-model_rebuild(RepositoryAdvisoryCredit)
-model_rebuild(RepositoryAdvisoryPropPrivateFork)
+class RuleSuiteRequiredStatusChecksPropChecksItems(GitHubModel):
+    """RuleSuiteRequiredStatusChecksPropChecksItems"""
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the status check."
+    )
+    context: Missing[str] = Field(
+        default=UNSET, description="The context name of the status check."
+    )
+    state: Missing[str] = Field(
+        default=UNSET, description="The state of the status check."
+    )
+    type: Missing[str] = Field(
+        default=UNSET, description="The type of the status check."
+    )
+    app: Missing[Union[RuleSuiteRequiredStatusChecksPropChecksItemsPropApp, None]] = (
+        Field(
+            default=UNSET,
+            description="The GitHub App associated with the status check.",
+        )
+    )
+
+
+class RuleSuiteRequiredStatusChecksPropChecksItemsPropApp(GitHubModel):
+    """RuleSuiteRequiredStatusChecksPropChecksItemsPropApp
+
+    The GitHub App associated with the status check.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the GitHub App."
+    )
+    slug: Missing[str] = Field(default=UNSET, description="The slug of the GitHub App.")
+    name: Missing[str] = Field(default=UNSET, description="The name of the GitHub App.")
+
+
+class RuleSuitePullRequest(GitHubModel):
+    """Pull request rule suite metadata
+
+    Metadata for a pull request rule evaluation result.
+    """
+
+    pull_request: Missing[RuleSuitePullRequestPropPullRequest] = Field(
+        default=UNSET,
+        description="The pull request associated with the rule evaluation.",
+    )
+
+
+class RuleSuitePullRequestPropPullRequest(GitHubModel):
+    """RuleSuitePullRequestPropPullRequest
+
+    The pull request associated with the rule evaluation.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the pull request."
+    )
+    number: Missing[int] = Field(
+        default=UNSET, description="The number of the pull request."
+    )
+    user: Missing[RuleSuitePullRequestPropPullRequestPropUser] = Field(
+        default=UNSET, description="The user who created the pull request."
+    )
+    reviews: Missing[list[RuleSuitePullRequestPropPullRequestPropReviewsItems]] = Field(
+        default=UNSET, description="The reviews associated with the pull request."
+    )
+    proof_of_presence: Missing[
+        Union[RuleSuitePullRequestPropPullRequestPropProofOfPresence, None]
+    ] = Field(
+        default=UNSET,
+        description="The proof of presence evaluation for the pull request. Null if proof of presence was not evaluated.",
+    )
+
+
+class RuleSuitePullRequestPropPullRequestPropUser(GitHubModel):
+    """RuleSuitePullRequestPropPullRequestPropUser
+
+    The user who created the pull request.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user."
+    )
+    login: Missing[str] = Field(
+        default=UNSET, description="The handle for the GitHub user account."
+    )
+    type: Missing[str] = Field(default=UNSET, description="The type of the user.")
+
+
+class RuleSuitePullRequestPropPullRequestPropProofOfPresence(GitHubModel):
+    """RuleSuitePullRequestPropPullRequestPropProofOfPresence
+
+    The proof of presence evaluation for the pull request. Null if proof of presence
+    was not evaluated.
+    """
+
+    state: Missing[str] = Field(
+        default=UNSET, description="The state of the proof of presence evaluation."
+    )
+    code: Missing[str] = Field(
+        default=UNSET,
+        description="A code describing the reason for the proof of presence state.",
+    )
+    base_sha: Missing[str] = Field(
+        default=UNSET,
+        description="The base commit SHA the proof of presence evaluation applies to. Empty if unavailable.",
+    )
+    head_sha: Missing[str] = Field(
+        default=UNSET,
+        description="The head commit SHA the proof of presence evaluation applies to. Empty if unavailable.",
+    )
+    required_level: Missing[str] = Field(
+        default=UNSET,
+        description="The authentication level required by the rule. Empty if unavailable.",
+    )
+    verified_level: Missing[str] = Field(
+        default=UNSET,
+        description="The authentication level that was verified. Empty if proof of presence has not been completed.",
+    )
+    verified_at: Missing[str] = Field(
+        default=UNSET,
+        description="The time proof of presence was verified, in ISO 8601 format. Empty if proof of presence has not been completed.",
+    )
+    verifier: Missing[
+        Union[RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifier, None]
+    ] = Field(
+        default=UNSET,
+        description="The user who provided proof of presence. Null if no proof of presence was recorded.",
+    )
+
+
+class RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifier(GitHubModel):
+    """RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifier
+
+    The user who provided proof of presence. Null if no proof of presence was
+    recorded.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user."
+    )
+    login: Missing[str] = Field(
+        default=UNSET, description="The handle for the GitHub user account."
+    )
+    type: Missing[str] = Field(default=UNSET, description="The type of the user.")
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItems(GitHubModel):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItems"""
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the review."
+    )
+    user: Missing[RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser] = Field(
+        default=UNSET, description="The user who submitted the review."
+    )
+    state: Missing[str] = Field(default=UNSET, description="The state of the review.")
+
+
+class RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser(GitHubModel):
+    """RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser
+
+    The user who submitted the review.
+    """
+
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the user."
+    )
+    login: Missing[str] = Field(
+        default=UNSET, description="The handle for the GitHub user account."
+    )
+    type: Missing[str] = Field(default=UNSET, description="The type of the user.")
+
+
+model_rebuild(RuleSuite)
+model_rebuild(RuleSuitePropRuleEvaluationsItems)
+model_rebuild(RuleSuitePropRuleEvaluationsItemsPropRuleSource)
+model_rebuild(RuleSuiteRequiredStatusChecks)
+model_rebuild(RuleSuiteRequiredStatusChecksPropChecksItems)
+model_rebuild(RuleSuiteRequiredStatusChecksPropChecksItemsPropApp)
+model_rebuild(RuleSuitePullRequest)
+model_rebuild(RuleSuitePullRequestPropPullRequest)
+model_rebuild(RuleSuitePullRequestPropPullRequestPropUser)
+model_rebuild(RuleSuitePullRequestPropPullRequestPropProofOfPresence)
+model_rebuild(RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifier)
+model_rebuild(RuleSuitePullRequestPropPullRequestPropReviewsItems)
+model_rebuild(RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser)
 
 __all__ = (
-    "RepositoryAdvisoryCredit",
-    "RepositoryAdvisoryPropPrivateFork",
+    "RuleSuite",
+    "RuleSuitePropRuleEvaluationsItems",
+    "RuleSuitePropRuleEvaluationsItemsPropRuleSource",
+    "RuleSuitePullRequest",
+    "RuleSuitePullRequestPropPullRequest",
+    "RuleSuitePullRequestPropPullRequestPropProofOfPresence",
+    "RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifier",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItems",
+    "RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser",
+    "RuleSuitePullRequestPropPullRequestPropUser",
+    "RuleSuiteRequiredStatusChecks",
+    "RuleSuiteRequiredStatusChecksPropChecksItems",
+    "RuleSuiteRequiredStatusChecksPropChecksItemsPropApp",
 )

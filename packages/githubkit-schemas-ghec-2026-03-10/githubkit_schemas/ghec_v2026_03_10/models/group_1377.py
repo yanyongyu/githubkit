@@ -16,19 +16,16 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody(GitHubModel):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
+class EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBody(GitHubModel):
+    """EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBody"""
 
     policy_state: Literal[
-        "enabled_for_all_orgs",
-        "disabled_for_all_orgs",
-        "enabled_for_selected_orgs",
-        "configured_by_org_admins",
-    ] = Field(
-        description="The policy state for Copilot cloud agent in the enterprise. Can be one of `enabled_for_all_orgs`, `disabled_for_all_orgs`, `enabled_for_selected_orgs`, or `configured_by_org_admins`."
-    )
+        "enabled_for_all_organizations",
+        "disabled_for_all_organizations",
+        "configured_by_organization_admins",
+    ] = Field(description="The enterprise's Copilot code review policy.")
 
 
-model_rebuild(EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody)
+model_rebuild(EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBody)
 
-__all__ = ("EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody",)
+__all__ = ("EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBody",)

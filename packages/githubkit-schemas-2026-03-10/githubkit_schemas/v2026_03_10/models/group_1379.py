@@ -9,39 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
+from .group_0219 import CustomPropertyValue
 
-class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody(GitHubModel):
-    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
 
-    repository_values: list[RepositoryExternalPropertyPayload] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
+class OrgsOrgPropertiesInstallationsValuesPatchBody(GitHubModel):
+    """OrgsOrgPropertiesInstallationsValuesPatchBody"""
+
+    repository_names: list[str] = Field(
+        max_length=30 if PYDANTIC_V2 else None,
         min_length=1 if PYDANTIC_V2 else None,
-        description="The names of repositories and the values that the named external custom property will be set to.",
+        description="The names of repositories that the external custom property values will be applied to.",
+    )
+    properties: list[CustomPropertyValue] = Field(
+        description="List of external custom property names and associated values to apply to the repositories."
     )
 
 
-class RepositoryExternalPropertyPayload(GitHubModel):
-    """Repository External Custom Property Value Payload
+model_rebuild(OrgsOrgPropertiesInstallationsValuesPatchBody)
 
-    Repository name and associated external custom property value
-    """
-
-    repository_name: str = Field(description="The name of the repository")
-    value: Union[str, None] = Field(
-        description="The value assigned to the repository. Set to `null` to unset the value for this repository."
-    )
-
-
-model_rebuild(OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody)
-model_rebuild(RepositoryExternalPropertyPayload)
-
-__all__ = (
-    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody",
-    "RepositoryExternalPropertyPayload",
-)
+__all__ = ("OrgsOrgPropertiesInstallationsValuesPatchBody",)

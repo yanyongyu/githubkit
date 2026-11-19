@@ -18,37 +18,43 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-
-class WebhookIssuesClosedPropIssueAllof0PropPullRequest(GitHubModel):
-    """WebhookIssuesClosedPropIssueAllof0PropPullRequest"""
-
-    diff_url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    merged_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
-    patch_url: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+from .group_0796 import (
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
+)
 
 
-class WebhookIssuesClosedPropIssueAllof0PropStatus(GitHubModel):
-    """Planning status
+class WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubApp(GitHubModel):
+    """App
 
-    The status of the issue, or `null` if it has none. Issue statuses are in preview
-    and only available to accounts enrolled in the preview.
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
     """
 
-    id: int = Field(description="The stable identifier of the planning status.")
-    name: str = Field(
-        description="The display name of the planning status, which may change in the future."
+    created_at: Union[_dt.datetime, None] = Field()
+    description: Union[str, None] = Field()
+    events: Missing[list[str]] = Field(
+        default=UNSET, description="The list of events for the GitHub app"
     )
-    category: str = Field(
-        description="A stable identifier for the category, such as `backlog`, `planned`, `started`, `completed`, `not_planned` or `duplicate`. Clients should expect new keys to be added."
+    external_url: Union[str, None] = Field()
+    html_url: str = Field()
+    id: Union[int, None] = Field(description="Unique identifier of the GitHub app")
+    name: str = Field(description="The name of the GitHub app")
+    node_id: str = Field()
+    owner: Union[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwner, None
+    ] = Field(title="User")
+    permissions: Missing[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+    ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
+    slug: Missing[str] = Field(
+        default=UNSET, description="The slug name of the GitHub app"
     )
+    updated_at: Union[_dt.datetime, None] = Field()
 
 
-model_rebuild(WebhookIssuesClosedPropIssueAllof0PropPullRequest)
-model_rebuild(WebhookIssuesClosedPropIssueAllof0PropStatus)
+model_rebuild(WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubApp)
 
-__all__ = (
-    "WebhookIssuesClosedPropIssueAllof0PropPullRequest",
-    "WebhookIssuesClosedPropIssueAllof0PropStatus",
-)
+__all__ = ("WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubApp",)

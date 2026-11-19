@@ -14,18 +14,58 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBody(GitHubModel):
-    """EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBody"""
+class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200"""
 
+    default_availability: Missing[
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability
+    ] = Field(default=UNSET)
+    models: list[
+        EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems
+    ] = Field()
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability"""
+
+    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"] = Field(
+        description="The enterprise default availability for models that have not been configured. `delegate_to_organizations` is only returned for enterprises that manage Copilot through organizations."
+    )
+
+
+class EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems(
+    GitHubModel
+):
+    """EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems"""
+
+    model_name: str = Field()
+    display_name: str = Field()
     policy_state: Literal[
-        "enabled_for_all_organizations",
-        "disabled_for_all_organizations",
-        "configured_by_organization_admins",
-    ] = Field(description="The enterprise's Copilot code review policy.")
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_organizations",
+        "delegate_to_default",
+        "unconfigured",
+    ] = Field(
+        description="The enterprise policy for the model. `delegate_to_organizations` is returned for enterprises that manage Copilot through organizations."
+    )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBody)
+model_rebuild(EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200)
+model_rebuild(
+    EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability
+)
+model_rebuild(EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems)
 
-__all__ = ("EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBody",)
+__all__ = (
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropDefaultAvailability",
+    "EnterprisesEnterpriseCopilotModelPoliciesPatchResponse200PropModelsItems",
+)

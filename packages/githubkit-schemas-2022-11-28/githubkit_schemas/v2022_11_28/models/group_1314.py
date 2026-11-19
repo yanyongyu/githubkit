@@ -18,12 +18,10 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCopilotSpacesSpaceNumberPutBody(GitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBody"""
+class OrgsOrgCopilotSpacesPostBody(GitHubModel):
+    """OrgsOrgCopilotSpacesPostBody"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the Copilot Space."
-    )
+    name: str = Field(description="The name of the Copilot Space.")
     description: Missing[str] = Field(
         default=UNSET, description="A description of the Copilot Space."
     )
@@ -34,15 +32,15 @@ class OrgsOrgCopilotSpacesSpaceNumberPutBody(GitHubModel):
     )
     base_role: Missing[Literal["reader", "writer", "admin", "no_access"]] = Field(
         default=UNSET,
-        description="The base role that determines default permissions for organization members. Changing this field requires admin permissions.\n- `no_access`: No default access (default)\n- `reader`: Organization members can read the space\n- `writer`: Organization members can read and edit the space\n- `admin`: Organization members have full admin access to the space",
+        description="The base role that determines default permissions for organization members.\n- `no_access`: No default access (default)\n- `reader`: Organization members can read the space\n- `writer`: Organization members can read and edit the space\n- `admin`: Organization members have full admin access to the space",
     )
     resources_attributes: Missing[
-        list[OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems]
+        list[OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems]
     ] = Field(default=UNSET, description="Resources to attach to the space.")
 
 
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems(GitHubModel):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
+class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems(GitHubModel):
+    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems"""
 
     resource_type: Missing[
         Literal[
@@ -56,14 +54,12 @@ class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems(GitHubM
         ]
     ] = Field(default=UNSET, description="The type of resource.")
     metadata: Missing[
-        OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
+        OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
     ] = Field(default=UNSET, description="Metadata specific to the resource type.")
 
 
-class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata(
-    GitHubModel
-):
-    """OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
+class OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata(GitHubModel):
+    """OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
 
     Metadata specific to the resource type.
     """
@@ -81,14 +77,12 @@ class OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMeta
     number: Missing[int] = Field(default=UNSET, description="Issue or PR number.")
 
 
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberPutBody)
-model_rebuild(OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems)
-model_rebuild(
-    OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata
-)
+model_rebuild(OrgsOrgCopilotSpacesPostBody)
+model_rebuild(OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems)
+model_rebuild(OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata)
 
 __all__ = (
-    "OrgsOrgCopilotSpacesSpaceNumberPutBody",
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems",
-    "OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata",
+    "OrgsOrgCopilotSpacesPostBody",
+    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems",
+    "OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata",
 )

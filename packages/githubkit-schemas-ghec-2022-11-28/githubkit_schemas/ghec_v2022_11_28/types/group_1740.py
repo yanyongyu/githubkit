@@ -9,38 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType(
-    TypedDict
-):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
+class ReposOwnerRepoCopilotCodeReviewSettingsPatchBodyType(TypedDict):
+    """ReposOwnerRepoCopilotCodeReviewSettingsPatchBody"""
 
-    Parameters for AI agent assignment. Only used when an agent bot login is
-    included in `assignees`. Ignored when no agent is being assigned.
-    """
-
-    custom_instructions: NotRequired[str]
-    custom_agent: NotRequired[str]
-    model: NotRequired[str]
+    review_effort: NotRequired[str]
+    severity_filter: NotRequired[Literal["no_filter", "low", "low_and_medium"]]
+    custom_instructions_enabled: NotRequired[bool]
+    mcp_enabled: NotRequired[bool]
+    cross_repo_context_enabled: NotRequired[bool]
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse(
-    TypedDict
-):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
+class ReposOwnerRepoCopilotCodeReviewSettingsPatchBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoCopilotCodeReviewSettingsPatchBody"""
 
-    Parameters for AI agent assignment. Only used when an agent bot login is
-    included in `assignees`. Ignored when no agent is being assigned.
-    """
-
-    custom_instructions: NotRequired[str]
-    custom_agent: NotRequired[str]
-    model: NotRequired[str]
+    review_effort: NotRequired[str]
+    severity_filter: NotRequired[Literal["no_filter", "low", "low_and_medium"]]
+    custom_instructions_enabled: NotRequired[bool]
+    mcp_enabled: NotRequired[bool]
+    cross_repo_context_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentType",
-    "ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignmentTypeForResponse",
+    "ReposOwnerRepoCopilotCodeReviewSettingsPatchBodyType",
+    "ReposOwnerRepoCopilotCodeReviewSettingsPatchBodyTypeForResponse",
 )

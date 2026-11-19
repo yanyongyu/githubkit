@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -18,132 +17,46 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
-from .group_0108 import Team
-from .group_0243 import Milestone
-from .group_0352 import AutoMerge
-from .group_0353 import PullRequestStack
-from .group_0355 import PullRequestSimplePropBase, PullRequestSimplePropHead
-from .group_0356 import PullRequestSimplePropLinks
 
+class PullRequestStack(GitHubModel):
+    """Pull Request Stack
 
-class PullRequestSimple(GitHubModel):
-    """Pull Request Simple
-
-    Pull Request Simple
+    The stack information associated with a pull request.
     """
 
-    url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    html_url: str = Field()
-    diff_url: str = Field()
-    patch_url: str = Field()
-    issue_url: str = Field()
-    commits_url: str = Field()
-    review_comments_url: str = Field()
-    review_comment_url: str = Field()
-    comments_url: str = Field()
-    statuses_url: str = Field()
-    number: int = Field()
-    state: str = Field()
-    locked: bool = Field()
-    title: str = Field()
-    user: Union[SimpleUser, None] = Field()
-    body: Union[str, None] = Field()
-    labels: list[PullRequestSimplePropLabelsItems] = Field()
-    milestone: Union[Milestone, None] = Field()
-    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    closed_at: Union[_dt.datetime, None] = Field()
-    merged_at: Union[_dt.datetime, None] = Field()
-    merge_commit_sha: Union[str, None] = Field()
-    assignee: Union[SimpleUser, None] = Field()
-    assignees: Missing[list[SimpleUser]] = Field(default=UNSET)
-    requested_reviewers: Missing[list[SimpleUser]] = Field(default=UNSET)
-    requested_teams: Missing[list[Team]] = Field(default=UNSET)
-    head: PullRequestSimplePropHead = Field()
-    base: PullRequestSimplePropBase = Field()
-    links: PullRequestSimplePropLinks = Field(alias="_links")
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
+    base: PullRequestStackPropBase = Field()
+    size: Missing[int] = Field(
+        default=UNSET, description="The total number of pull requests in the stack."
     )
-    auto_merge: Union[AutoMerge, None] = Field(
-        title="Auto merge", description="The status of auto merging a pull request."
-    )
-    stack: Missing[Union[PullRequestStack, None]] = Field(
+    position: Missing[int] = Field(
         default=UNSET,
-        title="Pull Request Stack",
-        description="The stack information associated with a pull request.",
+        description="The one-based position of this pull request within the stack, where 1 is the bottom of the stack.",
     )
-    draft: Missing[bool] = Field(
+    id: Missing[int] = Field(
         default=UNSET,
-        description="Indicates whether or not the pull request is a draft.",
+        description="The ID of the stack that this pull request belongs to.",
+    )
+    number: Missing[int] = Field(
+        default=UNSET,
+        description="The number of the stack that this pull request belongs to.",
     )
 
 
-class PullRequestSimplePropLabelsItems(GitHubModel):
-    """PullRequestSimplePropLabelsItems"""
+class PullRequestStackPropBase(GitHubModel):
+    """PullRequestStackPropBase"""
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    name: str = Field()
-    description: Union[str, None] = Field()
-    color: str = Field()
-    default: bool = Field()
-    archived_by: Union[PullRequestSimplePropLabelsItemsPropArchivedBy, None] = Field(
-        description="The user who archived the label, or `null` if it has not been archived."
+    ref: str = Field(
+        description="The base ref of the stack this pull request belongs to."
+    )
+    sha: Union[str, None] = Field(
+        description="The base SHA of the stack this pull request belongs to."
     )
 
 
-class PullRequestSimplePropLabelsItemsPropArchivedBy(GitHubModel):
-    """PullRequestSimplePropLabelsItemsPropArchivedBy
-
-    The user who archived the label, or `null` if it has not been archived.
-    """
-
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
-    user_view_type: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(PullRequestSimple)
-model_rebuild(PullRequestSimplePropLabelsItems)
-model_rebuild(PullRequestSimplePropLabelsItemsPropArchivedBy)
+model_rebuild(PullRequestStack)
+model_rebuild(PullRequestStackPropBase)
 
 __all__ = (
-    "PullRequestSimple",
-    "PullRequestSimplePropLabelsItems",
-    "PullRequestSimplePropLabelsItemsPropArchivedBy",
+    "PullRequestStack",
+    "PullRequestStackPropBase",
 )

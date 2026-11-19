@@ -9,51 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200"""
+class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody(GitHubModel):
+    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
 
-    models: list[
-        EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems
-    ] = Field()
-
-
-class EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems(
-    GitHubModel
-):
-    """EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems"""
-
-    model_name: str = Field()
-    display_name: str = Field()
-    policy_state: Literal["enabled", "disabled", "optional"] = Field(
-        description="When editable, the agent apps policy's configured value, or `optional` if no agent apps policy has been configured for this model.\nWhen locked, the enterprise's explicit value or its applied default availability for an eligible model.\nReturns `disabled` when locked without an explicit enterprise value and the model is excluded from default availability."
+    advanced_security_enabled_for_new_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description='Whether GitHub Advanced Security is automatically enabled for new repositories. For more information, see "[About GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest/get-started/learning-about-github/about-github-advanced-security)."',
     )
-    enterprise_policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_default",
-        "unconfigured",
+    advanced_security_enabled_new_user_namespace_repos: Missing[bool] = Field(
+        default=UNSET,
+        description='Whether GitHub Advanced Security is automatically enabled for new user namespace repositories. For more information, see "[About GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest/get-started/learning-about-github/about-github-advanced-security)."',
+    )
+    dependabot_alerts_enabled_for_new_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description='Whether Dependabot alerts are automatically enabled for new repositories. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."',
+    )
+    secret_scanning_enabled_for_new_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description='Whether secret scanning is automatically enabled for new repositories. For more information, see "[About secret scanning](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/about-secret-scanning)."',
+    )
+    secret_scanning_push_protection_enabled_for_new_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description='Whether secret scanning push protection is automatically enabled for new repositories. For more information, see "[Protecting pushes with secret scanning](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/protecting-pushes-with-secret-scanning)."',
+    )
+    secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description='The URL that will be displayed to contributors who are blocked from pushing a secret. For more information, see "[Protecting pushes with secret scanning](https://docs.github.com/enterprise-cloud@latest/code-security/secret-scanning/protecting-pushes-with-secret-scanning)."\nTo disable this functionality, set this field to `null`.',
+    )
+    secret_scanning_non_provider_patterns_enabled_for_new_repositories: Missing[
+        Union[bool, None]
     ] = Field(
-        description="The separately read enterprise-layer policy for this model, used to determine whether the agent apps policy can be edited."
-    )
-    editable: bool = Field(
-        description="Whether the enterprise policy and available apps policy controls allow the agent apps policy to be updated."
+        default=UNSET,
+        description="Whether secret scanning of non-provider patterns is enabled for new repositories under this enterprise.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200)
-model_rebuild(
-    EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems
-)
+model_rebuild(EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody)
 
-__all__ = (
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200",
-    "EnterprisesEnterpriseCopilotAppsModelPoliciesGetResponse200PropModelsItems",
-)
+__all__ = ("EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody",)

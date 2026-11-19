@@ -13,38 +13,34 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyType(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBody"""
+class UsersUsernameCopilotSpacesPostBodyType(TypedDict):
+    """UsersUsernameCopilotSpacesPostBody"""
 
-    name: NotRequired[str]
+    name: str
+    description: NotRequired[str]
+    general_instructions: NotRequired[str]
+    base_role: NotRequired[Literal["reader", "no_access"]]
+    resources_attributes: NotRequired[
+        list[UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsType]
+    ]
+
+
+class UsersUsernameCopilotSpacesPostBodyTypeForResponse(TypedDict):
+    """UsersUsernameCopilotSpacesPostBody"""
+
+    name: str
     description: NotRequired[str]
     general_instructions: NotRequired[str]
     base_role: NotRequired[Literal["reader", "no_access"]]
     resources_attributes: NotRequired[
         list[
-            UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType
+            UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse
         ]
     ]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyTypeForResponse(TypedDict):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBody"""
-
-    name: NotRequired[str]
-    description: NotRequired[str]
-    general_instructions: NotRequired[str]
-    base_role: NotRequired[Literal["reader", "no_access"]]
-    resources_attributes: NotRequired[
-        list[
-            UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse
-        ]
-    ]
-
-
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType(
-    TypedDict
-):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
+class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsType(TypedDict):
+    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems"""
 
     resource_type: NotRequired[
         Literal[
@@ -58,14 +54,14 @@ class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTy
         ]
     ]
     metadata: NotRequired[
-        UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType
+        UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType
     ]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse(
+class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse(
     TypedDict
 ):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems"""
+    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems"""
 
     resource_type: NotRequired[
         Literal[
@@ -79,15 +75,14 @@ class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTy
         ]
     ]
     metadata: NotRequired[
-        UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse
+        UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse
     ]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType(
+class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType(
     TypedDict
 ):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMeta
-    data
+    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
 
     Metadata specific to the resource type.
     """
@@ -99,11 +94,10 @@ class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPr
     number: NotRequired[int]
 
 
-class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse(
+class UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse(
     TypedDict
 ):
-    """UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMeta
-    data
+    """UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata
 
     Metadata specific to the resource type.
     """
@@ -116,10 +110,10 @@ class UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPr
 
 
 __all__ = (
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataType",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadataTypeForResponse",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsType",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsTypeForResponse",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyType",
-    "UsersUsernameCopilotSpacesSpaceNumberPutBodyTypeForResponse",
+    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataType",
+    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadataTypeForResponse",
+    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsType",
+    "UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsTypeForResponse",
+    "UsersUsernameCopilotSpacesPostBodyType",
+    "UsersUsernameCopilotSpacesPostBodyTypeForResponse",
 )

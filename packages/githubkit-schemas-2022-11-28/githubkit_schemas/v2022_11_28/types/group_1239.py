@@ -11,24 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0148 import ActionsPolicyType, ActionsPolicyTypeForResponse
+
+class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody"""
+
+    selected_repository_ids: list[int]
 
 
-class OrgsOrgActionsPoliciesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsPoliciesGetResponse200"""
+class OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody"""
 
-    total_count: int
-    policies: list[ActionsPolicyType]
-
-
-class OrgsOrgActionsPoliciesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgActionsPoliciesGetResponse200"""
-
-    total_count: int
-    policies: list[ActionsPolicyTypeForResponse]
+    selected_repository_ids: list[int]
 
 
 __all__ = (
-    "OrgsOrgActionsPoliciesGetResponse200Type",
-    "OrgsOrgActionsPoliciesGetResponse200TypeForResponse",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyType",
+    "OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBodyTypeForResponse",
 )

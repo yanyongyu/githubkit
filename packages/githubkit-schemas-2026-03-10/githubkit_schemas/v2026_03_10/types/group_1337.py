@@ -9,23 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotPoliciesCodeReviewPutBodyType(TypedDict):
-    """OrgsOrgCopilotPoliciesCodeReviewPutBody"""
+class OrgsOrgCopilotContentExclusionPutResponse200Type(TypedDict):
+    """OrgsOrgCopilotContentExclusionPutResponse200"""
 
-    state: Literal["enabled", "disabled"]
+    message: NotRequired[str]
 
 
-class OrgsOrgCopilotPoliciesCodeReviewPutBodyTypeForResponse(TypedDict):
-    """OrgsOrgCopilotPoliciesCodeReviewPutBody"""
+class OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotContentExclusionPutResponse200"""
 
-    state: Literal["enabled", "disabled"]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgCopilotPoliciesCodeReviewPutBodyType",
-    "OrgsOrgCopilotPoliciesCodeReviewPutBodyTypeForResponse",
+    "OrgsOrgCopilotContentExclusionPutResponse200Type",
+    "OrgsOrgCopilotContentExclusionPutResponse200TypeForResponse",
 )

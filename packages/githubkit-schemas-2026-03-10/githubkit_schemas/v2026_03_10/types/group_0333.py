@@ -9,53 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class DiffEntryType(TypedDict):
-    """Diff Entry
+class VerificationType(TypedDict):
+    """Verification"""
 
-    Diff Entry
-    """
-
-    sha: Union[str, None]
-    filename: str
-    status: Literal[
-        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
-    ]
-    additions: int
-    deletions: int
-    changes: int
-    blob_url: Union[str, None]
-    raw_url: Union[str, None]
-    contents_url: str
-    patch: NotRequired[str]
-    previous_filename: NotRequired[str]
+    verified: bool
+    reason: str
+    payload: Union[str, None]
+    signature: Union[str, None]
+    verified_at: NotRequired[Union[str, None]]
 
 
-class DiffEntryTypeForResponse(TypedDict):
-    """Diff Entry
+class VerificationTypeForResponse(TypedDict):
+    """Verification"""
 
-    Diff Entry
-    """
-
-    sha: Union[str, None]
-    filename: str
-    status: Literal[
-        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
-    ]
-    additions: int
-    deletions: int
-    changes: int
-    blob_url: Union[str, None]
-    raw_url: Union[str, None]
-    contents_url: str
-    patch: NotRequired[str]
-    previous_filename: NotRequired[str]
+    verified: bool
+    reason: str
+    payload: Union[str, None]
+    signature: Union[str, None]
+    verified_at: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "DiffEntryType",
-    "DiffEntryTypeForResponse",
+    "VerificationType",
+    "VerificationTypeForResponse",
 )

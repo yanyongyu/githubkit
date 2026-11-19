@@ -9,44 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
 
-from .group_0037 import DependabotAlertPackage
+from .group_0592 import DependabotAlertWithdrawnWebhookPropDependency
 
 
-class DependabotAlertWithdrawnWebhookPropDependency(GitHubModel):
-    """DependabotAlertWithdrawnWebhookPropDependency
+class DependabotAlertWithdrawnWebhook(GitHubModel):
+    """DependabotAlertWithdrawnWebhook
 
-    Details for the vulnerable dependency.
+    Identifiers for a withdrawn Dependabot alert, captured before deletion so that
+    consumers can reconcile external records. This is not a full alert
+    representation.
     """
 
-    package: DependabotAlertPackage = Field(
-        description="Details for the vulnerable package."
+    id: int = Field(description="The unique identifier of the withdrawn alert.")
+    node_id: str = Field(description="The GraphQL node ID of the withdrawn alert.")
+    number: int = Field(description="The security alert number.")
+    state: Literal["withdrawn"] = Field(
+        description="The state of the Dependabot alert."
     )
-    manifest_path: Union[str, None] = Field(
-        description="The full path to the dependency manifest file, relative to the root of the repository."
+    dependency: DependabotAlertWithdrawnWebhookPropDependency = Field(
+        description="Details for the vulnerable dependency."
     )
-    version_requirement: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The dependency version or version constraint last recorded for the dependency associated with this alert.\nFor dependencies detected from a lockfile, this can be the resolved version.\nFor manifest-only dependencies, it can be the declared version constraint. Returns `null` when unavailable.\n\nAn empty string can indicate an unconstrained dependency. The stored value is limited to 64 bytes;\nlonger requirements may have been truncated and may no longer form a complete, valid version constraint.\n\nWhen multiple vulnerable versions of a dependency correspond to the same alert, this field contains one\nrecorded version or constraint and may not represent all vulnerable versions.\n",
+    security_advisory: DependabotAlertWithdrawnWebhookPropSecurityAdvisory = Field(
+        description="Identifiers of the advisory that produced the withdrawn alert."
     )
-    scope: Union[Literal["development", "runtime"], None] = Field(
-        description="The execution scope of the vulnerable dependency."
+    url: str = Field(description="The REST API URL of the alert resource.")
+    html_url: str = Field(description="The GitHub URL of the alert resource.")
+    created_at: _dt.datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    relationship: Missing[
-        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
-    ] = Field(
-        default=UNSET,
-        description='The vulnerable dependency\'s relationship to your project.\n\n> [!NOTE]\n> We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems.\n',
+    withdrawn_at: _dt.datetime = Field(
+        description="The time that the alert was withdrawn in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. This is not the advisory's withdrawal time."
     )
 
 
-model_rebuild(DependabotAlertWithdrawnWebhookPropDependency)
+class DependabotAlertWithdrawnWebhookPropSecurityAdvisory(GitHubModel):
+    """DependabotAlertWithdrawnWebhookPropSecurityAdvisory
 
-__all__ = ("DependabotAlertWithdrawnWebhookPropDependency",)
+    Identifiers of the advisory that produced the withdrawn alert.
+    """
+
+    ghsa_id: str = Field(
+        description="The unique GitHub identifier assigned to the advisory."
+    )
+    cve_id: Union[str, None] = Field(
+        description="The CVE identifier assigned to the advisory, if any."
+    )
+
+
+model_rebuild(DependabotAlertWithdrawnWebhook)
+model_rebuild(DependabotAlertWithdrawnWebhookPropSecurityAdvisory)
+
+__all__ = (
+    "DependabotAlertWithdrawnWebhook",
+    "DependabotAlertWithdrawnWebhookPropSecurityAdvisory",
+)

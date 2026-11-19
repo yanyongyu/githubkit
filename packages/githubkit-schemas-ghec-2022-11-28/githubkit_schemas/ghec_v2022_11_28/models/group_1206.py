@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse404(GitHubModel):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse404
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401(GitHubModel):
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401
 
     Structured error response following GitHub REST API conventions.
     For 422 Unprocessable Entity the errors array contains validation
@@ -32,7 +32,7 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse404(GitHubM
     )
     errors: Missing[
         list[
-            AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse404PropErrorsItems
+            AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401PropErrorsItems
         ]
     ] = Field(
         default=UNSET,
@@ -49,10 +49,10 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse404(GitHubM
     )
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse404PropErrorsItems(
+class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401PropErrorsItems(
     GitHubModel
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse404PropErrorsItem
+    """AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401PropErrorsItem
     s
 
     A single validation error
@@ -72,12 +72,12 @@ class AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse404PropErro
     )
 
 
-model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse404)
+model_rebuild(AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401)
 model_rebuild(
-    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse404PropErrorsItems
+    AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401PropErrorsItems
 )
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse404",
-    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse404PropErrorsItems",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401",
+    "AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401PropErrorsItems",
 )

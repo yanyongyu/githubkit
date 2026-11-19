@@ -13,30 +13,54 @@ from typing import Literal
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBody(GitHubModel):
-    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBody"""
+class EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200"""
 
     models: list[
-        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItems
-    ] = Field(min_length=1 if PYDANTIC_V2 else None)
+        EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItems
+    ] = Field()
 
 
-class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItems(
+class EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItems(
     GitHubModel
 ):
-    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItems"""
+    """EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItems"""
 
-    model_name: str = Field(min_length=1)
-    policy_state: Literal["enabled", "disabled"] = Field()
+    model_name: str = Field()
+    display_name: str = Field()
+    policy_state: Literal["enabled", "disabled"] = Field(
+        description="When editable, the Copilot Fusion layer's configured value, or `enabled` if the Copilot Fusion layer has not configured this model,\nbecause Copilot Fusion only restricts models it explicitly disables.\nWhen locked, the enterprise's explicit value or its applied default availability for an eligible model.\nReturns `enabled` when locked to an applied default availability that is delegated to organizations.\nReturns `disabled` when locked without an explicit enterprise value and the model is excluded from default availability."
+    )
+    enterprise_policy_state: Literal[
+        "enabled",
+        "disabled",
+        "delegate_to_teams_and_apps",
+        "delegate_to_organizations",
+        "delegate_to_default",
+        "unconfigured",
+    ] = Field(
+        description="The separately read enterprise-layer policy for this model, used to determine whether the Copilot Fusion layer can edit its policy."
+    )
+    editable: bool = Field(
+        description="Whether the enterprise policy allows the Copilot Fusion layer's policy to be updated."
+    )
+    required_for_copilot_fusion_max: Missing[Literal[True]] = Field(
+        default=UNSET,
+        description="Indicates that the model registry explicitly marks this model as required for Copilot Fusion Max.\nOnly present with the value `true`; otherwise omitted.\nOmission does not guarantee that the model is optional or that Copilot Fusion Max is available.\nThis read-only metadata does not change model policy.",
+    )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBody)
-model_rebuild(EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItems)
+model_rebuild(EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200)
+model_rebuild(
+    EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItems
+)
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBody",
-    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchBodyPropModelsItems",
+    "EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200",
+    "EnterprisesEnterpriseCopilotFusionModelPoliciesGetResponse200PropModelsItems",
 )

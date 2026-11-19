@@ -9,17 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202(GitHubModel):
-    """EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202"""
+class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1(GitHubModel):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1"""
 
-    message: str = Field()
+    credential_id: int = Field()
+    credential_type: Literal["ssh_key"] = Field()
+    fingerprint: str = Field(
+        description="The SHA-256 fingerprint of the authorized SSH key."
+    )
+    organizations: list[str] = Field()
 
 
-model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202)
+model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1)
 
-__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202",)
+__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1",)

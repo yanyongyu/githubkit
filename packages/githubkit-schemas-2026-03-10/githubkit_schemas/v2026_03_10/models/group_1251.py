@@ -9,31 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgActionsRunnersGenerateJitconfigPostBody(GitHubModel):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
+class OrgsOrgActionsRunnersDeprecationsVersionGetResponse200(GitHubModel):
+    """OrgsOrgActionsRunnersDeprecationsVersionGetResponse200"""
 
-    name: str = Field(description="The name of the new runner.")
-    runner_group_id: int = Field(
-        description="The ID of the runner group to register the runner to."
-    )
-    labels: list[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.",
-    )
-    work_folder: Missing[str] = Field(
+    runner_version: str = Field(description="The runner version string.")
+    registration_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
         default=UNSET,
-        description="The working directory to be used for job execution, relative to the runner install directory.",
+        description="The date after which this runner version can no longer register. Only set for runner versions below the minimum version required to register (currently 2.329.0); `null` for versions with no registration end date.",
+    )
+    runtime_deprecates_at: Missing[Union[_dt.datetime, None]] = Field(
+        default=UNSET,
+        description="The date after which jobs will no longer be dispatched to runners on this version. `null` when no newer runner release exists yet.",
     )
 
 
-model_rebuild(OrgsOrgActionsRunnersGenerateJitconfigPostBody)
+model_rebuild(OrgsOrgActionsRunnersDeprecationsVersionGetResponse200)
 
-__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostBody",)
+__all__ = ("OrgsOrgActionsRunnersDeprecationsVersionGetResponse200",)

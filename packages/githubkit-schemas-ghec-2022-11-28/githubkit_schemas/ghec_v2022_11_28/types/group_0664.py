@@ -9,53 +9,90 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserCreateIssueFieldType(TypedDict):
-    """UserCreateIssueField"""
+class UserIssueFieldType(TypedDict):
+    """User Issue Field
 
+    A custom attribute defined by a personal account for attaching structured data
+    to issues.
+    """
+
+    id: int
+    node_id: str
     name: str
     description: NotRequired[Union[str, None]]
     data_type: Literal["text", "date", "single_select", "multi_select", "number"]
     visibility: NotRequired[Literal["restricted", "all"]]
-    options: NotRequired[Union[list[UserCreateIssueFieldPropOptionsItemsType], None]]
+    options: NotRequired[Union[list[UserIssueFieldPropOptionsItemsType], None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
 
-class UserCreateIssueFieldTypeForResponse(TypedDict):
-    """UserCreateIssueField"""
+class UserIssueFieldTypeForResponse(TypedDict):
+    """User Issue Field
 
+    A custom attribute defined by a personal account for attaching structured data
+    to issues.
+    """
+
+    id: int
+    node_id: str
     name: str
     description: NotRequired[Union[str, None]]
     data_type: Literal["text", "date", "single_select", "multi_select", "number"]
     visibility: NotRequired[Literal["restricted", "all"]]
     options: NotRequired[
-        Union[list[UserCreateIssueFieldPropOptionsItemsTypeForResponse], None]
+        Union[list[UserIssueFieldPropOptionsItemsTypeForResponse], None]
     ]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
-class UserCreateIssueFieldPropOptionsItemsType(TypedDict):
-    """UserCreateIssueFieldPropOptionsItems"""
+class UserIssueFieldPropOptionsItemsType(TypedDict):
+    """UserIssueFieldPropOptionsItems"""
 
+    id: int
     name: str
     description: NotRequired[Union[str, None]]
-    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
-    priority: int
+    color: NotRequired[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ]
+    priority: NotRequired[Union[int, None]]
+    created_at: NotRequired[_dt.datetime]
+    updated_at: NotRequired[_dt.datetime]
 
 
-class UserCreateIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
-    """UserCreateIssueFieldPropOptionsItems"""
+class UserIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
+    """UserIssueFieldPropOptionsItems"""
 
+    id: int
     name: str
     description: NotRequired[Union[str, None]]
-    color: Literal["gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"]
-    priority: int
+    color: NotRequired[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ]
+    priority: NotRequired[Union[int, None]]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
 
 
 __all__ = (
-    "UserCreateIssueFieldPropOptionsItemsType",
-    "UserCreateIssueFieldPropOptionsItemsTypeForResponse",
-    "UserCreateIssueFieldType",
-    "UserCreateIssueFieldTypeForResponse",
+    "UserIssueFieldPropOptionsItemsType",
+    "UserIssueFieldPropOptionsItemsTypeForResponse",
+    "UserIssueFieldType",
+    "UserIssueFieldTypeForResponse",
 )

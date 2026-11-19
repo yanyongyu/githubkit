@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class CommitActivityType(TypedDict):
-    """Commit Activity
+class StargazerHistoryType(TypedDict):
+    """Stargazer History
 
-    Commit Activity
+    Stargazer History
     """
 
     days: list[int]
@@ -23,10 +23,10 @@ class CommitActivityType(TypedDict):
     week: int
 
 
-class CommitActivityTypeForResponse(TypedDict):
-    """Commit Activity
+class StargazerHistoryTypeForResponse(TypedDict):
+    """Stargazer History
 
-    Commit Activity
+    Stargazer History
     """
 
     days: list[int]
@@ -35,6 +35,6 @@ class CommitActivityTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "CommitActivityType",
-    "CommitActivityTypeForResponse",
+    "StargazerHistoryType",
+    "StargazerHistoryTypeForResponse",
 )

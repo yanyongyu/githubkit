@@ -271,9 +271,6 @@ class DependabotClient:
 
         The authenticated user must be an enterprise owner to use this endpoint.
 
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
-
         See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/repository-access#lists-the-repositories-dependabot-can-access-in-an-enterprise
         """
 
@@ -320,9 +317,6 @@ class DependabotClient:
         Lists repositories that enterprise admins have allowed Dependabot to access when updating dependencies across organizations in the enterprise.
 
         The authenticated user must be an enterprise owner to use this endpoint.
-
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/repository-access#lists-the-repositories-dependabot-can-access-in-an-enterprise
         """
@@ -399,9 +393,6 @@ class DependabotClient:
           "repository_ids_to_remove": [789]
         }
         ```
-
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/repository-access#updates-dependabots-repository-access-list-for-an-enterprise
         """
@@ -486,9 +477,6 @@ class DependabotClient:
           "repository_ids_to_remove": [789]
         }
         ```
-
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/repository-access#updates-dependabots-repository-access-list-for-an-enterprise
         """
@@ -566,9 +554,6 @@ class DependabotClient:
         - 'internal' - Dependabot will only have access to public and internal repositories, unless access is explicitly granted to private repositories.
 
         The authenticated user must be an enterprise owner to use this endpoint.
-
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/repository-access#set-the-default-repository-access-level-for-dependabot-in-an-enterprise
         """
@@ -646,9 +631,6 @@ class DependabotClient:
         - 'internal' - Dependabot will only have access to public and internal repositories, unless access is explicitly granted to private repositories.
 
         The authenticated user must be an enterprise owner to use this endpoint.
-
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/enterprise-cloud@latest/rest/dependabot/repository-access#set-the-default-repository-access-level-for-dependabot-in-an-enterprise
         """

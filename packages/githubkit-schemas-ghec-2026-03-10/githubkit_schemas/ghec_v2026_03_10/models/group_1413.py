@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,28 +16,16 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBody(
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200(
     GitHubModel
 ):
-    """EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBody"""
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
 
-    state: Literal["open", "resolved"] = Field(
-        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`."
-    )
-    resolution: Missing[Union[Literal["dismissed", "fixed"], None]] = Field(
-        default=UNSET,
-        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
-    )
-    resolution_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment when closing or reopening an alert. Cannot be updated or deleted.",
+    pattern_config_version: Missing[str] = Field(
+        default=UNSET, description="The updated pattern configuration version."
     )
 
 
-model_rebuild(
-    EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBody
-)
+model_rebuild(EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200)
 
-__all__ = (
-    "EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBody",
-)
+__all__ = ("EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200",)

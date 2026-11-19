@@ -16,8 +16,8 @@ from typing_extensions import TypedDict
 from githubkit.typing import UniqueList
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201Type(TypedDict):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200Type(TypedDict):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200
 
     The Agent Merge configuration for an enrolled pull request.
 
@@ -30,13 +30,13 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201Type(TypedDict)
     allowed_actions: UniqueList[Literal["fix_ci", "resolve_merge_conflicts"]]
     created_at: _dt.datetime
     updated_at: _dt.datetime
-    user: AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUserType
+    user: AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUserType
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201TypeForResponse(
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200TypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200
 
     The Agent Merge configuration for an enrolled pull request.
 
@@ -49,13 +49,13 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201TypeForResponse
     allowed_actions: UniqueList[Literal["fix_ci", "resolve_merge_conflicts"]]
     created_at: str
     updated_at: str
-    user: AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUserTypeForResponse
+    user: AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUserTypeForResponse
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUserType(
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUserType(
     TypedDict
 ):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUser
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUser
 
     The user who most recently enabled Agent Merge for the pull request
 
@@ -66,10 +66,10 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUserType(
     id: int
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUserTypeForResponse(
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUserTypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUser
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUser
 
     The user who most recently enabled Agent Merge for the pull request
 
@@ -81,8 +81,8 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUserTypeFor
 
 
 __all__ = (
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUserType",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUserTypeForResponse",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201Type",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201TypeForResponse",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUserType",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUserTypeForResponse",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200Type",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200TypeForResponse",
 )

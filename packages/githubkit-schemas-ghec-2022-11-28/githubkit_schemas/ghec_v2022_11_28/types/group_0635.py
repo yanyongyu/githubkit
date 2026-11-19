@@ -9,35 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class MetaType(TypedDict):
-    """Meta
+class GroupResponseType(TypedDict):
+    """GroupResponse"""
 
-    The metadata associated with the creation/updates to the user.
-    """
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ]
+    external_id: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    members: NotRequired[list[GroupResponsePropMembersItemsType]]
 
-    resource_type: Literal["User", "Group"]
-    created: NotRequired[str]
-    last_modified: NotRequired[str]
-    location: NotRequired[str]
+
+class GroupResponseTypeForResponse(TypedDict):
+    """GroupResponse"""
+
+    schemas: list[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ]
+    external_id: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    members: NotRequired[list[GroupResponsePropMembersItemsTypeForResponse]]
 
 
-class MetaTypeForResponse(TypedDict):
-    """Meta
+class GroupResponsePropMembersItemsType(TypedDict):
+    """GroupResponsePropMembersItems"""
 
-    The metadata associated with the creation/updates to the user.
-    """
+    value: str
+    ref: str
+    display: NotRequired[str]
 
-    resource_type: Literal["User", "Group"]
-    created: NotRequired[str]
-    last_modified: NotRequired[str]
-    location: NotRequired[str]
+
+class GroupResponsePropMembersItemsTypeForResponse(TypedDict):
+    """GroupResponsePropMembersItems"""
+
+    value: str
+    ref: str
+    display: NotRequired[str]
 
 
 __all__ = (
-    "MetaType",
-    "MetaTypeForResponse",
+    "GroupResponsePropMembersItemsType",
+    "GroupResponsePropMembersItemsTypeForResponse",
+    "GroupResponseType",
+    "GroupResponseTypeForResponse",
 )

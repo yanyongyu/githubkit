@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,21 +18,43 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgDependabotRepositoryAccessPatchBody(GitHubModel):
-    """OrgsOrgDependabotRepositoryAccessPatchBody
+class OrgsOrgCopilotPoliciesCodeReviewPutResponse409(GitHubModel):
+    """OrgsOrgCopilotPoliciesCodeReviewPutResponse409"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    message: str = Field()
+    documentation_url: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    code: Literal["POLICY_MANAGED_BY_ENTERPRISE"] = Field()
+    policy: OrganizationCopilotCodeReviewPolicy = Field(
+        title="Organization Copilot Code Review Policy",
+        description="The organization's configured and effective Copilot code review policy.",
+    )
+
+
+class OrganizationCopilotCodeReviewPolicy(GitHubModel):
+    """Organization Copilot Code Review Policy
+
+    The organization's configured and effective Copilot code review policy.
     """
 
-    repository_ids_to_add: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to add."
+    configured_state: Union[Literal["enabled", "disabled"], None] = Field(
+        description="The policy stored for the organization. Null means the organization has not configured a policy."
     )
-    repository_ids_to_remove: Missing[list[int]] = Field(
-        default=UNSET, description="List of repository IDs to remove."
+    effective_state: Literal["enabled", "disabled"] = Field(
+        description="The policy that applies to the organization after enterprise policy is considered."
+    )
+    editable: bool = Field(
+        description="Whether organization administrators can update the policy."
+    )
+    managed_by: Literal["enterprise", "organization"] = Field(
+        description="Whether the enterprise or the organization controls the policy."
     )
 
 
-model_rebuild(OrgsOrgDependabotRepositoryAccessPatchBody)
+model_rebuild(OrgsOrgCopilotPoliciesCodeReviewPutResponse409)
+model_rebuild(OrganizationCopilotCodeReviewPolicy)
 
-__all__ = ("OrgsOrgDependabotRepositoryAccessPatchBody",)
+__all__ = (
+    "OrganizationCopilotCodeReviewPolicy",
+    "OrgsOrgCopilotPoliciesCodeReviewPutResponse409",
+)

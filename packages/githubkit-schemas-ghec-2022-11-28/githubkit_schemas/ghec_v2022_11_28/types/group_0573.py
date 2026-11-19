@@ -9,32 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import NotRequired, TypedDict
 
 
-class PullRequestMergeResultType(TypedDict):
-    """Pull Request Merge Result
+class CopilotCodeReviewRequestDeniedAllof1Type(TypedDict):
+    """CopilotCodeReviewRequestDeniedAllof1"""
 
-    Pull Request Merge Result
-    """
+    failure_reason: NotRequired[
+        Literal[
+            "ACTOR_INELIGIBLE",
+            "REPOSITORY_INELIGIBLE",
+            "APP_NOT_INSTALLED",
+            "NO_QUOTA_REMAINING",
+            "LICENSED_ORGANIZATION_UNAVAILABLE",
+            "INVALID_REVIEW_EFFORT",
+            "REQUEST_FAILED",
+            "REQUEST_CONFLICT",
+            "REVIEWER_UNAVAILABLE",
+            "REQUEST_UNAVAILABLE",
+            "ACTOR_FLAGGED",
+            "RATE_LIMITED",
+        ]
+    ]
 
-    sha: str
-    merged: bool
-    message: str
 
+class CopilotCodeReviewRequestDeniedAllof1TypeForResponse(TypedDict):
+    """CopilotCodeReviewRequestDeniedAllof1"""
 
-class PullRequestMergeResultTypeForResponse(TypedDict):
-    """Pull Request Merge Result
-
-    Pull Request Merge Result
-    """
-
-    sha: str
-    merged: bool
-    message: str
+    failure_reason: NotRequired[
+        Literal[
+            "ACTOR_INELIGIBLE",
+            "REPOSITORY_INELIGIBLE",
+            "APP_NOT_INSTALLED",
+            "NO_QUOTA_REMAINING",
+            "LICENSED_ORGANIZATION_UNAVAILABLE",
+            "INVALID_REVIEW_EFFORT",
+            "REQUEST_FAILED",
+            "REQUEST_CONFLICT",
+            "REVIEWER_UNAVAILABLE",
+            "REQUEST_UNAVAILABLE",
+            "ACTOR_FLAGGED",
+            "RATE_LIMITED",
+        ]
+    ]
 
 
 __all__ = (
-    "PullRequestMergeResultType",
-    "PullRequestMergeResultTypeForResponse",
+    "CopilotCodeReviewRequestDeniedAllof1Type",
+    "CopilotCodeReviewRequestDeniedAllof1TypeForResponse",
 )

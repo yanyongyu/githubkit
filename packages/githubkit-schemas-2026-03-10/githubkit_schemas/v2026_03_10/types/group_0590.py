@@ -9,46 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0037 import (
-    DependabotAlertPackageType,
-    DependabotAlertPackageTypeForResponse,
+from .group_0591 import (
+    DependabotAlertWithdrawnWebhookPropDependencyType,
+    DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse,
 )
 
 
-class DependabotAlertWithdrawnWebhookPropDependencyType(TypedDict):
-    """DependabotAlertWithdrawnWebhookPropDependency
+class DependabotAlertWithdrawnWebhookType(TypedDict):
+    """DependabotAlertWithdrawnWebhook
 
-    Details for the vulnerable dependency.
+    Identifiers for a withdrawn Dependabot alert, captured before deletion so that
+    consumers can reconcile external records. This is not a full alert
+    representation.
     """
 
-    package: DependabotAlertPackageType
-    manifest_path: Union[str, None]
-    version_requirement: NotRequired[Union[str, None]]
-    scope: Union[Literal["development", "runtime"], None]
-    relationship: NotRequired[
-        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
-    ]
+    id: int
+    node_id: str
+    number: int
+    state: Literal["withdrawn"]
+    dependency: DependabotAlertWithdrawnWebhookPropDependencyType
+    security_advisory: DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType
+    url: str
+    html_url: str
+    created_at: _dt.datetime
+    withdrawn_at: _dt.datetime
 
 
-class DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse(TypedDict):
-    """DependabotAlertWithdrawnWebhookPropDependency
+class DependabotAlertWithdrawnWebhookTypeForResponse(TypedDict):
+    """DependabotAlertWithdrawnWebhook
 
-    Details for the vulnerable dependency.
+    Identifiers for a withdrawn Dependabot alert, captured before deletion so that
+    consumers can reconcile external records. This is not a full alert
+    representation.
     """
 
-    package: DependabotAlertPackageTypeForResponse
-    manifest_path: Union[str, None]
-    version_requirement: NotRequired[Union[str, None]]
-    scope: Union[Literal["development", "runtime"], None]
-    relationship: NotRequired[
-        Union[Literal["unknown", "direct", "transitive", "inconclusive"], None]
-    ]
+    id: int
+    node_id: str
+    number: int
+    state: Literal["withdrawn"]
+    dependency: DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse
+    security_advisory: (
+        DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse
+    )
+    url: str
+    html_url: str
+    created_at: str
+    withdrawn_at: str
+
+
+class DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType(TypedDict):
+    """DependabotAlertWithdrawnWebhookPropSecurityAdvisory
+
+    Identifiers of the advisory that produced the withdrawn alert.
+    """
+
+    ghsa_id: str
+    cve_id: Union[str, None]
+
+
+class DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse(TypedDict):
+    """DependabotAlertWithdrawnWebhookPropSecurityAdvisory
+
+    Identifiers of the advisory that produced the withdrawn alert.
+    """
+
+    ghsa_id: str
+    cve_id: Union[str, None]
 
 
 __all__ = (
-    "DependabotAlertWithdrawnWebhookPropDependencyType",
-    "DependabotAlertWithdrawnWebhookPropDependencyTypeForResponse",
+    "DependabotAlertWithdrawnWebhookPropSecurityAdvisoryType",
+    "DependabotAlertWithdrawnWebhookPropSecurityAdvisoryTypeForResponse",
+    "DependabotAlertWithdrawnWebhookType",
+    "DependabotAlertWithdrawnWebhookTypeForResponse",
 )

@@ -10,89 +10,129 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Literal, Union
+from typing import Any, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UserIssueFieldType(TypedDict):
-    """User Issue Field
+class GpgKeyType(TypedDict):
+    """GPG Key
 
-    A custom attribute defined by a personal account for attaching structured data
-    to issues.
+    A unique encryption key
     """
 
     id: int
-    node_id: str
-    name: str
-    description: NotRequired[Union[str, None]]
-    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
-    visibility: NotRequired[Literal["restricted", "all"]]
-    options: NotRequired[Union[list[UserIssueFieldPropOptionsItemsType], None]]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
+    name: NotRequired[Union[str, None]]
+    primary_key_id: Union[int, None]
+    key_id: str
+    public_key: str
+    emails: list[GpgKeyPropEmailsItemsType]
+    subkeys: list[GpgKeyPropSubkeysItemsType]
+    can_sign: bool
+    can_encrypt_comms: bool
+    can_encrypt_storage: bool
+    can_certify: bool
+    created_at: _dt.datetime
+    expires_at: Union[_dt.datetime, None]
+    revoked: bool
+    raw_key: Union[str, None]
 
 
-class UserIssueFieldTypeForResponse(TypedDict):
-    """User Issue Field
+class GpgKeyTypeForResponse(TypedDict):
+    """GPG Key
 
-    A custom attribute defined by a personal account for attaching structured data
-    to issues.
+    A unique encryption key
     """
 
     id: int
-    node_id: str
-    name: str
-    description: NotRequired[Union[str, None]]
-    data_type: Literal["text", "date", "single_select", "multi_select", "number"]
-    visibility: NotRequired[Literal["restricted", "all"]]
-    options: NotRequired[
-        Union[list[UserIssueFieldPropOptionsItemsTypeForResponse], None]
-    ]
+    name: NotRequired[Union[str, None]]
+    primary_key_id: Union[int, None]
+    key_id: str
+    public_key: str
+    emails: list[GpgKeyPropEmailsItemsTypeForResponse]
+    subkeys: list[GpgKeyPropSubkeysItemsTypeForResponse]
+    can_sign: bool
+    can_encrypt_comms: bool
+    can_encrypt_storage: bool
+    can_certify: bool
+    created_at: str
+    expires_at: Union[str, None]
+    revoked: bool
+    raw_key: Union[str, None]
+
+
+class GpgKeyPropEmailsItemsType(TypedDict):
+    """GpgKeyPropEmailsItems"""
+
+    email: NotRequired[str]
+    verified: NotRequired[bool]
+
+
+class GpgKeyPropEmailsItemsTypeForResponse(TypedDict):
+    """GpgKeyPropEmailsItems"""
+
+    email: NotRequired[str]
+    verified: NotRequired[bool]
+
+
+class GpgKeyPropSubkeysItemsType(TypedDict):
+    """GpgKeyPropSubkeysItems"""
+
+    id: NotRequired[int]
+    primary_key_id: NotRequired[int]
+    key_id: NotRequired[str]
+    public_key: NotRequired[str]
+    emails: NotRequired[list[GpgKeyPropSubkeysItemsPropEmailsItemsType]]
+    subkeys: NotRequired[list[Any]]
+    can_sign: NotRequired[bool]
+    can_encrypt_comms: NotRequired[bool]
+    can_encrypt_storage: NotRequired[bool]
+    can_certify: NotRequired[bool]
     created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+    expires_at: NotRequired[Union[str, None]]
+    raw_key: NotRequired[Union[str, None]]
+    revoked: NotRequired[bool]
 
 
-class UserIssueFieldPropOptionsItemsType(TypedDict):
-    """UserIssueFieldPropOptionsItems"""
+class GpgKeyPropSubkeysItemsTypeForResponse(TypedDict):
+    """GpgKeyPropSubkeysItems"""
 
-    id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ]
-    priority: NotRequired[Union[int, None]]
-    created_at: NotRequired[_dt.datetime]
-    updated_at: NotRequired[_dt.datetime]
-
-
-class UserIssueFieldPropOptionsItemsTypeForResponse(TypedDict):
-    """UserIssueFieldPropOptionsItems"""
-
-    id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    color: NotRequired[
-        Union[
-            Literal[
-                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-            ],
-            None,
-        ]
-    ]
-    priority: NotRequired[Union[int, None]]
+    id: NotRequired[int]
+    primary_key_id: NotRequired[int]
+    key_id: NotRequired[str]
+    public_key: NotRequired[str]
+    emails: NotRequired[list[GpgKeyPropSubkeysItemsPropEmailsItemsTypeForResponse]]
+    subkeys: NotRequired[list[Any]]
+    can_sign: NotRequired[bool]
+    can_encrypt_comms: NotRequired[bool]
+    can_encrypt_storage: NotRequired[bool]
+    can_certify: NotRequired[bool]
     created_at: NotRequired[str]
-    updated_at: NotRequired[str]
+    expires_at: NotRequired[Union[str, None]]
+    raw_key: NotRequired[Union[str, None]]
+    revoked: NotRequired[bool]
+
+
+class GpgKeyPropSubkeysItemsPropEmailsItemsType(TypedDict):
+    """GpgKeyPropSubkeysItemsPropEmailsItems"""
+
+    email: NotRequired[str]
+    verified: NotRequired[bool]
+
+
+class GpgKeyPropSubkeysItemsPropEmailsItemsTypeForResponse(TypedDict):
+    """GpgKeyPropSubkeysItemsPropEmailsItems"""
+
+    email: NotRequired[str]
+    verified: NotRequired[bool]
 
 
 __all__ = (
-    "UserIssueFieldPropOptionsItemsType",
-    "UserIssueFieldPropOptionsItemsTypeForResponse",
-    "UserIssueFieldType",
-    "UserIssueFieldTypeForResponse",
+    "GpgKeyPropEmailsItemsType",
+    "GpgKeyPropEmailsItemsTypeForResponse",
+    "GpgKeyPropSubkeysItemsPropEmailsItemsType",
+    "GpgKeyPropSubkeysItemsPropEmailsItemsTypeForResponse",
+    "GpgKeyPropSubkeysItemsType",
+    "GpgKeyPropSubkeysItemsTypeForResponse",
+    "GpgKeyType",
+    "GpgKeyTypeForResponse",
 )

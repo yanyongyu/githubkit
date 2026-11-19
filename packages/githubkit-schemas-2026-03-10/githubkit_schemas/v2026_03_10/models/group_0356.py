@@ -9,37 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+import datetime as _dt
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0032 import SimpleRepository
-from .group_0047 import IssueType
 
 
-class CodeScanningAlertLinkedIssue(GitHubModel):
-    """CodeScanningAlertLinkedIssue
+class PullRequestsOnAlerts(GitHubModel):
+    """Pull Requests on Alerts
 
-    A GitHub issue linked to a code scanning alert. The issue may belong to a
-    different repository.
+    A pull request linked to a code scanning alert.
     """
 
-    number: int = Field(description="The issue number.")
-    title: str = Field(description="The title of the issue.")
-    state: str = Field(description="The state of the issue.")
-    url: str = Field(description="The REST API URL of the issue.")
-    html_url: str = Field(description="The URL to view the issue on GitHub.")
+    number: int = Field(description="The number of the linked pull request.")
+    id: int = Field(description="The ID of the linked pull request.")
     repository: SimpleRepository = Field(
         title="Simple Repository", description="A GitHub repository."
     )
-    issue_type: Union[IssueType, None] = Field(
-        title="Issue Type",
-        description="The type assigned to the issue. This is only present for issues in repositories where issue types are supported.",
+    title: str = Field(description="The title of the linked pull request.")
+    state: Literal["open", "closed", "merged"] = Field(
+        description="The state of the referenced pull request."
     )
+    merged_at: Union[_dt.datetime, None] = Field(
+        description="The time the linked pull request was merged. Null if it has not been merged."
+    )
+    html_url: str = Field(description="The URL of the linked pull request on GitHub.")
+    url: str = Field(description="The REST API URL for the linked pull request.")
+    draft: bool = Field(description="Whether the linked pull request is a draft.")
 
 
-model_rebuild(CodeScanningAlertLinkedIssue)
+model_rebuild(PullRequestsOnAlerts)
 
-__all__ = ("CodeScanningAlertLinkedIssue",)
+__all__ = ("PullRequestsOnAlerts",)

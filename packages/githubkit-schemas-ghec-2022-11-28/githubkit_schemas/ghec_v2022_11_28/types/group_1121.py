@@ -13,23 +13,23 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0673 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0674 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0675 import (
+from .group_0674 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0675 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0676 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0676 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0727 import (
+from .group_0677 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0728 import (
     PublicMonitoringAlertWebhookType,
     PublicMonitoringAlertWebhookTypeForResponse,
 )
 
 
-class WebhookSecretScanningPublicMonitoringAlertReopenedType(TypedDict):
-    """secret_scanning_public_monitoring_alert reopened event"""
+class WebhookSecretScanningPublicMonitoringAlertDismissedType(TypedDict):
+    """secret_scanning_public_monitoring_alert dismissed event"""
 
-    action: Literal["reopened"]
+    action: Literal["dismissed"]
     alert: PublicMonitoringAlertWebhookType
     enterprise: EnterpriseWebhooksType
     installation: NotRequired[SimpleInstallationType]
@@ -38,10 +38,10 @@ class WebhookSecretScanningPublicMonitoringAlertReopenedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookSecretScanningPublicMonitoringAlertReopenedTypeForResponse(TypedDict):
-    """secret_scanning_public_monitoring_alert reopened event"""
+class WebhookSecretScanningPublicMonitoringAlertDismissedTypeForResponse(TypedDict):
+    """secret_scanning_public_monitoring_alert dismissed event"""
 
-    action: Literal["reopened"]
+    action: Literal["dismissed"]
     alert: PublicMonitoringAlertWebhookTypeForResponse
     enterprise: EnterpriseWebhooksTypeForResponse
     installation: NotRequired[SimpleInstallationTypeForResponse]
@@ -51,6 +51,6 @@ class WebhookSecretScanningPublicMonitoringAlertReopenedTypeForResponse(TypedDic
 
 
 __all__ = (
-    "WebhookSecretScanningPublicMonitoringAlertReopenedType",
-    "WebhookSecretScanningPublicMonitoringAlertReopenedTypeForResponse",
+    "WebhookSecretScanningPublicMonitoringAlertDismissedType",
+    "WebhookSecretScanningPublicMonitoringAlertDismissedTypeForResponse",
 )

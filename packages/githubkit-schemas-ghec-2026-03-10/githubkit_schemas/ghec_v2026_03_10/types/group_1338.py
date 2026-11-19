@@ -9,24 +9,105 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal, Union
+from typing_extensions import TypedDict
+
+from .group_0088 import (
+    AmazonS3AccessKeysConfigType,
+    AmazonS3AccessKeysConfigTypeForResponse,
+    AzureBlobConfigType,
+    AzureBlobConfigTypeForResponse,
+    AzureHubConfigType,
+    AzureHubConfigTypeForResponse,
+    DatadogConfigType,
+    DatadogConfigTypeForResponse,
+    HecConfigType,
+    HecConfigTypeForResponse,
+)
+from .group_0089 import (
+    AmazonS3OidcConfigType,
+    AmazonS3OidcConfigTypeForResponse,
+    SplunkConfigType,
+    SplunkConfigTypeForResponse,
+)
+from .group_0090 import GoogleCloudConfigType, GoogleCloudConfigTypeForResponse
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type(TypedDict):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
 
-    errors: NotRequired[list[str]]
+    enabled: bool
+    stream_type: Literal[
+        "Azure Blob Storage",
+        "Azure Event Hubs",
+        "Amazon S3",
+        "Splunk",
+        "HTTPS Event Collector",
+        "Google Cloud Storage",
+        "Datadog",
+        "Microsoft Agent 365",
+    ]
+    vendor_specific: Union[
+        AzureBlobConfigType,
+        AzureHubConfigType,
+        AmazonS3OidcConfigType,
+        AmazonS3AccessKeysConfigType,
+        SplunkConfigType,
+        HecConfigType,
+        GoogleCloudConfigType,
+        DatadogConfigType,
+        EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyPropVendorSpecificOneof8Type,
+    ]
 
 
-class EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse(
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutBody"""
+
+    enabled: bool
+    stream_type: Literal[
+        "Azure Blob Storage",
+        "Azure Event Hubs",
+        "Amazon S3",
+        "Splunk",
+        "HTTPS Event Collector",
+        "Google Cloud Storage",
+        "Datadog",
+        "Microsoft Agent 365",
+    ]
+    vendor_specific: Union[
+        AzureBlobConfigTypeForResponse,
+        AzureHubConfigTypeForResponse,
+        AmazonS3OidcConfigTypeForResponse,
+        AmazonS3AccessKeysConfigTypeForResponse,
+        SplunkConfigTypeForResponse,
+        HecConfigTypeForResponse,
+        GoogleCloudConfigTypeForResponse,
+        DatadogConfigTypeForResponse,
+        EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyPropVendorSpecificOneof8TypeForResponse,
+    ]
+
+
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyPropVendorSpecificOneof8Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422"""
+    """MicrosoftAgent365Config
 
-    errors: NotRequired[list[str]]
+    Empty configuration used when pausing or resuming a Microsoft Agent 365 stream.
+    """
+
+
+class EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyPropVendorSpecificOneof8TypeForResponse(
+    TypedDict
+):
+    """MicrosoftAgent365Config
+
+    Empty configuration used when pausing or resuming a Microsoft Agent 365 stream.
+    """
 
 
 __all__ = (
-    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422Type",
-    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutResponse422TypeForResponse",
+    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyPropVendorSpecificOneof8Type",
+    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyPropVendorSpecificOneof8TypeForResponse",
+    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyType",
+    "EnterprisesEnterpriseAuditLogStreamsStreamIdPutBodyTypeForResponse",
 )

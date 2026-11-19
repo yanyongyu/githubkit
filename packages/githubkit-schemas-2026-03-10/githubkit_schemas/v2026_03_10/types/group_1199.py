@@ -13,29 +13,27 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType(TypedDict):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
+class EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBodyType(TypedDict):
+    """EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBody"""
 
     policy_state: Literal[
-        "enabled_for_all_orgs",
-        "disabled_for_all_orgs",
-        "enabled_for_selected_orgs",
-        "configured_by_org_admins",
+        "enabled_for_all_organizations",
+        "disabled_for_all_organizations",
+        "configured_by_organization_admins",
     ]
 
 
-class EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody"""
+class EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBody"""
 
     policy_state: Literal[
-        "enabled_for_all_orgs",
-        "disabled_for_all_orgs",
-        "enabled_for_selected_orgs",
-        "configured_by_org_admins",
+        "enabled_for_all_organizations",
+        "disabled_for_all_organizations",
+        "configured_by_organization_admins",
     ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyType",
-    "EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBodyTypeForResponse",
+    "EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBodyType",
+    "EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBodyTypeForResponse",
 )

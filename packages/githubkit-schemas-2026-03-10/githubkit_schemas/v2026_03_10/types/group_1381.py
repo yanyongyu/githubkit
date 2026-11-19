@@ -9,26 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0219 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
-
-
-class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesValuesPatchBody"""
-
-    repository_names: list[str]
-    properties: list[CustomPropertyValueType]
+from typing import Literal, Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPropertiesValuesPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgPropertiesValuesPatchBody"""
+class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesSchemaPatchBody"""
 
-    repository_names: list[str]
-    properties: list[CustomPropertyValueTypeForResponse]
+    properties: list[CustomPropertyBatchItemPayloadType]
+
+
+class OrgsOrgPropertiesSchemaPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgPropertiesSchemaPatchBody"""
+
+    properties: list[CustomPropertyBatchItemPayloadTypeForResponse]
+
+
+class CustomPropertyBatchItemPayloadType(TypedDict):
+    """Custom Property Batch Item Payload
+
+    Payload for a single custom property definition when creating or updating custom
+    properties in a batch
+    """
+
+    property_name: str
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[Literal["org_actors", "org_and_repo_actors"], None]
+    ]
+    regex: NotRequired[Union[str, None]]
+    require_explicit_values: NotRequired[bool]
+
+
+class CustomPropertyBatchItemPayloadTypeForResponse(TypedDict):
+    """Custom Property Batch Item Payload
+
+    Payload for a single custom property definition when creating or updating custom
+    properties in a batch
+    """
+
+    property_name: str
+    value_type: Literal["string", "single_select", "multi_select", "true_false", "url"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, list[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[list[str], None]]
+    values_editable_by: NotRequired[
+        Union[Literal["org_actors", "org_and_repo_actors"], None]
+    ]
+    regex: NotRequired[Union[str, None]]
+    require_explicit_values: NotRequired[bool]
 
 
 __all__ = (
-    "OrgsOrgPropertiesValuesPatchBodyType",
-    "OrgsOrgPropertiesValuesPatchBodyTypeForResponse",
+    "CustomPropertyBatchItemPayloadType",
+    "CustomPropertyBatchItemPayloadTypeForResponse",
+    "OrgsOrgPropertiesSchemaPatchBodyType",
+    "OrgsOrgPropertiesSchemaPatchBodyTypeForResponse",
 )

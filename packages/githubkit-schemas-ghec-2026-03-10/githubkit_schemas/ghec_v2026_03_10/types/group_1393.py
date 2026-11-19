@@ -9,41 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCredentialsExportsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseCredentialsExportsPostBody
-
-    Optional filters that scope the export to a subset of the inventory.
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostRes
+    ponse202
     """
 
-    token_types: NotRequired[list[str]]
-    authorization_state: NotRequired[
-        Literal["currently_authorized", "member_owned_only"]
-    ]
-    owner: NotRequired[str]
-    organization: NotRequired[str]
-    application: NotRequired[str]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
-class EnterprisesEnterpriseCredentialsExportsPostBodyTypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCredentialsExportsPostBody
-
-    Optional filters that scope the export to a subset of the inventory.
+class EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostRes
+    ponse202
     """
 
-    token_types: NotRequired[list[str]]
-    authorization_state: NotRequired[
-        Literal["currently_authorized", "member_owned_only"]
-    ]
-    owner: NotRequired[str]
-    organization: NotRequired[str]
-    application: NotRequired[str]
+    message: NotRequired[str]
+    warning: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialsExportsPostBodyType",
-    "EnterprisesEnterpriseCredentialsExportsPostBodyTypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202Type",
+    "EnterprisesEnterpriseCredentialAuthorizationsUsernameRevokeCredentialTypePostResponse202TypeForResponse",
 )

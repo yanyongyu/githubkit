@@ -15,58 +15,80 @@ from typing import Literal, Union
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0590 import DependabotAlertWithdrawnWebhookPropDependency
+from .group_0010 import Integration
+from .group_0057 import PullRequestMinimal
+from .group_0341 import DeploymentSimple
+from .group_0588 import SimpleCheckSuite
 
 
-class DependabotAlertWithdrawnWebhook(GitHubModel):
-    """DependabotAlertWithdrawnWebhook
+class CheckRunWithSimpleCheckSuite(GitHubModel):
+    """CheckRun
 
-    Identifiers for a withdrawn Dependabot alert, captured before deletion so that
-    consumers can reconcile external records. This is not a full alert
-    representation.
+    A check performed on the code of a given code change
     """
 
-    id: int = Field(description="The unique identifier of the withdrawn alert.")
-    node_id: str = Field(description="The GraphQL node ID of the withdrawn alert.")
-    number: int = Field(description="The security alert number.")
-    state: Literal["withdrawn"] = Field(
-        description="The state of the Dependabot alert."
+    app: Union[Integration, None] = Field(
+        title="GitHub app",
+        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
     )
-    dependency: DependabotAlertWithdrawnWebhookPropDependency = Field(
-        description="Details for the vulnerable dependency."
+    check_suite: SimpleCheckSuite = Field(
+        description="A suite of checks performed on the code of a given code change"
     )
-    security_advisory: DependabotAlertWithdrawnWebhookPropSecurityAdvisory = Field(
-        description="Identifiers of the advisory that produced the withdrawn alert."
+    completed_at: Union[_dt.datetime, None] = Field()
+    conclusion: Union[
+        Literal[
+            "waiting",
+            "pending",
+            "startup_failure",
+            "stale",
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+        None,
+    ] = Field()
+    deployment: Missing[DeploymentSimple] = Field(
+        default=UNSET,
+        title="Deployment",
+        description="A deployment created as the result of an Actions check run from a workflow that references an environment",
     )
-    url: str = Field(description="The REST API URL of the alert resource.")
-    html_url: str = Field(description="The GitHub URL of the alert resource.")
-    created_at: _dt.datetime = Field(
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    details_url: str = Field()
+    external_id: str = Field()
+    head_sha: str = Field(description="The SHA of the commit that is being checked.")
+    html_url: str = Field()
+    id: int = Field(description="The id of the check.")
+    name: str = Field(description="The name of the check.")
+    node_id: str = Field()
+    output: CheckRunWithSimpleCheckSuitePropOutput = Field()
+    pull_requests: list[PullRequestMinimal] = Field()
+    started_at: _dt.datetime = Field()
+    status: Literal["queued", "in_progress", "completed", "pending"] = Field(
+        description="The phase of the lifecycle that the check is currently in."
     )
-    withdrawn_at: _dt.datetime = Field(
-        description="The time that the alert was withdrawn in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. This is not the advisory's withdrawal time."
-    )
+    url: str = Field()
 
 
-class DependabotAlertWithdrawnWebhookPropSecurityAdvisory(GitHubModel):
-    """DependabotAlertWithdrawnWebhookPropSecurityAdvisory
+class CheckRunWithSimpleCheckSuitePropOutput(GitHubModel):
+    """CheckRunWithSimpleCheckSuitePropOutput"""
 
-    Identifiers of the advisory that produced the withdrawn alert.
-    """
-
-    ghsa_id: str = Field(
-        description="The unique GitHub identifier assigned to the advisory."
-    )
-    cve_id: Union[str, None] = Field(
-        description="The CVE identifier assigned to the advisory, if any."
-    )
+    annotations_count: int = Field()
+    annotations_url: str = Field()
+    summary: Union[str, None] = Field()
+    text: Union[str, None] = Field()
+    title: Union[str, None] = Field()
 
 
-model_rebuild(DependabotAlertWithdrawnWebhook)
-model_rebuild(DependabotAlertWithdrawnWebhookPropSecurityAdvisory)
+model_rebuild(CheckRunWithSimpleCheckSuite)
+model_rebuild(CheckRunWithSimpleCheckSuitePropOutput)
 
 __all__ = (
-    "DependabotAlertWithdrawnWebhook",
-    "DependabotAlertWithdrawnWebhookPropSecurityAdvisory",
+    "CheckRunWithSimpleCheckSuite",
+    "CheckRunWithSimpleCheckSuitePropOutput",
 )

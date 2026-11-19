@@ -13,31 +13,27 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody"""
+class EnterprisesEnterpriseNetworkConfigurationsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseNetworkConfigurationsPostBody"""
 
-    name: NotRequired[str]
+    name: str
     compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: NotRequired[list[str]]
+    network_settings_ids: list[str]
     failover_network_settings_ids: NotRequired[list[str]]
     failover_network_enabled: NotRequired[bool]
 
 
-class EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBody"""
+class EnterprisesEnterpriseNetworkConfigurationsPostBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseNetworkConfigurationsPostBody"""
 
-    name: NotRequired[str]
+    name: str
     compute_service: NotRequired[Literal["none", "actions"]]
-    network_settings_ids: NotRequired[list[str]]
+    network_settings_ids: list[str]
     failover_network_settings_ids: NotRequired[list[str]]
     failover_network_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyType",
-    "EnterprisesEnterpriseNetworkConfigurationsNetworkConfigurationIdPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseNetworkConfigurationsPostBodyType",
+    "EnterprisesEnterpriseNetworkConfigurationsPostBodyTypeForResponse",
 )

@@ -11311,7 +11311,7 @@ class OrgsClient:
 
         Gets the immutable releases policy for repositories in an organization.
 
-        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+        OAuth tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
         See also: https://docs.github.com/rest/orgs/orgs#get-immutable-releases-settings-for-an-organization
         """
@@ -11346,7 +11346,7 @@ class OrgsClient:
 
         Gets the immutable releases policy for repositories in an organization.
 
-        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+        OAuth tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
         See also: https://docs.github.com/rest/orgs/orgs#get-immutable-releases-settings-for-an-organization
         """
@@ -11402,7 +11402,7 @@ class OrgsClient:
 
         Sets the immutable releases policy for repositories in an organization.
 
-        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+        OAuth tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
         See also: https://docs.github.com/rest/orgs/orgs#set-immutable-releases-settings-for-an-organization
         """
@@ -11467,7 +11467,7 @@ class OrgsClient:
 
         Sets the immutable releases policy for repositories in an organization.
 
-        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+        OAuth tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
         See also: https://docs.github.com/rest/orgs/orgs#set-immutable-releases-settings-for-an-organization
         """
@@ -11513,7 +11513,7 @@ class OrgsClient:
 
         List all of the repositories that have been selected for immutable releases enforcement in an organization.
 
-        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+        OAuth tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
         See also: https://docs.github.com/rest/orgs/orgs#list-selected-repositories-for-immutable-releases-enforcement
         """
@@ -11556,7 +11556,7 @@ class OrgsClient:
 
         List all of the repositories that have been selected for immutable releases enforcement in an organization.
 
-        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+        OAuth tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
         See also: https://docs.github.com/rest/orgs/orgs#list-selected-repositories-for-immutable-releases-enforcement
         """
@@ -11617,7 +11617,7 @@ class OrgsClient:
 
         Replaces all repositories that have been selected for immutable releases enforcement in an organization. To use this endpoint, the organization immutable releases policy for `enforced_repositories` must be configured to `selected`.
 
-        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+        OAuth tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
         See also: https://docs.github.com/rest/orgs/orgs#set-selected-repositories-for-immutable-releases-enforcement
         """
@@ -11683,7 +11683,7 @@ class OrgsClient:
 
         Replaces all repositories that have been selected for immutable releases enforcement in an organization. To use this endpoint, the organization immutable releases policy for `enforced_repositories` must be configured to `selected`.
 
-        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+        OAuth tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
         See also: https://docs.github.com/rest/orgs/orgs#set-selected-repositories-for-immutable-releases-enforcement
         """
@@ -11727,7 +11727,7 @@ class OrgsClient:
 
         Adds a repository to the list of selected repositories that are enforced for immutable releases in an organization. To use this endpoint, the organization immutable releases policy for `enforced_repositories` must be configured to `selected`.
 
-        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+        OAuth tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
         See also: https://docs.github.com/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization
         """
@@ -11757,7 +11757,7 @@ class OrgsClient:
 
         Adds a repository to the list of selected repositories that are enforced for immutable releases in an organization. To use this endpoint, the organization immutable releases policy for `enforced_repositories` must be configured to `selected`.
 
-        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+        OAuth tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
         See also: https://docs.github.com/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization
         """
@@ -11787,7 +11787,7 @@ class OrgsClient:
 
         Removes a repository from the list of selected repositories that are enforced for immutable releases in an organization. To use this endpoint, the organization immutable releases policy for `enforced_repositories` must be configured to `selected`.
 
-        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+        OAuth tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
         See also: https://docs.github.com/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization
         """
@@ -11817,7 +11817,7 @@ class OrgsClient:
 
         Removes a repository from the list of selected repositories that are enforced for immutable releases in an organization. To use this endpoint, the organization immutable releases policy for `enforced_repositories` must be configured to `selected`.
 
-        OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+        OAuth tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
 
         See also: https://docs.github.com/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization
         """

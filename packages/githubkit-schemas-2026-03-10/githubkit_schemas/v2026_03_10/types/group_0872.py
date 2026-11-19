@@ -13,22 +13,22 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0582 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
-from .group_0583 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0584 import (
+from .group_0583 import EnterpriseWebhooksType, EnterpriseWebhooksTypeForResponse
+from .group_0584 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0585 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0619 import (
+from .group_0620 import (
     PersonalAccessTokenRequestType,
     PersonalAccessTokenRequestTypeForResponse,
 )
 
 
-class WebhookPersonalAccessTokenRequestCancelledType(TypedDict):
-    """personal_access_token_request cancelled event"""
+class WebhookPersonalAccessTokenRequestApprovedType(TypedDict):
+    """personal_access_token_request approved event"""
 
-    action: Literal["cancelled"]
+    action: Literal["approved"]
     personal_access_token_request: PersonalAccessTokenRequestType
     enterprise: NotRequired[EnterpriseWebhooksType]
     organization: OrganizationSimpleWebhooksType
@@ -36,10 +36,10 @@ class WebhookPersonalAccessTokenRequestCancelledType(TypedDict):
     installation: SimpleInstallationType
 
 
-class WebhookPersonalAccessTokenRequestCancelledTypeForResponse(TypedDict):
-    """personal_access_token_request cancelled event"""
+class WebhookPersonalAccessTokenRequestApprovedTypeForResponse(TypedDict):
+    """personal_access_token_request approved event"""
 
-    action: Literal["cancelled"]
+    action: Literal["approved"]
     personal_access_token_request: PersonalAccessTokenRequestTypeForResponse
     enterprise: NotRequired[EnterpriseWebhooksTypeForResponse]
     organization: OrganizationSimpleWebhooksTypeForResponse
@@ -48,6 +48,6 @@ class WebhookPersonalAccessTokenRequestCancelledTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookPersonalAccessTokenRequestCancelledType",
-    "WebhookPersonalAccessTokenRequestCancelledTypeForResponse",
+    "WebhookPersonalAccessTokenRequestApprovedType",
+    "WebhookPersonalAccessTokenRequestApprovedTypeForResponse",
 )

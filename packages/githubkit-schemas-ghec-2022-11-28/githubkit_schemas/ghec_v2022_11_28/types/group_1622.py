@@ -9,27 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0144 import (
-    CustomPropertyBatchItemPayloadType,
-    CustomPropertyBatchItemPayloadTypeForResponse,
-)
+
+class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType(TypedDict):
+    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
+
+    repository_values: list[RepositoryExternalPropertyPayloadType]
 
 
-class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesSchemaPatchBody"""
+class OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyTypeForResponse(
+    TypedDict
+):
+    """OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody"""
 
-    properties: list[CustomPropertyBatchItemPayloadType]
+    repository_values: list[RepositoryExternalPropertyPayloadTypeForResponse]
 
 
-class OrgsOrgPropertiesSchemaPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgPropertiesSchemaPatchBody"""
+class RepositoryExternalPropertyPayloadType(TypedDict):
+    """Repository External Custom Property Value Payload
 
-    properties: list[CustomPropertyBatchItemPayloadTypeForResponse]
+    Repository name and associated external custom property value
+    """
+
+    repository_name: str
+    value: Union[str, None]
+
+
+class RepositoryExternalPropertyPayloadTypeForResponse(TypedDict):
+    """Repository External Custom Property Value Payload
+
+    Repository name and associated external custom property value
+    """
+
+    repository_name: str
+    value: Union[str, None]
 
 
 __all__ = (
-    "OrgsOrgPropertiesSchemaPatchBodyType",
-    "OrgsOrgPropertiesSchemaPatchBodyTypeForResponse",
+    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyType",
+    "OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBodyTypeForResponse",
+    "RepositoryExternalPropertyPayloadType",
+    "RepositoryExternalPropertyPayloadTypeForResponse",
 )

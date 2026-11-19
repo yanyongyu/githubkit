@@ -18,8 +18,8 @@ from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 from githubkit.typing import UniqueList
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201(GitHubModel):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200(GitHubModel):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200
 
     The Agent Merge configuration for an enrolled pull request.
 
@@ -39,13 +39,13 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201(GitHubModel):
     updated_at: _dt.datetime = Field(
         description="Timestamp when the Agent Merge enrollment was last updated."
     )
-    user: AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUser = Field(
+    user: AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUser = Field(
         description="The user who most recently enabled Agent Merge for the pull request"
     )
 
 
-class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUser(GitHubModel):
-    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUser
+class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUser(GitHubModel):
+    """AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUser
 
     The user who most recently enabled Agent Merge for the pull request
 
@@ -56,10 +56,10 @@ class AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUser(GitHub
     id: int = Field(ge=1.0, description="The unique identifier of the user")
 
 
-model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201)
-model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUser)
+model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200)
+model_rebuild(AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUser)
 
 __all__ = (
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201",
-    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUser",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200",
+    "AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUser",
 )

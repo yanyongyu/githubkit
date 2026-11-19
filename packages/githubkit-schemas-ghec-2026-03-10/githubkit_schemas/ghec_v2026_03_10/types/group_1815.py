@@ -9,22 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Any, TypeAlias
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoMergeUpstreamPostBodyType(TypedDict):
-    """ReposOwnerRepoMergeUpstreamPostBody"""
+class ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200Type(TypedDict):
+    """Package license compliance results
 
-    branch: str
+    License compliance results keyed by the original submitted package URLs.
+    """
+
+    purls: ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsType
 
 
-class ReposOwnerRepoMergeUpstreamPostBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoMergeUpstreamPostBody"""
+class ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200TypeForResponse(
+    TypedDict
+):
+    """Package license compliance results
 
-    branch: str
+    License compliance results keyed by the original submitted package URLs.
+    """
+
+    purls: ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsTypeForResponse
+
+
+ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsType: TypeAlias = (
+    dict[str, Any]
+)
+"""ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls
+"""
+
+
+ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsTypeForResponse: TypeAlias = dict[
+    str, Any
+]
+"""ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurls
+"""
 
 
 __all__ = (
-    "ReposOwnerRepoMergeUpstreamPostBodyType",
-    "ReposOwnerRepoMergeUpstreamPostBodyTypeForResponse",
+    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsType",
+    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200PropPurlsTypeForResponse",
+    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200Type",
+    "ReposOwnerRepoLicenseCompliancePackageChecksPostResponse200TypeForResponse",
 )

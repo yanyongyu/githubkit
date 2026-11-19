@@ -302,9 +302,6 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
-
         See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-retention-limit-for-an-enterprise
         """
 
@@ -344,9 +341,6 @@ class ActionsClient:
         enterprise may not set a higher cache retention limit.
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
-
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-retention-limit-for-an-enterprise
         """
@@ -407,9 +401,6 @@ class ActionsClient:
         enterprise may not set a higher cache retention limit.
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
-
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/rest/actions/cache#set-github-actions-cache-retention-limit-for-an-enterprise
         """
@@ -480,9 +471,6 @@ class ActionsClient:
         enterprise may not set a higher cache retention limit.
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
-
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/rest/actions/cache#set-github-actions-cache-retention-limit-for-an-enterprise
         """
@@ -534,9 +522,6 @@ class ActionsClient:
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
 
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
-
         See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-storage-limit-for-an-enterprise
         """
 
@@ -576,9 +561,6 @@ class ActionsClient:
         enterprise may not set a higher cache storage limit.
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
-
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/rest/actions/cache#get-github-actions-cache-storage-limit-for-an-enterprise
         """
@@ -639,9 +621,6 @@ class ActionsClient:
         enterprise may not set a higher cache storage limit.
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
-
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/rest/actions/cache#set-github-actions-cache-storage-limit-for-an-enterprise
         """
@@ -712,9 +691,6 @@ class ActionsClient:
         enterprise may not set a higher cache storage limit.
 
         OAuth tokens and personal access tokens (classic) need the `admin:enterprise` scope to use this endpoint.
-
-        > [!NOTE]
-        > The "Enterprise administration" fine-grained permission is not available to callers. To use this API, you must use an OAuth app token or a personal access token (classic).
 
         See also: https://docs.github.com/rest/actions/cache#set-github-actions-cache-storage-limit-for-an-enterprise
         """

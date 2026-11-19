@@ -9,54 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0003 import SimpleUser
 
+class PublicMonitoringRepository(GitHubModel):
+    """PublicMonitoringRepository
 
-class BaseGist(GitHubModel):
-    """Base Gist
-
-    Base Gist
+    Delivered details for the public repository where the secret was found.
     """
 
-    url: str = Field()
-    forks_url: str = Field()
-    commits_url: str = Field()
-    id: str = Field()
-    node_id: str = Field()
-    git_pull_url: str = Field()
-    git_push_url: str = Field()
-    html_url: str = Field()
-    files: BaseGistPropFiles = Field()
-    public: bool = Field()
-    created_at: _dt.datetime = Field()
-    updated_at: _dt.datetime = Field()
-    description: Union[str, None] = Field()
-    comments: int = Field()
-    comments_enabled: Missing[bool] = Field(default=UNSET)
-    comments_url: str = Field()
-    owner: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    truncated: Missing[bool] = Field(default=UNSET)
+    name: str = Field()
+    full_name: str = Field()
+    private: bool = Field()
+    html_url: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-class BaseGistPropFiles(ExtraGitHubModel):
-    """BaseGistPropFiles"""
+model_rebuild(PublicMonitoringRepository)
 
-
-model_rebuild(BaseGist)
-model_rebuild(BaseGistPropFiles)
-
-__all__ = (
-    "BaseGist",
-    "BaseGistPropFiles",
-)
+__all__ = ("PublicMonitoringRepository",)

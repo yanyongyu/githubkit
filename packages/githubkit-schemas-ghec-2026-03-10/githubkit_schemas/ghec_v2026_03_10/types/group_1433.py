@@ -9,53 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
+class EnterprisesEnterpriseTeamsTeamSlugPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
 
-    total_count: int
-    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignmentType]
-
-
-class EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200TypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200"""
-
-    total_count: int
-    visual_studio_subscriptions: list[VisualStudioSubscriptionAssignmentTypeForResponse]
+    name: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
+    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
+    group_id: NotRequired[Union[str, None]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
 
 
-class VisualStudioSubscriptionAssignmentType(TypedDict):
-    """Visual Studio Subscription Assignment
+class EnterprisesEnterpriseTeamsTeamSlugPatchBodyTypeForResponse(TypedDict):
+    """EnterprisesEnterpriseTeamsTeamSlugPatchBody"""
 
-    Visual Studio Subscription Assignment
-    """
-
-    visual_studio_subscription_email: NotRequired[str]
-    subscription_id: NotRequired[str]
-    username: NotRequired[Union[str, None]]
-    manual_match: NotRequired[bool]
-
-
-class VisualStudioSubscriptionAssignmentTypeForResponse(TypedDict):
-    """Visual Studio Subscription Assignment
-
-    Visual Studio Subscription Assignment
-    """
-
-    visual_studio_subscription_email: NotRequired[str]
-    subscription_id: NotRequired[str]
-    username: NotRequired[Union[str, None]]
-    manual_match: NotRequired[bool]
+    name: NotRequired[Union[str, None]]
+    description: NotRequired[Union[str, None]]
+    sync_to_organizations: NotRequired[Literal["all", "disabled"]]
+    organization_selection_type: NotRequired[Literal["disabled", "selected", "all"]]
+    group_id: NotRequired[Union[str, None]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
 
 
 __all__ = (
-    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200Type",
-    "EnterprisesEnterpriseVisualStudioSubscriptionsGetResponse200TypeForResponse",
-    "VisualStudioSubscriptionAssignmentType",
-    "VisualStudioSubscriptionAssignmentTypeForResponse",
+    "EnterprisesEnterpriseTeamsTeamSlugPatchBodyType",
+    "EnterprisesEnterpriseTeamsTeamSlugPatchBodyTypeForResponse",
 )

@@ -16,17 +16,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1(GitHubModel):
-    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1"""
+class EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0(GitHubModel):
+    """EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0"""
 
     credential_id: int = Field()
-    credential_type: Literal["ssh_key"] = Field()
-    fingerprint: str = Field(
-        description="The SHA-256 fingerprint of the authorized SSH key."
-    )
+    credential_type: Literal["classic_pat"] = Field()
     organizations: list[str] = Field()
 
 
-model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1)
+model_rebuild(EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0)
 
-__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof1",)
+__all__ = ("EnterprisesEnterpriseCredentialAuthorizationsPostResponse201Oneof0",)

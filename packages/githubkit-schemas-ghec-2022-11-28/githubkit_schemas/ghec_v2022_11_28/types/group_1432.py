@@ -13,69 +13,45 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200"""
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody"""
 
     models: list[
-        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItemsType
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItemsType
     ]
 
 
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200TypeForResponse(
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200"""
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBody"""
 
     models: list[
-        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse
+        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse
     ]
 
 
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItemsType(
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItemsType(
     TypedDict
 ):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsIt
-    ems
-    """
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems"""
 
     model_name: str
-    display_name: str
     policy_state: Literal["enabled", "disabled", "optional"]
-    enterprise_policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_default",
-        "unconfigured",
-    ]
-    editable: bool
 
 
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse(
+class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsIt
-    ems
-    """
+    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItems"""
 
     model_name: str
-    display_name: str
     policy_state: Literal["enabled", "disabled", "optional"]
-    enterprise_policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_default",
-        "unconfigured",
-    ]
-    editable: bool
 
 
 __all__ = (
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItemsType",
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse",
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200Type",
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchResponse200TypeForResponse",
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItemsType",
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse",
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyType",
+    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesPatchBodyTypeForResponse",
 )

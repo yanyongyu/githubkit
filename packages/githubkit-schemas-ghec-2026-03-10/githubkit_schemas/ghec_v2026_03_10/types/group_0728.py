@@ -9,165 +9,229 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
-from .group_0001 import CvssSeveritiesType, CvssSeveritiesTypeForResponse
+from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
+from .group_0207 import (
+    SecretScanningLocationCommitType,
+    SecretScanningLocationCommitTypeForResponse,
+    SecretScanningLocationDiscussionCommentType,
+    SecretScanningLocationDiscussionCommentTypeForResponse,
+    SecretScanningLocationDiscussionTitleType,
+    SecretScanningLocationDiscussionTitleTypeForResponse,
+    SecretScanningLocationIssueBodyType,
+    SecretScanningLocationIssueBodyTypeForResponse,
+    SecretScanningLocationPullRequestBodyType,
+    SecretScanningLocationPullRequestBodyTypeForResponse,
+    SecretScanningLocationPullRequestReviewType,
+    SecretScanningLocationPullRequestReviewTypeForResponse,
+    SecretScanningLocationWikiCommitType,
+    SecretScanningLocationWikiCommitTypeForResponse,
+)
+from .group_0208 import (
+    SecretScanningLocationIssueCommentType,
+    SecretScanningLocationIssueCommentTypeForResponse,
+    SecretScanningLocationIssueTitleType,
+    SecretScanningLocationIssueTitleTypeForResponse,
+    SecretScanningLocationPullRequestReviewCommentType,
+    SecretScanningLocationPullRequestReviewCommentTypeForResponse,
+    SecretScanningLocationPullRequestTitleType,
+    SecretScanningLocationPullRequestTitleTypeForResponse,
+)
+from .group_0209 import (
+    SecretScanningLocationDiscussionBodyType,
+    SecretScanningLocationDiscussionBodyTypeForResponse,
+    SecretScanningLocationPullRequestCommentType,
+    SecretScanningLocationPullRequestCommentTypeForResponse,
+)
+from .group_0220 import (
+    PublicMonitoringAlertLocationType,
+    PublicMonitoringAlertLocationTypeForResponse,
+    PublicMonitoringSecretAuthorType,
+    PublicMonitoringSecretAuthorTypeForResponse,
+)
 
 
-class WebhooksSecurityAdvisoryType(TypedDict):
-    """WebhooksSecurityAdvisory
+class PublicMonitoringAlertWebhookPropAttributionType(TypedDict):
+    """PublicMonitoringAlertWebhookPropAttribution
 
-    The details of the security advisory, including summary, description, and
-    severity.
+    Attribution information for the alert.
     """
 
-    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
-    cwes: list[WebhooksSecurityAdvisoryPropCwesItemsType]
-    description: str
-    ghsa_id: str
-    identifiers: list[WebhooksSecurityAdvisoryPropIdentifiersItemsType]
-    published_at: str
-    references: list[WebhooksSecurityAdvisoryPropReferencesItemsType]
-    severity: str
-    summary: str
-    updated_at: str
-    vulnerabilities: list[WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType]
-    withdrawn_at: Union[str, None]
+    secret_author: NotRequired[
+        Union[SimpleUserType, PublicMonitoringSecretAuthorType, None]
+    ]
+    committer_email: NotRequired[Union[str, None]]
+    commit: NotRequired[
+        Union[SecretScanningLocationCommitType, PublicMonitoringAlertLocationType]
+    ]
+    wiki_commit: NotRequired[
+        Union[SecretScanningLocationWikiCommitType, PublicMonitoringAlertLocationType]
+    ]
+    issue_title: NotRequired[
+        Union[SecretScanningLocationIssueTitleType, PublicMonitoringAlertLocationType]
+    ]
+    issue_body: NotRequired[
+        Union[SecretScanningLocationIssueBodyType, PublicMonitoringAlertLocationType]
+    ]
+    issue_comment: NotRequired[
+        Union[SecretScanningLocationIssueCommentType, PublicMonitoringAlertLocationType]
+    ]
+    pull_request_title: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestTitleType,
+            PublicMonitoringAlertLocationType,
+        ]
+    ]
+    pull_request_body: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestBodyType, PublicMonitoringAlertLocationType
+        ]
+    ]
+    pull_request_comment: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestCommentType,
+            PublicMonitoringAlertLocationType,
+        ]
+    ]
+    pull_request_review_comment: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestReviewCommentType,
+            PublicMonitoringAlertLocationType,
+        ]
+    ]
+    pull_request_review: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestReviewType,
+            PublicMonitoringAlertLocationType,
+        ]
+    ]
+    pull_request_timeline_comment: NotRequired[PublicMonitoringAlertLocationType]
+    discussion_title: NotRequired[
+        Union[
+            SecretScanningLocationDiscussionTitleType, PublicMonitoringAlertLocationType
+        ]
+    ]
+    discussion_body: NotRequired[
+        Union[
+            SecretScanningLocationDiscussionBodyType, PublicMonitoringAlertLocationType
+        ]
+    ]
+    discussion_comment: NotRequired[
+        Union[
+            SecretScanningLocationDiscussionCommentType,
+            PublicMonitoringAlertLocationType,
+        ]
+    ]
+    commit_metadata: NotRequired[PublicMonitoringAlertLocationType]
+    commit_comment: NotRequired[PublicMonitoringAlertLocationType]
+    actions_log: NotRequired[PublicMonitoringAlertLocationType]
+    gist_blob: NotRequired[PublicMonitoringAlertLocationType]
+    method: NotRequired[Literal["member_activity", "verified_domain"]]
 
 
-class WebhooksSecurityAdvisoryTypeForResponse(TypedDict):
-    """WebhooksSecurityAdvisory
+class PublicMonitoringAlertWebhookPropAttributionTypeForResponse(TypedDict):
+    """PublicMonitoringAlertWebhookPropAttribution
 
-    The details of the security advisory, including summary, description, and
-    severity.
+    Attribution information for the alert.
     """
 
-    cvss_severities: NotRequired[Union[CvssSeveritiesTypeForResponse, None]]
-    cwes: list[WebhooksSecurityAdvisoryPropCwesItemsTypeForResponse]
-    description: str
-    ghsa_id: str
-    identifiers: list[WebhooksSecurityAdvisoryPropIdentifiersItemsTypeForResponse]
-    published_at: str
-    references: list[WebhooksSecurityAdvisoryPropReferencesItemsTypeForResponse]
-    severity: str
-    summary: str
-    updated_at: str
-    vulnerabilities: list[
-        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse
+    secret_author: NotRequired[
+        Union[
+            SimpleUserTypeForResponse, PublicMonitoringSecretAuthorTypeForResponse, None
+        ]
     ]
-    withdrawn_at: Union[str, None]
-
-
-class WebhooksSecurityAdvisoryPropCwesItemsType(TypedDict):
-    """WebhooksSecurityAdvisoryPropCwesItems"""
-
-    cwe_id: str
-    name: str
-
-
-class WebhooksSecurityAdvisoryPropCwesItemsTypeForResponse(TypedDict):
-    """WebhooksSecurityAdvisoryPropCwesItems"""
-
-    cwe_id: str
-    name: str
-
-
-class WebhooksSecurityAdvisoryPropIdentifiersItemsType(TypedDict):
-    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
-
-    type: str
-    value: str
-
-
-class WebhooksSecurityAdvisoryPropIdentifiersItemsTypeForResponse(TypedDict):
-    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
-
-    type: str
-    value: str
-
-
-class WebhooksSecurityAdvisoryPropReferencesItemsType(TypedDict):
-    """WebhooksSecurityAdvisoryPropReferencesItems"""
-
-    url: str
-
-
-class WebhooksSecurityAdvisoryPropReferencesItemsTypeForResponse(TypedDict):
-    """WebhooksSecurityAdvisoryPropReferencesItems"""
-
-    url: str
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType(TypedDict):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
-
-    first_patched_version: Union[
-        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType,
-        None,
+    committer_email: NotRequired[Union[str, None]]
+    commit: NotRequired[
+        Union[
+            SecretScanningLocationCommitTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
     ]
-    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType
-    severity: str
-    vulnerable_version_range: str
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse(TypedDict):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
-
-    first_patched_version: Union[
-        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse,
-        None,
+    wiki_commit: NotRequired[
+        Union[
+            SecretScanningLocationWikiCommitTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
     ]
-    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse
-    severity: str
-    vulnerable_version_range: str
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType(
-    TypedDict
-):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
-
-    identifier: str
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse(
-    TypedDict
-):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
-
-    identifier: str
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType(TypedDict):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
-
-    ecosystem: str
-    name: str
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse(
-    TypedDict
-):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
-
-    ecosystem: str
-    name: str
+    issue_title: NotRequired[
+        Union[
+            SecretScanningLocationIssueTitleTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    issue_body: NotRequired[
+        Union[
+            SecretScanningLocationIssueBodyTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    issue_comment: NotRequired[
+        Union[
+            SecretScanningLocationIssueCommentTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    pull_request_title: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestTitleTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    pull_request_body: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestBodyTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    pull_request_comment: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestCommentTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    pull_request_review_comment: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestReviewCommentTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    pull_request_review: NotRequired[
+        Union[
+            SecretScanningLocationPullRequestReviewTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    pull_request_timeline_comment: NotRequired[
+        PublicMonitoringAlertLocationTypeForResponse
+    ]
+    discussion_title: NotRequired[
+        Union[
+            SecretScanningLocationDiscussionTitleTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    discussion_body: NotRequired[
+        Union[
+            SecretScanningLocationDiscussionBodyTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    discussion_comment: NotRequired[
+        Union[
+            SecretScanningLocationDiscussionCommentTypeForResponse,
+            PublicMonitoringAlertLocationTypeForResponse,
+        ]
+    ]
+    commit_metadata: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
+    commit_comment: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
+    actions_log: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
+    gist_blob: NotRequired[PublicMonitoringAlertLocationTypeForResponse]
+    method: NotRequired[Literal["member_activity", "verified_domain"]]
 
 
 __all__ = (
-    "WebhooksSecurityAdvisoryPropCwesItemsType",
-    "WebhooksSecurityAdvisoryPropCwesItemsTypeForResponse",
-    "WebhooksSecurityAdvisoryPropIdentifiersItemsType",
-    "WebhooksSecurityAdvisoryPropIdentifiersItemsTypeForResponse",
-    "WebhooksSecurityAdvisoryPropReferencesItemsType",
-    "WebhooksSecurityAdvisoryPropReferencesItemsTypeForResponse",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionTypeForResponse",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageTypeForResponse",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsTypeForResponse",
-    "WebhooksSecurityAdvisoryType",
-    "WebhooksSecurityAdvisoryTypeForResponse",
+    "PublicMonitoringAlertWebhookPropAttributionType",
+    "PublicMonitoringAlertWebhookPropAttributionTypeForResponse",
 )

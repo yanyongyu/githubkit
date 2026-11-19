@@ -41,6 +41,7 @@ if TYPE_CHECKING:
         SecretScanningAlertWithMetadata,
         SecretScanningBypassRequest,
         SecretScanningCustomPattern,
+        SecretScanningCustomPatternWithDryRun,
         SecretScanningDismissalRequest,
         SecretScanningLocation,
         SecretScanningPatternConfiguration,
@@ -82,6 +83,7 @@ if TYPE_CHECKING:
         SecretScanningCustomPatternToCreateType,
         SecretScanningCustomPatternToDeleteType,
         SecretScanningCustomPatternTypeForResponse,
+        SecretScanningCustomPatternWithDryRunTypeForResponse,
         SecretScanningDismissalRequestTypeForResponse,
         SecretScanningLocationTypeForResponse,
         SecretScanningPatternConfigurationTypeForResponse,
@@ -550,8 +552,8 @@ class SecretScanningClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
-        list[SecretScanningCustomPattern],
-        list[SecretScanningCustomPatternTypeForResponse],
+        list[SecretScanningCustomPatternWithDryRun],
+        list[SecretScanningCustomPatternWithDryRunTypeForResponse],
     ]:
         """secret-scanning/list-enterprise-custom-patterns
 
@@ -564,7 +566,7 @@ class SecretScanningClient:
         See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/custom-patterns#list-enterprise-custom-patterns
         """
 
-        from ..models import BasicError, SecretScanningCustomPattern
+        from ..models import BasicError, SecretScanningCustomPatternWithDryRun
 
         url = f"/enterprises/{enterprise}/secret-scanning/custom-patterns"
 
@@ -585,7 +587,7 @@ class SecretScanningClient:
             params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=list[SecretScanningCustomPattern],
+            response_model=list[SecretScanningCustomPatternWithDryRun],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -605,8 +607,8 @@ class SecretScanningClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
-        list[SecretScanningCustomPattern],
-        list[SecretScanningCustomPatternTypeForResponse],
+        list[SecretScanningCustomPatternWithDryRun],
+        list[SecretScanningCustomPatternWithDryRunTypeForResponse],
     ]:
         """secret-scanning/list-enterprise-custom-patterns
 
@@ -619,7 +621,7 @@ class SecretScanningClient:
         See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/custom-patterns#list-enterprise-custom-patterns
         """
 
-        from ..models import BasicError, SecretScanningCustomPattern
+        from ..models import BasicError, SecretScanningCustomPatternWithDryRun
 
         url = f"/enterprises/{enterprise}/secret-scanning/custom-patterns"
 
@@ -640,7 +642,7 @@ class SecretScanningClient:
             params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=list[SecretScanningCustomPattern],
+            response_model=list[SecretScanningCustomPatternWithDryRun],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -2252,8 +2254,8 @@ class SecretScanningClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
-        list[SecretScanningCustomPattern],
-        list[SecretScanningCustomPatternTypeForResponse],
+        list[SecretScanningCustomPatternWithDryRun],
+        list[SecretScanningCustomPatternWithDryRunTypeForResponse],
     ]:
         """secret-scanning/list-org-custom-patterns
 
@@ -2266,7 +2268,7 @@ class SecretScanningClient:
         See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/custom-patterns#list-organization-custom-patterns
         """
 
-        from ..models import BasicError, SecretScanningCustomPattern
+        from ..models import BasicError, SecretScanningCustomPatternWithDryRun
 
         url = f"/orgs/{org}/secret-scanning/custom-patterns"
 
@@ -2287,7 +2289,7 @@ class SecretScanningClient:
             params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=list[SecretScanningCustomPattern],
+            response_model=list[SecretScanningCustomPatternWithDryRun],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -2307,8 +2309,8 @@ class SecretScanningClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
-        list[SecretScanningCustomPattern],
-        list[SecretScanningCustomPatternTypeForResponse],
+        list[SecretScanningCustomPatternWithDryRun],
+        list[SecretScanningCustomPatternWithDryRunTypeForResponse],
     ]:
         """secret-scanning/list-org-custom-patterns
 
@@ -2321,7 +2323,7 @@ class SecretScanningClient:
         See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/custom-patterns#list-organization-custom-patterns
         """
 
-        from ..models import BasicError, SecretScanningCustomPattern
+        from ..models import BasicError, SecretScanningCustomPatternWithDryRun
 
         url = f"/orgs/{org}/secret-scanning/custom-patterns"
 
@@ -2342,7 +2344,7 @@ class SecretScanningClient:
             params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=list[SecretScanningCustomPattern],
+            response_model=list[SecretScanningCustomPatternWithDryRun],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -4677,8 +4679,8 @@ class SecretScanningClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
-        list[SecretScanningCustomPattern],
-        list[SecretScanningCustomPatternTypeForResponse],
+        list[SecretScanningCustomPatternWithDryRun],
+        list[SecretScanningCustomPatternWithDryRunTypeForResponse],
     ]:
         """secret-scanning/list-repo-custom-patterns
 
@@ -4693,7 +4695,7 @@ class SecretScanningClient:
         See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/custom-patterns#list-repository-custom-patterns
         """
 
-        from ..models import BasicError, SecretScanningCustomPattern
+        from ..models import BasicError, SecretScanningCustomPatternWithDryRun
 
         url = f"/repos/{owner}/{repo}/secret-scanning/custom-patterns"
 
@@ -4714,7 +4716,7 @@ class SecretScanningClient:
             params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=list[SecretScanningCustomPattern],
+            response_model=list[SecretScanningCustomPatternWithDryRun],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -4735,8 +4737,8 @@ class SecretScanningClient:
         headers: Mapping[str, str] | None = None,
         stream: bool = False,
     ) -> Response[
-        list[SecretScanningCustomPattern],
-        list[SecretScanningCustomPatternTypeForResponse],
+        list[SecretScanningCustomPatternWithDryRun],
+        list[SecretScanningCustomPatternWithDryRunTypeForResponse],
     ]:
         """secret-scanning/list-repo-custom-patterns
 
@@ -4751,7 +4753,7 @@ class SecretScanningClient:
         See also: https://docs.github.com/enterprise-cloud@latest/rest/secret-scanning/custom-patterns#list-repository-custom-patterns
         """
 
-        from ..models import BasicError, SecretScanningCustomPattern
+        from ..models import BasicError, SecretScanningCustomPatternWithDryRun
 
         url = f"/repos/{owner}/{repo}/secret-scanning/custom-patterns"
 
@@ -4772,7 +4774,7 @@ class SecretScanningClient:
             params=exclude_unset(parse_query_params(params)),
             headers=exclude_unset(headers),
             stream=stream,
-            response_model=list[SecretScanningCustomPattern],
+            response_model=list[SecretScanningCustomPatternWithDryRun],
             error_models={
                 "403": BasicError,
                 "404": BasicError,

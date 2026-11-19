@@ -9,31 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBodyType(
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBody"""
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
 
-    state: Literal["open", "resolved"]
-    resolution: NotRequired[Union[Literal["dismissed", "fixed"], None]]
-    resolution_comment: NotRequired[Union[str, None]]
+    pattern_config_version: NotRequired[str]
 
 
-class EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBodyTypeForResponse(
+class EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBody"""
+    """EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200"""
 
-    state: Literal["open", "resolved"]
-    resolution: NotRequired[Union[Literal["dismissed", "fixed"], None]]
-    resolution_comment: NotRequired[Union[str, None]]
+    pattern_config_version: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBodyType",
-    "EnterprisesEnterpriseSecretScanningPublicMonitoringAlertsAlertNumberPatchBodyTypeForResponse",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200Type",
+    "EnterprisesEnterpriseSecretScanningPatternConfigurationsPatchResponse200TypeForResponse",
 )

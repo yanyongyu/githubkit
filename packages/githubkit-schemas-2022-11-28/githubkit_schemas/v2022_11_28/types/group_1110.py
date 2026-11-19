@@ -10,34 +10,32 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202Type(TypedDict):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBodyType(TypedDict):
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody
 
-    Response from accepting an automation run request.
+    Request body for requesting an automation run.
     """
 
-    task_id: str
-    automation_id: str
     event: Literal["manual"]
+    context: NotRequired[str]
 
 
-class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202TypeForResponse(
+class AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBodyTypeForResponse(
     TypedDict
 ):
-    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202
+    """AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody
 
-    Response from accepting an automation run request.
+    Request body for requesting an automation run.
     """
 
-    task_id: str
-    automation_id: str
     event: Literal["manual"]
+    context: NotRequired[str]
 
 
 __all__ = (
-    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202Type",
-    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202TypeForResponse",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBodyType",
+    "AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBodyTypeForResponse",
 )

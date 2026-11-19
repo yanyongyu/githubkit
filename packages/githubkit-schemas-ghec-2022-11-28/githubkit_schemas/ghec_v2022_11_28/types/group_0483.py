@@ -10,34 +10,34 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal, Union
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class DependabotRunnerSettingsUpdateType(TypedDict):
-    """Dependabot runner settings update
+class DependabotRunnerSettingsType(TypedDict):
+    """Dependabot runner settings
 
-    The runner Dependabot uses for this repository. `standard` accepts only
-    `runner_type`.
+    The runner Dependabot uses for this repository, as shown in the repository
+    settings.
     """
 
     runner_type: Literal["standard", "labeled"]
-    runner_labels: NotRequired[list[str]]
-    runner_group: NotRequired[Union[str, None]]
+    runner_labels: list[str]
+    runner_group: Union[str, None]
 
 
-class DependabotRunnerSettingsUpdateTypeForResponse(TypedDict):
-    """Dependabot runner settings update
+class DependabotRunnerSettingsTypeForResponse(TypedDict):
+    """Dependabot runner settings
 
-    The runner Dependabot uses for this repository. `standard` accepts only
-    `runner_type`.
+    The runner Dependabot uses for this repository, as shown in the repository
+    settings.
     """
 
     runner_type: Literal["standard", "labeled"]
-    runner_labels: NotRequired[list[str]]
-    runner_group: NotRequired[Union[str, None]]
+    runner_labels: list[str]
+    runner_group: Union[str, None]
 
 
 __all__ = (
-    "DependabotRunnerSettingsUpdateType",
-    "DependabotRunnerSettingsUpdateTypeForResponse",
+    "DependabotRunnerSettingsType",
+    "DependabotRunnerSettingsTypeForResponse",
 )

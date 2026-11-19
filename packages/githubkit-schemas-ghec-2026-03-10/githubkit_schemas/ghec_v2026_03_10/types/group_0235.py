@@ -9,108 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class BillingPremiumRequestUsageReportGheType(TypedDict):
-    """BillingPremiumRequestUsageReportGhe"""
+class DeleteCostCenterType(TypedDict):
+    """DeleteCostCenter"""
 
-    time_period: BillingPremiumRequestUsageReportGhePropTimePeriodType
-    enterprise: str
-    user: NotRequired[str]
-    organization: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    cost_center: NotRequired[BillingPremiumRequestUsageReportGhePropCostCenterType]
-    usage_items: list[BillingPremiumRequestUsageReportGhePropUsageItemsItemsType]
-
-
-class BillingPremiumRequestUsageReportGheTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportGhe"""
-
-    time_period: BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse
-    enterprise: str
-    user: NotRequired[str]
-    organization: NotRequired[str]
-    product: NotRequired[str]
-    model: NotRequired[str]
-    cost_center: NotRequired[
-        BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse
-    ]
-    usage_items: list[
-        BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse
-    ]
-
-
-class BillingPremiumRequestUsageReportGhePropTimePeriodType(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropTimePeriod"""
-
-    year: int
-    month: NotRequired[int]
-    day: NotRequired[int]
-
-
-class BillingPremiumRequestUsageReportGhePropCostCenterType(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropCostCenter"""
-
+    message: str
     id: str
     name: str
+    cost_center_state: Literal["CostCenterArchived"]
 
 
-class BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropCostCenter"""
+class DeleteCostCenterTypeForResponse(TypedDict):
+    """DeleteCostCenter"""
 
+    message: str
     id: str
     name: str
-
-
-class BillingPremiumRequestUsageReportGhePropUsageItemsItemsType(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropUsageItemsItems"""
-
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
-
-
-class BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse(TypedDict):
-    """BillingPremiumRequestUsageReportGhePropUsageItemsItems"""
-
-    product: str
-    sku: str
-    model: str
-    unit_type: str
-    price_per_unit: float
-    gross_quantity: float
-    gross_amount: float
-    discount_quantity: float
-    discount_amount: float
-    net_quantity: float
-    net_amount: float
+    cost_center_state: Literal["CostCenterArchived"]
 
 
 __all__ = (
-    "BillingPremiumRequestUsageReportGhePropCostCenterType",
-    "BillingPremiumRequestUsageReportGhePropCostCenterTypeForResponse",
-    "BillingPremiumRequestUsageReportGhePropTimePeriodType",
-    "BillingPremiumRequestUsageReportGhePropTimePeriodTypeForResponse",
-    "BillingPremiumRequestUsageReportGhePropUsageItemsItemsType",
-    "BillingPremiumRequestUsageReportGhePropUsageItemsItemsTypeForResponse",
-    "BillingPremiumRequestUsageReportGheType",
-    "BillingPremiumRequestUsageReportGheTypeForResponse",
+    "DeleteCostCenterType",
+    "DeleteCostCenterTypeForResponse",
 )

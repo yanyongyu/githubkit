@@ -9,17 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsPostBody(GitHubModel):
-    """ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsPostBody"""
+class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody(GitHubModel):
+    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
 
-    body: str = Field(description="The contents of the comment.")
+    reason: Literal["false_positive", "used_in_tests", "will_fix_later"] = Field(
+        description="The reason for bypassing push protection."
+    )
+    placeholder_id: str = Field(
+        description="The ID of the push protection bypass placeholder. This value is returned on any push protected routes."
+    )
 
 
-model_rebuild(ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsPostBody)
+model_rebuild(ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody)
 
-__all__ = ("ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsPostBody",)
+__all__ = ("ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody",)

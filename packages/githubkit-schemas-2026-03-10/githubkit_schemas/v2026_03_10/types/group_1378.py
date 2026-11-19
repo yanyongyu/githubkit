@@ -9,26 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0219 import CustomPropertyValueType, CustomPropertyValueTypeForResponse
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgPropertiesInstallationsValuesPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesInstallationsValuesPatchBody"""
+class OrgsOrgPropertiesInstallationsPostBodyType(TypedDict):
+    """OrgsOrgPropertiesInstallationsPostBody"""
 
-    repository_names: list[str]
-    properties: list[CustomPropertyValueType]
+    installation_id: NotRequired[int]
+    display_name: str
 
 
-class OrgsOrgPropertiesInstallationsValuesPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgPropertiesInstallationsValuesPatchBody"""
+class OrgsOrgPropertiesInstallationsPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgPropertiesInstallationsPostBody"""
 
-    repository_names: list[str]
-    properties: list[CustomPropertyValueTypeForResponse]
+    installation_id: NotRequired[int]
+    display_name: str
 
 
 __all__ = (
-    "OrgsOrgPropertiesInstallationsValuesPatchBodyType",
-    "OrgsOrgPropertiesInstallationsValuesPatchBodyTypeForResponse",
+    "OrgsOrgPropertiesInstallationsPostBodyType",
+    "OrgsOrgPropertiesInstallationsPostBodyTypeForResponse",
 )

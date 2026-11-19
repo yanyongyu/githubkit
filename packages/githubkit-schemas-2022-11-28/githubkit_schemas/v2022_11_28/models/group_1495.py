@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -16,26 +18,30 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment(
-    GitHubModel
-):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment
+class ReposOwnerRepoCopilotCodeReviewSettingsPatchBody(GitHubModel):
+    """ReposOwnerRepoCopilotCodeReviewSettingsPatchBody"""
 
-    Parameters for AI agent assignment. Only used when an agent bot login is
-    included in `assignees`. Ignored when no agent is being assigned.
-    """
-
-    custom_instructions: Missing[str] = Field(
-        default=UNSET, description="Custom instructions for the agent."
+    review_effort: Missing[str] = Field(
+        default=UNSET,
+        description="The review effort for the repository. Use `inherit` to clear the repository's value. Only efforts listed in the settings' `available_review_efforts` are accepted, and a rejected effort's error message lists them. For more information, see [Review effort level](https://docs.github.com/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/code-review#review-effort-level).",
     )
-    custom_agent: Missing[str] = Field(
-        default=UNSET, description="A custom agent identifier."
+    severity_filter: Missing[Literal["no_filter", "low", "low_and_medium"]] = Field(
+        default=UNSET,
+        description="Which review comment severities Copilot code review leaves out. Can only be set when the severity filter is available for the repository.",
     )
-    model: Missing[str] = Field(
-        default=UNSET, description="The model to use for the agent."
+    custom_instructions_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether reviews use the repository's custom instructions.",
+    )
+    mcp_enabled: Missing[bool] = Field(
+        default=UNSET, description="Whether reviews can use MCP servers."
+    )
+    cross_repo_context_enabled: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether reviews can use public repository search. Can only be set when the public repository search setting is available for the repository.",
     )
 
 
-model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment)
+model_rebuild(ReposOwnerRepoCopilotCodeReviewSettingsPatchBody)
 
-__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment",)
+__all__ = ("ReposOwnerRepoCopilotCodeReviewSettingsPatchBody",)

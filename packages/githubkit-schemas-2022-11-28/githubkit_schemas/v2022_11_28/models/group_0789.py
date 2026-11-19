@@ -19,18 +19,17 @@ from githubkit.utils import UNSET
 
 from .group_0003 import SimpleUser
 from .group_0054 import Issue
-from .group_0584 import SimpleInstallation
-from .group_0585 import OrganizationSimpleWebhooks
-from .group_0586 import RepositoryWebhooks
+from .group_0585 import SimpleInstallation
+from .group_0586 import OrganizationSimpleWebhooks
+from .group_0587 import RepositoryWebhooks
 
 
-class WebhookIssueRelatesToRemoved(GitHubModel):
-    """relates to issue removed event"""
+class WebhookIssueRelatesToAdded(GitHubModel):
+    """relates to issue added event"""
 
-    action: Literal["relates_to_removed"] = Field()
+    action: Literal["relates_to_added"] = Field()
     issue_id: Missing[float] = Field(
-        default=UNSET,
-        description="The ID of the issue the relationship was removed from.",
+        default=UNSET, description="The ID of the issue the relationship was added to."
     )
     issue: Missing[Issue] = Field(
         default=UNSET,
@@ -62,6 +61,6 @@ class WebhookIssueRelatesToRemoved(GitHubModel):
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookIssueRelatesToRemoved)
+model_rebuild(WebhookIssueRelatesToAdded)
 
-__all__ = ("WebhookIssueRelatesToRemoved",)
+__all__ = ("WebhookIssueRelatesToAdded",)

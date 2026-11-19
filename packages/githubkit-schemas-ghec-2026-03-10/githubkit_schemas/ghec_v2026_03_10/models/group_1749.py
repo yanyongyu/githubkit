@@ -14,19 +14,23 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody"""
+class ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody(GitHubModel):
+    """ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody"""
 
-    status: Literal["approve", "deny"] = Field(
-        description="The review action to perform on the dismissal request."
+    dismissed_reason: Literal[
+        "fix_started", "no_bandwidth", "tolerable_risk", "inaccurate", "not_used"
+    ] = Field(description="The reason for dismissing the alert.")
+    dismissed_comment: Missing[str] = Field(
+        max_length=280,
+        default=UNSET,
+        description="An optional comment explaining the dismissal.",
     )
-    message: str = Field(
-        max_length=2048, description="A message to include with the review."
-    )
 
 
-model_rebuild(ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody)
+model_rebuild(ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody)
 
-__all__ = ("ReposOwnerRepoDismissalRequestsDependabotAlertNumberPatchBody",)
+__all__ = ("ReposOwnerRepoDismissalRequestsDependabotAlertNumberPostBody",)

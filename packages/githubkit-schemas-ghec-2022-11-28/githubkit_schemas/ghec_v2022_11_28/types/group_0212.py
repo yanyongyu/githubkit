@@ -14,7 +14,7 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class SecretScanningCustomPatternType(TypedDict):
+class SecretScanningCustomPatternWithDryRunType(TypedDict):
     """Secret Scanning Custom Pattern
 
     A custom pattern for secret scanning.
@@ -35,7 +35,7 @@ class SecretScanningCustomPatternType(TypedDict):
     updated_at: NotRequired[_dt.datetime]
 
 
-class SecretScanningCustomPatternTypeForResponse(TypedDict):
+class SecretScanningCustomPatternWithDryRunTypeForResponse(TypedDict):
     """Secret Scanning Custom Pattern
 
     A custom pattern for secret scanning.
@@ -57,6 +57,6 @@ class SecretScanningCustomPatternTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "SecretScanningCustomPatternType",
-    "SecretScanningCustomPatternTypeForResponse",
+    "SecretScanningCustomPatternWithDryRunType",
+    "SecretScanningCustomPatternWithDryRunTypeForResponse",
 )

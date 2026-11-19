@@ -9,39 +9,129 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
+from .group_0410 import (
+    DeploymentBranchPolicySettingsType,
+    DeploymentBranchPolicySettingsTypeForResponse,
+)
 from .group_0412 import (
-    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType,
-    EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse,
+    EnvironmentPropProtectionRulesItemsAnyof1Type,
+    EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse,
 )
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+class EnvironmentType(TypedDict):
+    """Environment
+
+    Details of a deployment environment
+    """
 
     id: int
     node_id: str
-    prevent_self_review: NotRequired[bool]
-    type: str
-    reviewers: NotRequired[
-        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
+    name: str
+    url: str
+    html_url: str
+    created_at: _dt.datetime
+    updated_at: _dt.datetime
+    protection_rules: NotRequired[
+        list[
+            Union[
+                EnvironmentPropProtectionRulesItemsAnyof0Type,
+                EnvironmentPropProtectionRulesItemsAnyof1Type,
+                EnvironmentPropProtectionRulesItemsAnyof2Type,
+            ]
+        ]
+    ]
+    deployment_branch_policy: NotRequired[
+        Union[DeploymentBranchPolicySettingsType, None]
     ]
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+class EnvironmentTypeForResponse(TypedDict):
+    """Environment
+
+    Details of a deployment environment
+    """
 
     id: int
     node_id: str
-    prevent_self_review: NotRequired[bool]
-    type: str
-    reviewers: NotRequired[
-        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsTypeForResponse]
+    name: str
+    url: str
+    html_url: str
+    created_at: str
+    updated_at: str
+    protection_rules: NotRequired[
+        list[
+            Union[
+                EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse,
+                EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse,
+                EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse,
+            ]
+        ]
     ]
+    deployment_branch_policy: NotRequired[
+        Union[DeploymentBranchPolicySettingsTypeForResponse, None]
+    ]
+
+
+class EnvironmentPropProtectionRulesItemsAnyof0Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof0"""
+
+    id: int
+    node_id: str
+    type: str
+    wait_timer: NotRequired[int]
+
+
+class EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof0"""
+
+    id: int
+    node_id: str
+    type: str
+    wait_timer: NotRequired[int]
+
+
+class EnvironmentPropProtectionRulesItemsAnyof2Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof2"""
+
+    id: int
+    node_id: str
+    type: str
+
+
+class EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof2"""
+
+    id: int
+    node_id: str
+    type: str
+
+
+class ReposOwnerRepoEnvironmentsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoEnvironmentsGetResponse200"""
+
+    total_count: NotRequired[int]
+    environments: NotRequired[list[EnvironmentType]]
+
+
+class ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse(TypedDict):
+    """ReposOwnerRepoEnvironmentsGetResponse200"""
+
+    total_count: NotRequired[int]
+    environments: NotRequired[list[EnvironmentTypeForResponse]]
 
 
 __all__ = (
-    "EnvironmentPropProtectionRulesItemsAnyof1Type",
-    "EnvironmentPropProtectionRulesItemsAnyof1TypeForResponse",
+    "EnvironmentPropProtectionRulesItemsAnyof0Type",
+    "EnvironmentPropProtectionRulesItemsAnyof0TypeForResponse",
+    "EnvironmentPropProtectionRulesItemsAnyof2Type",
+    "EnvironmentPropProtectionRulesItemsAnyof2TypeForResponse",
+    "EnvironmentType",
+    "EnvironmentTypeForResponse",
+    "ReposOwnerRepoEnvironmentsGetResponse200Type",
+    "ReposOwnerRepoEnvironmentsGetResponse200TypeForResponse",
 )

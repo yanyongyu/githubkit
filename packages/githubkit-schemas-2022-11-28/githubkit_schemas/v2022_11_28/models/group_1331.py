@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -18,65 +16,15 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class OrgsOrgCopilotCodeReviewSettingsPatchResponse409(GitHubModel):
-    """OrgsOrgCopilotCodeReviewSettingsPatchResponse409"""
+class OrgsOrgCopilotCodeReviewSettingsPatchBody(GitHubModel):
+    """OrgsOrgCopilotCodeReviewSettingsPatchBody"""
 
-    message: str = Field()
-    documentation_url: Missing[str] = Field(default=UNSET)
-    status: Missing[str] = Field(default=UNSET)
-    code: Literal["SETTING_NOT_EDITABLE"] = Field()
-    settings: OrganizationCopilotCodeReviewSettings = Field(
-        title="Organization Copilot Code Review Settings",
-        description="The organization's Copilot code review settings.",
+    default_review_effort: Missing[str] = Field(
+        default=UNSET,
+        description="The default review effort for repositories that do not choose their own. Use `inherit` to clear the organization's value. Only efforts listed in the settings' `available_review_efforts` are accepted, and a rejected effort's error message lists them. For more information, see [Review effort level](https://docs.github.com/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/code-review#review-effort-level).",
     )
 
 
-class OrganizationCopilotCodeReviewSettings(GitHubModel):
-    """Organization Copilot Code Review Settings
+model_rebuild(OrgsOrgCopilotCodeReviewSettingsPatchBody)
 
-    The organization's Copilot code review settings.
-    """
-
-    default_review_effort: OrganizationCopilotCodeReviewSettingsPropDefaultReviewEffort = Field(
-        description="The default review effort for repositories in the organization that do not choose their own. For more information, see [Review effort level](https://docs.github.com/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/code-review#review-effort-level)."
-    )
-    available_review_efforts: list[str] = Field(
-        description="The review efforts that can currently be set for this organization, in display order."
-    )
-
-
-class OrganizationCopilotCodeReviewSettingsPropDefaultReviewEffort(GitHubModel):
-    """OrganizationCopilotCodeReviewSettingsPropDefaultReviewEffort
-
-    The default review effort for repositories in the organization that do not
-    choose their own. For more information, see [Review effort
-    level](https://docs.github.com/copilot/concepts/agent-capabilities/agent-
-    powered-workflows-and-operations/code-review#review-effort-level).
-    """
-
-    configured: Union[str, None] = Field(
-        description="The review effort stored for the organization. Null means the organization inherits the default, or has stored a value that is not currently available."
-    )
-    effective: str = Field(
-        description="The review effort that repositories without their own setting use. When that effort is not currently available for the organization, this reports the fallback effort instead."
-    )
-    github_default: str = Field(
-        description="The review effort the organization inherits when it does not configure one. This is the enterprise default when one applies, otherwise GitHub's default."
-    )
-    editable: bool = Field(
-        description="Whether organization administrators can update the setting."
-    )
-    managed_by: Literal["enterprise", "organization"] = Field(
-        description="Whether the enterprise or the organization controls the setting."
-    )
-
-
-model_rebuild(OrgsOrgCopilotCodeReviewSettingsPatchResponse409)
-model_rebuild(OrganizationCopilotCodeReviewSettings)
-model_rebuild(OrganizationCopilotCodeReviewSettingsPropDefaultReviewEffort)
-
-__all__ = (
-    "OrganizationCopilotCodeReviewSettings",
-    "OrganizationCopilotCodeReviewSettingsPropDefaultReviewEffort",
-    "OrgsOrgCopilotCodeReviewSettingsPatchResponse409",
-)
+__all__ = ("OrgsOrgCopilotCodeReviewSettingsPatchBody",)

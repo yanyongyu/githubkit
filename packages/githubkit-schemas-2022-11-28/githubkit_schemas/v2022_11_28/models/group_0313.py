@@ -14,16 +14,30 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class ActionsWorkflowAccessToRepository(GitHubModel):
-    """ActionsWorkflowAccessToRepository"""
+class ActionsRepositoryPermissions(GitHubModel):
+    """ActionsRepositoryPermissions"""
 
-    access_level: Literal["none", "user", "organization"] = Field(
-        description="Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the\nrepository.\n\n`none` means the access is only possible from workflows in this repository. `user` level access allows sharing across user owned private repositories only. `organization` level access allows sharing across the organization."
+    enabled: bool = Field(
+        description="Whether GitHub Actions is enabled on the repository."
+    )
+    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+        default=UNSET,
+        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+    )
+    selected_actions_url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
+    )
+    sha_pinning_required: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether actions must be pinned to a full-length commit SHA.",
     )
 
 
-model_rebuild(ActionsWorkflowAccessToRepository)
+model_rebuild(ActionsRepositoryPermissions)
 
-__all__ = ("ActionsWorkflowAccessToRepository",)
+__all__ = ("ActionsRepositoryPermissions",)

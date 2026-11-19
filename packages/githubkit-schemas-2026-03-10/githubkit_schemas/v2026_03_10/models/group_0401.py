@@ -13,33 +13,27 @@ from typing import Literal, Union
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class DependabotRunnerSettingsUpdate(GitHubModel):
-    """Dependabot runner settings update
+class DependabotRunnerSettings(GitHubModel):
+    """Dependabot runner settings
 
-    The runner Dependabot uses for this repository. `standard` accepts only
-    `runner_type`.
+    The runner Dependabot uses for this repository, as shown in the repository
+    settings.
     """
 
     runner_type: Literal["standard", "labeled"] = Field(
-        description="`labeled` for labeled runners, `standard` for standard GitHub-hosted runners."
+        description="`labeled` when Dependabot runs on labeled runners. Otherwise `standard`."
     )
-    runner_labels: Missing[list[str]] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="Required for `labeled`. Exactly one non-blank runner label. Not allowed for `standard`.",
+    runner_labels: list[str] = Field(
+        description="Runner labels Dependabot uses. Empty for `standard`."
     )
-    runner_group: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Optional for `labeled`. Omitted, `null` or blank means no group. Not allowed for `standard`.",
+    runner_group: Union[str, None] = Field(
+        description="Runner group Dependabot uses, or `null` for no group."
     )
 
 
-model_rebuild(DependabotRunnerSettingsUpdate)
+model_rebuild(DependabotRunnerSettings)
 
-__all__ = ("DependabotRunnerSettingsUpdate",)
+__all__ = ("DependabotRunnerSettings",)

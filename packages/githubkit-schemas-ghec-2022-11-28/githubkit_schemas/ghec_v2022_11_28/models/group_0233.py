@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UpdateCostCenter(GitHubModel):
-    """UpdateCostCenter"""
+class GetCostCenter(GitHubModel):
+    """GetCostCenter"""
 
     id: str = Field(description="ID of the cost center.")
     name: str = Field(description="Name of the cost center.")
@@ -30,26 +30,30 @@ class UpdateCostCenter(GitHubModel):
     state: Missing[Literal["active", "deleted"]] = Field(
         default=UNSET, description="State of the cost center."
     )
-    resources: list[UpdateCostCenterPropResourcesItems] = Field()
+    resources: list[GetCostCenterPropResourcesItems] = Field()
+    has_next_page: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates if there are more resources available for pagination. Only present when pagination is used.",
+    )
     ai_credit_pool_enabled: Missing[bool] = Field(
         default=UNSET,
         description="Whether the cost center draws from the AI credit pool.\n\nThis can only be enabled for cost centers that contain only user or team resources.\n\n- `false` — no cap; the cost center draws from the shared enterprise pool.\n- `true` — the cost center is capped at an amount derived from its members' license entitlements.",
     )
-    ai_credit_pool_state: Missing[UpdateCostCenterPropAiCreditPoolState] = Field(
+    ai_credit_pool_state: Missing[GetCostCenterPropAiCreditPoolState] = Field(
         default=UNSET,
         description="Read-only cap-budget projection for the cost center. Only present when the cost center draws from the AI credit pool.",
     )
 
 
-class UpdateCostCenterPropResourcesItems(GitHubModel):
-    """UpdateCostCenterPropResourcesItems"""
+class GetCostCenterPropResourcesItems(GitHubModel):
+    """GetCostCenterPropResourcesItems"""
 
     type: str = Field(description="Type of the resource.")
     name: str = Field(description="Name of the resource.")
 
 
-class UpdateCostCenterPropAiCreditPoolState(GitHubModel):
-    """UpdateCostCenterPropAiCreditPoolState
+class GetCostCenterPropAiCreditPoolState(GitHubModel):
+    """GetCostCenterPropAiCreditPoolState
 
     Read-only cap-budget projection for the cost center. Only present when the cost
     center draws from the AI credit pool.
@@ -65,12 +69,12 @@ class UpdateCostCenterPropAiCreditPoolState(GitHubModel):
     )
 
 
-model_rebuild(UpdateCostCenter)
-model_rebuild(UpdateCostCenterPropResourcesItems)
-model_rebuild(UpdateCostCenterPropAiCreditPoolState)
+model_rebuild(GetCostCenter)
+model_rebuild(GetCostCenterPropResourcesItems)
+model_rebuild(GetCostCenterPropAiCreditPoolState)
 
 __all__ = (
-    "UpdateCostCenter",
-    "UpdateCostCenterPropAiCreditPoolState",
-    "UpdateCostCenterPropResourcesItems",
+    "GetCostCenter",
+    "GetCostCenterPropAiCreditPoolState",
+    "GetCostCenterPropResourcesItems",
 )

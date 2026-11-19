@@ -13,25 +13,25 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgAgentsVariablesNamePatchBodyType(TypedDict):
-    """OrgsOrgAgentsVariablesNamePatchBody"""
+class OrgsOrgAgentsVariablesPostBodyType(TypedDict):
+    """OrgsOrgAgentsVariablesPostBody"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
+    name: str
+    value: str
+    visibility: Literal["all", "private", "selected"]
     selected_repository_ids: NotRequired[list[int]]
 
 
-class OrgsOrgAgentsVariablesNamePatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgAgentsVariablesNamePatchBody"""
+class OrgsOrgAgentsVariablesPostBodyTypeForResponse(TypedDict):
+    """OrgsOrgAgentsVariablesPostBody"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
+    name: str
+    value: str
+    visibility: Literal["all", "private", "selected"]
     selected_repository_ids: NotRequired[list[int]]
 
 
 __all__ = (
-    "OrgsOrgAgentsVariablesNamePatchBodyType",
-    "OrgsOrgAgentsVariablesNamePatchBodyTypeForResponse",
+    "OrgsOrgAgentsVariablesPostBodyType",
+    "OrgsOrgAgentsVariablesPostBodyTypeForResponse",
 )

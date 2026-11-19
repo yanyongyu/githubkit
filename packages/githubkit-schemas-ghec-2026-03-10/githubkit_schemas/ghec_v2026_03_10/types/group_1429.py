@@ -9,71 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200"""
-
-    models: list[
-        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItemsType
-    ]
-
-
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200TypeForResponse(
+class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyType(
     TypedDict
 ):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200"""
+    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody"""
 
-    models: list[
-        EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse
-    ]
+    organization_slugs: list[str]
 
 
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItemsType(
+class EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItem
-    s
-    """
+    """EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBody"""
 
-    model_name: str
-    display_name: str
-    policy_state: Literal["enabled", "disabled", "optional"]
-    enterprise_policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_default",
-        "unconfigured",
-    ]
-    editable: bool
-
-
-class EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItem
-    s
-    """
-
-    model_name: str
-    display_name: str
-    policy_state: Literal["enabled", "disabled", "optional"]
-    enterprise_policy_state: Literal[
-        "enabled",
-        "disabled",
-        "delegate_to_teams_and_apps",
-        "delegate_to_default",
-        "unconfigured",
-    ]
-    editable: bool
+    organization_slugs: list[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItemsType",
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse",
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200Type",
-    "EnterprisesEnterpriseTeamsTeamIdCopilotModelPoliciesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyType",
+    "EnterprisesEnterpriseTeamsEnterpriseTeamOrganizationsRemovePostBodyTypeForResponse",
 )

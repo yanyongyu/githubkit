@@ -12,25 +12,49 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class TopicType(TypedDict):
-    """Topic
+class TagType(TypedDict):
+    """Tag
 
-    A topic aggregates entities that are related to a subject.
+    Tag
     """
 
-    names: list[str]
+    name: str
+    commit: TagPropCommitType
+    zipball_url: str
+    tarball_url: str
+    node_id: str
 
 
-class TopicTypeForResponse(TypedDict):
-    """Topic
+class TagTypeForResponse(TypedDict):
+    """Tag
 
-    A topic aggregates entities that are related to a subject.
+    Tag
     """
 
-    names: list[str]
+    name: str
+    commit: TagPropCommitTypeForResponse
+    zipball_url: str
+    tarball_url: str
+    node_id: str
+
+
+class TagPropCommitType(TypedDict):
+    """TagPropCommit"""
+
+    sha: str
+    url: str
+
+
+class TagPropCommitTypeForResponse(TypedDict):
+    """TagPropCommit"""
+
+    sha: str
+    url: str
 
 
 __all__ = (
-    "TopicType",
-    "TopicTypeForResponse",
+    "TagPropCommitType",
+    "TagPropCommitTypeForResponse",
+    "TagType",
+    "TagTypeForResponse",
 )

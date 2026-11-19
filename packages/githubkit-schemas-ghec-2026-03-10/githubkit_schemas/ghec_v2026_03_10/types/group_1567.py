@@ -13,71 +13,47 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class OrgsOrgCopilotModelPoliciesGetResponse200Type(TypedDict):
-    """OrgsOrgCopilotModelPoliciesGetResponse200"""
+class OrgsOrgCopilotFeaturePoliciesPatchResponse200Type(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesPatchResponse200"""
 
     default_availability: (
-        OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType
+        OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType
     )
-    models: list[OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItemsType]
 
 
-class OrgsOrgCopilotModelPoliciesGetResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotModelPoliciesGetResponse200"""
+class OrgsOrgCopilotFeaturePoliciesPatchResponse200TypeForResponse(TypedDict):
+    """OrgsOrgCopilotFeaturePoliciesPatchResponse200"""
 
-    default_availability: (
-        OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse
-    )
-    models: list[
-        OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse
-    ]
+    default_availability: OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse
 
 
-class OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType(TypedDict):
-    """OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailability
+class OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType(
+    TypedDict
+):
+    """OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability
 
-    The effective default availability for models reported as `delegate_to_default`.
+    The default policy applied to newly released Copilot features and clients.
     """
 
     policy_state: Literal["enabled", "disabled"]
     editable: bool
 
 
-class OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse(
+class OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailability
+    """OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailability
 
-    The effective default availability for models reported as `delegate_to_default`.
+    The default policy applied to newly released Copilot features and clients.
     """
 
     policy_state: Literal["enabled", "disabled"]
     editable: bool
-
-
-class OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItemsType(TypedDict):
-    """OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItems"""
-
-    model_name: str
-    display_name: str
-    policy_state: Literal["enabled", "disabled", "delegate_to_default", "unconfigured"]
-
-
-class OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItems"""
-
-    model_name: str
-    display_name: str
-    policy_state: Literal["enabled", "disabled", "delegate_to_default", "unconfigured"]
 
 
 __all__ = (
-    "OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType",
-    "OrgsOrgCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse",
-    "OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItemsType",
-    "OrgsOrgCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse",
-    "OrgsOrgCopilotModelPoliciesGetResponse200Type",
-    "OrgsOrgCopilotModelPoliciesGetResponse200TypeForResponse",
+    "OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityType",
+    "OrgsOrgCopilotFeaturePoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse",
+    "OrgsOrgCopilotFeaturePoliciesPatchResponse200Type",
+    "OrgsOrgCopilotFeaturePoliciesPatchResponse200TypeForResponse",
 )

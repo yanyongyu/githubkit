@@ -10,72 +10,70 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgCopilotModelPoliciesPatchResponse200Type(TypedDict):
-    """OrgsOrgCopilotModelPoliciesPatchResponse200"""
+class OrgsOrgCopilotModelPoliciesPatchBodyType(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchBody"""
 
-    default_availability: (
-        OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityType
-    )
-    models: list[OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItemsType]
+    default_availability: NotRequired[
+        OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType
+    ]
+    models: NotRequired[list[OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsType]]
 
 
-class OrgsOrgCopilotModelPoliciesPatchResponse200TypeForResponse(TypedDict):
-    """OrgsOrgCopilotModelPoliciesPatchResponse200"""
+class OrgsOrgCopilotModelPoliciesPatchBodyTypeForResponse(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchBody"""
 
-    default_availability: OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse
-    models: list[
-        OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse
+    default_availability: NotRequired[
+        OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse
+    ]
+    models: NotRequired[
+        list[OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse]
     ]
 
 
-class OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityType(TypedDict):
-    """OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailability
+class OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability
 
-    The effective default availability for models reported as `delegate_to_default`.
+    The organization's default availability for eligible models without an explicit
+    policy. It cannot be updated when it is inherited from the enterprise.
     """
 
     policy_state: Literal["enabled", "disabled"]
-    editable: bool
 
 
-class OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse(
+class OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse(
     TypedDict
 ):
-    """OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailability
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailability
 
-    The effective default availability for models reported as `delegate_to_default`.
+    The organization's default availability for eligible models without an explicit
+    policy. It cannot be updated when it is inherited from the enterprise.
     """
 
     policy_state: Literal["enabled", "disabled"]
-    editable: bool
 
 
-class OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItemsType(TypedDict):
-    """OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItems"""
-
-    model_name: str
-    display_name: str
-    policy_state: Literal["enabled", "disabled", "delegate_to_default", "unconfigured"]
-
-
-class OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse(
-    TypedDict
-):
-    """OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItems"""
+class OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsType(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems"""
 
     model_name: str
-    display_name: str
-    policy_state: Literal["enabled", "disabled", "delegate_to_default", "unconfigured"]
+    policy_state: Literal["enabled", "disabled"]
+
+
+class OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse(TypedDict):
+    """OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItems"""
+
+    model_name: str
+    policy_state: Literal["enabled", "disabled"]
 
 
 __all__ = (
-    "OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityType",
-    "OrgsOrgCopilotModelPoliciesPatchResponse200PropDefaultAvailabilityTypeForResponse",
-    "OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItemsType",
-    "OrgsOrgCopilotModelPoliciesPatchResponse200PropModelsItemsTypeForResponse",
-    "OrgsOrgCopilotModelPoliciesPatchResponse200Type",
-    "OrgsOrgCopilotModelPoliciesPatchResponse200TypeForResponse",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityType",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropDefaultAvailabilityTypeForResponse",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsType",
+    "OrgsOrgCopilotModelPoliciesPatchBodyPropModelsItemsTypeForResponse",
+    "OrgsOrgCopilotModelPoliciesPatchBodyType",
+    "OrgsOrgCopilotModelPoliciesPatchBodyTypeForResponse",
 )

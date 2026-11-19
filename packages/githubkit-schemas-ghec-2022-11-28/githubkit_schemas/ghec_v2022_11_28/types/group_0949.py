@@ -13,20 +13,19 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 from .group_0003 import SimpleUserType, SimpleUserTypeForResponse
-from .group_0674 import SimpleInstallationType, SimpleInstallationTypeForResponse
-from .group_0675 import (
+from .group_0675 import SimpleInstallationType, SimpleInstallationTypeForResponse
+from .group_0676 import (
     OrganizationSimpleWebhooksType,
     OrganizationSimpleWebhooksTypeForResponse,
 )
-from .group_0676 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
-from .group_0709 import MergeGroupType, MergeGroupTypeForResponse
+from .group_0677 import RepositoryWebhooksType, RepositoryWebhooksTypeForResponse
+from .group_0710 import MergeGroupType, MergeGroupTypeForResponse
 
 
-class WebhookMergeGroupDestroyedType(TypedDict):
-    """WebhookMergeGroupDestroyed"""
+class WebhookMergeGroupChecksRequestedType(TypedDict):
+    """WebhookMergeGroupChecksRequested"""
 
-    action: Literal["destroyed"]
-    reason: NotRequired[Literal["merged", "invalidated", "dequeued"]]
+    action: Literal["checks_requested"]
     installation: NotRequired[SimpleInstallationType]
     merge_group: MergeGroupType
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -34,11 +33,10 @@ class WebhookMergeGroupDestroyedType(TypedDict):
     sender: NotRequired[SimpleUserType]
 
 
-class WebhookMergeGroupDestroyedTypeForResponse(TypedDict):
-    """WebhookMergeGroupDestroyed"""
+class WebhookMergeGroupChecksRequestedTypeForResponse(TypedDict):
+    """WebhookMergeGroupChecksRequested"""
 
-    action: Literal["destroyed"]
-    reason: NotRequired[Literal["merged", "invalidated", "dequeued"]]
+    action: Literal["checks_requested"]
     installation: NotRequired[SimpleInstallationTypeForResponse]
     merge_group: MergeGroupTypeForResponse
     organization: NotRequired[OrganizationSimpleWebhooksTypeForResponse]
@@ -47,6 +45,6 @@ class WebhookMergeGroupDestroyedTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "WebhookMergeGroupDestroyedType",
-    "WebhookMergeGroupDestroyedTypeForResponse",
+    "WebhookMergeGroupChecksRequestedType",
+    "WebhookMergeGroupChecksRequestedTypeForResponse",
 )

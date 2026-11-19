@@ -113,12 +113,12 @@ from .group_0272 import (
 )
 
 
-class ReposOwnerRepoRulesetsRulesetIdPutBodyType(TypedDict):
-    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
+class ReposOwnerRepoRulesetsPostBodyType(TypedDict):
+    """ReposOwnerRepoRulesetsPostBody"""
 
-    name: NotRequired[str]
+    name: str
     target: NotRequired[Literal["branch", "tag", "push"]]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
     bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
     conditions: NotRequired[RepositoryRulesetConditionsType]
     rules: NotRequired[
@@ -154,12 +154,12 @@ class ReposOwnerRepoRulesetsRulesetIdPutBodyType(TypedDict):
     ]
 
 
-class ReposOwnerRepoRulesetsRulesetIdPutBodyTypeForResponse(TypedDict):
-    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
+class ReposOwnerRepoRulesetsPostBodyTypeForResponse(TypedDict):
+    """ReposOwnerRepoRulesetsPostBody"""
 
-    name: NotRequired[str]
+    name: str
     target: NotRequired[Literal["branch", "tag", "push"]]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
     bypass_actors: NotRequired[list[RepositoryRulesetBypassActorTypeForResponse]]
     conditions: NotRequired[RepositoryRulesetConditionsTypeForResponse]
     rules: NotRequired[
@@ -196,6 +196,6 @@ class ReposOwnerRepoRulesetsRulesetIdPutBodyTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "ReposOwnerRepoRulesetsRulesetIdPutBodyType",
-    "ReposOwnerRepoRulesetsRulesetIdPutBodyTypeForResponse",
+    "ReposOwnerRepoRulesetsPostBodyType",
+    "ReposOwnerRepoRulesetsPostBodyTypeForResponse",
 )

@@ -9,65 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal, Union
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import NotRequired, TypedDict
 
 
-class RepositoryCopilotCodeReviewSettingsType(TypedDict):
-    """Repository Copilot Code Review Settings
+class ContributorType(TypedDict):
+    """Contributor
 
-    The repository's Copilot code review settings. These settings tune reviews; they
-    do not enable Copilot code review.
+    Contributor
     """
 
-    review_effort: RepositoryCopilotCodeReviewSettingsPropReviewEffortType
-    available_review_efforts: list[str]
-    severity_filter: Literal["no_filter", "low", "low_and_medium"]
-    custom_instructions_enabled: bool
-    mcp_enabled: bool
+    login: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    avatar_url: NotRequired[str]
+    gravatar_id: NotRequired[Union[str, None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    organizations_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    events_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    type: str
+    site_admin: NotRequired[bool]
+    contributions: int
+    email: NotRequired[str]
+    name: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
-class RepositoryCopilotCodeReviewSettingsTypeForResponse(TypedDict):
-    """Repository Copilot Code Review Settings
+class ContributorTypeForResponse(TypedDict):
+    """Contributor
 
-    The repository's Copilot code review settings. These settings tune reviews; they
-    do not enable Copilot code review.
+    Contributor
     """
 
-    review_effort: RepositoryCopilotCodeReviewSettingsPropReviewEffortTypeForResponse
-    available_review_efforts: list[str]
-    severity_filter: Literal["no_filter", "low", "low_and_medium"]
-    custom_instructions_enabled: bool
-    mcp_enabled: bool
-
-
-class RepositoryCopilotCodeReviewSettingsPropReviewEffortType(TypedDict):
-    """RepositoryCopilotCodeReviewSettingsPropReviewEffort
-
-    The review effort for the repository. For more information, see [Review effort
-    level](https://docs.github.com/copilot/concepts/agent-capabilities/agent-
-    powered-workflows-and-operations/code-review#review-effort-level).
-    """
-
-    configured: Union[str, None]
-    effective: str
-
-
-class RepositoryCopilotCodeReviewSettingsPropReviewEffortTypeForResponse(TypedDict):
-    """RepositoryCopilotCodeReviewSettingsPropReviewEffort
-
-    The review effort for the repository. For more information, see [Review effort
-    level](https://docs.github.com/copilot/concepts/agent-capabilities/agent-
-    powered-workflows-and-operations/code-review#review-effort-level).
-    """
-
-    configured: Union[str, None]
-    effective: str
+    login: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    avatar_url: NotRequired[str]
+    gravatar_id: NotRequired[Union[str, None]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    organizations_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    events_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    type: str
+    site_admin: NotRequired[bool]
+    contributions: int
+    email: NotRequired[str]
+    name: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryCopilotCodeReviewSettingsPropReviewEffortType",
-    "RepositoryCopilotCodeReviewSettingsPropReviewEffortTypeForResponse",
-    "RepositoryCopilotCodeReviewSettingsType",
-    "RepositoryCopilotCodeReviewSettingsTypeForResponse",
+    "ContributorType",
+    "ContributorTypeForResponse",
 )

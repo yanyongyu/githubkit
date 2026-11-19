@@ -12,24 +12,28 @@ from __future__ import annotations
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200(GitHubModel):
-    """OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200"""
+class OrgsOrgInteractionLimitsPullsCreationCapPatchBody(GitHubModel):
+    """OrgsOrgInteractionLimitsPullsCreationCapPatchBody"""
 
     enabled: bool = Field(
         description="Whether the pull request creation cap is enabled"
     )
-    max_open_pull_requests: int = Field(
+    max_open_pull_requests: Missing[int] = Field(
         le=1000.0,
         ge=1.0,
+        default=UNSET,
         description="The maximum number of open pull requests a user can have at one time",
     )
-    include_drafts: bool = Field(
-        description="Whether draft pull requests count toward the pull request creation cap"
+    include_drafts: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether draft pull requests count toward the pull request creation cap",
     )
 
 
-model_rebuild(OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200)
+model_rebuild(OrgsOrgInteractionLimitsPullsCreationCapPatchBody)
 
-__all__ = ("OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200",)
+__all__ = ("OrgsOrgInteractionLimitsPullsCreationCapPatchBody",)

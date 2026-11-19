@@ -9,32 +9,127 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
 from typing import Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class IssuePropPullRequestType(TypedDict):
-    """IssuePropPullRequest"""
+class IssuePropStatusType(TypedDict):
+    """IssuePropStatus
 
-    merged_at: NotRequired[Union[_dt.datetime, None]]
-    diff_url: Union[str, None]
-    html_url: Union[str, None]
-    patch_url: Union[str, None]
-    url: Union[str, None]
+    The status of the issue, or `null` if it has none. Issue statuses are in preview
+    and only available to accounts enrolled in the preview.
+    """
+
+    id: int
+    name: str
+    category: str
 
 
-class IssuePropPullRequestTypeForResponse(TypedDict):
-    """IssuePropPullRequest"""
+class IssuePropStatusTypeForResponse(TypedDict):
+    """IssuePropStatus
 
-    merged_at: NotRequired[Union[str, None]]
-    diff_url: Union[str, None]
-    html_url: Union[str, None]
-    patch_url: Union[str, None]
-    url: Union[str, None]
+    The status of the issue, or `null` if it has none. Issue statuses are in preview
+    and only available to accounts enrolled in the preview.
+    """
+
+    id: int
+    name: str
+    category: str
+
+
+class IssuePropLabelsItemsOneof1Type(TypedDict):
+    """IssuePropLabelsItemsOneof1"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+    default: NotRequired[bool]
+    archived_by: NotRequired[Union[IssuePropLabelsItemsOneof1PropArchivedByType, None]]
+
+
+class IssuePropLabelsItemsOneof1TypeForResponse(TypedDict):
+    """IssuePropLabelsItemsOneof1"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+    default: NotRequired[bool]
+    archived_by: NotRequired[
+        Union[IssuePropLabelsItemsOneof1PropArchivedByTypeForResponse, None]
+    ]
+
+
+class IssuePropLabelsItemsOneof1PropArchivedByType(TypedDict):
+    """IssuePropLabelsItemsOneof1PropArchivedBy
+
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
+
+
+class IssuePropLabelsItemsOneof1PropArchivedByTypeForResponse(TypedDict):
+    """IssuePropLabelsItemsOneof1PropArchivedBy
+
+    The user who archived the label, or `null` if it has not been archived.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = (
-    "IssuePropPullRequestType",
-    "IssuePropPullRequestTypeForResponse",
+    "IssuePropLabelsItemsOneof1PropArchivedByType",
+    "IssuePropLabelsItemsOneof1PropArchivedByTypeForResponse",
+    "IssuePropLabelsItemsOneof1Type",
+    "IssuePropLabelsItemsOneof1TypeForResponse",
+    "IssuePropStatusType",
+    "IssuePropStatusTypeForResponse",
 )

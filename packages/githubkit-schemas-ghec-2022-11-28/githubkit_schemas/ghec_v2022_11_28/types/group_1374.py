@@ -13,52 +13,33 @@ from typing import Literal
 from typing_extensions import NotRequired, TypedDict
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200"""
+class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200"""
 
-    default_availability: NotRequired[
-        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType
-    ]
     models: list[
-        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsType
+        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200PropModelsItemsType
     ]
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200TypeForResponse(TypedDict):
-    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200"""
+class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200TypeForResponse(
+    TypedDict
+):
+    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200"""
 
-    default_availability: NotRequired[
-        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse
-    ]
     models: list[
-        EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse
+        EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200PropModelsItemsTypeForResponse
     ]
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType(
+class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200PropModelsItemsType(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailability"""
-
-    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
-
-
-class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailability"""
-
-    policy_state: Literal["enabled", "disabled", "delegate_to_organizations"]
-
-
-class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsType(
-    TypedDict
-):
-    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItems"""
+    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200PropModelsItems"""
 
     model_name: str
     display_name: str
-    policy_state: Literal[
+    policy_state: Literal["enabled", "disabled"]
+    enterprise_policy_state: Literal[
         "enabled",
         "disabled",
         "delegate_to_teams_and_apps",
@@ -66,16 +47,19 @@ class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsType
         "delegate_to_default",
         "unconfigured",
     ]
+    editable: bool
+    required_for_copilot_fusion_max: NotRequired[Literal[True]]
 
 
-class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse(
+class EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200PropModelsItemsTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItems"""
+    """EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200PropModelsItems"""
 
     model_name: str
     display_name: str
-    policy_state: Literal[
+    policy_state: Literal["enabled", "disabled"]
+    enterprise_policy_state: Literal[
         "enabled",
         "disabled",
         "delegate_to_teams_and_apps",
@@ -83,13 +67,13 @@ class EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsType
         "delegate_to_default",
         "unconfigured",
     ]
+    editable: bool
+    required_for_copilot_fusion_max: NotRequired[Literal[True]]
 
 
 __all__ = (
-    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityType",
-    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropDefaultAvailabilityTypeForResponse",
-    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsType",
-    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200PropModelsItemsTypeForResponse",
-    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200Type",
-    "EnterprisesEnterpriseCopilotModelPoliciesGetResponse200TypeForResponse",
+    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200PropModelsItemsType",
+    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200PropModelsItemsTypeForResponse",
+    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200Type",
+    "EnterprisesEnterpriseCopilotFusionModelPoliciesPatchResponse200TypeForResponse",
 )

@@ -9,124 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Annotated, Literal, Union
+from typing import Literal, Union
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-from githubkit.utils import UNSET
-
-from .group_0003 import SimpleUser
-from .group_0038 import DependabotAlertSecurityVulnerability
-from .group_0039 import DependabotAlertSecurityAdvisory
-from .group_0040 import DependabotAlertDismissalRequestSimple
-from .group_0401 import DependabotAlertPropDependency
 
 
-class DependabotAlert(GitHubModel):
-    """DependabotAlert
+class RepositoryCopilotCodeReviewSettings(GitHubModel):
+    """Repository Copilot Code Review Settings
 
-    A Dependabot alert.
+    The repository's Copilot code review settings. These settings tune reviews; they
+    do not enable Copilot code review.
     """
 
-    number: int = Field(description="The security alert number.")
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"] = Field(
-        description="The state of the Dependabot alert."
+    review_effort: RepositoryCopilotCodeReviewSettingsPropReviewEffort = Field(
+        description="The review effort for the repository. For more information, see [Review effort level](https://docs.github.com/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/code-review#review-effort-level)."
     )
-    dependency: DependabotAlertPropDependency = Field(
-        description="Details for the vulnerable dependency."
+    available_review_efforts: list[str] = Field(
+        description="The review efforts that can currently be set for this repository, in display order."
     )
-    security_advisory: DependabotAlertSecurityAdvisory = Field(
-        description="Details for the GitHub Security Advisory."
+    severity_filter: Literal["no_filter", "low", "low_and_medium"] = Field(
+        description="Which review comment severities Copilot code review leaves out. `no_filter` keeps every comment, `low` leaves out low-severity comments, and `low_and_medium` leaves out low- and medium-severity comments."
     )
-    security_vulnerability: DependabotAlertSecurityVulnerability = Field(
-        description="Details pertaining to one vulnerable version range for the advisory."
+    custom_instructions_enabled: bool = Field(
+        description="Whether reviews use the repository's custom instructions."
     )
-    url: str = Field(description="The REST API URL of the alert resource.")
-    html_url: str = Field(description="The GitHub URL of the alert resource.")
-    created_at: _dt.datetime = Field(
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    updated_at: _dt.datetime = Field(
-        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    dismissed_at: Union[_dt.datetime, None] = Field(
-        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    dismissed_by: Union[SimpleUser, None] = Field()
-    dismissed_reason: Union[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-        None,
-    ] = Field(description="The reason that the alert was dismissed.")
-    dismissed_comment: Union[Annotated[str, Field(max_length=280)], None] = Field(
-        description="An optional comment associated with the alert's dismissal."
-    )
-    fixed_at: Union[_dt.datetime, None] = Field(
-        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    auto_dismissed_at: Missing[Union[_dt.datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    dismissal_request: Missing[Union[DependabotAlertDismissalRequestSimple, None]] = (
-        Field(
-            default=UNSET,
-            title="Dependabot alert dismissal request",
-            description="Information about an active dismissal request for this Dependabot alert.",
-        )
-    )
-    assignees: Missing[list[SimpleUser]] = Field(
-        default=UNSET, description="The users assigned to this alert."
-    )
-    reachability: Missing[DependabotAlertPropReachability] = Field(
-        default=UNSET,
-        description="The reachability result for the vulnerability that triggered the alert, indicating whether a\nvulnerable function is reachable from the repository's own code.\n",
+    mcp_enabled: bool = Field(description="Whether reviews can use MCP servers.")
+    cross_repo_context_enabled: bool = Field(
+        description="Whether reviews can use public repository search."
     )
 
 
-class DependabotAlertPropReachability(GitHubModel):
-    """DependabotAlertPropReachability
+class RepositoryCopilotCodeReviewSettingsPropReviewEffort(GitHubModel):
+    """RepositoryCopilotCodeReviewSettingsPropReviewEffort
 
-    The reachability result for the vulnerability that triggered the alert,
-    indicating whether a
-    vulnerable function is reachable from the repository's own code.
+    The review effort for the repository. For more information, see [Review effort
+    level](https://docs.github.com/copilot/concepts/agent-capabilities/agent-
+    powered-workflows-and-operations/code-review#review-effort-level).
     """
 
-    verdict: Literal[
-        "reachable", "unreachable", "potentially_reachable", "unavailable", "disabled"
-    ] = Field(
-        description="The reachability verdict for the alert.\n\n- `reachable`: a path from the repository's code reaches a vulnerable function.\n- `unreachable`: no path from the repository's code reaches a vulnerable function.\n- `potentially_reachable`: reachability could not be determined with confidence; review manually.\n- `unavailable`: no verdict has been computed for the alert yet.\n- `disabled`: reachability analysis is not enabled for the repository.\n"
+    configured: Union[str, None] = Field(
+        description="The review effort stored for the repository. Null means the repository inherits the default, or has stored a value that is not currently available."
     )
-    reason: Missing[
-        Literal[
-            "unknown",
-            "unavailable_unsupported_ecosystem",
-            "unavailable_analysis_timed_out",
-            "potentially_reachable_invalid_manifest_path",
-            "potentially_reachable_missing_vulnerable_function_annotation",
-            "potentially_reachable_dependency_not_found",
-            "potentially_reachable_dependency_analysis_incomplete",
-            "potentially_reachable_repository_analysis_incomplete",
-            "potentially_reachable_call_found_outside_manifest_scope",
-            "potentially_reachable_unclassified_analysis_state",
-            "reachable_vulnerable_function_called",
-            "unreachable_vulnerable_function_not_called",
-            "potentially_reachable_unresolved_dynamic_call",
-        ]
-    ] = Field(
-        default=UNSET,
-        description="The reason for the reachability verdict. This field is omitted when reachability analysis is disabled or no result has been computed.",
+    effective: str = Field(
+        description="The review effort reviews use when the requester and the pull request do not choose one. When that effort is not currently available for the repository, this reports the effort reviews would use without it."
     )
 
 
-model_rebuild(DependabotAlert)
-model_rebuild(DependabotAlertPropReachability)
+model_rebuild(RepositoryCopilotCodeReviewSettings)
+model_rebuild(RepositoryCopilotCodeReviewSettingsPropReviewEffort)
 
 __all__ = (
-    "DependabotAlert",
-    "DependabotAlertPropReachability",
+    "RepositoryCopilotCodeReviewSettings",
+    "RepositoryCopilotCodeReviewSettingsPropReviewEffort",
 )

@@ -26,13 +26,12 @@ from .group_0147 import (
 )
 
 
-class OrgsOrgActionsPoliciesPolicyIdPutBody(GitHubModel):
-    """OrgsOrgActionsPoliciesPolicyIdPutBody"""
+class OrgsOrgActionsPoliciesPostBody(GitHubModel):
+    """OrgsOrgActionsPoliciesPostBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the policy.")
-    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
-        default=UNSET,
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
+    name: str = Field(description="The name of the policy.")
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
     )
     conditions: Missing[
         Union[
@@ -50,6 +49,6 @@ class OrgsOrgActionsPoliciesPolicyIdPutBody(GitHubModel):
     ] = Field(default=UNSET, description="An array of rules within the policy.")
 
 
-model_rebuild(OrgsOrgActionsPoliciesPolicyIdPutBody)
+model_rebuild(OrgsOrgActionsPoliciesPostBody)
 
-__all__ = ("OrgsOrgActionsPoliciesPolicyIdPutBody",)
+__all__ = ("OrgsOrgActionsPoliciesPostBody",)

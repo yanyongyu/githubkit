@@ -13,33 +13,33 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    state: NotRequired[Literal["open", "resolved"]]
+    state: Literal["open", "resolved"]
     resolution: NotRequired[
         Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
     ]
     resolution_comment: NotRequired[Union[str, None]]
-    assignee: Union[str, None]
+    assignee: NotRequired[Union[str, None]]
     validity: NotRequired[Union[Literal["active", "inactive"], None]]
 
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1TypeForResponse(
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse(
     TypedDict
 ):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1"""
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0"""
 
-    state: NotRequired[Literal["open", "resolved"]]
+    state: Literal["open", "resolved"]
     resolution: NotRequired[
         Union[Literal["false_positive", "wont_fix", "revoked", "used_in_tests"], None]
     ]
     resolution_comment: NotRequired[Union[str, None]]
-    assignee: Union[str, None]
+    assignee: NotRequired[Union[str, None]]
     validity: NotRequired[Union[Literal["active", "inactive"], None]]
 
 
 __all__ = (
-    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1Type",
-    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1TypeForResponse",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0Type",
+    "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0TypeForResponse",
 )

@@ -13,48 +13,48 @@ from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class UpdateCostCenterType(TypedDict):
-    """UpdateCostCenter"""
+class GetCostCenterType(TypedDict):
+    """GetCostCenter"""
 
     id: str
     name: str
     azure_subscription: NotRequired[Union[str, None]]
     state: NotRequired[Literal["active", "deleted"]]
-    resources: list[UpdateCostCenterPropResourcesItemsType]
+    resources: list[GetCostCenterPropResourcesItemsType]
+    has_next_page: NotRequired[bool]
     ai_credit_pool_enabled: NotRequired[bool]
-    ai_credit_pool_state: NotRequired[UpdateCostCenterPropAiCreditPoolStateType]
+    ai_credit_pool_state: NotRequired[GetCostCenterPropAiCreditPoolStateType]
 
 
-class UpdateCostCenterTypeForResponse(TypedDict):
-    """UpdateCostCenter"""
+class GetCostCenterTypeForResponse(TypedDict):
+    """GetCostCenter"""
 
     id: str
     name: str
     azure_subscription: NotRequired[Union[str, None]]
     state: NotRequired[Literal["active", "deleted"]]
-    resources: list[UpdateCostCenterPropResourcesItemsTypeForResponse]
+    resources: list[GetCostCenterPropResourcesItemsTypeForResponse]
+    has_next_page: NotRequired[bool]
     ai_credit_pool_enabled: NotRequired[bool]
-    ai_credit_pool_state: NotRequired[
-        UpdateCostCenterPropAiCreditPoolStateTypeForResponse
-    ]
+    ai_credit_pool_state: NotRequired[GetCostCenterPropAiCreditPoolStateTypeForResponse]
 
 
-class UpdateCostCenterPropResourcesItemsType(TypedDict):
-    """UpdateCostCenterPropResourcesItems"""
+class GetCostCenterPropResourcesItemsType(TypedDict):
+    """GetCostCenterPropResourcesItems"""
 
     type: str
     name: str
 
 
-class UpdateCostCenterPropResourcesItemsTypeForResponse(TypedDict):
-    """UpdateCostCenterPropResourcesItems"""
+class GetCostCenterPropResourcesItemsTypeForResponse(TypedDict):
+    """GetCostCenterPropResourcesItems"""
 
     type: str
     name: str
 
 
-class UpdateCostCenterPropAiCreditPoolStateType(TypedDict):
-    """UpdateCostCenterPropAiCreditPoolState
+class GetCostCenterPropAiCreditPoolStateType(TypedDict):
+    """GetCostCenterPropAiCreditPoolState
 
     Read-only cap-budget projection for the cost center. Only present when the cost
     center draws from the AI credit pool.
@@ -64,8 +64,8 @@ class UpdateCostCenterPropAiCreditPoolStateType(TypedDict):
     current_amount: NotRequired[Union[float, None]]
 
 
-class UpdateCostCenterPropAiCreditPoolStateTypeForResponse(TypedDict):
-    """UpdateCostCenterPropAiCreditPoolState
+class GetCostCenterPropAiCreditPoolStateTypeForResponse(TypedDict):
+    """GetCostCenterPropAiCreditPoolState
 
     Read-only cap-budget projection for the cost center. Only present when the cost
     center draws from the AI credit pool.
@@ -76,10 +76,10 @@ class UpdateCostCenterPropAiCreditPoolStateTypeForResponse(TypedDict):
 
 
 __all__ = (
-    "UpdateCostCenterPropAiCreditPoolStateType",
-    "UpdateCostCenterPropAiCreditPoolStateTypeForResponse",
-    "UpdateCostCenterPropResourcesItemsType",
-    "UpdateCostCenterPropResourcesItemsTypeForResponse",
-    "UpdateCostCenterType",
-    "UpdateCostCenterTypeForResponse",
+    "GetCostCenterPropAiCreditPoolStateType",
+    "GetCostCenterPropAiCreditPoolStateTypeForResponse",
+    "GetCostCenterPropResourcesItemsType",
+    "GetCostCenterPropResourcesItemsTypeForResponse",
+    "GetCostCenterType",
+    "GetCostCenterTypeForResponse",
 )

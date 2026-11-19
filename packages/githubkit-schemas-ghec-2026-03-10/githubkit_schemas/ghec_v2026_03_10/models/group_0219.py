@@ -9,48 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
+from .group_0003 import SimpleUser
 
-class PublicMonitoringSecretAuthor(GitHubModel):
-    """PublicMonitoringSecretAuthor
 
-    Delivered public details for the user attributed as the secret author.
+class BaseGist(GitHubModel):
+    """Base Gist
+
+    Base Gist
     """
 
-    login: str = Field()
-    avatar_url: Missing[Union[str, None]] = Field(default=UNSET)
-    html_url: Missing[Union[str, None]] = Field(default=UNSET)
+    url: str = Field()
+    forks_url: str = Field()
+    commits_url: str = Field()
+    id: str = Field()
+    node_id: str = Field()
+    git_pull_url: str = Field()
+    git_push_url: str = Field()
+    html_url: str = Field()
+    files: BaseGistPropFiles = Field()
+    public: bool = Field()
+    created_at: _dt.datetime = Field()
+    updated_at: _dt.datetime = Field()
+    description: Union[str, None] = Field()
+    comments: int = Field()
+    comments_enabled: Missing[bool] = Field(default=UNSET)
+    comments_url: str = Field()
+    owner: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    truncated: Missing[bool] = Field(default=UNSET)
 
 
-class PublicMonitoringAlertLocation(GitHubModel):
-    """PublicMonitoringAlertLocation
-
-    Delivered source location details for a public monitoring alert.
-    """
-
-    path: Missing[str] = Field(default=UNSET)
-    start_line: Missing[int] = Field(default=UNSET)
-    end_line: Missing[int] = Field(default=UNSET)
-    start_column: Missing[int] = Field(default=UNSET)
-    end_column: Missing[int] = Field(default=UNSET)
-    blob_sha: Missing[str] = Field(default=UNSET)
-    commit_sha: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    content_number: Missing[int] = Field(default=UNSET)
-    content_id: Missing[int] = Field(default=UNSET)
+class BaseGistPropFiles(ExtraGitHubModel):
+    """BaseGistPropFiles"""
 
 
-model_rebuild(PublicMonitoringSecretAuthor)
-model_rebuild(PublicMonitoringAlertLocation)
+model_rebuild(BaseGist)
+model_rebuild(BaseGistPropFiles)
 
 __all__ = (
-    "PublicMonitoringAlertLocation",
-    "PublicMonitoringSecretAuthor",
+    "BaseGist",
+    "BaseGistPropFiles",
 )

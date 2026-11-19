@@ -9,32 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal, Union
 from typing_extensions import NotRequired, TypedDict
 
 
-class OrgsOrgDependabotRepositoryAccessPatchBodyType(TypedDict):
-    """OrgsOrgDependabotRepositoryAccessPatchBody
+class OrgsOrgCopilotPoliciesCodeReviewPutResponse409Type(TypedDict):
+    """OrgsOrgCopilotPoliciesCodeReviewPutResponse409"""
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    message: str
+    documentation_url: NotRequired[str]
+    status: NotRequired[str]
+    code: Literal["POLICY_MANAGED_BY_ENTERPRISE"]
+    policy: OrganizationCopilotCodeReviewPolicyType
+
+
+class OrgsOrgCopilotPoliciesCodeReviewPutResponse409TypeForResponse(TypedDict):
+    """OrgsOrgCopilotPoliciesCodeReviewPutResponse409"""
+
+    message: str
+    documentation_url: NotRequired[str]
+    status: NotRequired[str]
+    code: Literal["POLICY_MANAGED_BY_ENTERPRISE"]
+    policy: OrganizationCopilotCodeReviewPolicyTypeForResponse
+
+
+class OrganizationCopilotCodeReviewPolicyType(TypedDict):
+    """Organization Copilot Code Review Policy
+
+    The organization's configured and effective Copilot code review policy.
     """
 
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    configured_state: Union[Literal["enabled", "disabled"], None]
+    effective_state: Literal["enabled", "disabled"]
+    editable: bool
+    managed_by: Literal["enterprise", "organization"]
 
 
-class OrgsOrgDependabotRepositoryAccessPatchBodyTypeForResponse(TypedDict):
-    """OrgsOrgDependabotRepositoryAccessPatchBody
+class OrganizationCopilotCodeReviewPolicyTypeForResponse(TypedDict):
+    """Organization Copilot Code Review Policy
 
-    Examples:
-        {'repository_ids_to_add': [123, 456], 'repository_ids_to_remove': [789]}
+    The organization's configured and effective Copilot code review policy.
     """
 
-    repository_ids_to_add: NotRequired[list[int]]
-    repository_ids_to_remove: NotRequired[list[int]]
+    configured_state: Union[Literal["enabled", "disabled"], None]
+    effective_state: Literal["enabled", "disabled"]
+    editable: bool
+    managed_by: Literal["enterprise", "organization"]
 
 
 __all__ = (
-    "OrgsOrgDependabotRepositoryAccessPatchBodyType",
-    "OrgsOrgDependabotRepositoryAccessPatchBodyTypeForResponse",
+    "OrganizationCopilotCodeReviewPolicyType",
+    "OrganizationCopilotCodeReviewPolicyTypeForResponse",
+    "OrgsOrgCopilotPoliciesCodeReviewPutResponse409Type",
+    "OrgsOrgCopilotPoliciesCodeReviewPutResponse409TypeForResponse",
 )

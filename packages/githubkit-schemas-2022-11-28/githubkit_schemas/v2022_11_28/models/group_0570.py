@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
 from typing import Literal, Union
 
 from pydantic import Field
@@ -18,43 +19,69 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class UserCreateIssueField(GitHubModel):
-    """UserCreateIssueField"""
+class UserIssueField(GitHubModel):
+    """User Issue Field
 
-    name: str = Field(description="Name of the issue field.")
+    A custom attribute defined by a personal account for attaching structured data
+    to issues.
+    """
+
+    id: int = Field(description="The unique identifier of the issue field.")
+    node_id: str = Field(description="The node identifier of the issue field.")
+    name: str = Field(description="The name of the issue field.")
     description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the issue field."
+        default=UNSET, description="The description of the issue field."
     )
     data_type: Literal["text", "date", "single_select", "multi_select", "number"] = (
         Field(description="The data type of the issue field.")
     )
     visibility: Missing[Literal["restricted", "all"]] = Field(
         default=UNSET,
-        description="The visibility of the issue field. Can be `restricted` (visible only to the owner and to collaborators on the repository the field is read through) or `all` (visible to all users who can see issues). Defaults to `restricted`.",
+        description="The visibility of the issue field. Can be `restricted` (visible only to the owner and to collaborators on the repository the field is read through) or `all` (visible to all users who can see issues).",
     )
-    options: Missing[Union[list[UserCreateIssueFieldPropOptionsItems], None]] = Field(
+    options: Missing[Union[list[UserIssueFieldPropOptionsItems], None]] = Field(
         default=UNSET,
-        description="Options for select fields. Required when data_type is 'single_select' or 'multi_select'.",
+        description="Available options for single select and multi select fields.",
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the issue field was created."
+    )
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the issue field was updated."
     )
 
 
-class UserCreateIssueFieldPropOptionsItems(GitHubModel):
-    """UserCreateIssueFieldPropOptionsItems"""
+class UserIssueFieldPropOptionsItems(GitHubModel):
+    """UserIssueFieldPropOptionsItems"""
 
-    name: str = Field(description="Name of the option.")
+    id: int = Field(description="The unique identifier of the option.")
+    name: str = Field(description="The name of the option.")
     description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the option."
+        default=UNSET, description="The description of the option."
     )
-    color: Literal[
-        "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
-    ] = Field(description="Color for the option.")
-    priority: int = Field(description="Priority of the option for ordering.")
+    color: Missing[
+        Union[
+            Literal[
+                "gray", "blue", "green", "yellow", "orange", "red", "pink", "purple"
+            ],
+            None,
+        ]
+    ] = Field(default=UNSET, description="The color of the option.")
+    priority: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The priority of the option for ordering."
+    )
+    created_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the option was created."
+    )
+    updated_at: Missing[_dt.datetime] = Field(
+        default=UNSET, description="The time the option was last updated."
+    )
 
 
-model_rebuild(UserCreateIssueField)
-model_rebuild(UserCreateIssueFieldPropOptionsItems)
+model_rebuild(UserIssueField)
+model_rebuild(UserIssueFieldPropOptionsItems)
 
 __all__ = (
-    "UserCreateIssueField",
-    "UserCreateIssueFieldPropOptionsItems",
+    "UserIssueField",
+    "UserIssueFieldPropOptionsItems",
 )

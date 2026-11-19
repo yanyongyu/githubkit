@@ -18,22 +18,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningAiScanEnablementUpdate(GitHubModel):
-    """CodeScanningAiScanEnablementUpdate
+class CodeScanningAiScanEnablement(GitHubModel):
+    """CodeScanningAiScanEnablement
 
-    AI Scan enablement update for a repository.
+    AI Scan enablement for a repository.
     """
 
-    pr_scan: Missing[Literal["enabled", "disabled"]] = Field(
-        default=UNSET,
-        description="Whether to enable or disable AI Scan on pull requests for the repository.",
+    pr_scan: Literal["enabled", "disabled"] = Field(
+        description="Whether AI Scan on pull requests is enabled for the repository."
     )
     repository_scan: Missing[Literal["enabled", "disabled"]] = Field(
         default=UNSET,
-        description="Whether to enable or disable the full repository AI Scan for the repository.",
+        description="Whether the full repository AI Scan is enabled for the repository.",
     )
 
 
-model_rebuild(CodeScanningAiScanEnablementUpdate)
+model_rebuild(CodeScanningAiScanEnablement)
 
-__all__ = ("CodeScanningAiScanEnablementUpdate",)
+__all__ = ("CodeScanningAiScanEnablement",)

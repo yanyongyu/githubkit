@@ -9,29 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
-from .group_0212 import (
-    SecretScanningCustomPatternType,
-    SecretScanningCustomPatternTypeForResponse,
+from .group_0213 import (
+    SecretScanningCustomPatternToCreateType,
+    SecretScanningCustomPatternToCreateTypeForResponse,
 )
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201Type(TypedDict):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201"""
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostBody"""
 
-    created_patterns: NotRequired[list[SecretScanningCustomPatternType]]
+    patterns: list[SecretScanningCustomPatternToCreateType]
 
 
-class EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201TypeForResponse(
+class EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyTypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201"""
+    """EnterprisesEnterpriseSecretScanningCustomPatternsPostBody"""
 
-    created_patterns: NotRequired[list[SecretScanningCustomPatternTypeForResponse]]
+    patterns: list[SecretScanningCustomPatternToCreateTypeForResponse]
 
 
 __all__ = (
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201Type",
-    "EnterprisesEnterpriseSecretScanningCustomPatternsPostResponse201TypeForResponse",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyType",
+    "EnterprisesEnterpriseSecretScanningCustomPatternsPostBodyTypeForResponse",
 )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal, Union
 
 from pydantic import Field
 
@@ -17,100 +17,110 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
-from .group_0001 import CvssSeverities
+from .group_0003 import SimpleUser
+from .group_0207 import (
+    SecretScanningLocationCommit,
+    SecretScanningLocationDiscussionComment,
+    SecretScanningLocationDiscussionTitle,
+    SecretScanningLocationIssueBody,
+    SecretScanningLocationPullRequestBody,
+    SecretScanningLocationPullRequestReview,
+    SecretScanningLocationWikiCommit,
+)
+from .group_0208 import (
+    SecretScanningLocationIssueComment,
+    SecretScanningLocationIssueTitle,
+    SecretScanningLocationPullRequestReviewComment,
+    SecretScanningLocationPullRequestTitle,
+)
+from .group_0209 import (
+    SecretScanningLocationDiscussionBody,
+    SecretScanningLocationPullRequestComment,
+)
+from .group_0220 import PublicMonitoringAlertLocation, PublicMonitoringSecretAuthor
 
 
-class WebhooksSecurityAdvisory(GitHubModel):
-    """WebhooksSecurityAdvisory
+class PublicMonitoringAlertWebhookPropAttribution(GitHubModel):
+    """PublicMonitoringAlertWebhookPropAttribution
 
-    The details of the security advisory, including summary, description, and
-    severity.
+    Attribution information for the alert.
     """
 
-    cvss: WebhooksSecurityAdvisoryPropCvss = Field()
-    cvss_severities: Missing[Union[CvssSeverities, None]] = Field(default=UNSET)
-    cwes: list[WebhooksSecurityAdvisoryPropCwesItems] = Field()
-    description: str = Field()
-    ghsa_id: str = Field()
-    identifiers: list[WebhooksSecurityAdvisoryPropIdentifiersItems] = Field()
-    published_at: str = Field()
-    references: list[WebhooksSecurityAdvisoryPropReferencesItems] = Field()
-    severity: str = Field()
-    summary: str = Field()
-    updated_at: str = Field()
-    vulnerabilities: list[WebhooksSecurityAdvisoryPropVulnerabilitiesItems] = Field()
-    withdrawn_at: Union[str, None] = Field()
+    secret_author: Missing[Union[SimpleUser, PublicMonitoringSecretAuthor, None]] = (
+        Field(default=UNSET)
+    )
+    committer_email: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The email address associated with the secret's author.",
+    )
+    commit: Missing[
+        Union[SecretScanningLocationCommit, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    wiki_commit: Missing[
+        Union[SecretScanningLocationWikiCommit, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    issue_title: Missing[
+        Union[SecretScanningLocationIssueTitle, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    issue_body: Missing[
+        Union[SecretScanningLocationIssueBody, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    issue_comment: Missing[
+        Union[SecretScanningLocationIssueComment, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    pull_request_title: Missing[
+        Union[SecretScanningLocationPullRequestTitle, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    pull_request_body: Missing[
+        Union[SecretScanningLocationPullRequestBody, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    pull_request_comment: Missing[
+        Union[SecretScanningLocationPullRequestComment, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    pull_request_review_comment: Missing[
+        Union[
+            SecretScanningLocationPullRequestReviewComment,
+            PublicMonitoringAlertLocation,
+        ]
+    ] = Field(default=UNSET)
+    pull_request_review: Missing[
+        Union[SecretScanningLocationPullRequestReview, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    pull_request_timeline_comment: Missing[PublicMonitoringAlertLocation] = Field(
+        default=UNSET,
+        description="Delivered source location details for a public monitoring alert.",
+    )
+    discussion_title: Missing[
+        Union[SecretScanningLocationDiscussionTitle, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    discussion_body: Missing[
+        Union[SecretScanningLocationDiscussionBody, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    discussion_comment: Missing[
+        Union[SecretScanningLocationDiscussionComment, PublicMonitoringAlertLocation]
+    ] = Field(default=UNSET)
+    commit_metadata: Missing[PublicMonitoringAlertLocation] = Field(
+        default=UNSET,
+        description="Delivered source location details for a public monitoring alert.",
+    )
+    commit_comment: Missing[PublicMonitoringAlertLocation] = Field(
+        default=UNSET,
+        description="Delivered source location details for a public monitoring alert.",
+    )
+    actions_log: Missing[PublicMonitoringAlertLocation] = Field(
+        default=UNSET,
+        description="Delivered source location details for a public monitoring alert.",
+    )
+    gist_blob: Missing[PublicMonitoringAlertLocation] = Field(
+        default=UNSET,
+        description="Delivered source location details for a public monitoring alert.",
+    )
+    method: Missing[Literal["member_activity", "verified_domain"]] = Field(
+        default=UNSET,
+        description="The method used to attribute the alert to the enterprise.",
+    )
 
 
-class WebhooksSecurityAdvisoryPropCvss(GitHubModel):
-    """WebhooksSecurityAdvisoryPropCvss"""
+model_rebuild(PublicMonitoringAlertWebhookPropAttribution)
 
-    score: float = Field()
-    vector_string: Union[str, None] = Field()
-
-
-class WebhooksSecurityAdvisoryPropCwesItems(GitHubModel):
-    """WebhooksSecurityAdvisoryPropCwesItems"""
-
-    cwe_id: str = Field()
-    name: str = Field()
-
-
-class WebhooksSecurityAdvisoryPropIdentifiersItems(GitHubModel):
-    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
-
-    type: str = Field()
-    value: str = Field()
-
-
-class WebhooksSecurityAdvisoryPropReferencesItems(GitHubModel):
-    """WebhooksSecurityAdvisoryPropReferencesItems"""
-
-    url: str = Field()
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItems(GitHubModel):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
-
-    first_patched_version: Union[
-        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion, None
-    ] = Field()
-    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage = Field()
-    severity: str = Field()
-    vulnerable_version_range: str = Field()
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion(
-    GitHubModel
-):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
-
-    identifier: str = Field()
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage(GitHubModel):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
-
-    ecosystem: str = Field()
-    name: str = Field()
-
-
-model_rebuild(WebhooksSecurityAdvisory)
-model_rebuild(WebhooksSecurityAdvisoryPropCvss)
-model_rebuild(WebhooksSecurityAdvisoryPropCwesItems)
-model_rebuild(WebhooksSecurityAdvisoryPropIdentifiersItems)
-model_rebuild(WebhooksSecurityAdvisoryPropReferencesItems)
-model_rebuild(WebhooksSecurityAdvisoryPropVulnerabilitiesItems)
-model_rebuild(WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion)
-model_rebuild(WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage)
-
-__all__ = (
-    "WebhooksSecurityAdvisory",
-    "WebhooksSecurityAdvisoryPropCvss",
-    "WebhooksSecurityAdvisoryPropCwesItems",
-    "WebhooksSecurityAdvisoryPropIdentifiersItems",
-    "WebhooksSecurityAdvisoryPropReferencesItems",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItems",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage",
-)
+__all__ = ("PublicMonitoringAlertWebhookPropAttribution",)

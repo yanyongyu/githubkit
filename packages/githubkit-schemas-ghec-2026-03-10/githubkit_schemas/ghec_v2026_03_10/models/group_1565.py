@@ -16,24 +16,32 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotFeaturePoliciesPatchBody(GitHubModel):
-    """OrgsOrgCopilotFeaturePoliciesPatchBody"""
+class OrgsOrgCopilotFeaturePoliciesGetResponse200(GitHubModel):
+    """OrgsOrgCopilotFeaturePoliciesGetResponse200"""
 
-    default_availability: OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability = Field()
-
-
-class OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability(GitHubModel):
-    """OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability"""
-
-    policy_state: Literal["enabled", "disabled"] = Field(
-        description="The organization default policy applied to newly released Copilot features and clients."
+    default_availability: OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability = Field(
+        description="The default policy applied to newly released Copilot features and clients."
     )
 
 
-model_rebuild(OrgsOrgCopilotFeaturePoliciesPatchBody)
-model_rebuild(OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability)
+class OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability(GitHubModel):
+    """OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability
+
+    The default policy applied to newly released Copilot features and clients.
+    """
+
+    policy_state: Literal["enabled", "disabled"] = Field(
+        description="The effective default availability. The enterprise default is used when the\nenterprise has set one. Otherwise, the organization's own default is used."
+    )
+    editable: bool = Field(
+        description="Whether the organization can update its default availability."
+    )
+
+
+model_rebuild(OrgsOrgCopilotFeaturePoliciesGetResponse200)
+model_rebuild(OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability)
 
 __all__ = (
-    "OrgsOrgCopilotFeaturePoliciesPatchBody",
-    "OrgsOrgCopilotFeaturePoliciesPatchBodyPropDefaultAvailability",
+    "OrgsOrgCopilotFeaturePoliciesGetResponse200",
+    "OrgsOrgCopilotFeaturePoliciesGetResponse200PropDefaultAvailability",
 )

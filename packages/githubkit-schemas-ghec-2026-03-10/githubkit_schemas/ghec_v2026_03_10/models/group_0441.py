@@ -16,16 +16,21 @@ from githubkit.typing import Missing
 from githubkit.utils import UNSET
 
 
-class CodeScanningAutofixCommitsResponse(GitHubModel):
-    """CodeScanningAutofixCommitsResponse"""
+class CodeScanningAutofixCommits(GitHubModel):
+    """CodeScanningAutofixCommits
+
+    Commit an autofix for a code scanning alert
+    """
 
     target_ref: Missing[str] = Field(
         default=UNSET,
-        description='The Git reference of target branch for the commit. For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.',
+        description='The Git reference of target branch for the commit. Branch needs to already exist.  For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.',
     )
-    sha: Missing[str] = Field(default=UNSET, description="SHA of commit with autofix.")
+    message: Missing[str] = Field(
+        default=UNSET, description="Commit message to be used."
+    )
 
 
-model_rebuild(CodeScanningAutofixCommitsResponse)
+model_rebuild(CodeScanningAutofixCommits)
 
-__all__ = ("CodeScanningAutofixCommitsResponse",)
+__all__ = ("CodeScanningAutofixCommits",)

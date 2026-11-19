@@ -10,22 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
-class ActionsWorkflowAccessToRepositoryType(TypedDict):
-    """ActionsWorkflowAccessToRepository"""
+class ActionsRepositoryPermissionsType(TypedDict):
+    """ActionsRepositoryPermissions"""
 
-    access_level: Literal["none", "user", "organization"]
+    enabled: bool
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    selected_actions_url: NotRequired[str]
+    sha_pinning_required: NotRequired[bool]
 
 
-class ActionsWorkflowAccessToRepositoryTypeForResponse(TypedDict):
-    """ActionsWorkflowAccessToRepository"""
+class ActionsRepositoryPermissionsTypeForResponse(TypedDict):
+    """ActionsRepositoryPermissions"""
 
-    access_level: Literal["none", "user", "organization"]
+    enabled: bool
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    selected_actions_url: NotRequired[str]
+    sha_pinning_required: NotRequired[bool]
 
 
 __all__ = (
-    "ActionsWorkflowAccessToRepositoryType",
-    "ActionsWorkflowAccessToRepositoryTypeForResponse",
+    "ActionsRepositoryPermissionsType",
+    "ActionsRepositoryPermissionsTypeForResponse",
 )

@@ -9,24 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-class RepositoryHashAlgorithm(GitHubModel):
-    """Repository hash algorithm
+class GitTree(GitHubModel):
+    """Git Tree
 
-    Repository hash algorithm
+    The hierarchy between files in a Git repository.
     """
 
-    hash_algorithm: Literal["sha1", "sha256"] = Field(
-        description="The Git hash algorithm used by this repository."
+    sha: str = Field()
+    url: Missing[str] = Field(default=UNSET)
+    truncated: bool = Field()
+    tree: list[GitTreePropTreeItems] = Field(
+        description="Objects specifying a tree structure"
     )
 
 
-model_rebuild(RepositoryHashAlgorithm)
+class GitTreePropTreeItems(GitHubModel):
+    """GitTreePropTreeItems"""
 
-__all__ = ("RepositoryHashAlgorithm",)
+    path: str = Field()
+    mode: str = Field()
+    type: str = Field()
+    sha: str = Field()
+    size: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(GitTree)
+model_rebuild(GitTreePropTreeItems)
+
+__all__ = (
+    "GitTree",
+    "GitTreePropTreeItems",
+)

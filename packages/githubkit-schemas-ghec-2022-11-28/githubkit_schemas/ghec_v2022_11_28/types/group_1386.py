@@ -9,24 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyType(TypedDict):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody"""
+class EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202Type(TypedDict):
+    """EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202"""
 
-    revoke_credentials: NotRequired[bool]
+    message: str
 
 
-class EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyTypeForResponse(
+class EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202TypeForResponse(
     TypedDict
 ):
-    """EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBody"""
+    """EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202"""
 
-    revoke_credentials: NotRequired[bool]
+    message: str
 
 
 __all__ = (
-    "EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyType",
-    "EnterprisesEnterpriseCredentialAuthorizationsRevokeAllPostBodyTypeForResponse",
+    "EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202Type",
+    "EnterprisesEnterpriseCredentialAuthorizationsDeleteResponse202TypeForResponse",
 )

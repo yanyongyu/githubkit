@@ -9,39 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-import datetime as _dt
-from typing import Literal, Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
-from .group_0032 import SimpleRepository
 
+class CodeScanningAiScanEnablementUpdate(GitHubModel):
+    """CodeScanningAiScanEnablementUpdate
 
-class PullRequestsOnAlerts(GitHubModel):
-    """Pull Requests on Alerts
-
-    A pull request linked to a code scanning alert.
+    AI Scan enablement update for a repository.
     """
 
-    number: int = Field(description="The number of the linked pull request.")
-    id: int = Field(description="The ID of the linked pull request.")
-    repository: SimpleRepository = Field(
-        title="Simple Repository", description="A GitHub repository."
+    pr_scan: Missing[Literal["enabled", "disabled"]] = Field(
+        default=UNSET,
+        description="Whether to enable or disable AI Scan on pull requests for the repository.",
     )
-    title: str = Field(description="The title of the linked pull request.")
-    state: Literal["open", "closed", "merged"] = Field(
-        description="The state of the referenced pull request."
+    repository_scan: Missing[Literal["enabled", "disabled"]] = Field(
+        default=UNSET,
+        description="Whether to enable or disable the full repository AI Scan for the repository.",
     )
-    merged_at: Union[_dt.datetime, None] = Field(
-        description="The time the linked pull request was merged. Null if it has not been merged."
-    )
-    html_url: str = Field(description="The URL of the linked pull request on GitHub.")
-    url: str = Field(description="The REST API URL for the linked pull request.")
-    draft: bool = Field(description="Whether the linked pull request is a draft.")
 
 
-model_rebuild(PullRequestsOnAlerts)
+model_rebuild(CodeScanningAiScanEnablementUpdate)
 
-__all__ = ("PullRequestsOnAlerts",)
+__all__ = ("CodeScanningAiScanEnablementUpdate",)

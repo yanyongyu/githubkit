@@ -13,23 +13,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0141 import CustomPropertyValue
 
+class ExternalProperty(GitHubModel):
+    """External Property
 
-class OrgRepoCustomPropertyValues(GitHubModel):
-    """Organization Repository Custom Property Values
-
-    List of custom property values for a repository
+    External custom property defined for a GitHub App installation
     """
 
-    repository_id: int = Field()
-    repository_name: str = Field()
-    repository_full_name: str = Field()
-    properties: list[CustomPropertyValue] = Field(
-        description="List of custom property names and associated values"
-    )
+    property_name: str = Field(description="The name of the external property")
 
 
-model_rebuild(OrgRepoCustomPropertyValues)
+model_rebuild(ExternalProperty)
 
-__all__ = ("OrgRepoCustomPropertyValues",)
+__all__ = ("ExternalProperty",)

@@ -9,23 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+import datetime as _dt
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0255 import PullRequestMinimalPropBase, PullRequestMinimalPropHead
-
-
-class PullRequestMinimal(GitHubModel):
-    """Pull Request Minimal"""
-
-    id: int = Field()
-    number: int = Field()
-    url: str = Field()
-    head: PullRequestMinimalPropHead = Field()
-    base: PullRequestMinimalPropBase = Field()
+from githubkit.typing import Missing
+from githubkit.utils import UNSET
 
 
-model_rebuild(PullRequestMinimal)
+class IssuePropPullRequest(GitHubModel):
+    """IssuePropPullRequest"""
 
-__all__ = ("PullRequestMinimal",)
+    merged_at: Missing[Union[_dt.datetime, None]] = Field(default=UNSET)
+    diff_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    patch_url: Union[str, None] = Field()
+    url: Union[str, None] = Field()
+
+
+model_rebuild(IssuePropPullRequest)
+
+__all__ = ("IssuePropPullRequest",)
