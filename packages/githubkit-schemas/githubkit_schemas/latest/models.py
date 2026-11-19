@@ -14,13242 +14,4556 @@ from githubkit.module_hooks.lazy_module import is_lazy_disabled
 if TYPE_CHECKING or is_lazy_disabled():
     from githubkit_schemas.v2026_03_10.models import (
         ActionsArtifactAndLogRetention as ActionsArtifactAndLogRetention,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsArtifactAndLogRetentionResponse as ActionsArtifactAndLogRetentionResponse,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsCacheList as ActionsCacheList,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsCacheListPropActionsCachesItems as ActionsCacheListPropActionsCachesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsCacheRetentionLimitForEnterprise as ActionsCacheRetentionLimitForEnterprise,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsCacheRetentionLimitForOrganization as ActionsCacheRetentionLimitForOrganization,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsCacheRetentionLimitForRepository as ActionsCacheRetentionLimitForRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsCacheStorageLimitForEnterprise as ActionsCacheStorageLimitForEnterprise,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsCacheStorageLimitForOrganization as ActionsCacheStorageLimitForOrganization,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsCacheStorageLimitForRepository as ActionsCacheStorageLimitForRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsCacheUsageByRepository as ActionsCacheUsageByRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsCacheUsageOrgEnterprise as ActionsCacheUsageOrgEnterprise,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsForkPrContributorApproval as ActionsForkPrContributorApproval,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsForkPrWorkflowsPrivateRepos as ActionsForkPrWorkflowsPrivateRepos,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsForkPrWorkflowsPrivateReposRequest as ActionsForkPrWorkflowsPrivateReposRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsGetDefaultWorkflowPermissions as ActionsGetDefaultWorkflowPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsHostedRunner as ActionsHostedRunner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsHostedRunnerCuratedImage as ActionsHostedRunnerCuratedImage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsHostedRunnerCustomImage as ActionsHostedRunnerCustomImage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsHostedRunnerCustomImageVersion as ActionsHostedRunnerCustomImageVersion,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsHostedRunnerLimits as ActionsHostedRunnerLimits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsHostedRunnerLimitsPropPublicIps as ActionsHostedRunnerLimitsPropPublicIps,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsHostedRunnerMachineSpec as ActionsHostedRunnerMachineSpec,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsHostedRunnerPoolImage as ActionsHostedRunnerPoolImage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsOrganizationPermissions as ActionsOrganizationPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import ActionsPolicy as ActionsPolicy
-    from githubkit_schemas.v2026_03_10.models import (
+        ActionsPolicy as ActionsPolicy,
         ActionsPolicyEnterpriseConditionsOneof0 as ActionsPolicyEnterpriseConditionsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsPolicyEnterpriseConditionsOneof1 as ActionsPolicyEnterpriseConditionsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsPolicyEnterpriseConditionsOneof2 as ActionsPolicyEnterpriseConditionsOneof2,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsPolicyEnterpriseConditionsOneof3 as ActionsPolicyEnterpriseConditionsOneof3,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsPolicyEnterpriseConditionsOneof4 as ActionsPolicyEnterpriseConditionsOneof4,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsPolicyEnterpriseConditionsOneof5 as ActionsPolicyEnterpriseConditionsOneof5,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsPolicyOrgConditionsOneof0 as ActionsPolicyOrgConditionsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsPolicyOrgConditionsOneof1 as ActionsPolicyOrgConditionsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsPolicyOrgConditionsOneof2 as ActionsPolicyOrgConditionsOneof2,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsPolicyPropLinks as ActionsPolicyPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsPolicyPropLinksPropHtml as ActionsPolicyPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsPolicyPropLinksPropSelf as ActionsPolicyPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsPolicyRepoConditionsOneof0 as ActionsPolicyRepoConditionsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsPolicyRepoConditionsOneof1 as ActionsPolicyRepoConditionsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsPolicyWorkflowPathCondition as ActionsPolicyWorkflowPathCondition,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsPolicyWorkflowPathConditionPropWorkflowPath as ActionsPolicyWorkflowPathConditionPropWorkflowPath,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsPublicKey as ActionsPublicKey,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsRepositoryPermissions as ActionsRepositoryPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsRuleParamsActor as ActionsRuleParamsActor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsRuleRestrictActionEvents as ActionsRuleRestrictActionEvents,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsRuleRestrictActionEventsPropParameters as ActionsRuleRestrictActionEventsPropParameters,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsRuleRestrictActionsActors as ActionsRuleRestrictActionsActors,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ActionsRuleRestrictActionsActorsPropParameters as ActionsRuleRestrictActionsActorsPropParameters,
-    )
-    from githubkit_schemas.v2026_03_10.models import ActionsSecret as ActionsSecret
-    from githubkit_schemas.v2026_03_10.models import (
+        ActionsSecret as ActionsSecret,
         ActionsSetDefaultWorkflowPermissions as ActionsSetDefaultWorkflowPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import ActionsVariable as ActionsVariable
-    from githubkit_schemas.v2026_03_10.models import (
+        ActionsVariable as ActionsVariable,
         ActionsWorkflowAccessToRepository as ActionsWorkflowAccessToRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import Activity as Activity
-    from githubkit_schemas.v2026_03_10.models import Actor as Actor
-    from githubkit_schemas.v2026_03_10.models import (
+        Activity as Activity,
+        Actor as Actor,
         AddedToProjectIssueEvent as AddedToProjectIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AddedToProjectIssueEventPropProjectCard as AddedToProjectIssueEventPropProjectCard,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200Items as AgentsAutomationsGetResponse200Items,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropCreatedBy as AgentsAutomationsGetResponse200ItemsPropCreatedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropRepository as AgentsAutomationsGetResponse200ItemsPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggers as AgentsAutomationsGetResponse200ItemsPropTriggers,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompleted as AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationCompleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationFailed as AgentsAutomationsGetResponse200ItemsPropTriggersPropAutomationFailed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropCodeScanningAlert as AgentsAutomationsGetResponse200ItemsPropTriggersPropCodeScanningAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropDependabotAlert as AgentsAutomationsGetResponse200ItemsPropTriggersPropDependabotAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionComment as AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpened as AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdated as AgentsAutomationsGetResponse200ItemsPropTriggersPropDiscussionUpdated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropInterval as AgentsAutomationsGetResponse200ItemsPropTriggersPropInterval,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssigned as AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueAssigned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueClosed as AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueClosed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueComment as AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeled as AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueLabeled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpened as AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueReopened as AgentsAutomationsGetResponse200ItemsPropTriggersPropIssueReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssigned as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestAssigned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestClosed as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestClosed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestComment as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestConvertedToDraft as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestConvertedToDraft,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeled as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestLabeled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflict as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMergeConflict,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMerged as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestMerged,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpened as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReview as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReadyForReview,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReopened as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewDismissed as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewDismissed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequested as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewRequested,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmitted as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewSubmitted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadResolved as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadResolved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadUnresolved as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestReviewThreadUnresolved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronize as AgentsAutomationsGetResponse200ItemsPropTriggersPropPullRequestSynchronize,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropSecretScanningAlert as AgentsAutomationsGetResponse200ItemsPropTriggersPropSecretScanningAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAdded as AgentsAutomationsGetResponse200ItemsPropTriggersPropSubIssueAdded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRun as AgentsAutomationsGetResponse200ItemsPropTriggersPropWorkflowRun,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse400 as AgentsAutomationsGetResponse400,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse400PropErrorsItems as AgentsAutomationsGetResponse400PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse401 as AgentsAutomationsGetResponse401,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsAutomationsGetResponse401PropErrorsItems as AgentsAutomationsGetResponse401PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse400 as AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse400,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse400PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse400PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401 as AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse401PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404 as AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse404PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse503 as AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse503,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse503PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdDeleteResponse503PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200 as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropCreatedBy as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropCreatedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggers as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggers,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationCompleted as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationCompleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationFailed as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropAutomationFailed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropCodeScanningAlert as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropCodeScanningAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDependabotAlert as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDependabotAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionComment as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionOpened as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionUpdated as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropDiscussionUpdated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropInterval as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropInterval,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueAssigned as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueAssigned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueClosed as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueClosed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueComment as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueLabeled as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueLabeled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueOpened as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueReopened as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropIssueReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestAssigned as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestAssigned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestClosed as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestClosed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestComment as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestConvertedToDraft as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestConvertedToDraft,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestLabeled as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestLabeled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergeConflict as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMergeConflict,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMerged as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestMerged,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestOpened as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReadyForReview as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReadyForReview,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReopened as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewDismissed as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewDismissed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewRequested as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewRequested,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewSubmitted as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewSubmitted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadResolved as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadResolved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadUnresolved as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestReviewThreadUnresolved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestSynchronize as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropPullRequestSynchronize,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSecretScanningAlert as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSecretScanningAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSubIssueAdded as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropSubIssueAdded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropWorkflowRun as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse200PropTriggersPropWorkflowRun,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400 as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse400PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse401 as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse401,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse401PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse401PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404 as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdGetResponse404PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBody as AgentsReposOwnerRepoAutomationsAutomationIdPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggers as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggers,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropAutomationCompleted as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropAutomationCompleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropAutomationFailed as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropAutomationFailed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropCodeScanningAlert as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropCodeScanningAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropDependabotAlert as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropDependabotAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropDiscussionComment as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropDiscussionComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropDiscussionOpened as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropDiscussionOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropDiscussionUpdated as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropDiscussionUpdated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropInterval as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropInterval,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueAssigned as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueAssigned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueClosed as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueClosed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueComment as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueLabeled as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueLabeled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueOpened as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueReopened as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropIssueReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestAssigned as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestAssigned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestClosed as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestClosed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestComment as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestConvertedToDraft as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestConvertedToDraft,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestLabeled as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestLabeled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestMergeConflict as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestMergeConflict,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestMerged as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestMerged,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestOpened as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReadyForReview as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReadyForReview,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReopened as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewDismissed as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewDismissed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewRequested as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewRequested,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewSubmitted as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewSubmitted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewThreadResolved as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewThreadResolved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewThreadUnresolved as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestReviewThreadUnresolved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestSynchronize as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropPullRequestSynchronize,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropSecretScanningAlert as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropSecretScanningAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropSubIssueAdded as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropSubIssueAdded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropWorkflowRun as AgentsReposOwnerRepoAutomationsAutomationIdPatchBodyPropTriggersPropWorkflowRun,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200 as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropCreatedBy as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropCreatedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggers as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggers,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropAutomationCompleted as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropAutomationCompleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropAutomationFailed as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropAutomationFailed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropCodeScanningAlert as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropCodeScanningAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropDependabotAlert as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropDependabotAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropDiscussionComment as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropDiscussionComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropDiscussionOpened as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropDiscussionOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropDiscussionUpdated as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropDiscussionUpdated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropInterval as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropInterval,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueAssigned as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueAssigned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueClosed as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueClosed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueComment as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueLabeled as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueLabeled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueOpened as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueReopened as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropIssueReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestAssigned as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestAssigned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestClosed as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestClosed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestComment as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestConvertedToDraft as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestConvertedToDraft,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestLabeled as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestLabeled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestMergeConflict as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestMergeConflict,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestMerged as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestMerged,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestOpened as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReadyForReview as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReadyForReview,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReopened as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewDismissed as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewDismissed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewRequested as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewRequested,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewSubmitted as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewSubmitted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewThreadResolved as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewThreadResolved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewThreadUnresolved as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestReviewThreadUnresolved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestSynchronize as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropPullRequestSynchronize,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropSecretScanningAlert as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropSecretScanningAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropSubIssueAdded as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropSubIssueAdded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropWorkflowRun as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse200PropTriggersPropWorkflowRun,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400 as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse400PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse401 as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse401,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse401PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse401PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404 as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse404PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422 as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdPatchResponse422PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200 as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItems as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreator as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreatorAllof0 as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropCreatorAllof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropEditor as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropEditor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropEditorAllof0 as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropEditorAllof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshot as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshot,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropCreatedBy as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropCreatedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggers as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggers,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropAutomationCompleted as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropAutomationCompleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropAutomationFailed as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropAutomationFailed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropCodeScanningAlert as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropCodeScanningAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDependabotAlert as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDependabotAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionComment as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionOpened as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionUpdated as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropDiscussionUpdated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropInterval as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropInterval,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueAssigned as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueAssigned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueClosed as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueClosed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueComment as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueLabeled as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueLabeled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueOpened as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueReopened as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropIssueReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestAssigned as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestAssigned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestClosed as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestClosed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestComment as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestConvertedToDraft as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestConvertedToDraft,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestLabeled as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestLabeled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestMergeConflict as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestMergeConflict,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestMerged as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestMerged,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestOpened as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReadyForReview as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReadyForReview,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReopened as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewDismissed as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewDismissed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewRequested as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewRequested,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewSubmitted as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewSubmitted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewThreadResolved as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewThreadResolved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewThreadUnresolved as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestReviewThreadUnresolved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestSynchronize as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropPullRequestSynchronize,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropSecretScanningAlert as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropSecretScanningAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropSubIssueAdded as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropSubIssueAdded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropWorkflowRun as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse200PropRevisionsItemsPropSnapshotPropTriggersPropWorkflowRun,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse400 as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse400,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse400PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse400PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401 as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse401PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse404 as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse404,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse404PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsGetResponse404PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200 as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropCreator as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropCreatorAllof0 as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropCreatorAllof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropEditor as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropEditor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropEditorAllof0 as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropEditorAllof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshot as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshot,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropCreatedBy as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropCreatedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggers as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggers,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropAutomationCompleted as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropAutomationCompleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropAutomationFailed as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropAutomationFailed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropCodeScanningAlert as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropCodeScanningAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropDependabotAlert as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropDependabotAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropDiscussionComment as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropDiscussionComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropDiscussionOpened as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropDiscussionOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropDiscussionUpdated as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropDiscussionUpdated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropInterval as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropInterval,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropIssueAssigned as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropIssueAssigned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropIssueClosed as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropIssueClosed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropIssueComment as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropIssueComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropIssueLabeled as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropIssueLabeled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropIssueOpened as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropIssueOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropIssueReopened as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropIssueReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestAssigned as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestAssigned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestClosed as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestClosed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestComment as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestConvertedToDraft as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestConvertedToDraft,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestLabeled as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestLabeled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestMergeConflict as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestMergeConflict,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestMerged as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestMerged,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestOpened as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestReadyForReview as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestReadyForReview,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestReopened as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestReviewDismissed as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestReviewDismissed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestReviewRequested as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestReviewRequested,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestReviewSubmitted as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestReviewSubmitted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestReviewThreadResolved as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestReviewThreadResolved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestReviewThreadUnresolved as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestReviewThreadUnresolved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestSynchronize as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropPullRequestSynchronize,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropSecretScanningAlert as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropSecretScanningAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropSubIssueAdded as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropSubIssueAdded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropWorkflowRun as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse200PropSnapshotPropTriggersPropWorkflowRun,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401 as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse401PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404 as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdRevisionsRevisionIdGetResponse404PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200 as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItems as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItems as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0 as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1 as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropClientsItems as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropClientsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0 as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCreatorOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgent as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropCustomAgent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwner as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepository as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse401 as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse401,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse401PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse401PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404 as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse404PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422 as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdTasksGetResponse422PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202 as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse202,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse400 as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse400,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse400PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse400PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse401 as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse401,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse401PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse401PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403 as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse403PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse404 as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse404,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse404PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse404PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409 as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse409PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422 as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse422PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503 as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503PropErrorsItems as AgentsReposOwnerRepoAutomationsAutomationIdTasksPostResponse503PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200 as AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItems as AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsPropToolsItems as AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropMcpServersItemsPropToolsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItems as AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsPropToolsItems as AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse200PropToolGroupsItemsPropToolsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401 as AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401PropErrorsItems as AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse401PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404 as AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404PropErrorsItems as AgentsReposOwnerRepoAutomationsAvailableToolsGetResponse404PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200Items as AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200Items,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItems as AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0 as AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1 as AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItems as AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof1PropItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2 as AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse200ItemsPropFieldsItemsPropSchemaOneof2,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401 as AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401PropErrorsItems as AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse401PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404 as AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404PropErrorsItems as AgentsReposOwnerRepoAutomationsAvailableTriggersGetResponse404PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200 as AgentsReposOwnerRepoAutomationsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItems as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropCreatedBy as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropCreatedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggers as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggers,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropAutomationCompleted as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropAutomationCompleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropAutomationFailed as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropAutomationFailed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropCodeScanningAlert as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropCodeScanningAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDependabotAlert as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDependabotAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionComment as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionOpened as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionUpdated as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropDiscussionUpdated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropInterval as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropInterval,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueAssigned as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueAssigned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueClosed as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueClosed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueComment as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueLabeled as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueLabeled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueOpened as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueReopened as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropIssueReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestAssigned as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestAssigned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestClosed as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestClosed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestComment as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestConvertedToDraft as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestConvertedToDraft,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestLabeled as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestLabeled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestMergeConflict as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestMergeConflict,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestMerged as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestMerged,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestOpened as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReadyForReview as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReadyForReview,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReopened as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewDismissed as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewDismissed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewRequested as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewRequested,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewSubmitted as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewSubmitted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewThreadResolved as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewThreadResolved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewThreadUnresolved as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestReviewThreadUnresolved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestSynchronize as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropPullRequestSynchronize,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropSecretScanningAlert as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropSecretScanningAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropSubIssueAdded as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropSubIssueAdded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropWorkflowRun as AgentsReposOwnerRepoAutomationsGetResponse200PropAutomationsItemsPropTriggersPropWorkflowRun,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse400 as AgentsReposOwnerRepoAutomationsGetResponse400,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItems as AgentsReposOwnerRepoAutomationsGetResponse400PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse401 as AgentsReposOwnerRepoAutomationsGetResponse401,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse401PropErrorsItems as AgentsReposOwnerRepoAutomationsGetResponse401PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse404 as AgentsReposOwnerRepoAutomationsGetResponse404,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsGetResponse404PropErrorsItems as AgentsReposOwnerRepoAutomationsGetResponse404PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBody as AgentsReposOwnerRepoAutomationsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggers as AgentsReposOwnerRepoAutomationsPostBodyPropTriggers,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationCompleted as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationCompleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationFailed as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropAutomationFailed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropCodeScanningAlert as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropCodeScanningAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDependabotAlert as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDependabotAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionComment as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionOpened as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionUpdated as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropDiscussionUpdated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropInterval as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropInterval,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueAssigned as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueAssigned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueClosed as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueClosed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueComment as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueLabeled as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueLabeled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueOpened as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueReopened as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropIssueReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestAssigned as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestAssigned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestClosed as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestClosed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestComment as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestConvertedToDraft as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestConvertedToDraft,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestLabeled as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestLabeled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMergeConflict as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMergeConflict,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMerged as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestMerged,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestOpened as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReadyForReview as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReadyForReview,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReopened as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewDismissed as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewDismissed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewRequested as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewRequested,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewSubmitted as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewSubmitted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadResolved as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadResolved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadUnresolved as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestReviewThreadUnresolved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestSynchronize as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropPullRequestSynchronize,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSecretScanningAlert as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSecretScanningAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSubIssueAdded as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropSubIssueAdded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropWorkflowRun as AgentsReposOwnerRepoAutomationsPostBodyPropTriggersPropWorkflowRun,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201 as AgentsReposOwnerRepoAutomationsPostResponse201,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropCreatedBy as AgentsReposOwnerRepoAutomationsPostResponse201PropCreatedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggers as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggers,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropAutomationCompleted as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropAutomationCompleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropAutomationFailed as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropAutomationFailed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropCodeScanningAlert as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropCodeScanningAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDependabotAlert as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDependabotAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionComment as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionOpened as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionUpdated as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropDiscussionUpdated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropInterval as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropInterval,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueAssigned as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueAssigned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueClosed as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueClosed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueComment as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueLabeled as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueLabeled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueOpened as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueReopened as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropIssueReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestAssigned as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestAssigned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestClosed as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestClosed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestComment as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestConvertedToDraft as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestConvertedToDraft,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestLabeled as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestLabeled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestMergeConflict as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestMergeConflict,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestMerged as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestMerged,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestOpened as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReadyForReview as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReadyForReview,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReopened as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewDismissed as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewDismissed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewRequested as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewRequested,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewSubmitted as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewSubmitted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewThreadResolved as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewThreadResolved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewThreadUnresolved as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestReviewThreadUnresolved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestSynchronize as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropPullRequestSynchronize,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropSecretScanningAlert as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropSecretScanningAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropSubIssueAdded as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropSubIssueAdded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropWorkflowRun as AgentsReposOwnerRepoAutomationsPostResponse201PropTriggersPropWorkflowRun,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse400 as AgentsReposOwnerRepoAutomationsPostResponse400,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse400PropErrorsItems as AgentsReposOwnerRepoAutomationsPostResponse400PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse401 as AgentsReposOwnerRepoAutomationsPostResponse401,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse401PropErrorsItems as AgentsReposOwnerRepoAutomationsPostResponse401PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse403 as AgentsReposOwnerRepoAutomationsPostResponse403,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItems as AgentsReposOwnerRepoAutomationsPostResponse403PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse404 as AgentsReposOwnerRepoAutomationsPostResponse404,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse404PropErrorsItems as AgentsReposOwnerRepoAutomationsPostResponse404PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse422 as AgentsReposOwnerRepoAutomationsPostResponse422,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItems as AgentsReposOwnerRepoAutomationsPostResponse422PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse401 as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse401,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse401PropErrorsItems as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse401PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403 as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403PropErrorsItems as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse403PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse404 as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse404,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse404PropErrorsItems as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse404PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse409 as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse409,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse409PropErrorsItems as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse409PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse422 as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse422,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse422PropErrorsItems as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse422PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse429 as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse429,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse429PropErrorsItems as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse429PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503 as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503PropErrorsItems as AgentsReposOwnerRepoPullsPullNumberAgentMergeDeleteResponse503PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse200 as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse200PropUser as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse200PropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse401 as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse401,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse401PropErrorsItems as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse401PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse403 as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse403,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse403PropErrorsItems as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse403PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse404 as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse404,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse404PropErrorsItems as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse404PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse422 as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse422,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse422PropErrorsItems as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse422PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse429 as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse429,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse429PropErrorsItems as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse429PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503 as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503PropErrorsItems as AgentsReposOwnerRepoPullsPullNumberAgentMergeGetResponse503PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody as AgentsReposOwnerRepoPullsPullNumberAgentMergePutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200 as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUser as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse200PropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201 as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUser as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse201PropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400 as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400PropErrorsItems as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse400PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse401 as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse401,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse401PropErrorsItems as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse401PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse403 as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse403,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse403PropErrorsItems as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse403PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse404 as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse404,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse404PropErrorsItems as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse404PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse409 as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse409,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse409PropErrorsItems as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse409PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse422 as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse422,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse422PropErrorsItems as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse422PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429 as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429PropErrorsItems as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse429PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse503 as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse503,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse503PropErrorsItems as AgentsReposOwnerRepoPullsPullNumberAgentMergePutResponse503PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksGetResponse200 as AgentsReposOwnerRepoTasksGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksGetResponse200PropTasksItems as AgentsReposOwnerRepoTasksGetResponse200PropTasksItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItems as AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0 as AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1 as AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0 as AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCreatorOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCustomAgent as AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropCustomAgent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwner as AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepository as AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems as AgentsReposOwnerRepoTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksGetResponse400 as AgentsReposOwnerRepoTasksGetResponse400,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems as AgentsReposOwnerRepoTasksGetResponse400PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksGetResponse401 as AgentsReposOwnerRepoTasksGetResponse401,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems as AgentsReposOwnerRepoTasksGetResponse401PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksGetResponse403 as AgentsReposOwnerRepoTasksGetResponse403,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksGetResponse403PropErrorsItems as AgentsReposOwnerRepoTasksGetResponse403PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksGetResponse404 as AgentsReposOwnerRepoTasksGetResponse404,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksGetResponse404PropErrorsItems as AgentsReposOwnerRepoTasksGetResponse404PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksGetResponse422 as AgentsReposOwnerRepoTasksGetResponse422,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksGetResponse422PropErrorsItems as AgentsReposOwnerRepoTasksGetResponse422PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksPostBody as AgentsReposOwnerRepoTasksPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksPostResponse201 as AgentsReposOwnerRepoTasksPostResponse201,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems as AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0 as AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1 as AgentsReposOwnerRepoTasksPostResponse201PropArtifactsItemsPropDataOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0 as AgentsReposOwnerRepoTasksPostResponse201PropCreatorOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksPostResponse201PropCustomAgent as AgentsReposOwnerRepoTasksPostResponse201PropCustomAgent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksPostResponse201PropOwner as AgentsReposOwnerRepoTasksPostResponse201PropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksPostResponse201PropRepository as AgentsReposOwnerRepoTasksPostResponse201PropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems as AgentsReposOwnerRepoTasksPostResponse201PropUserCollaboratorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksPostResponse400 as AgentsReposOwnerRepoTasksPostResponse400,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems as AgentsReposOwnerRepoTasksPostResponse400PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksPostResponse401 as AgentsReposOwnerRepoTasksPostResponse401,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksPostResponse401PropErrorsItems as AgentsReposOwnerRepoTasksPostResponse401PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksPostResponse403 as AgentsReposOwnerRepoTasksPostResponse403,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksPostResponse403PropErrorsItems as AgentsReposOwnerRepoTasksPostResponse403PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksPostResponse422 as AgentsReposOwnerRepoTasksPostResponse422,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksPostResponse422PropErrorsItems as AgentsReposOwnerRepoTasksPostResponse422PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse200 as AgentsReposOwnerRepoTasksTaskIdGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0 as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItems as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0 as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1 as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0 as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCreatorOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgent as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropCustomAgent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwner as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1 as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsage as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser as AgentsReposOwnerRepoTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse400 as AgentsReposOwnerRepoTasksTaskIdGetResponse400,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems as AgentsReposOwnerRepoTasksTaskIdGetResponse400PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse401 as AgentsReposOwnerRepoTasksTaskIdGetResponse401,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems as AgentsReposOwnerRepoTasksTaskIdGetResponse401PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse403 as AgentsReposOwnerRepoTasksTaskIdGetResponse403,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems as AgentsReposOwnerRepoTasksTaskIdGetResponse403PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse404 as AgentsReposOwnerRepoTasksTaskIdGetResponse404,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems as AgentsReposOwnerRepoTasksTaskIdGetResponse404PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse422 as AgentsReposOwnerRepoTasksTaskIdGetResponse422,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems as AgentsReposOwnerRepoTasksTaskIdGetResponse422PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksGetResponse200 as AgentsTasksGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksGetResponse200PropTasksItems as AgentsTasksGetResponse200PropTasksItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksGetResponse200PropTasksItemsPropArtifactsItems as AgentsTasksGetResponse200PropTasksItemsPropArtifactsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0 as AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1 as AgentsTasksGetResponse200PropTasksItemsPropArtifactsItemsPropDataOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksGetResponse200PropTasksItemsPropCreatorOneof0 as AgentsTasksGetResponse200PropTasksItemsPropCreatorOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksGetResponse200PropTasksItemsPropCustomAgent as AgentsTasksGetResponse200PropTasksItemsPropCustomAgent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksGetResponse200PropTasksItemsPropOwner as AgentsTasksGetResponse200PropTasksItemsPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksGetResponse200PropTasksItemsPropRepository as AgentsTasksGetResponse200PropTasksItemsPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems as AgentsTasksGetResponse200PropTasksItemsPropUserCollaboratorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksGetResponse400 as AgentsTasksGetResponse400,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksGetResponse400PropErrorsItems as AgentsTasksGetResponse400PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksGetResponse401 as AgentsTasksGetResponse401,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksGetResponse401PropErrorsItems as AgentsTasksGetResponse401PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksGetResponse403 as AgentsTasksGetResponse403,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksGetResponse403PropErrorsItems as AgentsTasksGetResponse403PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksGetResponse422 as AgentsTasksGetResponse422,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksGetResponse422PropErrorsItems as AgentsTasksGetResponse422PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse200 as AgentsTasksTaskIdGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse200Allof0 as AgentsTasksTaskIdGetResponse200Allof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItems as AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0 as AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1 as AgentsTasksTaskIdGetResponse200Allof0PropArtifactsItemsPropDataOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0 as AgentsTasksTaskIdGetResponse200Allof0PropCreatorOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent as AgentsTasksTaskIdGetResponse200Allof0PropCustomAgent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse200Allof0PropOwner as AgentsTasksTaskIdGetResponse200Allof0PropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse200Allof0PropRepository as AgentsTasksTaskIdGetResponse200Allof0PropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems as AgentsTasksTaskIdGetResponse200Allof0PropUserCollaboratorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse200Allof1 as AgentsTasksTaskIdGetResponse200Allof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems as AgentsTasksTaskIdGetResponse200Allof1PropSessionsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError as AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropError,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner as AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository as AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsage as AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUsage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser as AgentsTasksTaskIdGetResponse200Allof1PropSessionsItemsPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse400 as AgentsTasksTaskIdGetResponse400,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse400PropErrorsItems as AgentsTasksTaskIdGetResponse400PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse401 as AgentsTasksTaskIdGetResponse401,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse401PropErrorsItems as AgentsTasksTaskIdGetResponse401PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse403 as AgentsTasksTaskIdGetResponse403,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse403PropErrorsItems as AgentsTasksTaskIdGetResponse403PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse404 as AgentsTasksTaskIdGetResponse404,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse404PropErrorsItems as AgentsTasksTaskIdGetResponse404PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse422 as AgentsTasksTaskIdGetResponse422,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AgentsTasksTaskIdGetResponse422PropErrorsItems as AgentsTasksTaskIdGetResponse422PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ApiInsightsRouteStatsItems as ApiInsightsRouteStatsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ApiInsightsSubjectStatsItems as ApiInsightsSubjectStatsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ApiInsightsSummaryStats as ApiInsightsSummaryStats,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ApiInsightsTimeStatsItems as ApiInsightsTimeStatsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ApiInsightsUserStatsItems as ApiInsightsUserStatsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import ApiOverview as ApiOverview
-    from githubkit_schemas.v2026_03_10.models import (
+        ApiOverview as ApiOverview,
         ApiOverviewPropDomains as ApiOverviewPropDomains,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ApiOverviewPropDomainsPropActionsInbound as ApiOverviewPropDomainsPropActionsInbound,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ApiOverviewPropDomainsPropArtifactAttestations as ApiOverviewPropDomainsPropArtifactAttestations,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ApiOverviewPropSshKeyFingerprints as ApiOverviewPropSshKeyFingerprints,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AppHookConfigPatchBody as AppHookConfigPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202 as AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AppInstallationsInstallationIdAccessTokensPostBody as AppInstallationsInstallationIdAccessTokensPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ApplicationsClientIdGrantDeleteBody as ApplicationsClientIdGrantDeleteBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ApplicationsClientIdTokenDeleteBody as ApplicationsClientIdTokenDeleteBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ApplicationsClientIdTokenPatchBody as ApplicationsClientIdTokenPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ApplicationsClientIdTokenPostBody as ApplicationsClientIdTokenPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ApplicationsClientIdTokenScopedPostBody as ApplicationsClientIdTokenScopedPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AppManifestsCodeConversionsPostResponse201 as AppManifestsCodeConversionsPostResponse201,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AppManifestsCodeConversionsPostResponse201Allof1 as AppManifestsCodeConversionsPostResponse201Allof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import AppPermissions as AppPermissions
-    from githubkit_schemas.v2026_03_10.models import Artifact as Artifact
-    from githubkit_schemas.v2026_03_10.models import (
+        AppPermissions as AppPermissions,
+        Artifact as Artifact,
         ArtifactDeploymentRecord as ArtifactDeploymentRecord,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ArtifactDeploymentRecordPropTags as ArtifactDeploymentRecordPropTags,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ArtifactPropWorkflowRun as ArtifactPropWorkflowRun,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AssignedIssueEvent as AssignedIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AuthenticationToken as AuthenticationToken,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         AuthenticationTokenPropPermissions as AuthenticationTokenPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import Authorization as Authorization
-    from githubkit_schemas.v2026_03_10.models import (
+        Authorization as Authorization,
         AuthorizationPropApp as AuthorizationPropApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import Autolink as Autolink
-    from githubkit_schemas.v2026_03_10.models import AutoMerge as AutoMerge
-    from githubkit_schemas.v2026_03_10.models import BaseGist as BaseGist
-    from githubkit_schemas.v2026_03_10.models import (
+        Autolink as Autolink,
+        AutoMerge as AutoMerge,
+        BaseGist as BaseGist,
         BaseGistPropFiles as BaseGistPropFiles,
-    )
-    from githubkit_schemas.v2026_03_10.models import BasicError as BasicError
-    from githubkit_schemas.v2026_03_10.models import (
+        BasicError as BasicError,
         BillingAiCreditUsageReportOrg as BillingAiCreditUsageReportOrg,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BillingAiCreditUsageReportOrgPropTimePeriod as BillingAiCreditUsageReportOrgPropTimePeriod,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BillingAiCreditUsageReportOrgPropUsageItemsItems as BillingAiCreditUsageReportOrgPropUsageItemsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BillingAiCreditUsageReportUser as BillingAiCreditUsageReportUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BillingAiCreditUsageReportUserPropTimePeriod as BillingAiCreditUsageReportUserPropTimePeriod,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BillingAiCreditUsageReportUserPropUsageItemsItems as BillingAiCreditUsageReportUserPropUsageItemsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BillingPremiumRequestUsageReportOrg as BillingPremiumRequestUsageReportOrg,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BillingPremiumRequestUsageReportOrgPropTimePeriod as BillingPremiumRequestUsageReportOrgPropTimePeriod,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BillingPremiumRequestUsageReportOrgPropUsageItemsItems as BillingPremiumRequestUsageReportOrgPropUsageItemsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BillingPremiumRequestUsageReportUser as BillingPremiumRequestUsageReportUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BillingPremiumRequestUsageReportUserPropTimePeriod as BillingPremiumRequestUsageReportUserPropTimePeriod,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BillingPremiumRequestUsageReportUserPropUsageItemsItems as BillingPremiumRequestUsageReportUserPropUsageItemsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BillingUsageReport as BillingUsageReport,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BillingUsageReportPropUsageItemsItems as BillingUsageReportPropUsageItemsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BillingUsageReportUser as BillingUsageReportUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BillingUsageReportUserPropUsageItemsItems as BillingUsageReportUserPropUsageItemsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BillingUsageSummaryReportOrg as BillingUsageSummaryReportOrg,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BillingUsageSummaryReportOrgPropTimePeriod as BillingUsageSummaryReportOrgPropTimePeriod,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BillingUsageSummaryReportOrgPropUsageItemsItems as BillingUsageSummaryReportOrgPropUsageItemsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BillingUsageSummaryReportUser as BillingUsageSummaryReportUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BillingUsageSummaryReportUserPropTimePeriod as BillingUsageSummaryReportUserPropTimePeriod,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BillingUsageSummaryReportUserPropUsageItemsItems as BillingUsageSummaryReportUserPropUsageItemsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import Blob as Blob
-    from githubkit_schemas.v2026_03_10.models import (
+        Blob as Blob,
         BlockedByAddedIssueEvent as BlockedByAddedIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BlockedByRemovedIssueEvent as BlockedByRemovedIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BlockingAddedIssueEvent as BlockingAddedIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BlockingRemovedIssueEvent as BlockingRemovedIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BranchProtection as BranchProtection,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BranchProtectionPropAllowDeletions as BranchProtectionPropAllowDeletions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BranchProtectionPropAllowForcePushes as BranchProtectionPropAllowForcePushes,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BranchProtectionPropAllowForkSyncing as BranchProtectionPropAllowForkSyncing,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BranchProtectionPropBlockCreations as BranchProtectionPropBlockCreations,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BranchProtectionPropLockBranch as BranchProtectionPropLockBranch,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BranchProtectionPropRequiredConversationResolution as BranchProtectionPropRequiredConversationResolution,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BranchProtectionPropRequiredLinearHistory as BranchProtectionPropRequiredLinearHistory,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BranchProtectionPropRequiredSignatures as BranchProtectionPropRequiredSignatures,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BranchRestrictionPolicy as BranchRestrictionPolicy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BranchRestrictionPolicyPropAppsItems as BranchRestrictionPolicyPropAppsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BranchRestrictionPolicyPropAppsItemsPropOwner as BranchRestrictionPolicyPropAppsItemsPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BranchRestrictionPolicyPropAppsItemsPropPermissions as BranchRestrictionPolicyPropAppsItemsPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BranchRestrictionPolicyPropUsersItems as BranchRestrictionPolicyPropUsersItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import BranchShort as BranchShort
-    from githubkit_schemas.v2026_03_10.models import (
+        BranchShort as BranchShort,
         BranchShortPropCommit as BranchShortPropCommit,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BranchWithProtection as BranchWithProtection,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         BranchWithProtectionPropLinks as BranchWithProtectionPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import Budget as Budget
-    from githubkit_schemas.v2026_03_10.models import (
+        Budget as Budget,
         BudgetPropBudgetAlerting as BudgetPropBudgetAlerting,
-    )
-    from githubkit_schemas.v2026_03_10.models import CampaignSummary as CampaignSummary
-    from githubkit_schemas.v2026_03_10.models import (
+        CampaignSummary as CampaignSummary,
         CampaignSummaryPropAlertStats as CampaignSummaryPropAlertStats,
-    )
-    from githubkit_schemas.v2026_03_10.models import CheckAnnotation as CheckAnnotation
-    from githubkit_schemas.v2026_03_10.models import (
+        CheckAnnotation as CheckAnnotation,
         CheckAutomatedSecurityFixes as CheckAutomatedSecurityFixes,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CheckImmutableReleases as CheckImmutableReleases,
-    )
-    from githubkit_schemas.v2026_03_10.models import CheckRun as CheckRun
-    from githubkit_schemas.v2026_03_10.models import (
+        CheckRun as CheckRun,
         CheckRunPropCheckSuite as CheckRunPropCheckSuite,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CheckRunPropOutput as CheckRunPropOutput,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CheckRunWithSimpleCheckSuite as CheckRunWithSimpleCheckSuite,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CheckRunWithSimpleCheckSuitePropOutput as CheckRunWithSimpleCheckSuitePropOutput,
-    )
-    from githubkit_schemas.v2026_03_10.models import CheckSuite as CheckSuite
-    from githubkit_schemas.v2026_03_10.models import (
+        CheckSuite as CheckSuite,
         CheckSuitePreference as CheckSuitePreference,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CheckSuitePreferencePropPreferences as CheckSuitePreferencePropPreferences,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems as CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import CloneTraffic as CloneTraffic
-    from githubkit_schemas.v2026_03_10.models import CodeOfConduct as CodeOfConduct
-    from githubkit_schemas.v2026_03_10.models import (
+        CloneTraffic as CloneTraffic,
+        CodeOfConduct as CodeOfConduct,
         CodeOfConductSimple as CodeOfConductSimple,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeownersErrors as CodeownersErrors,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeownersErrorsPropErrorsItems as CodeownersErrorsPropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeQualityFinding as CodeQualityFinding,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeQualityFindingLocation as CodeQualityFindingLocation,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeQualityFindingMessage as CodeQualityFindingMessage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeQualityFindingRule as CodeQualityFindingRule,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeQualitySetup as CodeQualitySetup,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeQualitySetupUpdateAnyof0 as CodeQualitySetupUpdateAnyof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeQualitySetupUpdateAnyof1 as CodeQualitySetupUpdateAnyof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeQualitySetupUpdateAnyof2 as CodeQualitySetupUpdateAnyof2,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeQualitySetupUpdateAnyof3 as CodeQualitySetupUpdateAnyof3,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeQualitySetupUpdateAnyof4 as CodeQualitySetupUpdateAnyof4,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeQualitySetupUpdateResponse as CodeQualitySetupUpdateResponse,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningAiScanEnablement as CodeScanningAiScanEnablement,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningAiScanEnablementUpdate as CodeScanningAiScanEnablementUpdate,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningAiScanOrgEnablementUpdate as CodeScanningAiScanOrgEnablementUpdate,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningAiScanOrgSettings as CodeScanningAiScanOrgSettings,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningAlert as CodeScanningAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningAlertInstance as CodeScanningAlertInstance,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningAlertInstanceList as CodeScanningAlertInstanceList,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningAlertInstanceListPropMessage as CodeScanningAlertInstanceListPropMessage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningAlertInstancePropMessage as CodeScanningAlertInstancePropMessage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningAlertItems as CodeScanningAlertItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningAlertLinkedIssue as CodeScanningAlertLinkedIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningAlertLocation as CodeScanningAlertLocation,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningAlertRule as CodeScanningAlertRule,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningAlertRuleSummary as CodeScanningAlertRuleSummary,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningAnalysis as CodeScanningAnalysis,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningAnalysisDeletion as CodeScanningAnalysisDeletion,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningAnalysisTool as CodeScanningAnalysisTool,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningAutofix as CodeScanningAutofix,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningAutofixCommits as CodeScanningAutofixCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningAutofixCommitsResponse as CodeScanningAutofixCommitsResponse,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningCodeqlDatabase as CodeScanningCodeqlDatabase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningDefaultSetup as CodeScanningDefaultSetup,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningDefaultSetupOptions as CodeScanningDefaultSetupOptions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningDefaultSetupUpdate as CodeScanningDefaultSetupUpdate,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningDefaultSetupUpdateResponse as CodeScanningDefaultSetupUpdateResponse,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningOptions as CodeScanningOptions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningOrganizationAlertItems as CodeScanningOrganizationAlertItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningSarifsReceipt as CodeScanningSarifsReceipt,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningSarifsStatus as CodeScanningSarifsStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningVariantAnalysis as CodeScanningVariantAnalysis,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningVariantAnalysisPropScannedRepositoriesItems as CodeScanningVariantAnalysisPropScannedRepositoriesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningVariantAnalysisPropSkippedRepositories as CodeScanningVariantAnalysisPropSkippedRepositories,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos as CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningVariantAnalysisRepository as CodeScanningVariantAnalysisRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningVariantAnalysisRepoTask as CodeScanningVariantAnalysisRepoTask,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeScanningVariantAnalysisSkippedRepoGroup as CodeScanningVariantAnalysisSkippedRepoGroup,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeSearchResultItem as CodeSearchResultItem,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeSecurityConfiguration as CodeSecurityConfiguration,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeSecurityConfigurationForRepository as CodeSecurityConfigurationForRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions as CodeSecurityConfigurationPropCodeScanningDefaultSetupOptions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeSecurityConfigurationPropCodeScanningOptions as CodeSecurityConfigurationPropCodeScanningOptions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions as CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions as CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems as CodeSecurityConfigurationPropSecretScanningDelegatedBypassOptionsPropReviewersItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeSecurityConfigurationRepositories as CodeSecurityConfigurationRepositories,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodeSecurityDefaultConfigurationsItems as CodeSecurityDefaultConfigurationsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import Codespace as Codespace
-    from githubkit_schemas.v2026_03_10.models import (
+        Codespace as Codespace,
         CodespaceExportDetails as CodespaceExportDetails,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodespaceMachine as CodespaceMachine,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodespacePropGitStatus as CodespacePropGitStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodespacePropRuntimeConstraints as CodespacePropRuntimeConstraints,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodespacesOrgSecret as CodespacesOrgSecret,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodespacesPermissionsCheckForDevcontainer as CodespacesPermissionsCheckForDevcontainer,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodespacesPublicKey as CodespacesPublicKey,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodespacesSecret as CodespacesSecret,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodespacesUserPublicKey as CodespacesUserPublicKey,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodespaceWithFullRepository as CodespaceWithFullRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodespaceWithFullRepositoryPropGitStatus as CodespaceWithFullRepositoryPropGitStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CodespaceWithFullRepositoryPropRuntimeConstraints as CodespaceWithFullRepositoryPropRuntimeConstraints,
-    )
-    from githubkit_schemas.v2026_03_10.models import Collaborator as Collaborator
-    from githubkit_schemas.v2026_03_10.models import (
+        Collaborator as Collaborator,
         CollaboratorPropPermissions as CollaboratorPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CombinedCommitStatus as CombinedCommitStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import Commit as Commit
-    from githubkit_schemas.v2026_03_10.models import CommitActivity as CommitActivity
-    from githubkit_schemas.v2026_03_10.models import CommitComment as CommitComment
-    from githubkit_schemas.v2026_03_10.models import (
+        Commit as Commit,
+        CommitActivity as CommitActivity,
+        CommitComment as CommitComment,
         CommitCommentEvent as CommitCommentEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CommitCommentEventPropComment as CommitCommentEventPropComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CommitComparison as CommitComparison,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CommitPropCommit as CommitPropCommit,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CommitPropCommitPropTree as CommitPropCommitPropTree,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CommitPropParentsItems as CommitPropParentsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import CommitPropStats as CommitPropStats
-    from githubkit_schemas.v2026_03_10.models import (
+        CommitPropStats as CommitPropStats,
         CommitSearchResultItem as CommitSearchResultItem,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CommitSearchResultItemPropCommit as CommitSearchResultItemPropCommit,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CommitSearchResultItemPropCommitPropAuthor as CommitSearchResultItemPropCommitPropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CommitSearchResultItemPropCommitPropTree as CommitSearchResultItemPropCommitPropTree,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CommitSearchResultItemPropParentsItems as CommitSearchResultItemPropParentsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CommunityHealthFile as CommunityHealthFile,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CommunityProfile as CommunityProfile,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CommunityProfilePropFiles as CommunityProfilePropFiles,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ConcurrencyGroup as ConcurrencyGroup,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ConcurrencyGroupList as ConcurrencyGroupList,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ConcurrencyGroupListPropConcurrencyGroupsItems as ConcurrencyGroupListPropConcurrencyGroupsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ConcurrencyGroupPropGroupMembersItems as ConcurrencyGroupPropGroupMembersItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ConcurrencyGroupRunList as ConcurrencyGroupRunList,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ConcurrencyGroupRunListPropConcurrencyGroupsItems as ConcurrencyGroupRunListPropConcurrencyGroupsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems as ConcurrencyGroupRunListPropConcurrencyGroupsItemsPropGroupMembersItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ContentDirectoryItems as ContentDirectoryItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ContentDirectoryItemsPropLinks as ContentDirectoryItemsPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import ContentFile as ContentFile
-    from githubkit_schemas.v2026_03_10.models import (
+        ContentFile as ContentFile,
         ContentFilePropLinks as ContentFilePropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ContentSubmodule as ContentSubmodule,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ContentSubmodulePropLinks as ContentSubmodulePropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import ContentSymlink as ContentSymlink
-    from githubkit_schemas.v2026_03_10.models import (
+        ContentSymlink as ContentSymlink,
         ContentSymlinkPropLinks as ContentSymlinkPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import ContentTraffic as ContentTraffic
-    from githubkit_schemas.v2026_03_10.models import ContentTree as ContentTree
-    from githubkit_schemas.v2026_03_10.models import (
+        ContentTraffic as ContentTraffic,
+        ContentTree as ContentTree,
         ContentTreePropEntriesItems as ContentTreePropEntriesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ContentTreePropEntriesItemsPropLinks as ContentTreePropEntriesItemsPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ContentTreePropLinks as ContentTreePropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import Contributor as Contributor
-    from githubkit_schemas.v2026_03_10.models import (
+        Contributor as Contributor,
         ContributorActivity as ContributorActivity,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ContributorActivityPropWeeksItems as ContributorActivityPropWeeksItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ConvertedNoteToIssueIssueEvent as ConvertedNoteToIssueIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ConvertedNoteToIssueIssueEventPropProjectCard as ConvertedNoteToIssueIssueEventPropProjectCard,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CopilotCodeReviewRequest as CopilotCodeReviewRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CopilotCodeReviewRequestDenied as CopilotCodeReviewRequestDenied,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CopilotCodeReviewRequestDeniedAllof1 as CopilotCodeReviewRequestDeniedAllof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CopilotOrganizationContentExclusionDetails as CopilotOrganizationContentExclusionDetails,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CopilotOrganizationDetails as CopilotOrganizationDetails,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CopilotOrganizationSeatBreakdown as CopilotOrganizationSeatBreakdown,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CopilotSeatDetails as CopilotSeatDetails,
-    )
-    from githubkit_schemas.v2026_03_10.models import CopilotSpace as CopilotSpace
-    from githubkit_schemas.v2026_03_10.models import (
+        CopilotSpace as CopilotSpace,
         CopilotSpaceCollaboratorAnyof0 as CopilotSpaceCollaboratorAnyof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CopilotSpaceCollaboratorAnyof0Allof1 as CopilotSpaceCollaboratorAnyof0Allof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CopilotSpaceCollaboratorAnyof1 as CopilotSpaceCollaboratorAnyof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CopilotSpacePropResourcesAttributesItems as CopilotSpacePropResourcesAttributesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CopilotSpacePropResourcesAttributesItemsPropMetadata as CopilotSpacePropResourcesAttributesItemsPropMetadata,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CopilotSpaceResource as CopilotSpaceResource,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CopilotSpaceResourcePropMetadata as CopilotSpaceResourcePropMetadata,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CopilotUsageMetrics1DayReport as CopilotUsageMetrics1DayReport,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CopilotUsageMetrics28DayReport as CopilotUsageMetrics28DayReport,
-    )
-    from githubkit_schemas.v2026_03_10.models import CreateBudget as CreateBudget
-    from githubkit_schemas.v2026_03_10.models import (
+        CreateBudget as CreateBudget,
         CreateBudgetPropBudget as CreateBudgetPropBudget,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CreateBudgetPropBudgetPropBudgetAlerting as CreateBudgetPropBudgetPropBudgetAlerting,
-    )
-    from githubkit_schemas.v2026_03_10.models import CreateEvent as CreateEvent
-    from githubkit_schemas.v2026_03_10.models import (
+        CreateEvent as CreateEvent,
         CredentialsRevokePostBody as CredentialsRevokePostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CustomDeploymentRuleApp as CustomDeploymentRuleApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import CustomProperty as CustomProperty
-    from githubkit_schemas.v2026_03_10.models import (
+        CustomProperty as CustomProperty,
         CustomPropertyBatchItemPayload as CustomPropertyBatchItemPayload,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CustomPropertySetPayload as CustomPropertySetPayload,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CustomPropertyValue as CustomPropertyValue,
-    )
-    from githubkit_schemas.v2026_03_10.models import CvssSeverities as CvssSeverities
-    from githubkit_schemas.v2026_03_10.models import (
+        CvssSeverities as CvssSeverities,
         CvssSeveritiesPropCvssV3 as CvssSeveritiesPropCvssV3,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         CvssSeveritiesPropCvssV4 as CvssSeveritiesPropCvssV4,
-    )
-    from githubkit_schemas.v2026_03_10.models import DeleteBudget as DeleteBudget
-    from githubkit_schemas.v2026_03_10.models import DeleteEvent as DeleteEvent
-    from githubkit_schemas.v2026_03_10.models import (
+        DeleteBudget as DeleteBudget,
+        DeleteEvent as DeleteEvent,
         DemilestonedIssueEvent as DemilestonedIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DemilestonedIssueEventPropMilestone as DemilestonedIssueEventPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import DependabotAlert as DependabotAlert
-    from githubkit_schemas.v2026_03_10.models import (
+        DependabotAlert as DependabotAlert,
         DependabotAlertDismissalRequestSimple as DependabotAlertDismissalRequestSimple,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependabotAlertDismissalRequestSimplePropRequester as DependabotAlertDismissalRequestSimplePropRequester,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependabotAlertPackage as DependabotAlertPackage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependabotAlertPropDependency as DependabotAlertPropDependency,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependabotAlertPropReachability as DependabotAlertPropReachability,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependabotAlertSecurityAdvisory as DependabotAlertSecurityAdvisory,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependabotAlertSecurityAdvisoryPropCwesItems as DependabotAlertSecurityAdvisoryPropCwesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependabotAlertSecurityAdvisoryPropIdentifiersItems as DependabotAlertSecurityAdvisoryPropIdentifiersItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependabotAlertSecurityAdvisoryPropReferencesItems as DependabotAlertSecurityAdvisoryPropReferencesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependabotAlertSecurityVulnerability as DependabotAlertSecurityVulnerability,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion as DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependabotAlertWithdrawnWebhook as DependabotAlertWithdrawnWebhook,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependabotAlertWithdrawnWebhookPropDependency as DependabotAlertWithdrawnWebhookPropDependency,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependabotAlertWithdrawnWebhookPropSecurityAdvisory as DependabotAlertWithdrawnWebhookPropSecurityAdvisory,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependabotAlertWithRepository as DependabotAlertWithRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependabotAlertWithRepositoryPropDependency as DependabotAlertWithRepositoryPropDependency,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependabotAlertWithRepositoryPropReachability as DependabotAlertWithRepositoryPropReachability,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependabotPublicKey as DependabotPublicKey,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependabotRepositoryAccessDetails as DependabotRepositoryAccessDetails,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependabotRunnerSettings as DependabotRunnerSettings,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependabotRunnerSettingsUpdate as DependabotRunnerSettingsUpdate,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependabotSecret as DependabotSecret,
-    )
-    from githubkit_schemas.v2026_03_10.models import Dependency as Dependency
-    from githubkit_schemas.v2026_03_10.models import (
+        Dependency as Dependency,
         DependencyGraphDiffItems as DependencyGraphDiffItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependencyGraphDiffItemsPropVulnerabilitiesItems as DependencyGraphDiffItemsPropVulnerabilitiesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependencyGraphSpdxSbom as DependencyGraphSpdxSbom,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependencyGraphSpdxSbomPropSbom as DependencyGraphSpdxSbomPropSbom,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependencyGraphSpdxSbomPropSbomPropCreationInfo as DependencyGraphSpdxSbomPropSbomPropCreationInfo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependencyGraphSpdxSbomPropSbomPropPackagesItems as DependencyGraphSpdxSbomPropSbomPropPackagesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems as DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DependencyGraphSpdxSbomPropSbomPropRelationshipsItems as DependencyGraphSpdxSbomPropSbomPropRelationshipsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import DeployKey as DeployKey
-    from githubkit_schemas.v2026_03_10.models import Deployment as Deployment
-    from githubkit_schemas.v2026_03_10.models import (
+        DeployKey as DeployKey,
+        Deployment as Deployment,
         DeploymentBranchPolicy as DeploymentBranchPolicy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DeploymentBranchPolicyNamePattern as DeploymentBranchPolicyNamePattern,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DeploymentBranchPolicyNamePatternWithType as DeploymentBranchPolicyNamePatternWithType,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DeploymentBranchPolicySettings as DeploymentBranchPolicySettings,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DeploymentPropPayloadOneof0 as DeploymentPropPayloadOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DeploymentProtectionRule as DeploymentProtectionRule,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DeploymentSimple as DeploymentSimple,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DeploymentStatus as DeploymentStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import DiffEntry as DiffEntry
-    from githubkit_schemas.v2026_03_10.models import Discussion as Discussion
-    from githubkit_schemas.v2026_03_10.models import DiscussionEvent as DiscussionEvent
-    from githubkit_schemas.v2026_03_10.models import (
+        DiffEntry as DiffEntry,
+        Discussion as Discussion,
+        DiscussionEvent as DiscussionEvent,
         DiscussionPropAnswerChosenBy as DiscussionPropAnswerChosenBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DiscussionPropCategory as DiscussionPropCategory,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DiscussionPropReactions as DiscussionPropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         DiscussionPropUser as DiscussionPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import Email as Email
-    from githubkit_schemas.v2026_03_10.models import (
+        Email as Email,
         EmojisGetResponse200 as EmojisGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import EmptyObject as EmptyObject
-    from githubkit_schemas.v2026_03_10.models import Enterprise as Enterprise
-    from githubkit_schemas.v2026_03_10.models import (
+        EmptyObject as EmptyObject,
+        Enterprise as Enterprise,
         EnterpriseCopilotCodeReviewPolicy as EnterpriseCopilotCodeReviewPolicy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnterpriseRulesetConditionsOrganizationIdTarget as EnterpriseRulesetConditionsOrganizationIdTarget,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId as EnterpriseRulesetConditionsOrganizationIdTargetPropOrganizationId,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnterpriseRulesetConditionsOrganizationNameTarget as EnterpriseRulesetConditionsOrganizationNameTarget,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName as EnterpriseRulesetConditionsOrganizationNameTargetPropOrganizationName,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnterpriseRulesetConditionsOrganizationPropertySpec as EnterpriseRulesetConditionsOrganizationPropertySpec,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnterpriseRulesetConditionsOrganizationPropertyTarget as EnterpriseRulesetConditionsOrganizationPropertyTarget,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty as EnterpriseRulesetConditionsOrganizationPropertyTargetPropOrganizationProperty,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody as EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdAttachPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody as EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200 as EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody as EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions as EnterprisesEnterpriseCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnterprisesEnterpriseCodeSecurityConfigurationsPostBody as EnterprisesEnterpriseCodeSecurityConfigurationsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions as EnterprisesEnterpriseCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBody as EnterprisesEnterpriseCopilotPoliciesCodeReviewPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody as EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems as EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsDeleteBodyPropCustomPropertiesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody as EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItems as EnterprisesEnterpriseCopilotPoliciesCodingAgentOrganizationsPostBodyPropCustomPropertiesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody as EnterprisesEnterpriseCopilotPoliciesCodingAgentPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody as EnterprisesEnterpriseDependabotRepositoryAccessDefaultLevelPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnterprisesEnterpriseDependabotRepositoryAccessPatchBody as EnterprisesEnterpriseDependabotRepositoryAccessPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import EnterpriseTeam as EnterpriseTeam
-    from githubkit_schemas.v2026_03_10.models import (
+        EnterpriseTeam as EnterpriseTeam,
         EnterpriseWebhooks as EnterpriseWebhooks,
-    )
-    from githubkit_schemas.v2026_03_10.models import Environment as Environment
-    from githubkit_schemas.v2026_03_10.models import (
+        Environment as Environment,
         EnvironmentApprovals as EnvironmentApprovals,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnvironmentApprovalsPropEnvironmentsItems as EnvironmentApprovalsPropEnvironmentsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnvironmentPropProtectionRulesItemsAnyof0 as EnvironmentPropProtectionRulesItemsAnyof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnvironmentPropProtectionRulesItemsAnyof1 as EnvironmentPropProtectionRulesItemsAnyof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems as EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         EnvironmentPropProtectionRulesItemsAnyof2 as EnvironmentPropProtectionRulesItemsAnyof2,
-    )
-    from githubkit_schemas.v2026_03_10.models import Event as Event
-    from githubkit_schemas.v2026_03_10.models import EventPropRepo as EventPropRepo
-    from githubkit_schemas.v2026_03_10.models import (
+        Event as Event,
+        EventPropRepo as EventPropRepo,
         EventsGetResponse503 as EventsGetResponse503,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ExternalProperty as ExternalProperty,
-    )
-    from githubkit_schemas.v2026_03_10.models import Feed as Feed
-    from githubkit_schemas.v2026_03_10.models import FeedPropLinks as FeedPropLinks
-    from githubkit_schemas.v2026_03_10.models import FileCommit as FileCommit
-    from githubkit_schemas.v2026_03_10.models import (
+        Feed as Feed,
+        FeedPropLinks as FeedPropLinks,
+        FileCommit as FileCommit,
         FileCommitPropCommit as FileCommitPropCommit,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         FileCommitPropCommitPropAuthor as FileCommitPropCommitPropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         FileCommitPropCommitPropCommitter as FileCommitPropCommitPropCommitter,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         FileCommitPropCommitPropParentsItems as FileCommitPropCommitPropParentsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         FileCommitPropCommitPropTree as FileCommitPropCommitPropTree,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         FileCommitPropCommitPropVerification as FileCommitPropCommitPropVerification,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         FileCommitPropContent as FileCommitPropContent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         FileCommitPropContentPropLinks as FileCommitPropContentPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import ForkEvent as ForkEvent
-    from githubkit_schemas.v2026_03_10.models import (
+        ForkEvent as ForkEvent,
         ForkEventPropForkee as ForkEventPropForkee,
-    )
-    from githubkit_schemas.v2026_03_10.models import FullRepository as FullRepository
-    from githubkit_schemas.v2026_03_10.models import (
+        FullRepository as FullRepository,
         FullRepositoryPropCustomProperties as FullRepositoryPropCustomProperties,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         FullRepositoryPropPermissions as FullRepositoryPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import GetAllBudgets as GetAllBudgets
-    from githubkit_schemas.v2026_03_10.models import (
+        GetAllBudgets as GetAllBudgets,
         GetAllBudgetsPropEffectiveBudget as GetAllBudgetsPropEffectiveBudget,
-    )
-    from githubkit_schemas.v2026_03_10.models import GetBudget as GetBudget
-    from githubkit_schemas.v2026_03_10.models import (
+        GetBudget as GetBudget,
         GetBudgetPropBudgetAlerting as GetBudgetPropBudgetAlerting,
-    )
-    from githubkit_schemas.v2026_03_10.models import GistComment as GistComment
-    from githubkit_schemas.v2026_03_10.models import GistCommit as GistCommit
-    from githubkit_schemas.v2026_03_10.models import (
+        GistComment as GistComment,
+        GistCommit as GistCommit,
         GistCommitPropChangeStatus as GistCommitPropChangeStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         GistsGistIdCommentsCommentIdPatchBody as GistsGistIdCommentsCommentIdPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         GistsGistIdCommentsPostBody as GistsGistIdCommentsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         GistsGistIdGetResponse403 as GistsGistIdGetResponse403,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         GistsGistIdGetResponse403PropBlock as GistsGistIdGetResponse403PropBlock,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         GistsGistIdPatchBody as GistsGistIdPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         GistsGistIdPatchBodyPropFiles as GistsGistIdPatchBodyPropFiles,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         GistsGistIdStarGetResponse404 as GistsGistIdStarGetResponse404,
-    )
-    from githubkit_schemas.v2026_03_10.models import GistSimple as GistSimple
-    from githubkit_schemas.v2026_03_10.models import (
+        GistSimple as GistSimple,
         GistSimplePropFiles as GistSimplePropFiles,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         GistSimplePropForkOf as GistSimplePropForkOf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         GistSimplePropForkOfPropFiles as GistSimplePropForkOfPropFiles,
-    )
-    from githubkit_schemas.v2026_03_10.models import GistsPostBody as GistsPostBody
-    from githubkit_schemas.v2026_03_10.models import (
+        GistsPostBody as GistsPostBody,
         GistsPostBodyPropFiles as GistsPostBodyPropFiles,
-    )
-    from githubkit_schemas.v2026_03_10.models import GitCommit as GitCommit
-    from githubkit_schemas.v2026_03_10.models import (
+        GitCommit as GitCommit,
         GitCommitPropAuthor as GitCommitPropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         GitCommitPropCommitter as GitCommitPropCommitter,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         GitCommitPropParentsItems as GitCommitPropParentsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         GitCommitPropTree as GitCommitPropTree,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         GitCommitPropVerification as GitCommitPropVerification,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         GitignoreTemplate as GitignoreTemplate,
-    )
-    from githubkit_schemas.v2026_03_10.models import GitRef as GitRef
-    from githubkit_schemas.v2026_03_10.models import (
+        GitRef as GitRef,
         GitRefPropObject as GitRefPropObject,
-    )
-    from githubkit_schemas.v2026_03_10.models import GitTag as GitTag
-    from githubkit_schemas.v2026_03_10.models import (
+        GitTag as GitTag,
         GitTagPropObject as GitTagPropObject,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         GitTagPropTagger as GitTagPropTagger,
-    )
-    from githubkit_schemas.v2026_03_10.models import GitTree as GitTree
-    from githubkit_schemas.v2026_03_10.models import (
+        GitTree as GitTree,
         GitTreePropTreeItems as GitTreePropTreeItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import GitUser as GitUser
-    from githubkit_schemas.v2026_03_10.models import GlobalAdvisory as GlobalAdvisory
-    from githubkit_schemas.v2026_03_10.models import (
+        GitUser as GitUser,
+        GlobalAdvisory as GlobalAdvisory,
         GlobalAdvisoryPropCreditsItems as GlobalAdvisoryPropCreditsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         GlobalAdvisoryPropCwesItems as GlobalAdvisoryPropCwesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         GlobalAdvisoryPropIdentifiersItems as GlobalAdvisoryPropIdentifiersItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import GollumEvent as GollumEvent
-    from githubkit_schemas.v2026_03_10.models import (
+        GollumEvent as GollumEvent,
         GollumEventPropPagesItems as GollumEventPropPagesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import GpgKey as GpgKey
-    from githubkit_schemas.v2026_03_10.models import (
+        GpgKey as GpgKey,
         GpgKeyPropEmailsItems as GpgKeyPropEmailsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         GpgKeyPropSubkeysItems as GpgKeyPropSubkeysItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         GpgKeyPropSubkeysItemsPropEmailsItems as GpgKeyPropSubkeysItemsPropEmailsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import Hook as Hook
-    from githubkit_schemas.v2026_03_10.models import HookDelivery as HookDelivery
-    from githubkit_schemas.v2026_03_10.models import (
+        Hook as Hook,
+        HookDelivery as HookDelivery,
         HookDeliveryItem as HookDeliveryItem,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         HookDeliveryPropRequest as HookDeliveryPropRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         HookDeliveryPropRequestPropHeaders as HookDeliveryPropRequestPropHeaders,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         HookDeliveryPropRequestPropPayload as HookDeliveryPropRequestPropPayload,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         HookDeliveryPropResponse as HookDeliveryPropResponse,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         HookDeliveryPropResponsePropHeaders as HookDeliveryPropResponsePropHeaders,
-    )
-    from githubkit_schemas.v2026_03_10.models import HookResponse as HookResponse
-    from githubkit_schemas.v2026_03_10.models import Hovercard as Hovercard
-    from githubkit_schemas.v2026_03_10.models import (
+        HookResponse as HookResponse,
+        Hovercard as Hovercard,
         HovercardPropContextsItems as HovercardPropContextsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ImmutableReleasesOrganizationSettings as ImmutableReleasesOrganizationSettings,
-    )
-    from githubkit_schemas.v2026_03_10.models import Import as Import
-    from githubkit_schemas.v2026_03_10.models import (
+        Import as Import,
         ImportPropProjectChoicesItems as ImportPropProjectChoicesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import Installation as Installation
-    from githubkit_schemas.v2026_03_10.models import (
+        Installation as Installation,
         InstallationRepositoriesGetResponse200 as InstallationRepositoriesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         InstallationRepositoriesGetResponse200PropRepositoriesItems as InstallationRepositoriesGetResponse200PropRepositoriesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1 as InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties as InstallationRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         InstallationToken as InstallationToken,
-    )
-    from githubkit_schemas.v2026_03_10.models import Integration as Integration
-    from githubkit_schemas.v2026_03_10.models import (
+        Integration as Integration,
         IntegrationInstallationRequest as IntegrationInstallationRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         IntegrationPropPermissions as IntegrationPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         InteractionLimit as InteractionLimit,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         InteractionLimitPullRequestBypassList as InteractionLimitPullRequestBypassList,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         InteractionLimitResponse as InteractionLimitResponse,
-    )
-    from githubkit_schemas.v2026_03_10.models import Issue as Issue
-    from githubkit_schemas.v2026_03_10.models import IssueArtifact as IssueArtifact
-    from githubkit_schemas.v2026_03_10.models import (
+        Issue as Issue,
+        IssueArtifact as IssueArtifact,
         IssueArtifactPropCreator as IssueArtifactPropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         IssueArtifactPropUpdatedByActor as IssueArtifactPropUpdatedByActor,
-    )
-    from githubkit_schemas.v2026_03_10.models import IssueComment as IssueComment
-    from githubkit_schemas.v2026_03_10.models import (
+        IssueComment as IssueComment,
         IssueCommentEvent as IssueCommentEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         IssueCommentMinimized as IssueCommentMinimized,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         IssueDependenciesSummary as IssueDependenciesSummary,
-    )
-    from githubkit_schemas.v2026_03_10.models import IssueEvent as IssueEvent
-    from githubkit_schemas.v2026_03_10.models import (
+        IssueEvent as IssueEvent,
         IssueEventDismissedReview as IssueEventDismissedReview,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         IssueEventIntent as IssueEventIntent,
-    )
-    from githubkit_schemas.v2026_03_10.models import IssueEventLabel as IssueEventLabel
-    from githubkit_schemas.v2026_03_10.models import (
+        IssueEventLabel as IssueEventLabel,
         IssueEventMilestone as IssueEventMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         IssueEventProjectCard as IssueEventProjectCard,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         IssueEventRename as IssueEventRename,
-    )
-    from githubkit_schemas.v2026_03_10.models import IssueField as IssueField
-    from githubkit_schemas.v2026_03_10.models import (
+        IssueField as IssueField,
         IssueFieldPropOptionsItems as IssueFieldPropOptionsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import IssueFieldValue as IssueFieldValue
-    from githubkit_schemas.v2026_03_10.models import (
+        IssueFieldValue as IssueFieldValue,
         IssueFieldValuePropMultiSelectOptionsItems as IssueFieldValuePropMultiSelectOptionsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         IssueFieldValuePropSingleSelectOption as IssueFieldValuePropSingleSelectOption,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         IssuePropLabelsItemsOneof1 as IssuePropLabelsItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         IssuePropLabelsItemsOneof1PropArchivedBy as IssuePropLabelsItemsOneof1PropArchivedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         IssuePropPullRequest as IssuePropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import IssuePropStatus as IssuePropStatus
-    from githubkit_schemas.v2026_03_10.models import IssueReference as IssueReference
-    from githubkit_schemas.v2026_03_10.models import (
+        IssuePropStatus as IssuePropStatus,
+        IssueReference as IssueReference,
         IssueReferencePropIssueType as IssueReferencePropIssueType,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         IssueSearchResultItem as IssueSearchResultItem,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         IssueSearchResultItemPropLabelsItems as IssueSearchResultItemPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         IssueSearchResultItemPropLabelsItemsPropArchivedBy as IssueSearchResultItemPropLabelsItemsPropArchivedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         IssueSearchResultItemPropPullRequest as IssueSearchResultItemPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         IssueSearchResultItemPropStatus as IssueSearchResultItemPropStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import IssuesEvent as IssuesEvent
-    from githubkit_schemas.v2026_03_10.models import IssueSuggestion as IssueSuggestion
-    from githubkit_schemas.v2026_03_10.models import IssueType as IssueType
-    from githubkit_schemas.v2026_03_10.models import (
+        IssuesEvent as IssuesEvent,
+        IssueSuggestion as IssueSuggestion,
+        IssueType as IssueType,
         IssueTypeAddedIssueEvent as IssueTypeAddedIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         IssueTypeChangedIssueEvent as IssueTypeChangedIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         IssueTypeRemovedIssueEvent as IssueTypeRemovedIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         IssueTypeRequest as IssueTypeRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         IssueTypeWebhook as IssueTypeWebhook,
-    )
-    from githubkit_schemas.v2026_03_10.models import Job as Job
-    from githubkit_schemas.v2026_03_10.models import (
+        Job as Job,
         JobPropStepsItems as JobPropStepsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import Key as Key
-    from githubkit_schemas.v2026_03_10.models import KeySimple as KeySimple
-    from githubkit_schemas.v2026_03_10.models import Label as Label
-    from githubkit_schemas.v2026_03_10.models import (
+        Key as Key,
+        KeySimple as KeySimple,
+        Label as Label,
         LabeledIssueEvent as LabeledIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         LabeledIssueEventPropLabel as LabeledIssueEventPropLabel,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         LabelPropArchivedBy as LabelPropArchivedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         LabelSearchResultItem as LabelSearchResultItem,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         LabelSearchResultItemPropArchivedBy as LabelSearchResultItemPropArchivedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import Language as Language
-    from githubkit_schemas.v2026_03_10.models import License as License
-    from githubkit_schemas.v2026_03_10.models import LicenseContent as LicenseContent
-    from githubkit_schemas.v2026_03_10.models import (
+        Language as Language,
+        License as License,
+        LicenseContent as LicenseContent,
         LicenseContentPropLinks as LicenseContentPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import LicenseSimple as LicenseSimple
-    from githubkit_schemas.v2026_03_10.models import Link as Link
-    from githubkit_schemas.v2026_03_10.models import LinkWithType as LinkWithType
-    from githubkit_schemas.v2026_03_10.models import (
+        LicenseSimple as LicenseSimple,
+        Link as Link,
+        LinkWithType as LinkWithType,
         LockedIssueEvent as LockedIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import Manifest as Manifest
-    from githubkit_schemas.v2026_03_10.models import (
+        Manifest as Manifest,
         ManifestPropFile as ManifestPropFile,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ManifestPropResolved as ManifestPropResolved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         MarkdownPostBody as MarkdownPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         MarketplaceAccount as MarketplaceAccount,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         MarketplaceListingPlan as MarketplaceListingPlan,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         MarketplacePurchase as MarketplacePurchase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         MarketplacePurchasePropMarketplacePendingChange as MarketplacePurchasePropMarketplacePendingChange,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         MarketplacePurchasePropMarketplacePurchase as MarketplacePurchasePropMarketplacePurchase,
-    )
-    from githubkit_schemas.v2026_03_10.models import MemberEvent as MemberEvent
-    from githubkit_schemas.v2026_03_10.models import MergedUpstream as MergedUpstream
-    from githubkit_schemas.v2026_03_10.models import MergeGroup as MergeGroup
-    from githubkit_schemas.v2026_03_10.models import Metadata as Metadata
-    from githubkit_schemas.v2026_03_10.models import Migration as Migration
-    from githubkit_schemas.v2026_03_10.models import Milestone as Milestone
-    from githubkit_schemas.v2026_03_10.models import (
+        MemberEvent as MemberEvent,
+        MergedUpstream as MergedUpstream,
+        MergeGroup as MergeGroup,
+        Metadata as Metadata,
+        Migration as Migration,
+        Milestone as Milestone,
         MilestonedIssueEvent as MilestonedIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         MilestonedIssueEventPropMilestone as MilestonedIssueEventPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         MinimalRepository as MinimalRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         MinimalRepositoryPropCustomProperties as MinimalRepositoryPropCustomProperties,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         MinimalRepositoryPropLicense as MinimalRepositoryPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         MinimalRepositoryPropPermissions as MinimalRepositoryPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         MovedColumnInProjectIssueEvent as MovedColumnInProjectIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         MovedColumnInProjectIssueEventPropProjectCard as MovedColumnInProjectIssueEventPropProjectCard,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         NetworkConfiguration as NetworkConfiguration,
-    )
-    from githubkit_schemas.v2026_03_10.models import NetworkSettings as NetworkSettings
-    from githubkit_schemas.v2026_03_10.models import (
+        NetworkSettings as NetworkSettings,
         NotificationsPutBody as NotificationsPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         NotificationsPutResponse202 as NotificationsPutResponse202,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         NotificationsThreadsThreadIdSubscriptionPutBody as NotificationsThreadsThreadIdSubscriptionPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OidcCustomPropertyInclusion as OidcCustomPropertyInclusion,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OidcCustomPropertyInclusionInput as OidcCustomPropertyInclusionInput,
-    )
-    from githubkit_schemas.v2026_03_10.models import OidcCustomSub as OidcCustomSub
-    from githubkit_schemas.v2026_03_10.models import (
+        OidcCustomSub as OidcCustomSub,
         OidcCustomSubRepo as OidcCustomSubRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationActionsSecret as OrganizationActionsSecret,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationActionsVariable as OrganizationActionsVariable,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationCopilotCodeReviewPolicy as OrganizationCopilotCodeReviewPolicy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationCopilotCodeReviewRunner as OrganizationCopilotCodeReviewRunner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationCopilotCodeReviewSettings as OrganizationCopilotCodeReviewSettings,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationCopilotCodeReviewSettingsPropDefaultReviewEffort as OrganizationCopilotCodeReviewSettingsPropDefaultReviewEffort,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationCreateIssueField as OrganizationCreateIssueField,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationCreateIssueFieldPropOptionsItems as OrganizationCreateIssueFieldPropOptionsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationDependabotSecret as OrganizationDependabotSecret,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationExternalPropertyInstallation as OrganizationExternalPropertyInstallation,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationExternalPropertyInstallationPropInstallation as OrganizationExternalPropertyInstallationPropInstallation,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationFull as OrganizationFull,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationFullPropPlan as OrganizationFullPropPlan,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationInvitation as OrganizationInvitation,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationProgrammaticAccessGrant as OrganizationProgrammaticAccessGrant,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationProgrammaticAccessGrantPropPermissions as OrganizationProgrammaticAccessGrantPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization as OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationProgrammaticAccessGrantPropPermissionsPropOther as OrganizationProgrammaticAccessGrantPropPermissionsPropOther,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationProgrammaticAccessGrantPropPermissionsPropRepository as OrganizationProgrammaticAccessGrantPropPermissionsPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationProgrammaticAccessGrantRequest as OrganizationProgrammaticAccessGrantRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationProgrammaticAccessGrantRequestPropPermissions as OrganizationProgrammaticAccessGrantRequestPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization as OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther as OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository as OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationRole as OrganizationRole,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationSecretScanningAlert as OrganizationSecretScanningAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationSimple as OrganizationSimple,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationSimpleWebhooks as OrganizationSimpleWebhooks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody as OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting as OrganizationsOrgSettingsBillingBudgetsBudgetIdPatchBodyPropBudgetAlerting,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationsOrgSettingsBillingBudgetsPostBody as OrganizationsOrgSettingsBillingBudgetsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting as OrganizationsOrgSettingsBillingBudgetsPostBodyPropBudgetAlerting,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationUpdateIssueField as OrganizationUpdateIssueField,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrganizationUpdateIssueFieldPropOptionsItems as OrganizationUpdateIssueFieldPropOptionsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import OrgHook as OrgHook
-    from githubkit_schemas.v2026_03_10.models import (
+        OrgHook as OrgHook,
         OrgHookPropConfig as OrgHookPropConfig,
-    )
-    from githubkit_schemas.v2026_03_10.models import OrgMembership as OrgMembership
-    from githubkit_schemas.v2026_03_10.models import (
+        OrgMembership as OrgMembership,
         OrgMembershipPropPermissions as OrgMembershipPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgPrivateRegistryConfiguration as OrgPrivateRegistryConfiguration,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgPrivateRegistryConfigurationWithSelectedRepositories as OrgPrivateRegistryConfigurationWithSelectedRepositories,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgRepoCustomPropertyValues as OrgRepoCustomPropertyValues,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgRulesetConditionsOneof0 as OrgRulesetConditionsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgRulesetConditionsOneof1 as OrgRulesetConditionsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgRulesetConditionsOneof2 as OrgRulesetConditionsOneof2,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsCacheUsageByRepositoryGetResponse200 as OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsHostedRunnersGetResponse200 as OrgsOrgActionsHostedRunnersGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody as OrgsOrgActionsHostedRunnersHostedRunnerIdPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsHostedRunnersImagesCustomGetResponse200 as OrgsOrgActionsHostedRunnersImagesCustomGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200 as OrgsOrgActionsHostedRunnersImagesCustomImageDefinitionIdVersionsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200 as OrgsOrgActionsHostedRunnersImagesGithubOwnedGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200 as OrgsOrgActionsHostedRunnersImagesPartnerGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsHostedRunnersMachineSizesGetResponse200 as OrgsOrgActionsHostedRunnersMachineSizesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsHostedRunnersPlatformsGetResponse200 as OrgsOrgActionsHostedRunnersPlatformsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsHostedRunnersPostBody as OrgsOrgActionsHostedRunnersPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsHostedRunnersPostBodyPropImage as OrgsOrgActionsHostedRunnersPostBodyPropImage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsOidcCustomizationSubPutBody as OrgsOrgActionsOidcCustomizationSubPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsPermissionsPutBody as OrgsOrgActionsPermissionsPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsPermissionsRepositoriesGetResponse200 as OrgsOrgActionsPermissionsRepositoriesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsPermissionsRepositoriesPutBody as OrgsOrgActionsPermissionsRepositoriesPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsPermissionsSelfHostedRunnersPutBody as OrgsOrgActionsPermissionsSelfHostedRunnersPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200 as OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody as OrgsOrgActionsPermissionsSelfHostedRunnersRepositoriesPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsPoliciesGetResponse200 as OrgsOrgActionsPoliciesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsPoliciesPolicyIdPutBody as OrgsOrgActionsPoliciesPolicyIdPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsPoliciesPostBody as OrgsOrgActionsPoliciesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsRunnerGroupsGetResponse200 as OrgsOrgActionsRunnerGroupsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsRunnerGroupsPostBody as OrgsOrgActionsRunnerGroupsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200 as OrgsOrgActionsRunnerGroupsRunnerGroupIdHostedRunnersGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody as OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200 as OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody as OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200 as OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody as OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsRunnersDeprecationsVersionGetResponse200 as OrgsOrgActionsRunnersDeprecationsVersionGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsRunnersGenerateJitconfigPostBody as OrgsOrgActionsRunnersGenerateJitconfigPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsRunnersGenerateJitconfigPostResponse201 as OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsRunnersGetResponse200 as OrgsOrgActionsRunnersGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200 as OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200 as OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsRunnersRunnerIdLabelsPostBody as OrgsOrgActionsRunnersRunnerIdLabelsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsRunnersRunnerIdLabelsPutBody as OrgsOrgActionsRunnersRunnerIdLabelsPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsSecretsGetResponse200 as OrgsOrgActionsSecretsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsSecretsSecretNamePutBody as OrgsOrgActionsSecretsSecretNamePutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200 as OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsSecretsSecretNameRepositoriesPutBody as OrgsOrgActionsSecretsSecretNameRepositoriesPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsVariablesGetResponse200 as OrgsOrgActionsVariablesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsVariablesNamePatchBody as OrgsOrgActionsVariablesNamePatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsVariablesNameRepositoriesGetResponse200 as OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsVariablesNameRepositoriesPutBody as OrgsOrgActionsVariablesNameRepositoriesPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgActionsVariablesPostBody as OrgsOrgActionsVariablesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgAgentsSecretsGetResponse200 as OrgsOrgAgentsSecretsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgAgentsSecretsSecretNamePutBody as OrgsOrgAgentsSecretsSecretNamePutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200 as OrgsOrgAgentsSecretsSecretNameRepositoriesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgAgentsSecretsSecretNameRepositoriesPutBody as OrgsOrgAgentsSecretsSecretNameRepositoriesPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgAgentsVariablesGetResponse200 as OrgsOrgAgentsVariablesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgAgentsVariablesNamePatchBody as OrgsOrgAgentsVariablesNamePatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgAgentsVariablesNameRepositoriesGetResponse200 as OrgsOrgAgentsVariablesNameRepositoriesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgAgentsVariablesNameRepositoriesPutBody as OrgsOrgAgentsVariablesNameRepositoriesPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgAgentsVariablesPostBody as OrgsOrgAgentsVariablesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200 as OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItems as OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsJobIdGetResponse200PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBody as OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItems as OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTags as OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostBodyPropDeploymentsItemsPropTags,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202 as OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItems as OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterJobsPostResponse202PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody as OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems as OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags as OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostBodyPropDeploymentsItemsPropTags,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200 as OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207 as OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItems as OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeployment as OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeployment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentPropTags as OrgsOrgArtifactsMetadataDeploymentRecordClusterClusterPostResponse207PropErrorsItemsPropDeploymentPropTags,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgArtifactsMetadataDeploymentRecordPostBody as OrgsOrgArtifactsMetadataDeploymentRecordPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags as OrgsOrgArtifactsMetadataDeploymentRecordPostBodyPropTags,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200 as OrgsOrgArtifactsMetadataDeploymentRecordPostResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgArtifactsMetadataStorageRecordPostBody as OrgsOrgArtifactsMetadataStorageRecordPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgArtifactsMetadataStorageRecordPostResponse200 as OrgsOrgArtifactsMetadataStorageRecordPostResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems as OrgsOrgArtifactsMetadataStorageRecordPostResponse200PropStorageRecordsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200 as OrgsOrgArtifactsSubjectDigestMetadataDeploymentRecordsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200 as OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems as OrgsOrgArtifactsSubjectDigestMetadataStorageRecordsGetResponse200PropStorageRecordsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgAttestationsBulkListPostBody as OrgsOrgAttestationsBulkListPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgAttestationsBulkListPostResponse200 as OrgsOrgAttestationsBulkListPostResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests as OrgsOrgAttestationsBulkListPostResponse200PropAttestationsSubjectDigests,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgAttestationsBulkListPostResponse200PropPageInfo as OrgsOrgAttestationsBulkListPostResponse200PropPageInfo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgAttestationsDeleteRequestPostBodyOneof0 as OrgsOrgAttestationsDeleteRequestPostBodyOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgAttestationsDeleteRequestPostBodyOneof1 as OrgsOrgAttestationsDeleteRequestPostBodyOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgAttestationsRepositoriesGetResponse200Items as OrgsOrgAttestationsRepositoriesGetResponse200Items,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgAttestationsSubjectDigestGetResponse200 as OrgsOrgAttestationsSubjectDigestGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems as OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCampaignsCampaignNumberPatchBody as OrgsOrgCampaignsCampaignNumberPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCampaignsPostBodyOneof0 as OrgsOrgCampaignsPostBodyOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCampaignsPostBodyOneof1 as OrgsOrgCampaignsPostBodyOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems as OrgsOrgCampaignsPostBodyPropCodeScanningAlertsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody as OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody as OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200 as OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody as OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions as OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptions as OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems as OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCodeSecurityConfigurationsDetachDeleteBody as OrgsOrgCodeSecurityConfigurationsDetachDeleteBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCodeSecurityConfigurationsPostBody as OrgsOrgCodeSecurityConfigurationsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions as OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptions as OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems as OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsPropReviewersItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCodespacesAccessPutBody as OrgsOrgCodespacesAccessPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCodespacesAccessSelectedUsersDeleteBody as OrgsOrgCodespacesAccessSelectedUsersDeleteBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCodespacesAccessSelectedUsersPostBody as OrgsOrgCodespacesAccessSelectedUsersPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCodespacesGetResponse200 as OrgsOrgCodespacesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCodespacesSecretsGetResponse200 as OrgsOrgCodespacesSecretsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCodespacesSecretsSecretNamePutBody as OrgsOrgCodespacesSecretsSecretNamePutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200 as OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody as OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotBillingSeatsGetResponse200 as OrgsOrgCopilotBillingSeatsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotBillingSelectedTeamsDeleteBody as OrgsOrgCopilotBillingSelectedTeamsDeleteBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200 as OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotBillingSelectedTeamsPostBody as OrgsOrgCopilotBillingSelectedTeamsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201 as OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotBillingSelectedUsersDeleteBody as OrgsOrgCopilotBillingSelectedUsersDeleteBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200 as OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotBillingSelectedUsersPostBody as OrgsOrgCopilotBillingSelectedUsersPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotBillingSelectedUsersPostResponse201 as OrgsOrgCopilotBillingSelectedUsersPostResponse201,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotCodeReviewRunnerPutBody as OrgsOrgCopilotCodeReviewRunnerPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotCodeReviewSettingsPatchBody as OrgsOrgCopilotCodeReviewSettingsPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotCodeReviewSettingsPatchResponse409 as OrgsOrgCopilotCodeReviewSettingsPatchResponse409,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotCodingAgentPermissionsGetResponse200 as OrgsOrgCopilotCodingAgentPermissionsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotCodingAgentPermissionsPutBody as OrgsOrgCopilotCodingAgentPermissionsPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200 as OrgsOrgCopilotCodingAgentPermissionsRepositoriesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody as OrgsOrgCopilotCodingAgentPermissionsRepositoriesPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotContentExclusionPutBody as OrgsOrgCopilotContentExclusionPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotContentExclusionPutResponse200 as OrgsOrgCopilotContentExclusionPutResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotPoliciesCodeReviewPutBody as OrgsOrgCopilotPoliciesCodeReviewPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotPoliciesCodeReviewPutResponse409 as OrgsOrgCopilotPoliciesCodeReviewPutResponse409,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotSpacesGetResponse200 as OrgsOrgCopilotSpacesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotSpacesPostBody as OrgsOrgCopilotSpacesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems as OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata as OrgsOrgCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody as OrgsOrgCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200 as OrgsOrgCopilotSpacesSpaceNumberCollaboratorsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody as OrgsOrgCopilotSpacesSpaceNumberCollaboratorsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotSpacesSpaceNumberPutBody as OrgsOrgCopilotSpacesSpaceNumberPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems as OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata as OrgsOrgCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200 as OrgsOrgCopilotSpacesSpaceNumberResourcesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody as OrgsOrgCopilotSpacesSpaceNumberResourcesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata as OrgsOrgCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody as OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata as OrgsOrgCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody as OrgsOrgDependabotRepositoryAccessDefaultLevelPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgDependabotRepositoryAccessPatchBody as OrgsOrgDependabotRepositoryAccessPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgDependabotSecretsGetResponse200 as OrgsOrgDependabotSecretsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgDependabotSecretsSecretNamePutBody as OrgsOrgDependabotSecretsSecretNamePutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200 as OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody as OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgHooksHookIdConfigPatchBody as OrgsOrgHooksHookIdConfigPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgHooksHookIdPatchBody as OrgsOrgHooksHookIdPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgHooksHookIdPatchBodyPropConfig as OrgsOrgHooksHookIdPatchBodyPropConfig,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgHooksPostBody as OrgsOrgHooksPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgHooksPostBodyPropConfig as OrgsOrgHooksPostBodyPropConfig,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgInstallationsGetResponse200 as OrgsOrgInstallationsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgInteractionLimitsGetResponse200Anyof1 as OrgsOrgInteractionLimitsGetResponse200Anyof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgInteractionLimitsPullsCreationCapGetResponse200 as OrgsOrgInteractionLimitsPullsCreationCapGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgInteractionLimitsPullsCreationCapPatchBody as OrgsOrgInteractionLimitsPullsCreationCapPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200 as OrgsOrgInteractionLimitsPullsCreationCapPatchResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgInvitationsPostBody as OrgsOrgInvitationsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgMembershipsUsernamePutBody as OrgsOrgMembershipsUsernamePutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgMembersUsernameCodespacesGetResponse200 as OrgsOrgMembersUsernameCodespacesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgMigrationsPostBody as OrgsOrgMigrationsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgOrganizationRolesGetResponse200 as OrgsOrgOrganizationRolesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422 as OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgOutsideCollaboratorsUsernamePutBody as OrgsOrgOutsideCollaboratorsUsernamePutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202 as OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgPatchBody as OrgsOrgPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody as OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgPersonalAccessTokenRequestsPostBody as OrgsOrgPersonalAccessTokenRequestsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgPersonalAccessTokensPatIdPostBody as OrgsOrgPersonalAccessTokensPatIdPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgPersonalAccessTokensPostBody as OrgsOrgPersonalAccessTokensPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgPrivateRegistriesGetResponse200 as OrgsOrgPrivateRegistriesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgPrivateRegistriesPostBody as OrgsOrgPrivateRegistriesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgPrivateRegistriesPublicKeyGetResponse200 as OrgsOrgPrivateRegistriesPublicKeyGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgPrivateRegistriesSecretNamePatchBody as OrgsOrgPrivateRegistriesSecretNamePatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgProjectsV2ProjectNumberDraftsPostBody as OrgsOrgProjectsV2ProjectNumberDraftsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0 as OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1 as OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2 as OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof2,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3 as OrgsOrgProjectsV2ProjectNumberFieldsPostBodyOneof3,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody as OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems as OrgsOrgProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0 as OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1 as OrgsOrgProjectsV2ProjectNumberItemsPostBodyOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgProjectsV2ProjectNumberViewsPostBody as OrgsOrgProjectsV2ProjectNumberViewsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgPropertiesInstallationsPostBody as OrgsOrgPropertiesInstallationsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgPropertiesInstallationsValuesPatchBody as OrgsOrgPropertiesInstallationsValuesPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody as OrgsOrgPropertiesInstallationsValuesPropertyNamePatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgPropertiesSchemaPatchBody as OrgsOrgPropertiesSchemaPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgPropertiesValuesPatchBody as OrgsOrgPropertiesValuesPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgReposPostBody as OrgsOrgReposPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgReposPostBodyPropCustomProperties as OrgsOrgReposPostBodyPropCustomProperties,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgRulesetsPostBody as OrgsOrgRulesetsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgRulesetsRulesetIdPutBody as OrgsOrgRulesetsRulesetIdPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgSecretScanningCustomPatternsDeleteBody as OrgsOrgSecretScanningCustomPatternsDeleteBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgSecretScanningCustomPatternsPostBody as OrgsOrgSecretScanningCustomPatternsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgSecretScanningCustomPatternsPostResponse201 as OrgsOrgSecretScanningCustomPatternsPostResponse201,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgSecretScanningCustomPatternsPostResponse422 as OrgsOrgSecretScanningCustomPatternsPostResponse422,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors as OrgsOrgSecretScanningCustomPatternsPostResponse422PropValidationErrors,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgSecretScanningPatternConfigurationsPatchBody as OrgsOrgSecretScanningPatternConfigurationsPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems as OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropCustomPatternSettingsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems as OrgsOrgSecretScanningPatternConfigurationsPatchBodyPropProviderPatternSettingsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgSecretScanningPatternConfigurationsPatchResponse200 as OrgsOrgSecretScanningPatternConfigurationsPatchResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgSecurityProductEnablementPostBody as OrgsOrgSecurityProductEnablementPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgSettingsImmutableReleasesPutBody as OrgsOrgSettingsImmutableReleasesPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200 as OrgsOrgSettingsImmutableReleasesRepositoriesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgSettingsImmutableReleasesRepositoriesPutBody as OrgsOrgSettingsImmutableReleasesRepositoriesPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgSettingsNetworkConfigurationsGetResponse200 as OrgsOrgSettingsNetworkConfigurationsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody as OrgsOrgSettingsNetworkConfigurationsNetworkConfigurationIdPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgSettingsNetworkConfigurationsPostBody as OrgsOrgSettingsNetworkConfigurationsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgTeamsPostBody as OrgsOrgTeamsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200 as OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplaces as OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropExtraKnownMarketplaces,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments as OrgsOrgTeamsTeamSlugCopilotCustomizationsGetResponse200PropPluginAssignments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBody as OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplaces as OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropExtraKnownMarketplaces,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignments as OrgsOrgTeamsTeamSlugCopilotCustomizationsPutBodyPropPluginAssignments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200 as OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplaces as OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropExtraKnownMarketplaces,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignments as OrgsOrgTeamsTeamSlugCopilotCustomizationsPutResponse200PropPluginAssignments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody as OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgTeamsTeamSlugPatchBody as OrgsOrgTeamsTeamSlugPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody as OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import Package as Package
-    from githubkit_schemas.v2026_03_10.models import PackageVersion as PackageVersion
-    from githubkit_schemas.v2026_03_10.models import (
+        Package as Package,
+        PackageVersion as PackageVersion,
         PackageVersionPropMetadata as PackageVersionPropMetadata,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PackageVersionPropMetadataPropContainer as PackageVersionPropMetadataPropContainer,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PackageVersionPropMetadataPropDocker as PackageVersionPropMetadataPropDocker,
-    )
-    from githubkit_schemas.v2026_03_10.models import Page as Page
-    from githubkit_schemas.v2026_03_10.models import PageBuild as PageBuild
-    from githubkit_schemas.v2026_03_10.models import (
+        Page as Page,
+        PageBuild as PageBuild,
         PageBuildPropError as PageBuildPropError,
-    )
-    from githubkit_schemas.v2026_03_10.models import PageBuildStatus as PageBuildStatus
-    from githubkit_schemas.v2026_03_10.models import PageDeployment as PageDeployment
-    from githubkit_schemas.v2026_03_10.models import (
+        PageBuildStatus as PageBuildStatus,
+        PageDeployment as PageDeployment,
         PagesDeploymentStatus as PagesDeploymentStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PagesHealthCheck as PagesHealthCheck,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PagesHealthCheckPropAltDomain as PagesHealthCheckPropAltDomain,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PagesHealthCheckPropDomain as PagesHealthCheckPropDomain,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PagesHttpsCertificate as PagesHttpsCertificate,
-    )
-    from githubkit_schemas.v2026_03_10.models import PagesSourceHash as PagesSourceHash
-    from githubkit_schemas.v2026_03_10.models import (
+        PagesSourceHash as PagesSourceHash,
         ParentIssueAddedIssueEvent as ParentIssueAddedIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ParentIssueRemovedIssueEvent as ParentIssueRemovedIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ParticipationStats as ParticipationStats,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PendingDeployment as PendingDeployment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PendingDeploymentPropEnvironment as PendingDeploymentPropEnvironment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PendingDeploymentPropReviewersItems as PendingDeploymentPropReviewersItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PersonalAccessTokenRequest as PersonalAccessTokenRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PersonalAccessTokenRequestPropPermissionsAdded as PersonalAccessTokenRequestPropPermissionsAdded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PersonalAccessTokenRequestPropPermissionsAddedPropOrganization as PersonalAccessTokenRequestPropPermissionsAddedPropOrganization,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PersonalAccessTokenRequestPropPermissionsAddedPropOther as PersonalAccessTokenRequestPropPermissionsAddedPropOther,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PersonalAccessTokenRequestPropPermissionsAddedPropRepository as PersonalAccessTokenRequestPropPermissionsAddedPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PersonalAccessTokenRequestPropPermissionsResult as PersonalAccessTokenRequestPropPermissionsResult,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PersonalAccessTokenRequestPropPermissionsResultPropOrganization as PersonalAccessTokenRequestPropPermissionsResultPropOrganization,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PersonalAccessTokenRequestPropPermissionsResultPropOther as PersonalAccessTokenRequestPropPermissionsResultPropOther,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PersonalAccessTokenRequestPropPermissionsResultPropRepository as PersonalAccessTokenRequestPropPermissionsResultPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PersonalAccessTokenRequestPropPermissionsUpgraded as PersonalAccessTokenRequestPropPermissionsUpgraded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization as PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PersonalAccessTokenRequestPropPermissionsUpgradedPropOther as PersonalAccessTokenRequestPropPermissionsUpgradedPropOther,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository as PersonalAccessTokenRequestPropPermissionsUpgradedPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PersonalAccessTokenRequestPropRepositoriesItems as PersonalAccessTokenRequestPropRepositoriesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PinnedIssueComment as PinnedIssueComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import PlanningStatus as PlanningStatus
-    from githubkit_schemas.v2026_03_10.models import PorterAuthor as PorterAuthor
-    from githubkit_schemas.v2026_03_10.models import PorterLargeFile as PorterLargeFile
-    from githubkit_schemas.v2026_03_10.models import PrivateUser as PrivateUser
-    from githubkit_schemas.v2026_03_10.models import (
+        PlanningStatus as PlanningStatus,
+        PorterAuthor as PorterAuthor,
+        PorterLargeFile as PorterLargeFile,
+        PrivateUser as PrivateUser,
         PrivateUserPropPlan as PrivateUserPropPlan,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PrivateVulnerabilityReportCreate as PrivateVulnerabilityReportCreate,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PrivateVulnerabilityReportCreatePropVulnerabilitiesItems as PrivateVulnerabilityReportCreatePropVulnerabilitiesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage as PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage,
-    )
-    from githubkit_schemas.v2026_03_10.models import ProjectsV2 as ProjectsV2
-    from githubkit_schemas.v2026_03_10.models import (
+        ProjectsV2 as ProjectsV2,
         ProjectsV2DraftIssue as ProjectsV2DraftIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import ProjectsV2Field as ProjectsV2Field
-    from githubkit_schemas.v2026_03_10.models import (
+        ProjectsV2Field as ProjectsV2Field,
         ProjectsV2FieldIterationConfiguration as ProjectsV2FieldIterationConfiguration,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProjectsV2FieldIterationConfigurationPropIterationsItems as ProjectsV2FieldIterationConfigurationPropIterationsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProjectsV2FieldPropConfiguration as ProjectsV2FieldPropConfiguration,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProjectsV2FieldSingleSelectOption as ProjectsV2FieldSingleSelectOption,
-    )
-    from githubkit_schemas.v2026_03_10.models import ProjectsV2Item as ProjectsV2Item
-    from githubkit_schemas.v2026_03_10.models import (
+        ProjectsV2Item as ProjectsV2Item,
         ProjectsV2ItemSimple as ProjectsV2ItemSimple,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProjectsV2ItemWithContent as ProjectsV2ItemWithContent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProjectsV2ItemWithContentPropContent as ProjectsV2ItemWithContentPropContent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProjectsV2ItemWithContentPropFieldsItems as ProjectsV2ItemWithContentPropFieldsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProjectsV2IterationSetting as ProjectsV2IterationSetting,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProjectsV2IterationSettings as ProjectsV2IterationSettings,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProjectsV2IterationSettingsPropTitle as ProjectsV2IterationSettingsPropTitle,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProjectsV2SingleSelectOption as ProjectsV2SingleSelectOption,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProjectsV2SingleSelectOptions as ProjectsV2SingleSelectOptions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProjectsV2SingleSelectOptionsPropDescription as ProjectsV2SingleSelectOptionsPropDescription,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProjectsV2SingleSelectOptionsPropName as ProjectsV2SingleSelectOptionsPropName,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProjectsV2StatusUpdate as ProjectsV2StatusUpdate,
-    )
-    from githubkit_schemas.v2026_03_10.models import ProjectsV2View as ProjectsV2View
-    from githubkit_schemas.v2026_03_10.models import (
+        ProjectsV2View as ProjectsV2View,
         ProjectsV2ViewPropCreator as ProjectsV2ViewPropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import ProtectedBranch as ProtectedBranch
-    from githubkit_schemas.v2026_03_10.models import (
+        ProtectedBranch as ProtectedBranch,
         ProtectedBranchAdminEnforced as ProtectedBranchAdminEnforced,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProtectedBranchPropAllowDeletions as ProtectedBranchPropAllowDeletions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProtectedBranchPropAllowForcePushes as ProtectedBranchPropAllowForcePushes,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProtectedBranchPropAllowForkSyncing as ProtectedBranchPropAllowForkSyncing,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProtectedBranchPropBlockCreations as ProtectedBranchPropBlockCreations,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProtectedBranchPropEnforceAdmins as ProtectedBranchPropEnforceAdmins,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProtectedBranchPropLockBranch as ProtectedBranchPropLockBranch,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProtectedBranchPropRequiredConversationResolution as ProtectedBranchPropRequiredConversationResolution,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProtectedBranchPropRequiredLinearHistory as ProtectedBranchPropRequiredLinearHistory,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProtectedBranchPropRequiredPullRequestReviews as ProtectedBranchPropRequiredPullRequestReviews,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances as ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions as ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProtectedBranchPropRequiredSignatures as ProtectedBranchPropRequiredSignatures,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProtectedBranchPullRequestReview as ProtectedBranchPullRequestReview,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances as ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProtectedBranchPullRequestReviewPropDismissalRestrictions as ProtectedBranchPullRequestReviewPropDismissalRestrictions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProtectedBranchRequiredStatusCheck as ProtectedBranchRequiredStatusCheck,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ProtectedBranchRequiredStatusCheckPropChecksItems as ProtectedBranchRequiredStatusCheckPropChecksItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import PublicEvent as PublicEvent
-    from githubkit_schemas.v2026_03_10.models import PublicIp as PublicIp
-    from githubkit_schemas.v2026_03_10.models import PublicUser as PublicUser
-    from githubkit_schemas.v2026_03_10.models import (
+        PublicEvent as PublicEvent,
+        PublicIp as PublicIp,
+        PublicUser as PublicUser,
         PublicUserPropPlan as PublicUserPropPlan,
-    )
-    from githubkit_schemas.v2026_03_10.models import PullRequest as PullRequest
-    from githubkit_schemas.v2026_03_10.models import (
+        PullRequest as PullRequest,
         PullRequestEvent as PullRequestEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestMergeAsyncResult as PullRequestMergeAsyncResult,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestMergeAsyncResultPropDetailsAnyof0 as PullRequestMergeAsyncResultPropDetailsAnyof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestMergeAsyncResultPropDetailsAnyof1 as PullRequestMergeAsyncResultPropDetailsAnyof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestMergeAsyncResultPropDetailsAnyof2 as PullRequestMergeAsyncResultPropDetailsAnyof2,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestMergeAsyncResultPropDetailsAnyof3 as PullRequestMergeAsyncResultPropDetailsAnyof3,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestMergeResult as PullRequestMergeResult,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestMinimal as PullRequestMinimal,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestMinimalPropBase as PullRequestMinimalPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestMinimalPropBasePropRepo as PullRequestMinimalPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestMinimalPropHead as PullRequestMinimalPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestMinimalPropHeadPropRepo as PullRequestMinimalPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestPropBase as PullRequestPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestPropHead as PullRequestPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestPropLabelsItems as PullRequestPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestPropLabelsItemsPropArchivedBy as PullRequestPropLabelsItemsPropArchivedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestPropLinks as PullRequestPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestReview as PullRequestReview,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestReviewComment as PullRequestReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestReviewCommentEvent as PullRequestReviewCommentEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestReviewCommentEventPropComment as PullRequestReviewCommentEventPropComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestReviewCommentEventPropCommentPropLinks as PullRequestReviewCommentEventPropCommentPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestReviewCommentEventPropCommentPropLinksPropHtml as PullRequestReviewCommentEventPropCommentPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestReviewCommentEventPropCommentPropLinksPropPullRequest as PullRequestReviewCommentEventPropCommentPropLinksPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestReviewCommentEventPropCommentPropLinksPropSelf as PullRequestReviewCommentEventPropCommentPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestReviewCommentEventPropCommentPropReactions as PullRequestReviewCommentEventPropCommentPropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestReviewCommentEventPropCommentPropUser as PullRequestReviewCommentEventPropCommentPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestReviewCommentPropCopilotCodeReviewSourcesItems as PullRequestReviewCommentPropCopilotCodeReviewSourcesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestReviewCommentPropLinks as PullRequestReviewCommentPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestReviewCommentPropLinksPropHtml as PullRequestReviewCommentPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestReviewCommentPropLinksPropPullRequest as PullRequestReviewCommentPropLinksPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestReviewCommentPropLinksPropSelf as PullRequestReviewCommentPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestReviewEvent as PullRequestReviewEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestReviewEventPropReview as PullRequestReviewEventPropReview,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestReviewEventPropReviewPropLinks as PullRequestReviewEventPropReviewPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestReviewEventPropReviewPropLinksPropHtml as PullRequestReviewEventPropReviewPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestReviewEventPropReviewPropLinksPropPullRequest as PullRequestReviewEventPropReviewPropLinksPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestReviewPropLinks as PullRequestReviewPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestReviewPropLinksPropHtml as PullRequestReviewPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestReviewPropLinksPropPullRequest as PullRequestReviewPropLinksPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestReviewRequest as PullRequestReviewRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestSimple as PullRequestSimple,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestSimplePropBase as PullRequestSimplePropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestSimplePropHead as PullRequestSimplePropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestSimplePropLabelsItems as PullRequestSimplePropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestSimplePropLabelsItemsPropArchivedBy as PullRequestSimplePropLabelsItemsPropArchivedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestSimplePropLinks as PullRequestSimplePropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestsOnAlerts as PullRequestsOnAlerts,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestStack as PullRequestStack,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestStackMinimal as PullRequestStackMinimal,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestStackMinimalPropBase as PullRequestStackMinimalPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestStackMinimalPropPullRequestsItems as PullRequestStackMinimalPropPullRequestsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestStackMinimalPropPullRequestsItemsPropHead as PullRequestStackMinimalPropPullRequestsItemsPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestStackPropBase as PullRequestStackPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestStackPullRequest as PullRequestStackPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestStackPullRequestAllof1 as PullRequestStackPullRequestAllof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestWebhook as PullRequestWebhook,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         PullRequestWebhookAllof1 as PullRequestWebhookAllof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import PushEvent as PushEvent
-    from githubkit_schemas.v2026_03_10.models import RateLimit as RateLimit
-    from githubkit_schemas.v2026_03_10.models import (
+        PushEvent as PushEvent,
+        RateLimit as RateLimit,
         RateLimitOverview as RateLimitOverview,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RateLimitOverviewPropResources as RateLimitOverviewPropResources,
-    )
-    from githubkit_schemas.v2026_03_10.models import Reaction as Reaction
-    from githubkit_schemas.v2026_03_10.models import ReactionRollup as ReactionRollup
-    from githubkit_schemas.v2026_03_10.models import (
+        Reaction as Reaction,
+        ReactionRollup as ReactionRollup,
         ReferencedWorkflow as ReferencedWorkflow,
-    )
-    from githubkit_schemas.v2026_03_10.models import ReferrerTraffic as ReferrerTraffic
-    from githubkit_schemas.v2026_03_10.models import Release as Release
-    from githubkit_schemas.v2026_03_10.models import ReleaseAsset as ReleaseAsset
-    from githubkit_schemas.v2026_03_10.models import ReleaseEvent as ReleaseEvent
-    from githubkit_schemas.v2026_03_10.models import (
+        ReferrerTraffic as ReferrerTraffic,
+        Release as Release,
+        ReleaseAsset as ReleaseAsset,
+        ReleaseEvent as ReleaseEvent,
         ReleaseEventPropRelease as ReleaseEventPropRelease,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReleaseEventPropReleaseAllof1 as ReleaseEventPropReleaseAllof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReleaseNotesContent as ReleaseNotesContent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RemovedFromProjectIssueEvent as RemovedFromProjectIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RemovedFromProjectIssueEventPropProjectCard as RemovedFromProjectIssueEventPropProjectCard,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RenamedIssueEvent as RenamedIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RenamedIssueEventPropRename as RenamedIssueEventPropRename,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepoCodespacesSecret as RepoCodespacesSecret,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepoSearchResultItem as RepoSearchResultItem,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepoSearchResultItemPropPermissions as RepoSearchResultItemPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import Repository as Repository
-    from githubkit_schemas.v2026_03_10.models import (
+        Repository as Repository,
         RepositoryAdvisory as RepositoryAdvisory,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryAdvisoryComment as RepositoryAdvisoryComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryAdvisoryCreate as RepositoryAdvisoryCreate,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryAdvisoryCreatePropCreditsItems as RepositoryAdvisoryCreatePropCreditsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryAdvisoryCreatePropVulnerabilitiesItems as RepositoryAdvisoryCreatePropVulnerabilitiesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage as RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryAdvisoryCredit as RepositoryAdvisoryCredit,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryAdvisoryDescriptionValidationError as RepositoryAdvisoryDescriptionValidationError,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems as RepositoryAdvisoryDescriptionValidationErrorPropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryAdvisoryPropAuthor as RepositoryAdvisoryPropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryAdvisoryPropCreditsItems as RepositoryAdvisoryPropCreditsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryAdvisoryPropCwesItems as RepositoryAdvisoryPropCwesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryAdvisoryPropIdentifiersItems as RepositoryAdvisoryPropIdentifiersItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryAdvisoryPropPrivateFork as RepositoryAdvisoryPropPrivateFork,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryAdvisoryPropPublisher as RepositoryAdvisoryPropPublisher,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryAdvisoryPropSubmission as RepositoryAdvisoryPropSubmission,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryAdvisoryUpdate as RepositoryAdvisoryUpdate,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryAdvisoryUpdatePropCreditsItems as RepositoryAdvisoryUpdatePropCreditsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryAdvisoryUpdatePropVulnerabilitiesItems as RepositoryAdvisoryUpdatePropVulnerabilitiesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage as RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryAdvisoryVulnerability as RepositoryAdvisoryVulnerability,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryAdvisoryVulnerabilityPropPackage as RepositoryAdvisoryVulnerabilityPropPackage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryCollaboratorPermission as RepositoryCollaboratorPermission,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryCopilotCodeReviewSettings as RepositoryCopilotCodeReviewSettings,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryCopilotCodeReviewSettingsPropReviewEffort as RepositoryCopilotCodeReviewSettingsPropReviewEffort,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryExternalPropertyPayload as RepositoryExternalPropertyPayload,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryHashAlgorithm as RepositoryHashAlgorithm,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryInvitation as RepositoryInvitation,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryPropCodeSearchIndexStatus as RepositoryPropCodeSearchIndexStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryPropPermissions as RepositoryPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleBranchNamePattern as RepositoryRuleBranchNamePattern,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleBranchNamePatternPropParameters as RepositoryRuleBranchNamePatternPropParameters,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleCodeCoverage as RepositoryRuleCodeCoverage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleCodeCoveragePropParameters as RepositoryRuleCodeCoveragePropParameters,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleCodeQuality as RepositoryRuleCodeQuality,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleCodeQualityPropParameters as RepositoryRuleCodeQualityPropParameters,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleCodeScanning as RepositoryRuleCodeScanning,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleCodeScanningPropParameters as RepositoryRuleCodeScanningPropParameters,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleCommitAuthorEmailPattern as RepositoryRuleCommitAuthorEmailPattern,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleCommitAuthorEmailPatternPropParameters as RepositoryRuleCommitAuthorEmailPatternPropParameters,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleCommitMessagePattern as RepositoryRuleCommitMessagePattern,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleCommitMessagePatternPropParameters as RepositoryRuleCommitMessagePatternPropParameters,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleCommitterEmailPattern as RepositoryRuleCommitterEmailPattern,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleCommitterEmailPatternPropParameters as RepositoryRuleCommitterEmailPatternPropParameters,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleCopilotCodeReview as RepositoryRuleCopilotCodeReview,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleCopilotCodeReviewPropParameters as RepositoryRuleCopilotCodeReviewPropParameters,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleCreation as RepositoryRuleCreation,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDeletion as RepositoryRuleDeletion,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDetailedOneof0 as RepositoryRuleDetailedOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDetailedOneof1 as RepositoryRuleDetailedOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDetailedOneof2 as RepositoryRuleDetailedOneof2,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDetailedOneof3 as RepositoryRuleDetailedOneof3,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDetailedOneof4 as RepositoryRuleDetailedOneof4,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDetailedOneof5 as RepositoryRuleDetailedOneof5,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDetailedOneof6 as RepositoryRuleDetailedOneof6,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDetailedOneof7 as RepositoryRuleDetailedOneof7,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDetailedOneof8 as RepositoryRuleDetailedOneof8,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDetailedOneof9 as RepositoryRuleDetailedOneof9,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDetailedOneof10 as RepositoryRuleDetailedOneof10,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDetailedOneof11 as RepositoryRuleDetailedOneof11,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDetailedOneof12 as RepositoryRuleDetailedOneof12,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDetailedOneof13 as RepositoryRuleDetailedOneof13,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDetailedOneof14 as RepositoryRuleDetailedOneof14,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDetailedOneof15 as RepositoryRuleDetailedOneof15,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDetailedOneof16 as RepositoryRuleDetailedOneof16,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDetailedOneof17 as RepositoryRuleDetailedOneof17,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDetailedOneof18 as RepositoryRuleDetailedOneof18,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDetailedOneof19 as RepositoryRuleDetailedOneof19,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDetailedOneof20 as RepositoryRuleDetailedOneof20,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDetailedOneof21 as RepositoryRuleDetailedOneof21,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDetailedOneof22 as RepositoryRuleDetailedOneof22,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDetailedOneof23 as RepositoryRuleDetailedOneof23,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleDetailedOneof24 as RepositoryRuleDetailedOneof24,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleFileExtensionRestriction as RepositoryRuleFileExtensionRestriction,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleFileExtensionRestrictionPropParameters as RepositoryRuleFileExtensionRestrictionPropParameters,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleFilePathRestriction as RepositoryRuleFilePathRestriction,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleFilePathRestrictionPropParameters as RepositoryRuleFilePathRestrictionPropParameters,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleLicenseComplianceScanning as RepositoryRuleLicenseComplianceScanning,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleMaxFilePathLength as RepositoryRuleMaxFilePathLength,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleMaxFilePathLengthPropParameters as RepositoryRuleMaxFilePathLengthPropParameters,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleMaxFileSize as RepositoryRuleMaxFileSize,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleMaxFileSizePropParameters as RepositoryRuleMaxFileSizePropParameters,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleMergeQueue as RepositoryRuleMergeQueue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleMergeQueuePropParameters as RepositoryRuleMergeQueuePropParameters,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleNonFastForward as RepositoryRuleNonFastForward,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleParamsActor as RepositoryRuleParamsActor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleParamsCodeScanningTool as RepositoryRuleParamsCodeScanningTool,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleParamsDismissalRestriction as RepositoryRuleParamsDismissalRestriction,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleParamsProofOfPresence as RepositoryRuleParamsProofOfPresence,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleParamsRequiredReviewerConfiguration as RepositoryRuleParamsRequiredReviewerConfiguration,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleParamsRestrictedCommits as RepositoryRuleParamsRestrictedCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleParamsReviewer as RepositoryRuleParamsReviewer,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleParamsStatusCheckConfiguration as RepositoryRuleParamsStatusCheckConfiguration,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleParamsWorkflowFileReference as RepositoryRuleParamsWorkflowFileReference,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRulePullRequest as RepositoryRulePullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRulePullRequestPropParameters as RepositoryRulePullRequestPropParameters,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleRequiredDeployments as RepositoryRuleRequiredDeployments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleRequiredDeploymentsPropParameters as RepositoryRuleRequiredDeploymentsPropParameters,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleRequiredLinearHistory as RepositoryRuleRequiredLinearHistory,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleRequiredSignatures as RepositoryRuleRequiredSignatures,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleRequiredStatusChecks as RepositoryRuleRequiredStatusChecks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleRequiredStatusChecksPropParameters as RepositoryRuleRequiredStatusChecksPropParameters,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleRulesetInfo as RepositoryRuleRulesetInfo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleset as RepositoryRuleset,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRulesetBypassActor as RepositoryRulesetBypassActor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRulesetConditions as RepositoryRulesetConditions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRulesetConditionsPropRefName as RepositoryRulesetConditionsPropRefName,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRulesetConditionsRepositoryIdTarget as RepositoryRulesetConditionsRepositoryIdTarget,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId as RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRulesetConditionsRepositoryNameTarget as RepositoryRulesetConditionsRepositoryNameTarget,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName as RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRulesetConditionsRepositoryPropertySpec as RepositoryRulesetConditionsRepositoryPropertySpec,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRulesetConditionsRepositoryPropertyTarget as RepositoryRulesetConditionsRepositoryPropertyTarget,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty as RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRulesetPropLinks as RepositoryRulesetPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRulesetPropLinksPropHtml as RepositoryRulesetPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRulesetPropLinksPropSelf as RepositoryRulesetPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleTagNamePattern as RepositoryRuleTagNamePattern,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleTagNamePatternPropParameters as RepositoryRuleTagNamePatternPropParameters,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleUpdate as RepositoryRuleUpdate,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleUpdatePropParameters as RepositoryRuleUpdatePropParameters,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleViolationError as RepositoryRuleViolationError,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleViolationErrorPropMetadata as RepositoryRuleViolationErrorPropMetadata,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleViolationErrorPropMetadataPropSecretScanning as RepositoryRuleViolationErrorPropMetadataPropSecretScanning,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems as RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleWorkflows as RepositoryRuleWorkflows,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryRuleWorkflowsPropParameters as RepositoryRuleWorkflowsPropParameters,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositorySubscription as RepositorySubscription,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryWebhooks as RepositoryWebhooks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryWebhooksPropCustomProperties as RepositoryWebhooksPropCustomProperties,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryWebhooksPropPermissions as RepositoryWebhooksPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryWebhooksPropTemplateRepository as RepositoryWebhooksPropTemplateRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryWebhooksPropTemplateRepositoryPropOwner as RepositoryWebhooksPropTemplateRepositoryPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RepositoryWebhooksPropTemplateRepositoryPropPermissions as RepositoryWebhooksPropTemplateRepositoryPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsArtifactsGetResponse200 as ReposOwnerRepoActionsArtifactsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsJobsJobIdRerunPostBody as ReposOwnerRepoActionsJobsJobIdRerunPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsOidcCustomizationSubPutBody as ReposOwnerRepoActionsOidcCustomizationSubPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsOrganizationSecretsGetResponse200 as ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200 as ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsPermissionsPutBody as ReposOwnerRepoActionsPermissionsPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsPoliciesGetResponse200 as ReposOwnerRepoActionsPoliciesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsPoliciesPolicyIdPutBody as ReposOwnerRepoActionsPoliciesPolicyIdPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsPoliciesPostBody as ReposOwnerRepoActionsPoliciesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200 as ReposOwnerRepoActionsRunnersDeprecationsVersionGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody as ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsRunnersGetResponse200 as ReposOwnerRepoActionsRunnersGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody as ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody as ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsRunsGetResponse200 as ReposOwnerRepoActionsRunsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200 as ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200 as ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsRunsRunIdJobsGetResponse200 as ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody as ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody as ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsRunsRunIdRerunPostBody as ReposOwnerRepoActionsRunsRunIdRerunPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsSecretsGetResponse200 as ReposOwnerRepoActionsSecretsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsSecretsSecretNamePutBody as ReposOwnerRepoActionsSecretsSecretNamePutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsVariablesGetResponse200 as ReposOwnerRepoActionsVariablesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsVariablesNamePatchBody as ReposOwnerRepoActionsVariablesNamePatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsVariablesPostBody as ReposOwnerRepoActionsVariablesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsWorkflowsGetResponse200 as ReposOwnerRepoActionsWorkflowsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody as ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs as ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200 as ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoAgentsOrganizationSecretsGetResponse200 as ReposOwnerRepoAgentsOrganizationSecretsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoAgentsOrganizationVariablesGetResponse200 as ReposOwnerRepoAgentsOrganizationVariablesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoAgentsSecretsGetResponse200 as ReposOwnerRepoAgentsSecretsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoAgentsSecretsSecretNamePutBody as ReposOwnerRepoAgentsSecretsSecretNamePutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoAgentsVariablesGetResponse200 as ReposOwnerRepoAgentsVariablesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoAgentsVariablesNamePatchBody as ReposOwnerRepoAgentsVariablesNamePatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoAgentsVariablesPostBody as ReposOwnerRepoAgentsVariablesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoAttestationsPostBody as ReposOwnerRepoAttestationsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoAttestationsPostBodyPropBundle as ReposOwnerRepoAttestationsPostBodyPropBundle,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope as ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial as ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoAttestationsPostResponse201 as ReposOwnerRepoAttestationsPostResponse201,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200 as ReposOwnerRepoAttestationsSubjectDigestGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems as ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoAutolinksPostBody as ReposOwnerRepoAutolinksPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoBranchesBranchProtectionPutBody as ReposOwnerRepoBranchesBranchProtectionPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody as ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances as ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions as ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoBranchesBranchRenamePostBody as ReposOwnerRepoBranchesBranchRenamePostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0 as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1 as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCheckRunsPostBodyOneof0 as ReposOwnerRepoCheckRunsPostBodyOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCheckRunsPostBodyOneof1 as ReposOwnerRepoCheckRunsPostBodyOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCheckRunsPostBodyPropActionsItems as ReposOwnerRepoCheckRunsPostBodyPropActionsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCheckRunsPostBodyPropOutput as ReposOwnerRepoCheckRunsPostBodyPropOutput,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems as ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems as ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200 as ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCheckSuitesPostBody as ReposOwnerRepoCheckSuitesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCheckSuitesPreferencesPatchBody as ReposOwnerRepoCheckSuitesPreferencesPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems as ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0 as ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1 as ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyAnyof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0 as ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1 as ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2 as ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCodeScanningSarifsPostBody as ReposOwnerRepoCodeScanningSarifsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCodespacesDevcontainersGetResponse200 as ReposOwnerRepoCodespacesDevcontainersGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems as ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCodespacesGetResponse200 as ReposOwnerRepoCodespacesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCodespacesMachinesGetResponse200 as ReposOwnerRepoCodespacesMachinesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCodespacesNewGetResponse200 as ReposOwnerRepoCodespacesNewGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCodespacesNewGetResponse200PropDefaults as ReposOwnerRepoCodespacesNewGetResponse200PropDefaults,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCodespacesPostBody as ReposOwnerRepoCodespacesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCodespacesSecretsGetResponse200 as ReposOwnerRepoCodespacesSecretsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCodespacesSecretsSecretNamePutBody as ReposOwnerRepoCodespacesSecretsSecretNamePutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCollaboratorsUsernamePutBody as ReposOwnerRepoCollaboratorsUsernamePutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCommentsCommentIdPatchBody as ReposOwnerRepoCommentsCommentIdPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCommentsCommentIdReactionsPostBody as ReposOwnerRepoCommentsCommentIdReactionsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCommitsCommitShaCommentsPostBody as ReposOwnerRepoCommitsCommitShaCommentsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCommitsRefCheckRunsGetResponse200 as ReposOwnerRepoCommitsRefCheckRunsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCommitsRefCheckSuitesGetResponse200 as ReposOwnerRepoCommitsRefCheckSuitesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoContentsPathDeleteBody as ReposOwnerRepoContentsPathDeleteBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoContentsPathDeleteBodyPropAuthor as ReposOwnerRepoContentsPathDeleteBodyPropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoContentsPathDeleteBodyPropCommitter as ReposOwnerRepoContentsPathDeleteBodyPropCommitter,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoContentsPathPutBody as ReposOwnerRepoContentsPathPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoContentsPathPutBodyPropAuthor as ReposOwnerRepoContentsPathPutBodyPropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoContentsPathPutBodyPropCommitter as ReposOwnerRepoContentsPathPutBodyPropCommitter,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200 as ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools as ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropEnabledTools,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration as ReposOwnerRepoCopilotCloudAgentConfigurationGetResponse200PropMcpConfiguration,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoCopilotCodeReviewSettingsPatchBody as ReposOwnerRepoCopilotCodeReviewSettingsPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoDeleteResponse403 as ReposOwnerRepoDeleteResponse403,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0 as ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1 as ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyAnyof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment as ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyPropAgentAssignment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoDependabotSecretsGetResponse200 as ReposOwnerRepoDependabotSecretsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoDependabotSecretsSecretNamePutBody as ReposOwnerRepoDependabotSecretsSecretNamePutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201 as ReposOwnerRepoDependencyGraphSbomGenerateReportGetResponse201,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201 as ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody as ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoDeploymentsPostBody as ReposOwnerRepoDeploymentsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0 as ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoDeploymentsPostResponse202 as ReposOwnerRepoDeploymentsPostResponse202,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoDispatchesPostBody as ReposOwnerRepoDispatchesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoDispatchesPostBodyPropClientPayload as ReposOwnerRepoDispatchesPostBodyPropClientPayload,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200 as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200 as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200 as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoEnvironmentsEnvironmentNamePutBody as ReposOwnerRepoEnvironmentsEnvironmentNamePutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems as ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200 as ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody as ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200 as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoEnvironmentsGetResponse200 as ReposOwnerRepoEnvironmentsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoForksPostBody as ReposOwnerRepoForksPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoGitBlobsPostBody as ReposOwnerRepoGitBlobsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoGitCommitsPostBody as ReposOwnerRepoGitCommitsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoGitCommitsPostBodyPropAuthor as ReposOwnerRepoGitCommitsPostBodyPropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoGitCommitsPostBodyPropCommitter as ReposOwnerRepoGitCommitsPostBodyPropCommitter,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoGitRefsPostBody as ReposOwnerRepoGitRefsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoGitRefsRefPatchBody as ReposOwnerRepoGitRefsRefPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoGitTagsPostBody as ReposOwnerRepoGitTagsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoGitTagsPostBodyPropTagger as ReposOwnerRepoGitTagsPostBodyPropTagger,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoGitTreesPostBody as ReposOwnerRepoGitTreesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoGitTreesPostBodyPropTreeItems as ReposOwnerRepoGitTreesPostBodyPropTreeItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoHooksHookIdConfigPatchBody as ReposOwnerRepoHooksHookIdConfigPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoHooksHookIdPatchBody as ReposOwnerRepoHooksHookIdPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoHooksPostBody as ReposOwnerRepoHooksPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoHooksPostBodyPropConfig as ReposOwnerRepoHooksPostBodyPropConfig,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoImportAuthorsAuthorIdPatchBody as ReposOwnerRepoImportAuthorsAuthorIdPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoImportLfsPatchBody as ReposOwnerRepoImportLfsPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoImportPatchBody as ReposOwnerRepoImportPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoImportPutBody as ReposOwnerRepoImportPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoInteractionLimitsGetResponse200Anyof1 as ReposOwnerRepoInteractionLimitsGetResponse200Anyof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200 as ReposOwnerRepoInteractionLimitsPullsCreationCapGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody as ReposOwnerRepoInteractionLimitsPullsCreationCapPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200 as ReposOwnerRepoInteractionLimitsPullsCreationCapPatchResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoInvitationsInvitationIdPatchBody as ReposOwnerRepoInvitationsInvitationIdPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesCommentsCommentIdPatchBody as ReposOwnerRepoIssuesCommentsCommentIdPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody as ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1 as ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItems as ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActor as ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberGetResponse200Oneof1PropVersionsItemsPropActor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0 as ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1 as ReposOwnerRepoIssuesIssueNumberArtifactsArtifactNumberPatchBodyAnyof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberArtifactsPostBody as ReposOwnerRepoIssuesIssueNumberArtifactsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody as ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberAssigneesPostBody as ReposOwnerRepoIssuesIssueNumberAssigneesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1 as ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyPropAssigneesItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberCommentsPostBody as ReposOwnerRepoIssuesIssueNumberCommentsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody as ReposOwnerRepoIssuesIssueNumberDependenciesBlockedByPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody as ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems as ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPostBodyPropIssueFieldValuesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody as ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems as ReposOwnerRepoIssuesIssueNumberIssueFieldValuesPutBodyPropIssueFieldValuesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0 as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1 as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0PropLabelsItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Items,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0 as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2 as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberLockPutBody as ReposOwnerRepoIssuesIssueNumberLockPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberPatchBody as ReposOwnerRepoIssuesIssueNumberPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1 as ReposOwnerRepoIssuesIssueNumberPatchBodyPropAssigneesItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems as ReposOwnerRepoIssuesIssueNumberPatchBodyPropIssueFieldValuesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1 as ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1 as ReposOwnerRepoIssuesIssueNumberPatchBodyPropTypeOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberPatchResponse200 as ReposOwnerRepoIssuesIssueNumberPatchResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1 as ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions as ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItems as ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItems as ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropIssueFieldValuesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItems as ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItems as ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropStateItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItems as ReposOwnerRepoIssuesIssueNumberPatchResponse200Allof1PropSuggestionsPropTypeItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberReactionsPostBody as ReposOwnerRepoIssuesIssueNumberReactionsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberRelatesToPostBody as ReposOwnerRepoIssuesIssueNumberRelatesToPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody as ReposOwnerRepoIssuesIssueNumberSubIssueDeleteBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody as ReposOwnerRepoIssuesIssueNumberSubIssuesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody as ReposOwnerRepoIssuesIssueNumberSubIssuesPriorityPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesPostBody as ReposOwnerRepoIssuesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems as ReposOwnerRepoIssuesPostBodyPropIssueFieldValuesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1 as ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoKeysPostBody as ReposOwnerRepoKeysPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoLabelsNamePatchBody as ReposOwnerRepoLabelsNamePatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoLabelsPostBody as ReposOwnerRepoLabelsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoMergesPostBody as ReposOwnerRepoMergesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoMergeUpstreamPostBody as ReposOwnerRepoMergeUpstreamPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoMilestonesMilestoneNumberPatchBody as ReposOwnerRepoMilestonesMilestoneNumberPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoMilestonesPostBody as ReposOwnerRepoMilestonesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoNotificationsPutBody as ReposOwnerRepoNotificationsPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoNotificationsPutResponse202 as ReposOwnerRepoNotificationsPutResponse202,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPagesDeploymentsPostBody as ReposOwnerRepoPagesDeploymentsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPagesPostBodyAnyof0 as ReposOwnerRepoPagesPostBodyAnyof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPagesPostBodyAnyof1 as ReposOwnerRepoPagesPostBodyAnyof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPagesPostBodyPropSource as ReposOwnerRepoPagesPostBodyPropSource,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPagesPutBodyAnyof0 as ReposOwnerRepoPagesPutBodyAnyof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPagesPutBodyAnyof1 as ReposOwnerRepoPagesPutBodyAnyof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPagesPutBodyAnyof2 as ReposOwnerRepoPagesPutBodyAnyof2,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPagesPutBodyAnyof3 as ReposOwnerRepoPagesPutBodyAnyof3,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPagesPutBodyAnyof4 as ReposOwnerRepoPagesPutBodyAnyof4,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPagesPutBodyPropSourceAnyof1 as ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPatchBody as ReposOwnerRepoPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysis as ReposOwnerRepoPatchBodyPropSecurityAndAnalysis,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurity as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropCodeSecurity,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetection as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningAiDetection,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypass as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypass,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptions as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatterns as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatterns,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200 as ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPropertiesValuesPatchBody as ReposOwnerRepoPropertiesValuesPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsCommentsCommentIdPatchBody as ReposOwnerRepoPullsCommentsCommentIdPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody as ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPostBody as ReposOwnerRepoPullsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberCodespacesPostBody as ReposOwnerRepoPullsPullNumberCodespacesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody as ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberCommentsPostBody as ReposOwnerRepoPullsPullNumberCommentsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberCopilotCodeReviewPostBody as ReposOwnerRepoPullsPullNumberCopilotCodeReviewPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberMergeAsyncPutBody as ReposOwnerRepoPullsPullNumberMergeAsyncPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberMergePutBody as ReposOwnerRepoPullsPullNumberMergePutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberMergePutResponse405 as ReposOwnerRepoPullsPullNumberMergePutResponse405,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberMergePutResponse409 as ReposOwnerRepoPullsPullNumberMergePutResponse409,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberPatchBody as ReposOwnerRepoPullsPullNumberPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody as ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0 as ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1 as ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0 as ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1 as ReposOwnerRepoPullsPullNumberRequestedReviewersRerequestPostBodyAnyof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberReviewsPostBody as ReposOwnerRepoPullsPullNumberReviewsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems as ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody as ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody as ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody as ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberUpdateBranchPutBody as ReposOwnerRepoPullsPullNumberUpdateBranchPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202 as ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoReleasesAssetsAssetIdPatchBody as ReposOwnerRepoReleasesAssetsAssetIdPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoReleasesGenerateNotesPostBody as ReposOwnerRepoReleasesGenerateNotesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoReleasesPostBody as ReposOwnerRepoReleasesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoReleasesReleaseIdPatchBody as ReposOwnerRepoReleasesReleaseIdPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoReleasesReleaseIdReactionsPostBody as ReposOwnerRepoReleasesReleaseIdReactionsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoRulesetsPostBody as ReposOwnerRepoRulesetsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoRulesetsRulesetIdPutBody as ReposOwnerRepoRulesetsRulesetIdPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0 as ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1 as ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2 as ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyAnyof2,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoSecretScanningCustomPatternsDeleteBody as ReposOwnerRepoSecretScanningCustomPatternsDeleteBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoSecretScanningCustomPatternsPostBody as ReposOwnerRepoSecretScanningCustomPatternsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoSecretScanningCustomPatternsPostResponse201 as ReposOwnerRepoSecretScanningCustomPatternsPostResponse201,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoSecretScanningCustomPatternsPostResponse422 as ReposOwnerRepoSecretScanningCustomPatternsPostResponse422,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors as ReposOwnerRepoSecretScanningCustomPatternsPostResponse422PropValidationErrors,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody as ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBody as ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsCommentIdPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsPostBody as ReposOwnerRepoSecurityAdvisoriesGhsaIdCommentsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoStacksPostBody as ReposOwnerRepoStacksPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoStacksPostResponse201 as ReposOwnerRepoStacksPostResponse201,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoStacksPostResponse201PropBase as ReposOwnerRepoStacksPostResponse201PropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoStacksPostResponse422 as ReposOwnerRepoStacksPostResponse422,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoStacksPostResponse422PropErrorsItems as ReposOwnerRepoStacksPostResponse422PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoStacksStackNumberAddPostBody as ReposOwnerRepoStacksStackNumberAddPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoStacksStackNumberAddPostResponse200 as ReposOwnerRepoStacksStackNumberAddPostResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase as ReposOwnerRepoStacksStackNumberAddPostResponse200PropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoStacksStackNumberAddPostResponse422 as ReposOwnerRepoStacksStackNumberAddPostResponse422,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems as ReposOwnerRepoStacksStackNumberAddPostResponse422PropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoStacksStackNumberGetResponse200 as ReposOwnerRepoStacksStackNumberGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoStacksStackNumberGetResponse200PropBase as ReposOwnerRepoStacksStackNumberGetResponse200PropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoStacksStackNumberUnstackPostResponse200 as ReposOwnerRepoStacksStackNumberUnstackPostResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase as ReposOwnerRepoStacksStackNumberUnstackPostResponse200PropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoStargazersCountGetResponse200 as ReposOwnerRepoStargazersCountGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoStatusesShaPostBody as ReposOwnerRepoStatusesShaPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoSubscriptionPutBody as ReposOwnerRepoSubscriptionPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoTopicsPutBody as ReposOwnerRepoTopicsPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposOwnerRepoTransferPostBody as ReposOwnerRepoTransferPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReposTemplateOwnerTemplateRepoGeneratePostBody as ReposTemplateOwnerTemplateRepoGeneratePostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import ReviewComment as ReviewComment
-    from githubkit_schemas.v2026_03_10.models import (
+        ReviewComment as ReviewComment,
         ReviewCommentPropCopilotCodeReviewSourcesItems as ReviewCommentPropCopilotCodeReviewSourcesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReviewCommentPropLinks as ReviewCommentPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReviewCustomGatesCommentRequired as ReviewCustomGatesCommentRequired,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReviewCustomGatesStateRequired as ReviewCustomGatesStateRequired,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReviewDismissedIssueEvent as ReviewDismissedIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReviewDismissedIssueEventPropDismissedReview as ReviewDismissedIssueEventPropDismissedReview,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReviewRequestedIssueEvent as ReviewRequestedIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ReviewRequestRemovedIssueEvent as ReviewRequestRemovedIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import Root as Root
-    from githubkit_schemas.v2026_03_10.models import RulesetVersion as RulesetVersion
-    from githubkit_schemas.v2026_03_10.models import (
+        Root as Root,
+        RulesetVersion as RulesetVersion,
         RulesetVersionPropActor as RulesetVersionPropActor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RulesetVersionWithState as RulesetVersionWithState,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RulesetVersionWithStateAllof1 as RulesetVersionWithStateAllof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RulesetVersionWithStateAllof1PropState as RulesetVersionWithStateAllof1PropState,
-    )
-    from githubkit_schemas.v2026_03_10.models import RuleSuite as RuleSuite
-    from githubkit_schemas.v2026_03_10.models import (
+        RuleSuite as RuleSuite,
         RuleSuitePropRuleEvaluationsItems as RuleSuitePropRuleEvaluationsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RuleSuitePropRuleEvaluationsItemsPropRuleSource as RuleSuitePropRuleEvaluationsItemsPropRuleSource,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RuleSuitePullRequest as RuleSuitePullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RuleSuitePullRequestPropPullRequest as RuleSuitePullRequestPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RuleSuitePullRequestPropPullRequestPropProofOfPresence as RuleSuitePullRequestPropPullRequestPropProofOfPresence,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifier as RuleSuitePullRequestPropPullRequestPropProofOfPresencePropVerifier,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RuleSuitePullRequestPropPullRequestPropReviewsItems as RuleSuitePullRequestPropPullRequestPropReviewsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser as RuleSuitePullRequestPropPullRequestPropReviewsItemsPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RuleSuitePullRequestPropPullRequestPropUser as RuleSuitePullRequestPropPullRequestPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RuleSuiteRequiredStatusChecks as RuleSuiteRequiredStatusChecks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RuleSuiteRequiredStatusChecksPropChecksItems as RuleSuiteRequiredStatusChecksPropChecksItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         RuleSuiteRequiredStatusChecksPropChecksItemsPropApp as RuleSuiteRequiredStatusChecksPropChecksItemsPropApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import RuleSuitesItems as RuleSuitesItems
-    from githubkit_schemas.v2026_03_10.models import Runner as Runner
-    from githubkit_schemas.v2026_03_10.models import (
+        RuleSuitesItems as RuleSuitesItems,
+        Runner as Runner,
         RunnerApplication as RunnerApplication,
-    )
-    from githubkit_schemas.v2026_03_10.models import RunnerGroupsOrg as RunnerGroupsOrg
-    from githubkit_schemas.v2026_03_10.models import RunnerLabel as RunnerLabel
-    from githubkit_schemas.v2026_03_10.models import ScimError as ScimError
-    from githubkit_schemas.v2026_03_10.models import (
+        RunnerGroupsOrg as RunnerGroupsOrg,
+        RunnerLabel as RunnerLabel,
+        ScimError as ScimError,
         ScopedInstallation as ScopedInstallation,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SearchCodeGetResponse200 as SearchCodeGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SearchCommitsGetResponse200 as SearchCommitsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SearchIssuesGetResponse200 as SearchIssuesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SearchLabelsGetResponse200 as SearchLabelsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SearchRepositoriesGetResponse200 as SearchRepositoriesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SearchResultTextMatchesItems as SearchResultTextMatchesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SearchResultTextMatchesItemsPropMatchesItems as SearchResultTextMatchesItemsPropMatchesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SearchTopicsGetResponse200 as SearchTopicsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SearchUsersGetResponse200 as SearchUsersGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningAlert as SecretScanningAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningAlertMetadataItems as SecretScanningAlertMetadataItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningAlertWebhook as SecretScanningAlertWebhook,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningAlertWithMetadata as SecretScanningAlertWithMetadata,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningCustomPattern as SecretScanningCustomPattern,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningCustomPatternToCreate as SecretScanningCustomPatternToCreate,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningCustomPatternToDelete as SecretScanningCustomPatternToDelete,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningCustomPatternValidationError as SecretScanningCustomPatternValidationError,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningLocation as SecretScanningLocation,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningLocationActionsLog as SecretScanningLocationActionsLog,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningLocationCommit as SecretScanningLocationCommit,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningLocationDiscussionBody as SecretScanningLocationDiscussionBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningLocationDiscussionComment as SecretScanningLocationDiscussionComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningLocationDiscussionTitle as SecretScanningLocationDiscussionTitle,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningLocationIssueBody as SecretScanningLocationIssueBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningLocationIssueComment as SecretScanningLocationIssueComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningLocationIssueTitle as SecretScanningLocationIssueTitle,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningLocationPullRequestBody as SecretScanningLocationPullRequestBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningLocationPullRequestComment as SecretScanningLocationPullRequestComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningLocationPullRequestReview as SecretScanningLocationPullRequestReview,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningLocationPullRequestReviewComment as SecretScanningLocationPullRequestReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningLocationPullRequestTitle as SecretScanningLocationPullRequestTitle,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningLocationWikiCommit as SecretScanningLocationWikiCommit,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningPatternConfiguration as SecretScanningPatternConfiguration,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningPatternOverride as SecretScanningPatternOverride,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningPushProtectionBypass as SecretScanningPushProtectionBypass,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningScan as SecretScanningScan,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningScanHistory as SecretScanningScanHistory,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningScanHistoryPropCustomPatternBackfillScansItems as SecretScanningScanHistoryPropCustomPatternBackfillScansItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1 as SecretScanningScanHistoryPropCustomPatternBackfillScansItemsAllof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecurityAdvisoryEpss as SecurityAdvisoryEpss,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecurityAndAnalysis as SecurityAndAnalysis,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecurityAndAnalysisPropAdvancedSecurity as SecurityAndAnalysisPropAdvancedSecurity,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecurityAndAnalysisPropCodeSecurity as SecurityAndAnalysisPropCodeSecurity,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecurityAndAnalysisPropDependabotSecurityUpdates as SecurityAndAnalysisPropDependabotSecurityUpdates,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecurityAndAnalysisPropSecretScanning as SecurityAndAnalysisPropSecretScanning,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecurityAndAnalysisPropSecretScanningAiDetection as SecurityAndAnalysisPropSecretScanningAiDetection,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal as SecurityAndAnalysisPropSecretScanningDelegatedAlertDismissal,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecurityAndAnalysisPropSecretScanningDelegatedBypass as SecurityAndAnalysisPropSecretScanningDelegatedBypass,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions as SecurityAndAnalysisPropSecretScanningDelegatedBypassOptions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems as SecurityAndAnalysisPropSecretScanningDelegatedBypassOptionsPropReviewersItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecurityAndAnalysisPropSecretScanningNonProviderPatterns as SecurityAndAnalysisPropSecretScanningNonProviderPatterns,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SecurityAndAnalysisPropSecretScanningPushProtection as SecurityAndAnalysisPropSecretScanningPushProtection,
-    )
-    from githubkit_schemas.v2026_03_10.models import SelectedActions as SelectedActions
-    from githubkit_schemas.v2026_03_10.models import (
+        SelectedActions as SelectedActions,
         SelfHostedRunnersSettings as SelfHostedRunnersSettings,
-    )
-    from githubkit_schemas.v2026_03_10.models import ShortBlob as ShortBlob
-    from githubkit_schemas.v2026_03_10.models import ShortBranch as ShortBranch
-    from githubkit_schemas.v2026_03_10.models import (
+        ShortBlob as ShortBlob,
+        ShortBranch as ShortBranch,
         ShortBranchPropCommit as ShortBranchPropCommit,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SimpleCheckSuite as SimpleCheckSuite,
-    )
-    from githubkit_schemas.v2026_03_10.models import SimpleCommit as SimpleCommit
-    from githubkit_schemas.v2026_03_10.models import (
+        SimpleCommit as SimpleCommit,
         SimpleCommitPropAuthor as SimpleCommitPropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SimpleCommitPropCommitter as SimpleCommitPropCommitter,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SimpleCommitStatus as SimpleCommitStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SimpleInstallation as SimpleInstallation,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SimpleRepository as SimpleRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import SimpleUser as SimpleUser
-    from githubkit_schemas.v2026_03_10.models import Snapshot as Snapshot
-    from githubkit_schemas.v2026_03_10.models import (
+        SimpleUser as SimpleUser,
+        Snapshot as Snapshot,
         SnapshotPropDetector as SnapshotPropDetector,
-    )
-    from githubkit_schemas.v2026_03_10.models import SnapshotPropJob as SnapshotPropJob
-    from githubkit_schemas.v2026_03_10.models import (
+        SnapshotPropJob as SnapshotPropJob,
         SnapshotPropManifests as SnapshotPropManifests,
-    )
-    from githubkit_schemas.v2026_03_10.models import SocialAccount as SocialAccount
-    from githubkit_schemas.v2026_03_10.models import SshSigningKey as SshSigningKey
-    from githubkit_schemas.v2026_03_10.models import Stargazer as Stargazer
-    from githubkit_schemas.v2026_03_10.models import (
+        SocialAccount as SocialAccount,
+        SshSigningKey as SshSigningKey,
+        Stargazer as Stargazer,
         StargazerHistory as StargazerHistory,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         StarredRepository as StarredRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         StateChangeIssueEvent as StateChangeIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import Status as Status
-    from githubkit_schemas.v2026_03_10.models import (
+        Status as Status,
         StatusCheckPolicy as StatusCheckPolicy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         StatusCheckPolicyPropChecksItems as StatusCheckPolicyPropChecksItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SubIssueAddedIssueEvent as SubIssueAddedIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SubIssueRemovedIssueEvent as SubIssueRemovedIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         SubIssuesSummary as SubIssuesSummary,
-    )
-    from githubkit_schemas.v2026_03_10.models import Tag as Tag
-    from githubkit_schemas.v2026_03_10.models import TagPropCommit as TagPropCommit
-    from githubkit_schemas.v2026_03_10.models import Team as Team
-    from githubkit_schemas.v2026_03_10.models import TeamFull as TeamFull
-    from githubkit_schemas.v2026_03_10.models import TeamMember as TeamMember
-    from githubkit_schemas.v2026_03_10.models import TeamMembership as TeamMembership
-    from githubkit_schemas.v2026_03_10.models import (
+        Tag as Tag,
+        TagPropCommit as TagPropCommit,
+        Team as Team,
+        TeamFull as TeamFull,
+        TeamMember as TeamMember,
+        TeamMembership as TeamMembership,
         TeamOrganization as TeamOrganization,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TeamOrganizationPropPlan as TeamOrganizationPropPlan,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TeamPropPermissions as TeamPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import TeamRepository as TeamRepository
-    from githubkit_schemas.v2026_03_10.models import (
+        TeamRepository as TeamRepository,
         TeamRepositoryPropPermissions as TeamRepositoryPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TeamRoleAssignment as TeamRoleAssignment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TeamRoleAssignmentPropPermissions as TeamRoleAssignmentPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import TeamSimple as TeamSimple
-    from githubkit_schemas.v2026_03_10.models import (
+        TeamSimple as TeamSimple,
         TeamsTeamIdMembershipsUsernamePutBody as TeamsTeamIdMembershipsUsernamePutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TeamsTeamIdPatchBody as TeamsTeamIdPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TeamsTeamIdReposOwnerRepoPutBody as TeamsTeamIdReposOwnerRepoPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import Thread as Thread
-    from githubkit_schemas.v2026_03_10.models import (
+        Thread as Thread,
         ThreadPropSubject as ThreadPropSubject,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ThreadSubscription as ThreadSubscription,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TimelineAssignedIssueEvent as TimelineAssignedIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TimelineCommentEvent as TimelineCommentEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TimelineCommitCommentedEvent as TimelineCommitCommentedEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TimelineCommittedEvent as TimelineCommittedEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TimelineCommittedEventPropAuthor as TimelineCommittedEventPropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TimelineCommittedEventPropCommitter as TimelineCommittedEventPropCommitter,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TimelineCommittedEventPropParentsItems as TimelineCommittedEventPropParentsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TimelineCommittedEventPropTree as TimelineCommittedEventPropTree,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TimelineCommittedEventPropVerification as TimelineCommittedEventPropVerification,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TimelineConnectedEvent as TimelineConnectedEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TimelineCrossReferencedEvent as TimelineCrossReferencedEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TimelineCrossReferencedEventPropSource as TimelineCrossReferencedEventPropSource,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TimelineDisconnectedEvent as TimelineDisconnectedEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TimelineLineCommentedEvent as TimelineLineCommentedEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TimelineReviewedEvent as TimelineReviewedEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TimelineReviewedEventPropLinks as TimelineReviewedEventPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TimelineReviewedEventPropLinksPropHtml as TimelineReviewedEventPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TimelineReviewedEventPropLinksPropPullRequest as TimelineReviewedEventPropLinksPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TimelineUnassignedIssueEvent as TimelineUnassignedIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import Topic as Topic
-    from githubkit_schemas.v2026_03_10.models import (
+        Topic as Topic,
         TopicSearchResultItem as TopicSearchResultItem,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TopicSearchResultItemPropAliasesItems as TopicSearchResultItemPropAliasesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TopicSearchResultItemPropAliasesItemsPropTopicRelation as TopicSearchResultItemPropAliasesItemsPropTopicRelation,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TopicSearchResultItemPropRelatedItems as TopicSearchResultItemPropRelatedItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         TopicSearchResultItemPropRelatedItemsPropTopicRelation as TopicSearchResultItemPropRelatedItemsPropTopicRelation,
-    )
-    from githubkit_schemas.v2026_03_10.models import Traffic as Traffic
-    from githubkit_schemas.v2026_03_10.models import (
+        Traffic as Traffic,
         UnassignedIssueEvent as UnassignedIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UnlabeledIssueEvent as UnlabeledIssueEvent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UnlabeledIssueEventPropLabel as UnlabeledIssueEventPropLabel,
-    )
-    from githubkit_schemas.v2026_03_10.models import UpdateBudget as UpdateBudget
-    from githubkit_schemas.v2026_03_10.models import (
+        UpdateBudget as UpdateBudget,
         UpdateBudgetPropBudget as UpdateBudgetPropBudget,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UpdateBudgetPropBudgetPropBudgetAlerting as UpdateBudgetPropBudgetPropBudgetAlerting,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserCodespacesCodespaceNameMachinesGetResponse200 as UserCodespacesCodespaceNameMachinesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserCodespacesCodespaceNamePatchBody as UserCodespacesCodespaceNamePatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserCodespacesCodespaceNamePublishPostBody as UserCodespacesCodespaceNamePublishPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserCodespacesGetResponse200 as UserCodespacesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserCodespacesPostBodyOneof0 as UserCodespacesPostBodyOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserCodespacesPostBodyOneof1 as UserCodespacesPostBodyOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserCodespacesPostBodyOneof1PropPullRequest as UserCodespacesPostBodyOneof1PropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserCodespacesSecretsGetResponse200 as UserCodespacesSecretsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserCodespacesSecretsSecretNamePutBody as UserCodespacesSecretsSecretNamePutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserCodespacesSecretsSecretNameRepositoriesGetResponse200 as UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserCodespacesSecretsSecretNameRepositoriesPutBody as UserCodespacesSecretsSecretNameRepositoriesPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserCreateIssueField as UserCreateIssueField,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserCreateIssueFieldPropOptionsItems as UserCreateIssueFieldPropOptionsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserEmailsDeleteBodyOneof0 as UserEmailsDeleteBodyOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserEmailsPostBodyOneof0 as UserEmailsPostBodyOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserEmailVisibilityPatchBody as UserEmailVisibilityPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserGpgKeysPostBody as UserGpgKeysPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserInstallationsGetResponse200 as UserInstallationsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserInstallationsInstallationIdRepositoriesGetResponse200 as UserInstallationsInstallationIdRepositoriesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItems as UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1 as UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties as UserInstallationsInstallationIdRepositoriesGetResponse200PropRepositoriesItemsAllof1PropCustomProperties,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserInteractionLimitsGetResponse200Anyof1 as UserInteractionLimitsGetResponse200Anyof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import UserIssueField as UserIssueField
-    from githubkit_schemas.v2026_03_10.models import (
+        UserIssueField as UserIssueField,
         UserIssueFieldPropOptionsItems as UserIssueFieldPropOptionsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserKeysPostBody as UserKeysPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserMarketplacePurchase as UserMarketplacePurchase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserMembershipsOrgsOrgPatchBody as UserMembershipsOrgsOrgPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserMigrationsPostBody as UserMigrationsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import UserPatchBody as UserPatchBody
-    from githubkit_schemas.v2026_03_10.models import (
+        UserPatchBody as UserPatchBody,
         UserReposPostBody as UserReposPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserRoleAssignment as UserRoleAssignment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserSearchResultItem as UserSearchResultItem,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserSocialAccountsDeleteBody as UserSocialAccountsDeleteBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserSocialAccountsPostBody as UserSocialAccountsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserSshSigningKeysPostBody as UserSshSigningKeysPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUserIdProjectsV2ProjectNumberViewsPostBody as UsersUserIdProjectsV2ProjectNumberViewsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameAttestationsBulkListPostBody as UsersUsernameAttestationsBulkListPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameAttestationsBulkListPostResponse200 as UsersUsernameAttestationsBulkListPostResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests as UsersUsernameAttestationsBulkListPostResponse200PropAttestationsSubjectDigests,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameAttestationsBulkListPostResponse200PropPageInfo as UsersUsernameAttestationsBulkListPostResponse200PropPageInfo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameAttestationsDeleteRequestPostBodyOneof0 as UsersUsernameAttestationsDeleteRequestPostBodyOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameAttestationsDeleteRequestPostBodyOneof1 as UsersUsernameAttestationsDeleteRequestPostBodyOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameAttestationsSubjectDigestGetResponse200 as UsersUsernameAttestationsSubjectDigestGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameCopilotSpacesGetResponse200 as UsersUsernameCopilotSpacesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameCopilotSpacesPostBody as UsersUsernameCopilotSpacesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems as UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata as UsersUsernameCopilotSpacesPostBodyPropResourcesAttributesItemsPropMetadata,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody as UsersUsernameCopilotSpacesSpaceNumberCollaboratorsActorTypeActorIdentifierPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200 as UsersUsernameCopilotSpacesSpaceNumberCollaboratorsGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody as UsersUsernameCopilotSpacesSpaceNumberCollaboratorsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameCopilotSpacesSpaceNumberPutBody as UsersUsernameCopilotSpacesSpaceNumberPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems as UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata as UsersUsernameCopilotSpacesSpaceNumberPutBodyPropResourcesAttributesItemsPropMetadata,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200 as UsersUsernameCopilotSpacesSpaceNumberResourcesGetResponse200,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody as UsersUsernameCopilotSpacesSpaceNumberResourcesPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata as UsersUsernameCopilotSpacesSpaceNumberResourcesPostBodyPropMetadata,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody as UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata as UsersUsernameCopilotSpacesSpaceNumberResourcesSpaceResourceIdPutBodyPropMetadata,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0 as UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1 as UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2 as UsersUsernameProjectsV2ProjectNumberFieldsPostBodyOneof2,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody as UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems as UsersUsernameProjectsV2ProjectNumberItemsItemIdPatchBodyPropFieldsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0 as UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1 as UsersUsernameProjectsV2ProjectNumberItemsPostBodyOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserUpdateIssueField as UserUpdateIssueField,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserUpdateIssueFieldPropOptionsItems as UserUpdateIssueFieldPropOptionsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         UserUserIdProjectsV2ProjectNumberDraftsPostBody as UserUserIdProjectsV2ProjectNumberDraftsPostBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import ValidationError as ValidationError
-    from githubkit_schemas.v2026_03_10.models import (
+        ValidationError as ValidationError,
         ValidationErrorPropErrorsItems as ValidationErrorPropErrorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         ValidationErrorSimple as ValidationErrorSimple,
-    )
-    from githubkit_schemas.v2026_03_10.models import Verification as Verification
-    from githubkit_schemas.v2026_03_10.models import ViewTraffic as ViewTraffic
-    from githubkit_schemas.v2026_03_10.models import Vulnerability as Vulnerability
-    from githubkit_schemas.v2026_03_10.models import (
+        Verification as Verification,
+        ViewTraffic as ViewTraffic,
+        Vulnerability as Vulnerability,
         VulnerabilityPropPackage as VulnerabilityPropPackage,
-    )
-    from githubkit_schemas.v2026_03_10.models import WatchEvent as WatchEvent
-    from githubkit_schemas.v2026_03_10.models import (
+        WatchEvent as WatchEvent,
         WebhookBranchProtectionConfigurationDisabled as WebhookBranchProtectionConfigurationDisabled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookBranchProtectionConfigurationEnabled as WebhookBranchProtectionConfigurationEnabled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookBranchProtectionRuleCreated as WebhookBranchProtectionRuleCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookBranchProtectionRuleDeleted as WebhookBranchProtectionRuleDeleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookBranchProtectionRuleEdited as WebhookBranchProtectionRuleEdited,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookBranchProtectionRuleEditedPropChanges as WebhookBranchProtectionRuleEditedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced as WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames as WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly as WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly as WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel as WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync as WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel as WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel as WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks as WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel as WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval as WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckRunCompleted as WebhookCheckRunCompleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckRunCompletedFormEncoded as WebhookCheckRunCompletedFormEncoded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckRunCreated as WebhookCheckRunCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckRunCreatedFormEncoded as WebhookCheckRunCreatedFormEncoded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckRunRequestedAction as WebhookCheckRunRequestedAction,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckRunRequestedActionFormEncoded as WebhookCheckRunRequestedActionFormEncoded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckRunRequestedActionPropRequestedAction as WebhookCheckRunRequestedActionPropRequestedAction,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckRunRerequested as WebhookCheckRunRerequested,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckRunRerequestedFormEncoded as WebhookCheckRunRerequestedFormEncoded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteCompleted as WebhookCheckSuiteCompleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteCompletedPropCheckSuite as WebhookCheckSuiteCompletedPropCheckSuite,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteCompletedPropCheckSuitePropApp as WebhookCheckSuiteCompletedPropCheckSuitePropApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwner as WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissions as WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommit as WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommit,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropAuthor as WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropCommitter as WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropCommitter,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItems as WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBase as WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepo as WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHead as WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo as WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRequested as WebhookCheckSuiteRequested,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRequestedPropCheckSuite as WebhookCheckSuiteRequestedPropCheckSuite,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRequestedPropCheckSuitePropApp as WebhookCheckSuiteRequestedPropCheckSuitePropApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRequestedPropCheckSuitePropAppPropOwner as WebhookCheckSuiteRequestedPropCheckSuitePropAppPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRequestedPropCheckSuitePropAppPropPermissions as WebhookCheckSuiteRequestedPropCheckSuitePropAppPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommit as WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommit,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropAuthor as WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropCommitter as WebhookCheckSuiteRequestedPropCheckSuitePropHeadCommitPropCommitter,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItems as WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBase as WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepo as WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHead as WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo as WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRerequested as WebhookCheckSuiteRerequested,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRerequestedPropCheckSuite as WebhookCheckSuiteRerequestedPropCheckSuite,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropApp as WebhookCheckSuiteRerequestedPropCheckSuitePropApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwner as WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissions as WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommit as WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommit,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthor as WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitter as WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitter,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItems as WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBase as WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepo as WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHead as WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo as WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertAppearedInBranch as WebhookCodeScanningAlertAppearedInBranch,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertAppearedInBranchPropAlert as WebhookCodeScanningAlertAppearedInBranchPropAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedBy as WebhookCodeScanningAlertAppearedInBranchPropAlertPropDismissedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstance as WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstance,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocation as WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocation,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessage as WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertAppearedInBranchPropAlertPropRule as WebhookCodeScanningAlertAppearedInBranchPropAlertPropRule,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertAppearedInBranchPropAlertPropTool as WebhookCodeScanningAlertAppearedInBranchPropAlertPropTool,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertClosedByUser as WebhookCodeScanningAlertClosedByUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertClosedByUserPropAlert as WebhookCodeScanningAlertClosedByUserPropAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertClosedByUserPropAlertPropDismissalApprovedBy as WebhookCodeScanningAlertClosedByUserPropAlertPropDismissalApprovedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedBy as WebhookCodeScanningAlertClosedByUserPropAlertPropDismissedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstance as WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstance,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocation as WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocation,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessage as WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropMessage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertClosedByUserPropAlertPropRule as WebhookCodeScanningAlertClosedByUserPropAlertPropRule,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertClosedByUserPropAlertPropTool as WebhookCodeScanningAlertClosedByUserPropAlertPropTool,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertCreated as WebhookCodeScanningAlertCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertCreatedPropAlert as WebhookCodeScanningAlertCreatedPropAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstance as WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstance,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation as WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage as WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertCreatedPropAlertPropRule as WebhookCodeScanningAlertCreatedPropAlertPropRule,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertCreatedPropAlertPropTool as WebhookCodeScanningAlertCreatedPropAlertPropTool,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertFixed as WebhookCodeScanningAlertFixed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertFixedPropAlert as WebhookCodeScanningAlertFixedPropAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertFixedPropAlertPropDismissedBy as WebhookCodeScanningAlertFixedPropAlertPropDismissedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstance as WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstance,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropLocation as WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropLocation,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropMessage as WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropMessage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertFixedPropAlertPropRule as WebhookCodeScanningAlertFixedPropAlertPropRule,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertFixedPropAlertPropTool as WebhookCodeScanningAlertFixedPropAlertPropTool,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertReopened as WebhookCodeScanningAlertReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertReopenedByUser as WebhookCodeScanningAlertReopenedByUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertReopenedByUserPropAlert as WebhookCodeScanningAlertReopenedByUserPropAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstance as WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstance,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocation as WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocation,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessage as WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropMessage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertReopenedByUserPropAlertPropRule as WebhookCodeScanningAlertReopenedByUserPropAlertPropRule,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertReopenedByUserPropAlertPropTool as WebhookCodeScanningAlertReopenedByUserPropAlertPropTool,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertReopenedPropAlert as WebhookCodeScanningAlertReopenedPropAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertReopenedPropAlertPropDismissedBy as WebhookCodeScanningAlertReopenedPropAlertPropDismissedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstance as WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstance,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropLocation as WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropLocation,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropMessage as WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropMessage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertReopenedPropAlertPropRule as WebhookCodeScanningAlertReopenedPropAlertPropRule,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertReopenedPropAlertPropTool as WebhookCodeScanningAlertReopenedPropAlertPropTool,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertUpdatedAssignment as WebhookCodeScanningAlertUpdatedAssignment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertUpdatedAssignmentPropAlert as WebhookCodeScanningAlertUpdatedAssignmentPropAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropDismissedBy as WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropDismissedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstance as WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstance,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropLocation as WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropLocation,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropMessage as WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropMostRecentInstancePropMessage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropRule as WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropRule,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropTool as WebhookCodeScanningAlertUpdatedAssignmentPropAlertPropTool,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCommitCommentCreated as WebhookCommitCommentCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCommitCommentCreatedPropComment as WebhookCommitCommentCreatedPropComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCommitCommentCreatedPropCommentPropReactions as WebhookCommitCommentCreatedPropCommentPropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCommitCommentCreatedPropCommentPropUser as WebhookCommitCommentCreatedPropCommentPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import WebhookConfig as WebhookConfig
-    from githubkit_schemas.v2026_03_10.models import WebhookCreate as WebhookCreate
-    from githubkit_schemas.v2026_03_10.models import (
+        WebhookConfig as WebhookConfig,
+        WebhookCreate as WebhookCreate,
         WebhookCustomPropertyCreated as WebhookCustomPropertyCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCustomPropertyDeleted as WebhookCustomPropertyDeleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCustomPropertyDeletedPropDefinition as WebhookCustomPropertyDeletedPropDefinition,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCustomPropertyPromotedToEnterprise as WebhookCustomPropertyPromotedToEnterprise,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCustomPropertyUpdated as WebhookCustomPropertyUpdated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookCustomPropertyValuesUpdated as WebhookCustomPropertyValuesUpdated,
-    )
-    from githubkit_schemas.v2026_03_10.models import WebhookDelete as WebhookDelete
-    from githubkit_schemas.v2026_03_10.models import (
+        WebhookDelete as WebhookDelete,
         WebhookDependabotAlertAssigneesChanged as WebhookDependabotAlertAssigneesChanged,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDependabotAlertAutoDismissed as WebhookDependabotAlertAutoDismissed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDependabotAlertAutoReopened as WebhookDependabotAlertAutoReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDependabotAlertCreated as WebhookDependabotAlertCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDependabotAlertDismissed as WebhookDependabotAlertDismissed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDependabotAlertFixed as WebhookDependabotAlertFixed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDependabotAlertReintroduced as WebhookDependabotAlertReintroduced,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDependabotAlertReopened as WebhookDependabotAlertReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDependabotAlertWithdrawn as WebhookDependabotAlertWithdrawn,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeployKeyCreated as WebhookDeployKeyCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeployKeyDeleted as WebhookDeployKeyDeleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentCreated as WebhookDeploymentCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentCreatedPropDeployment as WebhookDeploymentCreatedPropDeployment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentCreatedPropDeploymentPropCreator as WebhookDeploymentCreatedPropDeploymentPropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1 as WebhookDeploymentCreatedPropDeploymentPropPayloadOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubApp as WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwner as WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissions as WebhookDeploymentCreatedPropDeploymentPropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentCreatedPropWorkflowRun as WebhookDeploymentCreatedPropWorkflowRun,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentCreatedPropWorkflowRunPropActor as WebhookDeploymentCreatedPropWorkflowRunPropActor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentCreatedPropWorkflowRunPropHeadRepository as WebhookDeploymentCreatedPropWorkflowRunPropHeadRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryPropOwner as WebhookDeploymentCreatedPropWorkflowRunPropHeadRepositoryPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItems as WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBase as WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo as WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHead as WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo as WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentCreatedPropWorkflowRunPropReferencedWorkflowsItems as WebhookDeploymentCreatedPropWorkflowRunPropReferencedWorkflowsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentCreatedPropWorkflowRunPropRepository as WebhookDeploymentCreatedPropWorkflowRunPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentCreatedPropWorkflowRunPropRepositoryPropOwner as WebhookDeploymentCreatedPropWorkflowRunPropRepositoryPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentCreatedPropWorkflowRunPropTriggeringActor as WebhookDeploymentCreatedPropWorkflowRunPropTriggeringActor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentProtectionRuleRequested as WebhookDeploymentProtectionRuleRequested,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewApproved as WebhookDeploymentReviewApproved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewApprovedPropWorkflowJobRunsItems as WebhookDeploymentReviewApprovedPropWorkflowJobRunsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewApprovedPropWorkflowRun as WebhookDeploymentReviewApprovedPropWorkflowRun,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropActor as WebhookDeploymentReviewApprovedPropWorkflowRunPropActor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadCommit as WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadCommit,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadRepository as WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadRepositoryPropOwner as WebhookDeploymentReviewApprovedPropWorkflowRunPropHeadRepositoryPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItems as WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBase as WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo as WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHead as WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo as WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropReferencedWorkflowsItems as WebhookDeploymentReviewApprovedPropWorkflowRunPropReferencedWorkflowsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropRepository as WebhookDeploymentReviewApprovedPropWorkflowRunPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropRepositoryPropOwner as WebhookDeploymentReviewApprovedPropWorkflowRunPropRepositoryPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropTriggeringActor as WebhookDeploymentReviewApprovedPropWorkflowRunPropTriggeringActor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRejected as WebhookDeploymentReviewRejected,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRejectedPropWorkflowJobRunsItems as WebhookDeploymentReviewRejectedPropWorkflowJobRunsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRejectedPropWorkflowRun as WebhookDeploymentReviewRejectedPropWorkflowRun,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropActor as WebhookDeploymentReviewRejectedPropWorkflowRunPropActor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadCommit as WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadCommit,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepository as WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryPropOwner as WebhookDeploymentReviewRejectedPropWorkflowRunPropHeadRepositoryPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItems as WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBase as WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo as WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHead as WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo as WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropReferencedWorkflowsItems as WebhookDeploymentReviewRejectedPropWorkflowRunPropReferencedWorkflowsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropRepository as WebhookDeploymentReviewRejectedPropWorkflowRunPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryPropOwner as WebhookDeploymentReviewRejectedPropWorkflowRunPropRepositoryPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRejectedPropWorkflowRunPropTriggeringActor as WebhookDeploymentReviewRejectedPropWorkflowRunPropTriggeringActor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRequested as WebhookDeploymentReviewRequested,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRequestedPropReviewersItems as WebhookDeploymentReviewRequestedPropReviewersItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRequestedPropReviewersItemsPropReviewer as WebhookDeploymentReviewRequestedPropReviewersItemsPropReviewer,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRequestedPropWorkflowJobRun as WebhookDeploymentReviewRequestedPropWorkflowJobRun,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRequestedPropWorkflowRun as WebhookDeploymentReviewRequestedPropWorkflowRun,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropActor as WebhookDeploymentReviewRequestedPropWorkflowRunPropActor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropHeadCommit as WebhookDeploymentReviewRequestedPropWorkflowRunPropHeadCommit,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropHeadRepository as WebhookDeploymentReviewRequestedPropWorkflowRunPropHeadRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropHeadRepositoryPropOwner as WebhookDeploymentReviewRequestedPropWorkflowRunPropHeadRepositoryPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropPullRequestsItems as WebhookDeploymentReviewRequestedPropWorkflowRunPropPullRequestsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropPullRequestsItemsPropBase as WebhookDeploymentReviewRequestedPropWorkflowRunPropPullRequestsItemsPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo as WebhookDeploymentReviewRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropPullRequestsItemsPropHead as WebhookDeploymentReviewRequestedPropWorkflowRunPropPullRequestsItemsPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo as WebhookDeploymentReviewRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropReferencedWorkflowsItems as WebhookDeploymentReviewRequestedPropWorkflowRunPropReferencedWorkflowsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropRepository as WebhookDeploymentReviewRequestedPropWorkflowRunPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropRepositoryPropOwner as WebhookDeploymentReviewRequestedPropWorkflowRunPropRepositoryPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropTriggeringActor as WebhookDeploymentReviewRequestedPropWorkflowRunPropTriggeringActor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreated as WebhookDeploymentStatusCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreatedPropCheckRun as WebhookDeploymentStatusCreatedPropCheckRun,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreatedPropDeployment as WebhookDeploymentStatusCreatedPropDeployment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreatedPropDeploymentPropCreator as WebhookDeploymentStatusCreatedPropDeploymentPropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreatedPropDeploymentPropPayloadOneof1 as WebhookDeploymentStatusCreatedPropDeploymentPropPayloadOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreatedPropDeploymentPropPerformedViaGithubApp as WebhookDeploymentStatusCreatedPropDeploymentPropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreatedPropDeploymentPropPerformedViaGithubAppPropOwner as WebhookDeploymentStatusCreatedPropDeploymentPropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreatedPropDeploymentPropPerformedViaGithubAppPropPermissions as WebhookDeploymentStatusCreatedPropDeploymentPropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreatedPropDeploymentStatus as WebhookDeploymentStatusCreatedPropDeploymentStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreatedPropDeploymentStatusPropCreator as WebhookDeploymentStatusCreatedPropDeploymentStatusPropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreatedPropDeploymentStatusPropPerformedViaGithubApp as WebhookDeploymentStatusCreatedPropDeploymentStatusPropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreatedPropDeploymentStatusPropPerformedViaGithubAppPropOwner as WebhookDeploymentStatusCreatedPropDeploymentStatusPropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreatedPropDeploymentStatusPropPerformedViaGithubAppPropPermissions as WebhookDeploymentStatusCreatedPropDeploymentStatusPropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreatedPropWorkflowRun as WebhookDeploymentStatusCreatedPropWorkflowRun,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropActor as WebhookDeploymentStatusCreatedPropWorkflowRunPropActor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropHeadRepository as WebhookDeploymentStatusCreatedPropWorkflowRunPropHeadRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropHeadRepositoryPropOwner as WebhookDeploymentStatusCreatedPropWorkflowRunPropHeadRepositoryPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropPullRequestsItems as WebhookDeploymentStatusCreatedPropWorkflowRunPropPullRequestsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropPullRequestsItemsPropBase as WebhookDeploymentStatusCreatedPropWorkflowRunPropPullRequestsItemsPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo as WebhookDeploymentStatusCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropPullRequestsItemsPropHead as WebhookDeploymentStatusCreatedPropWorkflowRunPropPullRequestsItemsPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo as WebhookDeploymentStatusCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropReferencedWorkflowsItems as WebhookDeploymentStatusCreatedPropWorkflowRunPropReferencedWorkflowsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropRepository as WebhookDeploymentStatusCreatedPropWorkflowRunPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropRepositoryPropOwner as WebhookDeploymentStatusCreatedPropWorkflowRunPropRepositoryPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropTriggeringActor as WebhookDeploymentStatusCreatedPropWorkflowRunPropTriggeringActor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionAnswered as WebhookDiscussionAnswered,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionCategoryChanged as WebhookDiscussionCategoryChanged,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionCategoryChangedPropChanges as WebhookDiscussionCategoryChangedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionCategoryChangedPropChangesPropCategory as WebhookDiscussionCategoryChangedPropChangesPropCategory,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom as WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionClosed as WebhookDiscussionClosed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionCommentCreated as WebhookDiscussionCommentCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionCommentDeleted as WebhookDiscussionCommentDeleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionCommentEdited as WebhookDiscussionCommentEdited,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionCommentEditedPropChanges as WebhookDiscussionCommentEditedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionCommentEditedPropChangesPropBody as WebhookDiscussionCommentEditedPropChangesPropBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionCreated as WebhookDiscussionCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionDeleted as WebhookDiscussionDeleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionEdited as WebhookDiscussionEdited,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionEditedPropChanges as WebhookDiscussionEditedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionEditedPropChangesPropBody as WebhookDiscussionEditedPropChangesPropBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionEditedPropChangesPropTitle as WebhookDiscussionEditedPropChangesPropTitle,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionLabeled as WebhookDiscussionLabeled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionLocked as WebhookDiscussionLocked,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionPinned as WebhookDiscussionPinned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionReopened as WebhookDiscussionReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionTransferred as WebhookDiscussionTransferred,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionTransferredPropChanges as WebhookDiscussionTransferredPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionUnanswered as WebhookDiscussionUnanswered,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionUnlabeled as WebhookDiscussionUnlabeled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionUnlocked as WebhookDiscussionUnlocked,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookDiscussionUnpinned as WebhookDiscussionUnpinned,
-    )
-    from githubkit_schemas.v2026_03_10.models import WebhookFork as WebhookFork
-    from githubkit_schemas.v2026_03_10.models import (
+        WebhookFork as WebhookFork,
         WebhookForkPropForkee as WebhookForkPropForkee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookForkPropForkeeAllof0 as WebhookForkPropForkeeAllof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookForkPropForkeeAllof0PropLicense as WebhookForkPropForkeeAllof0PropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookForkPropForkeeAllof0PropOwner as WebhookForkPropForkeeAllof0PropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookForkPropForkeeAllof0PropPermissions as WebhookForkPropForkeeAllof0PropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookForkPropForkeeAllof1 as WebhookForkPropForkeeAllof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookForkPropForkeeAllof1PropLicense as WebhookForkPropForkeeAllof1PropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookForkPropForkeeAllof1PropOwner as WebhookForkPropForkeeAllof1PropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookForkPropForkeeMergedLicense as WebhookForkPropForkeeMergedLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookForkPropForkeeMergedOwner as WebhookForkPropForkeeMergedOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookGithubAppAuthorizationRevoked as WebhookGithubAppAuthorizationRevoked,
-    )
-    from githubkit_schemas.v2026_03_10.models import WebhookGollum as WebhookGollum
-    from githubkit_schemas.v2026_03_10.models import (
+        WebhookGollum as WebhookGollum,
         WebhookGollumPropPagesItems as WebhookGollumPropPagesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookInstallationCreated as WebhookInstallationCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookInstallationDeleted as WebhookInstallationDeleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookInstallationNewPermissionsAccepted as WebhookInstallationNewPermissionsAccepted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookInstallationRepositoriesAdded as WebhookInstallationRepositoriesAdded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems as WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookInstallationRepositoriesRemoved as WebhookInstallationRepositoriesRemoved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems as WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookInstallationSuspend as WebhookInstallationSuspend,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookInstallationTargetRenamed as WebhookInstallationTargetRenamed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookInstallationTargetRenamedPropAccount as WebhookInstallationTargetRenamedPropAccount,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookInstallationTargetRenamedPropChanges as WebhookInstallationTargetRenamedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookInstallationTargetRenamedPropChangesPropLogin as WebhookInstallationTargetRenamedPropChangesPropLogin,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookInstallationTargetRenamedPropChangesPropSlug as WebhookInstallationTargetRenamedPropChangesPropSlug,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookInstallationUnsuspend as WebhookInstallationUnsuspend,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreated as WebhookIssueCommentCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropComment as WebhookIssueCommentCreatedPropComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropCommentPropReactions as WebhookIssueCommentCreatedPropCommentPropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropCommentPropUser as WebhookIssueCommentCreatedPropCommentPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssue as WebhookIssueCommentCreatedPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssueAllof0 as WebhookIssueCommentCreatedPropIssueAllof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssueAllof0PropAssignee as WebhookIssueCommentCreatedPropIssueAllof0PropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssueAllof0PropAssigneesItems as WebhookIssueCommentCreatedPropIssueAllof0PropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssueAllof0PropLabelsItems as WebhookIssueCommentCreatedPropIssueAllof0PropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssueAllof0PropMilestone as WebhookIssueCommentCreatedPropIssueAllof0PropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreator as WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubApp as WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwner as WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissions as WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssueAllof0PropPullRequest as WebhookIssueCommentCreatedPropIssueAllof0PropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssueAllof0PropReactions as WebhookIssueCommentCreatedPropIssueAllof0PropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssueAllof0PropUser as WebhookIssueCommentCreatedPropIssueAllof0PropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssueAllof1 as WebhookIssueCommentCreatedPropIssueAllof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssueAllof1PropAssignee as WebhookIssueCommentCreatedPropIssueAllof1PropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssueAllof1PropAssigneesItems as WebhookIssueCommentCreatedPropIssueAllof1PropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssueAllof1PropLabelsItems as WebhookIssueCommentCreatedPropIssueAllof1PropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssueAllof1PropMilestone as WebhookIssueCommentCreatedPropIssueAllof1PropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssueAllof1PropPerformedViaGithubApp as WebhookIssueCommentCreatedPropIssueAllof1PropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssueAllof1PropReactions as WebhookIssueCommentCreatedPropIssueAllof1PropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssueAllof1PropUser as WebhookIssueCommentCreatedPropIssueAllof1PropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssueMergedAssignees as WebhookIssueCommentCreatedPropIssueMergedAssignees,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssueMergedMilestone as WebhookIssueCommentCreatedPropIssueMergedMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubApp as WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssueMergedReactions as WebhookIssueCommentCreatedPropIssueMergedReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentCreatedPropIssueMergedUser as WebhookIssueCommentCreatedPropIssueMergedUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeleted as WebhookIssueCommentDeleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssue as WebhookIssueCommentDeletedPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssueAllof0 as WebhookIssueCommentDeletedPropIssueAllof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssueAllof0PropAssignee as WebhookIssueCommentDeletedPropIssueAllof0PropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssueAllof0PropAssigneesItems as WebhookIssueCommentDeletedPropIssueAllof0PropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItems as WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssueAllof0PropMilestone as WebhookIssueCommentDeletedPropIssueAllof0PropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreator as WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubApp as WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner as WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions as WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest as WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssueAllof0PropReactions as WebhookIssueCommentDeletedPropIssueAllof0PropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssueAllof0PropUser as WebhookIssueCommentDeletedPropIssueAllof0PropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssueAllof1 as WebhookIssueCommentDeletedPropIssueAllof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssueAllof1PropAssignee as WebhookIssueCommentDeletedPropIssueAllof1PropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssueAllof1PropAssigneesItems as WebhookIssueCommentDeletedPropIssueAllof1PropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssueAllof1PropLabelsItems as WebhookIssueCommentDeletedPropIssueAllof1PropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssueAllof1PropMilestone as WebhookIssueCommentDeletedPropIssueAllof1PropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssueAllof1PropPerformedViaGithubApp as WebhookIssueCommentDeletedPropIssueAllof1PropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssueAllof1PropReactions as WebhookIssueCommentDeletedPropIssueAllof1PropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssueAllof1PropUser as WebhookIssueCommentDeletedPropIssueAllof1PropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssueMergedAssignees as WebhookIssueCommentDeletedPropIssueMergedAssignees,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssueMergedMilestone as WebhookIssueCommentDeletedPropIssueMergedMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp as WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssueMergedReactions as WebhookIssueCommentDeletedPropIssueMergedReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentDeletedPropIssueMergedUser as WebhookIssueCommentDeletedPropIssueMergedUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEdited as WebhookIssueCommentEdited,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssue as WebhookIssueCommentEditedPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssueAllof0 as WebhookIssueCommentEditedPropIssueAllof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssueAllof0PropAssignee as WebhookIssueCommentEditedPropIssueAllof0PropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssueAllof0PropAssigneesItems as WebhookIssueCommentEditedPropIssueAllof0PropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssueAllof0PropLabelsItems as WebhookIssueCommentEditedPropIssueAllof0PropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssueAllof0PropMilestone as WebhookIssueCommentEditedPropIssueAllof0PropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreator as WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubApp as WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner as WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions as WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssueAllof0PropPullRequest as WebhookIssueCommentEditedPropIssueAllof0PropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssueAllof0PropReactions as WebhookIssueCommentEditedPropIssueAllof0PropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssueAllof0PropUser as WebhookIssueCommentEditedPropIssueAllof0PropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssueAllof1 as WebhookIssueCommentEditedPropIssueAllof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssueAllof1PropAssignee as WebhookIssueCommentEditedPropIssueAllof1PropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssueAllof1PropAssigneesItems as WebhookIssueCommentEditedPropIssueAllof1PropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssueAllof1PropLabelsItems as WebhookIssueCommentEditedPropIssueAllof1PropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssueAllof1PropMilestone as WebhookIssueCommentEditedPropIssueAllof1PropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssueAllof1PropPerformedViaGithubApp as WebhookIssueCommentEditedPropIssueAllof1PropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssueAllof1PropReactions as WebhookIssueCommentEditedPropIssueAllof1PropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssueAllof1PropUser as WebhookIssueCommentEditedPropIssueAllof1PropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssueMergedAssignees as WebhookIssueCommentEditedPropIssueMergedAssignees,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssueMergedMilestone as WebhookIssueCommentEditedPropIssueMergedMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp as WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssueMergedReactions as WebhookIssueCommentEditedPropIssueMergedReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentEditedPropIssueMergedUser as WebhookIssueCommentEditedPropIssueMergedUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinned as WebhookIssueCommentPinned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssue as WebhookIssueCommentPinnedPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssueAllof0 as WebhookIssueCommentPinnedPropIssueAllof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssueAllof0PropAssignee as WebhookIssueCommentPinnedPropIssueAllof0PropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssueAllof0PropAssigneesItems as WebhookIssueCommentPinnedPropIssueAllof0PropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItems as WebhookIssueCommentPinnedPropIssueAllof0PropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssueAllof0PropMilestone as WebhookIssueCommentPinnedPropIssueAllof0PropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreator as WebhookIssueCommentPinnedPropIssueAllof0PropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubApp as WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner as WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions as WebhookIssueCommentPinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssueAllof0PropPullRequest as WebhookIssueCommentPinnedPropIssueAllof0PropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssueAllof0PropReactions as WebhookIssueCommentPinnedPropIssueAllof0PropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssueAllof0PropUser as WebhookIssueCommentPinnedPropIssueAllof0PropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssueAllof1 as WebhookIssueCommentPinnedPropIssueAllof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssueAllof1PropAssignee as WebhookIssueCommentPinnedPropIssueAllof1PropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssueAllof1PropAssigneesItems as WebhookIssueCommentPinnedPropIssueAllof1PropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssueAllof1PropLabelsItems as WebhookIssueCommentPinnedPropIssueAllof1PropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssueAllof1PropMilestone as WebhookIssueCommentPinnedPropIssueAllof1PropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssueAllof1PropPerformedViaGithubApp as WebhookIssueCommentPinnedPropIssueAllof1PropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssueAllof1PropReactions as WebhookIssueCommentPinnedPropIssueAllof1PropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssueAllof1PropUser as WebhookIssueCommentPinnedPropIssueAllof1PropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssueMergedAssignees as WebhookIssueCommentPinnedPropIssueMergedAssignees,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssueMergedMilestone as WebhookIssueCommentPinnedPropIssueMergedMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubApp as WebhookIssueCommentPinnedPropIssueMergedPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssueMergedReactions as WebhookIssueCommentPinnedPropIssueMergedReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentPinnedPropIssueMergedUser as WebhookIssueCommentPinnedPropIssueMergedUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinned as WebhookIssueCommentUnpinned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssue as WebhookIssueCommentUnpinnedPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssueAllof0 as WebhookIssueCommentUnpinnedPropIssueAllof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssueAllof0PropAssignee as WebhookIssueCommentUnpinnedPropIssueAllof0PropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneesItems as WebhookIssueCommentUnpinnedPropIssueAllof0PropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItems as WebhookIssueCommentUnpinnedPropIssueAllof0PropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestone as WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreator as WebhookIssueCommentUnpinnedPropIssueAllof0PropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubApp as WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner as WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions as WebhookIssueCommentUnpinnedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequest as WebhookIssueCommentUnpinnedPropIssueAllof0PropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssueAllof0PropReactions as WebhookIssueCommentUnpinnedPropIssueAllof0PropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssueAllof0PropUser as WebhookIssueCommentUnpinnedPropIssueAllof0PropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssueAllof1 as WebhookIssueCommentUnpinnedPropIssueAllof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssueAllof1PropAssignee as WebhookIssueCommentUnpinnedPropIssueAllof1PropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItems as WebhookIssueCommentUnpinnedPropIssueAllof1PropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssueAllof1PropLabelsItems as WebhookIssueCommentUnpinnedPropIssueAllof1PropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestone as WebhookIssueCommentUnpinnedPropIssueAllof1PropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubApp as WebhookIssueCommentUnpinnedPropIssueAllof1PropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssueAllof1PropReactions as WebhookIssueCommentUnpinnedPropIssueAllof1PropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssueAllof1PropUser as WebhookIssueCommentUnpinnedPropIssueAllof1PropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssueMergedAssignees as WebhookIssueCommentUnpinnedPropIssueMergedAssignees,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssueMergedMilestone as WebhookIssueCommentUnpinnedPropIssueMergedMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubApp as WebhookIssueCommentUnpinnedPropIssueMergedPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssueMergedReactions as WebhookIssueCommentUnpinnedPropIssueMergedReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueCommentUnpinnedPropIssueMergedUser as WebhookIssueCommentUnpinnedPropIssueMergedUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueDependenciesBlockedByAdded as WebhookIssueDependenciesBlockedByAdded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueDependenciesBlockedByRemoved as WebhookIssueDependenciesBlockedByRemoved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueDependenciesBlockingAdded as WebhookIssueDependenciesBlockingAdded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueDependenciesBlockingRemoved as WebhookIssueDependenciesBlockingRemoved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueRelatesToAdded as WebhookIssueRelatesToAdded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssueRelatesToRemoved as WebhookIssueRelatesToRemoved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesAssigned as WebhookIssuesAssigned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosed as WebhookIssuesClosed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssue as WebhookIssuesClosedPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueAllof0 as WebhookIssuesClosedPropIssueAllof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueAllof0PropAssignee as WebhookIssuesClosedPropIssueAllof0PropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueAllof0PropAssigneesItems as WebhookIssuesClosedPropIssueAllof0PropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueAllof0PropMilestone as WebhookIssuesClosedPropIssueAllof0PropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreator as WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubApp as WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwner as WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissions as WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueAllof0PropPullRequest as WebhookIssuesClosedPropIssueAllof0PropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueAllof0PropReactions as WebhookIssuesClosedPropIssueAllof0PropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueAllof0PropStatus as WebhookIssuesClosedPropIssueAllof0PropStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueAllof0PropUser as WebhookIssuesClosedPropIssueAllof0PropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueAllof1 as WebhookIssuesClosedPropIssueAllof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueAllof1PropAssignee as WebhookIssuesClosedPropIssueAllof1PropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueAllof1PropAssigneesItems as WebhookIssuesClosedPropIssueAllof1PropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueAllof1PropLabelsItems as WebhookIssuesClosedPropIssueAllof1PropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueAllof1PropMilestone as WebhookIssuesClosedPropIssueAllof1PropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubApp as WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueAllof1PropReactions as WebhookIssuesClosedPropIssueAllof1PropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueAllof1PropUser as WebhookIssuesClosedPropIssueAllof1PropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueMergedAssignee as WebhookIssuesClosedPropIssueMergedAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueMergedAssignees as WebhookIssuesClosedPropIssueMergedAssignees,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueMergedMilestone as WebhookIssuesClosedPropIssueMergedMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp as WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueMergedReactions as WebhookIssuesClosedPropIssueMergedReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesClosedPropIssueMergedUser as WebhookIssuesClosedPropIssueMergedUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDeleted as WebhookIssuesDeleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDeletedPropIssue as WebhookIssuesDeletedPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDeletedPropIssuePropAssignee as WebhookIssuesDeletedPropIssuePropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDeletedPropIssuePropAssigneesItems as WebhookIssuesDeletedPropIssuePropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDeletedPropIssuePropLabelsItems as WebhookIssuesDeletedPropIssuePropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDeletedPropIssuePropMilestone as WebhookIssuesDeletedPropIssuePropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDeletedPropIssuePropMilestonePropCreator as WebhookIssuesDeletedPropIssuePropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDeletedPropIssuePropPerformedViaGithubApp as WebhookIssuesDeletedPropIssuePropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDeletedPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesDeletedPropIssuePropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDeletedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesDeletedPropIssuePropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDeletedPropIssuePropPullRequest as WebhookIssuesDeletedPropIssuePropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDeletedPropIssuePropReactions as WebhookIssuesDeletedPropIssuePropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDeletedPropIssuePropStatus as WebhookIssuesDeletedPropIssuePropStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDeletedPropIssuePropUser as WebhookIssuesDeletedPropIssuePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDemilestoned as WebhookIssuesDemilestoned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDemilestonedPropIssue as WebhookIssuesDemilestonedPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDemilestonedPropIssuePropAssignee as WebhookIssuesDemilestonedPropIssuePropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDemilestonedPropIssuePropAssigneesItems as WebhookIssuesDemilestonedPropIssuePropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDemilestonedPropIssuePropLabelsItems as WebhookIssuesDemilestonedPropIssuePropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDemilestonedPropIssuePropMilestone as WebhookIssuesDemilestonedPropIssuePropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDemilestonedPropIssuePropMilestonePropCreator as WebhookIssuesDemilestonedPropIssuePropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDemilestonedPropIssuePropPerformedViaGithubApp as WebhookIssuesDemilestonedPropIssuePropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDemilestonedPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesDemilestonedPropIssuePropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDemilestonedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesDemilestonedPropIssuePropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDemilestonedPropIssuePropPullRequest as WebhookIssuesDemilestonedPropIssuePropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDemilestonedPropIssuePropReactions as WebhookIssuesDemilestonedPropIssuePropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDemilestonedPropIssuePropStatus as WebhookIssuesDemilestonedPropIssuePropStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesDemilestonedPropIssuePropUser as WebhookIssuesDemilestonedPropIssuePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesEdited as WebhookIssuesEdited,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesEditedPropChanges as WebhookIssuesEditedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesEditedPropChangesPropBody as WebhookIssuesEditedPropChangesPropBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesEditedPropChangesPropTitle as WebhookIssuesEditedPropChangesPropTitle,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesEditedPropIssue as WebhookIssuesEditedPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesEditedPropIssuePropAssignee as WebhookIssuesEditedPropIssuePropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesEditedPropIssuePropAssigneesItems as WebhookIssuesEditedPropIssuePropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesEditedPropIssuePropMilestone as WebhookIssuesEditedPropIssuePropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesEditedPropIssuePropMilestonePropCreator as WebhookIssuesEditedPropIssuePropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesEditedPropIssuePropPerformedViaGithubApp as WebhookIssuesEditedPropIssuePropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesEditedPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesEditedPropIssuePropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesEditedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesEditedPropIssuePropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesEditedPropIssuePropPullRequest as WebhookIssuesEditedPropIssuePropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesEditedPropIssuePropReactions as WebhookIssuesEditedPropIssuePropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesEditedPropIssuePropStatus as WebhookIssuesEditedPropIssuePropStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesEditedPropIssuePropUser as WebhookIssuesEditedPropIssuePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesFieldAdded as WebhookIssuesFieldAdded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesFieldAddedPropChanges as WebhookIssuesFieldAddedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesFieldAddedPropChangesPropIssueFieldValue as WebhookIssuesFieldAddedPropChangesPropIssueFieldValue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFrom as WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFrom,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOption as WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOption,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItems as WebhookIssuesFieldAddedPropChangesPropIssueFieldValuePropFromPropOptionsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesFieldAddedPropIssueField as WebhookIssuesFieldAddedPropIssueField,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesFieldAddedPropIssueFieldValue as WebhookIssuesFieldAddedPropIssueFieldValue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesFieldAddedPropIssueFieldValuePropOption as WebhookIssuesFieldAddedPropIssueFieldValuePropOption,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItems as WebhookIssuesFieldAddedPropIssueFieldValuePropOptionsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesFieldRemoved as WebhookIssuesFieldRemoved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesFieldRemovedPropIssueField as WebhookIssuesFieldRemovedPropIssueField,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesFieldRemovedPropIssueFieldValue as WebhookIssuesFieldRemovedPropIssueFieldValue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesFieldRemovedPropIssueFieldValuePropOption as WebhookIssuesFieldRemovedPropIssueFieldValuePropOption,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItems as WebhookIssuesFieldRemovedPropIssueFieldValuePropOptionsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLabeled as WebhookIssuesLabeled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLabeledPropIssue as WebhookIssuesLabeledPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLabeledPropIssuePropAssignee as WebhookIssuesLabeledPropIssuePropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLabeledPropIssuePropAssigneesItems as WebhookIssuesLabeledPropIssuePropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLabeledPropIssuePropLabelsItems as WebhookIssuesLabeledPropIssuePropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLabeledPropIssuePropLabelsItemsPropArchivedBy as WebhookIssuesLabeledPropIssuePropLabelsItemsPropArchivedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLabeledPropIssuePropMilestone as WebhookIssuesLabeledPropIssuePropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLabeledPropIssuePropMilestonePropCreator as WebhookIssuesLabeledPropIssuePropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLabeledPropIssuePropPerformedViaGithubApp as WebhookIssuesLabeledPropIssuePropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLabeledPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesLabeledPropIssuePropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLabeledPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesLabeledPropIssuePropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLabeledPropIssuePropPullRequest as WebhookIssuesLabeledPropIssuePropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLabeledPropIssuePropReactions as WebhookIssuesLabeledPropIssuePropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLabeledPropIssuePropStatus as WebhookIssuesLabeledPropIssuePropStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLabeledPropIssuePropUser as WebhookIssuesLabeledPropIssuePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLocked as WebhookIssuesLocked,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLockedPropIssue as WebhookIssuesLockedPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLockedPropIssuePropAssignee as WebhookIssuesLockedPropIssuePropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLockedPropIssuePropAssigneesItems as WebhookIssuesLockedPropIssuePropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLockedPropIssuePropLabelsItems as WebhookIssuesLockedPropIssuePropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLockedPropIssuePropMilestone as WebhookIssuesLockedPropIssuePropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLockedPropIssuePropMilestonePropCreator as WebhookIssuesLockedPropIssuePropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLockedPropIssuePropPerformedViaGithubApp as WebhookIssuesLockedPropIssuePropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLockedPropIssuePropPullRequest as WebhookIssuesLockedPropIssuePropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLockedPropIssuePropReactions as WebhookIssuesLockedPropIssuePropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLockedPropIssuePropStatus as WebhookIssuesLockedPropIssuePropStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesLockedPropIssuePropUser as WebhookIssuesLockedPropIssuePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesMilestoned as WebhookIssuesMilestoned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesMilestonedPropIssue as WebhookIssuesMilestonedPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesMilestonedPropIssuePropAssignee as WebhookIssuesMilestonedPropIssuePropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesMilestonedPropIssuePropAssigneesItems as WebhookIssuesMilestonedPropIssuePropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesMilestonedPropIssuePropLabelsItems as WebhookIssuesMilestonedPropIssuePropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesMilestonedPropIssuePropMilestone as WebhookIssuesMilestonedPropIssuePropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesMilestonedPropIssuePropMilestonePropCreator as WebhookIssuesMilestonedPropIssuePropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesMilestonedPropIssuePropPerformedViaGithubApp as WebhookIssuesMilestonedPropIssuePropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesMilestonedPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesMilestonedPropIssuePropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesMilestonedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesMilestonedPropIssuePropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesMilestonedPropIssuePropPullRequest as WebhookIssuesMilestonedPropIssuePropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesMilestonedPropIssuePropReactions as WebhookIssuesMilestonedPropIssuePropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesMilestonedPropIssuePropStatus as WebhookIssuesMilestonedPropIssuePropStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesMilestonedPropIssuePropUser as WebhookIssuesMilestonedPropIssuePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpened as WebhookIssuesOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropChanges as WebhookIssuesOpenedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropChangesPropOldIssue as WebhookIssuesOpenedPropChangesPropOldIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropAssignee as WebhookIssuesOpenedPropChangesPropOldIssuePropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropAssigneesItems as WebhookIssuesOpenedPropChangesPropOldIssuePropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropLabelsItems as WebhookIssuesOpenedPropChangesPropOldIssuePropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropMilestone as WebhookIssuesOpenedPropChangesPropOldIssuePropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropMilestonePropCreator as WebhookIssuesOpenedPropChangesPropOldIssuePropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubApp as WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropPullRequest as WebhookIssuesOpenedPropChangesPropOldIssuePropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropReactions as WebhookIssuesOpenedPropChangesPropOldIssuePropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropStatus as WebhookIssuesOpenedPropChangesPropOldIssuePropStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropUser as WebhookIssuesOpenedPropChangesPropOldIssuePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropChangesPropOldRepository as WebhookIssuesOpenedPropChangesPropOldRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomProperties as WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomProperties,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicense as WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwner as WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissions as WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropIssue as WebhookIssuesOpenedPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropIssuePropAssignee as WebhookIssuesOpenedPropIssuePropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropIssuePropAssigneesItems as WebhookIssuesOpenedPropIssuePropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropIssuePropLabelsItems as WebhookIssuesOpenedPropIssuePropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropIssuePropMilestone as WebhookIssuesOpenedPropIssuePropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropIssuePropMilestonePropCreator as WebhookIssuesOpenedPropIssuePropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropIssuePropPerformedViaGithubApp as WebhookIssuesOpenedPropIssuePropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropIssuePropPullRequest as WebhookIssuesOpenedPropIssuePropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropIssuePropReactions as WebhookIssuesOpenedPropIssuePropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropIssuePropStatus as WebhookIssuesOpenedPropIssuePropStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesOpenedPropIssuePropUser as WebhookIssuesOpenedPropIssuePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesPinned as WebhookIssuesPinned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesReopened as WebhookIssuesReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesReopenedPropIssue as WebhookIssuesReopenedPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesReopenedPropIssuePropAssignee as WebhookIssuesReopenedPropIssuePropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesReopenedPropIssuePropAssigneesItems as WebhookIssuesReopenedPropIssuePropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesReopenedPropIssuePropLabelsItems as WebhookIssuesReopenedPropIssuePropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesReopenedPropIssuePropLabelsItemsPropArchivedBy as WebhookIssuesReopenedPropIssuePropLabelsItemsPropArchivedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesReopenedPropIssuePropMilestone as WebhookIssuesReopenedPropIssuePropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesReopenedPropIssuePropMilestonePropCreator as WebhookIssuesReopenedPropIssuePropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesReopenedPropIssuePropPerformedViaGithubApp as WebhookIssuesReopenedPropIssuePropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesReopenedPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesReopenedPropIssuePropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesReopenedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesReopenedPropIssuePropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesReopenedPropIssuePropPullRequest as WebhookIssuesReopenedPropIssuePropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesReopenedPropIssuePropReactions as WebhookIssuesReopenedPropIssuePropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesReopenedPropIssuePropStatus as WebhookIssuesReopenedPropIssuePropStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesReopenedPropIssuePropUser as WebhookIssuesReopenedPropIssuePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesStatusChanged as WebhookIssuesStatusChanged,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesStatusChangedPropChanges as WebhookIssuesStatusChangedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesStatusChangedPropChangesPropState as WebhookIssuesStatusChangedPropChangesPropState,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesStatusChangedPropChangesPropStateReason as WebhookIssuesStatusChangedPropChangesPropStateReason,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesStatusChangedPropChangesPropStatus as WebhookIssuesStatusChangedPropChangesPropStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesStatusChangedPropChangesPropStatusPropFrom as WebhookIssuesStatusChangedPropChangesPropStatusPropFrom,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesStatusChangedPropStatus as WebhookIssuesStatusChangedPropStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesTransferred as WebhookIssuesTransferred,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesTransferredPropChanges as WebhookIssuesTransferredPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesTransferredPropChangesPropNewIssue as WebhookIssuesTransferredPropChangesPropNewIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropAssignee as WebhookIssuesTransferredPropChangesPropNewIssuePropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneesItems as WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropLabelsItems as WebhookIssuesTransferredPropChangesPropNewIssuePropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropMilestone as WebhookIssuesTransferredPropChangesPropNewIssuePropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropMilestonePropCreator as WebhookIssuesTransferredPropChangesPropNewIssuePropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubApp as WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropPullRequest as WebhookIssuesTransferredPropChangesPropNewIssuePropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropReactions as WebhookIssuesTransferredPropChangesPropNewIssuePropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropStatus as WebhookIssuesTransferredPropChangesPropNewIssuePropStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropUser as WebhookIssuesTransferredPropChangesPropNewIssuePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesTransferredPropChangesPropNewRepository as WebhookIssuesTransferredPropChangesPropNewRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomProperties as WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomProperties,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicense as WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwner as WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissions as WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesTyped as WebhookIssuesTyped,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesUnassigned as WebhookIssuesUnassigned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesUnlabeled as WebhookIssuesUnlabeled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesUnlocked as WebhookIssuesUnlocked,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesUnlockedPropIssue as WebhookIssuesUnlockedPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesUnlockedPropIssuePropAssignee as WebhookIssuesUnlockedPropIssuePropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesUnlockedPropIssuePropAssigneesItems as WebhookIssuesUnlockedPropIssuePropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesUnlockedPropIssuePropLabelsItems as WebhookIssuesUnlockedPropIssuePropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesUnlockedPropIssuePropMilestone as WebhookIssuesUnlockedPropIssuePropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesUnlockedPropIssuePropMilestonePropCreator as WebhookIssuesUnlockedPropIssuePropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesUnlockedPropIssuePropPerformedViaGithubApp as WebhookIssuesUnlockedPropIssuePropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesUnlockedPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesUnlockedPropIssuePropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesUnlockedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesUnlockedPropIssuePropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesUnlockedPropIssuePropPullRequest as WebhookIssuesUnlockedPropIssuePropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesUnlockedPropIssuePropReactions as WebhookIssuesUnlockedPropIssuePropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesUnlockedPropIssuePropStatus as WebhookIssuesUnlockedPropIssuePropStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesUnlockedPropIssuePropUser as WebhookIssuesUnlockedPropIssuePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesUnpinned as WebhookIssuesUnpinned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookIssuesUntyped as WebhookIssuesUntyped,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookLabelArchived as WebhookLabelArchived,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookLabelCreated as WebhookLabelCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookLabelDeleted as WebhookLabelDeleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookLabelEdited as WebhookLabelEdited,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookLabelEditedPropChanges as WebhookLabelEditedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookLabelEditedPropChangesPropColor as WebhookLabelEditedPropChangesPropColor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookLabelEditedPropChangesPropDescription as WebhookLabelEditedPropChangesPropDescription,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookLabelEditedPropChangesPropName as WebhookLabelEditedPropChangesPropName,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookLabelUnarchived as WebhookLabelUnarchived,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMarketplacePurchaseCancelled as WebhookMarketplacePurchaseCancelled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMarketplacePurchaseChanged as WebhookMarketplacePurchaseChanged,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchase as WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount as WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan as WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMarketplacePurchasePendingChange as WebhookMarketplacePurchasePendingChange,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMarketplacePurchasePendingChangeCancelled as WebhookMarketplacePurchasePendingChangeCancelled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchase as WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccount as WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccount,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlan as WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlan,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchase as WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccount as WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccount,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan as WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMarketplacePurchasePurchased as WebhookMarketplacePurchasePurchased,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMemberAdded as WebhookMemberAdded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMemberAddedPropChanges as WebhookMemberAddedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMemberAddedPropChangesPropPermission as WebhookMemberAddedPropChangesPropPermission,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMemberAddedPropChangesPropRoleName as WebhookMemberAddedPropChangesPropRoleName,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMemberEdited as WebhookMemberEdited,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMemberEditedPropChanges as WebhookMemberEditedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMemberEditedPropChangesPropOldPermission as WebhookMemberEditedPropChangesPropOldPermission,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMemberEditedPropChangesPropPermission as WebhookMemberEditedPropChangesPropPermission,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMemberRemoved as WebhookMemberRemoved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMembershipAdded as WebhookMembershipAdded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMembershipAddedPropSender as WebhookMembershipAddedPropSender,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMembershipRemoved as WebhookMembershipRemoved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMembershipRemovedPropSender as WebhookMembershipRemovedPropSender,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMergeGroupChecksRequested as WebhookMergeGroupChecksRequested,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMergeGroupDestroyed as WebhookMergeGroupDestroyed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMetaDeleted as WebhookMetaDeleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMetaDeletedPropHook as WebhookMetaDeletedPropHook,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMetaDeletedPropHookPropConfig as WebhookMetaDeletedPropHookPropConfig,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMilestoneClosed as WebhookMilestoneClosed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMilestoneCreated as WebhookMilestoneCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMilestoneDeleted as WebhookMilestoneDeleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMilestoneEdited as WebhookMilestoneEdited,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMilestoneEditedPropChanges as WebhookMilestoneEditedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMilestoneEditedPropChangesPropDescription as WebhookMilestoneEditedPropChangesPropDescription,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMilestoneEditedPropChangesPropDueOn as WebhookMilestoneEditedPropChangesPropDueOn,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMilestoneEditedPropChangesPropTitle as WebhookMilestoneEditedPropChangesPropTitle,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookMilestoneOpened as WebhookMilestoneOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookOrganizationDeleted as WebhookOrganizationDeleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookOrganizationMemberAdded as WebhookOrganizationMemberAdded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookOrganizationMemberInvited as WebhookOrganizationMemberInvited,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookOrganizationMemberInvitedPropInvitation as WebhookOrganizationMemberInvitedPropInvitation,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookOrganizationMemberInvitedPropInvitationPropInviter as WebhookOrganizationMemberInvitedPropInvitationPropInviter,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookOrganizationMemberRemoved as WebhookOrganizationMemberRemoved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookOrganizationRenamed as WebhookOrganizationRenamed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookOrganizationRenamedPropChanges as WebhookOrganizationRenamedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookOrganizationRenamedPropChangesPropLogin as WebhookOrganizationRenamedPropChangesPropLogin,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookOrgBlockBlocked as WebhookOrgBlockBlocked,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookOrgBlockUnblocked as WebhookOrgBlockUnblocked,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublished as WebhookPackagePublished,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackage as WebhookPackagePublishedPropPackage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropOwner as WebhookPackagePublishedPropPackagePropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersion as WebhookPackagePublishedPropPackagePropPackageVersion,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropAuthor as WebhookPackagePublishedPropPackagePropPackageVersionPropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropBodyOneof1 as WebhookPackagePublishedPropPackagePropPackageVersionPropBodyOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadata as WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadata,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropLabels as WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropLabels,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropManifest as WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropManifest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropTag as WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropTag,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItems as WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItems as WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadata as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadata,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropAuthor as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBin as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBin,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBugs as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBugs,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContributorsItems as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContributorsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDependencies as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDependencies,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDevDependencies as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDevDependencies,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDirectories as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDirectories,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDist as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDist,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropEngines as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropEngines,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMaintainersItems as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMaintainersItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMan as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMan,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropOptionalDependencies as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropOptionalDependencies,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropPeerDependencies as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropPeerDependencies,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropRepository as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropScripts as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropScripts,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItems as WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3 as WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropPackageFilesItems as WebhookPackagePublishedPropPackagePropPackageVersionPropPackageFilesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropRelease as WebhookPackagePublishedPropPackagePropPackageVersionPropRelease,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropReleasePropAuthor as WebhookPackagePublishedPropPackagePropPackageVersionPropReleasePropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackagePublishedPropPackagePropRegistry as WebhookPackagePublishedPropPackagePropRegistry,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackageUpdated as WebhookPackageUpdated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackageUpdatedPropPackage as WebhookPackageUpdatedPropPackage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackageUpdatedPropPackagePropOwner as WebhookPackageUpdatedPropPackagePropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackageUpdatedPropPackagePropPackageVersion as WebhookPackageUpdatedPropPackagePropPackageVersion,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthor as WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems as WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems as WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems as WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease as WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthor as WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPackageUpdatedPropPackagePropRegistry as WebhookPackageUpdatedPropPackagePropRegistry,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPageBuild as WebhookPageBuild,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPageBuildPropBuild as WebhookPageBuildPropBuild,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPageBuildPropBuildPropError as WebhookPageBuildPropBuildPropError,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPageBuildPropBuildPropPusher as WebhookPageBuildPropBuildPropPusher,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPersonalAccessTokenRequestApproved as WebhookPersonalAccessTokenRequestApproved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPersonalAccessTokenRequestCancelled as WebhookPersonalAccessTokenRequestCancelled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPersonalAccessTokenRequestCreated as WebhookPersonalAccessTokenRequestCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPersonalAccessTokenRequestDenied as WebhookPersonalAccessTokenRequestDenied,
-    )
-    from githubkit_schemas.v2026_03_10.models import WebhookPing as WebhookPing
-    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPing as WebhookPing,
         WebhookPingFormEncoded as WebhookPingFormEncoded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPingPropHook as WebhookPingPropHook,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPingPropHookPropConfig as WebhookPingPropHookPropConfig,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectCardConverted as WebhookProjectCardConverted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectCardConvertedPropChanges as WebhookProjectCardConvertedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectCardConvertedPropChangesPropNote as WebhookProjectCardConvertedPropChangesPropNote,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectCardCreated as WebhookProjectCardCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectCardDeleted as WebhookProjectCardDeleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectCardDeletedPropProjectCard as WebhookProjectCardDeletedPropProjectCard,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectCardDeletedPropProjectCardPropCreator as WebhookProjectCardDeletedPropProjectCardPropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectCardEdited as WebhookProjectCardEdited,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectCardEditedPropChanges as WebhookProjectCardEditedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectCardEditedPropChangesPropNote as WebhookProjectCardEditedPropChangesPropNote,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectCardMoved as WebhookProjectCardMoved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectCardMovedPropChanges as WebhookProjectCardMovedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectCardMovedPropChangesPropColumnId as WebhookProjectCardMovedPropChangesPropColumnId,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectCardMovedPropProjectCard as WebhookProjectCardMovedPropProjectCard,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectCardMovedPropProjectCardAllof0 as WebhookProjectCardMovedPropProjectCardAllof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectCardMovedPropProjectCardAllof0PropCreator as WebhookProjectCardMovedPropProjectCardAllof0PropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectCardMovedPropProjectCardAllof1 as WebhookProjectCardMovedPropProjectCardAllof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectCardMovedPropProjectCardAllof1PropCreator as WebhookProjectCardMovedPropProjectCardAllof1PropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectCardMovedPropProjectCardMergedCreator as WebhookProjectCardMovedPropProjectCardMergedCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectClosed as WebhookProjectClosed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectColumnCreated as WebhookProjectColumnCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectColumnDeleted as WebhookProjectColumnDeleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectColumnEdited as WebhookProjectColumnEdited,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectColumnEditedPropChanges as WebhookProjectColumnEditedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectColumnEditedPropChangesPropName as WebhookProjectColumnEditedPropChangesPropName,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectColumnMoved as WebhookProjectColumnMoved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectCreated as WebhookProjectCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectDeleted as WebhookProjectDeleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectEdited as WebhookProjectEdited,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectEditedPropChanges as WebhookProjectEditedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectEditedPropChangesPropBody as WebhookProjectEditedPropChangesPropBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectEditedPropChangesPropName as WebhookProjectEditedPropChangesPropName,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectReopened as WebhookProjectReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2ItemArchived as WebhookProjectsV2ItemArchived,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2ItemConverted as WebhookProjectsV2ItemConverted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2ItemConvertedPropChanges as WebhookProjectsV2ItemConvertedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2ItemConvertedPropChangesPropContentType as WebhookProjectsV2ItemConvertedPropChangesPropContentType,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2ItemCreated as WebhookProjectsV2ItemCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2ItemDeleted as WebhookProjectsV2ItemDeleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2ItemEdited as WebhookProjectsV2ItemEdited,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2ItemEditedPropChangesOneof0 as WebhookProjectsV2ItemEditedPropChangesOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue as WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2ItemEditedPropChangesOneof1 as WebhookProjectsV2ItemEditedPropChangesOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2ItemEditedPropChangesOneof1PropBody as WebhookProjectsV2ItemEditedPropChangesOneof1PropBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2ItemReordered as WebhookProjectsV2ItemReordered,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2ItemReorderedPropChanges as WebhookProjectsV2ItemReorderedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId as WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2ItemRestored as WebhookProjectsV2ItemRestored,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2ProjectClosed as WebhookProjectsV2ProjectClosed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2ProjectCreated as WebhookProjectsV2ProjectCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2ProjectDeleted as WebhookProjectsV2ProjectDeleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2ProjectEdited as WebhookProjectsV2ProjectEdited,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2ProjectEditedPropChanges as WebhookProjectsV2ProjectEditedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2ProjectEditedPropChangesPropDescription as WebhookProjectsV2ProjectEditedPropChangesPropDescription,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2ProjectEditedPropChangesPropPublic as WebhookProjectsV2ProjectEditedPropChangesPropPublic,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2ProjectEditedPropChangesPropShortDescription as WebhookProjectsV2ProjectEditedPropChangesPropShortDescription,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2ProjectEditedPropChangesPropTitle as WebhookProjectsV2ProjectEditedPropChangesPropTitle,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2ProjectReopened as WebhookProjectsV2ProjectReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2StatusUpdateCreated as WebhookProjectsV2StatusUpdateCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2StatusUpdateDeleted as WebhookProjectsV2StatusUpdateDeleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2StatusUpdateEdited as WebhookProjectsV2StatusUpdateEdited,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2StatusUpdateEditedPropChanges as WebhookProjectsV2StatusUpdateEditedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2StatusUpdateEditedPropChangesPropBody as WebhookProjectsV2StatusUpdateEditedPropChangesPropBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate as WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus as WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate as WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate,
-    )
-    from githubkit_schemas.v2026_03_10.models import WebhookPublic as WebhookPublic
-    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPublic as WebhookPublic,
         WebhookPullRequestAssigned as WebhookPullRequestAssigned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequest as WebhookPullRequestAssignedPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropAssignee as WebhookPullRequestAssignedPropPullRequestPropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropAssigneesItems as WebhookPullRequestAssignedPropPullRequestPropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropAutoMerge as WebhookPullRequestAssignedPropPullRequestPropAutoMerge,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestAssignedPropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropBase as WebhookPullRequestAssignedPropPullRequestPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropBasePropRepo as WebhookPullRequestAssignedPropPullRequestPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestAssignedPropPullRequestPropBasePropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestAssignedPropPullRequestPropBasePropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestAssignedPropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropBasePropUser as WebhookPullRequestAssignedPropPullRequestPropBasePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropHead as WebhookPullRequestAssignedPropPullRequestPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropHeadPropRepo as WebhookPullRequestAssignedPropPullRequestPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestAssignedPropPullRequestPropHeadPropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestAssignedPropPullRequestPropHeadPropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestAssignedPropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropHeadPropUser as WebhookPullRequestAssignedPropPullRequestPropHeadPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropLabelsItems as WebhookPullRequestAssignedPropPullRequestPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropLinks as WebhookPullRequestAssignedPropPullRequestPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropLinksPropComments as WebhookPullRequestAssignedPropPullRequestPropLinksPropComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropLinksPropCommits as WebhookPullRequestAssignedPropPullRequestPropLinksPropCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropLinksPropHtml as WebhookPullRequestAssignedPropPullRequestPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropLinksPropIssue as WebhookPullRequestAssignedPropPullRequestPropLinksPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestAssignedPropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestAssignedPropPullRequestPropLinksPropReviewComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropLinksPropSelf as WebhookPullRequestAssignedPropPullRequestPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropLinksPropStatuses as WebhookPullRequestAssignedPropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropMergedBy as WebhookPullRequestAssignedPropPullRequestPropMergedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropMilestone as WebhookPullRequestAssignedPropPullRequestPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropMilestonePropCreator as WebhookPullRequestAssignedPropPullRequestPropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestAssignedPropPullRequestPropRequestedReviewersItemsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestAssignedPropPullRequestPropRequestedReviewersItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestAssignedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestAssignedPropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestAssignedPropPullRequestPropRequestedTeamsItemsPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAssignedPropPullRequestPropUser as WebhookPullRequestAssignedPropPullRequestPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabled as WebhookPullRequestAutoMergeDisabled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequest as WebhookPullRequestAutoMergeDisabledPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropAssignee as WebhookPullRequestAutoMergeDisabledPropPullRequestPropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropAssigneesItems as WebhookPullRequestAutoMergeDisabledPropPullRequestPropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropAutoMerge as WebhookPullRequestAutoMergeDisabledPropPullRequestPropAutoMerge,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestAutoMergeDisabledPropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropBase as WebhookPullRequestAutoMergeDisabledPropPullRequestPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepo as WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropUser as WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropHead as WebhookPullRequestAutoMergeDisabledPropPullRequestPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepo as WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropUser as WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropLabelsItems as WebhookPullRequestAutoMergeDisabledPropPullRequestPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinks as WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropComments as WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropCommits as WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropHtml as WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropIssue as WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropReviewComment as WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropReviewComments as WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropReviewComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropSelf as WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropStatuses as WebhookPullRequestAutoMergeDisabledPropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropMergedBy as WebhookPullRequestAutoMergeDisabledPropPullRequestPropMergedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropMilestone as WebhookPullRequestAutoMergeDisabledPropPullRequestPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropMilestonePropCreator as WebhookPullRequestAutoMergeDisabledPropPullRequestPropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItems as WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItemsPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropUser as WebhookPullRequestAutoMergeDisabledPropPullRequestPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabled as WebhookPullRequestAutoMergeEnabled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequest as WebhookPullRequestAutoMergeEnabledPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropAssignee as WebhookPullRequestAutoMergeEnabledPropPullRequestPropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropAssigneesItems as WebhookPullRequestAutoMergeEnabledPropPullRequestPropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropAutoMerge as WebhookPullRequestAutoMergeEnabledPropPullRequestPropAutoMerge,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestAutoMergeEnabledPropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropBase as WebhookPullRequestAutoMergeEnabledPropPullRequestPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropBasePropRepo as WebhookPullRequestAutoMergeEnabledPropPullRequestPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestAutoMergeEnabledPropPullRequestPropBasePropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestAutoMergeEnabledPropPullRequestPropBasePropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestAutoMergeEnabledPropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropBasePropUser as WebhookPullRequestAutoMergeEnabledPropPullRequestPropBasePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropHead as WebhookPullRequestAutoMergeEnabledPropPullRequestPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropHeadPropRepo as WebhookPullRequestAutoMergeEnabledPropPullRequestPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestAutoMergeEnabledPropPullRequestPropHeadPropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestAutoMergeEnabledPropPullRequestPropHeadPropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestAutoMergeEnabledPropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropHeadPropUser as WebhookPullRequestAutoMergeEnabledPropPullRequestPropHeadPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropLabelsItems as WebhookPullRequestAutoMergeEnabledPropPullRequestPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinks as WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropComments as WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropCommits as WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropHtml as WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropIssue as WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropReviewComment as WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropReviewComments as WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropReviewComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropSelf as WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropStatuses as WebhookPullRequestAutoMergeEnabledPropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropMergedBy as WebhookPullRequestAutoMergeEnabledPropPullRequestPropMergedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropMilestone as WebhookPullRequestAutoMergeEnabledPropPullRequestPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropMilestonePropCreator as WebhookPullRequestAutoMergeEnabledPropPullRequestPropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedReviewersItemsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedReviewersItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedTeamsItems as WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedTeamsItemsPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequestPropUser as WebhookPullRequestAutoMergeEnabledPropPullRequestPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestClosed as WebhookPullRequestClosed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestConvertedToDraft as WebhookPullRequestConvertedToDraft,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDemilestoned as WebhookPullRequestDemilestoned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeued as WebhookPullRequestDequeued,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequest as WebhookPullRequestDequeuedPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropAssignee as WebhookPullRequestDequeuedPropPullRequestPropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropAssigneesItems as WebhookPullRequestDequeuedPropPullRequestPropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropAutoMerge as WebhookPullRequestDequeuedPropPullRequestPropAutoMerge,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestDequeuedPropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropBase as WebhookPullRequestDequeuedPropPullRequestPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropBasePropRepo as WebhookPullRequestDequeuedPropPullRequestPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestDequeuedPropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropBasePropUser as WebhookPullRequestDequeuedPropPullRequestPropBasePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropHead as WebhookPullRequestDequeuedPropPullRequestPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepo as WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestDequeuedPropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropHeadPropUser as WebhookPullRequestDequeuedPropPullRequestPropHeadPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropLabelsItems as WebhookPullRequestDequeuedPropPullRequestPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropLinks as WebhookPullRequestDequeuedPropPullRequestPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropLinksPropComments as WebhookPullRequestDequeuedPropPullRequestPropLinksPropComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropLinksPropCommits as WebhookPullRequestDequeuedPropPullRequestPropLinksPropCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropLinksPropHtml as WebhookPullRequestDequeuedPropPullRequestPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropLinksPropIssue as WebhookPullRequestDequeuedPropPullRequestPropLinksPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropLinksPropSelf as WebhookPullRequestDequeuedPropPullRequestPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropLinksPropStatuses as WebhookPullRequestDequeuedPropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropMergedBy as WebhookPullRequestDequeuedPropPullRequestPropMergedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropMilestone as WebhookPullRequestDequeuedPropPullRequestPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropMilestonePropCreator as WebhookPullRequestDequeuedPropPullRequestPropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestDequeuedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestDequeuedPropPullRequestPropRequestedTeamsItemsPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestDequeuedPropPullRequestPropUser as WebhookPullRequestDequeuedPropPullRequestPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEdited as WebhookPullRequestEdited,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEditedPropChanges as WebhookPullRequestEditedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEditedPropChangesPropBase as WebhookPullRequestEditedPropChangesPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEditedPropChangesPropBasePropRef as WebhookPullRequestEditedPropChangesPropBasePropRef,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEditedPropChangesPropBasePropSha as WebhookPullRequestEditedPropChangesPropBasePropSha,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEditedPropChangesPropBody as WebhookPullRequestEditedPropChangesPropBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEditedPropChangesPropTitle as WebhookPullRequestEditedPropChangesPropTitle,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueued as WebhookPullRequestEnqueued,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequest as WebhookPullRequestEnqueuedPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropAssignee as WebhookPullRequestEnqueuedPropPullRequestPropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropAssigneesItems as WebhookPullRequestEnqueuedPropPullRequestPropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropAutoMerge as WebhookPullRequestEnqueuedPropPullRequestPropAutoMerge,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestEnqueuedPropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropBase as WebhookPullRequestEnqueuedPropPullRequestPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropBasePropRepo as WebhookPullRequestEnqueuedPropPullRequestPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestEnqueuedPropPullRequestPropBasePropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestEnqueuedPropPullRequestPropBasePropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestEnqueuedPropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropBasePropUser as WebhookPullRequestEnqueuedPropPullRequestPropBasePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropHead as WebhookPullRequestEnqueuedPropPullRequestPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropHeadPropRepo as WebhookPullRequestEnqueuedPropPullRequestPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestEnqueuedPropPullRequestPropHeadPropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestEnqueuedPropPullRequestPropHeadPropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestEnqueuedPropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropHeadPropUser as WebhookPullRequestEnqueuedPropPullRequestPropHeadPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropLabelsItems as WebhookPullRequestEnqueuedPropPullRequestPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropLinks as WebhookPullRequestEnqueuedPropPullRequestPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropLinksPropComments as WebhookPullRequestEnqueuedPropPullRequestPropLinksPropComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropLinksPropCommits as WebhookPullRequestEnqueuedPropPullRequestPropLinksPropCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropLinksPropHtml as WebhookPullRequestEnqueuedPropPullRequestPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropLinksPropIssue as WebhookPullRequestEnqueuedPropPullRequestPropLinksPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestEnqueuedPropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestEnqueuedPropPullRequestPropLinksPropReviewComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropLinksPropSelf as WebhookPullRequestEnqueuedPropPullRequestPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropLinksPropStatuses as WebhookPullRequestEnqueuedPropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropMergedBy as WebhookPullRequestEnqueuedPropPullRequestPropMergedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropMilestone as WebhookPullRequestEnqueuedPropPullRequestPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropMilestonePropCreator as WebhookPullRequestEnqueuedPropPullRequestPropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestEnqueuedPropPullRequestPropRequestedReviewersItemsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestEnqueuedPropPullRequestPropRequestedReviewersItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestEnqueuedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestEnqueuedPropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestEnqueuedPropPullRequestPropRequestedTeamsItemsPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestEnqueuedPropPullRequestPropUser as WebhookPullRequestEnqueuedPropPullRequestPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeled as WebhookPullRequestLabeled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequest as WebhookPullRequestLabeledPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropAssignee as WebhookPullRequestLabeledPropPullRequestPropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropAssigneesItems as WebhookPullRequestLabeledPropPullRequestPropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropAutoMerge as WebhookPullRequestLabeledPropPullRequestPropAutoMerge,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestLabeledPropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropBase as WebhookPullRequestLabeledPropPullRequestPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropBasePropRepo as WebhookPullRequestLabeledPropPullRequestPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestLabeledPropPullRequestPropBasePropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestLabeledPropPullRequestPropBasePropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestLabeledPropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropBasePropUser as WebhookPullRequestLabeledPropPullRequestPropBasePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropHead as WebhookPullRequestLabeledPropPullRequestPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropHeadPropRepo as WebhookPullRequestLabeledPropPullRequestPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestLabeledPropPullRequestPropHeadPropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestLabeledPropPullRequestPropHeadPropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestLabeledPropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropHeadPropUser as WebhookPullRequestLabeledPropPullRequestPropHeadPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropLabelsItems as WebhookPullRequestLabeledPropPullRequestPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropLabelsItemsPropArchivedBy as WebhookPullRequestLabeledPropPullRequestPropLabelsItemsPropArchivedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropLinks as WebhookPullRequestLabeledPropPullRequestPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropLinksPropComments as WebhookPullRequestLabeledPropPullRequestPropLinksPropComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropLinksPropCommits as WebhookPullRequestLabeledPropPullRequestPropLinksPropCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropLinksPropHtml as WebhookPullRequestLabeledPropPullRequestPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropLinksPropIssue as WebhookPullRequestLabeledPropPullRequestPropLinksPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropLinksPropReviewComment as WebhookPullRequestLabeledPropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropLinksPropReviewComments as WebhookPullRequestLabeledPropPullRequestPropLinksPropReviewComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropLinksPropSelf as WebhookPullRequestLabeledPropPullRequestPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropLinksPropStatuses as WebhookPullRequestLabeledPropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropMergedBy as WebhookPullRequestLabeledPropPullRequestPropMergedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropMilestone as WebhookPullRequestLabeledPropPullRequestPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropMilestonePropCreator as WebhookPullRequestLabeledPropPullRequestPropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestLabeledPropPullRequestPropRequestedReviewersItemsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestLabeledPropPullRequestPropRequestedReviewersItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestLabeledPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropRequestedTeamsItems as WebhookPullRequestLabeledPropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestLabeledPropPullRequestPropRequestedTeamsItemsPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLabeledPropPullRequestPropUser as WebhookPullRequestLabeledPropPullRequestPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLocked as WebhookPullRequestLocked,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequest as WebhookPullRequestLockedPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropAssignee as WebhookPullRequestLockedPropPullRequestPropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropAssigneesItems as WebhookPullRequestLockedPropPullRequestPropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropAutoMerge as WebhookPullRequestLockedPropPullRequestPropAutoMerge,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestLockedPropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropBase as WebhookPullRequestLockedPropPullRequestPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropBasePropRepo as WebhookPullRequestLockedPropPullRequestPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestLockedPropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropBasePropUser as WebhookPullRequestLockedPropPullRequestPropBasePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropHead as WebhookPullRequestLockedPropPullRequestPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropHeadPropRepo as WebhookPullRequestLockedPropPullRequestPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestLockedPropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropHeadPropUser as WebhookPullRequestLockedPropPullRequestPropHeadPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropLabelsItems as WebhookPullRequestLockedPropPullRequestPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropLinks as WebhookPullRequestLockedPropPullRequestPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropLinksPropComments as WebhookPullRequestLockedPropPullRequestPropLinksPropComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropLinksPropCommits as WebhookPullRequestLockedPropPullRequestPropLinksPropCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropLinksPropHtml as WebhookPullRequestLockedPropPullRequestPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropLinksPropIssue as WebhookPullRequestLockedPropPullRequestPropLinksPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestLockedPropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestLockedPropPullRequestPropLinksPropReviewComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropLinksPropSelf as WebhookPullRequestLockedPropPullRequestPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropLinksPropStatuses as WebhookPullRequestLockedPropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropMergedBy as WebhookPullRequestLockedPropPullRequestPropMergedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropMilestone as WebhookPullRequestLockedPropPullRequestPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropMilestonePropCreator as WebhookPullRequestLockedPropPullRequestPropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestLockedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestLockedPropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestLockedPropPullRequestPropRequestedTeamsItemsPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestLockedPropPullRequestPropUser as WebhookPullRequestLockedPropPullRequestPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestMilestoned as WebhookPullRequestMilestoned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestOpened as WebhookPullRequestOpened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReadyForReview as WebhookPullRequestReadyForReview,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReopened as WebhookPullRequestReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreated as WebhookPullRequestReviewCommentCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropComment as WebhookPullRequestReviewCommentCreatedPropComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropCommentPropLinks as WebhookPullRequestReviewCommentCreatedPropCommentPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropHtml as WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropPullRequest as WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropSelf as WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropCommentPropReactions as WebhookPullRequestReviewCommentCreatedPropCommentPropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropCommentPropUser as WebhookPullRequestReviewCommentCreatedPropCommentPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequest as WebhookPullRequestReviewCommentCreatedPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropAssignee as WebhookPullRequestReviewCommentCreatedPropPullRequestPropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropAssigneesItems as WebhookPullRequestReviewCommentCreatedPropPullRequestPropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropAutoMerge as WebhookPullRequestReviewCommentCreatedPropPullRequestPropAutoMerge,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewCommentCreatedPropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropBase as WebhookPullRequestReviewCommentCreatedPropPullRequestPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepo as WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropUser as WebhookPullRequestReviewCommentCreatedPropPullRequestPropBasePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropHead as WebhookPullRequestReviewCommentCreatedPropPullRequestPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepo as WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropUser as WebhookPullRequestReviewCommentCreatedPropPullRequestPropHeadPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropLabelsItems as WebhookPullRequestReviewCommentCreatedPropPullRequestPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinks as WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropComments as WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropCommits as WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropHtml as WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropIssue as WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropReviewComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropSelf as WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropMilestone as WebhookPullRequestReviewCommentCreatedPropPullRequestPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewCommentCreatedPropPullRequestPropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedReviewersItemsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedReviewersItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestReviewCommentCreatedPropPullRequestPropRequestedTeamsItemsPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropUser as WebhookPullRequestReviewCommentCreatedPropPullRequestPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeleted as WebhookPullRequestReviewCommentDeleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequest as WebhookPullRequestReviewCommentDeletedPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropAssignee as WebhookPullRequestReviewCommentDeletedPropPullRequestPropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropAssigneesItems as WebhookPullRequestReviewCommentDeletedPropPullRequestPropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropAutoMerge as WebhookPullRequestReviewCommentDeletedPropPullRequestPropAutoMerge,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewCommentDeletedPropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropBase as WebhookPullRequestReviewCommentDeletedPropPullRequestPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropRepo as WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropUser as WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropHead as WebhookPullRequestReviewCommentDeletedPropPullRequestPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropRepo as WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropUser as WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropLabelsItems as WebhookPullRequestReviewCommentDeletedPropPullRequestPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinks as WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropComments as WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropCommits as WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropHtml as WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropIssue as WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropReviewComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropSelf as WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropMilestone as WebhookPullRequestReviewCommentDeletedPropPullRequestPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewCommentDeletedPropPullRequestPropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedReviewersItemsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedReviewersItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedTeamsItemsPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropUser as WebhookPullRequestReviewCommentDeletedPropPullRequestPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEdited as WebhookPullRequestReviewCommentEdited,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequest as WebhookPullRequestReviewCommentEditedPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropAssignee as WebhookPullRequestReviewCommentEditedPropPullRequestPropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropAssigneesItems as WebhookPullRequestReviewCommentEditedPropPullRequestPropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropAutoMerge as WebhookPullRequestReviewCommentEditedPropPullRequestPropAutoMerge,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewCommentEditedPropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropBase as WebhookPullRequestReviewCommentEditedPropPullRequestPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropBasePropRepo as WebhookPullRequestReviewCommentEditedPropPullRequestPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewCommentEditedPropPullRequestPropBasePropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestReviewCommentEditedPropPullRequestPropBasePropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewCommentEditedPropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropBasePropUser as WebhookPullRequestReviewCommentEditedPropPullRequestPropBasePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropHead as WebhookPullRequestReviewCommentEditedPropPullRequestPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropHeadPropRepo as WebhookPullRequestReviewCommentEditedPropPullRequestPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestReviewCommentEditedPropPullRequestPropHeadPropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewCommentEditedPropPullRequestPropHeadPropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewCommentEditedPropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropHeadPropUser as WebhookPullRequestReviewCommentEditedPropPullRequestPropHeadPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropLabelsItems as WebhookPullRequestReviewCommentEditedPropPullRequestPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropLinks as WebhookPullRequestReviewCommentEditedPropPullRequestPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropComments as WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropCommits as WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropHtml as WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropIssue as WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropReviewComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropSelf as WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewCommentEditedPropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropMilestone as WebhookPullRequestReviewCommentEditedPropPullRequestPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewCommentEditedPropPullRequestPropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedReviewersItemsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedReviewersItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedTeamsItemsPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewCommentEditedPropPullRequestPropUser as WebhookPullRequestReviewCommentEditedPropPullRequestPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissed as WebhookPullRequestReviewDismissed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequest as WebhookPullRequestReviewDismissedPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropAssignee as WebhookPullRequestReviewDismissedPropPullRequestPropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropAssigneesItems as WebhookPullRequestReviewDismissedPropPullRequestPropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropAutoMerge as WebhookPullRequestReviewDismissedPropPullRequestPropAutoMerge,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewDismissedPropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropBase as WebhookPullRequestReviewDismissedPropPullRequestPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepo as WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropBasePropUser as WebhookPullRequestReviewDismissedPropPullRequestPropBasePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropHead as WebhookPullRequestReviewDismissedPropPullRequestPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepo as WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropUser as WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropLabelsItems as WebhookPullRequestReviewDismissedPropPullRequestPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropLinks as WebhookPullRequestReviewDismissedPropPullRequestPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropComments as WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropCommits as WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropHtml as WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropIssue as WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropReviewComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropSelf as WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropMilestone as WebhookPullRequestReviewDismissedPropPullRequestPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewDismissedPropPullRequestPropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestReviewDismissedPropPullRequestPropRequestedReviewersItemsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestReviewDismissedPropPullRequestPropRequestedReviewersItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewDismissedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewDismissedPropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestReviewDismissedPropPullRequestPropRequestedTeamsItemsPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropPullRequestPropUser as WebhookPullRequestReviewDismissedPropPullRequestPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropReview as WebhookPullRequestReviewDismissedPropReview,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropReviewPropLinks as WebhookPullRequestReviewDismissedPropReviewPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropReviewPropLinksPropHtml as WebhookPullRequestReviewDismissedPropReviewPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropReviewPropLinksPropPullRequest as WebhookPullRequestReviewDismissedPropReviewPropLinksPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewDismissedPropReviewPropUser as WebhookPullRequestReviewDismissedPropReviewPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEdited as WebhookPullRequestReviewEdited,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropChanges as WebhookPullRequestReviewEditedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropChangesPropBody as WebhookPullRequestReviewEditedPropChangesPropBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequest as WebhookPullRequestReviewEditedPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropAssignee as WebhookPullRequestReviewEditedPropPullRequestPropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropAssigneesItems as WebhookPullRequestReviewEditedPropPullRequestPropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropAutoMerge as WebhookPullRequestReviewEditedPropPullRequestPropAutoMerge,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewEditedPropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropBase as WebhookPullRequestReviewEditedPropPullRequestPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropBasePropRepo as WebhookPullRequestReviewEditedPropPullRequestPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewEditedPropPullRequestPropBasePropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestReviewEditedPropPullRequestPropBasePropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewEditedPropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropBasePropUser as WebhookPullRequestReviewEditedPropPullRequestPropBasePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropHead as WebhookPullRequestReviewEditedPropPullRequestPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropHeadPropRepo as WebhookPullRequestReviewEditedPropPullRequestPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestReviewEditedPropPullRequestPropHeadPropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewEditedPropPullRequestPropHeadPropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewEditedPropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropHeadPropUser as WebhookPullRequestReviewEditedPropPullRequestPropHeadPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropLabelsItems as WebhookPullRequestReviewEditedPropPullRequestPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropLinks as WebhookPullRequestReviewEditedPropPullRequestPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropLinksPropComments as WebhookPullRequestReviewEditedPropPullRequestPropLinksPropComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropLinksPropCommits as WebhookPullRequestReviewEditedPropPullRequestPropLinksPropCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropLinksPropHtml as WebhookPullRequestReviewEditedPropPullRequestPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropLinksPropIssue as WebhookPullRequestReviewEditedPropPullRequestPropLinksPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewEditedPropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewEditedPropPullRequestPropLinksPropReviewComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropLinksPropSelf as WebhookPullRequestReviewEditedPropPullRequestPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewEditedPropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropMilestone as WebhookPullRequestReviewEditedPropPullRequestPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewEditedPropPullRequestPropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestReviewEditedPropPullRequestPropRequestedReviewersItemsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestReviewEditedPropPullRequestPropRequestedReviewersItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewEditedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewEditedPropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestReviewEditedPropPullRequestPropRequestedTeamsItemsPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewEditedPropPullRequestPropUser as WebhookPullRequestReviewEditedPropPullRequestPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0 as WebhookPullRequestReviewRequestedOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequest as WebhookPullRequestReviewRequestedOneof0PropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAssignee as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAssigneesItems as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAutoMerge as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAutoMerge,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBase as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropRepo as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropUser as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHead as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropRepo as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropUser as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLabelsItems as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinks as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropComments as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropCommits as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropHtml as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropIssue as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropReviewComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropSelf as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropMergedBy as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropMergedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropMilestone as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedReviewersItemsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedReviewersItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedReviewersItemsOneof1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedTeamsItemsPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropUser as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof0PropRequestedReviewer as WebhookPullRequestReviewRequestedOneof0PropRequestedReviewer,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1 as WebhookPullRequestReviewRequestedOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequest as WebhookPullRequestReviewRequestedOneof1PropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAssignee as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAssigneesItems as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAutoMerge as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAutoMerge,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBase as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepo as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropUser as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHead as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepo as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropUser as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLabelsItems as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinks as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropComments as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropCommits as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropHtml as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropIssue as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropReviewComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropSelf as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropMergedBy as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropMergedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropMilestone as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedReviewersItemsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedReviewersItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedReviewersItemsOneof1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedTeamsItemsPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropUser as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropRequestedTeam as WebhookPullRequestReviewRequestedOneof1PropRequestedTeam,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestedOneof1PropRequestedTeamPropParent as WebhookPullRequestReviewRequestedOneof1PropRequestedTeamPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0 as WebhookPullRequestReviewRequestRemovedOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequest as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAssignee as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAssigneesItems as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAutoMerge as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAutoMerge,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBase as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepo as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropUser as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHead as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepo as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropUser as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLabelsItems as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinks as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropComments as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropCommits as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropHtml as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropIssue as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropReviewComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropSelf as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropMergedBy as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropMergedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropMilestone as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedReviewersItemsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedReviewersItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedReviewersItemsOneof1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedTeamsItemsPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropUser as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropRequestedReviewer as WebhookPullRequestReviewRequestRemovedOneof0PropRequestedReviewer,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1 as WebhookPullRequestReviewRequestRemovedOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequest as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAssignee as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAssigneesItems as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAutoMerge as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAutoMerge,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBase as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepo as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropUser as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropBasePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHead as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepo as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropUser as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLabelsItems as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinks as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropComments as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropCommits as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropHtml as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropIssue as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropSelf as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMergedBy as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMergedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMilestone as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedReviewersItemsOneof1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropRequestedTeamsItemsPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropUser as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeam as WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeam,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent as WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmitted as WebhookPullRequestReviewSubmitted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequest as WebhookPullRequestReviewSubmittedPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropAssignee as WebhookPullRequestReviewSubmittedPropPullRequestPropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropAssigneesItems as WebhookPullRequestReviewSubmittedPropPullRequestPropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropAutoMerge as WebhookPullRequestReviewSubmittedPropPullRequestPropAutoMerge,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewSubmittedPropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropBase as WebhookPullRequestReviewSubmittedPropPullRequestPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepo as WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropUser as WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropHead as WebhookPullRequestReviewSubmittedPropPullRequestPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepo as WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropUser as WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropLabelsItems as WebhookPullRequestReviewSubmittedPropPullRequestPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropLinks as WebhookPullRequestReviewSubmittedPropPullRequestPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropComments as WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropCommits as WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropHtml as WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropIssue as WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropReviewComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropSelf as WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropMilestone as WebhookPullRequestReviewSubmittedPropPullRequestPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewSubmittedPropPullRequestPropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedReviewersItemsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedReviewersItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedTeamsItemsPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropUser as WebhookPullRequestReviewSubmittedPropPullRequestPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolved as WebhookPullRequestReviewThreadResolved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequest as WebhookPullRequestReviewThreadResolvedPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropAssignee as WebhookPullRequestReviewThreadResolvedPropPullRequestPropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropAssigneesItems as WebhookPullRequestReviewThreadResolvedPropPullRequestPropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropAutoMerge as WebhookPullRequestReviewThreadResolvedPropPullRequestPropAutoMerge,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewThreadResolvedPropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropBase as WebhookPullRequestReviewThreadResolvedPropPullRequestPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepo as WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropUser as WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropHead as WebhookPullRequestReviewThreadResolvedPropPullRequestPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepo as WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropUser as WebhookPullRequestReviewThreadResolvedPropPullRequestPropHeadPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropLabelsItems as WebhookPullRequestReviewThreadResolvedPropPullRequestPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinks as WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropComments as WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropCommits as WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropHtml as WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropIssue as WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropReviewComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropSelf as WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropMilestone as WebhookPullRequestReviewThreadResolvedPropPullRequestPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewThreadResolvedPropPullRequestPropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedReviewersItemsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedReviewersItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestReviewThreadResolvedPropPullRequestPropRequestedTeamsItemsPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropUser as WebhookPullRequestReviewThreadResolvedPropPullRequestPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropThread as WebhookPullRequestReviewThreadResolvedPropThread,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItems as WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinks as WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropHtml as WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropPullRequest as WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropSelf as WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropReactions as WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropUser as WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolved as WebhookPullRequestReviewThreadUnresolved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequest as WebhookPullRequestReviewThreadUnresolvedPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssignee as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssigneesItems as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAutoMerge as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAutoMerge,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBase as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepo as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropUser as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHead as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepo as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropUser as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLabelsItems as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinks as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropComments as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommits as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropHtml as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropIssue as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropReviewComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropSelf as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestone as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsItemsPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropUser as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropThread as WebhookPullRequestReviewThreadUnresolvedPropThread,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItems as WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinks as WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtml as WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequest as WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelf as WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactions as WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUser as WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStacked as WebhookPullRequestStacked,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequest as WebhookPullRequestStackedPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropAssignee as WebhookPullRequestStackedPropPullRequestPropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropAssigneesItems as WebhookPullRequestStackedPropPullRequestPropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropAutoMerge as WebhookPullRequestStackedPropPullRequestPropAutoMerge,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestStackedPropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropBase as WebhookPullRequestStackedPropPullRequestPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropBasePropRepo as WebhookPullRequestStackedPropPullRequestPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestStackedPropPullRequestPropBasePropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestStackedPropPullRequestPropBasePropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestStackedPropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropBasePropUser as WebhookPullRequestStackedPropPullRequestPropBasePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropHead as WebhookPullRequestStackedPropPullRequestPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropHeadPropRepo as WebhookPullRequestStackedPropPullRequestPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestStackedPropPullRequestPropHeadPropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestStackedPropPullRequestPropHeadPropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestStackedPropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropHeadPropUser as WebhookPullRequestStackedPropPullRequestPropHeadPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropLabelsItems as WebhookPullRequestStackedPropPullRequestPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropLinks as WebhookPullRequestStackedPropPullRequestPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropLinksPropComments as WebhookPullRequestStackedPropPullRequestPropLinksPropComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropLinksPropCommits as WebhookPullRequestStackedPropPullRequestPropLinksPropCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropLinksPropHtml as WebhookPullRequestStackedPropPullRequestPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropLinksPropIssue as WebhookPullRequestStackedPropPullRequestPropLinksPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestStackedPropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestStackedPropPullRequestPropLinksPropReviewComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropLinksPropSelf as WebhookPullRequestStackedPropPullRequestPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropLinksPropStatuses as WebhookPullRequestStackedPropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropMergedBy as WebhookPullRequestStackedPropPullRequestPropMergedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropMilestone as WebhookPullRequestStackedPropPullRequestPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropMilestonePropCreator as WebhookPullRequestStackedPropPullRequestPropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestStackedPropPullRequestPropRequestedReviewersItemsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestStackedPropPullRequestPropRequestedReviewersItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestStackedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestStackedPropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestStackedPropPullRequestPropRequestedTeamsItemsPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestStackedPropPullRequestPropUser as WebhookPullRequestStackedPropPullRequestPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronize as WebhookPullRequestSynchronize,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequest as WebhookPullRequestSynchronizePropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropAssignee as WebhookPullRequestSynchronizePropPullRequestPropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropAssigneesItems as WebhookPullRequestSynchronizePropPullRequestPropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropAutoMerge as WebhookPullRequestSynchronizePropPullRequestPropAutoMerge,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestSynchronizePropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropBase as WebhookPullRequestSynchronizePropPullRequestPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropBasePropRepo as WebhookPullRequestSynchronizePropPullRequestPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestSynchronizePropPullRequestPropBasePropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestSynchronizePropPullRequestPropBasePropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestSynchronizePropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropBasePropUser as WebhookPullRequestSynchronizePropPullRequestPropBasePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropHead as WebhookPullRequestSynchronizePropPullRequestPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropHeadPropRepo as WebhookPullRequestSynchronizePropPullRequestPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestSynchronizePropPullRequestPropHeadPropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestSynchronizePropPullRequestPropHeadPropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestSynchronizePropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropHeadPropUser as WebhookPullRequestSynchronizePropPullRequestPropHeadPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropLabelsItems as WebhookPullRequestSynchronizePropPullRequestPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropLinks as WebhookPullRequestSynchronizePropPullRequestPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropLinksPropComments as WebhookPullRequestSynchronizePropPullRequestPropLinksPropComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropLinksPropCommits as WebhookPullRequestSynchronizePropPullRequestPropLinksPropCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropLinksPropHtml as WebhookPullRequestSynchronizePropPullRequestPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropLinksPropIssue as WebhookPullRequestSynchronizePropPullRequestPropLinksPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropLinksPropReviewComment as WebhookPullRequestSynchronizePropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropLinksPropReviewComments as WebhookPullRequestSynchronizePropPullRequestPropLinksPropReviewComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropLinksPropSelf as WebhookPullRequestSynchronizePropPullRequestPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropLinksPropStatuses as WebhookPullRequestSynchronizePropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropMergedBy as WebhookPullRequestSynchronizePropPullRequestPropMergedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropMilestone as WebhookPullRequestSynchronizePropPullRequestPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropMilestonePropCreator as WebhookPullRequestSynchronizePropPullRequestPropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestSynchronizePropPullRequestPropRequestedReviewersItemsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestSynchronizePropPullRequestPropRequestedReviewersItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestSynchronizePropPullRequestPropRequestedReviewersItemsOneof1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropRequestedTeamsItems as WebhookPullRequestSynchronizePropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestSynchronizePropPullRequestPropRequestedTeamsItemsPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestSynchronizePropPullRequestPropUser as WebhookPullRequestSynchronizePropPullRequestPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassigned as WebhookPullRequestUnassigned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequest as WebhookPullRequestUnassignedPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropAssignee as WebhookPullRequestUnassignedPropPullRequestPropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropAssigneesItems as WebhookPullRequestUnassignedPropPullRequestPropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropAutoMerge as WebhookPullRequestUnassignedPropPullRequestPropAutoMerge,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestUnassignedPropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropBase as WebhookPullRequestUnassignedPropPullRequestPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropBasePropRepo as WebhookPullRequestUnassignedPropPullRequestPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestUnassignedPropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropBasePropUser as WebhookPullRequestUnassignedPropPullRequestPropBasePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropHead as WebhookPullRequestUnassignedPropPullRequestPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepo as WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropHeadPropUser as WebhookPullRequestUnassignedPropPullRequestPropHeadPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropLabelsItems as WebhookPullRequestUnassignedPropPullRequestPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropLinks as WebhookPullRequestUnassignedPropPullRequestPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropLinksPropComments as WebhookPullRequestUnassignedPropPullRequestPropLinksPropComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropLinksPropCommits as WebhookPullRequestUnassignedPropPullRequestPropLinksPropCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropLinksPropHtml as WebhookPullRequestUnassignedPropPullRequestPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropLinksPropIssue as WebhookPullRequestUnassignedPropPullRequestPropLinksPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestUnassignedPropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestUnassignedPropPullRequestPropLinksPropReviewComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropLinksPropSelf as WebhookPullRequestUnassignedPropPullRequestPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropLinksPropStatuses as WebhookPullRequestUnassignedPropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropMergedBy as WebhookPullRequestUnassignedPropPullRequestPropMergedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropMilestone as WebhookPullRequestUnassignedPropPullRequestPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropMilestonePropCreator as WebhookPullRequestUnassignedPropPullRequestPropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestUnassignedPropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestUnassignedPropPullRequestPropRequestedTeamsItemsPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnassignedPropPullRequestPropUser as WebhookPullRequestUnassignedPropPullRequestPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeled as WebhookPullRequestUnlabeled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequest as WebhookPullRequestUnlabeledPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropAssignee as WebhookPullRequestUnlabeledPropPullRequestPropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropAssigneesItems as WebhookPullRequestUnlabeledPropPullRequestPropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropAutoMerge as WebhookPullRequestUnlabeledPropPullRequestPropAutoMerge,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestUnlabeledPropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropBase as WebhookPullRequestUnlabeledPropPullRequestPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropBasePropRepo as WebhookPullRequestUnlabeledPropPullRequestPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestUnlabeledPropPullRequestPropBasePropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestUnlabeledPropPullRequestPropBasePropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestUnlabeledPropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropBasePropUser as WebhookPullRequestUnlabeledPropPullRequestPropBasePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropHead as WebhookPullRequestUnlabeledPropPullRequestPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepo as WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropHeadPropUser as WebhookPullRequestUnlabeledPropPullRequestPropHeadPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropLabelsItems as WebhookPullRequestUnlabeledPropPullRequestPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropLinks as WebhookPullRequestUnlabeledPropPullRequestPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropLinksPropComments as WebhookPullRequestUnlabeledPropPullRequestPropLinksPropComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropLinksPropCommits as WebhookPullRequestUnlabeledPropPullRequestPropLinksPropCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropLinksPropHtml as WebhookPullRequestUnlabeledPropPullRequestPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropLinksPropIssue as WebhookPullRequestUnlabeledPropPullRequestPropLinksPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropLinksPropReviewComment as WebhookPullRequestUnlabeledPropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropLinksPropReviewComments as WebhookPullRequestUnlabeledPropPullRequestPropLinksPropReviewComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropLinksPropSelf as WebhookPullRequestUnlabeledPropPullRequestPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropLinksPropStatuses as WebhookPullRequestUnlabeledPropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropMergedBy as WebhookPullRequestUnlabeledPropPullRequestPropMergedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropMilestone as WebhookPullRequestUnlabeledPropPullRequestPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropMilestonePropCreator as WebhookPullRequestUnlabeledPropPullRequestPropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestUnlabeledPropPullRequestPropRequestedReviewersItemsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestUnlabeledPropPullRequestPropRequestedReviewersItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestUnlabeledPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropRequestedTeamsItems as WebhookPullRequestUnlabeledPropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestUnlabeledPropPullRequestPropRequestedTeamsItemsPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropUser as WebhookPullRequestUnlabeledPropPullRequestPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlocked as WebhookPullRequestUnlocked,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequest as WebhookPullRequestUnlockedPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropAssignee as WebhookPullRequestUnlockedPropPullRequestPropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropAssigneesItems as WebhookPullRequestUnlockedPropPullRequestPropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropAutoMerge as WebhookPullRequestUnlockedPropPullRequestPropAutoMerge,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestUnlockedPropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropBase as WebhookPullRequestUnlockedPropPullRequestPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropBasePropRepo as WebhookPullRequestUnlockedPropPullRequestPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestUnlockedPropPullRequestPropBasePropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestUnlockedPropPullRequestPropBasePropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestUnlockedPropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropBasePropUser as WebhookPullRequestUnlockedPropPullRequestPropBasePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropHead as WebhookPullRequestUnlockedPropPullRequestPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropHeadPropRepo as WebhookPullRequestUnlockedPropPullRequestPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropHeadPropRepoPropLicense as WebhookPullRequestUnlockedPropPullRequestPropHeadPropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestUnlockedPropPullRequestPropHeadPropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestUnlockedPropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropHeadPropUser as WebhookPullRequestUnlockedPropPullRequestPropHeadPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropLabelsItems as WebhookPullRequestUnlockedPropPullRequestPropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropLinks as WebhookPullRequestUnlockedPropPullRequestPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropLinksPropComments as WebhookPullRequestUnlockedPropPullRequestPropLinksPropComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropLinksPropCommits as WebhookPullRequestUnlockedPropPullRequestPropLinksPropCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropLinksPropHtml as WebhookPullRequestUnlockedPropPullRequestPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropLinksPropIssue as WebhookPullRequestUnlockedPropPullRequestPropLinksPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestUnlockedPropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestUnlockedPropPullRequestPropLinksPropReviewComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropLinksPropSelf as WebhookPullRequestUnlockedPropPullRequestPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropLinksPropStatuses as WebhookPullRequestUnlockedPropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropMergedBy as WebhookPullRequestUnlockedPropPullRequestPropMergedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropMilestone as WebhookPullRequestUnlockedPropPullRequestPropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropMilestonePropCreator as WebhookPullRequestUnlockedPropPullRequestPropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropRequestedReviewersItemsOneof0 as WebhookPullRequestUnlockedPropPullRequestPropRequestedReviewersItemsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropRequestedReviewersItemsOneof1 as WebhookPullRequestUnlockedPropPullRequestPropRequestedReviewersItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestUnlockedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestUnlockedPropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestUnlockedPropPullRequestPropRequestedTeamsItemsPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPullRequestUnlockedPropPullRequestPropUser as WebhookPullRequestUnlockedPropPullRequestPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import WebhookPush as WebhookPush
-    from githubkit_schemas.v2026_03_10.models import (
+        WebhookPush as WebhookPush,
         WebhookPushPropCommitsItems as WebhookPushPropCommitsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPushPropCommitsItemsPropAuthor as WebhookPushPropCommitsItemsPropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPushPropCommitsItemsPropCommitter as WebhookPushPropCommitsItemsPropCommitter,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPushPropHeadCommit as WebhookPushPropHeadCommit,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPushPropHeadCommitPropAuthor as WebhookPushPropHeadCommitPropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPushPropHeadCommitPropCommitter as WebhookPushPropHeadCommitPropCommitter,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPushPropPusher as WebhookPushPropPusher,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPushPropRepository as WebhookPushPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPushPropRepositoryPropCustomProperties as WebhookPushPropRepositoryPropCustomProperties,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPushPropRepositoryPropLicense as WebhookPushPropRepositoryPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPushPropRepositoryPropOwner as WebhookPushPropRepositoryPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookPushPropRepositoryPropPermissions as WebhookPushPropRepositoryPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublished as WebhookRegistryPackagePublished,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackage as WebhookRegistryPackagePublishedPropRegistryPackage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropOwner as WebhookRegistryPackagePublishedPropRegistryPackagePropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersion as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersion,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropAuthor as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropBodyOneof1 as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropBodyOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadata as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadata,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropLabels as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropLabels,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropManifest as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropManifest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropTag as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropTag,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropDockerMetadataItems as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropDockerMetadataItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropMetadataItems as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropMetadataItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadata as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadata,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropAuthorOneof1 as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropAuthorOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropBin as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropBin,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropBugsOneof1 as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropBugsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDependencies as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDependencies,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDevDependencies as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDevDependencies,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDirectoriesOneof1 as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDirectoriesOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDistOneof1 as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDistOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropEngines as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropEngines,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropMan as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropMan,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropOptionalDependencies as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropOptionalDependencies,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropPeerDependencies as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropPeerDependencies,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropRepositoryOneof1 as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropRepositoryOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropScripts as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropScripts,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItems as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItemsPropIdOneof1 as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItemsPropIdOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3 as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropPackageFilesItems as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropPackageFilesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropRelease as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropRelease,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropReleasePropAuthor as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropReleasePropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry as WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackageUpdated as WebhookRegistryPackageUpdated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackageUpdatedPropRegistryPackage as WebhookRegistryPackageUpdatedPropRegistryPackage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner as WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion as WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthor as WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItems as WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItems as WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItems as WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropRelease as WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropRelease,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthor as WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry as WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookReleaseCreated as WebhookReleaseCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookReleaseDeleted as WebhookReleaseDeleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookReleaseEdited as WebhookReleaseEdited,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookReleaseEditedPropChanges as WebhookReleaseEditedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookReleaseEditedPropChangesPropBody as WebhookReleaseEditedPropChangesPropBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookReleaseEditedPropChangesPropMakeLatest as WebhookReleaseEditedPropChangesPropMakeLatest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookReleaseEditedPropChangesPropName as WebhookReleaseEditedPropChangesPropName,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookReleaseEditedPropChangesPropTagName as WebhookReleaseEditedPropChangesPropTagName,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookReleasePrereleased as WebhookReleasePrereleased,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookReleasePrereleasedPropRelease as WebhookReleasePrereleasedPropRelease,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookReleasePrereleasedPropReleasePropAssetsItems as WebhookReleasePrereleasedPropReleasePropAssetsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookReleasePrereleasedPropReleasePropAssetsItemsPropUploader as WebhookReleasePrereleasedPropReleasePropAssetsItemsPropUploader,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookReleasePrereleasedPropReleasePropAuthor as WebhookReleasePrereleasedPropReleasePropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookReleasePrereleasedPropReleasePropReactions as WebhookReleasePrereleasedPropReleasePropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookReleasePublished as WebhookReleasePublished,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookReleaseReleased as WebhookReleaseReleased,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookReleaseUnpublished as WebhookReleaseUnpublished,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryAdvisoryPublished as WebhookRepositoryAdvisoryPublished,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryAdvisoryReported as WebhookRepositoryAdvisoryReported,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryArchived as WebhookRepositoryArchived,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryCreated as WebhookRepositoryCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryDeleted as WebhookRepositoryDeleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryDispatchSample as WebhookRepositoryDispatchSample,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryDispatchSamplePropClientPayload as WebhookRepositoryDispatchSamplePropClientPayload,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryEdited as WebhookRepositoryEdited,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryEditedPropChanges as WebhookRepositoryEditedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryEditedPropChangesPropDefaultBranch as WebhookRepositoryEditedPropChangesPropDefaultBranch,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryEditedPropChangesPropDescription as WebhookRepositoryEditedPropChangesPropDescription,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryEditedPropChangesPropHomepage as WebhookRepositoryEditedPropChangesPropHomepage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryEditedPropChangesPropTopics as WebhookRepositoryEditedPropChangesPropTopics,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryImport as WebhookRepositoryImport,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryPrivatized as WebhookRepositoryPrivatized,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryPublicized as WebhookRepositoryPublicized,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryRenamed as WebhookRepositoryRenamed,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryRenamedPropChanges as WebhookRepositoryRenamedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryRenamedPropChangesPropRepository as WebhookRepositoryRenamedPropChangesPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryRenamedPropChangesPropRepositoryPropName as WebhookRepositoryRenamedPropChangesPropRepositoryPropName,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryRulesetCreated as WebhookRepositoryRulesetCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryRulesetDeleted as WebhookRepositoryRulesetDeleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryRulesetEdited as WebhookRepositoryRulesetEdited,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryRulesetEditedPropChanges as WebhookRepositoryRulesetEditedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryRulesetEditedPropChangesPropConditions as WebhookRepositoryRulesetEditedPropChangesPropConditions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems as WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges as WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType as WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude as WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropInclude as WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropInclude,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget as WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryRulesetEditedPropChangesPropEnforcement as WebhookRepositoryRulesetEditedPropChangesPropEnforcement,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryRulesetEditedPropChangesPropName as WebhookRepositoryRulesetEditedPropChangesPropName,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryRulesetEditedPropChangesPropRules as WebhookRepositoryRulesetEditedPropChangesPropRules,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems as WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges as WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfiguration as WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfiguration,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPattern as WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPattern,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleType as WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleType,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryTransferred as WebhookRepositoryTransferred,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryTransferredPropChanges as WebhookRepositoryTransferredPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryTransferredPropChangesPropOwner as WebhookRepositoryTransferredPropChangesPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryTransferredPropChangesPropOwnerPropFrom as WebhookRepositoryTransferredPropChangesPropOwnerPropFrom,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization as WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser as WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryUnarchived as WebhookRepositoryUnarchived,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryVulnerabilityAlertCreate as WebhookRepositoryVulnerabilityAlertCreate,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryVulnerabilityAlertDismiss as WebhookRepositoryVulnerabilityAlertDismiss,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryVulnerabilityAlertDismissPropAlert as WebhookRepositoryVulnerabilityAlertDismissPropAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser as WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryVulnerabilityAlertReopen as WebhookRepositoryVulnerabilityAlertReopen,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryVulnerabilityAlertResolve as WebhookRepositoryVulnerabilityAlertResolve,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryVulnerabilityAlertResolvePropAlert as WebhookRepositoryVulnerabilityAlertResolvePropAlert,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisser as WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRubygemsMetadata as WebhookRubygemsMetadata,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRubygemsMetadataPropDependenciesItems as WebhookRubygemsMetadataPropDependenciesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRubygemsMetadataPropMetadata as WebhookRubygemsMetadataPropMetadata,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookRubygemsMetadataPropVersionInfo as WebhookRubygemsMetadataPropVersionInfo,
-    )
-    from githubkit_schemas.v2026_03_10.models import WebhooksAlert as WebhooksAlert
-    from githubkit_schemas.v2026_03_10.models import (
+        WebhooksAlert as WebhooksAlert,
         WebhooksAlertPropDismisser as WebhooksAlertPropDismisser,
-    )
-    from githubkit_schemas.v2026_03_10.models import WebhooksAnswer as WebhooksAnswer
-    from githubkit_schemas.v2026_03_10.models import (
+        WebhooksAnswer as WebhooksAnswer,
         WebhooksAnswerPropReactions as WebhooksAnswerPropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksAnswerPropUser as WebhooksAnswerPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksApprover as WebhooksApprover,
-    )
-    from githubkit_schemas.v2026_03_10.models import WebhooksChanges as WebhooksChanges
-    from githubkit_schemas.v2026_03_10.models import (
+        WebhooksChanges as WebhooksChanges,
         WebhooksChanges8 as WebhooksChanges8,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksChanges8PropTier as WebhooksChanges8PropTier,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksChanges8PropTierPropFrom as WebhooksChanges8PropTierPropFrom,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksChangesPropBody as WebhooksChangesPropBody,
-    )
-    from githubkit_schemas.v2026_03_10.models import WebhooksComment as WebhooksComment
-    from githubkit_schemas.v2026_03_10.models import (
+        WebhooksComment as WebhooksComment,
         WebhooksCommentPropReactions as WebhooksCommentPropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksCommentPropUser as WebhooksCommentPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksDeployKey as WebhooksDeployKey,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSecretScanningAlertAssigned as WebhookSecretScanningAlertAssigned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSecretScanningAlertCreated as WebhookSecretScanningAlertCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSecretScanningAlertLocationCreated as WebhookSecretScanningAlertLocationCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSecretScanningAlertLocationCreatedFormEncoded as WebhookSecretScanningAlertLocationCreatedFormEncoded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSecretScanningAlertMetadataCreated as WebhookSecretScanningAlertMetadataCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSecretScanningAlertMetadataRemoved as WebhookSecretScanningAlertMetadataRemoved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSecretScanningAlertPubliclyLeaked as WebhookSecretScanningAlertPubliclyLeaked,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSecretScanningAlertReopened as WebhookSecretScanningAlertReopened,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSecretScanningAlertResolved as WebhookSecretScanningAlertResolved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSecretScanningAlertUnassigned as WebhookSecretScanningAlertUnassigned,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSecretScanningAlertValidated as WebhookSecretScanningAlertValidated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSecretScanningScanCompleted as WebhookSecretScanningScanCompleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSecurityAdvisoryPublished as WebhookSecurityAdvisoryPublished,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSecurityAdvisoryUpdated as WebhookSecurityAdvisoryUpdated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSecurityAdvisoryWithdrawn as WebhookSecurityAdvisoryWithdrawn,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSecurityAndAnalysis as WebhookSecurityAndAnalysis,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSecurityAndAnalysisPropChanges as WebhookSecurityAndAnalysisPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSecurityAndAnalysisPropChangesPropFrom as WebhookSecurityAndAnalysisPropChangesPropFrom,
-    )
-    from githubkit_schemas.v2026_03_10.models import WebhooksIssue as WebhooksIssue
-    from githubkit_schemas.v2026_03_10.models import WebhooksIssue2 as WebhooksIssue2
-    from githubkit_schemas.v2026_03_10.models import (
+        WebhooksIssue as WebhooksIssue,
+        WebhooksIssue2 as WebhooksIssue2,
         WebhooksIssue2PropAssignee as WebhooksIssue2PropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssue2PropAssigneesItems as WebhooksIssue2PropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssue2PropMilestone as WebhooksIssue2PropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssue2PropMilestonePropCreator as WebhooksIssue2PropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssue2PropPerformedViaGithubApp as WebhooksIssue2PropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssue2PropPerformedViaGithubAppPropOwner as WebhooksIssue2PropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssue2PropPerformedViaGithubAppPropPermissions as WebhooksIssue2PropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssue2PropPullRequest as WebhooksIssue2PropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssue2PropReactions as WebhooksIssue2PropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssue2PropStatus as WebhooksIssue2PropStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssue2PropUser as WebhooksIssue2PropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssueComment as WebhooksIssueComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssueCommentPropReactions as WebhooksIssueCommentPropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssueCommentPropUser as WebhooksIssueCommentPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssuePropAssignee as WebhooksIssuePropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssuePropAssigneesItems as WebhooksIssuePropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssuePropMilestone as WebhooksIssuePropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssuePropMilestonePropCreator as WebhooksIssuePropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssuePropPerformedViaGithubApp as WebhooksIssuePropPerformedViaGithubApp,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssuePropPerformedViaGithubAppPropOwner as WebhooksIssuePropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssuePropPerformedViaGithubAppPropPermissions as WebhooksIssuePropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssuePropPullRequest as WebhooksIssuePropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssuePropReactions as WebhooksIssuePropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssuePropStatus as WebhooksIssuePropStatus,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksIssuePropUser as WebhooksIssuePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import WebhooksLabel as WebhooksLabel
-    from githubkit_schemas.v2026_03_10.models import (
+        WebhooksLabel as WebhooksLabel,
         WebhooksLabelArchived as WebhooksLabelArchived,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksLabelArchivedAllof1 as WebhooksLabelArchivedAllof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksLabelArchivedAllof1PropArchivedBy as WebhooksLabelArchivedAllof1PropArchivedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksLabelPropArchivedBy as WebhooksLabelPropArchivedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksLabelUnarchived as WebhooksLabelUnarchived,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksLabelUnarchivedAllof1 as WebhooksLabelUnarchivedAllof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksLabelUnarchivedAllof1PropArchivedBy as WebhooksLabelUnarchivedAllof1PropArchivedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksMarketplacePurchase as WebhooksMarketplacePurchase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksMarketplacePurchasePropAccount as WebhooksMarketplacePurchasePropAccount,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksMarketplacePurchasePropPlan as WebhooksMarketplacePurchasePropPlan,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksMembership as WebhooksMembership,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksMembershipPropUser as WebhooksMembershipPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksMilestone as WebhooksMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksMilestone3 as WebhooksMilestone3,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksMilestone3PropCreator as WebhooksMilestone3PropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksMilestonePropCreator as WebhooksMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSponsorshipCancelled as WebhookSponsorshipCancelled,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSponsorshipCreated as WebhookSponsorshipCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSponsorshipEdited as WebhookSponsorshipEdited,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSponsorshipEditedPropChanges as WebhookSponsorshipEditedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSponsorshipEditedPropChangesPropPrivacyLevel as WebhookSponsorshipEditedPropChangesPropPrivacyLevel,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSponsorshipPendingCancellation as WebhookSponsorshipPendingCancellation,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSponsorshipPendingTierChange as WebhookSponsorshipPendingTierChange,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSponsorshipTierChanged as WebhookSponsorshipTierChanged,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPreviousMarketplacePurchase as WebhooksPreviousMarketplacePurchase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPreviousMarketplacePurchasePropAccount as WebhooksPreviousMarketplacePurchasePropAccount,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPreviousMarketplacePurchasePropPlan as WebhooksPreviousMarketplacePurchasePropPlan,
-    )
-    from githubkit_schemas.v2026_03_10.models import WebhooksProject as WebhooksProject
-    from githubkit_schemas.v2026_03_10.models import (
+        WebhooksProject as WebhooksProject,
         WebhooksProjectCard as WebhooksProjectCard,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksProjectCardPropCreator as WebhooksProjectCardPropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksProjectChanges as WebhooksProjectChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksProjectChangesPropArchivedAt as WebhooksProjectChangesPropArchivedAt,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksProjectColumn as WebhooksProjectColumn,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksProjectPropCreator as WebhooksProjectPropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5 as WebhooksPullRequest5,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropAssignee as WebhooksPullRequest5PropAssignee,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropAssigneesItems as WebhooksPullRequest5PropAssigneesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropAutoMerge as WebhooksPullRequest5PropAutoMerge,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropAutoMergePropEnabledBy as WebhooksPullRequest5PropAutoMergePropEnabledBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropBase as WebhooksPullRequest5PropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropBasePropRepo as WebhooksPullRequest5PropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropBasePropRepoPropLicense as WebhooksPullRequest5PropBasePropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropBasePropRepoPropOwner as WebhooksPullRequest5PropBasePropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropBasePropRepoPropPermissions as WebhooksPullRequest5PropBasePropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropBasePropUser as WebhooksPullRequest5PropBasePropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropHead as WebhooksPullRequest5PropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropHeadPropRepo as WebhooksPullRequest5PropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropHeadPropRepoPropLicense as WebhooksPullRequest5PropHeadPropRepoPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropHeadPropRepoPropOwner as WebhooksPullRequest5PropHeadPropRepoPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropHeadPropRepoPropPermissions as WebhooksPullRequest5PropHeadPropRepoPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropHeadPropUser as WebhooksPullRequest5PropHeadPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropLabelsItems as WebhooksPullRequest5PropLabelsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropLinks as WebhooksPullRequest5PropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropLinksPropComments as WebhooksPullRequest5PropLinksPropComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropLinksPropCommits as WebhooksPullRequest5PropLinksPropCommits,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropLinksPropHtml as WebhooksPullRequest5PropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropLinksPropIssue as WebhooksPullRequest5PropLinksPropIssue,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropLinksPropReviewComment as WebhooksPullRequest5PropLinksPropReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropLinksPropReviewComments as WebhooksPullRequest5PropLinksPropReviewComments,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropLinksPropSelf as WebhooksPullRequest5PropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropLinksPropStatuses as WebhooksPullRequest5PropLinksPropStatuses,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropMergedBy as WebhooksPullRequest5PropMergedBy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropMilestone as WebhooksPullRequest5PropMilestone,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropMilestonePropCreator as WebhooksPullRequest5PropMilestonePropCreator,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropRequestedReviewersItemsOneof0 as WebhooksPullRequest5PropRequestedReviewersItemsOneof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropRequestedReviewersItemsOneof1 as WebhooksPullRequest5PropRequestedReviewersItemsOneof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropRequestedReviewersItemsOneof1PropParent as WebhooksPullRequest5PropRequestedReviewersItemsOneof1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropRequestedTeamsItems as WebhooksPullRequest5PropRequestedTeamsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropRequestedTeamsItemsPropParent as WebhooksPullRequest5PropRequestedTeamsItemsPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksPullRequest5PropUser as WebhooksPullRequest5PropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import WebhooksRelease as WebhooksRelease
-    from githubkit_schemas.v2026_03_10.models import (
+        WebhooksRelease as WebhooksRelease,
         WebhooksRelease1 as WebhooksRelease1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksRelease1PropAssetsItems as WebhooksRelease1PropAssetsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksRelease1PropAssetsItemsPropUploader as WebhooksRelease1PropAssetsItemsPropUploader,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksRelease1PropAuthor as WebhooksRelease1PropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksRelease1PropReactions as WebhooksRelease1PropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksReleasePropAssetsItems as WebhooksReleasePropAssetsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksReleasePropAssetsItemsPropUploader as WebhooksReleasePropAssetsItemsPropUploader,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksReleasePropAuthor as WebhooksReleasePropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksReleasePropReactions as WebhooksReleasePropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksRepositoriesAddedItems as WebhooksRepositoriesAddedItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksRepositoriesItems as WebhooksRepositoriesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import WebhooksReview as WebhooksReview
-    from githubkit_schemas.v2026_03_10.models import (
+        WebhooksReview as WebhooksReview,
         WebhooksReviewComment as WebhooksReviewComment,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksReviewCommentPropLinks as WebhooksReviewCommentPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksReviewCommentPropLinksPropHtml as WebhooksReviewCommentPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksReviewCommentPropLinksPropPullRequest as WebhooksReviewCommentPropLinksPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksReviewCommentPropLinksPropSelf as WebhooksReviewCommentPropLinksPropSelf,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksReviewCommentPropReactions as WebhooksReviewCommentPropReactions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksReviewCommentPropUser as WebhooksReviewCommentPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksReviewersItems as WebhooksReviewersItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksReviewersItemsPropReviewer as WebhooksReviewersItemsPropReviewer,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksReviewPropLinks as WebhooksReviewPropLinks,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksReviewPropLinksPropHtml as WebhooksReviewPropLinksPropHtml,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksReviewPropLinksPropPullRequest as WebhooksReviewPropLinksPropPullRequest,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksReviewPropUser as WebhooksReviewPropUser,
-    )
-    from githubkit_schemas.v2026_03_10.models import WebhooksRule as WebhooksRule
-    from githubkit_schemas.v2026_03_10.models import (
+        WebhooksRule as WebhooksRule,
         WebhooksSecurityAdvisory as WebhooksSecurityAdvisory,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksSecurityAdvisoryPropCwesItems as WebhooksSecurityAdvisoryPropCwesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksSecurityAdvisoryPropIdentifiersItems as WebhooksSecurityAdvisoryPropIdentifiersItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksSecurityAdvisoryPropReferencesItems as WebhooksSecurityAdvisoryPropReferencesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksSecurityAdvisoryPropVulnerabilitiesItems as WebhooksSecurityAdvisoryPropVulnerabilitiesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion as WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage as WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksSponsorship as WebhooksSponsorship,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksSponsorshipPropMaintainer as WebhooksSponsorshipPropMaintainer,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksSponsorshipPropSponsor as WebhooksSponsorshipPropSponsor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksSponsorshipPropSponsorable as WebhooksSponsorshipPropSponsorable,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksSponsorshipPropTier as WebhooksSponsorshipPropTier,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookStarCreated as WebhookStarCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookStarDeleted as WebhookStarDeleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import WebhookStatus as WebhookStatus
-    from githubkit_schemas.v2026_03_10.models import (
+        WebhookStatus as WebhookStatus,
         WebhookStatusPropBranchesItems as WebhookStatusPropBranchesItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookStatusPropBranchesItemsPropCommit as WebhookStatusPropBranchesItemsPropCommit,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookStatusPropCommit as WebhookStatusPropCommit,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookStatusPropCommitPropAuthor as WebhookStatusPropCommitPropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookStatusPropCommitPropCommit as WebhookStatusPropCommitPropCommit,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookStatusPropCommitPropCommitPropAuthor as WebhookStatusPropCommitPropCommitPropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookStatusPropCommitPropCommitPropAuthorAllof0 as WebhookStatusPropCommitPropCommitPropAuthorAllof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookStatusPropCommitPropCommitPropAuthorAllof1 as WebhookStatusPropCommitPropCommitPropAuthorAllof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookStatusPropCommitPropCommitPropCommitter as WebhookStatusPropCommitPropCommitPropCommitter,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookStatusPropCommitPropCommitPropCommitterAllof0 as WebhookStatusPropCommitPropCommitPropCommitterAllof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookStatusPropCommitPropCommitPropCommitterAllof1 as WebhookStatusPropCommitPropCommitPropCommitterAllof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookStatusPropCommitPropCommitPropTree as WebhookStatusPropCommitPropCommitPropTree,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookStatusPropCommitPropCommitPropVerification as WebhookStatusPropCommitPropCommitPropVerification,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookStatusPropCommitPropCommitter as WebhookStatusPropCommitPropCommitter,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookStatusPropCommitPropParentsItems as WebhookStatusPropCommitPropParentsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import WebhooksTeam as WebhooksTeam
-    from githubkit_schemas.v2026_03_10.models import WebhooksTeam1 as WebhooksTeam1
-    from githubkit_schemas.v2026_03_10.models import (
+        WebhooksTeam as WebhooksTeam,
+        WebhooksTeam1 as WebhooksTeam1,
         WebhooksTeam1PropParent as WebhooksTeam1PropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksTeamPropParent as WebhooksTeamPropParent,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSubIssuesParentIssueAdded as WebhookSubIssuesParentIssueAdded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSubIssuesParentIssueRemoved as WebhookSubIssuesParentIssueRemoved,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSubIssuesSubIssueAdded as WebhookSubIssuesSubIssueAdded,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookSubIssuesSubIssueRemoved as WebhookSubIssuesSubIssueRemoved,
-    )
-    from githubkit_schemas.v2026_03_10.models import WebhooksUser as WebhooksUser
-    from githubkit_schemas.v2026_03_10.models import (
+        WebhooksUser as WebhooksUser,
         WebhooksUserMannequin as WebhooksUserMannequin,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksWorkflow as WebhooksWorkflow,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhooksWorkflowJobRun as WebhooksWorkflowJobRun,
-    )
-    from githubkit_schemas.v2026_03_10.models import WebhookTeamAdd as WebhookTeamAdd
-    from githubkit_schemas.v2026_03_10.models import (
+        WebhookTeamAdd as WebhookTeamAdd,
         WebhookTeamAddedToRepository as WebhookTeamAddedToRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamAddedToRepositoryPropRepository as WebhookTeamAddedToRepositoryPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamAddedToRepositoryPropRepositoryPropCustomProperties as WebhookTeamAddedToRepositoryPropRepositoryPropCustomProperties,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamAddedToRepositoryPropRepositoryPropLicense as WebhookTeamAddedToRepositoryPropRepositoryPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamAddedToRepositoryPropRepositoryPropOwner as WebhookTeamAddedToRepositoryPropRepositoryPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamAddedToRepositoryPropRepositoryPropPermissions as WebhookTeamAddedToRepositoryPropRepositoryPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamCreated as WebhookTeamCreated,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamCreatedPropRepository as WebhookTeamCreatedPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamCreatedPropRepositoryPropCustomProperties as WebhookTeamCreatedPropRepositoryPropCustomProperties,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamCreatedPropRepositoryPropLicense as WebhookTeamCreatedPropRepositoryPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamCreatedPropRepositoryPropOwner as WebhookTeamCreatedPropRepositoryPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamCreatedPropRepositoryPropPermissions as WebhookTeamCreatedPropRepositoryPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamDeleted as WebhookTeamDeleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamDeletedPropRepository as WebhookTeamDeletedPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamDeletedPropRepositoryPropCustomProperties as WebhookTeamDeletedPropRepositoryPropCustomProperties,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamDeletedPropRepositoryPropLicense as WebhookTeamDeletedPropRepositoryPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamDeletedPropRepositoryPropOwner as WebhookTeamDeletedPropRepositoryPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamDeletedPropRepositoryPropPermissions as WebhookTeamDeletedPropRepositoryPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamEdited as WebhookTeamEdited,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamEditedPropChanges as WebhookTeamEditedPropChanges,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamEditedPropChangesPropDescription as WebhookTeamEditedPropChangesPropDescription,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamEditedPropChangesPropName as WebhookTeamEditedPropChangesPropName,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamEditedPropChangesPropNotificationSetting as WebhookTeamEditedPropChangesPropNotificationSetting,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamEditedPropChangesPropPrivacy as WebhookTeamEditedPropChangesPropPrivacy,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamEditedPropChangesPropRepository as WebhookTeamEditedPropChangesPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamEditedPropChangesPropRepositoryPropPermissions as WebhookTeamEditedPropChangesPropRepositoryPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamEditedPropChangesPropRepositoryPropPermissionsPropFrom as WebhookTeamEditedPropChangesPropRepositoryPropPermissionsPropFrom,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamEditedPropRepository as WebhookTeamEditedPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamEditedPropRepositoryPropCustomProperties as WebhookTeamEditedPropRepositoryPropCustomProperties,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamEditedPropRepositoryPropLicense as WebhookTeamEditedPropRepositoryPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamEditedPropRepositoryPropOwner as WebhookTeamEditedPropRepositoryPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamEditedPropRepositoryPropPermissions as WebhookTeamEditedPropRepositoryPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamRemovedFromRepository as WebhookTeamRemovedFromRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamRemovedFromRepositoryPropRepository as WebhookTeamRemovedFromRepositoryPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomProperties as WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomProperties,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamRemovedFromRepositoryPropRepositoryPropLicense as WebhookTeamRemovedFromRepositoryPropRepositoryPropLicense,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamRemovedFromRepositoryPropRepositoryPropOwner as WebhookTeamRemovedFromRepositoryPropRepositoryPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissions as WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissions,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWatchStarted as WebhookWatchStarted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowDispatch as WebhookWorkflowDispatch,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowDispatchPropInputs as WebhookWorkflowDispatchPropInputs,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowJobCompleted as WebhookWorkflowJobCompleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowJobCompletedPropWorkflowJob as WebhookWorkflowJobCompletedPropWorkflowJob,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowJobCompletedPropWorkflowJobAllof0 as WebhookWorkflowJobCompletedPropWorkflowJobAllof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItems as WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowJobCompletedPropWorkflowJobAllof1 as WebhookWorkflowJobCompletedPropWorkflowJobAllof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems as WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps as WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowJobInProgress as WebhookWorkflowJobInProgress,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowJobInProgressPropWorkflowJob as WebhookWorkflowJobInProgressPropWorkflowJob,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowJobInProgressPropWorkflowJobAllof0 as WebhookWorkflowJobInProgressPropWorkflowJobAllof0,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems as WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowJobInProgressPropWorkflowJobAllof1 as WebhookWorkflowJobInProgressPropWorkflowJobAllof1,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems as WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps as WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowJobQueued as WebhookWorkflowJobQueued,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowJobQueuedPropWorkflowJob as WebhookWorkflowJobQueuedPropWorkflowJob,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems as WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowJobWaiting as WebhookWorkflowJobWaiting,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowJobWaitingPropWorkflowJob as WebhookWorkflowJobWaitingPropWorkflowJob,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems as WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunCompleted as WebhookWorkflowRunCompleted,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunCompletedPropWorkflowRun as WebhookWorkflowRunCompletedPropWorkflowRun,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropActor as WebhookWorkflowRunCompletedPropWorkflowRunPropActor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommit as WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommit,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropAuthor as WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropCommitter as WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropCommitter,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepository as WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryPropOwner as WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItems as WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBase as WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo as WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHead as WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo as WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropReferencedWorkflowsItems as WebhookWorkflowRunCompletedPropWorkflowRunPropReferencedWorkflowsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropRepository as WebhookWorkflowRunCompletedPropWorkflowRunPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropRepositoryPropOwner as WebhookWorkflowRunCompletedPropWorkflowRunPropRepositoryPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropTriggeringActor as WebhookWorkflowRunCompletedPropWorkflowRunPropTriggeringActor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunInProgress as WebhookWorkflowRunInProgress,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunInProgressPropWorkflowRun as WebhookWorkflowRunInProgressPropWorkflowRun,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropActor as WebhookWorkflowRunInProgressPropWorkflowRunPropActor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommit as WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommit,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropAuthor as WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropCommitter as WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropCommitter,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepository as WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepositoryPropOwner as WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepositoryPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItems as WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBase as WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBasePropRepo as WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHead as WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo as WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropReferencedWorkflowsItems as WebhookWorkflowRunInProgressPropWorkflowRunPropReferencedWorkflowsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropRepository as WebhookWorkflowRunInProgressPropWorkflowRunPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropRepositoryPropOwner as WebhookWorkflowRunInProgressPropWorkflowRunPropRepositoryPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropTriggeringActor as WebhookWorkflowRunInProgressPropWorkflowRunPropTriggeringActor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunRequested as WebhookWorkflowRunRequested,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunRequestedPropWorkflowRun as WebhookWorkflowRunRequestedPropWorkflowRun,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropActor as WebhookWorkflowRunRequestedPropWorkflowRunPropActor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommit as WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommit,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthor as WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthor,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitter as WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitter,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository as WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwner as WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems as WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase as WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo as WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead as WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo as WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems as WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropRepository as WebhookWorkflowRunRequestedPropWorkflowRunPropRepository,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwner as WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwner,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor as WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor,
-    )
-    from githubkit_schemas.v2026_03_10.models import Workflow as Workflow
-    from githubkit_schemas.v2026_03_10.models import (
+        Workflow as Workflow,
         WorkflowDispatchResponse as WorkflowDispatchResponse,
-    )
-    from githubkit_schemas.v2026_03_10.models import WorkflowRun as WorkflowRun
-    from githubkit_schemas.v2026_03_10.models import (
+        WorkflowRun as WorkflowRun,
         WorkflowRunUsage as WorkflowRunUsage,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WorkflowRunUsagePropBillable as WorkflowRunUsagePropBillable,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WorkflowRunUsagePropBillablePropMacos as WorkflowRunUsagePropBillablePropMacos,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WorkflowRunUsagePropBillablePropMacosPropJobRunsItems as WorkflowRunUsagePropBillablePropMacosPropJobRunsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WorkflowRunUsagePropBillablePropUbuntu as WorkflowRunUsagePropBillablePropUbuntu,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems as WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WorkflowRunUsagePropBillablePropWindows as WorkflowRunUsagePropBillablePropWindows,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems as WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems,
-    )
-    from githubkit_schemas.v2026_03_10.models import WorkflowUsage as WorkflowUsage
-    from githubkit_schemas.v2026_03_10.models import (
+        WorkflowUsage as WorkflowUsage,
         WorkflowUsagePropBillable as WorkflowUsagePropBillable,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WorkflowUsagePropBillablePropMacos as WorkflowUsagePropBillablePropMacos,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WorkflowUsagePropBillablePropUbuntu as WorkflowUsagePropBillablePropUbuntu,
-    )
-    from githubkit_schemas.v2026_03_10.models import (
         WorkflowUsagePropBillablePropWindows as WorkflowUsagePropBillablePropWindows,
     )
 else:
