@@ -1,0 +1,5 @@
+extend = "../pyproject.toml"
+
+[lint.isort]
+combine-as-imports = true
+known-first-party = ["githubkit"]
